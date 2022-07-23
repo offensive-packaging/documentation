@@ -4,7 +4,7 @@ Homepage: https://gitlab.com/cryptsetup/cryptsetup
 Repository: https://salsa.debian.org/cryptsetup-team/cryptsetup
 Architectures: linux-any all
 Version: 2:2.4.3-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-post-exploitation kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cryptsetup
@@ -23,7 +23,7 @@ PackagesInfo: |
   This package provides the cryptdisks_start and _stop wrappers, as well as
   luksformat.
  
- **Installed size:** `448 KB`  
+ **Installed size:** `449 KB`  
  **How to install:** `sudo apt install cryptsetup`  
  
  {{< spoiler "Dependencies:" >}}
@@ -622,7 +622,7 @@ PackagesInfo: |
   and requires systemd.  Moreover, this is an early implementation and may not
   be as mature as the other cryptsetup-* packages yet.
  
- **Installed size:** `117 KB`  
+ **Installed size:** `118 KB`  
  **How to install:** `sudo apt install cryptsetup-suspend`  
  
  {{< spoiler "Dependencies:" >}}
@@ -646,7 +646,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup development files.
  
- **Installed size:** `174 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install libcryptsetup-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -665,7 +665,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup shared library.
  
- **Installed size:** `553 KB`  
+ **Installed size:** `559 KB`  
  **How to install:** `sudo apt install libcryptsetup12`  
  
  {{< spoiler "Dependencies:" >}}
@@ -674,7 +674,7 @@ PackagesInfo: |
  * libc6 
  * libdevmapper1.02.1 
  * libjson-c5 
- * libssl1.1 
+ * libssl3 
  * libuuid1 
  {{< /spoiler >}}
  

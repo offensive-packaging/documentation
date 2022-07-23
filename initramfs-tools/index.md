@@ -3,7 +3,7 @@ Title: initramfs-tools
 Homepage: 
 Repository: https://salsa.debian.org/kernel-team/initramfs-tools
 Architectures: all
-Version: 0.141
+Version: 0.142
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -51,7 +51,7 @@ PackagesInfo: |
   be loaded along with the kernel and is then responsible for mounting
   the root filesystem and starting the main init system.
  
- **Installed size:** `214 KB`  
+ **Installed size:** `215 KB`  
  **How to install:** `sudo apt install initramfs-tools-core`  
  
  {{< spoiler "Dependencies:" >}}
@@ -93,6 +93,7 @@ PackagesInfo: |
  Options:
    -c compress	Override COMPRESS setting in initramfs.conf.
    -d confdir	Specify an alternative configuration directory.
+   -l level	Override COMPRESSLEVEL setting in initramfs.conf.
    -k		Keep temporary directory used to make the image.
    -o outfile	Write to outfile.
    -r root	Override ROOT setting in initramfs.conf.

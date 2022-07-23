@@ -4,7 +4,7 @@ Homepage: http://github.com/zed-0xff/pedump
 Repository: https://gitlab.com/kalilinux/packages/ruby-pedump
 Architectures: all
 Version: 0.6.5-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ruby-pedump

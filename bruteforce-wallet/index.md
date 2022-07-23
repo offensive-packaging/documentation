@@ -44,13 +44,13 @@ PackagesInfo: |
   This package is useful for finding the password for a Peercoin encrypted
   wallet file (or Bitcoin, Litecoin, etc ...) (i.e. wallet.dat).
  
- **Installed size:** `52 KB`  
+ **Installed size:** `53 KB`  
  **How to install:** `sudo apt install bruteforce-wallet`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libdb5.3
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### bruteforce-wallet

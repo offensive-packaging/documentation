@@ -4,7 +4,7 @@ Homepage: http://www.bluez.org
 Repository: https://gitlab.com/kalilinux/packages/bluez
 Architectures: linux-any all
 Version: 5.64-2+kali1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-bluetooth kali-tools-wireless 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-bluetooth kali-tools-rfid kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### bluetooth

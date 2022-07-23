@@ -4,7 +4,7 @@ Homepage: https://github.com/Greenwolf/Spray
 Repository: https://gitlab.com/kalilinux/packages/spray
 Architectures: all
 Version: 2.1+git20190226-0kali2
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### spray

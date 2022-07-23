@@ -4,7 +4,7 @@ Homepage:
 Repository: https://gitlab.com/kalilinux/packages/wmi
 Architectures: any
 Version: 1.3.16-0kali6
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### wmi-client

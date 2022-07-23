@@ -3,8 +3,8 @@ Title: wifipumpkin3
 Homepage: https://github.com/P0cL4bs/wifipumpkin3
 Repository: https://gitlab.com/kalilinux/packages/wifipumpkin3
 Architectures: all
-Version: 1.1.2R2-0kali3
-Metapackages: 
+Version: 1.1.3-R3-0kali1
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### wifipumpkin3
@@ -14,7 +14,7 @@ PackagesInfo: |
   and reverse engineers to mount a wireless network to conduct a
   man-in-the-middle attack.
  
- **Installed size:** `9.27 MB`  
+ **Installed size:** `17.89 MB`  
  **How to install:** `sudo apt install wifipumpkin3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,7 +23,6 @@ PackagesInfo: |
  * iw
  * net-tools
  * python3
- * python3-asn1crypto
  * python3-bs4
  * python3-dhcplib
  * python3-dnslib
@@ -54,12 +53,25 @@ PackagesInfo: |
  
  ```
  root@kali:~# captiveflask -h
- /usr/bin/captiveflask: 1: from: not found
- /usr/bin/captiveflask: 2: from: not found
- import-im6.q16: unable to open X server `' @ error/import.c/ImportImageCommand/346.
- import-im6.q16: unable to open X server `' @ error/import.c/ImportImageCommand/346.
- import-im6.q16: unable to open X server `' @ error/import.c/ImportImageCommand/346.
- /usr/bin/captiveflask: 10: Syntax error: "(" unexpected
+ [*] CaptiveFlask v1.0.2 - subtool from wifipumpkin3
+ usage: captiveflask [-h] [-t TEMPLATE] [-s STATIC] [-r REDIRECT]
+                     [-f FORCE_REDIRECT] [-v VERSION]
+ 
+ CaptiveFlask - Server to create captive portal with flask doc:
+ https://github.com/mh4x0f/captiveportals
+ 
+ options:
+   -h, --help            show this help message and exit
+   -t TEMPLATE, --tamplate TEMPLATE
+                         path the theme login captive portal
+   -s STATIC, --static STATIC
+                         path of the static files from webpage
+   -r REDIRECT, --redirect REDIRECT
+                         IpAddress from gataway captive portal
+   -f FORCE_REDIRECT, --force-login_successful-template FORCE_REDIRECT
+                         force redirect to login_successful.html template
+   -v VERSION, --version VERSION
+                         show version the tool
  ```
  
  - - -
@@ -69,16 +81,23 @@ PackagesInfo: |
  
  ```
  root@kali:~# sslstrip3 -h
- /usr/bin/sslstrip3: 1: sslstrip is a MITM tool that implements Moxie Marlinspike's SSL stripping attacks.: not found
- /usr/bin/sslstrip3: 3: __author__: not found
- /usr/bin/sslstrip3: 4: __email__: not found
- /usr/bin/sslstrip3: 5: __license__: not found
- /usr/bin/sslstrip3: 25: from: not found
- /usr/bin/sslstrip3: 26: from: not found
- /usr/bin/sslstrip3: 28: from: not found
- /usr/bin/sslstrip3: 29: from: not found
- /usr/bin/sslstrip3: 30: from: not found
- /usr/bin/sslstrip3: 31: Syntax error: "(" unexpected
+ 
+ sslstrip 0.9 by Moxie Marlinspike (mh4x0f)
+ Fork: https://github.com/mh4x0f/sslstrip3
+ Usage: sslstrip <options>
+ 
+ Options:
+ -w <filename>, --write=<filename> Specify file to log to (optional).
+ -p , --post                       Log only SSL POSTs. (default)
+ -s , --ssl                        Log all SSL traffic to and from server.
+ -a , --all                        Log all SSL and HTTP traffic to and from server.
+ -l <port>, --listen=<port>        Port to listen on (default 10000).
+ -f , --favicon                    Substitute a lock favicon on secure requests.
+ -k , --killsessions               Kill sessions in progress.
+ -t <config>, --tamper <config>    Enable response tampering with settings from <config>.
+ -i , --inject                     Inject code into HTML pages using a text file.
+ -h                                print(this help message.
+ 
  ```
  
  - - -
@@ -87,11 +106,45 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# wifipumpkin3 -h
+ root@kali:~# wifipumpkin3 --help
  usage: wifipumpkin3 [-h] [-i INTERFACE] [-s SESSION] [-p PULP] [-x XPULP]
                      [-m WIRELESS_MODE] [--no-colors] [--rest]
                      [--restport RESTPORT] [--username USERNAME]
                      [--password PASSWORD] [-v]
+ 
+ wifipumpkin3 - Powerful framework for rogue access point attack. See:
+ https://wifipumpkin3.github.io/docs/getting-started#usage
+ 
+ options:
+   -h, --help            show this help message and exit
+   -i INTERFACE          set interface for create AP
+   -s SESSION            set session for continue attack
+   -p PULP, --pulp PULP  interactive sessions can be scripted with .pulp file
+   -x XPULP, --xpulp XPULP
+                         interactive sessions can be string with ";" as the
+                         separator
+   -m WIRELESS_MODE, --wireless-mode WIRELESS_MODE
+                         set wireless mode settings
+   --no-colors           disable terminal colors and effects.
+   --rest                Run the Wp3 RESTful API.
+   --restport RESTPORT   Port to run the Wp3 RESTful API on. default is 1337
+   --username USERNAME   Start the RESTful API with the specified username
+                         instead of pulling from wp3.db
+   --password PASSWORD   Start the RESTful API with the specified password
+                         instead of pulling from wp3.db
+   -v, --version         show program's version number and exit
+ ```
+ 
+ - - -
+ 
+ ##### wp3
+ 
+ 
+ ```
+ root@kali:~# wp3 -h
+ usage: wp3 [-h] [-i INTERFACE] [-s SESSION] [-p PULP] [-x XPULP]
+            [-m WIRELESS_MODE] [--no-colors] [--rest] [--restport RESTPORT]
+            [--username USERNAME] [--password PASSWORD] [-v]
  
  wifipumpkin3 - Powerful framework for rogue access point attack. See:
  https://wifipumpkin3.github.io/docs/getting-started#usage

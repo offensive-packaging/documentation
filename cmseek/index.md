@@ -85,7 +85,7 @@ PackagesInfo: |
  
      
  
-  CMSeeK says ~ adeus
+  CMSeeK says ~ shalom
  ```
  
  - - -

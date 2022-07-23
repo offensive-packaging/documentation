@@ -4,7 +4,7 @@ Homepage: https://github.com/mricon/rev-proxy-grapher
 Repository: https://gitlab.com/kalilinux/packages/rev-proxy-grapher
 Architectures: all
 Version: 0~git20180301-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### rev-proxy-grapher

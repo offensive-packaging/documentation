@@ -3,7 +3,7 @@ Title: commix
 Homepage: https://commixproject.com
 Repository: https://gitlab.com/kalilinux/packages/commix
 Architectures: all
-Version: 3.4-0kali1
+Version: 3.5-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/commix-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   injection vulnerability in a certain vulnerable parameter or string.
   Commix is written in Python programming language.
  
- **Installed size:** `1.32 MB`  
+ **Installed size:** `1.21 MB`  
  **How to install:** `sudo apt install commix`  
  
  {{< spoiler "Dependencies:" >}}
@@ -52,6 +52,7 @@ PackagesInfo: |
      --charset=CHARSET   Time-related injection charset (e.g.
                          "0123456789abcdef")
      --check-internet    Check internet connection before assessing the target.
+     --answers=ANSWERS   Set predefined answers (e.g. "quit=N,follow=N")
  
    Target:
      This options has to be provided, to define the target URL.
@@ -61,8 +62,8 @@ PackagesInfo: |
      -l LOGFILE          Parse target from HTTP proxy log file.
      -m BULKFILE         Scan multiple targets given in a textual file.
      -r REQUESTFILE      Load HTTP request from a file.
-     --crawl=CRAWLDEPTH  Crawl the website starting from the target URL (1-2,
-                         Default: 0).
+     --crawl=CRAWLDEPTH  Crawl the website starting from the target URL
+                         (Default: 1).
      -x SITEMAP_URL      Parse target(s) from remote sitemap(.xml) file.
      --method=METHOD     Force usage of given HTTP method (e.g. PUT)
  
@@ -90,7 +91,7 @@ PackagesInfo: |
      --ignore-code=IG..  Ignore (problematic) HTTP error code (e.g. 401).
      --force-ssl         Force usage of SSL/HTTPS.
      --ignore-redirects  Ignore redirection attempts.
-     --timeout=TIMEOUT   Seconds to wait before timeout connection (default
+     --timeout=TIMEOUT   Seconds to wait before timeout connection (Default:
                          30).
      --retries=RETRIES   Retries when the connection timeouts (Default: 3).
      --drop-set-cookie   Ignore Set-Cookie header from response.
@@ -121,10 +122,6 @@ PackagesInfo: |
      These options can be used increase the detection and/or injection
      capabilities.
  
-     --icmp-exfil=IP_..  The 'ICMP exfiltration' injection module.
-                         (e.g. 'ip_src=192.168.178.1,ip_dst=192.168.178.3').
-     --dns-server=DNS..  The 'DNS exfiltration' injection module.
-                         (Domain name used for DNS exfiltration attack).
      --shellshock        The 'shellshock' injection module.
  
    Injection:
@@ -140,7 +137,7 @@ PackagesInfo: |
      --maxlen=MAXLEN     Set the max length of output for time-related
                          injection techniques (Default: 10000 chars).
      --delay=DELAY       Seconds to delay between each HTTP request.
-     --time-sec=TIMESEC  Seconds to delay the OS response (Default 1).
+     --time-sec=TIMESEC  Seconds to delay the OS response (Default: 1).
      --tmp-path=TMP_P..  Set the absolute path of web server's temp directory.
      --web-root=WEB_R..  Set the web server document root directory (e.g.
                          '/var/www').
@@ -163,7 +160,8 @@ PackagesInfo: |
  
    Miscellaneous:
      --dependencies      Check for third-party (non-core) dependencies.
-     --list-tampers      Display list of available tamper scripts
+     --list-tampers      Display list of available tamper scripts.
+     --no-logging        Disable logging to a file.
      --purge             Safely remove all content from commix data directory.
      --skip-waf          Skip heuristic detection of WAF/IPS/IDS protection.
      --mobile            Imitate smartphone through HTTP User-Agent header.

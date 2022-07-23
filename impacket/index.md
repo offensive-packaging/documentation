@@ -3,7 +3,7 @@ Title: impacket
 Homepage: https://github.com/CoreSecurity/impacket
 Repository: https://salsa.debian.org/python-team/packages/impacket
 Architectures: all
-Version: 0.10.0-1
+Version: 0.10.0-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

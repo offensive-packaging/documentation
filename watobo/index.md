@@ -64,7 +64,9 @@ PackagesInfo: |
  ---
  Done generating certificate for /C=DE/O=WATOBO/OU=WATOBO CA/CN=Watobo CA
  >> create DH key ...
- * creating SSL key (DH 2048) ... 
+ * creating SSL key (DH 2048) ...  DONE
+ 
+ Loading FXRuby ... this may take some time ... [OK]
  ```
  
  - - -

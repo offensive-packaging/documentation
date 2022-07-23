@@ -20,12 +20,12 @@ PackagesInfo: |
   Note: this package contains siege with HTTPS support turned on, thus it
   obsoletes siege-ssl package now.
  
- **Installed size:** `279 KB`  
+ **Installed size:** `280 KB`  
  **How to install:** `sudo apt install siege`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  * zlib1g 
  {{< /spoiler >}}
  

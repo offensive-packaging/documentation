@@ -47,7 +47,7 @@ PackagesInfo: |
   affcopy, affcrypto, affdiskprint, affinfo, affix, affrecover, affsegment,
   affsign, affstats, affuse, affverify and affxml.
  
- **Installed size:** `593 KB`  
+ **Installed size:** `594 KB`  
  **How to install:** `sudo apt install afflib-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -56,7 +56,7 @@ PackagesInfo: |
  * libexpat1 
  * libfuse2 
  * libgcc-s1 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  
@@ -525,7 +525,7 @@ PackagesInfo: |
    
   This package provides the development files.
  
- **Installed size:** `873 KB`  
+ **Installed size:** `859 KB`  
  **How to install:** `sudo apt install libafflib-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -548,7 +548,7 @@ PackagesInfo: |
      decrypted on-the-fly for processing. This allows disk images
      containing privacy sensitive material to be stored on the Internet.
  
- **Installed size:** `566 KB`  
+ **Installed size:** `567 KB`  
  **How to install:** `sudo apt install libafflib0v5`  
  
  {{< spoiler "Dependencies:" >}}
@@ -556,7 +556,7 @@ PackagesInfo: |
  * libcurl4 
  * libexpat1 
  * libgcc-s1 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  * zlib1g 
  {{< /spoiler >}}

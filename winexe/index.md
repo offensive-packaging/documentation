@@ -21,7 +21,6 @@ PackagesInfo: |
  * libpopt0 
  * libtalloc2 
  * libtevent0 
- * libwbclient0 
  * samba-libs 
  {{< /spoiler >}}
  

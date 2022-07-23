@@ -3,7 +3,7 @@ Title: dnstwist
 Homepage: https://github.com/elceef/dnstwist
 Repository: https://salsa.debian.org/pkg-security-team/dnstwist
 Architectures: all
-Version: 0~20220131-1
+Version: 0~20220131-2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

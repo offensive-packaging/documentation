@@ -3,7 +3,7 @@ Title: odat
 Homepage: https://github.com/quentinhardy/odat
 Repository: https://gitlab.com/kalilinux/packages/odat
 Architectures: i386 amd64
-Version: 4.3-0kali3
+Version: 5.1.1-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
       reverse shell) in order to move forward on the operating system hosting
       the database
  
- **Installed size:** `450 KB`  
+ **Installed size:** `511 KB`  
  **How to install:** `sudo apt install odat`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,6 +31,7 @@ PackagesInfo: |
  * python3-argcomplete
  * python3-colorlog
  * python3-cx-oracle
+ * python3-libnmap
  * python3-passlib
  * python3-pycryptodome
  * python3-scapy
@@ -43,7 +44,7 @@ PackagesInfo: |
  ```
  root@kali:~# odat -h
  usage: odat.py [-h] [--version]
-                {all,tnscmd,tnspoison,sidguesser,passwordguesser,utlhttp,httpuritype,utltcp,ctxsys,externaltable,dbmsxslprocessor,dbmsadvisor,utlfile,dbmsscheduler,java,passwordstealer,oradbg,dbmslob,stealremotepwds,userlikepwd,smb,privesc,cve,search,unwrapper,clean}
+                {all,tnscmd,tnspoison,sidguesser,snguesser,passwordguesser,utlhttp,httpuritype,utltcp,ctxsys,externaltable,dbmsxslprocessor,dbmsadvisor,utlfile,dbmsscheduler,java,passwordstealer,oradbg,dbmslob,stealremotepwds,userlikepwd,smb,privesc,cve,search,unwrapper,clean}
                 ...
  
              _  __   _  ___ 
@@ -60,13 +61,14 @@ PackagesInfo: |
  By Quentin Hardy (quentin.hardy@protonmail.com or quentin.hardy@bt.com)
  
  positional arguments:
-   {all,tnscmd,tnspoison,sidguesser,passwordguesser,utlhttp,httpuritype,utltcp,ctxsys,externaltable,dbmsxslprocessor,dbmsadvisor,utlfile,dbmsscheduler,java,passwordstealer,oradbg,dbmslob,stealremotepwds,userlikepwd,smb,privesc,cve,search,unwrapper,clean}
+   {all,tnscmd,tnspoison,sidguesser,snguesser,passwordguesser,utlhttp,httpuritype,utltcp,ctxsys,externaltable,dbmsxslprocessor,dbmsadvisor,utlfile,dbmsscheduler,java,passwordstealer,oradbg,dbmslob,stealremotepwds,userlikepwd,smb,privesc,cve,search,unwrapper,clean}
                        
                        Choose a main command
      all               to run all modules in order to know what it is possible to do
      tnscmd            to communicate with the TNS listener
-     tnspoison         to exploit TNS poisoning attack
+     tnspoison         to exploit TNS poisoning attack (SID required)
      sidguesser        to know valid SIDs
+     snguesser         to know valid Service Name(s)
      passwordguesser   to know valid credentials
      utlhttp           to send HTTP requests or to scan ports
      httpuritype       to send HTTP requests or to scan ports

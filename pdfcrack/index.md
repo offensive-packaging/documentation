@@ -3,7 +3,7 @@ Title: pdfcrack
 Homepage: http://pdfcrack.sf.net
 Repository: https://salsa.debian.org/debian/pdfcrack
 Architectures: any
-Version: 0.19-2
+Version: 0.19-3
 Metapackages: kali-linux-everything kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -29,7 +29,7 @@ PackagesInfo: |
   This program can be used in forensics investigations or similar activities,
   to legal password crack.
  
- **Installed size:** `91 KB`  
+ **Installed size:** `95 KB`  
  **How to install:** `sudo apt install pdfcrack`  
  
  {{< spoiler "Dependencies:" >}}

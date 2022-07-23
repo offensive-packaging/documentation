@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: Having lotto fun with my Denon AVC-A11XVA... :)
+ MOTD: Do you have any Alcatel or Juniper switch? Share it!! ;)
  ```
  
  - - -

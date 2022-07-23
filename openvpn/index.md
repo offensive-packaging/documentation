@@ -3,7 +3,7 @@ Title: openvpn
 Homepage: https://openvpn.net/
 Repository: https://salsa.debian.org/debian/openvpn
 Architectures: any
-Version: 2.5.6-1
+Version: 2.6.0~really2.5.7-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -32,9 +32,10 @@ PackagesInfo: |
  * liblzo2-2 
  * libpam0g 
  * libpkcs11-helper1 
- * libssl1.1 
+ * libssl3 
  * libsystemd0
  * lsb-base 
+ * systemd | systemd-tmpfiles
  {{< /spoiler >}}
  
  ##### openvpn
@@ -43,7 +44,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# openvpn --help
- OpenVPN 2.5.6 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Mar 20 2022
+ OpenVPN 2.5.7 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Jul  5 2022
  
  General Options:
  --config file   : Read configuration options from file.
@@ -474,6 +475,7 @@ PackagesInfo: |
                  : Use --show-tls to see a list of supported TLS ciphers (suites).
  --tls-cert-profile p : Set the allowed certificate crypto algorithm profile
                    (default=legacy).
+ --providers l   : A list l of OpenSSL providers to load.
  --tls-timeout n : Packet retransmit timeout on TLS control channel
                    if no ACK from remote within n seconds (default=2).
  --reneg-bytes n : Renegotiate data chan. key after n bytes sent and recvd.

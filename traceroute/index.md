@@ -3,7 +3,7 @@ Title: traceroute
 Homepage: http://traceroute.sourceforge.net/
 Repository: 
 Architectures: linux-any
-Version: 1:2.1.0-2
+Version: 1:2.1.0-3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   Install traceroute if you need a tool for diagnosing network connectivity
   problems.
  
- **Installed size:** `159 KB`  
+ **Installed size:** `158 KB`  
  **How to install:** `sudo apt install traceroute`  
  
  {{< spoiler "Dependencies:" >}}

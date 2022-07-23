@@ -3,7 +3,7 @@ Title: samba
 Homepage: https://www.samba.org
 Repository: https://salsa.debian.org/samba-team/samba
 Architectures: any all
-Version: 2:4.16.1+dfsg-4~kali1
+Version: 2:4.16.2+dfsg-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-wireless 
 Icon: images/samba-logo.svg
 PackagesInfo: |
@@ -36,7 +36,7 @@ PackagesInfo: |
      applications that depend on network or filesystem resources to be managed in
      a highly available manner on a cluster.
  
- **Installed size:** `3.47 MB`  
+ **Installed size:** `3.48 MB`  
  **How to install:** `sudo apt install ctdb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -48,7 +48,6 @@ PackagesInfo: |
  * libtdb1 
  * libtevent0 
  * libtirpc3 
- * libwbclient0 
  * lsb-base 
  * psmisc
  * samba-libs 
@@ -268,7 +267,7 @@ PackagesInfo: |
         You should have received a copy of the GNU General Public License along
         with this program; if not, see http://www.gnu.org/licenses.
  
- ctdb                              05/11/2022                      PING_PONG(1)
+ ctdb                              06/13/2022                      PING_PONG(1)
  ```
  
  - - -
@@ -284,7 +283,7 @@ PackagesInfo: |
    
   This package contains bundled test and utility binaries
  
- **Installed size:** `286 KB`  
+ **Installed size:** `285 KB`  
  **How to install:** `sudo apt install ldb-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -839,7 +838,7 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `259 KB`  
+ **Installed size:** `258 KB`  
  **How to install:** `sudo apt install libldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -865,7 +864,7 @@ PackagesInfo: |
    
   This package contains the shared library file.
  
- **Installed size:** `696 KB`  
+ **Installed size:** `699 KB`  
  **How to install:** `sudo apt install libldb2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -893,13 +892,12 @@ PackagesInfo: |
   system; and nss_wins, which provides hostname lookups via both the NBNS and
   NetBIOS broadcast protocols.
  
- **Installed size:** `270 KB`  
+ **Installed size:** `269 KB`  
  **How to install:** `sudo apt install libnss-winbind`  
  
  {{< spoiler "Dependencies:" >}}
  * libbsd0 
  * libc6 
- * samba-common 
  * winbind
  {{< /spoiler >}}
  
@@ -917,7 +915,7 @@ PackagesInfo: |
   This package provides pam_winbind, a plugin that integrates with a local
   winbindd server to provide Windows domain authentication to the system.
  
- **Installed size:** `250 KB`  
+ **Installed size:** `249 KB`  
  **How to install:** `sudo apt install libpam-winbind`  
  
  {{< spoiler "Dependencies:" >}}
@@ -926,7 +924,6 @@ PackagesInfo: |
  * libpam-runtime 
  * libpam0g 
  * libtalloc2 
- * samba-common 
  * winbind
  {{< /spoiler >}}
  
@@ -939,7 +936,7 @@ PackagesInfo: |
   to talk to Microsoft Windows and Samba servers using the SMB/CIFS
   protocol.
  
- **Installed size:** `326 KB`  
+ **Installed size:** `325 KB`  
  **How to install:** `sudo apt install libsmbclient`  
  
  {{< spoiler "Dependencies:" >}}
@@ -947,7 +944,6 @@ PackagesInfo: |
  * libc6 
  * libtalloc2 
  * libtevent0 
- * libwbclient0 
  * samba-libs 
  {{< /spoiler >}}
  
@@ -961,7 +957,7 @@ PackagesInfo: |
   enables client applications to talk to Microsoft Windows and Samba servers
   using the SMB/CIFS protocol.
  
- **Installed size:** `358 KB`  
+ **Installed size:** `357 KB`  
  **How to install:** `sudo apt install libsmbclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -982,7 +978,7 @@ PackagesInfo: |
   applications that interact via the winbind pipe protocol with a Samba
   winbind server.
  
- **Installed size:** `201 KB`  
+ **Installed size:** `199 KB`  
  **How to install:** `sudo apt install libwbclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1001,17 +997,12 @@ PackagesInfo: |
   This package provides a library for client applications that interact
   via the winbind pipe protocol with a Samba winbind server.
  
- **Installed size:** `839 KB`  
+ **Installed size:** `216 KB`  
  **How to install:** `sudo apt install libwbclient0`  
  
  {{< spoiler "Dependencies:" >}}
  * libbsd0 
  * libc6 
- * libgnutls30 
- * libicu71 
- * libsystemd0
- * libtalloc2 
- * libtevent0 
  {{< /spoiler >}}
  
  
@@ -1023,7 +1014,7 @@ PackagesInfo: |
    
   This package contains the Python 3 bindings.
  
- **Installed size:** `272 KB`  
+ **Installed size:** `271 KB`  
  **How to install:** `sudo apt install python3-ldb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1049,7 +1040,7 @@ PackagesInfo: |
    
   This package contains the development files for the Python 3 bindings.
  
- **Installed size:** `150 KB`  
+ **Installed size:** `149 KB`  
  **How to install:** `sudo apt install python3-ldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1082,7 +1073,6 @@ PackagesInfo: |
  * libpython3.10 
  * libtalloc2 
  * libtevent0 
- * libwbclient0 
  * python3
  * python3 
  * python3-ldb 
@@ -1104,7 +1094,7 @@ PackagesInfo: |
   This package contains tools for viewing and manipulating the binary
   "registry" found on Windows machines, both locally and remote.
  
- **Installed size:** `243 KB`  
+ **Installed size:** `242 KB`  
  **How to install:** `sudo apt install registry-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1112,7 +1102,6 @@ PackagesInfo: |
  * libpopt0 
  * libreadline8 
  * libtalloc2 
- * libwbclient0 
  * samba-libs 
  {{< /spoiler >}}
  
@@ -1351,7 +1340,7 @@ PackagesInfo: |
   This package is not required for connecting to existing SMB/CIFS servers
   (see smbclient) or for mounting remote filesystems (see cifs-utils).
  
- **Installed size:** `20.06 MB`  
+ **Installed size:** `17.25 MB`  
  **How to install:** `sudo apt install samba`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1361,7 +1350,6 @@ PackagesInfo: |
  * libc6 
  * libcups2 
  * libgnutls30 
- * libjansson4 
  * libldap-2.5-0 
  * libldb2 
  * libpam-modules
@@ -1371,7 +1359,6 @@ PackagesInfo: |
  * libtasn1-6 
  * libtdb1 
  * libtevent0 
- * libwbclient0 
  * lsb-base 
  * procps
  * python3
@@ -1410,61 +1397,6 @@ PackagesInfo: |
  Active eventlog names:
  --------------------------------------
  	<None specified>
- ```
- 
- - - -
- 
- ##### mksmbpasswd
- 
- Formats a /etc/passwd entry for a smbpasswd file
- 
- ```
- root@kali:~# mksmbpasswd -h
- Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
- Usage: awk [POSIX or GNU style options] [--] 'program' file ...
- POSIX options:		GNU long options: (standard)
- 	-f progfile		--file=progfile
- 	-F fs			--field-separator=fs
- 	-v var=val		--assign=var=val
- Short options:		GNU long options: (extensions)
- 	-b			--characters-as-bytes
- 	-c			--traditional
- 	-C			--copyright
- 	-d[file]		--dump-variables[=file]
- 	-D[file]		--debug[=file]
- 	-e 'program-text'	--source='program-text'
- 	-E file			--exec=file
- 	-g			--gen-pot
- 	-h			--help
- 	-i includefile		--include=includefile
- 	-l library		--load=library
- 	-L[fatal|invalid|no-ext]	--lint[=fatal|invalid|no-ext]
- 	-M			--bignum
- 	-N			--use-lc-numeric
- 	-n			--non-decimal-data
- 	-o[file]		--pretty-print[=file]
- 	-O			--optimize
- 	-p[file]		--profile[=file]
- 	-P			--posix
- 	-r			--re-interval
- 	-s			--no-optimize
- 	-S			--sandbox
- 	-t			--lint-old
- 	-V			--version
- 
- To report bugs, see node `Bugs' in `gawk.info'
- which is section `Reporting Problems and Bugs' in the
- printed version.  This same information may be found at
- https://www.gnu.org/software/gawk/manual/html_node/Bugs.html.
- PLEASE do NOT try to report bugs by posting in comp.lang.awk,
- or by using a web forum such as Stack Overflow.
- 
- gawk is a pattern scanning and processing language.
- By default it reads standard input and writes standard output.
- 
- Examples:
- 	awk '{ sum += $1 }; END { print sum }' file
- 	awk -F: '{ print $1 }' /etc/passwd
  ```
  
  - - -
@@ -2126,13 +2058,15 @@ PackagesInfo: |
   (provided in the samba package) and the client (provided in the samba-clients
   package).
  
- **Installed size:** `1.66 MB`  
+ **Installed size:** `4.40 MB`  
  **How to install:** `sudo apt install samba-common-bin`  
  
  {{< spoiler "Dependencies:" >}}
  * libbsd0 
  * libc6 
+ * libcups2 
  * libgnutls30 
+ * libjansson4 
  * libldap-2.5-0 
  * libncurses6 
  * libpopt0 
@@ -2593,7 +2527,6 @@ PackagesInfo: |
  * libtalloc2 
  * libtdb1 
  * libtevent0 
- * libwbclient0 
  * samba-libs 
  {{< /spoiler >}}
  
@@ -2609,7 +2542,7 @@ PackagesInfo: |
    
   This package contains the shared libraries.
  
- **Installed size:** `23.02 MB`  
+ **Installed size:** `23.81 MB`  
  **How to install:** `sudo apt install samba-libs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2620,11 +2553,13 @@ PackagesInfo: |
  * libc6 
  * libcap2 
  * libgnutls30 
+ * libicu71 
  * libjansson4 
  * libldap-2.5-0 
  * libldb2 
  * libpam0g 
  * libpopt0 
+ * libsystemd0
  * libtalloc2 
  * libtdb1 
  * libtevent0 
@@ -2646,7 +2581,7 @@ PackagesInfo: |
   This package contains programs for testing the reliability and speed
   of SMB servers, Samba in particular.
  
- **Installed size:** `8.90 MB`  
+ **Installed size:** `8.91 MB`  
  **How to install:** `sudo apt install samba-testsuite`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2946,7 +2881,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# smbtorture --help
- smbtorture 4.16.1-Debian
+ smbtorture 4.16.2-Debian
  Usage: <binding>|<unc> TEST1 TEST2 ...
        --fullname                               use full name for the test
        --format=STRING                          Output format (one of: simple,
@@ -3055,7 +2990,7 @@ PackagesInfo: |
   Note: The runtime dependencies of vfs_ceph, vfs_glusterfs and vfs_snapper are
   moved to Recommends.
  
- **Installed size:** `1.78 MB`  
+ **Installed size:** `1.81 MB`  
  **How to install:** `sudo apt install samba-vfs-modules`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3067,7 +3002,6 @@ PackagesInfo: |
  * libtevent0 
  * libtirpc3 
  * liburing2 
- * libwbclient0 
  * samba-libs 
  {{< /spoiler >}}
  
@@ -3098,7 +3032,6 @@ PackagesInfo: |
  * libsmbclient 
  * libtalloc2 
  * libtevent0 
- * libwbclient0 
  * samba-common 
  * samba-libs 
  {{< /spoiler >}}

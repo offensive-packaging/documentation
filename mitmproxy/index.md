@@ -3,7 +3,7 @@ Title: mitmproxy
 Homepage: https://mitmproxy.org
 Repository: https://gitlab.com/kalilinux/packages/mitmproxy
 Architectures: all
-Version: 8.0.0-0kali1
+Version: 8.1.1-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-sniffing-spoofing kali-tools-web 
 Icon: images/mitmproxy-logo.svg
 PackagesInfo: |
@@ -32,7 +32,7 @@ PackagesInfo: |
   provided by other source package). The python-netlib module was also included
   but it has been dropped by upstream in version 1.0.
  
- **Installed size:** `3.45 MB`  
+ **Installed size:** `3.56 MB`  
  **How to install:** `sudo apt install mitmproxy`  
  
  {{< spoiler "Dependencies:" >}}

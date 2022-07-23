@@ -3,8 +3,8 @@ Title: kali-defaults
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-defaults
 Architectures: all
-Version: 2022.2.2
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-database kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-web kali-tools-windows-resources 
+Version: 2022.3.2
+Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-database kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-vulnerability kali-tools-web kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### kali-defaults
@@ -15,7 +15,7 @@ PackagesInfo: |
   because it is included in all Kali images, even minimalistic ones such as
   docker images.
  
- **Installed size:** `765 KB`  
+ **Installed size:** `1.40 MB`  
  **How to install:** `sudo apt install kali-defaults`  
  
  ##### kali-deprecated

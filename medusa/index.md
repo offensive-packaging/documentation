@@ -26,16 +26,14 @@ PackagesInfo: |
          necessary to the core application in order to extend the
          supported list of services for brute-forcing.
  
- **Installed size:** `789 KB`  
+ **Installed size:** `794 KB`  
  **How to install:** `sudo apt install medusa`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libgcrypt20 
- * libgnutls30 
  * libpq5
  * libssh2-1 
- * libssl1.1 
+ * libssl3 
  * libsvn1 
  {{< /spoiler >}}
  

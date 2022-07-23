@@ -3,7 +3,7 @@ Title: evil-winrm
 Homepage: https://github.com/Hackplayers/evil-winrm
 Repository: https://gitlab.com/kalilinux/packages/evil-winrm
 Architectures: all
-Version: 3.3-0kali1
+Version: 3.4-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/evil-winrm-logo.svg
 PackagesInfo: |
@@ -28,7 +28,7 @@ PackagesInfo: |
   It is using PSRP (Powershell Remoting Protocol) for initializing runspace
   pools as well as creating and processing pipelines.
  
- **Installed size:** `152 KB`  
+ **Installed size:** `321 KB`  
  **How to install:** `sudo apt install evil-winrm`  
  
  {{< spoiler "Dependencies:" >}}
@@ -46,7 +46,7 @@ PackagesInfo: |
  ```
  root@kali:~# evil-winrm -h
  
- Evil-WinRM shell v3.3
+ Evil-WinRM shell v3.4
  
  Usage: evil-winrm -i IP -u USER [-s SCRIPTS_PATH] [-e EXES_PATH] [-P PORT] [-p PASS] [-H HASH] [-U URL] [-S] [-c PUBLIC_KEY_PATH ] [-k PRIVATE_KEY_PATH ] [-r REALM] [--spn SPN_PREFIX] [-l]
      -S, --ssl                        Enable ssl

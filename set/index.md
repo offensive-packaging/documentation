@@ -56,9 +56,9 @@ PackagesInfo: |
  
  ```
  root@kali:~# setoolkit -h
- [-] New set.config.py file generated on: 2022-05-12 13:45:06.109701
+ [-] New set.config.py file generated on: 2022-07-22 12:04:11.987214
  [-] Verifying configuration update...
- [*] Update verified, config timestamp is: 2022-05-12 13:45:06.109701
+ [*] Update verified, config timestamp is: 2022-07-22 12:04:11.987214
  [*] SET is using the new config, no need to restart
  Copyright 2020, The Social-Engineer Toolkit (SET) by TrustedSec, LLC
  All rights reserved.

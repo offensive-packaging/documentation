@@ -32,6 +32,7 @@ PackagesInfo: |
  ```
  root@kali:~# covenant-kbx -h
  stty: 'standard input': Inappropriate ioctl for device
+ stty: 'standard input': Inappropriate ioctl for device
  Usage: covenant-kbx start|stop
  stty: 'standard input': Inappropriate ioctl for device
  ```

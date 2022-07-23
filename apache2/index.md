@@ -3,7 +3,7 @@ Title: apache2
 Homepage: https://httpd.apache.org/
 Repository: https://salsa.debian.org/apache-team/apache2
 Architectures: any all
-Version: 2.4.53-2
+Version: 2.4.54-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-social-engineering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   Installing this package results in a full installation, including the
   configuration files, init scripts and support scripts.
  
- **Installed size:** `622 KB`  
+ **Installed size:** `624 KB`  
  **How to install:** `sudo apt install apache2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -602,7 +602,7 @@ PackagesInfo: |
   web-server instance. Install the "apache2" package to get a fully working
   instance.
  
- **Installed size:** `4.95 MB`  
+ **Installed size:** `4.97 MB`  
  **How to install:** `sudo apt install apache2-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -619,7 +619,7 @@ PackagesInfo: |
  * liblua5.3-0
  * libnghttp2-14 
  * libpcre2-8-0 
- * libssl1.1 
+ * libssl3 
  * libxml2 
  * perl
  * zlib1g 
@@ -670,7 +670,7 @@ PackagesInfo: |
   This package contains architecture-independent common files such as icons,
   error pages and static index files.
  
- **Installed size:** `848 KB`  
+ **Installed size:** `849 KB`  
  **How to install:** `sudo apt install apache2-data`  
  
  
@@ -766,7 +766,7 @@ PackagesInfo: |
   documentation is shipped in HTML format and can be accessed from a local
   running Apache HTTP server instance or by browsing the file system directly.
  
- **Installed size:** `24.55 MB`  
+ **Installed size:** `24.57 MB`  
  **How to install:** `sudo apt install apache2-doc`  
  
  
@@ -802,7 +802,7 @@ PackagesInfo: |
   recommended that you use the standard suexec helper program from the
   apache2-suexec-pristine package instead.
  
- **Installed size:** `243 KB`  
+ **Installed size:** `242 KB`  
  **How to install:** `sudo apt install apache2-suexec-custom`  
  
  {{< spoiler "Dependencies:" >}}
@@ -819,7 +819,7 @@ PackagesInfo: |
   compiled with document root /var/www and userdir suffix public_html. If you
   need different settings, use the package apache2-suexec-custom.
  
- **Installed size:** `233 KB`  
+ **Installed size:** `232 KB`  
  **How to install:** `sudo apt install apache2-suexec-pristine`  
  
  {{< spoiler "Dependencies:" >}}
@@ -846,7 +846,7 @@ PackagesInfo: |
    - check_forensic (Extract mod_log_forensic output from Apache log files)
    - httxt2dbm (Generate dbm files for use with RewriteMap)
  
- **Installed size:** `485 KB`  
+ **Installed size:** `487 KB`  
  **How to install:** `sudo apt install apache2-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -854,7 +854,7 @@ PackagesInfo: |
  * libaprutil1 
  * libc6 
  * libcrypt1 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ab
@@ -907,7 +907,7 @@ PackagesInfo: |
      -I              Disable TLS Server Name Indication (SNI) extension
      -Z ciphersuite  Specify SSL/TLS cipher suite (See openssl ciphers)
      -f protocol     Specify SSL/TLS protocol
-                     (SSL2, TLS1, TLS1.1, TLS1.2 or ALL)
+                     (SSL2, TLS1, TLS1.1, TLS1.2, TLS1.3 or ALL)
      -E certfile     Specify optional client certificate chain and private key
  ```
  

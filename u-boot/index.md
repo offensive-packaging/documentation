@@ -50,13 +50,13 @@ PackagesInfo: |
    - mksunxiboot
    - mkenvimage
  
- **Installed size:** `757 KB`  
+ **Installed size:** `758 KB`  
  **How to install:** `sudo apt install u-boot-tools`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgnutls30 
- * libssl1.1 
+ * libssl3 
  * libtinfo6 
  * libuuid1 
  {{< /spoiler >}}
@@ -86,7 +86,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# kwboot -h
- kwboot version 2022.04+dfsg-2
+ kwboot version 2022.04+dfsg-2+b1
  Usage: kwboot [OPTIONS] [-b <image> | -D <image> | -b | -d ] [-B <baud> ] [-t] <TTY>
  
    -b <image>: boot <image> with preamble (Kirkwood, Avanta, Armada 370/XP/375/38x/39x)

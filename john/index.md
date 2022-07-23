@@ -28,7 +28,7 @@ PackagesInfo: |
  * libgmp10 
  * libgomp1 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  * zlib1g 
  {{< /spoiler >}}
  

@@ -3,7 +3,7 @@ Title: spooftooph
 Homepage: http://www.hackfromacave.com/projects/spooftooph.html
 Repository: https://gitlab.com/kalilinux/packages/spooftooph
 Architectures: any
-Version: 0.5.2-1kali1
+Version: 0.5.2-1kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-bluetooth kali-tools-wireless 
 Icon: images/spooftooph-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   same device information when the devices are in Discoverable
   Mode (specificaly the same Address).
  
- **Installed size:** `74 KB`  
+ **Installed size:** `78 KB`  
  **How to install:** `sudo apt install spooftooph`  
  
  {{< spoiler "Dependencies:" >}}

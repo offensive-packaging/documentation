@@ -27,7 +27,7 @@ PackagesInfo: |
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  * libwrap0 
  {{< /spoiler >}}
  

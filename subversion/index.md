@@ -3,7 +3,7 @@ Title: subversion
 Homepage: http://subversion.apache.org/
 Repository: https://salsa.debian.org/jamessan/subversion
 Architectures: any all
-Version: 1.14.2-1
+Version: 1.14.2-2
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

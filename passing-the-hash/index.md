@@ -3,7 +3,7 @@ Title: passing-the-hash
 Homepage: http://passing-the-hash.blogspot.fr
 Repository: https://gitlab.com/kalilinux/packages/passing-the-hash
 Architectures: any
-Version: 0~2015.12.32
+Version: 0~2015.12.33
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
  * libldap-2.5-0 
  * libnettle8
  * librtmp1 
- * libssl1.1 
+ * libssl3 
  * samba-common-bin 
  * smbclient 
  * sqsh
@@ -42,7 +42,7 @@ PackagesInfo: |
  root@kali:~# pth-curl -h
  Usage: curl [options...] <url>
   -d, --data <data>          HTTP POST data
-  -f, --fail                 Fail silently (no output at all) on HTTP errors
+  -f, --fail                 Fail fast with no output on HTTP errors
   -h, --help <category>      Get help for commands
   -i, --include              Include protocol response headers in the output
   -o, --output <file>        Write to file instead of stdout

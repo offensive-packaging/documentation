@@ -44,13 +44,13 @@ PackagesInfo: |
      * TIS Firewall Toolkit gate ftp proxy support (c.f: `gate')
      * transfer-rate throttling (c.f: `-T', `rate')
  
- **Installed size:** `256 KB`  
+ **Installed size:** `257 KB`  
  **How to install:** `sudo apt install tnftp`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libedit2 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### tnftp

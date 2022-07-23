@@ -3,7 +3,7 @@ Title: dfvfs
 Homepage: https://github.com/log2timeline/dfvfs
 Repository: https://salsa.debian.org/pkg-security-team/dfvfs
 Architectures: all
-Version: 20201219-1
+Version: 20211228-0kali1
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,11 +16,12 @@ PackagesInfo: |
   that provide the actual implementation of the various storage media
   types, volume systems and file systems.
  
- **Installed size:** `1.00 MB`  
+ **Installed size:** `1.05 MB`  
  **How to install:** `sudo apt install python3-dfvfs`  
  
  {{< spoiler "Dependencies:" >}}
  * python3
+ * python3-cffi
  * python3-cffi-backend 
  * python3-cryptography 
  * python3-dfdatetime 
@@ -44,9 +45,12 @@ PackagesInfo: |
  * python3-libvmdk 
  * python3-libvshadow 
  * python3-libvslvm 
+ * python3-pip
  * python3-protobuf
+ * python3-pyxattr
  * python3-six 
  * python3-tsk 
+ * python3-yaml
  {{< /spoiler >}}
  
  

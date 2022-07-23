@@ -32,7 +32,7 @@ PackagesInfo: |
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ike-scan

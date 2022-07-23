@@ -3,7 +3,7 @@ Title: python-faraday
 Homepage: https://faradaysec.com
 Repository: https://gitlab.com/kalilinux/packages/python-faraday
 Architectures: all
-Version: 3.19.0-0kali2
+Version: 3.19.0-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-reporting 
 Icon: images/python-faraday-logo.svg
 PackagesInfo: |

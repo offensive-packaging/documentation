@@ -3,7 +3,7 @@ Title: sslscan
 Homepage: https://github.com/rbsec/sslscan
 Repository: https://gitlab.com/kalilinux/packages/sslscan
 Architectures: any
-Version: 2.0.12-0kali1
+Version: 2.0.15-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-vulnerability kali-tools-web 
 Icon: images/sslscan-logo.svg
 PackagesInfo: |
@@ -35,8 +35,8 @@ PackagesInfo: |
            |___/___/_|___/\___\__,_|_| |_|
  
  
- 		2.0.12-static
- 		OpenSSL 1.1.1n-dev  xx XXX xxxx
+ 		2.0.15-static
+ 		OpenSSL 1.1.1q-dev  xx XXX xxxx
  
  
  Command:

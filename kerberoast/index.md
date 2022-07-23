@@ -37,7 +37,6 @@ PackagesInfo: |
  /usr/share/kerberoast
  |-- GetUserSPNs.ps1
  |-- GetUserSPNs.vbs
- |-- __pycache__
  |-- extracttgsrepfrompcap.py
  |-- kerberoast.py
  |-- kerberos.py

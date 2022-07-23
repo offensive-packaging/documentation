@@ -3,7 +3,7 @@ Title: dradis
 Homepage: https://dradisframework.org
 Repository: https://gitlab.com/kalilinux/packages/dradis
 Architectures: amd64
-Version: 4.3.0-0kali1
+Version: 4.4.0-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-reporting 
 Icon: images/dradis-logo.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
   teammates gather. Not sharing the information available in an effective way
   will result in exploitation oportunities lost and the overlapping of efforts.
  
- **Installed size:** `576.08 MB`  
+ **Installed size:** `576.04 MB`  
  **How to install:** `sudo apt install dradis`  
  
  {{< spoiler "Dependencies:" >}}
@@ -56,6 +56,23 @@ PackagesInfo: |
  ##### dradis-stop
  
  
+ ```
+ root@kali:~# dradis-stop -h
+ * dradis.service - Dradis web application
+      Loaded: loaded (/lib/systemd/system/dradis.service; disabled; vendor preset: disabled)
+      Active: inactive (dead)
+ 
+ Jul 22 11:15:57 kali bundle2.7[87134]:         /usr/lib/dradis/ruby/2.7.0/gems/railties-6.1.5.1/lib/rails/commands.rb:18:in `<main>'
+ Jul 22 11:15:57 kali bundle2.7[87134]:         /usr/lib/dradis/ruby/2.7.0/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+ Jul 22 11:15:57 kali bundle2.7[87134]:         /usr/lib/dradis/ruby/2.7.0/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+ Jul 22 11:15:57 kali bundle2.7[87134]:         bin/rails:5:in `<main>'
+ Jul 22 11:15:57 kali bundle2.7[87134]: [2022-07-22 11:15:57] INFO  going to shutdown ...
+ Jul 22 11:15:57 kali bundle2.7[87134]: [2022-07-22 11:15:57] INFO  WEBrick::HTTPServer#start done.
+ Jul 22 11:15:57 kali bundle2.7[87134]: Exiting
+ Jul 22 11:15:57 kali systemd[1]: dradis.service: Deactivated successfully.
+ Jul 22 11:15:57 kali systemd[1]: Stopped Dradis web application.
+ Jul 22 11:15:57 kali systemd[1]: dradis.service: Consumed 1.642s CPU time.
+ ```
  
  - - -
  

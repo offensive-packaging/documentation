@@ -3,8 +3,8 @@ Title: kali-meta
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-meta
 Architectures: any all
-Version: 2022.1.2
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
+Version: 2022.3.8
+Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### kali-desktop-core
@@ -183,9 +183,9 @@ PackagesInfo: |
  * alsa-tools
  * console-setup
  * cryptsetup-initramfs
- * florence
  * locales-all
  * lvm2
+ * onboard
  * zerofree
  {{< /spoiler >}}
  
@@ -541,6 +541,7 @@ PackagesInfo: |
  * phpggc
  * phpsploit
  * pnscan
+ * pocsuite3
  * pompem
  * poshc2
  * princeprocessor
@@ -557,9 +558,11 @@ PackagesInfo: |
  * ropper
  * routerkeygenpc
  * routersploit
+ * ruby-pedump
  * s3scanner
  * sentrypeer
  * shed
+ * shellfire
  * sherlock
  * silenttrinity
  * sliver
@@ -567,6 +570,7 @@ PackagesInfo: |
  * snowdrop
  * sparrow-wifi
  * spray
+ * sprayingtoolkit
  * spraykatz
  * sslstrip
  * stegcracker
@@ -710,6 +714,7 @@ PackagesInfo: |
  * kismet
  * laudanum
  * lbd
+ * libimage-exiftool-perl
  * macchanger
  * magicrescue
  * maskprocessor
@@ -745,6 +750,7 @@ PackagesInfo: |
  * pipal
  * pixiewps
  * plocate | mlocate
+ * powershell
  * powershell-empire
  * powersploit
  * proxychains4
@@ -825,6 +831,27 @@ PackagesInfo: |
  * winexe
  * wordlists
  * wpscan
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### kali-linux-labs
+ 
+  These applications are meant to be insecure & vulnerable to help users
+  experiment in a controlled manner.
+  This is Kali Linux, the most advanced penetration testing and security
+  auditing distribution.
+   
+  This metapackage depends on all the packages containing vulnerable environments
+  for safe testing.
+ 
+ **Installed size:** `20 KB`  
+ **How to install:** `sudo apt install kali-linux-labs`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * dvwa
+ * juice-shop
  {{< /spoiler >}}
  
  
@@ -956,7 +983,6 @@ PackagesInfo: |
  * photon
  * plecost
  * polenum
- * powershell
  * protos-sip
  * pst-utils
  * rainbowcrack
@@ -1004,7 +1030,7 @@ PackagesInfo: |
  * unicornscan
  * uniscan
  * urlcrazy
- * vim-gtk
+ * vim-gtk3
  * vinetto
  * wapiti
  * webacoo
@@ -1432,7 +1458,8 @@ PackagesInfo: |
  * flashrom
  * minicom
  * openocd
- * qemu
+ * qemu-system-x86
+ * qemu-user
  * radare2
  * radare2-cutter
  {{< /spoiler >}}
@@ -1682,6 +1709,7 @@ PackagesInfo: |
  * mfcuk
  * mfoc
  * mfterm
+ * proxmark3
  * rfdump
  {{< /spoiler >}}
  
@@ -1870,6 +1898,7 @@ PackagesInfo: |
  * nikto
  * nmap
  * ohrwurm
+ * peass
  * protos-sip
  * rtpbreak
  * rtpflood

@@ -21,7 +21,7 @@ PackagesInfo: |
   interrupted downloads. HTTrack is fully configurable, and has an
   integrated help system.
  
- **Installed size:** `75 KB`  
+ **Installed size:** `76 KB`  
  **How to install:** `sudo apt install httrack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -298,7 +298,7 @@ PackagesInfo: |
   This package adds supplemental files for using the httrack website copier
   library
  
- **Installed size:** `381 KB`  
+ **Installed size:** `385 KB`  
  **How to install:** `sudo apt install libhttrack-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -315,12 +315,12 @@ PackagesInfo: |
   This package is the library part of httrack, website copier and mirroring
   utility
  
- **Installed size:** `732 KB`  
+ **Installed size:** `729 KB`  
  **How to install:** `sudo apt install libhttrack2`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  * zlib1g 
  {{< /spoiler >}}
  
@@ -337,7 +337,7 @@ PackagesInfo: |
   such as Squid. It can also handle transparent HTTP requests to allow
   cached live connections inside an offline network.
  
- **Installed size:** `166 KB`  
+ **Installed size:** `168 KB`  
  **How to install:** `sudo apt install proxytrack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -377,7 +377,7 @@ PackagesInfo: |
    
    Snapshots: http://www.httrack.com/page/21/
  
- **Installed size:** `134 KB`  
+ **Installed size:** `135 KB`  
  **How to install:** `sudo apt install webhttrack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -396,7 +396,7 @@ PackagesInfo: |
  ** Warning: use the webhttrack frontend if available
  usage: /usr/lib/httrack/htsserver [--port <port>] [--ppid parent-pid] <path-to-html-root-dir> [key value [key value]..]
  example: /usr/lib/httrack/htsserver /usr/share/httrack/
- /usr/bin/webhttrack(749942): Could not spawn htsserver
+ /usr/bin/webhttrack(682891): Could not spawn htsserver
  ```
  
  - - -

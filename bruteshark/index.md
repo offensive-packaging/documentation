@@ -3,7 +3,7 @@ Title: bruteshark
 Homepage: https://github.com/odedshimon/BruteShark
 Repository: https://gitlab.com/kalilinux/packages/bruteshark
 Architectures: amd64
-Version: 1.2.5-0kali2
+Version: 1.2.5-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

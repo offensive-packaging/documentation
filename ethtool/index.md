@@ -3,7 +3,7 @@ Title: ethtool
 Homepage: https://www.kernel.org/pub/software/network/ethtool/
 Repository: https://salsa.debian.org/kernel-team/ethtool
 Architectures: linux-any
-Version: 1:5.17-1
+Version: 1:5.18-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-exploitation kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ethtool -h
- ethtool version 5.17
+ ethtool version 5.18
  Usage:
          ethtool [ FLAGS ]  DEVNAME	Display standard information about device
          ethtool [ FLAGS ] -s|--change DEVNAME	Change generic options
@@ -81,7 +81,8 @@ PackagesInfo: |
  		[ rx-mini N ]
  		[ rx-jumbo N ]
  		[ tx N ]
-              [ rx-buf-len N]
+ 		[ rx-buf-len N]
+              [ cqe-size N]
          ethtool [ FLAGS ] -k|--show-features|--show-offload DEVNAME	Get state of protocol offload and other features
          ethtool [ FLAGS ] -K|--features|--offload DEVNAME	Set protocol offload and other features
  		FEATURE on|off ...

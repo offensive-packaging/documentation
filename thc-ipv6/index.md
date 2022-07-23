@@ -50,14 +50,14 @@ PackagesInfo: |
    
   toobig6: mtu decreaser with the same intelligence as redir6.
  
- **Installed size:** `3.63 MB`  
+ **Installed size:** `3.66 MB`  
  **How to install:** `sudo apt install thc-ipv6`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libnetfilter-queue1
+ * libnetfilter-queue1 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### atk6-address6

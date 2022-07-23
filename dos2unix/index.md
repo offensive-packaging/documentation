@@ -3,7 +3,7 @@ Title: dos2unix
 Homepage: https://waterlan.home.xs4all.nl/dos2unix.html
 Repository: https://salsa.debian.org/debian/dos2unix
 Architectures: any
-Version: 7.4.2-2
+Version: 7.4.3-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
    
   This is the classic utility developed in 1989.
  
- **Installed size:** `1.32 MB`  
+ **Installed size:** `1.49 MB`  
  **How to install:** `sudo apt install dos2unix`  
  
  {{< spoiler "Dependencies:" >}}

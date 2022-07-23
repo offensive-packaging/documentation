@@ -18,7 +18,7 @@ PackagesInfo: |
   ssldump is based on tcpdump, a network monitoring and data acquisition
   tool.
  
- **Installed size:** `180 KB`  
+ **Installed size:** `181 KB`  
  **How to install:** `sudo apt install ssldump`  
  
  {{< spoiler "Dependencies:" >}}
@@ -26,7 +26,7 @@ PackagesInfo: |
  * libjson-c5 
  * libnet1 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ssldump

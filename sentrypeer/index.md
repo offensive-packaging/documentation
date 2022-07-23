@@ -3,19 +3,19 @@ Title: sentrypeer
 Homepage: https://sentrypeer.org
 Repository: https://gitlab.com/kalilinux/packages/sentrypeer
 Architectures: amd64 arm64
-Version: 1.4.0-0kali2
-Metapackages: 
+Version: 1.4.1-0kali1
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### sentrypeer
  
   SentryPeer is a distributed list of bad IP addresses and phone numbers
   collected via a SIP Honeypot.
-  This is basically a fraud detection tool. It lets bad actors try to make
-  phone calls and saves the IP address they came from and number they
-  tried to call. Those details are then used to block them at the service
-  providers network and the next time a user/customer tries to call a
-  collected number, it's blocked.
+  SentryPeer is a fraud detection tool. It lets bad actors try to make phone
+  calls and saves the IP address they came from and number they tried to call.
+  Those details can then be used to raise notifications at the service providers
+  network and the next time a user/customer tries to call a collected number,
+  you can act anyway you see fit.
    
   Traditionally this data is shipped to a central place, so you don't own
   the data you've collected. This project is all about Peer to Peer sharing
@@ -25,7 +25,7 @@ PackagesInfo: |
   collected it, you should have the choice to keep it and/or opt in to
   share it with other SentryPeer community members via p2p methods.
  
- **Installed size:** `86 KB`  
+ **Installed size:** `97 KB`  
  **How to install:** `sudo apt install sentrypeer`  
  
  {{< spoiler "Dependencies:" >}}
@@ -45,7 +45,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# sentrypeer -h
- Usage: sentrypeer [-h] [-V] [-w] [-j] [-p] [-f fullpath for sentrypeer.db] [-l fullpath for sentrypeer_json.log] [-r] [-R] [-a] [-s] [-v] [-d]
+ Usage: sentrypeer [-h] [-V] [-w] [-j] [-p] [-b bootstrap.example.com] [-f fullpath for sentrypeer.db] [-l fullpath for sentrypeer_json.log] [-r] [-R] [-a] [-s] [-v] [-d]
  
  Options:
    -h,      Print this help
@@ -53,6 +53,7 @@ PackagesInfo: |
    -f,      Set 'sentrypeer.db' location or use SENTRYPEER_DB_FILE env
    -j,      Enable json logging or use SENTRYPEER_JSON_LOG env
    -p,      Enable Peer to Peer mode or use SENTRYPEER_PEER_TO_PEER env
+   -b,      Set Peer to Peer bootstrap node or use SENTRYPEER_BOOTSTRAP_NODE env
    -a,      Enable RESTful API mode or use SENTRYPEER_API env
    -w,      Enable Web GUI mode or use SENTRYPEER_WEB_GUI env
    -r,      Enable SIP responsive mode or use SENTRYPEER_SIP_RESPONSIVE env

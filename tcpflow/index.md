@@ -27,7 +27,7 @@ PackagesInfo: |
   'tcpdump' support. tcpflow can also rebuild flows from data captured
   with 'tcpdump -w'.
  
- **Installed size:** `802 KB`  
+ **Installed size:** `807 KB`  
  **How to install:** `sudo apt install tcpflow`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libhttp-parser2.9 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  * zlib1g 
  {{< /spoiler >}}
@@ -194,7 +194,7 @@ PackagesInfo: |
   This package has no dependency on libcairo or any x11 libraries, and cannot
   generate graphical reports.
  
- **Installed size:** `649 KB`  
+ **Installed size:** `650 KB`  
  **How to install:** `sudo apt install tcpflow-nox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -202,7 +202,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libhttp-parser2.9 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  * zlib1g 
  {{< /spoiler >}}

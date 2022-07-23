@@ -21,12 +21,12 @@ PackagesInfo: |
   by running it from inetd or as daemon listing on a local port to be
   forwarded through the tunnel.
  
- **Installed size:** `93 KB`  
+ **Installed size:** `95 KB`  
  **How to install:** `sudo apt install proxytunnel`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### proxytunnel

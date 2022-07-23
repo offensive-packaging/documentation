@@ -13,12 +13,12 @@ PackagesInfo: |
   executables (EXE, DLL, OCX etc) like  headers,
   sections, resources and more.
  
- **Installed size:** `1.63 MB`  
+ **Installed size:** `1.57 MB`  
  **How to install:** `sudo apt install pev`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ofs2rva

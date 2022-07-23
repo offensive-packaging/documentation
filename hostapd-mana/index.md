@@ -3,7 +3,7 @@ Title: hostapd-mana
 Homepage: https://github.com/sensepost/hostapd-mana
 Repository: https://gitlab.com/kalilinux/packages/hostapd-mana
 Architectures: any
-Version: 2.6.5+git20200121-0kali4
+Version: 2.6.5+git20200121-0kali5
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
  * libc6 
  * libnl-3-200 
  * libnl-genl-3-200 
- * libssl1.1 
+ * libssl3 
  * openssl
  * ssl-cert
  {{< /spoiler >}}

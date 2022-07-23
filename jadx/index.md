@@ -3,7 +3,7 @@ Title: jadx
 Homepage: https://github.com/skylot/jadx
 Repository: https://gitlab.com/kalilinux/packages/jadx
 Architectures: all
-Version: 1.3.5-0kali1
+Version: 1.4.3-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
 Icon: images/jadx-logo.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
      - find usage
      - full text search
  
- **Installed size:** `28.24 MB`  
+ **Installed size:** `28.63 MB`  
  **How to install:** `sudo apt install jadx`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
  ```
  root@kali:~# jadx -h
  
- jadx - dex to java decompiler, version: 1.3.5
+ jadx - dex to java decompiler, version: 1.4.3
  
  usage: jadx [options] <input files> (.apk, .dex, .jar, .class, .smali, .zip, .aar, .arsc, .aab)
  options:
@@ -73,7 +73,6 @@ PackagesInfo: |
                                           'read-or-save' - read if found, save otherwise (don't overwrite)
                                           'overwrite' - don't read, always save
                                           'ignore' - don't read and don't save
-   --deobf-rewrite-cfg                 - set '--deobf-cfg-file-mode' to 'overwrite' (deprecated)
    --deobf-use-sourcename              - use source file name as class name alias
    --deobf-parse-kotlin-metadata       - parse kotlin metadata to class and package names
    --use-kotlin-methods-for-var-names  - use kotlin intrinsic methods to rename variables, values: disable, apply, apply-and-hide, default: apply
@@ -96,11 +95,11 @@ PackagesInfo: |
    -h, --help                          - print this help
  
  Plugin options (-P<name>=<value>):
-   1) dex-input (Load .dex and .apk files) 
-     -Pdex-input.verify-checksum       - Verify dex file checksum before load, values: [yes, no], default: yes
-   2) java-convert (Convert .jar and .class files to dex) 
-     -Pjava-convert.mode               - Convert mode, values: [dx, d8, both], default: both
-     -Pjava-convert.d8-desugar         - Use desugar in d8, values: [yes, no], default: no
+  1) dex-input: Load .dex and .apk files
+     - dex-input.verify-checksum       - verify dex file checksum before load, values: [yes, no], default: yes
+  2) java-convert: Convert .class, .jar and .aar files to dex
+     - java-convert.mode               - convert mode, values: [dx, d8, both], default: both
+     - java-convert.d8-desugar         - use desugar in d8, values: [yes, no], default: no
  
  Examples:
    jadx -d out classes.dex
@@ -118,7 +117,7 @@ PackagesInfo: |
  ```
  root@kali:~# jadx-gui -h
  
- jadx - dex to java decompiler, version: 1.3.5
+ jadx - dex to java decompiler, version: 1.4.3
  
  usage: jadx [options] <input files> (.apk, .dex, .jar, .class, .smali, .zip, .aar, .arsc, .aab)
  options:
@@ -156,7 +155,6 @@ PackagesInfo: |
                                           'read-or-save' - read if found, save otherwise (don't overwrite)
                                           'overwrite' - don't read, always save
                                           'ignore' - don't read and don't save
-   --deobf-rewrite-cfg                 - set '--deobf-cfg-file-mode' to 'overwrite' (deprecated)
    --deobf-use-sourcename              - use source file name as class name alias
    --deobf-parse-kotlin-metadata       - parse kotlin metadata to class and package names
    --use-kotlin-methods-for-var-names  - use kotlin intrinsic methods to rename variables, values: disable, apply, apply-and-hide, default: apply
@@ -179,11 +177,11 @@ PackagesInfo: |
    -h, --help                          - print this help
  
  Plugin options (-P<name>=<value>):
-   1) dex-input (Load .dex and .apk files) 
-     -Pdex-input.verify-checksum       - Verify dex file checksum before load, values: [yes, no], default: yes
-   2) java-convert (Convert .jar and .class files to dex) 
-     -Pjava-convert.mode               - Convert mode, values: [dx, d8, both], default: both
-     -Pjava-convert.d8-desugar         - Use desugar in d8, values: [yes, no], default: no
+  1) dex-input: Load .dex and .apk files
+     - dex-input.verify-checksum       - verify dex file checksum before load, values: [yes, no], default: yes
+  2) java-convert: Convert .class, .jar and .aar files to dex
+     - java-convert.mode               - convert mode, values: [dx, d8, both], default: both
+     - java-convert.d8-desugar         - use desugar in d8, values: [yes, no], default: no
  
  Examples:
    jadx -d out classes.dex

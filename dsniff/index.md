@@ -31,7 +31,7 @@ PackagesInfo: |
    
   Please do not abuse this software.
  
- **Installed size:** `430 KB`  
+ **Installed size:** `439 KB`  
  **How to install:** `sudo apt install dsniff`  
  
  {{< spoiler "Dependencies:" >}}
@@ -40,10 +40,10 @@ PackagesInfo: |
  * libnet1 
  * libnids1.21 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  * libtirpc3 
  * libx11-6
- * libxmu6
+ * libxmu6 
  * openssl
  {{< /spoiler >}}
  

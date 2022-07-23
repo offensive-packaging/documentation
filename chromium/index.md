@@ -3,7 +3,7 @@ Title: chromium
 Homepage: http://www.chromium.org/Home
 Repository: https://salsa.debian.org/chromium-team/chromium
 Architectures: i386 amd64 arm64 armhf all
-Version: 101.0.4951.41-2
+Version: 103.0.5060.114-1
 Metapackages: kali-linux-everything 
 Icon: images/chromium-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the web browser component.
  
- **Installed size:** `193.02 MB`  
+ **Installed size:** `198.10 MB`  
  **How to install:** `sudo apt install chromium`  
  
  {{< spoiler "Dependencies:" >}}
@@ -197,7 +197,7 @@ PackagesInfo: |
   This package contains resources that are in common to different chromium
   packages.
  
- **Installed size:** `16.49 MB`  
+ **Installed size:** `16.56 MB`  
  **How to install:** `sudo apt install chromium-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -205,6 +205,7 @@ PackagesInfo: |
  * libstdc++6 
  * libx11-6 
  * libxext6
+ * sse3-support
  * x11-utils
  * xdg-utils
  * zlib1g 
@@ -221,7 +222,7 @@ PackagesInfo: |
   This package provides a bridge between the browser component and the selenium
   automatic webdriver.
  
- **Installed size:** `12.22 MB`  
+ **Installed size:** `12.29 MB`  
  **How to install:** `sudo apt install chromium-driver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -277,7 +278,7 @@ PackagesInfo: |
   hi, hr, hu, id, it, ja, kn, ko, lt, lv, ml, mr, nb, nl, pl, pt-BR, pt-PT,
   ro, ru, sk, sl, sr, sv, sw, ta, te, th, tr, uk, vi, zh-CN, zh-TW
  
- **Installed size:** `64.73 MB`  
+ **Installed size:** `66.11 MB`  
  **How to install:** `sudo apt install chromium-l10n`  
  
  {{< spoiler "Dependencies:" >}}
@@ -294,7 +295,7 @@ PackagesInfo: |
    
   This package contains the setuid chromium sandbox.
  
- **Installed size:** `376 KB`  
+ **Installed size:** `378 KB`  
  **How to install:** `sudo apt install chromium-sandbox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -312,7 +313,7 @@ PackagesInfo: |
   This package provides a minimal version of the chromium user interface
   (the content shell).
  
- **Installed size:** `137.99 MB`  
+ **Installed size:** `140.42 MB`  
  **How to install:** `sudo apt install chromium-shell`  
  
  {{< spoiler "Dependencies:" >}}

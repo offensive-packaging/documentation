@@ -3,7 +3,7 @@ Title: wpa-sycophant
 Homepage: https://github.com/sensepost/wpa_sycophant
 Repository: https://gitlab.com/kalilinux/packages/wpa-sycophant
 Architectures: any
-Version: 1.0+git20210103-0kali2
+Version: 1.0+git20210103-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,14 +16,14 @@ PackagesInfo: |
   a legitimate user will connect to you so that you may relay the authentication
   attempt to Sycophant.
  
- **Installed size:** `867 KB`  
+ **Installed size:** `866 KB`  
  **How to install:** `sudo apt install wpa-sycophant`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libnl-3-200 
  * libnl-genl-3-200 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### wpa_sycophant

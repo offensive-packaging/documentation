@@ -3,7 +3,7 @@ Title: bind9
 Homepage: https://www.isc.org/downloads/bind/
 Repository: https://salsa.debian.org/dns-team/bind9
 Architectures: any all
-Version: 1:9.18.1-1
+Version: 1:9.18.4-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
    
   This package provides the server and related configuration files.
  
- **Installed size:** `1.10 MB`  
+ **Installed size:** `1.13 MB`  
  **How to install:** `sudo apt install bind9`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,11 +34,12 @@ PackagesInfo: |
  * libmaxminddb0 
  * libnghttp2-14 
  * libprotobuf-c1 
- * libssl1.1 
+ * libssl3 
  * libuv1 
  * libxml2 
  * lsb-base 
  * netbase
+ * systemd | systemd-tmpfiles
  * zlib1g 
  {{< /spoiler >}}
  
@@ -69,7 +70,7 @@ PackagesInfo: |
  COPYRIGHT
         2022, Internet Systems Consortium
  
- 9.18.1-1-Debian                   2022-03-07                       ARPANAME(1)
+ 9.18.4-2-Debian                   2022-06-02                       ARPANAME(1)
  ```
  
  - - -
@@ -103,7 +104,7 @@ PackagesInfo: |
  
      dnssec-importkey options -f file [keyname]
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  Options:
      -f file: read key from zone file
      -K <directory>: directory in which to store the key files
@@ -131,7 +132,7 @@ PackagesInfo: |
               [-S sockets] [-t chrootdir] [-u username] [-U listeners]
               [-X lockfile] [-m {usage|trace|record|size|mctx}]
               [-M fill|nofill]
- usage: named [-v|-V]
+ usage: named [-v|-V|-C]
  named: unknown option '-h'
  ```
  
@@ -237,7 +238,7 @@ PackagesInfo: |
    - nslookup - the older way to do it
    - nsupdate - perform dynamic updates (See RFC2136)
  
- **Installed size:** `721 KB`  
+ **Installed size:** `744 KB`  
  **How to install:** `sudo apt install bind9-dnsutils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -365,7 +366,9 @@ PackagesInfo: |
                   +[no]fail           (Don't try next server on SERVFAIL)
                   +[no]header-only    (Send query without a question section)
                   +[no]https[=###]    (DNS-over-HTTPS mode) [/]
-                  +[no]https-get      (Use GET instead of default POST method
+                  +[no]https-get      (Use GET instead of default POST method while using HTTPS)
+                  +[no]http-plain[=###]    (DNS over plain HTTP mode) [/]
+                  +[no]https-plain-get      (Use GET instead of default POST method while using plain HTTP)
                   +[no]identify       (ID responders in short answers)
                   +[no]idnin          (Parse IDN names [default=on on tty])
                   +[no]idnout         (Convert IDN response [default=on on tty])
@@ -398,6 +401,10 @@ PackagesInfo: |
                   +[no]tcp            (TCP mode (+[no]vc))
                   +timeout=###        (Set query timeout) [5]
                   +[no]tls            (DNS-over-TLS mode)
+                  +[no]tls-ca[=file]  (Enable remote server's TLS certificate validation)
+                  +[no]tls-hostname=hostname (Explicitly set the expected TLS hostname)
+                  +[no]tls-certfile=file (Load client TLS certificate chain from file)
+                  +[no]tls-keyfile=file (Load client TLS private key from file)
                   +[no]trace          (Trace delegation down from root [+dnssec])
                   +tries=###          (Set number of UDP attempts) [3]
                   +[no]ttlid          (Control display of ttls in records)
@@ -456,7 +463,7 @@ PackagesInfo: |
  COPYRIGHT
         2022, Internet Systems Consortium
  
- 9.18.1-1-Debian                   2022-03-07                    DNSTAP-READ(1)
+ 9.18.4-2-Debian                   2022-06-02                    DNSTAP-READ(1)
  ```
  
  - - -
@@ -709,7 +716,7 @@ PackagesInfo: |
  COPYRIGHT
         2022, Internet Systems Consortium
  
- 9.18.1-1-Debian                   2022-03-07                       NSLOOKUP(1)
+ 9.18.4-2-Debian                   2022-06-02                       NSLOOKUP(1)
  ```
  
  - - -
@@ -732,7 +739,7 @@ PackagesInfo: |
   This package provides various documents that are useful for maintaining a
   working BIND 9 installation.
  
- **Installed size:** `6.00 MB`  
+ **Installed size:** `6.60 MB`  
  **How to install:** `sudo apt install bind9-doc`  
  
  
@@ -743,7 +750,7 @@ PackagesInfo: |
   This package provides the 'host' DNS lookup utility in the form that
   is bundled with the BIND 9 sources.
  
- **Installed size:** `385 KB`  
+ **Installed size:** `392 KB`  
  **How to install:** `sudo apt install bind9-host`  
  
  {{< spoiler "Dependencies:" >}}
@@ -808,7 +815,7 @@ PackagesInfo: |
  * libmaxminddb0 
  * libnghttp2-14 
  * libprotobuf-c1 
- * libssl1.1 
+ * libssl3 
  * libuv1 
  * libxml2 
  * zlib1g 
@@ -822,7 +829,7 @@ PackagesInfo: |
   This package provides various utilities that are useful for maintaining a
   working BIND 9 installation.
  
- **Installed size:** `851 KB`  
+ **Installed size:** `871 KB`  
  **How to install:** `sudo apt install bind9-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -838,7 +845,7 @@ PackagesInfo: |
  root@kali:~# dnssec-cds -h
  Usage:
      dnssec-cds options [options] -f <file> -d <path> <domain>
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  Options:
      -a <algorithm>     digest algorithm (SHA-1 / SHA-256 / SHA-384)
      -c <class>         of domain (default IN)
@@ -871,7 +878,7 @@ PackagesInfo: |
  
      dnssec-dsfromkey [-h|-V]
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  Options:
      -1: digest algorithm SHA-1
      -2: digest algorithm SHA-256
@@ -901,7 +908,7 @@ PackagesInfo: |
  Usage:
      dnssec-keyfromlabel -l label [options] name
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  Required options:
      -l label: label of the key pair
      name: owner of the key
@@ -955,7 +962,7 @@ PackagesInfo: |
  Usage:
      dnssec-keygen [options] name
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
      name: owner of the key
  Options:
      -K <directory>: write keys into directory
@@ -1025,7 +1032,7 @@ PackagesInfo: |
  Usage:
      dnssec-revoke [options] keyfile
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
      -E engine:    specify OpenSSL engine
      -f:           force overwrite
      -h:           help
@@ -1049,7 +1056,7 @@ PackagesInfo: |
  Usage:
      dnssec-settime [options] keyfile
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  General options:
      -E engine:          specify OpenSSL engine
      -f:                 force update of old-style keys
@@ -1097,7 +1104,7 @@ PackagesInfo: |
  Usage:
  	dnssec-signzone [options] zonefile [keys]
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  Options: (default value in parenthesis) 
  	-S:	smart signing: automatically finds key files
  		for the zone and determines how they are to be used
@@ -1171,7 +1178,7 @@ PackagesInfo: |
  Usage:
  	dnssec-verify [options] zonefile [keys]
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  Options: (default value in parenthesis) 
  	-v debuglevel (0)
  	-q quiet
@@ -1359,7 +1366,7 @@ PackagesInfo: |
    zonestatus zone [class [view]]
  		Display the current status of a zone.
  
- Version: 9.18.1-1-Debian
+ Version: 9.18.4-2-Debian
  ```
  
  - - -
@@ -1390,7 +1397,7 @@ PackagesInfo: |
  
   This is a transitional package. It can safely be removed.
  
- **Installed size:** `276 KB`  
+ **Installed size:** `279 KB`  
  **How to install:** `sudo apt install bind9utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1404,7 +1411,7 @@ PackagesInfo: |
  
   This is a transitional package. It can safely be removed.
  
- **Installed size:** `276 KB`  
+ **Installed size:** `279 KB`  
  **How to install:** `sudo apt install dnsutils`  
  
  {{< spoiler "Dependencies:" >}}

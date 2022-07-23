@@ -29,13 +29,13 @@ PackagesInfo: |
   Be sure to read the Ncrack man page (https://nmap.org/ncrack/man.html)
   to fully understand Ncrack usage.
  
- **Installed size:** `1.66 MB`  
+ **Installed size:** `1.65 MB`  
  **How to install:** `sudo apt install ncrack`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  

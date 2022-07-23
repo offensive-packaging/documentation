@@ -21,14 +21,14 @@ PackagesInfo: |
    
   This package contains a wrapper script for compatibility with stunnel 3.x
  
- **Installed size:** `547 KB`  
+ **Installed size:** `548 KB`  
  **How to install:** `sudo apt install stunnel4`  
  
  {{< spoiler "Dependencies:" >}}
  * adduser
  * init-system-helpers 
  * libc6 
- * libssl1.1 
+ * libssl3 
  * libsystemd0
  * libwrap0 
  * lsb-base
@@ -1540,8 +1540,8 @@ PackagesInfo: |
  [ ] Initializing inetd mode configuration
  [ ] Clients allowed=500
  [.] stunnel 5.63 on x86_64-pc-linux-gnu platform
- [.] Compiled with OpenSSL 1.1.1n  15 Mar 2022
- [.] Running  with OpenSSL 1.1.1o  3 May 2022
+ [.] Compiled with OpenSSL 3.0.4 21 Jun 2022
+ [.] Running  with OpenSSL 3.0.3 3 May 2022
  [.] Threading:PTHREAD Sockets:POLL,IPv6,SYSTEMD TLS:ENGINE,OCSP,PSK,SNI Auth:LIBWRAP
  [ ] errno: (*__errno_location ())
  [ ] Initializing inetd mode configuration

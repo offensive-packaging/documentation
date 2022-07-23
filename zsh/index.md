@@ -3,7 +3,7 @@ Title: zsh
 Homepage: https://www.zsh.org/
 Repository: https://salsa.debian.org/debian/zsh
 Architectures: any all
-Version: 5.8.1-1
+Version: 5.9-1
 Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-reporting 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   shell functions (with autoloading), a history mechanism, and a
   host of other features.
  
- **Installed size:** `2.40 MB`  
+ **Installed size:** `2.43 MB`  
  **How to install:** `sudo apt install zsh`  
  
  {{< spoiler "Dependencies:" >}}
@@ -77,6 +77,7 @@ PackagesInfo: |
    --bsdecho
    --caseglob
    --casematch
+   --casepaths
    --cbases
    --cdablevars
    --cdsilent
@@ -85,6 +86,7 @@ PackagesInfo: |
    --checkjobs
    --checkrunningjobs
    --clobber
+   --clobberempty
    --combiningchars
    --completealiases
    --completeinword
@@ -215,6 +217,7 @@ PackagesInfo: |
    --shnullcmd
    --shoptionletters
    --shortloops
+   --shortrepeat
    --shwordsplit
    --singlecommand
    --singlelinezle
@@ -223,6 +226,7 @@ PackagesInfo: |
    --transientrprompt
    --trapsasync
    --typesetsilent
+   --typesettounset
    --unset
    --verbose
    --vi
@@ -355,6 +359,7 @@ PackagesInfo: |
    --bsdecho
    --caseglob
    --casematch
+   --casepaths
    --cbases
    --cdablevars
    --cdsilent
@@ -363,6 +368,7 @@ PackagesInfo: |
    --checkjobs
    --checkrunningjobs
    --clobber
+   --clobberempty
    --combiningchars
    --completealiases
    --completeinword
@@ -493,6 +499,7 @@ PackagesInfo: |
    --shnullcmd
    --shoptionletters
    --shortloops
+   --shortrepeat
    --shwordsplit
    --singlecommand
    --singlelinezle
@@ -501,6 +508,7 @@ PackagesInfo: |
    --transientrprompt
    --trapsasync
    --typesetsilent
+   --typesettounset
    --unset
    --verbose
    --vi
@@ -632,6 +640,7 @@ PackagesInfo: |
    --bsdecho
    --caseglob
    --casematch
+   --casepaths
    --cbases
    --cdablevars
    --cdsilent
@@ -640,6 +649,7 @@ PackagesInfo: |
    --checkjobs
    --checkrunningjobs
    --clobber
+   --clobberempty
    --combiningchars
    --completealiases
    --completeinword
@@ -770,6 +780,7 @@ PackagesInfo: |
    --shnullcmd
    --shoptionletters
    --shortloops
+   --shortrepeat
    --shwordsplit
    --singlecommand
    --singlelinezle
@@ -778,6 +789,7 @@ PackagesInfo: |
    --transientrprompt
    --trapsasync
    --typesetsilent
+   --typesettounset
    --unset
    --verbose
    --vi
@@ -873,7 +885,7 @@ PackagesInfo: |
   This package contains the common zsh files shared by all
   architectures.
  
- **Installed size:** `15.07 MB`  
+ **Installed size:** `16.07 MB`  
  **How to install:** `sudo apt install zsh-common`  
  
  
@@ -892,7 +904,7 @@ PackagesInfo: |
   This package contains headers and scripts necessary to compile
   third-party modules.
  
- **Installed size:** `698 KB`  
+ **Installed size:** `725 KB`  
  **How to install:** `sudo apt install zsh-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -914,7 +926,7 @@ PackagesInfo: |
    
   This contains the documentation in GNU info and HTML formats.
  
- **Installed size:** `5.62 MB`  
+ **Installed size:** `5.71 MB`  
  **How to install:** `sudo apt install zsh-doc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -944,7 +956,7 @@ PackagesInfo: |
   might result in minor imperfections like e.g. user names being shown
   in the prompt.
  
- **Installed size:** `2.61 MB`  
+ **Installed size:** `2.63 MB`  
  **How to install:** `sudo apt install zsh-static`  
  
  ##### zsh-static
@@ -997,6 +1009,7 @@ PackagesInfo: |
    --bsdecho
    --caseglob
    --casematch
+   --casepaths
    --cbases
    --cdablevars
    --cdsilent
@@ -1005,6 +1018,7 @@ PackagesInfo: |
    --checkjobs
    --checkrunningjobs
    --clobber
+   --clobberempty
    --combiningchars
    --completealiases
    --completeinword
@@ -1135,6 +1149,7 @@ PackagesInfo: |
    --shnullcmd
    --shoptionletters
    --shortloops
+   --shortrepeat
    --shwordsplit
    --singlecommand
    --singlelinezle
@@ -1143,6 +1158,7 @@ PackagesInfo: |
    --transientrprompt
    --trapsasync
    --typesetsilent
+   --typesettounset
    --unset
    --verbose
    --vi
@@ -1274,6 +1290,7 @@ PackagesInfo: |
    --bsdecho
    --caseglob
    --casematch
+   --casepaths
    --cbases
    --cdablevars
    --cdsilent
@@ -1282,6 +1299,7 @@ PackagesInfo: |
    --checkjobs
    --checkrunningjobs
    --clobber
+   --clobberempty
    --combiningchars
    --completealiases
    --completeinword
@@ -1412,6 +1430,7 @@ PackagesInfo: |
    --shnullcmd
    --shoptionletters
    --shortloops
+   --shortrepeat
    --shwordsplit
    --singlecommand
    --singlelinezle
@@ -1420,6 +1439,7 @@ PackagesInfo: |
    --transientrprompt
    --trapsasync
    --typesetsilent
+   --typesettounset
    --unset
    --verbose
    --vi

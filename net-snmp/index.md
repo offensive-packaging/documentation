@@ -3,7 +3,7 @@ Title: net-snmp
 Homepage: http://net-snmp.sourceforge.net/
 Repository: https://salsa.debian.org/debian/net-snmp
 Architectures: any all
-Version: 5.9.1+dfsg-1
+Version: 5.9.1+dfsg-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   The Net-SNMP trap library contains functions for receiving SNMP
   trap and inform messages.
  
- **Installed size:** `74 KB`  
+ **Installed size:** `70 KB`  
  **How to install:** `sudo apt install libnetsnmptrapd40`  
  
  {{< spoiler "Dependencies:" >}}
@@ -418,7 +418,7 @@ PackagesInfo: |
   The Net-SNMP Perl5 support files provide the Perl functions for
   integration of SNMP into applications written in Perl.
  
- **Installed size:** `2.14 MB`  
+ **Installed size:** `2.12 MB`  
  **How to install:** `sudo apt install libsnmp-perl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -442,7 +442,7 @@ PackagesInfo: |
   sending, receiving, decoding, and manipulation of the SNMP requests
   and responses.
  
- **Installed size:** `5.29 MB`  
+ **Installed size:** `5.28 MB`  
  **How to install:** `sudo apt install libsnmp40`  
  
  {{< spoiler "Dependencies:" >}}
@@ -451,7 +451,7 @@ PackagesInfo: |
  * libperl5.34 
  * libsensors5 
  * libsnmp-base
- * libssl1.1 
+ * libssl3 
  * libwrap0 
  {{< /spoiler >}}
  
@@ -467,14 +467,14 @@ PackagesInfo: |
   The Net-SNMP applications are a collection of command line clients
   for issuing SNMP requests to agents.
  
- **Installed size:** `757 KB`  
+ **Installed size:** `685 KB`  
  **How to install:** `sudo apt install snmp`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libsnmp-base 
+ * libsnmp-base
  * libsnmp40 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### agentxtrap
@@ -3008,7 +3008,7 @@ PackagesInfo: |
   The Net-SNMP agent is a daemon which listens for incoming SNMP
   requests from clients and provides responses.
  
- **Installed size:** `151 KB`  
+ **Installed size:** `147 KB`  
  **How to install:** `sudo apt install snmpd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3019,7 +3019,7 @@ PackagesInfo: |
  * libc6 
  * libsnmp-base
  * libsnmp40 
- * lsb-base 
+ * lsb-base
  {{< /spoiler >}}
  
  ##### net-snmp-create-v3-user
@@ -3169,7 +3169,7 @@ PackagesInfo: |
   snmptrapd is an SNMP application (daemon) that receives and logs SNMP TRAP
   and INFORM messages.
  
- **Installed size:** `94 KB`  
+ **Installed size:** `90 KB`  
  **How to install:** `sudo apt install snmptrapd`  
  
  {{< spoiler "Dependencies:" >}}

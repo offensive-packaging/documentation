@@ -3,7 +3,7 @@ Title: gdb-peda
 Homepage: https://github.com/longld/peda
 Repository: https://gitlab.com/kalilinux/packages/gdb-peda
 Architectures: any
-Version: 1.1~20180207-0kali2
+Version: 1.2-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

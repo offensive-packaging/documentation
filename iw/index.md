@@ -3,21 +3,21 @@ Title: iw
 Homepage: https://wireless.wiki.kernel.org/en/users/documentation/iw
 Repository: https://salsa.debian.org/debian/iw
 Architectures: linux-any
-Version: 5.16-1
+Version: 5.19-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-exploitation kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### iw
  
-  This package contains the 'iw' command line tool which allows to configure and
-  show information about wireless devices.
+  This package contains the 'iw' command line tool which allows one to configure
+  and show information about wireless devices.
    
   iw is based on the nl80211 kernel interface and supports the majority of
   fairly recent hardware. The old tool iwconfig, which uses Wireless Extensions
   interface, is deprecated and it is strongly recommended to switch to iw and
   nl80211.
  
- **Installed size:** `294 KB`  
+ **Installed size:** `302 KB`  
  **How to install:** `sudo apt install iw`  
  
  {{< spoiler "Dependencies:" >}}
@@ -35,7 +35,7 @@ PackagesInfo: |
  Usage:	iw [options] command
  Options:
  	--debug		enable netlink debugging
- 	--version	show version (5.16)
+ 	--version	show version (5.19)
  Commands:
  	dev <devname> ap stop 
  		Stop AP functionality
@@ -451,7 +451,7 @@ PackagesInfo: |
  	dev <devname> station get <MAC address>
  		Get information for a specific station.
  
- 	dev <devname> survey dump
+ 	dev <devname> survey dump [--radio]
  		List all gathered channel survey data
  
  	dev <devname> vendor recvbin <oui> <subcmd> <filename|-|hex data>

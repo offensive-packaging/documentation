@@ -4,7 +4,7 @@ Homepage: https://github.com/RfidResearchGroup/proxmark3
 Repository: https://gitlab.com/kalilinux/packages/proxmark3
 Architectures: any all
 Version: 4.14831-0kali4
-Metapackages: 
+Metapackages: kali-linux-everything kali-tools-rfid kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### proxmark3

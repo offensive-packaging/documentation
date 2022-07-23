@@ -1,9 +1,9 @@
 ---
 Title: unhide
-Homepage: http://www.unhide-forensics.info
+Homepage: https://www.unhide-forensics.info
 Repository: https://salsa.debian.org/pkg-security-team/unhide
 Architectures: any
-Version: 20210124-1
+Version: 20210124-2
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -32,7 +32,7 @@ PackagesInfo: |
   This package is useful for network security checks, in addition to forensics
   investigations.
  
- **Installed size:** `165 KB`  
+ **Installed size:** `197 KB`  
  **How to install:** `sudo apt install unhide`  
  
  {{< spoiler "Dependencies:" >}}
@@ -42,6 +42,8 @@ PackagesInfo: |
  * net-tools
  * procps
  * psmisc
+ * python3
+ * python3-tk
  {{< /spoiler >}}
  
  ##### unhide
@@ -101,6 +103,12 @@ PackagesInfo: |
        checksysinfo2
        checksysinfo3
  ```
+ 
+ - - -
+ 
+ ##### unhide-gui
+ 
+ 
  
  - - -
  

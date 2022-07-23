@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package includes some binaries that are useful for development purposes.
  
- **Installed size:** `231 KB`  
+ **Installed size:** `232 KB`  
  **How to install:** `sudo apt install libfreefare-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -205,7 +205,7 @@ PackagesInfo: |
    
   This package contains development files.
  
- **Installed size:** `165 KB`  
+ **Installed size:** `162 KB`  
  **How to install:** `sudo apt install libfreefare-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -236,13 +236,13 @@ PackagesInfo: |
    
   This package contains the libfreefare library.
  
- **Installed size:** `110 KB`  
+ **Installed size:** `111 KB`  
  **How to install:** `sudo apt install libfreefare0`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libnfc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  

@@ -4,7 +4,7 @@ Homepage: https://github.com/nettitude/PoshC2
 Repository: https://gitlab.com/kalilinux/packages/poshc2
 Architectures: all
 Version: 7.4.0-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### poshc2

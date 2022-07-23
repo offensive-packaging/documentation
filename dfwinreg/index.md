@@ -3,7 +3,7 @@ Title: dfwinreg
 Homepage: https://github.com/log2timeline/dfwinreg
 Repository: https://salsa.debian.org/pkg-security-team/dfwinreg
 Architectures: all
-Version: 20201006-1.1
+Version: 20211207-0kali1
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,13 +17,14 @@ PackagesInfo: |
    
   This package contains the library for Python 3.
  
- **Installed size:** `123 KB`  
+ **Installed size:** `124 KB`  
  **How to install:** `sudo apt install python3-dfwinreg`  
  
  {{< spoiler "Dependencies:" >}}
  * python3
  * python3-dfdatetime 
  * python3-dtfabric 
+ * python3-libcreg
  * python3-libregf 
  * python3-mock
  * python3-six 

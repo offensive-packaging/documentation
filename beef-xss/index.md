@@ -2,8 +2,8 @@
 Title: beef-xss
 Homepage: https://beefproject.com/
 Repository: https://gitlab.com/kalilinux/packages/beef-xss
-Architectures: any
-Version: 0.5.4.0-0kali5
+Architectures: amd64 i386 armhf arm64
+Version: 0.5.4.0-0kali6
 Metapackages: kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-social-engineering kali-tools-web 
 Icon: images/beef-xss-logo.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   browsers and use them as beachheads for launching directed command modules and
   further attacks against the system from within the browser context.
  
- **Installed size:** `78.91 MB`  
+ **Installed size:** `78.75 MB`  
  **How to install:** `sudo apt install beef-xss`  
  
  {{< spoiler "Dependencies:" >}}
@@ -49,8 +49,8 @@ PackagesInfo: |
  * ruby-slack-notifier
  * ruby-sqlite3
  * ruby-term-ansicolor
+ * ruby-terser
  * ruby-twitter
- * ruby-uglifier 
  * ruby-xmlrpc
  * ruby-zip 
  * ruby2.7

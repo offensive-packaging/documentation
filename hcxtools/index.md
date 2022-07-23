@@ -17,14 +17,14 @@ PackagesInfo: |
    - c = capture, convert and calculate candidates
    - x = different hashtypes
  
- **Installed size:** `612 KB`  
+ **Installed size:** `613 KB`  
  **How to install:** `sudo apt install hcxtools`  
  
  {{< spoiler "Dependencies:" >}}
  * ieee-data
  * libc6 
  * libcurl4 
- * libssl1.1 
+ * libssl3 
  * zlib1g 
  {{< /spoiler >}}
  

@@ -1,6 +1,6 @@
 ---
 Title: unicornscan
-Homepage: https://gitlab.com/kalilinux/packages/unicornscan
+Homepage: <insert the upstream URL, if relevant>
 Repository: https://gitlab.com/kalilinux/packages/unicornscan
 Architectures: any
 Version: 0.4.7-1kali3

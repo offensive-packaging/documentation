@@ -3,7 +3,7 @@ Title: lvm2
 Homepage: https://sourceware.org/lvm2/
 Repository: https://salsa.debian.org/lvm-team/lvm2
 Architectures: linux-any all
-Version: 2.03.11-2.1
+Version: 2.03.15-2
 Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
    
   This package contains a daemon to monitor events of devmapper devices.
  
- **Installed size:** `228 KB`  
+ **Installed size:** `233 KB`  
  **How to install:** `sudo apt install dmeventd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -58,7 +58,7 @@ PackagesInfo: |
    
   This package contains a utility for modifying device mappings.
  
- **Installed size:** `255 KB`  
+ **Installed size:** `256 KB`  
  **How to install:** `sudo apt install dmsetup`  
  
  {{< spoiler "Dependencies:" >}}
@@ -144,6 +144,7 @@ PackagesInfo: |
  	reload <device> [<table>|<table_file>]
  	wipe_table [-f|--force] [--noflush] [--nolockfs] <device>...
  	rename <device> [--setuuid] <new_name_or_uuid>
+ 	measure [<device>...]
  	message <device> <sector> <message>
  	ls [--target <target_type>] [--exec <command>] [-o <options>] [--tree]
  	info [<device>...]
@@ -252,7 +253,7 @@ PackagesInfo: |
   device-mapper; it allow usage of the device-mapper through a clean,
   consistent interface (as opposed to through kernel ioctls).
  
- **Installed size:** `173 KB`  
+ **Installed size:** `174 KB`  
  **How to install:** `sudo apt install libdevmapper-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -276,7 +277,7 @@ PackagesInfo: |
   This package contains the userspace library to help with event monitoring
   for devmapper devices, in conjunction with the dmevent daemon.
  
- **Installed size:** `62 KB`  
+ **Installed size:** `63 KB`  
  **How to install:** `sudo apt install libdevmapper-event1.02.1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -299,7 +300,7 @@ PackagesInfo: |
   device-mapper; it allows usage of the device-mapper through a clean,
   consistent interface (as opposed to through kernel ioctls).
  
- **Installed size:** `479 KB`  
+ **Installed size:** `484 KB`  
  **How to install:** `sudo apt install libdevmapper1.02.1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -317,7 +318,7 @@ PackagesInfo: |
   This package contains files needed to develop applications that use the
   lvm2app library.
  
- **Installed size:** `29 KB`  
+ **Installed size:** `30 KB`  
  **How to install:** `sudo apt install liblvm2-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -332,7 +333,7 @@ PackagesInfo: |
  
   This package contains the lvm2cmd shared library.
  
- **Installed size:** `2.79 MB`  
+ **Installed size:** `2.97 MB`  
  **How to install:** `sudo apt install liblvm2cmd2.03`  
  
  {{< spoiler "Dependencies:" >}}
@@ -340,6 +341,7 @@ PackagesInfo: |
  * libaio1 
  * libblkid1 
  * libc6 
+ * libdevmapper-event1.02.1 
  * libselinux1 
  * libsystemd0 
  * libudev1 
@@ -356,7 +358,7 @@ PackagesInfo: |
   volume groups can be allocated to logical volumes, which are accessed as
   regular block devices.
  
- **Installed size:** `3.85 MB`  
+ **Installed size:** `3.91 MB`  
  **How to install:** `sudo apt install lvm2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -372,6 +374,7 @@ PackagesInfo: |
  * libsystemd0 
  * libudev1 
  * lsb-base
+ * systemd | systemd-tmpfiles
  {{< /spoiler >}}
  
  ##### fsadm
@@ -431,6 +434,7 @@ PackagesInfo: |
  	     --detachprofile,
  	     --metadataprofile String,
  	     --profile String,
+ 	     --setautoactivation y|n,
  	     --errorwhenfull y|n,
  	     --discards passdown|nopassdown|ignore,
  	     --cachemode writethrough|writeback|passthrough,
@@ -448,16 +452,16 @@ PackagesInfo: |
  
    Resyncronize a mirror or raid LV. 
    Use to reset 'R' attribute on a not initially synchronized LV.
-   lvchange --resync VG|LV_mirror_raid|Tag|Select ...
+   lvchange --resync VG|LV|Tag|Select ...
  	[ -a|--activate y|n|ay ]
  	[ COMMON_OPTIONS ]
  
    Resynchronize or check a raid LV.
-   lvchange --syncaction check|repair VG|LV_raid|Tag|Select ...
+   lvchange --syncaction check|repair VG|LV|Tag|Select ...
  	[ COMMON_OPTIONS ]
  
    Reconstruct data on specific PVs of a raid LV.
-   lvchange --rebuild PV VG|LV_raid|Tag|Select ...
+   lvchange --rebuild PV VG|LV|Tag|Select ...
  	[ COMMON_OPTIONS ]
  
    Activate or deactivate an LV.
@@ -520,6 +524,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -579,7 +587,7 @@ PackagesInfo: |
  	[ PV ... ]
  
    Convert raid LV to change number of stripe images.
-   lvconvert --stripes Number LV_raid
+   lvconvert --stripes Number LV
  	[ -i|--interval Number ]
  	[ -R|--regionsize Size[m|UNIT] ]
  	[ -I|--stripesize Size[k|UNIT] ]
@@ -587,27 +595,27 @@ PackagesInfo: |
  	[ PV ... ]
  
    Convert raid LV to change the stripe size.
-   lvconvert -I|--stripesize Size[k|UNIT] LV_raid
+   lvconvert -I|--stripesize Size[k|UNIT] LV
  	[ -i|--interval Number ]
  	[ -R|--regionsize Size[m|UNIT] ]
  	[ COMMON_OPTIONS ]
  
    Split images from a raid1 or mirror LV and use them to create a new LV.
-   lvconvert --splitmirrors Number -n|--name LV_new LV_cache_mirror_raid1
+   lvconvert --splitmirrors Number -n|--name LV_new LV
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
    Split images from a raid1 LV and track changes to origin for later merge.
-   lvconvert --splitmirrors Number --trackchanges LV_cache_raid1
+   lvconvert --splitmirrors Number --trackchanges LV
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
    Merge LV images that were split from a raid1 LV.
-   lvconvert --mergemirrors VG|LV_linear_raid|Tag ...
+   lvconvert --mergemirrors VG|LV|Tag ...
  	[ COMMON_OPTIONS ]
  
    Convert LV to a thin LV, using the original LV as an external origin.
-   lvconvert --type thin --thinpool LV LV_linear_striped_thin_cache_raid
+   lvconvert --type thin --thinpool LV LV
  	[ -T|--thin ]
  	[ -r|--readahead auto|none|Number ]
  	[ -c|--chunksize Size[k|UNIT] ]
@@ -620,7 +628,7 @@ PackagesInfo: |
  	[ COMMON_OPTIONS ]
  
    Attach a cache pool to an LV, converts the LV to type cache.
-   lvconvert --type cache --cachepool LV LV_linear_striped_thinpool_vdo_vdopool_vdopooldata_raid
+   lvconvert --type cache --cachepool LV LV
  	[ -H|--cache ]
  	[ -Z|--zero y|n ]
  	[ -r|--readahead auto|none|Number ]
@@ -636,12 +644,12 @@ PackagesInfo: |
  	[ COMMON_OPTIONS ]
  
    Attach a writecache to an LV, converts the LV to type writecache.
-   lvconvert --type writecache --cachevol LV LV_linear_striped_raid
+   lvconvert --type writecache --cachevol LV LV
  	[    --cachesettings String ]
  	[ COMMON_OPTIONS ]
  
    Attach a cache to an LV, converts the LV to type cache.
-   lvconvert --type cache --cachevol LV LV_linear_striped_thinpool_raid
+   lvconvert --type cache --cachevol LV LV
  	[ -H|--cache ]
  	[ -Z|--zero y|n ]
  	[ -c|--chunksize Size[k|UNIT] ]
@@ -653,26 +661,27 @@ PackagesInfo: |
  	[ COMMON_OPTIONS ]
  
    Add a writecache to an LV, using a specified cache device.
-   lvconvert --type writecache --cachedevice PV LV_linear_striped_raid
+   lvconvert --type writecache --cachedevice PV LV
  	[    --cachesize Size[m|UNIT] ]
  	[    --cachesettings String ]
  	[ COMMON_OPTIONS ]
  
    Add a cache to an LV, using a specified cache device.
-   lvconvert --type cache --cachedevice PV LV_linear_striped_thinpool_raid
+   lvconvert --type cache --cachedevice PV LV
  	[ -c|--chunksize Size[k|UNIT] ]
  	[    --cachesize Size[m|UNIT] ]
  	[    --cachesettings String ]
  	[ COMMON_OPTIONS ]
  
    Convert LV to type thin-pool.
-   lvconvert --type thin-pool LV_linear_striped_cache_raid
+   lvconvert --type thin-pool LV
  	[ -I|--stripesize Size[k|UNIT] ]
  	[ -r|--readahead auto|none|Number ]
  	[ -c|--chunksize Size[k|UNIT] ]
  	[ -Z|--zero y|n ]
  	[    --stripes Number ]
  	[    --discards passdown|nopassdown|ignore ]
+ 	[    --errorwhenfull y|n ]
  	[    --poolmetadata LV ]
  	[    --poolmetadatasize Size[m|UNIT] ]
  	[    --poolmetadataspare y|n ]
@@ -681,7 +690,7 @@ PackagesInfo: |
  	[ PV ... ]
  
    Convert LV to type cache-pool.
-   lvconvert --type cache-pool LV_linear_striped_raid
+   lvconvert --type cache-pool LV
  	[ -Z|--zero y|n ]
  	[ -r|--readahead auto|none|Number ]
  	[ -c|--chunksize Size[k|UNIT] ]
@@ -697,30 +706,33 @@ PackagesInfo: |
  	[ PV ... ]
  
    Convert LV to type vdopool.
-   lvconvert --type vdo-pool LV_linear_striped_cache_raid
+   lvconvert --type vdo-pool LV
  	[ -n|--name LV_new ]
  	[ -V|--virtualsize Size[m|UNIT] ]
+ 	[ -r|--readahead auto|none|Number ]
+ 	[ -Z|--zero y|n ]
+ 	[    --metadataprofile String ]
  	[    --compression y|n ]
  	[    --deduplication y|n ]
  	[ COMMON_OPTIONS ]
  
    Detach a cache from an LV.
-   lvconvert --splitcache LV_thinpool_cache_cachepool_vdopool_writecache
+   lvconvert --splitcache LV
  	[    --cachesettings String ]
  	[ COMMON_OPTIONS ]
  
    Merge thin LV into its origin LV.
-   lvconvert --mergethin LV_thin ...
+   lvconvert --mergethin LV ...
  	[ COMMON_OPTIONS ]
  
    Merge COW snapshot LV into its origin.
-   lvconvert --mergesnapshot LV_snapshot ...
+   lvconvert --mergesnapshot LV ...
  	[ -i|--interval Number ]
  	[ COMMON_OPTIONS ]
  
    Combine a former COW snapshot (second arg) with a former 
    origin LV (first arg) to reverse a splitsnapshot command.
-   lvconvert --type snapshot LV LV_linear_striped
+   lvconvert --type snapshot LV LV
  	[ -s|--snapshot ]
  	[ -c|--chunksize Size[k|UNIT] ]
  	[ -Z|--zero y|n ]
@@ -729,7 +741,7 @@ PackagesInfo: |
    Replace failed PVs in a raid or mirror LV. 
    Repair a thin pool. 
    Repair a cache pool.
-   lvconvert --repair LV_thinpool_cache_cachepool_mirror_raid
+   lvconvert --repair LV
  	[ -i|--interval Number ]
  	[    --usepolicies ]
  	[    --poolmetadataspare y|n ]
@@ -737,16 +749,16 @@ PackagesInfo: |
  	[ PV ... ]
  
    Replace specific PV(s) in a raid LV with another PV.
-   lvconvert --replace PV LV_raid
+   lvconvert --replace PV LV
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
    Poll LV to continue conversion.
-   lvconvert --startpoll LV_mirror_raid
+   lvconvert --startpoll LV
  	[ COMMON_OPTIONS ]
  
    Add or remove data integrity checksums to raid images.
-   lvconvert --raidintegrity y|n LV_raid
+   lvconvert --raidintegrity y|n LV
  	[    --raidintegritymode String ]
  	[    --raidintegrityblocksize Number ]
  	[ COMMON_OPTIONS ]
@@ -773,6 +785,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -789,21 +805,24 @@ PackagesInfo: |
  
    Create a linear LV.
    lvcreate -L|--size Size[m|UNIT] VG
+ 	[ --type linear ] (implied)
  	[ -l|--extents Number[PERCENT] ]
- 	[    --type linear ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
-   Create a striped LV (infers --type striped).
+   Create a striped LV.
    lvcreate -i|--stripes Number -L|--size Size[m|UNIT] VG
+ 	[ --type striped ] (implied)
  	[ -l|--extents Number[PERCENT] ]
  	[ -I|--stripesize Size[k|UNIT] ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
-   Create a raid1 or mirror LV (infers --type raid1|mirror).
+   Create a raid1 or mirror LV.
    lvcreate -m|--mirrors Number -L|--size Size[m|UNIT] VG
+ 	[ --type raid1|mirror ] (implied)
  	[ -l|--extents Number[PERCENT] ]
+ 	[ -I|--stripesize Size[k|UNIT] ]
  	[ -R|--regionsize Size[m|UNIT] ]
  	[    --mirrorlog core|disk ]
  	[    --minrecoveryrate Size[k|UNIT] ]
@@ -814,9 +833,9 @@ PackagesInfo: |
    Create a raid LV (a specific raid level must be used, e.g. raid1).
    lvcreate --type raid -L|--size Size[m|UNIT] VG
  	[ -l|--extents Number[PERCENT] ]
- 	[ -m|--mirrors Number ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
+ 	[ -m|--mirrors Number ]
  	[ -R|--regionsize Size[m|UNIT] ]
  	[    --minrecoveryrate Size[k|UNIT] ]
  	[    --maxrecoveryrate Size[k|UNIT] ]
@@ -828,6 +847,7 @@ PackagesInfo: |
  
    Create a raid10 LV.
    lvcreate -m|--mirrors Number -i|--stripes Number -L|--size Size[m|UNIT] VG
+ 	[ --type raid10 ] (implied)
  	[ -l|--extents Number[PERCENT] ]
  	[ -I|--stripesize Size[k|UNIT] ]
  	[ -R|--regionsize Size[m|UNIT] ]
@@ -838,74 +858,67 @@ PackagesInfo: |
  
    Create a COW snapshot LV of an origin LV.
    lvcreate -s|--snapshot -L|--size Size[m|UNIT] LV
+ 	[ --type snapshot ] (implied)
  	[ -l|--extents Number[PERCENT] ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
  	[ -c|--chunksize Size[k|UNIT] ]
- 	[    --type snapshot ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
    Create a thin pool.
    lvcreate --type thin-pool -L|--size Size[m|UNIT] VG
  	[ -l|--extents Number[PERCENT] ]
- 	[ -c|--chunksize Size[k|UNIT] ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
+ 	[ -T|--thin ]
+ 	[ -c|--chunksize Size[k|UNIT] ]
  	[    --thinpool LV_new ]
- 	[    --poolmetadatasize Size[m|UNIT] ]
- 	[    --poolmetadataspare y|n ]
  	[    --discards passdown|nopassdown|ignore ]
  	[    --errorwhenfull y|n ]
+ 	[    --poolmetadatasize Size[m|UNIT] ]
+ 	[    --poolmetadataspare y|n ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
    Create a cache pool.
    lvcreate --type cache-pool -L|--size Size[m|UNIT] VG
  	[ -l|--extents Number[PERCENT] ]
+ 	[ -i|--stripes Number ]
+ 	[ -I|--stripesize Size[k|UNIT] ]
  	[ -H|--cache ]
  	[ -c|--chunksize Size[k|UNIT] ]
- 	[    --poolmetadatasize Size[m|UNIT] ]
- 	[    --poolmetadataspare y|n ]
  	[    --cachemode writethrough|writeback|passthrough ]
  	[    --cachepolicy String ]
  	[    --cachesettings String ]
  	[    --cachemetadataformat auto|1|2 ]
+ 	[    --poolmetadatasize Size[m|UNIT] ]
+ 	[    --poolmetadataspare y|n ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
-   Create a thin LV in a thin pool (infers --type thin).
-   lvcreate -V|--virtualsize Size[m|UNIT] --thinpool LV_thinpool VG
+   Create a thin LV in a thin pool.
+   lvcreate -V|--virtualsize Size[m|UNIT] --thinpool LV VG
+ 	[ --type thin ] (implied)
  	[ -T|--thin ]
- 	[    --type thin ]
- 	[    --discards passdown|nopassdown|ignore ]
- 	[    --errorwhenfull y|n ]
  	[ COMMON_OPTIONS ]
  
-   Create a thin LV that is a snapshot of an existing thin LV 
-   (infers --type thin).
-   lvcreate -s|--snapshot LV_thin
- 	[    --type thin ]
- 	[    --discards passdown|nopassdown|ignore ]
- 	[    --errorwhenfull y|n ]
+   Create a thin LV that is a snapshot of an existing thin LV.
+   lvcreate -s|--snapshot LV
+ 	[ --type thin ] (implied)
  	[ COMMON_OPTIONS ]
  
    Create a thin LV that is a snapshot of an external origin LV.
-   lvcreate --type thin --thinpool LV_thinpool LV
+   lvcreate --type thin --thinpool LV LV
  	[ -T|--thin ]
- 	[ -c|--chunksize Size[k|UNIT] ]
- 	[    --poolmetadatasize Size[m|UNIT] ]
- 	[    --poolmetadataspare y|n ]
- 	[    --discards passdown|nopassdown|ignore ]
- 	[    --errorwhenfull y|n ]
  	[ COMMON_OPTIONS ]
  
    Create a LV that returns VDO when used.
    lvcreate --type vdo -L|--size Size[m|UNIT] VG
  	[ -l|--extents Number[PERCENT] ]
- 	[ -V|--virtualsize Size[m|UNIT] ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
+ 	[ -V|--virtualsize Size[m|UNIT] ]
  	[    --vdo ]
  	[    --vdopool LV_new ]
  	[    --compression y|n ]
@@ -913,35 +926,20 @@ PackagesInfo: |
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
-   Create a thin LV, first creating a thin pool for it, 
-   where the new thin pool is named by the --thinpool arg.
-   lvcreate --type thin -V|--virtualsize Size[m|UNIT] -L|--size Size[m|UNIT] --thinpool LV_new
- 	[ -l|--extents Number[PERCENT] ]
- 	[ -T|--thin ]
- 	[ -c|--chunksize Size[k|UNIT] ]
- 	[ -i|--stripes Number ]
- 	[ -I|--stripesize Size[k|UNIT] ]
- 	[    --poolmetadatasize Size[m|UNIT] ]
- 	[    --poolmetadataspare y|n ]
- 	[    --discards passdown|nopassdown|ignore ]
- 	[    --errorwhenfull y|n ]
- 	[ COMMON_OPTIONS ]
- 	[ PV ... ]
- 
    Create a new LV, then attach the specified cachepool 
    which converts the new LV to type cache.
-   lvcreate --type cache -L|--size Size[m|UNIT] --cachepool LV_cachepool VG
+   lvcreate --type cache -L|--size Size[m|UNIT] --cachepool LV VG
  	[ -l|--extents Number[PERCENT] ]
- 	[ -H|--cache ]
- 	[ -c|--chunksize Size[k|UNIT] ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
- 	[    --poolmetadatasize Size[m|UNIT] ]
- 	[    --poolmetadataspare y|n ]
+ 	[ -H|--cache ]
+ 	[ -c|--chunksize Size[k|UNIT] ]
  	[    --cachemode writethrough|writeback|passthrough ]
  	[    --cachepolicy String ]
  	[    --cachesettings String ]
  	[    --cachemetadataformat auto|1|2 ]
+ 	[    --poolmetadatasize Size[m|UNIT] ]
+ 	[    --poolmetadataspare y|n ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
@@ -949,9 +947,9 @@ PackagesInfo: |
    which converts the new LV to type cache.
    lvcreate --type cache -L|--size Size[m|UNIT] --cachevol LV VG
  	[ -l|--extents Number[PERCENT] ]
- 	[ -c|--chunksize Size[k|UNIT] ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
+ 	[ -c|--chunksize Size[k|UNIT] ]
  	[    --cachemode writethrough|writeback|passthrough ]
  	[    --cachepolicy String ]
  	[    --cachesettings String ]
@@ -964,14 +962,14 @@ PackagesInfo: |
    new LV to type cache.
    lvcreate --type cache -L|--size Size[m|UNIT] --cachedevice PV VG
  	[ -l|--extents Number[PERCENT] ]
- 	[ -c|--chunksize Size[k|UNIT] ]
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
+ 	[ -c|--chunksize Size[k|UNIT] ]
+ 	[    --cachesize Size[m|UNIT] ]
  	[    --cachemode writethrough|writeback|passthrough ]
  	[    --cachepolicy String ]
  	[    --cachesettings String ]
  	[    --cachemetadataformat auto|1|2 ]
- 	[    --cachesize Size[m|UNIT] ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
@@ -1012,6 +1010,7 @@ PackagesInfo: |
  	[ -Z|--zero y|n ]
  	[    --addtag Tag ]
  	[    --alloc contiguous|cling|cling_by_tags|normal|anywhere|inherit ]
+ 	[    --setautoactivation y|n ]
  	[    --ignoremonitoring ]
  	[    --metadataprofile String ]
  	[    --minor Number ]
@@ -1035,6 +1034,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1067,12 +1070,11 @@ PackagesInfo: |
  	[    --noheadings ]
  	[    --nosuffix ]
  	[    --readonly ]
- 	[    --reportformat basic|json ]
  	[    --segments ]
  	[    --separator String ]
  	[    --shared ]
  	[    --unbuffered ]
- 	[    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+ 	[    --units [Number]r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
  	[ COMMON_OPTIONS ]
  	[ VG|LV|Tag ... ]
  
@@ -1091,6 +1093,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1123,14 +1129,14 @@ PackagesInfo: |
  	[ COMMON_OPTIONS ]
  
    Extend a pool metadata SubLV by a specified size.
-   lvextend --poolmetadatasize [+]Size[m|UNIT] LV_thinpool
+   lvextend --poolmetadatasize [+]Size[m|UNIT] LV
  	[ -i|--stripes Number ]
  	[ -I|--stripesize Size[k|UNIT] ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
    Extend an LV according to a predefined policy.
-   lvextend --usepolicies LV_snapshot_thinpool
+   lvextend --usepolicies LV
  	[ -r|--resizefs ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
@@ -1144,7 +1150,7 @@ PackagesInfo: |
  	[    --nosync ]
  	[    --noudevsync ]
  	[    --reportformat basic|json ]
- 	[    --type linear|striped|snapshot|mirror|raid|thin|cache|vdo|thin-pool|cache-pool|vdo-pool ]
+ 	[    --type linear|striped|snapshot|raid|mirror|thin|thin-pool|vdo|vdo-pool|cache|cache-pool|writecache ]
  
    Common options for lvm:
  	[ -d|--debug ]
@@ -1161,6 +1167,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1180,8 +1190,8 @@ PackagesInfo: |
    devtypes        Display recognised built-in block device types
    dumpconfig      Display and manipulate configuration information
    formats         List available metadata formats
-   help            Display help for commands
    fullreport      Display full report
+   help            Display help for commands
    lastlog         Display last command's log report
    lvchange        Change the attributes of logical volume(s)
    lvconvert       Change logical volume layout
@@ -1190,9 +1200,11 @@ PackagesInfo: |
    lvextend        Add space to a logical volume
    lvmchange       With the device mapper, this is obsolete and does nothing.
    lvmconfig       Display and manipulate configuration information
+   lvmdevices      Manage the devices file
    lvmdiskscan     List devices that may be used as physical volumes
    lvmsadc         Collect activity data
    lvmsar          Create activity report
+   lvpoll          Continue already initiated poll operation on a logical volume
    lvreduce        Reduce the size of a logical volume
    lvremove        Remove logical volume(s) from the system
    lvrename        Rename a logical volume
@@ -1200,19 +1212,19 @@ PackagesInfo: |
    lvs             Display information about logical volumes
    lvscan          List all logical volumes in all volume groups
    pvchange        Change attributes of physical volume(s)
-   pvresize        Resize physical volume(s)
    pvck            Check metadata on physical volumes
    pvcreate        Initialize physical volume(s) for use by LVM
    pvdata          Display the on-disk metadata for physical volume(s)
    pvdisplay       Display various attributes of physical volume(s)
    pvmove          Move extents from one physical volume to another
-   lvpoll          Continue already initiated poll operation on a logical volume
    pvremove        Remove LVM label(s) from physical volume(s)
+   pvresize        Resize physical volume(s)
    pvs             Display information about physical volumes
    pvscan          List all physical volumes
    segtypes        List available segment types
    systemid        Display the system ID, if any, currently set on this host
    tags            List tags defined on this host
+   version         Display software and driver version information
    vgcfgbackup     Backup volume group configuration(s)
    vgcfgrestore    Restore volume group configuration
    vgchange        Change volume group attributes
@@ -1224,6 +1236,7 @@ PackagesInfo: |
    vgextend        Add physical volumes to a volume group
    vgimport        Register exported volume group with system
    vgimportclone   Import a VG from cloned PVs
+   vgimportdevices Add devices for a VG to the devices file.
    vgmerge         Merge volume groups
    vgmknodes       Create the special files for volume group devices in /dev
    vgreduce        Remove physical volume(s) from a volume group
@@ -1232,7 +1245,6 @@ PackagesInfo: |
    vgs             Display information about volume groups
    vgscan          Search for all volume groups
    vgsplit         Move physical volumes into a new or existing volume group
-   version         Display software and driver version information
  ```
  
  - - -
@@ -1284,6 +1296,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1318,6 +1334,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1396,6 +1416,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1430,6 +1454,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1469,6 +1497,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1507,6 +1539,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1547,6 +1583,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1575,7 +1615,7 @@ PackagesInfo: |
  	[ COMMON_OPTIONS ]
  
    Resize a pool metadata SubLV by a specified size.
-   lvresize --poolmetadatasize [+]Size[m|UNIT] LV_thinpool
+   lvresize --poolmetadatasize [+]Size[m|UNIT] LV
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
@@ -1589,7 +1629,7 @@ PackagesInfo: |
  	[    --nosync ]
  	[    --noudevsync ]
  	[    --reportformat basic|json ]
- 	[    --type linear|striped|snapshot|mirror|raid|thin|cache|vdo|thin-pool|cache-pool|vdo-pool ]
+ 	[    --type linear|striped|snapshot|raid|mirror|thin|thin-pool|vdo|vdo-pool|cache|cache-pool|writecache ]
  
    Common options for lvm:
  	[ -d|--debug ]
@@ -1606,6 +1646,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1642,7 +1686,7 @@ PackagesInfo: |
  	[    --separator String ]
  	[    --shared ]
  	[    --unbuffered ]
- 	[    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+ 	[    --units [Number]r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
  	[    --unquoted ]
  	[ COMMON_OPTIONS ]
  	[ VG|LV|Tag ... ]
@@ -1662,6 +1706,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1699,6 +1747,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1755,6 +1807,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1809,6 +1865,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1856,6 +1916,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1888,11 +1952,10 @@ PackagesInfo: |
  	[    --noheadings ]
  	[    --nosuffix ]
  	[    --readonly ]
- 	[    --reportformat basic|json ]
  	[    --separator String ]
  	[    --shared ]
  	[    --unbuffered ]
- 	[    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+ 	[    --units [Number]r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
  	[ COMMON_OPTIONS ]
  	[ PV|Tag ... ]
  
@@ -1911,6 +1974,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1960,6 +2027,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -1994,6 +2065,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2028,6 +2103,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2063,7 +2142,7 @@ PackagesInfo: |
  	[    --separator String ]
  	[    --shared ]
  	[    --unbuffered ]
- 	[    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+ 	[    --units [Number]r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
  	[    --unquoted ]
  	[ COMMON_OPTIONS ]
  	[ PV|Tag ... ]
@@ -2083,6 +2162,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2103,20 +2186,54 @@ PackagesInfo: |
  	[ -n|--novolumegroup ]
  	[ -s|--short ]
  	[ -u|--uuid ]
+ 	[    --ignorelockingfailure ]
+ 	[    --reportformat basic|json ]
  	[ COMMON_OPTIONS ]
  
-   Autoactivate a VG when all PVs are online.
+   Record that a PV is online or offline.
    pvscan --cache
- 	[ -a|--activate ay ]
  	[ -j|--major Number ]
+ 	[    --ignorelockingfailure ]
+ 	[    --reportformat basic|json ]
  	[    --minor Number ]
  	[    --noudevsync ]
  	[ COMMON_OPTIONS ]
  	[ String|PV ... ]
  
-   Common options for command:
+   Record that a PV is online and autoactivate the VG if complete.
+   pvscan --cache -a|--activate ay
+ 	[ -j|--major Number ]
  	[    --ignorelockingfailure ]
  	[    --reportformat basic|json ]
+ 	[    --minor Number ]
+ 	[    --noudevsync ]
+ 	[    --autoactivation String ]
+ 	[ COMMON_OPTIONS ]
+ 	[ String|PV ... ]
+ 
+   Record that a PV is online and list the VG using the PV.
+   pvscan --cache --listvg PV
+ 	[    --ignorelockingfailure ]
+ 	[    --checkcomplete ]
+ 	[    --vgonline ]
+ 	[    --udevoutput ]
+ 	[    --autoactivation String ]
+ 	[ COMMON_OPTIONS ]
+ 
+   Record that a PV is online and list LVs using the PV.
+   pvscan --cache --listlvs PV
+ 	[    --ignorelockingfailure ]
+ 	[    --checkcomplete ]
+ 	[    --vgonline ]
+ 	[ COMMON_OPTIONS ]
+ 
+   List LVs using the PV.
+   pvscan --listlvs PV
+ 	[ COMMON_OPTIONS ]
+ 
+   List the VG using the PV.
+   pvscan --listvg PV
+ 	[ COMMON_OPTIONS ]
  
    Common options for lvm:
  	[ -d|--debug ]
@@ -2133,6 +2250,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2171,6 +2292,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2221,6 +2346,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2251,7 +2380,8 @@ PackagesInfo: |
  	     --vgmetadatacopies all|unmanaged|Number,
  	     --profile String,
  	     --detachprofile,
- 	     --metadataprofile String )
+ 	     --metadataprofile String,
+ 	     --setautoactivation y|n )
  
  	[ -A|--autobackup y|n ]
  	[ -S|--select String ]
@@ -2302,6 +2432,7 @@ PackagesInfo: |
  	[    --ignorelockingfailure ]
  	[    --monitor y|n ]
  	[    --poll y|n ]
+ 	[    --autoactivation String ]
  	[    --ignoremonitoring ]
  	[    --noudevsync ]
  	[    --reportformat basic|json ]
@@ -2342,8 +2473,6 @@ PackagesInfo: |
    vgchange --locktype sanlock|dlm|none VG
  	[ COMMON_OPTIONS ]
  
-   Common options for command:
- 
    Common options for lvm:
  	[ -d|--debug ]
  	[ -h|--help ]
@@ -2359,6 +2488,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2383,8 +2516,6 @@ PackagesInfo: |
    vgck --updatemetadata VG
  	[ COMMON_OPTIONS ]
  
-   Common options for command:
- 
    Common options for lvm:
  	[ -d|--debug ]
  	[ -h|--help ]
@@ -2400,6 +2531,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2439,6 +2574,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2475,6 +2614,7 @@ PackagesInfo: |
  	[    --shared ]
  	[    --systemid String ]
  	[    --locktype sanlock|dlm|none ]
+ 	[    --setautoactivation y|n ]
  	[ COMMON_OPTIONS ]
  
    Common options for lvm:
@@ -2492,6 +2632,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2523,11 +2667,10 @@ PackagesInfo: |
  	[    --noheadings ]
  	[    --nosuffix ]
  	[    --readonly ]
- 	[    --reportformat basic|json ]
  	[    --shared ]
  	[    --separator String ]
  	[    --unbuffered ]
- 	[    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+ 	[    --units [Number]r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
  	[ COMMON_OPTIONS ]
  	[ VG|Tag ... ]
  
@@ -2546,6 +2689,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2587,6 +2734,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2631,6 +2782,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2673,6 +2828,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2690,6 +2849,7 @@ PackagesInfo: |
    vgimportclone PV ...
  	[ -n|--basevgname VG ]
  	[ -i|--import ]
+ 	[    --importdevices ]
  	[ COMMON_OPTIONS ]
  
    Common options for lvm:
@@ -2707,6 +2867,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2724,6 +2888,7 @@ PackagesInfo: |
    vgmerge VG VG
  	[ -A|--autobackup y|n ]
  	[ -l|--list ]
+ 	[    --poolmetadataspare y|n ]
  	[ COMMON_OPTIONS ]
  
    Common options for lvm:
@@ -2741,6 +2906,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2777,6 +2946,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2824,6 +2997,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2860,6 +3037,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2902,6 +3083,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2936,7 +3121,7 @@ PackagesInfo: |
  	[    --separator String ]
  	[    --shared ]
  	[    --unbuffered ]
- 	[    --units r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
+ 	[    --units [Number]r|R|h|H|b|B|s|S|k|K|m|M|g|G|t|T|p|P|e|E ]
  	[    --unquoted ]
  	[ COMMON_OPTIONS ]
  	[ VG|Tag ... ]
@@ -2956,6 +3141,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -2992,6 +3181,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -3020,6 +3213,7 @@ PackagesInfo: |
  	[ -M|--metadatatype lvm2 ]
  	[ -p|--maxphysicalvolumes Number ]
  	[    --alloc contiguous|cling|cling_by_tags|normal|anywhere|inherit ]
+ 	[    --poolmetadataspare y|n ]
  	[    --vgmetadatacopies all|unmanaged|Number ]
  
    Common options for lvm:
@@ -3037,6 +3231,10 @@ PackagesInfo: |
  	[    --longhelp ]
  	[    --profile String ]
  	[    --version ]
+ 	[    --devicesfile String ]
+ 	[    --devices PV ]
+ 	[    --nohints ]
+ 	[    --journal String ]
  
    Use --longhelp to show all options and advanced commands.
  ```
@@ -3053,7 +3251,7 @@ PackagesInfo: |
    
   This package includes the D-Bus daemon.
  
- **Installed size:** `241 KB`  
+ **Installed size:** `243 KB`  
  **How to install:** `sudo apt install lvm2-dbusd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3096,7 +3294,7 @@ PackagesInfo: |
    
   LVM commands use lvmlockd to coordinate access to shared storage.
  
- **Installed size:** `538 KB`  
+ **Installed size:** `573 KB`  
  **How to install:** `sudo apt install lvm2-lockd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3130,7 +3328,7 @@ PackagesInfo: |
  --force | -f 0|1>
        Force option for other commands.
  --kill | -k <vgname>
-       Kill access to the VG when sanlock cannot renew lease.
+       Kill access to the VG locks are lost (see lvmlockctl_kill_command).
  --drop | -r <vgname>
        Clear locks for the VG when it is unused after kill (-k).
  --gl-enable | -E <vgname>
@@ -3139,6 +3337,8 @@ PackagesInfo: |
        Tell lvmlockd to disable the global lock in a sanlock VG.
  --stop-lockspaces | -S
        Stop all lockspaces.
+ --stderr | -e
+       Send kill and drop messages to stderr instead of syslog
  ```
  
  - - -

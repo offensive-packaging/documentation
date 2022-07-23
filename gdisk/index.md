@@ -3,7 +3,7 @@ Title: gdisk
 Homepage: http://sourceforge.net/projects/gptfdisk/
 Repository: https://salsa.debian.org/debian/gdisk
 Architectures: any
-Version: 1.0.9-1
+Version: 1.0.9-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -34,6 +34,7 @@ PackagesInfo: |
  * libpopt0 
  * libstdc++6 
  * libtinfo6 
+ * libuuid1 
  {{< /spoiler >}}
  
  ##### cgdisk

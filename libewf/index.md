@@ -3,7 +3,7 @@ Title: libewf
 Homepage: https://github.com/libyal/libewf-legacy
 Repository: https://salsa.debian.org/pkg-security-team/libewf
 Architectures: any
-Version: 20140807-2
+Version: 20140807-2.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -25,7 +25,7 @@ PackagesInfo: |
  * libc6 
  * libewf2 
  * libfuse2 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ewfacquire

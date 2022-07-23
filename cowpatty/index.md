@@ -15,13 +15,13 @@ PackagesInfo: |
   dictionary file of passphrases to guess with, and the SSID for the
   network.
  
- **Installed size:** `76 KB`  
+ **Installed size:** `77 KB`  
  **How to install:** `sudo apt install cowpatty`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### cowpatty

@@ -3,7 +3,7 @@ Title: ivre
 Homepage: https://ivre.rocks
 Repository: https://gitlab.com/kalilinux/packages/ivre
 Architectures: all
-Version: 0.9.16-0kali3
+Version: 0.9.18-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   IVRE uses Nmap to run scans, can use ZMap as a pre-scanner; IVRE can also
   import XML output from Nmap and Masscan.
  
- **Installed size:** `21.42 MB`  
+ **Installed size:** `15.75 MB`  
  **How to install:** `sudo apt install ivre`  
  
  {{< spoiler "Dependencies:" >}}
@@ -42,8 +42,8 @@ PackagesInfo: |
  ```
  root@kali:~# ivre -h
  IVRE - Network recon framework
- Copyright 2011 - 2020 Pierre LALET <pierre@droids-corp.org>
- Version 0.9.16
+ Copyright 2011 - 2022 Pierre LALET <pierre@droids-corp.org>
+ Version 0.9.18-kali
  
  Python 3.10.4 (main, Mar 24 2022, 13:07:27) [GCC 11.2.0]
  
@@ -55,6 +55,7 @@ PackagesInfo: |
      Python module psycopg2: 2.9.2 (dt dec pq3 ext lo64)
      Python module cryptography: 3.4.8
      Python module krbV: missing
+     Python module pycurl: PycURL/7.44.1 libcurl/7.83.0 GnuTLS/3.7.4 zlib/1.2.11 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.0) libssh2/1.10.0 nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.12
      Python module PIL: 9.0.1
      Python module MySQLdb: 1.4.6
      Python module dbus: 1.2.18
@@ -73,12 +74,15 @@ PackagesInfo: |
    flow2db
    flowcli
    getmoduli
+   getwebdata
    httpd
    ipcalc
    ipdata
    iphost
    ipinfo
+   localscan
    macinfo
+   p0f2db
    passiverecon2db
    passivereconworker
    plotdb
@@ -88,8 +92,10 @@ PackagesInfo: |
    scan2db
    scancli
    scanstatus
+   sort
    version
    view
+   weblog2db
    zeek2db
  
  Try ivre help [COMMAND]
@@ -109,7 +115,7 @@ PackagesInfo: |
   IVRE uses Nmap to run scans, can use ZMap as a pre-scanner; IVRE
   can also import XML output from Nmap and Masscan.
  
- **Installed size:** `4.91 MB`  
+ **Installed size:** `5.35 MB`  
  **How to install:** `sudo apt install ivre-doc`  
  
  {{< spoiler "Dependencies:" >}}

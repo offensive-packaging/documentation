@@ -3,7 +3,7 @@ Title: ghidra
 Homepage: https://github.com/NationalSecurityAgency/ghidra
 Repository: https://gitlab.com/kalilinux/packages/ghidra
 Architectures: amd64 arm64
-Version: 10.1.2-0kali2
+Version: 10.1.4-0kali1
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: images/ghidra-logo.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
   insights for SRE analysts who seek a better understanding of potential
   vulnerabilities in networks and systems.
  
- **Installed size:** `929.31 MB`  
+ **Installed size:** `917.19 MB`  
  **How to install:** `sudo apt install ghidra`  
  
  {{< spoiler "Dependencies:" >}}

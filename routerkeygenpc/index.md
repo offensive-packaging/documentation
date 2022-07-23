@@ -41,7 +41,7 @@ PackagesInfo: |
    * Alice in Germany
    * Speedport
  
- **Installed size:** `5.56 MB`  
+ **Installed size:** `5.63 MB`  
  **How to install:** `sudo apt install routerkeygenpc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -53,7 +53,7 @@ PackagesInfo: |
  * libqt5network5 
  * libqt5script5 
  * libqt5widgets5 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  

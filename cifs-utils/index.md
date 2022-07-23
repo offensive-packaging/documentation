@@ -3,7 +3,7 @@ Title: cifs-utils
 Homepage: https://www.samba.org/~jlayton/cifs-utils/
 Repository: https://salsa.debian.org/samba-team/cifs-utils
 Architectures: linux-any
-Version: 2:6.14-1
+Version: 2:6.14-1.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

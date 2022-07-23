@@ -3,7 +3,7 @@ Title: wordlists
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/wordlists
 Architectures: all
-Version: 0.3-1kali3
+Version: 2022.3.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/wordlists-logo.svg
 PackagesInfo: |
@@ -29,16 +29,23 @@ PackagesInfo: |
  > wordlists ~ Contains the rockyou wordlist
  
  /usr/share/wordlists
+ |-- amass -> /usr/share/amass/wordlists
+ |-- brutespray -> /usr/share/brutespray/wordlist
  |-- dirb -> /usr/share/dirb/wordlists
  |-- dirbuster -> /usr/share/dirbuster/wordlists
  |-- dnsmap.txt -> /usr/share/dnsmap/wordlist_TLAs.txt
  |-- fasttrack.txt -> /usr/share/set/src/fasttrack/wordlist.txt
  |-- fern-wifi -> /usr/share/fern-wifi-cracker/extras/wordlists
+ |-- john.lst -> /usr/share/john/password.lst
+ |-- legion -> /usr/share/legion/wordlists
  |-- metasploit -> /usr/share/metasploit-framework/data/wordlists
  |-- nmap.lst -> /usr/share/nmap/nselib/data/passwords.lst
  |-- rockyou.txt.gz
  |-- seclists -> /usr/share/seclists
- `-- wfuzz -> /usr/share/wfuzz/wordlist
+ |-- sqlmap.txt -> /usr/share/sqlmap/data/txt/wordlist.txt
+ |-- wfuzz -> /usr/share/wfuzz/wordlist
+ `-- wifite.txt -> /usr/share/dict/wordlist-probable.txt
+ 
  ```
  
  - - -

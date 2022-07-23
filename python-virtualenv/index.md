@@ -3,7 +3,7 @@ Title: python-virtualenv
 Homepage: https://virtualenv.pypa.io/
 Repository: https://salsa.debian.org/python-team/packages/python-virtualenv
 Architectures: all
-Version: 20.14.0+ds-1
+Version: 20.15.0+ds-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -28,7 +28,7 @@ PackagesInfo: |
   This is the Python 3 version of the library.  It includes the command line
   script.
  
- **Installed size:** `437 KB`  
+ **Installed size:** `441 KB`  
  **How to install:** `sudo apt install python3-virtualenv`  
  
  {{< spoiler "Dependencies:" >}}

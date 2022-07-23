@@ -3,7 +3,7 @@ Title: ettercap
 Homepage: https://ettercap.github.io/ettercap/
 Repository: https://salsa.debian.org/pkg-security-team/ettercap
 Architectures: any
-Version: 1:0.8.3.1-6
+Version: 1:0.8.3.1-10
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-sniffing-spoofing kali-tools-social-engineering 
 Icon: images/ettercap-logo.svg
 PackagesInfo: |
@@ -39,11 +39,11 @@ PackagesInfo: |
  * libc6 
  * libcurl4 
  * libgeoip1 
- * libluajit-5.1-2 
+ * libluajit-5.1-2  | libluajit2-5.1-2 
  * libnet1 
  * libpcap0.8 
  * libpcre3
- * libssl1.1 
+ * libssl3 
  * zlib1g 
  {{< /spoiler >}}
  

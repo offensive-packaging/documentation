@@ -1,9 +1,9 @@
 ---
 Title: netkit-telnet
 Homepage: http://www.hcs.harvard.edu/~dholland/computers/netkit.html
-Repository: 
+Repository: https://salsa.debian.org/debian/netkit-telnet
 Architectures: any
-Version: 0.17-44
+Version: 0.17-45
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -54,7 +54,7 @@ PackagesInfo: |
   Kerberized TELNET servers, are able to improve on this by providing secure
   forms of authentication and encryption.
  
- **Installed size:** `114 KB`  
+ **Installed size:** `115 KB`  
  **How to install:** `sudo apt install telnetd`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,8 +3,8 @@ Title: sparrow-wifi
 Homepage: https://github.com/ghostop14/sparrow-wifi
 Repository: https://gitlab.com/kalilinux/packages/sparrow-wifi
 Architectures: all
-Version: 0.0~git20220114-0kali2
-Metapackages: 
+Version: 0.0~git20220114-0kali3
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### sparrow-wifi

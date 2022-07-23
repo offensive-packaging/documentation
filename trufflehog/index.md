@@ -4,7 +4,7 @@ Homepage: https://github.com/trufflesecurity/truffleHog
 Repository: https://gitlab.com/kalilinux/packages/trufflehog
 Architectures: all
 Version: 2.2.1-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### trufflehog

@@ -40,7 +40,6 @@ PackagesInfo: |
  > wotmate ~ reimplement the defunct PGP pathfinder with only your own keyring
  
  /usr/share/wotmate
- |-- __pycache__
  |-- export-keyring.py
  |-- graph-paths.py
  |-- graph-to-full.py

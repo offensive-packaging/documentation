@@ -1,9 +1,9 @@
 ---
 Title: cherrytree
-Homepage: https://www.giuspen.com/cherrytree/
+Homepage: https://www.giuspen.net/cherrytree/
 Repository: https://salsa.debian.org/debian/cherrytree
 Architectures: any
-Version: 0.99.43+dfsg-1
+Version: 0.99.47+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large 
 Icon: images/cherrytree-logo.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   syntax highlighting, images handling, hyperlinks, import/export with support
   for multiple formats, support for multiple languages, and more.
  
- **Installed size:** `8.40 MB`  
+ **Installed size:** `9.19 MB`  
  **How to install:** `sudo apt install cherrytree`  
  
  {{< spoiler "Dependencies:" >}}
@@ -54,7 +54,7 @@ PackagesInfo: |
  
  SYNOPSIS
         cherrytree  [-V]  [-N]  [filepath [-n nodename] [-x export_to_html_dir]
-        [-t export_to_txt_dir] [-p export_to_pdf_path] [-w] [-s]]
+        [-t export_to_txt_dir] [-p export_to_pdf_path] [-P password] [-w] [-s]]
  
  DESCRIPTION
         cherrytree is a hierarchical note taking  application,  featuring  rich
@@ -69,7 +69,7 @@ PackagesInfo: |
         This manual page was written by Vincent Cheng <Vincentc1208@gmail.com>,
         for the Debian project (and may be used by others).
  
- cherrytree 0.99.24               November 2020                   CHERRYTREE(1)
+ cherrytree 0.99.46               February 2022                   CHERRYTREE(1)
  ```
  
  - - -

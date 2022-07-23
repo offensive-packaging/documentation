@@ -21,12 +21,12 @@ PackagesInfo: |
   Axel tries to be as light as possible, so it might be useful as a
   wget clone (and other console based programs) on byte-critical systems.
  
- **Installed size:** `210 KB`  
+ **Installed size:** `211 KB`  
  **How to install:** `sudo apt install axel`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### axel

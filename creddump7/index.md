@@ -1,9 +1,9 @@
 ---
 Title: creddump7
-Homepage: https://github.com/Neohapsis/creddump7
-Repository: https://gitlab.com/kalilinux/packages/creddump7
+Homepage: https://github.com/CiscoCXSecurity/creddump7
+Repository: https://salsa.debian.org/pkg-security-team/creddump7
 Architectures: all
-Version: 0.1+git20190429-0kali3
+Version: 0.1+git20190429-1.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,9 +18,9 @@ PackagesInfo: |
  **How to install:** `sudo apt install creddump7`  
  
  {{< spoiler "Dependencies:" >}}
- * kali-defaults
  * python3
  * python3-pycryptodome
+ * tree
  {{< /spoiler >}}
  
  ##### creddump7
@@ -28,9 +28,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# creddump7 -h
- 
- > creddump7 ~ Python tool to extract credentials and secrets from Windows registry hives
- 
+ creddump7 - Python tool to extract credentials and secrets from Windows registry hives
  /usr/share/creddump7
  |-- __pycache__
  |-- cachedump.py

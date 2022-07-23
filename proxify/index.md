@@ -4,7 +4,7 @@ Homepage: https://github.com/projectdiscovery/proxify
 Repository: https://gitlab.com/kalilinux/packages/proxify
 Architectures: any
 Version: 0.0.5-0kali2
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### proxify

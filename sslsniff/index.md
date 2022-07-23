@@ -17,7 +17,7 @@ PackagesInfo: |
   sslsniff also supports other attacks like null-prefix or OCSP attacks to
   achieve silent interceptions of connections when possible.
  
- **Installed size:** `391 KB`  
+ **Installed size:** `384 KB`  
  **How to install:** `sudo apt install sslsniff`  
  
  {{< spoiler "Dependencies:" >}}
@@ -26,7 +26,7 @@ PackagesInfo: |
  * libc6 
  * libgcc-s1 
  * liblog4cpp5v5 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  

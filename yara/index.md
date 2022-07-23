@@ -48,14 +48,14 @@ PackagesInfo: |
    
   This package provides a shared library.
  
- **Installed size:** `441 KB`  
+ **Installed size:** `442 KB`  
  **How to install:** `sudo apt install libyara9`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libjansson4 
  * libmagic1 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  
@@ -73,7 +73,7 @@ PackagesInfo: |
   wild-cards, case-insensitive text strings, special operators, regular
   expressions and many other features.
  
- **Installed size:** `85 KB`  
+ **Installed size:** `86 KB`  
  **How to install:** `sudo apt install yara`  
  
  {{< spoiler "Dependencies:" >}}

@@ -35,11 +35,11 @@ PackagesInfo: |
  Found Java version 11.0.14.1
  Available memory: 7955 MB
  Using JVM args: -Xmx1988m
- 858 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /root/.ZAP/config.xml
- 1025 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/session
- 1025 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/dirbuster
- 1025 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/fuzzers
- 1026 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/plugin
+ 818 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /root/.ZAP/config.xml
+ 960 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/session
+ 961 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/dirbuster
+ 961 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/fuzzers
+ 961 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/plugin
  ```
  
  - - -
@@ -73,31 +73,31 @@ PackagesInfo: |
  	-nostdout                Disables the default logging through standard output
  	-silent                  Ensures ZAP does not make any unsolicited requests, including check for updates
  Add-on options:
- 	-hud                     Launches a browser configured to proxy through ZAP with the HUD enabled, for use in daemon mode
- 	-hudurl <url>            Launches a browser as per the -hud option with the specified URL
- 	-hudbrowser <browser>    Launches a browser as per the -hud option with the specified browser, supported options: Chrome, Firefox by default Firefox
- 	-openapifile <path>      Imports an OpenAPI definition from the specified file name
- 	-openapiurl <url>        Imports an OpenAPI definition from the specified URL
- 	-openapitargeturl <url>  The Target URL, to override the server URL present in the OpenAPI definition. Refer to the help for supported format.
  	-certload <path>         Loads the Root CA certificate from the specified file name
  	-certpubdump <path>      Dumps the Root CA public certificate into the specified file name, this is suitable for importing into browsers
  	-certfulldump <path>     Dumps the Root CA full certificate (including the private key) into the specified file name, this is suitable for importing into ZAP
+ 	-hud                     Launches a browser configured to proxy through ZAP with the HUD enabled, for use in daemon mode
+ 	-hudurl <url>            Launches a browser as per the -hud option with the specified URL
+ 	-hudbrowser <browser>    Launches a browser as per the -hud option with the specified browser, supported options: Chrome, Firefox by default Firefox
+ 	-graphqlfile <path>       Imports a GraphQL Schema from a File
+ 	-graphqlurl <url>         Imports a GraphQL Schema from a URL
+ 	-graphqlendurl <url>      Sets the Endpoint URL
+ 	-openapifile <path>      Imports an OpenAPI definition from the specified file name
+ 	-openapiurl <url>        Imports an OpenAPI definition from the specified URL
+ 	-openapitargeturl <url>  The Target URL, to override the server URL present in the OpenAPI definition. Refer to the help for supported format.
  	-addoninstall <addOnId>   Installs the add-on with specified ID from the ZAP Marketplace
  	-addoninstallall          Install all available add-ons from the ZAP Marketplace
  	-addonuninstall <addOnId> Uninstalls the Add-on with specified ID
  	-addonupdate              Update all changed add-ons from the ZAP Marketplace
  	-addonlist                List all of the installed add-ons
- 	-autorun <filename>      Run the automation jobs specified in the file
- 	-autogenmin <filename>   Generate template automation file with the key parameters
- 	-autogenmax <filename>   Generate template automation file with all parameters
- 	-autogenconf <filename>  Generate template automation file using the current configuration
- 	-graphqlfile <path>       Imports a GraphQL Schema from a File
- 	-graphqlurl <url>         Imports a GraphQL Schema from a URL
- 	-graphqlendurl <url>      Sets the Endpoint URL
  	-quickurl <target url>   The URL to attack, e.g. http://www.example.com
  	-quickout <filename>     The file to write the HTML/JSON/MD/XML results to (based on the file extension)
  	-quickprogress:          Display progress bars while scanning
  	-script <script>         Run the specified script from commandline or load in GUI
+ 	-autorun <filename>      Run the automation jobs specified in the file
+ 	-autogenmin <filename>   Generate template automation file with the key parameters
+ 	-autogenmax <filename>   Generate template automation file with all parameters
+ 	-autogenconf <filename>  Generate template automation file using the current configuration
  
  ```
  

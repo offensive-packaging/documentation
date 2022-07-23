@@ -19,7 +19,7 @@ PackagesInfo: |
   This package contains ophcrack with QT4 based graphical UI.
   Please note that it can be used in command line as well.
  
- **Installed size:** `462 KB`  
+ **Installed size:** `479 KB`  
  **How to install:** `sudo apt install ophcrack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -30,7 +30,7 @@ PackagesInfo: |
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5widgets5 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  
@@ -95,13 +95,13 @@ PackagesInfo: |
    
   This package contains ophcrack with command line interface only.
  
- **Installed size:** `176 KB`  
+ **Installed size:** `182 KB`  
  **How to install:** `sudo apt install ophcrack-cli`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libexpat1 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ophcrack-cli

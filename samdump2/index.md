@@ -18,12 +18,12 @@ PackagesInfo: |
   Syskey is a Windows feature that adds an additional encryption layer to the
   password hashes stored in the SAM database.
  
- **Installed size:** `43 KB`  
+ **Installed size:** `45 KB`  
  **How to install:** `sudo apt install samdump2`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### samdump2

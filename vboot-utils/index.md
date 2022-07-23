@@ -13,7 +13,7 @@ PackagesInfo: |
   supports Chromium OS extensions enabling you to change priority for kernel
   partitions.
  
- **Installed size:** `77 KB`  
+ **Installed size:** `78 KB`  
  **How to install:** `sudo apt install cgpt`  
  
  {{< spoiler "Dependencies:" >}}
@@ -54,13 +54,13 @@ PackagesInfo: |
   program required to sign custom kernels in order to get them booted by Chrome
   OS devices (i.e. Chromebooks)).
  
- **Installed size:** `1004 KB`  
+ **Installed size:** `1005 KB`  
  **How to install:** `sudo apt install vboot-kernel-utils`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libflashrom1
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### futility
@@ -197,12 +197,12 @@ PackagesInfo: |
   Most users don't need this package, and should look for the cgpt and
   vboot-kernel-utils packages instead.
  
- **Installed size:** `242 KB`  
+ **Installed size:** `243 KB`  
  **How to install:** `sudo apt install vboot-utils`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  * vboot-kernel-utils
  {{< /spoiler >}}
  

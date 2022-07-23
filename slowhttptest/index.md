@@ -21,13 +21,13 @@ PackagesInfo: |
     * Apache Range Header attack by causing very significant memory and CPU
       usage on the server.
  
- **Installed size:** `92 KB`  
+ **Installed size:** `89 KB`  
  **How to install:** `sudo apt install slowhttptest`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  

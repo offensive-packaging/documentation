@@ -19,13 +19,13 @@ PackagesInfo: |
   collected from this exchange, eapmd5pass will mount an offline dictionary
   attack against the user's password.
  
- **Installed size:** `101 KB`  
+ **Installed size:** `102 KB`  
  **How to install:** `sudo apt install eapmd5pass`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### eapmd5pass

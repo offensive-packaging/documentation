@@ -3,7 +3,7 @@ Title: eyewitness
 Homepage: https://www.christophertruncer.com/eyewitness-triage-tool/
 Repository: https://gitlab.com/kalilinux/packages/eyewitness
 Architectures: amd64 i386
-Version: 20220502.1-0kali1
+Version: 20220713.1-0kali1
 Metapackages: kali-linux-everything kali-tools-reporting kali-tools-web 
 Icon: images/eyewitness-logo.svg
 PackagesInfo: |

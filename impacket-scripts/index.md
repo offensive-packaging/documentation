@@ -3,7 +3,7 @@ Title: impacket-scripts
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/impacket-scripts
 Architectures: all
-Version: 1.6
+Version: 1.7
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,15 +13,70 @@ PackagesInfo: |
   package to keep impacket package from Debian and have the useful scripts in
   the path for Kali.
  
- **Installed size:** `55 KB`  
+ **Installed size:** `60 KB`  
  **How to install:** `sudo apt install impacket-scripts`  
  
  {{< spoiler "Dependencies:" >}}
+ * python3-dsinternals
  * python3-impacket 
  * python3-ldap3 
  * python3-ldapdomaindump
  * python3-pcapy
  {{< /spoiler >}}
+ 
+ ##### impacket-Get-GPPPassword
+ 
+ 
+ ```
+ root@kali:~# impacket-Get-GPPPassword -h
+ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+ 
+ usage: Get-GPPPassword.py [-h] [-xmlfile XMLFILE] [-share SHARE]
+                           [-base-dir BASE_DIR] [-ts] [-debug]
+                           [-hashes LMHASH:NTHASH] [-no-pass] [-k]
+                           [-aesKey hex key] [-dc-ip ip address]
+                           [-target-ip ip address] [-port [destination port]]
+                           target
+ 
+ Group Policy Preferences passwords finder and decryptor
+ 
+ positional arguments:
+   target                [[domain/]username[:password]@]<targetName or address>
+                         or LOCAL (if you want to parse local files)
+ 
+ options:
+   -h, --help            show this help message and exit
+   -xmlfile XMLFILE      Group Policy Preferences XML files to parse
+   -share SHARE          SMB Share
+   -base-dir BASE_DIR    Directory to search in (Default: /)
+   -ts                   Adds timestamp to every logging output
+   -debug                Turn DEBUG output ON
+ 
+ authentication:
+   -hashes LMHASH:NTHASH
+                         NTLM hashes, format is LMHASH:NTHASH
+   -no-pass              don't ask for password (useful for -k)
+   -k                    Use Kerberos authentication. Grabs credentials from
+                         ccache file (KRB5CCNAME) based on target parameters.
+                         If valid credentials cannot be found, it will use the
+                         ones specified in the command line
+   -aesKey hex key       AES key to use for Kerberos Authentication (128 or 256
+                         bits)
+ 
+ connection:
+   -dc-ip ip address     IP Address of the domain controller. If omitted it
+                         will use the domain part (FQDN) specified in the
+                         target parameter
+   -target-ip ip address
+                         IP Address of the target machine. If omitted it will
+                         use whatever was specified as target. This is useful
+                         when target is the NetBIOS name and you cannot resolve
+                         it
+   -port [destination port]
+                         Destination port to connect to SMB Server
+ ```
+ 
+ - - -
  
  ##### impacket-GetADUsers
  
@@ -705,6 +760,71 @@ PackagesInfo: |
  
  - - -
  
+ ##### impacket-keylistattack
+ 
+ 
+ ```
+ root@kali:~# impacket-keylistattack -h
+ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+ 
+ usage: keylistattack.py [-h] [-rodcNo RODCNO] [-rodcKey RODCKEY] [-full]
+                         [-debug] [-domain DOMAIN] [-kdc KDC] [-t T] [-tf TF]
+                         [-hashes LMHASH:NTHASH] [-no-pass] [-k]
+                         [-aesKey hex key] [-dc-ip ip address]
+                         [-target-ip ip address]
+                         target
+ 
+ Performs the KERB-KEY-LIST-REQ attack to dump secrets from the remote machine
+ without executing any agent there.
+ 
+ positional arguments:
+   target                [[domain/]username[:password]@]<KDC HostName or IP
+                         address> (Use this credential to authenticate to SMB
+                         and list domain users (low-privilege account) or LIST
+                         (if you want to parse a target file)
+ 
+ options:
+   -h, --help            show this help message and exit
+   -rodcNo RODCNO        Number of the RODC krbtgt account
+   -rodcKey RODCKEY      AES key of the Read Only Domain Controller
+   -full                 Run the attack against all domain users. Noisy! It
+                         could lead to more TGS requests being rejected
+   -debug                Turn DEBUG output ON
+ 
+ LIST option:
+   -domain DOMAIN        The fully qualified domain name (only works with LIST)
+   -kdc KDC              KDC HostName or FQDN (only works with LIST)
+   -t T                  Attack only the username specified (only works with
+                         LIST)
+   -tf TF                File that contains a list of target usernames (only
+                         works with LIST)
+ 
+ authentication:
+   -hashes LMHASH:NTHASH
+                         Use NTLM hashes to authenticate to SMB and list domain
+                         users.
+   -no-pass              don't ask for password (useful for -k)
+   -k                    Use Kerberos to authenticate to SMB and list domain
+                         users. Grabs credentials from ccache file (KRB5CCNAME)
+                         based on target parameters. If valid credentials
+                         cannot be found, it will use the ones specified in the
+                         command line
+   -aesKey hex key       AES key to use for Kerberos Authentication (128 or 256
+                         bits)
+ 
+ connection:
+   -dc-ip ip address     IP Address of the domain controller. If ommited it use
+                         the domain part (FQDN) specified in the target
+                         parameter
+   -target-ip ip address
+                         IP Address of the target machine. If omitted it will
+                         use whatever was specified as target. This is useful
+                         when target is the NetBIOS name and you cannot resolve
+                         it
+ ```
+ 
+ - - -
+ 
  ##### impacket-kintercept
  
  
@@ -775,6 +895,55 @@ PackagesInfo: |
                          NTLM hashes, format is LMHASH:NTHASH
    -no-pass              don't ask for password (useful when proxying through
                          smbrelayx)
+ ```
+ 
+ - - -
+ 
+ ##### impacket-machine_role
+ 
+ 
+ ```
+ root@kali:~# impacket-machine_role -h
+ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+ 
+ usage: machine_role.py [-h] [-ts] [-debug] [-dc-ip ip address]
+                        [-target-ip ip address] [-port [destination port]]
+                        [-hashes LMHASH:NTHASH] [-no-pass] [-k]
+                        [-aesKey hex key]
+                        target
+ 
+ Retrieve a host's role along with its primary domain details.
+ 
+ positional arguments:
+   target                [[domain/]username[:password]@]<targetName or address>
+ 
+ options:
+   -h, --help            show this help message and exit
+   -ts                   Adds timestamp to every logging output
+   -debug                Turn DEBUG output ON
+ 
+ connection:
+   -dc-ip ip address     IP Address of the domain controller. If ommited it use
+                         the domain part (FQDN) specified in the target
+                         parameter
+   -target-ip ip address
+                         IP Address of the target machine. If ommited it will
+                         use whatever was specified as target. This is useful
+                         when target is the NetBIOS name and you cannot resolve
+                         it
+   -port [destination port]
+                         Destination port to connect to SMB Server
+ 
+ authentication:
+   -hashes LMHASH:NTHASH
+                         NTLM hashes, format is LMHASH:NTHASH
+   -no-pass              don't ask for password (useful for -k)
+   -k                    Use Kerberos authentication. Grabs credentials from
+                         ccache file (KRB5CCNAME) based on target parameters.
+                         If valid credentials cannot be found, it will use the
+                         ones specified in the command line
+   -aesKey hex key       AES key to use for Kerberos Authentication (128 or 256
+                         bits)
  ```
  
  - - -
@@ -1286,6 +1455,61 @@ PackagesInfo: |
  
  - - -
  
+ ##### impacket-rbcd
+ 
+ 
+ ```
+ root@kali:~# impacket-rbcd -h
+ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+ 
+ usage: rbcd.py [-h] -delegate-to DELEGATE_TO [-delegate-from DELEGATE_FROM]
+                [-action [{read,write,remove,flush}]] [-use-ldaps] [-ts]
+                [-debug] [-hashes LMHASH:NTHASH] [-no-pass] [-k]
+                [-aesKey hex key] [-dc-ip ip address]
+                identity
+ 
+ Python (re)setter for property msDS-AllowedToActOnBehalfOfOtherIdentity for
+ Kerberos RBCD attacks.
+ 
+ positional arguments:
+   identity              domain.local/username[:password]
+ 
+ options:
+   -h, --help            show this help message and exit
+   -delegate-to DELEGATE_TO
+                         Target computer account the attacker has at least
+                         WriteProperty to
+   -delegate-from DELEGATE_FROM
+                         Attacker controlled machine account to write on the
+                         msDS-Allo[...] property (only when using `-action
+                         write`)
+   -action [{read,write,remove,flush}]
+                         Action to operate on msDS-
+                         AllowedToActOnBehalfOfOtherIdentity
+   -use-ldaps            Use LDAPS instead of LDAP
+   -ts                   Adds timestamp to every logging output
+   -debug                Turn DEBUG output ON
+ 
+ authentication:
+   -hashes LMHASH:NTHASH
+                         NTLM hashes, format is LMHASH:NTHASH
+   -no-pass              don't ask for password (useful for -k)
+   -k                    Use Kerberos authentication. Grabs credentials from
+                         ccache file (KRB5CCNAME) based on target parameters.
+                         If valid credentials cannot be found, it will use the
+                         ones specified in the command line
+   -aesKey hex key       AES key to use for Kerberos Authentication (128 or 256
+                         bits)
+ 
+ connection:
+   -dc-ip ip address     IP Address of the domain controller or KDC (Key
+                         Distribution Center) for Kerberos. If omitted it will
+                         use the domain part (FQDN) specified in the identity
+                         parameter
+ ```
+ 
+ - - -
+ 
  ##### impacket-rdp_check
  
  
@@ -1622,7 +1846,7 @@ PackagesInfo: |
  root@kali:~# impacket-smbexec -h
  Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
  
- usage: smbexec.py [-h] [-share SHARE] [-mode {SHARE,SERVER}] [-ts] [-debug]
+ usage: smbexec.py [-h] [-share SHARE] [-mode {SERVER,SHARE}] [-ts] [-debug]
                    [-codec CODEC] [-shell-type {cmd,powershell}]
                    [-dc-ip ip address] [-target-ip ip address]
                    [-port [destination port]] [-service-name service_name]
@@ -1637,7 +1861,7 @@ PackagesInfo: |
    -h, --help            show this help message and exit
    -share SHARE          share where the output will be grabbed from (default
                          C$)
-   -mode {SHARE,SERVER}  mode to use (default SHARE, SERVER needs root!)
+   -mode {SERVER,SHARE}  mode to use (default SHARE, SERVER needs root!)
    -ts                   adds timestamp to every logging output
    -debug                Turn DEBUG output ON
    -codec CODEC          Sets encoding used (codec) from the target's output
@@ -1675,6 +1899,50 @@ PackagesInfo: |
    -aesKey hex key       AES key to use for Kerberos Authentication (128 or 256
                          bits)
    -keytab KEYTAB        Read keys for SPN from keytab file
+ ```
+ 
+ - - -
+ 
+ ##### impacket-smbpasswd
+ 
+ 
+ ```
+ root@kali:~# impacket-smbpasswd -h
+ Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
+ 
+ usage: smbpasswd.py [-h] [-ts] [-debug]
+                     [-newpass NEWPASS | -newhashes LMHASH:NTHASH]
+                     [-hashes LMHASH:NTHASH] [-altuser ALTUSER]
+                     [-altpass ALTPASS] [-althash ALTHASH] [-admin]
+                     target
+ 
+ Change password over SMB.
+ 
+ positional arguments:
+   target                [[domain/]username[:password]@]<targetName or address>
+ 
+ options:
+   -h, --help            show this help message and exit
+   -ts                   adds timestamp to every logging output
+   -debug                turn DEBUG output ON
+   -newpass NEWPASS      new SMB password
+   -newhashes LMHASH:NTHASH
+                         new NTLM hashes, format is LMHASH:NTHASH (the user
+                         will be asked to change their password at next logon)
+ 
+ authentication:
+   -hashes LMHASH:NTHASH
+                         NTLM hashes, format is LMHASH:NTHASH
+ 
+ RPC authentication:
+   -altuser ALTUSER      alternative username
+   -altpass ALTPASS      alternative password
+   -althash ALTHASH      alternative NT hash
+ 
+ set credentials method:
+   -admin                injects credentials into SAM (requires admin's
+                         priveleges on a machine, but can bypass password
+                         history policy)
  ```
  
  - - -

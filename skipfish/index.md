@@ -3,7 +3,7 @@ Title: skipfish
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/skipfish
 Architectures: any
-Version: 2.10b-2kali4
+Version: 2.10b-2kali5
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/skipfish-logo.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
  * libc6 
  * libidn12 
  * libpcre3
- * libssl1.1 
+ * libssl3 
  * zlib1g 
  {{< /spoiler >}}
  

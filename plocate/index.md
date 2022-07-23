@@ -3,7 +3,7 @@ Title: plocate
 Homepage: https://plocate.sesse.net/
 Repository: 
 Architectures: any all
-Version: 1.1.15-2
+Version: 1.1.16-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

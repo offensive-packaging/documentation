@@ -42,12 +42,12 @@ PackagesInfo: |
    
   This package is useful for security, pentests and forensics investigations.
  
- **Installed size:** `54 KB`  
+ **Installed size:** `55 KB`  
  **How to install:** `sudo apt install bruteforce-salted-openssl`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### bruteforce-salted-openssl

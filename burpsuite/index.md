@@ -3,7 +3,7 @@ Title: burpsuite
 Homepage: https://portswigger.net
 Repository: https://gitlab.com/kalilinux/packages/burpsuite
 Architectures: amd64 arm64
-Version: 2021.10.3-0kali1
+Version: 2022.7-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-top10 kali-tools-web 
 Icon: images/burpsuite-logo.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   manual techniques with state-of-the-art automation, to make
   your work faster, more effective, and more fun.
  
- **Installed size:** `188.79 MB`  
+ **Installed size:** `210.56 MB`  
  **How to install:** `sudo apt install burpsuite`  
  
  {{< spoiler "Dependencies:" >}}

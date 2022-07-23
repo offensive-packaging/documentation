@@ -46,7 +46,7 @@ PackagesInfo: |
  	Options:
  	 -h : Display this help message
  	 -H : Start DirBuster in headless mode (no gui), report will be auto saved on exit
- 	 -l <Word list to use> : The Word list to use for the list based brute force. Default: /home/kali/kali-tools/.bin/tool-output/dirbuster/directory-list-2.3-small.txt
+ 	 -l <Word list to use> : The Word list to use for the list based brute force. Default: /home/kali/kali-www/bin/kali-tools/tool-output/dirbuster/directory-list-2.3-small.txt
  	 -g : Only use GET requests. Default Not Set
  	 -e <File Extention list> : File Extention list eg asp,aspx. Default: php
  	 -t <Number of Threads> : Number of connection threads to use. Default: 10
@@ -54,7 +54,7 @@ PackagesInfo: |
  	 -v : Verbose output, Default: Not set
  	 -P : Don't Parse html, Default: Not Set
  	 -R : Don't be recursive, Default: Not Set
- 	 -r <location> : File to save report to. Default: /home/kali/kali-tools/.bin/tool-output/dirbuster/DirBuster-Report-[hostname]-[port].txt
+ 	 -r <location> : File to save report to. Default: /home/kali/kali-www/bin/kali-tools/tool-output/dirbuster/DirBuster-Report-[hostname]-[port].txt
  
  Examples:
  

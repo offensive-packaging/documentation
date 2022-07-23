@@ -559,7 +559,7 @@ PackagesInfo: |
         of contributors all around the world.
  
  VERSION INFORMATION
-        This manpage describes phar, version 8.1.2.
+        This manpage describes phar, version 8.1.5.
  
  COPYRIGHT
         Copyright (C) The PHP Group
@@ -935,7 +935,7 @@ PackagesInfo: |
         of contributors all around the world.
  
  VERSION INFORMATION
-        This manpage describes phar, version 8.1.2.
+        This manpage describes phar, version 8.1.5.
  
  COPYRIGHT
         Copyright (C) The PHP Group
@@ -1112,9 +1112,9 @@ PackagesInfo: |
    --phpapi            [20210902]
    --ini-path          [/etc/php/8.1/cli]
    --ini-dir           [/etc/php/8.1/cli/conf.d]
-   --configure-options [--includedir=/usr/include --mandir=/usr/share/man --infodir=/usr/share/info --disable-option-checking --disable-silent-rules --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu --disable-maintainer-mode --disable-dependency-tracking --prefix=/usr --enable-cli --disable-cgi --disable-phpdbg --with-config-file-path=/etc/php/8.1/cli --with-config-file-scan-dir=/etc/php/8.1/cli/conf.d --build=x86_64-linux-gnu --host=x86_64-linux-gnu --config-cache --cache-file=/build/php8.1-P1CCDV/php8.1-8.1.2/config.cache --libdir=${prefix}/lib/php --libexecdir=${prefix}/lib/php --datadir=${prefix}/share/php/8.1 --program-suffix=8.1 --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --disable-all --disable-debug --disable-rpath --disable-static --with-pic --with-layout=GNU --without-pear --enable-filter --with-openssl --with-password-argon2=/usr --with-external-pcre --enable-hash --with-mhash=/usr --with-libxml --enable-session --with-sodium --with-system-tzdata --with-zlib=/usr --with-zlib-dir=/usr --enable-dtrace --enable-pcntl --with-libedit=shared,/usr build_alias=x86_64-linux-gnu host_alias=x86_64-linux-gnu CFLAGS=-g -O2 -ffile-prefix-map=/build/php8.1-P1CCDV/php8.1-8.1.2=. -fstack-protector-strong -Wformat -Werror=format-security -O2 -Wall -pedantic -fsigned-char -fno-strict-aliasing -g]
-   --version           [8.1.2]
-   --vernum            [80102]
+   --configure-options [--includedir=/usr/include --mandir=/usr/share/man --infodir=/usr/share/info --disable-option-checking --disable-silent-rules --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu --disable-maintainer-mode --disable-dependency-tracking --prefix=/usr --enable-cli --disable-cgi --disable-phpdbg --with-config-file-path=/etc/php/8.1/cli --with-config-file-scan-dir=/etc/php/8.1/cli/conf.d --build=x86_64-linux-gnu --host=x86_64-linux-gnu --config-cache --cache-file=/build/php8.1-XJEKXr/php8.1-8.1.5/config.cache --libdir=${prefix}/lib/php --libexecdir=${prefix}/lib/php --datadir=${prefix}/share/php/8.1 --program-suffix=8.1 --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --disable-all --disable-debug --disable-rpath --disable-static --with-pic --with-layout=GNU --without-pear --enable-filter --with-openssl --with-password-argon2=/usr --with-external-pcre --enable-hash --with-mhash=/usr --with-libxml --enable-session --with-sodium --with-system-tzdata --with-zlib=/usr --with-zlib-dir=/usr --enable-dtrace --enable-pcntl --with-libedit=shared,/usr build_alias=x86_64-linux-gnu host_alias=x86_64-linux-gnu CFLAGS=-g -O2 -ffile-prefix-map=/build/php8.1-XJEKXr/php8.1-8.1.5=. -fstack-protector-strong -Wformat -Werror=format-security -O2 -Wall -pedantic -fsigned-char -fno-strict-aliasing -DOPENSSL_SUPPRESS_DEPRECATED -g]
+   --version           [8.1.5]
+   --vernum            [80105]
  ```
  
  - - -

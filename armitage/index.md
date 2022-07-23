@@ -3,7 +3,7 @@ Title: armitage
 Homepage: https://github.com/r00t0v3rr1d3/armitage
 Repository: https://gitlab.com/kalilinux/packages/armitage
 Architectures: all
-Version: 20220123-0kali2
+Version: 20220123-0kali3
 Metapackages: kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-exploitation 
 Icon: images/armitage-logo.svg
 PackagesInfo: |

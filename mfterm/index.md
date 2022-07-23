@@ -3,7 +3,7 @@ Title: mfterm
 Homepage: https://github.com/4ZM/mfterm
 Repository: https://gitlab.com/kalilinux/packages/mfterm
 Architectures: any
-Version: 1.0.7+git20190127-0kali1
+Version: 1.0.7+git20190127-0kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-rfid kali-tools-wireless 
 Icon: images/mfterm-logo.svg
 PackagesInfo: |
@@ -14,14 +14,14 @@ PackagesInfo: |
   arguments provide tab completion on files. There is also a command history,
   like in most normal shells.
  
- **Installed size:** `107 KB`  
+ **Installed size:** `106 KB`  
  **How to install:** `sudo apt install mfterm`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libnfc6 
  * libreadline8 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### mfterm

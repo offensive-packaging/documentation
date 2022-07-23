@@ -23,13 +23,13 @@ PackagesInfo: |
    
   This package supplies the MIT GSSAPI plugin.
  
- **Installed size:** `147 KB`  
+ **Installed size:** `148 KB`  
  **How to install:** `sudo apt install gss-ntlmssp`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgssapi-krb5-2 
- * libssl1.1 
+ * libssl3 
  * libunistring2 
  * libwbclient0 
  * zlib1g 
@@ -54,7 +54,7 @@ PackagesInfo: |
    
   This package supplies the development header.
  
- **Installed size:** `14 KB`  
+ **Installed size:** `15 KB`  
  **How to install:** `sudo apt install gss-ntlmssp-dev`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: apple-bleee
 Homepage: https://github.com/hexway/apple_bleee
 Repository: https://gitlab.com/kalilinux/packages/apple-bleee
 Architectures: all
-Version: 0.1.5-0kali4
+Version: 0.1.5-0kali5
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

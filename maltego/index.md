@@ -52,8 +52,8 @@ PackagesInfo: |
  trying path: /usr/lib/jvm/default-java
  canonical: /usr/lib/jvm/java-11-openjdk-amd64
  javaHome: /usr/lib/jvm/default-java
- resource:com/paterva/maltego/java/config/jre/TestJDK.class -> /tmp/temp38096006138610860871884829607529/TestJDK.class
- executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp38096006138610860871884829607529 TestJDK, in: .
+ resource:com/paterva/maltego/java/config/jre/TestJDK.class -> /tmp/temp162370067680093740532614496803496/TestJDK.class
+ executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp162370067680093740532614496803496 TestJDK, in: .
   result: 0
   command execution finished
   out: 11.0.14.1, 11.0.14.1+1-post-Debian-1, Debian, Linux, amd64
@@ -61,7 +61,7 @@ PackagesInfo: |
  runtimes: 1
  selected java: /usr/lib/jvm/default-java
  Detecting appropriate heap size...
- resource:com/paterva/maltego/java/config/mem/TestMem.class -> /tmp/temp37670420602299114141884901853548/TestMem.class
+ resource:com/paterva/maltego/java/config/mem/TestMem.class -> /tmp/temp105935312591119341612614559903851/TestMem.class
  memOut: 8341553152
  pm: 7955/7955
  4077...
@@ -76,7 +76,7 @@ PackagesInfo: |
  selected heap size: 5840
  canonical: /usr/lib/jvm/java-11-openjdk-amd64
  javaHome: /usr/lib/jvm/default-java
- executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp38096006138610860871884829607529 TestJDK, in: .
+ executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp162370067680093740532614496803496 TestJDK, in: .
   result: 0
   command execution finished
   out: 11.0.14.1, 11.0.14.1+1-post-Debian-1, Debian, Linux, amd64
@@ -85,13 +85,13 @@ PackagesInfo: |
    --reload /path/to/module.jar  install or reinstall a module JAR file
  
  Additional module options:
+   -i, --import <arg>         
+   -u, --updates <arg>        
+   -h, --hub <arg>            
+   -o, --open <arg1>...<argN> 
+   -s, --serverHttpAllowed    
    -p, --automationPort <arg> 
    -m, --machine <arg>        
-   -s, --serverHttpAllowed    
-   -i, --import <arg>         
-   -o, --open <arg1>...<argN> 
-   -h, --hub <arg>            
-   -u, --updates <arg>        
  
  Core options:
    --laf <LaF classname> use given LookAndFeel class instead of the default

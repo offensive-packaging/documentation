@@ -3,7 +3,7 @@ Title: wireshark
 Homepage: https://www.wireshark.org/
 Repository: https://salsa.debian.org/debian/wireshark
 Architectures: any all
-Version: 3.6.5-1
+Version: 3.6.6-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-forensics kali-tools-sniffing-spoofing kali-tools-top10 kali-tools-voip kali-tools-web kali-tools-wireless 
 Icon: images/wireshark-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the platform independent files.
  
- **Installed size:** `7.07 MB`  
+ **Installed size:** `7.09 MB`  
  **How to install:** `sudo apt install libwireshark-data`  
  
  
@@ -28,7 +28,7 @@ PackagesInfo: |
   This package contains the static library and the C header files that are
   needed for applications to use libwireshark services.
  
- **Installed size:** `4.48 MB`  
+ **Installed size:** `4.49 MB`  
  **How to install:** `sudo apt install libwireshark-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -45,7 +45,7 @@ PackagesInfo: |
   The libwireshark library provides the network packet dissection services
   developed by the Wireshark project.
  
- **Installed size:** `102.14 MB`  
+ **Installed size:** `102.16 MB`  
  **How to install:** `sudo apt install libwireshark15`  
  
  {{< spoiler "Dependencies:" >}}
@@ -105,7 +105,7 @@ PackagesInfo: |
    
   This package contains the static library and the C header files.
  
- **Installed size:** `219 KB`  
+ **Installed size:** `225 KB`  
  **How to install:** `sudo apt install libwiretap-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -142,7 +142,7 @@ PackagesInfo: |
   Wiretap's shortcomings are: no filter capability and no support for packet
   capture.
  
- **Installed size:** `714 KB`  
+ **Installed size:** `720 KB`  
  **How to install:** `sudo apt install libwiretap12`  
  
  {{< spoiler "Dependencies:" >}}
@@ -164,7 +164,7 @@ PackagesInfo: |
   This package contains the static library and the C header files that are
   needed for applications to use the libwsutil library.
  
- **Installed size:** `331 KB`  
+ **Installed size:** `337 KB`  
  **How to install:** `sudo apt install libwsutil-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -178,7 +178,7 @@ PackagesInfo: |
  
   The libwsutil library provides utility functions for libwireshark15.
  
- **Installed size:** `276 KB`  
+ **Installed size:** `282 KB`  
  **How to install:** `sudo apt install libwsutil13`  
  
  {{< spoiler "Dependencies:" >}}
@@ -200,7 +200,7 @@ PackagesInfo: |
   This package provides the console version of wireshark, named
   "tshark".
  
- **Installed size:** `416 KB`  
+ **Installed size:** `422 KB`  
  **How to install:** `sudo apt install tshark`  
  
  {{< spoiler "Dependencies:" >}}
@@ -220,7 +220,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# tshark -h
- TShark (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ TShark (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Dump and analyze network traffic.
  See https://www.wireshark.org for more information.
  
@@ -380,7 +380,7 @@ PackagesInfo: |
    
   This is a meta-package for Wireshark.
  
- **Installed size:** `61 KB`  
+ **Installed size:** `67 KB`  
  **How to install:** `sudo apt install wireshark`  
  
  {{< spoiler "Dependencies:" >}}
@@ -399,7 +399,7 @@ PackagesInfo: |
   This package provides files common to both wireshark and tshark
   (the console version).
  
- **Installed size:** `1.31 MB`  
+ **Installed size:** `1.32 MB`  
  **How to install:** `sudo apt install wireshark-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -429,7 +429,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# capinfos -h
- Capinfos (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Capinfos (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Print various information (infos) about capture files.
  See https://www.wireshark.org for more information.
  
@@ -505,7 +505,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# captype -h
- Captype (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Captype (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Print the file types of capture files.
  See https://www.wireshark.org for more information.
  
@@ -524,7 +524,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# dumpcap -h
- Dumpcap (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Dumpcap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Capture network packets and dump them into a pcapng or pcap file.
  See https://www.wireshark.org for more information.
  
@@ -622,7 +622,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# editcap -h
- Editcap (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Editcap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Edit and/or translate the format of capture files.
  See https://www.wireshark.org for more information.
  
@@ -744,7 +744,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# mergecap -h
- Mergecap (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Mergecap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Merge two or more capture files into one.
  See https://www.wireshark.org for more information.
  
@@ -827,7 +827,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# rawshark -h
- Rawshark (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Rawshark (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Dump and analyze network traffic.
  See https://www.wireshark.org for more information.
  
@@ -875,7 +875,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# reordercap -h
- Reordercap (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Reordercap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Reorder timestamps of input file frames into output file.
  See https://www.wireshark.org for more information.
  
@@ -928,7 +928,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# text2pcap -h
- Text2pcap (Wireshark) 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Text2pcap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Generate a capture file from an ASCII hexdump of packets.
  See https://www.wireshark.org for more information.
  
@@ -1023,7 +1023,7 @@ PackagesInfo: |
   This package provides idl2wrs and other files necessary for developing
   new packet dissectors.
  
- **Installed size:** `571 KB`  
+ **Installed size:** `577 KB`  
  **How to install:** `sudo apt install wireshark-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1129,7 +1129,7 @@ PackagesInfo: |
   This package contains Wireshark User's guide, Wireshark Developer's Guide
   and the Lua Reference.
  
- **Installed size:** `12.94 MB`  
+ **Installed size:** `12.95 MB`  
  **How to install:** `sudo apt install wireshark-doc`  
  
  
@@ -1139,7 +1139,7 @@ PackagesInfo: |
  
   This is a transitional dummy package. It can safely be removed.
  
- **Installed size:** `59 KB`  
+ **Installed size:** `65 KB`  
  **How to install:** `sudo apt install wireshark-gtk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1157,7 +1157,7 @@ PackagesInfo: |
    
   This package provides the Qt version of Wireshark.
  
- **Installed size:** `8.88 MB`  
+ **Installed size:** `8.90 MB`  
  **How to install:** `sudo apt install wireshark-qt`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1191,7 +1191,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# wireshark -h
- Wireshark 3.6.5 (Git v3.6.5 packaged as 3.6.5-1)
+ Wireshark 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
  Interactively dump and analyze network traffic.
  See https://www.wireshark.org for more information.
  

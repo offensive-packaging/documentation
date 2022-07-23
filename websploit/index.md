@@ -3,7 +3,7 @@ Title: websploit
 Homepage: https://sourceforge.net/projects/websploit/
 Repository: https://salsa.debian.org/pkg-security-team/websploit
 Architectures: all
-Version: 4.0.4-2
+Version: 4.0.4-3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   vulnerabilites. This tool is very powerful and supports
   multiple vulnerabilities.
  
- **Installed size:** `77 KB`  
+ **Installed size:** `76 KB`  
  **How to install:** `sudo apt install websploit`  
  
  {{< spoiler "Dependencies:" >}}
@@ -76,14 +76,16 @@ PackagesInfo: |
  EXAMPLES
         Here  is  a  simple  example on how to use scan_wifi module in order to
         hunt existing wifi networks.
-               wsf > scan_wifi > execute
-               SSID                                     BSSID          CHANNEL   SIGNAL     BARS         SECURITY
-               EDTSTAR_2350                     1C-B0-44-38-98-49         11             89                           WPA2
-               JAZZTWE_aJpE                     00-4A-77-4D-C4-CC          1             69            _           WPA1 WPA2
-               RadioPatioA1985                     74-9D-79-2A-47-60      11             57            _              WPA2
-               MIWIFI_dsTp                         EC-BE-ED-39-1A-D2       1             44            __             WPA2
-               DabaduNet4434                       78-84-B4-51-44-35       8             44            __             WPA2
-               MyHomenet821                     74-7D-79-52-2A-00          1             37            __             WPA2
+ 
+        $wsf > scan_wifi > execute
+ 
+        SSID              BSSID               CHANNEL   SIGNAL   BARS   SECURITY
+        EDTSTAR_2350      1C-B0-44-38-98-49   11        89              WPA2
+        JAZZTWE_aJpE      00-4A-77-4D-C4-CC   1         69       _      WPA1 WPA2
+        RadioPatioA1985   74-9D-79-2A-47-60   11        57       _      WPA2
+        MIWIFI_dsTp       EC-BE-ED-39-1A-D2   1         44       __     WPA2
+        DabaduNet4434     78-84-B4-51-44-35   8         44       __     WPA2
+        MyHomenet821      74-7D-79-52-2A-00   1         37       __     WPA2
  
                                                                    WEBSPLOIT(1)
  ```

@@ -4,7 +4,7 @@ Homepage: https://github.com/sa7mon/S3Scanner
 Repository: https://gitlab.com/kalilinux/packages/s3scanner
 Architectures: all
 Version: 2.0.1-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### s3scanner

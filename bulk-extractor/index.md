@@ -2,8 +2,8 @@
 Title: bulk-extractor
 Homepage: https://github.com/simsong/bulk_extractor
 Repository: https://gitlab.com/kalilinux/packages/bulk-extractor
-Architectures: any
-Version: 2.0.0~beta2-0kali3
+Architectures: amd64 arm64
+Version: 2.0.0-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: images/bulk-extractor-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   histograms of features that it finds, as features that are more
   common tend to be more important.
  
- **Installed size:** `11.76 MB`  
+ **Installed size:** `19.61 MB`  
  **How to install:** `sudo apt install bulk-extractor`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# bulk_extractor -h
- A high-performance flexible digital forensics program.
+ bulk_extractor version 2.0.0: A high-performance flexible digital forensics program.
  Usage:
    bulk_extractor [OPTION...] image_name
  
@@ -50,36 +50,39 @@ PackagesInfo: |
    -D, --debug_help              help on debugging
    -E, --enable_exclusive arg    disable all scanners except the one specified. 
                                  Same as -x all -E scanner.
-   -e, --enable arg              enable a scanner
-   -x, --disable arg             disable a scanner
-   -f, --find arg                search for a pattern
-   -F, --find_file arg           read patterns to search from a file
+   -e, --enable arg              enable a scanner (can be repeated)
+   -x, --disable arg             disable a scanner (can be repeated)
+   -f, --find arg                search for a pattern (can be repeated)
+   -F, --find_file arg           read patterns to search from a file (can be 
+                                 repeated)
    -G, --pagesize arg            page size in bytes (default: 16777216)
-   -g, --marginsize arg          margin size in bytes (default: 16777216)
-   -i, --info                    info mode
-   -j, --threads arg             number of threads (default: 8)
+   -g, --marginsize arg          margin size in bytes (default: 4194304)
+   -j, --threads arg             number of threads (default: 4)
    -J, --no_threads              read and process data in the primary thread
    -M, --max_depth arg           max recursion depth (default: 12)
-   -m, --max_bad_alloc_errors arg
+       --max_bad_alloc_errors arg
                                  max bad allocation errors (default: 3)
        --max_minute_wait arg     maximum number of minutes to wait until all 
                                  data are read (default: 60)
-   -o, --outdir arg              output directory
-   -P, --scanner_dir arg         directories for scanner shared libraries. 
-                                 Multiple directories can be specified. Default 
-                                 directories include 
+       --notify_main_thread      Display notifications in the main thread after 
+                                 phase1 completes. Useful for running with 
+                                 ThreadSanitizer
+       --notify_async            Display notificaitons asynchronously (default)
+   -o, --outdir arg              output directory [REQUIRED]
+   -P, --scanner_dir arg         directories for scanner shared libraries (can 
+                                 be repeated). Default directories include 
                                  /usr/local/lib/bulk_extractor, 
                                  /usr/lib/bulk_extractor and any directories 
                                  specified in the BE_PATH environment variable.
    -p, --path arg                print the value of <path>[:length][/h][/r] with 
                                  optional length, hex output, or raw output.
-   -q, --quit                    no status output
+   -q, --quit                    no status or performance output
    -r, --alert_list arg          file to read alert list from
    -R, --recurse                 treat image file as a directory to recursively 
                                  explore
-   -S, --set arg                 set a name=value option
+   -S, --set arg                 set a name=value option (can be repeated)
    -s, --sampling arg            random sampling parameter frac[:passes]
-   -V, --version                 Display PACKAGE_VERSION (currently) 2.0.0-beta2
+   -V, --version                 Display PACKAGE_VERSION (currently) 2.0.0
    -w, --stop_list arg           file to read stop list from
    -Y, --scan arg                specify <start>[-end] of area on disk to scan
    -z, --page_start arg          specify a starting page number
@@ -117,10 +120,11 @@ PackagesInfo: |
       -S gzip_max_uncompr_size=268435456    maximum size for decompressing GZIP objects
     -x httplogs - disable scanner httplogs
     -x json - disable scanner json
-    -x kml - disable scanner kml
+    -x kml_carved - disable scanner kml_carved
     -x msxml - disable scanner msxml
     -x net - disable scanner net
       -S carve_net_memory=0    Carve network  memory structures
+      -S min_carve_packet_bytes=40    Smallest network packet to carve
     -x ntfsindx - disable scanner ntfsindx
     -x ntfslogfile - disable scanner ntfslogfile
     -x ntfsmft - disable scanner ntfsmft
@@ -133,7 +137,7 @@ PackagesInfo: |
       -S rar_find_volumes=1    Search for RAR volumes
     -x sqlite - disable scanner sqlite
     -x utmp - disable scanner utmp
-    -x vcard - disable scanner vcard
+    -x vcard_carved - disable scanner vcard_carved
     -x windirs - disable scanner windirs
       -S opt_weird_file_size=157286400    Threshold for FAT32 scanner
       -S opt_weird_file_size2=536870912    Threshold for FAT32 scanner

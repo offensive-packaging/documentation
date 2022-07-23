@@ -42,7 +42,7 @@ PackagesInfo: |
  * libfido2-1 
  * libgssapi-krb5-2 
  * libselinux1 
- * libssl1.1 
+ * libssl3 
  * passwd
  * zlib1g 
  {{< /spoiler >}}
@@ -503,7 +503,7 @@ PackagesInfo: |
  * libpam-runtime 
  * libpam0g 
  * libselinux1 
- * libssl1.1 
+ * libssl3 
  * libsystemd0
  * libwrap0 
  * lsb-base 
@@ -523,7 +523,7 @@ PackagesInfo: |
  ```
  root@kali:~# sshd -h
  option requires an argument -- h
- OpenSSH_9.0p1 Debian-1, OpenSSL 1.1.1o  3 May 2022
+ OpenSSH_9.0p1 Debian-1+b1, OpenSSL 3.0.3 3 May 2022
  usage: sshd [-46DdeiqTt] [-C connection_spec] [-c host_cert_file]
              [-E log_file] [-f config_file] [-g login_grace_time]
              [-h host_key_file] [-o option] [-p port] [-u len]
@@ -562,7 +562,7 @@ PackagesInfo: |
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  * openssh-client 
  {{< /spoiler >}}
  
@@ -582,7 +582,7 @@ PackagesInfo: |
  * libc6 
  * libmd0 
  * libselinux1 
- * libssl1.1 
+ * libssl3 
  * openssh-client 
  * openssh-server 
  * openssh-sftp-server 
@@ -621,7 +621,7 @@ PackagesInfo: |
   You probably want the ssh-askpass package instead, but this is
   provided to add to your choice and/or confusion.
  
- **Installed size:** `302 KB`  
+ **Installed size:** `303 KB`  
  **How to install:** `sudo apt install ssh-askpass-gnome`  
  
  {{< spoiler "Dependencies:" >}}

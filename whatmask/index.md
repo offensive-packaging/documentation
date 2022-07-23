@@ -4,7 +4,7 @@ Homepage: http://www.laffeycomputer.com/whatmask.html
 Repository: https://gitlab.com/kalilinux/packages/whatmask
 Architectures: any
 Version: 1.2-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### whatmask

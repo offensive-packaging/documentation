@@ -24,7 +24,7 @@ PackagesInfo: |
    
   OpenOCD supports many different types of JTAG interfaces/programmers.
  
- **Installed size:** `7.92 MB`  
+ **Installed size:** `8.00 MB`  
  **How to install:** `sudo apt install openocd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,7 +34,7 @@ PackagesInfo: |
  * libgpiod2 
  * libhidapi-hidraw0 
  * libjaylink0 
- * libjim0.79 
+ * libjim0.81 
  * libusb-0.1-4 
  * libusb-1.0-0 
  {{< /spoiler >}}

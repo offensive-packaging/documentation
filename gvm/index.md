@@ -122,12 +122,12 @@ PackagesInfo: |
       Active: inactive (dead)
         Docs: man:gvmd(8)
  
- May 12 13:13:56 kali systemd[1]: Starting Greenbone Vulnerability Manager daemon (gvmd)...
- May 12 13:13:56 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
- May 12 13:13:56 kali systemd[1]: Started Greenbone Vulnerability Manager daemon (gvmd).
- May 12 13:14:01 kali systemd[1]: Stopping Greenbone Vulnerability Manager daemon (gvmd)...
- May 12 13:14:01 kali systemd[1]: gvmd.service: Deactivated successfully.
- May 12 13:14:01 kali systemd[1]: Stopped Greenbone Vulnerability Manager daemon (gvmd).
+ Jul 22 11:26:02 kali systemd[1]: Starting Greenbone Vulnerability Manager daemon (gvmd)...
+ Jul 22 11:26:02 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
+ Jul 22 11:26:02 kali systemd[1]: Started Greenbone Vulnerability Manager daemon (gvmd).
+ Jul 22 11:26:07 kali systemd[1]: Stopping Greenbone Vulnerability Manager daemon (gvmd)...
+ Jul 22 11:26:07 kali systemd[1]: gvmd.service: Deactivated successfully.
+ Jul 22 11:26:07 kali systemd[1]: Stopped Greenbone Vulnerability Manager daemon (gvmd).
  
  * ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
       Loaded: loaded (/lib/systemd/system/ospd-openvas.service; disabled; vendor preset: disabled)
@@ -135,11 +135,11 @@ PackagesInfo: |
         Docs: man:ospd-openvas(8)
               man:openvas(8)
  
- May 12 13:13:56 kali systemd[1]: Starting OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- May 12 13:13:56 kali systemd[1]: Started OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
- May 12 13:14:01 kali systemd[1]: Stopping OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- May 12 13:14:01 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
- May 12 13:14:01 kali systemd[1]: Stopped OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ Jul 22 11:26:02 kali systemd[1]: Starting OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ Jul 22 11:26:02 kali systemd[1]: Started OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ Jul 22 11:26:07 kali systemd[1]: Stopping OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ Jul 22 11:26:07 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
+ Jul 22 11:26:07 kali systemd[1]: Stopped OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
  ```
  
  - - -

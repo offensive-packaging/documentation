@@ -3,7 +3,7 @@ Title: king-phisher
 Homepage: https://github.com/securestate/king-phisher
 Repository: https://gitlab.com/kalilinux/packages/king-phisher
 Architectures: all
-Version: 1.15.0+git20200315-0kali5
+Version: 1.15.0+git20220130-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

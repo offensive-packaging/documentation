@@ -3,7 +3,7 @@ Title: freeradius-wpe
 Homepage: https://www.freeradius.org/
 Repository: https://gitlab.com/kalilinux/packages/freeradius-wpe
 Architectures: any
-Version: 3.0.23+dfsg-0kali1
+Version: 3.2.0+dfsg-0kali2
 Metapackages: kali-linux-everything kali-tools-802-11 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
     * EAP-TTLS/MSCHAPv2
     * EAP-MD5
  
- **Installed size:** `4.51 MB`  
+ **Installed size:** `4.57 MB`  
  **How to install:** `sudo apt install freeradius-wpe`  
  
  {{< spoiler "Dependencies:" >}}
@@ -27,13 +27,14 @@ PackagesInfo: |
  * libcrypt1 
  * libct4 
  * libgdbm6 
+ * libjson-c5 
  * libpam0g 
  * libpcap0.8 
  * libpcre3
  * libperl5.34 
- * libpython3.9 
+ * libpython3.10 
  * libsqlite3-0 
- * libssl1.1 
+ * libssl3 
  * libsystemd0
  * libtalloc2 
  * libwbclient0 

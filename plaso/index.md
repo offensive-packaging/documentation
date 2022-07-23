@@ -3,7 +3,7 @@ Title: plaso
 Homepage: https://github.com/log2timeline/plaso
 Repository: https://salsa.debian.org/pkg-security-team/plaso
 Architectures: all
-Version: 20201007-2
+Version: 20211229-0kali1
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -36,7 +36,7 @@ PackagesInfo: |
    
   This package contains a Plaso installation for Python 3.
  
- **Installed size:** `10.01 MB`  
+ **Installed size:** `10.05 MB`  
  **How to install:** `sudo apt install python3-plaso`  
  
  {{< spoiler "Dependencies:" >}}
@@ -44,6 +44,8 @@ PackagesInfo: |
  * python3-artifacts 
  * python3-certifi 
  * python3-cffi-backend 
+ * python3-cffi-backend-api-max 
+ * python3-cffi-backend-api-min 
  * python3-chardet 
  * python3-cryptography 
  * python3-dateutil 
@@ -63,12 +65,15 @@ PackagesInfo: |
  * python3-libevtx 
  * python3-libewf 
  * python3-libfsext 
+ * python3-libfshfs 
  * python3-libfsntfs 
+ * python3-libfsxfs 
  * python3-libfvde 
  * python3-libfwnt 
  * python3-libfwsi 
  * python3-liblnk 
  * python3-libluksde 
+ * python3-libmodi 
  * python3-libmsiecf 
  * python3-libolecf 
  * python3-libqcow 
@@ -79,12 +84,15 @@ PackagesInfo: |
  * python3-libsmraw 
  * python3-libvhdi 
  * python3-libvmdk 
+ * python3-libvsgpt 
  * python3-libvshadow 
  * python3-libvslvm 
  * python3-lz4 
  * python3-pefile 
+ * python3-pip
  * python3-psutil 
  * python3-pyparsing 
+ * python3-pyxattr 
  * python3-redis 
  * python3-requests 
  * python3-six 
@@ -108,13 +116,13 @@ PackagesInfo: |
                         [--process_memory_limit SIZE] [--vfs_back_end TYPE]
                         [--logfile FILENAME] [--partitions PARTITIONS]
                         [--volumes VOLUMES] [--no_vss] [--vss_only]
-                        [--vss_stores VSS_STORES]
+                        [--vss_stores VSS_STORES] [--credential TYPE:DATA]
                         [--artifact_filters ARTIFACT_FILTERS]
                         [--artifact_filters_file PATH]
                         [--date-filter TYPE_START_END] [-f FILE_FILTER]
                         [-x EXTENSIONS] [--names NAMES]
                         [--signatures IDENTIFIERS] [-w PATH]
-                        [--include_duplicates]
+                        [--include_duplicates] [--no_hashes]
                         [IMAGE]
  
  This is a simple collector designed to export files inside an image, both within a regular RAW image as well as inside a VSS. The tool uses a collection filter that uses the same syntax as a targeted plaso filter.
@@ -134,15 +142,17 @@ PackagesInfo: |
                          additional input when needed, but terminate with an
                          error instead.
    --artifact_definitions PATH, --artifact-definitions PATH
-                         Path to a directory containing artifact definitions,
-                         which are .yaml files. Artifact definitions can be
-                         used to describe and quickly collect data of interest,
-                         such as specific files or Windows Registry keys.
+                         Path to a directory or file containing artifact
+                         definitions, which are .yaml files. Artifact
+                         definitions can be used to describe and quickly
+                         collect data of interest, such as specific files or
+                         Windows Registry keys.
    --custom_artifact_definitions PATH, --custom-artifact-definitions PATH
-                         Path to a file containing custom artifact definitions,
-                         which are .yaml files. Artifact definitions can be
-                         used to describe and quickly collect data of interest,
-                         such as specific files or Windows Registry keys.
+                         Path to a directory or file containing custom artifact
+                         definitions, which are .yaml files. Artifact
+                         definitions can be used to describe and quickly
+                         collect data of interest, such as specific files or
+                         Windows Registry keys.
    --data PATH           Path to a directory containing the data files.
    --process_memory_limit SIZE, --process-memory-limit SIZE
                          Maximum amount of memory (data segment) a process is
@@ -154,7 +164,7 @@ PackagesInfo: |
                          limit (--worker_memory_limit).
    --vfs_back_end TYPE, --vfs-back-end TYPE
                          The preferred dfVFS back-end: "auto", "fsext",
-                         "fsntfs" or "tsk".
+                         "fshfs", "fsntfs", "tsk" or "vsgpt".
    --logfile FILENAME, --log_file FILENAME, --log-file FILENAME
                          Path of the file in which to store log messages, by
                          default this file will be named: "image_export-
@@ -186,6 +196,16 @@ PackagesInfo: |
                          (a list of comma separated values). Ranges and lists
                          can also be combined as: "1,3..5". The first store is
                          1. All stores can be defined as: "all".
+   --credential TYPE:DATA
+                         Define a credentials that can be used to unlock
+                         encrypted volumes e.g. BitLocker. The credential is
+                         defined as type:data e.g. "password:BDE-test".
+                         Supported credential types are: key_data, password,
+                         recovery_password, startup_key. Binary key data is
+                         expected to be passed in BASE-16 encoding
+                         (hexadecimal). WARNING credentials passed via command
+                         line arguments can end up in logs, so use this option
+                         with care.
    --artifact_filters ARTIFACT_FILTERS, --artifact-filters ARTIFACT_FILTERS
                          Names of forensic artifact definitions, provided on
                          the command command line (comma separated). Forensic
@@ -220,8 +240,8 @@ PackagesInfo: |
                          formatted as: YYYY-MM-DD hh:mm:ss.######[+-]##:##
                          Where # are numeric digits ranging from 0 to 9 and the
                          seconds fraction can be either 3 or 6 digits. The time
-                         of day, seconds fraction and timezone offset are
-                         optional. The default timezone is UTC. E.g. "atime,
+                         of day, seconds fraction and time zone offset are
+                         optional. The default time zone is UTC. E.g. "atime,
                          2013-01-01 23:12:14, 2013-02-23". This parameter can
                          be repeated as needed to add additional date
                          boundaries, e.g. once for atime, once for crtime, etc.
@@ -246,11 +266,14 @@ PackagesInfo: |
    -w PATH, --write PATH
                          The directory in which extracted files should be
                          stored.
-   --include_duplicates  By default a digest hash (SHA-256) is calculated for
+   --include_duplicates, --include-duplicates
+                         By default a digest hash (SHA-256) is calculated for
                          each file (data stream). These hashes are compared to
                          the previously exported files and duplicates are
                          skipped. Use this option to include duplicate files in
                          the export.
+   --no_hashes, --no-hashes
+                         Do not generate the hashes.json file
  
  And that is how you export files, plaso style.
  ```
@@ -271,8 +294,9 @@ PackagesInfo: |
                         [--hashers HASHER_LIST]
                         [--parsers PARSER_FILTER_EXPRESSION]
                         [--yara_rules PATH] [--partitions PARTITIONS]
-                        [--volumes VOLUMES] [-z TIME_ZONE] [--no_vss]
-                        [--vss_only] [--vss_stores VSS_STORES]
+                        [--volumes VOLUMES] [--language LANGUAGE_TAG]
+                        [--no_extract_winevt_resources] [-z TIME_ZONE]
+                        [--no_vss] [--vss_only] [--vss_stores VSS_STORES]
                         [--credential TYPE:DATA] [-d] [-q] [-u] [--info]
                         [--use_markdown] [--no_dependencies_check]
                         [--logfile FILENAME] [--status_view TYPE] [-t TEXT]
@@ -284,9 +308,9 @@ PackagesInfo: |
                         [--profilers PROFILERS_LIST]
                         [--profiling_directory DIRECTORY]
                         [--profiling_sample_rate SAMPLE_RATE]
-                        [--storage_format FORMAT]
+                        [--storage_file PATH] [--storage_format FORMAT]
                         [--task_storage_format FORMAT]
-                        [STORAGE_FILE] [SOURCE]
+                        [SOURCE]
  
  log2timeline is a command line tool to extract events from individual 
  files, recursing a directory (e.g. mount point) or storage media 
@@ -296,7 +320,6 @@ PackagesInfo: |
      https://plaso.readthedocs.io/en/latest/sources/user/Using-log2timeline.html
  
  positional arguments:
-   STORAGE_FILE          Path to a storage file.
    SOURCE                Path to a source device, file or directory. If the
                          source is a supported storage media device or image
                          file, archive file or a directory, the files within
@@ -309,15 +332,17 @@ PackagesInfo: |
  
  data location arguments:
    --artifact_definitions PATH, --artifact-definitions PATH
-                         Path to a directory containing artifact definitions,
-                         which are .yaml files. Artifact definitions can be
-                         used to describe and quickly collect data of interest,
-                         such as specific files or Windows Registry keys.
+                         Path to a directory or file containing artifact
+                         definitions, which are .yaml files. Artifact
+                         definitions can be used to describe and quickly
+                         collect data of interest, such as specific files or
+                         Windows Registry keys.
    --custom_artifact_definitions PATH, --custom-artifact-definitions PATH
-                         Path to a file containing custom artifact definitions,
-                         which are .yaml files. Artifact definitions can be
-                         used to describe and quickly collect data of interest,
-                         such as specific files or Windows Registry keys.
+                         Path to a directory or file containing custom artifact
+                         definitions, which are .yaml files. Artifact
+                         definitions can be used to describe and quickly
+                         collect data of interest, such as specific files or
+                         Windows Registry keys.
    --data PATH           Path to a directory containing the data files.
  
  extraction arguments:
@@ -397,6 +422,19 @@ PackagesInfo: |
                          as: "1,3,5" (a list of comma separated values). Ranges
                          and lists can also be combined as: "1,3..5". The first
                          volume is 1. All volumes can be specified with: "all".
+   --language LANGUAGE_TAG
+                         The preferred language, which is used for extracting
+                         and formatting Windows EventLog message strings. Use "
+                         --language list" to see a list of supported language
+                         tags. The en-US (LCID 0x0409) language is used as
+                         fallback if preprocessing could not determine the
+                         system language or no language information is
+                         available in the winevt-rc.db database.
+   --no_extract_winevt_resources, --no-extract-winevt-resources
+                         Do not extract Windows EventLog resources such as
+                         event message template strings. By default Windows
+                         EventLog resources will be extracted when a Windows
+                         EventLog parser is enabled.
    -z TIME_ZONE, --zone TIME_ZONE, --timezone TIME_ZONE
                          preferred time zone of extracted date and time values
                          that are stored without a time zone indicator. The
@@ -476,7 +514,7 @@ PackagesInfo: |
                          temporary files created during processing.
    --vfs_back_end TYPE, --vfs-back-end TYPE
                          The preferred dfVFS back-end: "auto", "fsext",
-                         "fsntfs" or "tsk".
+                         "fshfs", "fsntfs", "tsk" or "vsgpt".
    --worker_memory_limit SIZE, --worker-memory-limit SIZE
                          Maximum amount of memory (data segment and shared
                          memory) a worker process is allowed to consume in
@@ -514,6 +552,9 @@ PackagesInfo: |
                          files).
  
  storage arguments:
+   --storage_file PATH, --storage-file PATH
+                         The path of the storage file. If not specified, one
+                         will be made in the form <timestamp>-<source>.plaso
    --storage_format FORMAT, --storage-format FORMAT
                          Format of the storage file, the default is: sqlite.
                          Supported options: sqlite
@@ -528,7 +569,7 @@ PackagesInfo: |
  
  Instead of answering questions, indicate some of the options on the
  command line (including data from particular VSS stores).
-     log2timeline.py -o 63 --vss_stores 1,2 /cases/plaso_vss.plaso image.E01
+     log2timeline.py --vss_stores 1,2 /cases/plaso_vss.plaso image.E01
  
  And that is how you build a timeline using log2timeline...
  ```
@@ -542,13 +583,14 @@ PackagesInfo: |
  root@kali:~# pinfo.py -h
  usage: pinfo.py [-h] [--troubles] [-V] [--process_memory_limit SIZE]
                  [--compare STORAGE_FILE] [--output_format FORMAT]
-                 [--sections SECTIONS_LIST] [-v] [-w OUTPUTFILE]
-                 [STORAGE_FILE]
+                 [--hash TYPE] [--report TYPE] [--sections SECTIONS_LIST] [-v]
+                 [-w OUTPUTFILE]
+                 [PATH]
  
  Shows information about a Plaso storage file, for example how it was collected, what information was extracted from a source, etc.
  
  positional arguments:
-   STORAGE_FILE          Path to a storage file.
+   PATH                  Path to a storage file.
  
  options:
    -h, --help            Show this help message and exit.
@@ -566,7 +608,13 @@ PackagesInfo: |
                          The path of the storage file to compare against.
    --output_format FORMAT, --output-format FORMAT
                          Format of the output, the default is: text. Supported
-                         options: json, text.
+                         options: json, markdown, text.
+   --hash TYPE           Type of hash to output in file_hashes report.
+                         Supported options: md5, sha1, sha256
+   --report TYPE         Report on specific information. Supported options:
+                         browser_search, chrome_extension,
+                         environment_variables, file_hashes, list, none,
+                         windows_services, winevt_providers
    --sections SECTIONS_LIST
                          List of sections to output. This is a comma separated
                          list where each entry is the name of a section. Use "
@@ -590,17 +638,17 @@ PackagesInfo: |
                  [--worker_timeout MINUTES] [--logfile FILENAME] [-d] [-q] [-u]
                  [--status_view TYPE] [--slice DATE_TIME]
                  [--slice_size SLICE_SIZE] [--slicer] [--data PATH] [-a]
-                 [--language LANGUAGE] [--output_time_zone TIME_ZONE]
-                 [-o FORMAT] [-w OUTPUT_FILE] [--fields FIELDS]
-                 [--additional_fields ADDITIONAL_FIELDS]
+                 [--language LANGUAGE_TAG] [--dynamic_time]
+                 [--output_time_zone TIME_ZONE] [-o FORMAT] [-w OUTPUT_FILE]
+                 [--fields FIELDS] [--additional_fields ADDITIONAL_FIELDS]
                  [--profilers PROFILERS_LIST] [--profiling_directory DIRECTORY]
                  [--profiling_sample_rate SAMPLE_RATE]
-                 [STORAGE_FILE] [FILTER]
+                 [PATH] [FILTER]
  
- Application to read, filter and process output from a plaso storage file.
+ Application to read, filter and process output from a Plaso storage file.
  
  positional arguments:
-   STORAGE_FILE          Path to a storage file.
+   PATH                  Path to a storage file.
  
  options:
    -h, --help            Show this help message and exit.
@@ -687,12 +735,16 @@ PackagesInfo: |
                          By default the psort removes duplicate entries from
                          the output. This parameter changes that behavior so
                          all events are included.
-   --language LANGUAGE   The preferred language identifier for Windows Event
-                         Log message strings. Use "--language list" to see a
-                         list of available language identifiers. Note that
-                         formatting will fall back on en-US (LCID 0x0409) if
-                         the preferred language is not available in the
-                         database of message string templates.
+   --language LANGUAGE_TAG
+                         The preferred language, which is used for extracting
+                         and formatting Windows EventLog message strings. Use "
+                         --language list" to see a list of supported language
+                         tags. The en-US (LCID 0x0409) language is used as
+                         fallback if preprocessing could not determine the
+                         system language or no language information is
+                         available in the winevt-rc.db database.
+   --dynamic_time, --dynamic-time
+                         Indicate that the output should use dynamic time.
    --output_time_zone TIME_ZONE, --output-time-zone TIME_ZONE
                          time zone of date and time values written to the
                          output, if supported by the output format. Output
@@ -706,7 +758,7 @@ PackagesInfo: |
    -w OUTPUT_FILE, --write OUTPUT_FILE
                          Output filename.
    --fields FIELDS       Defines which fields should be included in the output.
-   --additional_fields ADDITIONAL_FIELDS
+   --additional_fields ADDITIONAL_FIELDS, --additional-fields ADDITIONAL_FIELDS
                          Defines extra fields to be included in the output, in
                          addition to the default fields, which are datetime,
                          timestamp_desc, source, source_long, message, parser,
@@ -740,10 +792,12 @@ PackagesInfo: |
                   [--skip_compressed_streams] [--hasher_file_size_limit SIZE]
                   [--hashers HASHER_LIST] [--parsers PARSER_FILTER_EXPRESSION]
                   [--storage_file PATH] [--partitions PARTITIONS]
-                  [--volumes VOLUMES] [-z TIME_ZONE] [--no_vss] [--vss_only]
-                  [--vss_stores VSS_STORES] [--credential TYPE:DATA] [-d] [-q]
-                  [-u] [--no_dependencies_check] [--status_view TYPE]
-                  [--source SOURCE] [--language LANGUAGE]
+                  [--volumes VOLUMES] [--language LANGUAGE_TAG]
+                  [--no_extract_winevt_resources] [-z TIME_ZONE] [--no_vss]
+                  [--vss_only] [--vss_stores VSS_STORES]
+                  [--credential TYPE:DATA] [-d] [-q] [-u]
+                  [--no_dependencies_check] [--status_view TYPE]
+                  [--source SOURCE] [--dynamic_time]
                   [--output_time_zone TIME_ZONE] [-o FORMAT] [-w OUTPUT_FILE]
                   [--fields FIELDS] [--additional_fields ADDITIONAL_FIELDS]
                   [--buffer_size BUFFER_SIZE] [--queue_size QUEUE_SIZE]
@@ -768,15 +822,17 @@ PackagesInfo: |
  
  data location arguments:
    --artifact_definitions PATH, --artifact-definitions PATH
-                         Path to a directory containing artifact definitions,
-                         which are .yaml files. Artifact definitions can be
-                         used to describe and quickly collect data of interest,
-                         such as specific files or Windows Registry keys.
+                         Path to a directory or file containing artifact
+                         definitions, which are .yaml files. Artifact
+                         definitions can be used to describe and quickly
+                         collect data of interest, such as specific files or
+                         Windows Registry keys.
    --custom_artifact_definitions PATH, --custom-artifact-definitions PATH
-                         Path to a file containing custom artifact definitions,
-                         which are .yaml files. Artifact definitions can be
-                         used to describe and quickly collect data of interest,
-                         such as specific files or Windows Registry keys.
+                         Path to a directory or file containing custom artifact
+                         definitions, which are .yaml files. Artifact
+                         definitions can be used to describe and quickly
+                         collect data of interest, such as specific files or
+                         Windows Registry keys.
    --data PATH           Path to a directory containing the data files.
  
  extraction arguments:
@@ -831,6 +887,19 @@ PackagesInfo: |
                          as: "1,3,5" (a list of comma separated values). Ranges
                          and lists can also be combined as: "1,3..5". The first
                          volume is 1. All volumes can be specified with: "all".
+   --language LANGUAGE_TAG
+                         The preferred language, which is used for extracting
+                         and formatting Windows EventLog message strings. Use "
+                         --language list" to see a list of supported language
+                         tags. The en-US (LCID 0x0409) language is used as
+                         fallback if preprocessing could not determine the
+                         system language or no language information is
+                         available in the winevt-rc.db database.
+   --no_extract_winevt_resources, --no-extract-winevt-resources
+                         Do not extract Windows EventLog resources such as
+                         event message template strings. By default Windows
+                         EventLog resources will be extracted when a Windows
+                         EventLog parser is enabled.
    -z TIME_ZONE, --zone TIME_ZONE, --timezone TIME_ZONE
                          preferred time zone of extracted date and time values
                          that are stored without a time zone indicator. The
@@ -877,12 +946,8 @@ PackagesInfo: |
    --source SOURCE       The source to process
  
  output arguments:
-   --language LANGUAGE   The preferred language identifier for Windows Event
-                         Log message strings. Use "--language list" to see a
-                         list of available language identifiers. Note that
-                         formatting will fall back on en-US (LCID 0x0409) if
-                         the preferred language is not available in the
-                         database of message string templates.
+   --dynamic_time, --dynamic-time
+                         Indicate that the output should use dynamic time.
    --output_time_zone TIME_ZONE, --output-time-zone TIME_ZONE
                          time zone of date and time values written to the
                          output, if supported by the output format. Output
@@ -896,7 +961,7 @@ PackagesInfo: |
    -w OUTPUT_FILE, --write OUTPUT_FILE
                          Output filename.
    --fields FIELDS       Defines which fields should be included in the output.
-   --additional_fields ADDITIONAL_FIELDS
+   --additional_fields ADDITIONAL_FIELDS, --additional-fields ADDITIONAL_FIELDS
                          Defines extra fields to be included in the output, in
                          addition to the default fields, which are datetime,
                          timestamp_desc, source, source_long, message, parser,
@@ -923,7 +988,7 @@ PackagesInfo: |
                          temporary files created during processing.
    --vfs_back_end TYPE, --vfs-back-end TYPE
                          The preferred dfVFS back-end: "auto", "fsext",
-                         "fsntfs" or "tsk".
+                         "fshfs", "fsntfs", "tsk" or "vsgpt".
    --worker_memory_limit SIZE, --worker-memory-limit SIZE
                          Maximum amount of memory (data segment and shared
                          memory) a worker process is allowed to consume in

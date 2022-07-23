@@ -23,7 +23,7 @@ PackagesInfo: |
   SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2),
   Telnet, VMware-Auth, VNC and XMPP.
  
- **Installed size:** `954 KB`  
+ **Installed size:** `955 KB`  
  **How to install:** `sudo apt install hydra`  
  
  {{< spoiler "Dependencies:" >}}
@@ -40,7 +40,7 @@ PackagesInfo: |
  * libpcre2-8-0 
  * libpq5
  * libssh-4 
- * libssl1.1 
+ * libssl3 
  * libsvn1 
  * libtinfo6 
  * libwinpr2-2 
@@ -238,7 +238,7 @@ PackagesInfo: |
    
   This package provides the GTK+ based GUI for hydra.
  
- **Installed size:** `110 KB`  
+ **Installed size:** `111 KB`  
  **How to install:** `sudo apt install hydra-gtk`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: proxychains-ng
 Homepage: https://github.com/rofl0r/proxychains-ng
 Repository: https://salsa.debian.org/debian/proxychains-ng
 Architectures: any
-Version: 4.16-1
+Version: 4.16-2
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
   This package provides the runtime shared library used by proxychains-ng
   program.
  
- **Installed size:** `67 KB`  
+ **Installed size:** `63 KB`  
  **How to install:** `sudo apt install libproxychains4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -40,7 +40,7 @@ PackagesInfo: |
   This project, proxychains-ng, is the continuation of the unmaintained
   proxychains project (known as proxychains package in Debian).
  
- **Installed size:** `75 KB`  
+ **Installed size:** `67 KB`  
  **How to install:** `sudo apt install proxychains4`  
  
  {{< spoiler "Dependencies:" >}}

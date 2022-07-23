@@ -3,7 +3,7 @@ Title: spiderfoot
 Homepage: https://www.spiderfoot.net
 Repository: https://gitlab.com/kalilinux/packages/spiderfoot
 Architectures: all
-Version: 4.0-0kali1
+Version: 4.0-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/spiderfoot-logo.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   information you or your organisation are freely providing for attackers to use
   against you.
  
- **Installed size:** `13.66 MB`  
+ **Installed size:** `13.73 MB`  
  **How to install:** `sudo apt install spiderfoot`  
  
  {{< spoiler "Dependencies:" >}}

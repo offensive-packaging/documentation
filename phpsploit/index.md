@@ -3,8 +3,8 @@ Title: phpsploit
 Homepage: https://github.com/nil0x42/phpsploit
 Repository: https://gitlab.com/kalilinux/packages/phpsploit
 Architectures: all
-Version: 3.2+git20210508-0kali1
-Metapackages: 
+Version: 3.2+git20220526.7dabcad-0kali1
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### phpsploit

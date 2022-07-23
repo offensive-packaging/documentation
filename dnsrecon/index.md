@@ -3,7 +3,7 @@ Title: dnsrecon
 Homepage: https://github.com/darkoperator/dnsrecon
 Repository: https://salsa.debian.org/pkg-security-team/dnsrecon
 Architectures: all
-Version: 1.1.0-2
+Version: 1.1.1-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering 
 Icon: images/dnsrecon-logo.svg
 PackagesInfo: |

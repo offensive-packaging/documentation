@@ -13,13 +13,13 @@ PackagesInfo: |
   hybrid and indexed tables. In addition to that, it also
   adds multi-core support
  
- **Installed size:** `394 KB`  
+ **Installed size:** `395 KB`  
  **How to install:** `sudo apt install rcracki-mt`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  {{< /spoiler >}}
  

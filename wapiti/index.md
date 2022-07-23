@@ -54,9 +54,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# wapiti -h
- Unable to correctly determine your language settings. Using english as default.
- Please check your locale settings for internationalization features.
- ===============================================================
  
       __    __            _ _   _ _____
      / / /\ \ \__ _ _ __ (_) |_(_)___ /
@@ -175,9 +172,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# wapiti-getcookie -h
- Unable to correctly determine your language settings. Using english as default.
- Please check your locale settings for internationalization features.
- ===============================================================
  usage: wapiti-getcookie [-h] -u URL -c COOKIE [-p PROXY] [--tor]
                          [-a CREDENTIALS]
                          [--auth-type {basic,digest,kerberos,ntlm}] [-d DATA]

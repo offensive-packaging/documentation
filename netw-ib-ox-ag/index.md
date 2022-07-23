@@ -3,7 +3,7 @@ Title: netw-ib-ox-ag
 Homepage: http://ntwox.sourceforge.net/
 Repository: 
 Architectures: any all
-Version: 5.39.0-1.4
+Version: 5.39.0-1.5
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -82,7 +82,7 @@ PackagesInfo: |
   Those tools can be used to quickly spot a problem in a complex network.
   They are oriented towards network administrators and security auditors.
  
- **Installed size:** `1.98 MB`  
+ **Installed size:** `1.97 MB`  
  **How to install:** `sudo apt install netwox`  
  
  {{< spoiler "Dependencies:" >}}
