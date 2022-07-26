@@ -38,12 +38,12 @@ PackagesInfo: |
                [--json_out JSON_FILE] [--targets_in TARGET_FILE] [--quiet]
                [--slow_connection] [--https_tunnel PROXY_SETTINGS]
                [--starttls PROTOCOL] [--xmpp_to HOSTNAME]
-               [--sni SERVER_NAME_INDICATION] [--certinfo]
-               [--certinfo_ca_file CERTINFO_CA_FILE] [--sslv3] [--compression]
-               [--resum] [--resum_attempts RESUM_ATTEMPTS] [--elliptic_curves]
-               [--sslv2] [--robot] [--fallback] [--http_headers] [--early_data]
-               [--tlsv1_1] [--openssl_ccs] [--tlsv1_2] [--heartbleed] [--reneg]
-               [--tlsv1_3] [--tlsv1]
+               [--sni SERVER_NAME_INDICATION] [--sslv2] [--early_data]
+               [--openssl_ccs] [--tlsv1] [--sslv3] [--reneg] [--tlsv1_3]
+               [--compression] [--tlsv1_2] [--heartbleed] [--resum]
+               [--resum_attempts RESUM_ATTEMPTS] [--elliptic_curves] [--robot]
+               [--fallback] [--http_headers] [--tlsv1_1] [--certinfo]
+               [--certinfo_ca_file CERTINFO_CA_FILE]
                [--mozilla_config {modern,intermediate,old,disable}]
                [target ...]
  
@@ -121,15 +121,20 @@ PackagesInfo: |
                          connect to. Will only affect TLS 1.0+ connections.
  
  Scan commands:
-   --certinfo            Retrieve and analyze a server's certificate(s) to
-                         verify its validity.
-   --certinfo_ca_file CERTINFO_CA_FILE
-                         To be used with --certinfo. Path to a file containing
-                         root certificates in PEM format that will be used to
-                         verify the validity of the server's certificate.
+   --sslv2               Test a server for SSL 2.0 support.
+   --early_data          Test a server for TLS 1.3 early data support.
+   --openssl_ccs         Test a server for the OpenSSL CCS Injection
+                         vulnerability (CVE-2014-0224).
+   --tlsv1               Test a server for TLS 1.0 support.
    --sslv3               Test a server for SSL 3.0 support.
+   --reneg               Test a server for for insecure TLS renegotiation and
+                         client-initiated renegotiation.
+   --tlsv1_3             Test a server for TLS 1.3 support.
    --compression         Test a server for TLS compression support, which can
                          be leveraged to perform a CRIME attack.
+   --tlsv1_2             Test a server for TLS 1.2 support.
+   --heartbleed          Test a server for the OpenSSL Heartbleed
+                         vulnerability.
    --resum               Test a server for TLS 1.2 session resumption support
                          using session IDs and TLS tickets.
    --resum_attempts RESUM_ATTEMPTS
@@ -140,23 +145,18 @@ PackagesInfo: |
                          measure of how often session resumption succeeds or
                          fails with the server.
    --elliptic_curves     Test a server for supported elliptic curves.
-   --sslv2               Test a server for SSL 2.0 support.
    --robot               Test a server for the ROBOT vulnerability.
    --fallback            Test a server for the TLS_FALLBACK_SCSV mechanism to
                          prevent downgrade attacks.
    --http_headers        Test a server for the presence of security-related
                          HTTP headers.
-   --early_data          Test a server for TLS 1.3 early data support.
    --tlsv1_1             Test a server for TLS 1.1 support.
-   --openssl_ccs         Test a server for the OpenSSL CCS Injection
-                         vulnerability (CVE-2014-0224).
-   --tlsv1_2             Test a server for TLS 1.2 support.
-   --heartbleed          Test a server for the OpenSSL Heartbleed
-                         vulnerability.
-   --reneg               Test a server for for insecure TLS renegotiation and
-                         client-initiated renegotiation.
-   --tlsv1_3             Test a server for TLS 1.3 support.
-   --tlsv1               Test a server for TLS 1.0 support.
+   --certinfo            Retrieve and analyze a server's certificate(s) to
+                         verify its validity.
+   --certinfo_ca_file CERTINFO_CA_FILE
+                         To be used with --certinfo. Path to a file containing
+                         root certificates in PEM format that will be used to
+                         verify the validity of the server's certificate.
  ```
  
  - - -

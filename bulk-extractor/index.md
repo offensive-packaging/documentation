@@ -57,7 +57,7 @@ PackagesInfo: |
                                  repeated)
    -G, --pagesize arg            page size in bytes (default: 16777216)
    -g, --marginsize arg          margin size in bytes (default: 4194304)
-   -j, --threads arg             number of threads (default: 4)
+   -j, --threads arg             number of threads (default: 8)
    -J, --no_threads              read and process data in the primary thread
    -M, --max_depth arg           max recursion depth (default: 12)
        --max_bad_alloc_errors arg

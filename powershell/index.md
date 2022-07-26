@@ -3,7 +3,7 @@ Title: powershell
 Homepage: https://microsoft.com/powershell
 Repository: 
 Architectures: amd64
-Version: 7.1.3-1.debian.10
+Version: 7.2.4-1.deb
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/powershell-logo.svg
 PackagesInfo: |

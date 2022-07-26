@@ -1955,7 +1955,7 @@ PackagesInfo: |
  Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
  
  usage: smbrelayx.py [--help] [-ts] [-debug] [-h HOST]
-                     [-s {success,denied,logon_failure}] [-e FILE] [-c COMMAND]
+                     [-s {logon_failure,success,denied}] [-e FILE] [-c COMMAND]
                      [-socks] [-one-shot] [-codec CODEC]
                      [-outputfile OUTPUTFILE]
                      [-machine-account MACHINE_ACCOUNT]
@@ -1970,7 +1970,7 @@ PackagesInfo: |
    -debug                Turn DEBUG output ON
    -h HOST               Host to relay the credentials to, if not it will relay
                          it back to the client
-   -s {success,denied,logon_failure}
+   -s {logon_failure,success,denied}
                          Status to return after client performed
                          authentication. Default: "success".
    -e FILE               File to execute on the target system. If not

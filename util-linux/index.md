@@ -99,6 +99,7 @@ PackagesInfo: |
  ##### column
  
  Columnate lists
+ Spreadsheet::WriteExcel::Chart::A writer class for Excel Column charts.
  
  ```
  root@kali:~# column -h
@@ -3588,7 +3589,7 @@ PackagesInfo: |
  
  Options:
   -m, --mapfile <mapfile>   (defaults: "/boot/System.map" and
-                                       "/boot/System.map-5.16.0-kali7-amd64")
+                                       "/boot/System.map-5.18.0-kali5-amd64")
   -p, --profile <pro-file>  (default:  "/proc/profile")
   -M, --multiplier <mult>   set the profiling multiplier to <mult>
   -i, --info                print only info about the sampling step

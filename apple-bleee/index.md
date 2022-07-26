@@ -42,7 +42,6 @@ PackagesInfo: |
  > apple-bleee ~ scripts to show what an attacker get from Apple devices
  
  /usr/share/apple-bleee
- |-- __pycache__
  |-- adv_airpods.py
  |-- adv_wifi.py
  |-- airdrop_leak.py

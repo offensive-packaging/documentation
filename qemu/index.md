@@ -3,32 +3,10 @@ Title: qemu
 Homepage: http://www.qemu.org/
 Repository: https://salsa.debian.org/qemu-team/qemu
 Architectures: any all
-Version: 1:7.0+dfsg-1
+Version: 1:7.0+dfsg-7
 Metapackages: kali-linux-everything kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
- ### qemu
- 
-  QEMU is a fast processor emulator. Once upon a time there was only one
-  package named `qemu', with all functionality included. These days, qemu
-  become large and has been split into numerous packages. Different packages
-  provides entirely different services, and it is very unlikely one will
-  need all of them together. So current `qemu' package makes no sense anymore,
-  and is becoming a dummy package.
-   
-  If you want full system emulation of some architecture, install one or more
-  of qemu-system-ARCH packages. If you want user-mode emulation, install
-  qemu-user or qemu-user-static package. If you need utilities, use qemu-utils
-  package.
-   
-  This package can safely be removed.
- 
- **Installed size:** `100 KB`  
- **How to install:** `sudo apt install qemu`  
- 
- 
- - - -
- 
  ### qemu-block-extra
  
   QEMU is a fast processor emulator: currently the package supports
@@ -79,7 +57,7 @@ PackagesInfo: |
   Install this package on a system which is running as guest inside
   qemu virtual machine.  It is not used on the host.
  
- **Installed size:** `772 KB`  
+ **Installed size:** `773 KB`  
  **How to install:** `sudo apt install qemu-guest-agent`  
  
  {{< spoiler "Dependencies:" >}}
@@ -98,7 +76,7 @@ PackagesInfo: |
  ```
  root@kali:~# qemu-ga -h
  Usage: qemu-ga [-m <method> -p <path>] [<options>]
- QEMU Guest Agent 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU Guest Agent 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  
    -m, --method      transport method: one of unix-listen, virtio-serial,
@@ -151,7 +129,7 @@ PackagesInfo: |
   targets, by depending on all per-architecture system emulation packages which
   QEMU supports.
  
- **Installed size:** `101 KB`  
+ **Installed size:** `103 KB`  
  **How to install:** `sudo apt install qemu-system`  
  
  {{< spoiler "Dependencies:" >}}
@@ -220,7 +198,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-aarch64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-aarch64 [options] [disk_image]
  
@@ -769,7 +747,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-arm -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-arm [options] [disk_image]
  
@@ -1322,7 +1300,7 @@ PackagesInfo: |
   This package provides common files needed for target-specific
   full system emulation (qemu-system-*) packages.
  
- **Installed size:** `9.16 MB`  
+ **Installed size:** `9.17 MB`  
  **How to install:** `sudo apt install qemu-system-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1471,7 +1449,7 @@ PackagesInfo: |
   The default GTK based qemu-system-gui is generally better and recommended,
   but a few corner cases still need SDL which is therefore provided as well.
  
- **Installed size:** `761 KB`  
+ **Installed size:** `763 KB`  
  **How to install:** `sudo apt install qemu-system-gui`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1550,7 +1528,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips [options] [disk_image]
  
@@ -2072,7 +2050,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips64 [options] [disk_image]
  
@@ -2594,7 +2572,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips64el -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips64el [options] [disk_image]
  
@@ -3116,7 +3094,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mipsel -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mipsel [options] [disk_image]
  
@@ -3689,7 +3667,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-alpha -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-alpha [options] [disk_image]
  
@@ -4208,7 +4186,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-avr -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-avr [options] [disk_image]
  
@@ -4727,7 +4705,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-cris -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-cris [options] [disk_image]
  
@@ -5246,7 +5224,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-hppa -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-hppa [options] [disk_image]
  
@@ -5765,7 +5743,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-m68k -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-m68k [options] [disk_image]
  
@@ -6288,7 +6266,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-microblaze -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-microblaze [options] [disk_image]
  
@@ -6807,7 +6785,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-microblazeel -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-microblazeel [options] [disk_image]
  
@@ -7326,7 +7304,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-nios2 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-nios2 [options] [disk_image]
  
@@ -7848,7 +7826,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-or1k -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-or1k [options] [disk_image]
  
@@ -8367,7 +8345,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-riscv32 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-riscv32 [options] [disk_image]
  
@@ -8889,7 +8867,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-riscv64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-riscv64 [options] [disk_image]
  
@@ -9411,7 +9389,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-rx -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-rx [options] [disk_image]
  
@@ -9930,7 +9908,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-s390x -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-s390x [options] [disk_image]
  
@@ -10449,7 +10427,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sh4 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sh4 [options] [disk_image]
  
@@ -10968,7 +10946,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sh4eb -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sh4eb [options] [disk_image]
  
@@ -11487,7 +11465,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-tricore -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-tricore [options] [disk_image]
  
@@ -12006,7 +11984,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-xtensa -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-xtensa [options] [disk_image]
  
@@ -12528,7 +12506,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-xtensaeb -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-xtensaeb [options] [disk_image]
  
@@ -13097,7 +13075,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc [options] [disk_image]
  
@@ -13619,7 +13597,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc64 [options] [disk_image]
  
@@ -14141,7 +14119,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc64le -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc64le [options] [disk_image]
  
@@ -14710,7 +14688,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sparc -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sparc [options] [disk_image]
  
@@ -15232,7 +15210,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sparc64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sparc64 [options] [disk_image]
  
@@ -15765,7 +15743,7 @@ PackagesInfo: |
   On x86 host hardware this package also enables KVM kernel virtual machine
   usage on systems which supports it.
  
- **Installed size:** `36.98 MB`  
+ **Installed size:** `36.57 MB`  
  **How to install:** `sudo apt install qemu-system-x86`  
  
  {{< spoiler "Dependencies:" >}}
@@ -15793,13 +15771,6 @@ PackagesInfo: |
  * libudev1 
  * liburing2 
  * libvdeplug2 
- * libxendevicemodel1
- * libxenevtchn1
- * libxenforeignmemory1
- * libxengnttab1
- * libxenmisc4.16
- * libxenstore4 
- * libxentoolcore1
  * libzstd1 
  * qemu-system-common 
  * qemu-system-data 
@@ -15813,7 +15784,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# kvm -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: kvm [options] [disk_image]
  
@@ -16365,7 +16336,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-i386 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-i386 [options] [disk_image]
  
@@ -16917,7 +16888,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-x86_64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-x86_64 [options] [disk_image]
  
@@ -17469,7 +17440,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-x86_64-microvm -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-1)
+ QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-x86_64-microvm [options] [disk_image]
  
@@ -17950,7 +17921,7 @@ PackagesInfo: |
   together with the Xen hypervisor for some types of DomUs.
   This package is not useful by its own.
  
- **Installed size:** `11.73 MB`  
+ **Installed size:** `11.78 MB`  
  **How to install:** `sudo apt install qemu-system-xen`  
  
  {{< spoiler "Dependencies:" >}}
@@ -17994,7 +17965,7 @@ PackagesInfo: |
   possible to use qemu-user-static package instead of qemu-user-binmft, --
   qemu-user-static will register statically linked binfmt handlers instead.
  
- **Installed size:** `106.17 MB`  
+ **Installed size:** `106.18 MB`  
  **How to install:** `sudo apt install qemu-user`  
  
  {{< spoiler "Dependencies:" >}}
@@ -19994,12 +19965,12 @@ PackagesInfo: |
   not contain any additional files, only registration scripts which run
   at install and remove times.
  
- **Installed size:** `68 KB`  
+ **Installed size:** `98 KB`  
  **How to install:** `sudo apt install qemu-user-binfmt`  
  
  {{< spoiler "Dependencies:" >}}
- * binfmt-support
  * qemu-user 
+ * systemd | binfmt-support
  {{< /spoiler >}}
  
  
@@ -20020,7 +19991,7 @@ PackagesInfo: |
   emulators can handle, so that it will be possible to run foreign binaries
   directly.
  
- **Installed size:** `294.73 MB`  
+ **Installed size:** `294.77 MB`  
  **How to install:** `sudo apt install qemu-user-static`  
  
  ##### qemu-aarch64-static
@@ -22007,7 +21978,7 @@ PackagesInfo: |
    * qemu-io:  QEMU disk exerciser
    * qemu-nbd: QEMU disk network block device server
  
- **Installed size:** `6.52 MB`  
+ **Installed size:** `6.53 MB`  
  **How to install:** `sudo apt install qemu-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -22029,7 +22000,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-img -h
- qemu-img version 7.0.0 (Debian 1:7.0+dfsg-1)
+ qemu-img version 7.0.0 (Debian 1:7.0+dfsg-7)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-img [standard options] command [command options]
  QEMU disk image utility

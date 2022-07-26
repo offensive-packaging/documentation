@@ -37,7 +37,7 @@ PackagesInfo: |
  root@kali:~# tcpdump -h
  tcpdump version 4.99.1
  libpcap version 1.10.1 (with TPACKET_V3)
- OpenSSL 3.0.3 3 May 2022
+ OpenSSL 3.0.4 21 Jun 2022
  Usage: tcpdump [-AbdDefhHIJKlLnNOpqStuUvxX#] [ -B size ] [ -c count ] [--count]
  		[ -C file_size ] [ -E algo:secret ] [ -F file ] [ -G seconds ]
  		[ -i interface ] [ --immediate-mode ] [ -j tstamptype ]

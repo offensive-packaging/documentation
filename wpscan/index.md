@@ -55,7 +55,7 @@ PackagesInfo: |
                                                    Default: true
      -o, --output FILE                             Output to FILE
      -f, --format FORMAT                           Output results in the format supplied
-                                                   Available choices: cli-no-colour, cli-no-color, cli, json
+                                                   Available choices: cli-no-colour, cli-no-color, json, cli
          --detection-mode MODE                     Default: mixed
                                                    Available choices: mixed, passive, aggressive
          --user-agent, --ua VALUE

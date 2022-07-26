@@ -3,7 +3,7 @@ Title: dvwa
 Homepage: https://github.com/digininja/DVWA
 Repository: https://gitlab.com/kalilinux/packages/dvwa
 Architectures: all
-Version: 2.0.1+git20220104-0kali3
+Version: 2.0.1+git20220104-0kali4
 Metapackages: kali-linux-labs 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

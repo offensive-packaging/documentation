@@ -234,25 +234,25 @@ PackagesInfo: |
       Active: inactive (dead)
         Docs: https://httpd.apache.org/docs/2.4/
  
- Jul 22 12:18:26 kali systemd[1]: Starting The Apache HTTP Server...
- Jul 22 12:18:26 kali apachectl[2041919]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Jul 22 12:18:26 kali systemd[1]: Started The Apache HTTP Server.
- Jul 22 12:18:36 kali systemd[1]: Stopping The Apache HTTP Server...
- Jul 22 12:18:36 kali apachectl[2057632]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Jul 22 12:18:36 kali systemd[1]: apache2.service: Deactivated successfully.
- Jul 22 12:18:36 kali systemd[1]: Stopped The Apache HTTP Server.
+ Jul 26 07:48:11 kali systemd[1]: Starting The Apache HTTP Server...
+ Jul 26 07:48:11 kali apachectl[689936]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ Jul 26 07:48:11 kali systemd[1]: Started The Apache HTTP Server.
+ Jul 26 07:48:21 kali systemd[1]: Stopping The Apache HTTP Server...
+ Jul 26 07:48:21 kali apachectl[701251]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ Jul 26 07:48:21 kali systemd[1]: apache2.service: Deactivated successfully.
+ Jul 26 07:48:21 kali systemd[1]: Stopped The Apache HTTP Server.
  
  * xplico.service - Xplico
       Loaded: loaded (/lib/systemd/system/xplico.service; disabled; vendor preset: disabled)
       Active: inactive (dead)
         Docs: https://www.xplico.org/docs
  
- Jul 22 12:18:26 kali systemd[1]: Starting Xplico...
- Jul 22 12:18:26 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
- Jul 22 12:18:26 kali systemd[1]: Started Xplico.
- Jul 22 12:18:36 kali systemd[1]: Stopping Xplico...
- Jul 22 12:18:36 kali systemd[1]: xplico.service: Deactivated successfully.
- Jul 22 12:18:36 kali systemd[1]: Stopped Xplico.
+ Jul 26 07:48:11 kali systemd[1]: Starting Xplico...
+ Jul 26 07:48:11 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
+ Jul 26 07:48:11 kali systemd[1]: Started Xplico.
+ Jul 26 07:48:21 kali systemd[1]: Stopping Xplico...
+ Jul 26 07:48:21 kali systemd[1]: xplico.service: Deactivated successfully.
+ Jul 26 07:48:21 kali systemd[1]: Stopped Xplico.
  ```
  
  - - -

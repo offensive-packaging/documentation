@@ -518,12 +518,11 @@ PackagesInfo: |
  ##### sshd
  
  OpenSSH daemon
- OpenSSH daemon
  
  ```
  root@kali:~# sshd -h
  option requires an argument -- h
- OpenSSH_9.0p1 Debian-1+b1, OpenSSL 3.0.3 3 May 2022
+ OpenSSH_9.0p1 Debian-1+b1, OpenSSL 3.0.4 21 Jun 2022
  usage: sshd [-46DdeiqTt] [-C connection_spec] [-c host_cert_file]
              [-E log_file] [-f config_file] [-g login_grace_time]
              [-h host_key_file] [-o option] [-p port] [-u len]

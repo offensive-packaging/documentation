@@ -3,7 +3,7 @@ Title: vboot-utils
 Homepage: https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 Repository: https://salsa.debian.org/debian/vboot-utils
 Architectures: amd64 arm64 armel armhf i386
-Version: 0~R99-14469.B-1
+Version: 0~R99-14469.B-2
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   supports Chromium OS extensions enabling you to change priority for kernel
   partitions.
  
- **Installed size:** `78 KB`  
+ **Installed size:** `77 KB`  
  **How to install:** `sudo apt install cgpt`  
  
  {{< spoiler "Dependencies:" >}}
@@ -54,7 +54,7 @@ PackagesInfo: |
   program required to sign custom kernels in order to get them booted by Chrome
   OS devices (i.e. Chromebooks)).
  
- **Installed size:** `1005 KB`  
+ **Installed size:** `1004 KB`  
  **How to install:** `sudo apt install vboot-kernel-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -197,7 +197,7 @@ PackagesInfo: |
   Most users don't need this package, and should look for the cgpt and
   vboot-kernel-utils packages instead.
  
- **Installed size:** `243 KB`  
+ **Installed size:** `242 KB`  
  **How to install:** `sudo apt install vboot-utils`  
  
  {{< spoiler "Dependencies:" >}}

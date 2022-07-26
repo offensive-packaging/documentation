@@ -26,6 +26,8 @@ PackagesInfo: |
  
  ```
  root@kali:~# pdf-parser -h
+ This program has not been tested with this version of Python (3.10.5)
+ Should you encounter problems, please use Python version 3.10.4
  Usage: pdf-parser [options] pdf-file|zip-file|url
  pdf-parser, use it to parse a PDF document
  

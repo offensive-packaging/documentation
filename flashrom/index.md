@@ -83,7 +83,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# flashrom -h
- flashrom v1.2 on Linux 5.16.0-kali7-amd64 (x86_64)
+ flashrom v1.2 on Linux 5.18.0-kali5-amd64 (x86_64)
  flashrom is free software, get the source code at https://flashrom.org
  
  Usage: flashrom [-h|-R|-L|

@@ -1540,8 +1540,7 @@ PackagesInfo: |
  [ ] Initializing inetd mode configuration
  [ ] Clients allowed=500
  [.] stunnel 5.63 on x86_64-pc-linux-gnu platform
- [.] Compiled with OpenSSL 3.0.4 21 Jun 2022
- [.] Running  with OpenSSL 3.0.3 3 May 2022
+ [.] Compiled/running with OpenSSL 3.0.4 21 Jun 2022
  [.] Threading:PTHREAD Sockets:POLL,IPv6,SYSTEMD TLS:ENGINE,OCSP,PSK,SNI Auth:LIBWRAP
  [ ] errno: (*__errno_location ())
  [ ] Initializing inetd mode configuration

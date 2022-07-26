@@ -141,7 +141,7 @@ PackagesInfo: |
  -d     : turn on parser debugging output (for experts only, only works on
           debug builds); also PYTHONDEBUG=x
  -E     : ignore PYTHON* environment variables (such as PYTHONPATH)
- -h     : print this help message and exit (also --help)
+ -h     : print this help message and exit (also -? or --help)
  -i     : inspect interactively after running script; forces a prompt even
           if stdin does not appear to be a terminal; also PYTHONINSPECT=x
  -I     : isolate Python from the user's environment (implies -E and -s)
@@ -163,7 +163,6 @@ PackagesInfo: |
           also PYTHONWARNINGS=arg
  -x     : skip first line of source, allowing use of non-Unix forms of #!cmd
  -X opt : set implementation-specific option. The following options are available:
- 
           -X faulthandler: enable faulthandler
           -X showrefcount: output the total reference count and number of used
               memory blocks when the program finishes or after each statement in the
@@ -180,7 +179,8 @@ PackagesInfo: |
               checks which are too expensive to be enabled by default. Effect of the
               developer mode:
                  * Add default warning filter, as -W default
-                 * Install debug hooks on memory allocators: see the PyMem_SetupDebugHooks() C function
+                 * Install debug hooks on memory allocators: see the PyMem_SetupDebugHooks()
+                   C function
                  * Enable the faulthandler module to dump the Python traceback on a crash
                  * Enable asyncio debug mode
                  * Set the dev_mode attribute of sys.flags to True
@@ -191,7 +191,6 @@ PackagesInfo: |
           -X pycache_prefix=PATH: enable writing .pyc files to a parallel tree rooted at the
               given directory instead of to the code tree
           -X warn_default_encoding: enable opt-in EncodingWarning for 'encoding=None'
- 
  --check-hash-based-pycs always|default|never:
      control how Python invalidates hash-based .pyc files
  file   : program read from script file

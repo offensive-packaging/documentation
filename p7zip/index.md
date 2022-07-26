@@ -43,7 +43,7 @@ PackagesInfo: |
  root@kali:~# 7zr -h
  
  7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
- p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,4 CPUs AMD Ryzen 7 3700X 8-Core Processor              (870F10),ASM,AES-NI)
+ p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,8 CPUs AMD Ryzen 7 3700X 8-Core Processor              (870F10),ASM,AES-NI)
  
  Usage: 7za <command> [<switches>...] <archive_name> [<file_names>...]
         [<@listfiles...>]
@@ -170,7 +170,7 @@ PackagesInfo: |
  root@kali:~# 7z -h
  
  7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
- p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,4 CPUs AMD Ryzen 7 3700X 8-Core Processor              (870F10),ASM,AES-NI)
+ p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,8 CPUs AMD Ryzen 7 3700X 8-Core Processor              (870F10),ASM,AES-NI)
  
  Usage: 7z <command> [<switches>...] <archive_name> [<file_names>...]
         [<@listfiles...>]
@@ -245,7 +245,7 @@ PackagesInfo: |
  root@kali:~# 7za -h
  
  7-Zip (a) [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
- p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,4 CPUs AMD Ryzen 7 3700X 8-Core Processor              (870F10),ASM,AES-NI)
+ p7zip Version 16.02 (locale=C,Utf16=off,HugeFiles=on,64 bits,8 CPUs AMD Ryzen 7 3700X 8-Core Processor              (870F10),ASM,AES-NI)
  
  Usage: 7za <command> [<switches>...] <archive_name> [<file_names>...]
         [<@listfiles...>]

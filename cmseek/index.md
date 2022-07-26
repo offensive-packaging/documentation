@@ -85,7 +85,7 @@ PackagesInfo: |
  
      
  
-  CMSeeK says ~ shalom
+  CMSeeK says ~ auf Wiedersehen
  ```
  
  - - -

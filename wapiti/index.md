@@ -62,6 +62,7 @@ PackagesInfo: |
        \/  \/ \__,_| .__/|_|\__|_|____/
                    |_|                 
  Wapiti-3.0.4 (wapiti.sourceforge.io)
+ [*] Be careful! New moon tonight.
  usage: wapiti [-h] [-u URL] [--scope {page,folder,domain,url,punk}]
                [-m MODULES_LIST] [--list-modules] [--update] [-l LEVEL]
                [-p PROXY_URL] [--tor] [-a CREDENTIALS]

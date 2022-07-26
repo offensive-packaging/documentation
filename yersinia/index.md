@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: Do you have any Alcatel or Juniper switch? Share it!! ;)
+ MOTD: Do you have an ISL capable Cisco switch? Share it!! ;)
  ```
  
  - - -

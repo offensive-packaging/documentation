@@ -52,46 +52,47 @@ PackagesInfo: |
  trying path: /usr/lib/jvm/default-java
  canonical: /usr/lib/jvm/java-11-openjdk-amd64
  javaHome: /usr/lib/jvm/default-java
- resource:com/paterva/maltego/java/config/jre/TestJDK.class -> /tmp/temp162370067680093740532614496803496/TestJDK.class
- executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp162370067680093740532614496803496 TestJDK, in: .
+ resource:com/paterva/maltego/java/config/jre/TestJDK.class -> /tmp/temp75892037563750489882001451380301/TestJDK.class
+ executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp75892037563750489882001451380301 TestJDK, in: .
   result: 0
   command execution finished
-  out: 11.0.14.1, 11.0.14.1+1-post-Debian-1, Debian, Linux, amd64
-  runtime: 11.0.14_01 x64 Debian
+  out: 11.0.15, 11.0.15+10-post-Debian-1, Debian, Linux, amd64
+  runtime: 11.0.15 x64 Debian
  runtimes: 1
  selected java: /usr/lib/jvm/default-java
  Detecting appropriate heap size...
- resource:com/paterva/maltego/java/config/mem/TestMem.class -> /tmp/temp105935312591119341612614559903851/TestMem.class
- memOut: 8341553152
- pm: 7955/7955
- 4077...
- 6016...
- 6985...
- 7470...
- 7712...
- 7833...
- 7894...
- 7924...
- 7939...
- selected heap size: 5840
+ resource:com/paterva/maltego/java/config/mem/TestMem.class -> /tmp/temp115251723008513450802001524087239/TestMem.class
+ memOut: 15651094528
+ pm: 14926/14926
+ 7563...
+ 11244...
+ 13085...
+ 14005...
+ 14465...
+ 14695...
+ 14810...
+ 14868...
+ 14897...
+ 14911...
+ selected heap size: 11440
  canonical: /usr/lib/jvm/java-11-openjdk-amd64
  javaHome: /usr/lib/jvm/default-java
- executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp162370067680093740532614496803496 TestJDK, in: .
+ executing: /usr/lib/jvm/java-11-openjdk-amd64/bin/java -classpath /tmp/temp75892037563750489882001451380301 TestJDK, in: .
   result: 0
   command execution finished
-  out: 11.0.14.1, 11.0.14.1+1-post-Debian-1, Debian, Linux, amd64
+  out: 11.0.15, 11.0.15+10-post-Debian-1, Debian, Linux, amd64
  ./../platform/lib/nbexec: WARNING: environment variable DISPLAY is not set
  Module reload options:
    --reload /path/to/module.jar  install or reinstall a module JAR file
  
  Additional module options:
-   -i, --import <arg>         
-   -u, --updates <arg>        
-   -h, --hub <arg>            
-   -o, --open <arg1>...<argN> 
    -s, --serverHttpAllowed    
+   -o, --open <arg1>...<argN> 
+   -h, --hub <arg>            
    -p, --automationPort <arg> 
    -m, --machine <arg>        
+   -i, --import <arg>         
+   -u, --updates <arg>        
  
  Core options:
    --laf <LaF classname> use given LookAndFeel class instead of the default

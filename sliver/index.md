@@ -3,7 +3,7 @@ Title: sliver
 Homepage: https://github.com/BishopFox/sliver
 Repository: https://gitlab.com/kalilinux/packages/sliver
 Architectures: amd64 arm64
-Version: 1.5.19-0kali1
+Version: 1.5.20-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

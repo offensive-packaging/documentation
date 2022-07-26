@@ -5,7 +5,7 @@ Repository: https://gitlab.com/kalilinux/packages/firefox-developer-edition-kbx
 Architectures: amd64
 Version: 0~2021.09.0
 Metapackages: 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/firefox-developer-edition-logo.svg
 PackagesInfo: |
  ### firefox-developer-edition-en-us-kbx
  

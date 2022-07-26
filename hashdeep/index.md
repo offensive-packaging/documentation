@@ -59,7 +59,7 @@ PackagesInfo: |
  -o        - only process certain types of files. See README/manpage
  -v        - verbose mode. Use again to be more verbose
  -d        - output in DFXML; -W FILE - write to FILE.
- -j <num>  - use num threads (default 4)
+ -j <num>  - use num threads (default 8)
  ```
  
  - - -
@@ -90,7 +90,7 @@ PackagesInfo: |
  -i/I <size> - only process files smaller/larger than SIZE
  -v        - display version number and exit
  -d        - output in DFXML; -u - Escape Unicode; -W FILE - write to FILE.
- -j <num>  - use num threads (default 4)
+ -j <num>  - use num threads (default 8)
  -Z - triage mode;   -h - help;   -hh - full help
  ```
  
@@ -122,7 +122,7 @@ PackagesInfo: |
  -i/I <size> - only process files smaller/larger than SIZE
  -v        - display version number and exit
  -d        - output in DFXML; -u - Escape Unicode; -W FILE - write to FILE.
- -j <num>  - use num threads (default 4)
+ -j <num>  - use num threads (default 8)
  -Z - triage mode;   -h - help;   -hh - full help
  ```
  
@@ -154,7 +154,7 @@ PackagesInfo: |
  -i/I <size> - only process files smaller/larger than SIZE
  -v        - display version number and exit
  -d        - output in DFXML; -u - Escape Unicode; -W FILE - write to FILE.
- -j <num>  - use num threads (default 4)
+ -j <num>  - use num threads (default 8)
  -Z - triage mode;   -h - help;   -hh - full help
  ```
  
@@ -186,7 +186,7 @@ PackagesInfo: |
  -i/I <size> - only process files smaller/larger than SIZE
  -v        - display version number and exit
  -d        - output in DFXML; -u - Escape Unicode; -W FILE - write to FILE.
- -j <num>  - use num threads (default 4)
+ -j <num>  - use num threads (default 8)
  -Z - triage mode;   -h - help;   -hh - full help
  ```
  
@@ -218,7 +218,7 @@ PackagesInfo: |
  -i/I <size> - only process files smaller/larger than SIZE
  -v        - display version number and exit
  -d        - output in DFXML; -u - Escape Unicode; -W FILE - write to FILE.
- -j <num>  - use num threads (default 4)
+ -j <num>  - use num threads (default 8)
  -Z - triage mode;   -h - help;   -hh - full help
  ```
  

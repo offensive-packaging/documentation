@@ -228,46 +228,17 @@ PackagesInfo: |
  Gnuradio control port gui
  
  ```
- root@kali:~# man gr-perf-monitorx
- GR-CTRLPORT-MONITOR(1)           User Commands          GR-CTRLPORT-MONITOR(1)
+ root@kali:~# gr-perf-monitorx -h
+ usage: gr-perf-monitorx [-h] [host] port
  
- NAME
-        gr-ctrlport-monitor - gnuradio control port gui
+ GNU Radio Performance Monitor
  
- SYNOPSIS
-        gr-ctrlport-monitor [options]
+ positional arguments:
+   host        host name or IP
+   port        port
  
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        -H HOST, --host=HOST
-               Hostname of ControlPort server.
- 
-        -p PORT, --port=PORT
-               Port number of host's ControlPort endpoint.
- 
-        -i INTERFACES, --interfaces=INTERFACES
-               Interfaces to use. [default=['lo']]
- 
-        -P PROTOCOL, --protocol=PROTOCOL
-               Type of protocol to use (usually tcp). [default=tcp]
- 
-        -a APP, --app=APP
-               Name of application [default=gnuradio]
- 
-        gr-ctrlport-monitor: error: no such option: --version
- 
- SEE ALSO
-        The  full  documentation  for Usage: is maintained as a Texinfo manual.
-        If the info and Usage: programs are properly installed  at  your  site,
-        the command
- 
-               info Usage:
- 
-        should give you access to the complete manual.
- 
- GNU Radio Companion 3.10.2.0      2022-04-24            GR-CTRLPORT-MONITOR(1)
+ options:
+   -h, --help  show this help message and exit
  ```
  
  - - -

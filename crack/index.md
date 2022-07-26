@@ -55,7 +55,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# Crack-Reporter -h
- ---- passwords cracked as of Fri Jul 22 11:12:46 EDT 2022 ----
+ ---- passwords cracked as of Tue Jul 26 06:54:02 EDT 2022 ----
  
  
  ---- errors and warnings ----
@@ -72,7 +72,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# Crack-Reporter -h
- ---- passwords cracked as of Fri Jul 22 11:12:46 EDT 2022 ----
+ ---- passwords cracked as of Tue Jul 26 06:54:02 EDT 2022 ----
  
  
  ---- errors and warnings ----
@@ -139,7 +139,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# Crack-Reporter -h
- ---- passwords cracked as of Fri Jul 22 11:12:51 EDT 2022 ----
+ ---- passwords cracked as of Tue Jul 26 06:54:07 EDT 2022 ----
  
  
  ---- errors and warnings ----

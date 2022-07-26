@@ -49,7 +49,7 @@ PackagesInfo: |
    --single-class-output               - file or dir for write if decompile a single class
    --output-format                     - can be 'java' or 'json', default: java
    -e, --export-gradle                 - save as android gradle project
-   -j, --threads-count                 - processing threads count, default: 2
+   -j, --threads-count                 - processing threads count, default: 4
    -m, --decompilation-mode            - code output mode:
                                           'auto' - trying best options (default)
                                           'restructure' - restore code structure (normal java code)
@@ -131,7 +131,7 @@ PackagesInfo: |
    --single-class-output               - file or dir for write if decompile a single class
    --output-format                     - can be 'java' or 'json', default: java
    -e, --export-gradle                 - save as android gradle project
-   -j, --threads-count                 - processing threads count, default: 2
+   -j, --threads-count                 - processing threads count, default: 4
    -m, --decompilation-mode            - code output mode:
                                           'auto' - trying best options (default)
                                           'restructure' - restore code structure (normal java code)

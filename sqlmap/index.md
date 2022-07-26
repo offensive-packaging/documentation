@@ -3,7 +3,7 @@ Title: sqlmap
 Homepage: https://sqlmap.org/
 Repository: https://salsa.debian.org/pkg-security-team/sqlmap
 Architectures: all
-Version: 1.6.6-1
+Version: 1.6.7-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-database kali-tools-exploitation kali-tools-information-gathering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: images/sqlmap-logo.svg
 PackagesInfo: |
@@ -34,9 +34,9 @@ PackagesInfo: |
  root@kali:~# sqlmap -h
          ___
         __H__
-  ___ ___[']_____ ___ ___  {1.6.6#stable}
- |_ -| . [(]     | .'| . |
- |___|_  ["]_|_|_|__,|  _|
+  ___ ___[,]_____ ___ ___  {1.6.7#stable}
+ |_ -| . [)]     | .'| . |
+ |___|_  [.]_|_|_|__,|  _|
        |_|V...       |_|   https://sqlmap.org
  
  Usage: python3 sqlmap [options]

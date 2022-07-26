@@ -5,7 +5,7 @@ Repository:
 Architectures: amd64
 Version: 0~2021.9.0
 Metapackages: 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/zenmap-logo.svg
 PackagesInfo: |
  ### zenmap-kbx
  

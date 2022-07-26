@@ -3,7 +3,7 @@ Title: openocd
 Homepage: http://openocd.sourceforge.net/
 Repository: https://salsa.debian.org/electronics-team/openocd
 Architectures: any
-Version: 0.11.0-1
+Version: 0.11.0-2
 Metapackages: kali-linux-everything kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -24,7 +24,7 @@ PackagesInfo: |
    
   OpenOCD supports many different types of JTAG interfaces/programmers.
  
- **Installed size:** `8.00 MB`  
+ **Installed size:** `8.02 MB`  
  **How to install:** `sudo apt install openocd`  
  
  {{< spoiler "Dependencies:" >}}
