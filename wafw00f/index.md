@@ -3,7 +3,7 @@ Title: wafw00f
 Homepage: https://github.com/sandrogauci/wafw00f
 Repository: https://salsa.debian.org/pkg-security-team/wafw00f
 Architectures: all
-Version: 2.1.0-1
+Version: 2.2.0-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-web 
 Icon: images/wafw00f-logo.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
      returned and uses another simple algorithm to guess if a WAF or security
      solution is actively responding to the attacks.
  
- **Installed size:** `237 KB`  
+ **Installed size:** `240 KB`  
  **How to install:** `sudo apt install wafw00f`  
  
  {{< spoiler "Dependencies:" >}}
@@ -49,6 +49,8 @@ PackagesInfo: |
    -o OUTPUT, --output=OUTPUT
                          Write output to csv, json or text file depending on
                          file extension. For stdout, specify - as filename.
+   -f FORMAT, --format=FORMAT
+                         Force output format to csv, json or text.
    -i INPUT, --input-file=INPUT
                          Read targets from a file. Input format can be csv,
                          json or text. For csv and json, a `url` column name or

@@ -3,7 +3,7 @@ Title: wfuzz
 Homepage: http://www.edge-security.com/wfuzz.php
 Repository: https://salsa.debian.org/pkg-security-team/wfuzz
 Architectures: all
-Version: 3.1.0-1
+Version: 3.1.0-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-fuzzing kali-tools-web 
 Icon: images/wfuzz-logo.svg
 PackagesInfo: |
@@ -22,6 +22,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * python3
  * python3-chardet
+ * python3-distutils
  * python3-pycurl
  * python3-pyparsing
  * python3-six

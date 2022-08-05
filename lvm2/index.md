@@ -3,7 +3,7 @@ Title: lvm2
 Homepage: https://sourceware.org/lvm2/
 Repository: https://salsa.debian.org/lvm-team/lvm2
 Architectures: linux-any all
-Version: 2.03.15-2
+Version: 2.03.15-2+kali1
 Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

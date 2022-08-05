@@ -105,7 +105,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-03-10                       hivexget(1)
+ hivex-1.3.21                      2022-07-23                       hivexget(1)
  ```
  
  - - -
@@ -166,7 +166,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-03-10                        hivexml(1)
+ hivex-1.3.21                      2022-07-23                        hivexml(1)
  ```
  
  - - -
@@ -434,7 +434,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-03-10                        hivexsh(1)
+ hivex-1.3.21                      2022-07-23                        hivexsh(1)
  ```
  
  - - -
@@ -530,7 +530,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libhivex0 
- * perl
+ * perl 
  * perlapi-5.34.0
  {{< /spoiler >}}
  
@@ -655,7 +655,7 @@ PackagesInfo: |
   Python 3 bindings for libhivex, a library for reading and writing
   Windows Registry "hive" binary files.
  
- **Installed size:** `107 KB`  
+ **Installed size:** `83 KB`  
  **How to install:** `sudo apt install python3-hivex`  
  
  {{< spoiler "Dependencies:" >}}

@@ -1,9 +1,9 @@
 ---
 Title: seclists
-Homepage: https://www.owasp.org/index.php/Projects/OWASP_SecLists_Project
+Homepage: https://github.com/danielmiessler/SecLists
 Repository: https://gitlab.com/kalilinux/packages/seclists
 Architectures: all
-Version: 2022.2-0kali1
+Version: 2022.3-0kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   The goal is to enable a security tester to pull this repo onto a new testing
   box and have access to every type of list that may be needed.
  
- **Installed size:** `1.50 GB`  
+ **Installed size:** `1.51 GB`  
  **How to install:** `sudo apt install seclists`  
  
  {{< spoiler "Dependencies:" >}}

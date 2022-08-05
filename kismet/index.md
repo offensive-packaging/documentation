@@ -938,6 +938,7 @@ PackagesInfo: |
  
  ##### kismet
  
+ Kismet_server (1)    - wireless sniffer and monitor
  Wireless sniffer and monitor
  
  ```

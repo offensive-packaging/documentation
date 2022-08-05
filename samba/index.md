@@ -3,7 +3,7 @@ Title: samba
 Homepage: https://www.samba.org
 Repository: https://salsa.debian.org/samba-team/samba
 Architectures: any all
-Version: 2:4.16.2+dfsg-1
+Version: 2:4.16.3+dfsg-1
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-wireless 
 Icon: images/samba-logo.svg
 PackagesInfo: |
@@ -58,8 +58,8 @@ PackagesInfo: |
  
  ##### ctdb
  
- CTDB management utility
  Clustered TDB
+ CTDB management utility
  
  ```
  root@kali:~# ctdb --help
@@ -267,7 +267,7 @@ PackagesInfo: |
         You should have received a copy of the GNU General Public License along
         with this program; if not, see http://www.gnu.org/licenses.
  
- ctdb                              06/13/2022                      PING_PONG(1)
+ ctdb                              07/18/2022                      PING_PONG(1)
  ```
  
  - - -
@@ -1578,8 +1578,8 @@ PackagesInfo: |
  
  ##### samba
  
- Server to provide AD and SMB/CIFS services to clients
  A Windows AD and SMB/CIFS fileserver for UNIX
+ Server to provide AD and SMB/CIFS services to clients
  
  ```
  root@kali:~# samba --help
@@ -2413,8 +2413,8 @@ PackagesInfo: |
  
  ##### smbpasswd
  
- The Samba encrypted password file
  Change a user's SMB password
+ The Samba encrypted password file
  
  ```
  root@kali:~# smbpasswd -h
@@ -2542,7 +2542,7 @@ PackagesInfo: |
    
   This package contains the shared libraries.
  
- **Installed size:** `23.81 MB`  
+ **Installed size:** `23.86 MB`  
  **How to install:** `sudo apt install samba-libs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2881,7 +2881,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# smbtorture --help
- smbtorture 4.16.2-Debian
+ smbtorture 4.16.3-Debian
  Usage: <binding>|<unc> TEST1 TEST2 ...
        --fullname                               use full name for the test
        --format=STRING                          Output format (one of: simple,

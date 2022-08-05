@@ -3,7 +3,7 @@ Title: uhd
 Homepage: https://www.ettus.com/sdr-software/uhd-usrp-hardware-driver/
 Repository: https://salsa.debian.org/bottoms/pkg-uhd
 Architectures: any all
-Version: 4.1.0.5-3
+Version: 4.2.0.0+ds1-3
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,17 +18,17 @@ PackagesInfo: |
   This package contains the header files for developing with libuhd.
   Doxygen generated documentation is in the uhd-host package.
  
- **Installed size:** `1.04 MB`  
+ **Installed size:** `1.07 MB`  
  **How to install:** `sudo apt install libuhd-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libuhd4.1.0 
+ * libuhd4.2.0 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libuhd4.1.0
+ ### libuhd4.2.0
  
   Host library for the Universal Hardware Driver for Ettus Research products.
    
@@ -36,8 +36,8 @@ PackagesInfo: |
   along with digital interfaces for getting signals to and from a software
   defined radio running on the host computer.
  
- **Installed size:** `13.17 MB`  
- **How to install:** `sudo apt install libuhd4.1.0`  
+ **Installed size:** `13.52 MB`  
+ **How to install:** `sudo apt install libuhd4.2.0`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-chrono1.74.0 
@@ -54,7 +54,7 @@ PackagesInfo: |
  
  - - -
  
- ### libuhd4.1.0-dpdk
+ ### libuhd4.2.0-dpdk
  
   Host library for the Universal Hardware Driver for Ettus Research products.
    
@@ -65,8 +65,8 @@ PackagesInfo: |
   This package is built with the Data Plane Development Kit and has additional
   dependencies and system configuration requirements to use those features.
  
- **Installed size:** `13.34 MB`  
- **How to install:** `sudo apt install libuhd4.1.0-dpdk`  
+ **Installed size:** `13.69 MB`  
+ **How to install:** `sudo apt install libuhd4.2.0-dpdk`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-chrono1.74.0 
@@ -89,15 +89,15 @@ PackagesInfo: |
  
  - - -
  
- ### libuhd4.1.0-dpdk-tests
+ ### libuhd4.2.0-dpdk-tests
  
   Network tests for the Universal Hardware Driver for Ettus Research products.
    
   This package is built with the Data Plane Development Kit and has additional
   dependencies and system configuration requirements to use those features.
  
- **Installed size:** `1012 KB`  
- **How to install:** `sudo apt install libuhd4.1.0-dpdk-tests`  
+ **Installed size:** `1.02 MB`  
+ **How to install:** `sudo apt install libuhd4.2.0-dpdk-tests`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-filesystem1.74.0 
@@ -112,7 +112,7 @@ PackagesInfo: |
  * librte-net21 
  * librte-ring21 
  * libstdc++6 
- * libuhd4.1.0-dpdk 
+ * libuhd4.2.0-dpdk 
  {{< /spoiler >}}
  
  
@@ -128,7 +128,7 @@ PackagesInfo: |
    
   This package contains the Python API support for Python3.
  
- **Installed size:** `3.01 MB`  
+ **Installed size:** `3.13 MB`  
  **How to install:** `sudo apt install python3-uhd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -136,7 +136,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libpython3.10 
  * libstdc++6 
- * libuhd4.1.0 
+ * libuhd4.2.0 
  * python3
  * python3 
  * python3-numpy 
@@ -144,39 +144,6 @@ PackagesInfo: |
  * python3-ruamel.yaml
  {{< /spoiler >}}
  
- ##### usrp_update_fs
- 
- Wrapper for uhd_images_downloader for embedded UHD devices.
- 
- ```
- root@kali:~# usrp_update_fs -h
- ERROR: Could not import MPM.
- usage: usrp_update_fs [-h] [--image IMAGE] [-y] [-m MANIFEST] -d DEVICE_TYPE
-                       [-t GIT_TAG]
- 
- USRP filesystem update If run without any options, it will reset the
- filesystem to the state it was originally in, but with the same version
- ("factory reset"). By using -m or -t, the precise version of the new
- filesystem can be selected. -t master will update to the very latest
- filesystem image. Most options require access to the internet to download the
- latest manifest and/or filesystem image.
- 
- options:
-   -h, --help            show this help message and exit
-   --image IMAGE         Binary image of the filesystem update. If this is
-                         given, all other options are ignored. Can be a file or
-                         a URL
-   -y, --yes             Answer questions with yes
-   -m MANIFEST, --manifest MANIFEST
-                         Manifest source. Can be a file or a URL. Overwrites -t
-   -d DEVICE_TYPE, --device-type DEVICE_TYPE
-                         Specify/overwrite device type (DANGER! May brick
-                         device if used incorrectly!)
-   -t GIT_TAG, --git-tag GIT_TAG
-                         Will try and locate the given git tag or branch and
-                         get the corresponding manifest. Ignored when -m is
-                         given. Using this requires internet access.
- ```
  
  - - -
  
@@ -186,7 +153,7 @@ PackagesInfo: |
    
   This package includes the Doxygen generated documentation.
  
- **Installed size:** `29.39 MB`  
+ **Installed size:** `30.13 MB`  
  **How to install:** `sudo apt install uhd-doc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -209,7 +176,7 @@ PackagesInfo: |
   display hardware configuration information and Doxygen generated
   documentation.
  
- **Installed size:** `20.48 MB`  
+ **Installed size:** `21.21 MB`  
  **How to install:** `sudo apt install uhd-host`  
  
  {{< spoiler "Dependencies:" >}}
@@ -222,7 +189,7 @@ PackagesInfo: |
  * libncurses6 
  * libstdc++6 
  * libtinfo6 
- * libuhd4.1.0 
+ * libuhd4.2.0 
  * python3
  * python3-numpy 
  * python3-numpy-abi9
@@ -234,55 +201,101 @@ PackagesInfo: |
  Build UHD image using RFNoC blocks.
  
  ```
- root@kali:~# rfnoc_image_builder -h
- usage: rfnoc_image_builder [-h] (-y YAML_CONFIG | -r GRC_CONFIG) [-F FPGA_DIR]
-                            [-o IMAGE_CORE_OUTPUT] [-x ROUTER_HEX_OUTPUT]
-                            [-I INCLUDE_DIR] [-b GRC_BLOCKS] [-l LOG_LEVEL]
-                            [--generate-only] [-d DEVICE] [-n IMAGE_CORE_NAME]
-                            [-t TARGET] [-g] [-c] [-p VIVADO_PATH]
+ root@kali:~# man rfnoc_image_builder
+ UHD(1)                           User Commands                          UHD(1)
  
- Build UHD image using RFNoC blocks
+ NAME
+        rfnoc_image_builder - Build UHD image using RFNoC blocks.
  
- options:
-   -h, --help            show this help message and exit
-   -y YAML_CONFIG, --yaml-config YAML_CONFIG
-                         Path to yml configuration file
-   -r GRC_CONFIG, --grc-config GRC_CONFIG
-                         Path to grc file to generate config from
-   -F FPGA_DIR, --fpga-dir FPGA_DIR
-                         Path to directory for the FPGA source tree. Defaults
-                         to the FPGA source tree of the current repo.
-   -o IMAGE_CORE_OUTPUT, --image-core-output IMAGE_CORE_OUTPUT
-                         Path to where to save the image core Verilog source.
-                         Defaults to the directory of the YAML file, filename
-                         <DEVICE>_rfnoc_image_core.v
-   -x ROUTER_HEX_OUTPUT, --router-hex-output ROUTER_HEX_OUTPUT
-                         Path to where to save the static router hex file.
-                         Defaults to the directory of the YAML file, filename
-                         <DEVICE>_static_router.hex
-   -I INCLUDE_DIR, --include-dir INCLUDE_DIR
-                         Path directory of the RFNoC Out-of-Tree module
-   -b GRC_BLOCKS, --grc-blocks GRC_BLOCKS
-                         Path directory of GRC block descriptions (needed for
-                         --grc-config only)
-   -l LOG_LEVEL, --log-level LOG_LEVEL
-                         Adjust log level
-   --generate-only       Just generate files without building IP
-   -d DEVICE, --device DEVICE
-                         Device to be programmed [x300, x310, e310, e320, n300,
-                         n310, n320, x410]. Needs to be specified either here,
-                         or in the configuration file.
-   -n IMAGE_CORE_NAME, --image_core_name IMAGE_CORE_NAME
-                         Name to use for the RFNoC image core.Defaults to the
-                         device name.
-   -t TARGET, --target TARGET
-                         Build target (e.g. X310_HG, N320_XG, ...). Needs to be
-                         specified either here, on the configuration file.
-   -g, --GUI             Open Vivado GUI during the FPGA building process
-   -c, --clean-all       Cleans the IP before a new build
-   -p VIVADO_PATH, --vivado-path VIVADO_PATH
-                         Path to the base install for Xilinx Vivado if not in
-                         default location (e.g., /tools/Xilinx/Vivado).
+ USAGE
+        rfnoc_image_builder [-h] (-y YAML_CONFIG | -r GRC_CONFIG) [-F FPGA_DIR]
+ 
+        [-o IMAGE_CORE_OUTPUT] [-x ROUTER_HEX_OUTPUT]
+               [-I   INCLUDE_DIR]  [-b  GRC_BLOCKS]  [-l  LOG_LEVEL]  [--gener-
+               ate-only] [-d DEVICE] [-t TARGET] [-g] [-c]
+ 
+    optional arguments:
+        -h, --help
+               show this help message and exit
+ 
+        -y YAML_CONFIG, --yaml-config YAML_CONFIG
+               Path to yml configuration file
+ 
+        -r GRC_CONFIG, --grc-config GRC_CONFIG
+               Path to grc file to generate config from
+ 
+        -F FPGA_DIR, --fpga-dir FPGA_DIR
+               Path to directory for the FPGA source tree.Defaults to the  FPGA
+               source tree of the current repo.
+ 
+        -o IMAGE_CORE_OUTPUT, --image-core-output IMAGE_CORE_OUTPUT
+               Path  to  where to save the image core Verilog source.  Defaults
+               to the directory of the YAML file,  filename  <DEVICE>_rfnoc_im-
+               age_core.v
+ 
+        -x ROUTER_HEX_OUTPUT, --router-hex-output ROUTER_HEX_OUTPUT
+               Path  to  where to save the static router hex file.  Defaults to
+               the   directory   of    the    YAML    file,    filename    <DE-
+               VICE>_static_router.hex
+ 
+        -I INCLUDE_DIR, --include-dir INCLUDE_DIR
+               Path directory of the RFNoC Out-of-Tree module
+ 
+        -b GRC_BLOCKS, --grc-blocks GRC_BLOCKS
+               Path  directory of GRC block descriptions (needed for --grc-con-
+               fig only)
+ 
+        -l LOG_LEVEL, --log-level LOG_LEVEL
+               Adjust log level
+ 
+        --generate-only
+               Just generate files without building IP
+ 
+        -d DEVICE, --device DEVICE
+               Device to be programmed [x300, x310,  e310,  e320,  n300,  n310,
+               n320].Needs to be specified either here, or in the configuration
+               file.
+ 
+        -t TARGET, --target TARGET
+               Build target (e.g. X310_HG, N320_XG, ...). Needs to be specified
+               either here, on the configuration file.
+ 
+        -g, --GUI
+               Open Vivado GUI during the FPGA building process
+ 
+        -c, --clean-all
+               Cleans the IP before a new build
+ 
+        [-o IMAGE_CORE_OUTPUT] [-x ROUTER_HEX_OUTPUT]
+               [-I   INCLUDE_DIR]  [-b  GRC_BLOCKS]  [-l  LOG_LEVEL]  [--gener-
+               ate-only] [-d DEVICE] [-t TARGET] [-g] [-c]
+ 
+ SEE ALSO
+        UHD documentation: https://files.ettus.com/manual/
+ 
+        Other UHD programs:
+ 
+        uhd_cal_tx_dc_offset(1)    uhd_cal_rx_iq_balance(1)    uhd_images_down-
+        loader(1) uhd_config_info(1) uhd_find_devices(1)
+ 
+ AUTHOR
+        This manual page was written by Maitland Bottoms for the Debian project
+        (but may be used by others).
+ 
+ COPYRIGHT
+        Copyright (c) 2020 Ettus Research LLC
+ 
+        This program is free software: you can redistribute it and/or modify it
+        under  the  terms of the GNU General Public License as published by the
+        Free Software Foundation, either version 3 of the License, or (at  your
+        option) any later version.
+ 
+        This  program  is  distributed  in the hope that it will be useful, but
+        WITHOUT ANY  WARRANTY;  without  even  the  implied  warranty  of  MER-
+        CHANTABILITY  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+        Public License for more details.
+ 
+ UHD 4                             August 2020                           UHD(1)
  ```
  
  - - -
@@ -590,6 +603,114 @@ PackagesInfo: |
    --fpga=FPGA  fpga image path (optional)
    --list       list possible raw devices
    --force      override safety check
+ ```
+ 
+ - - -
+ 
+ ##### usrpctl
+ 
+ USRP Hardware Driver Peripheral Configuration Tool
+ 
+ ```
+ root@kali:~# man usrpctl
+ usrpctl(1)                       User Commands                      usrpctl(1)
+ 
+ NAME
+        usrpctl - USRP Hardware Driver Peripheral Configuration Tool
+ 
+ DESCRIPTION
+        Report detailed information on UHD-supported Software Radio Peripherals
+        attached by USB, network, or embedded configuration.  Allows update and
+        configuration of attached devices.
+ 
+        The  UHD  package  is  the universal hardware driver for Ettus Research
+        products. The goal is to provide a host driver and API for current  and
+        future  Ettus  Research  products.   Users  will be able to use the UHD
+        driver standalone or with 3rd party applications.
+ 
+        Details include unit names, revision numbers, and available sensors  on
+        all attached USRP motherboards and daughterboards.
+ 
+ SYNOPSIS
+        usrpctl [ID] COMMAND [OPTIONS]
+ 
+ ID
+        ID  is the optional device argument. It is used to define a set of USRP
+        devices that COMMAND should be applied to. If ID is omitted COMMAND  is
+        applied to all reachable devices.
+ 
+        usrpctl  understands  the  device args argument used by other UHD tools
+        like uhd_find_devices.
+ 
+ COMMAND
+        Is the action the tool is to take. Every command can be either  applied
+        to  a single device or a group of devices. Commands that run on a group
+        of devices repeat the command for every device.
+ 
+        - Single device commands:
+            - config: Read/write configuration variables (e.g., IP address)
+            - probe: reads extended information about the USRP -  Multi  device
+        commands:
+            - update: Update binaries (e.g., FPGA image)
+            - reset: Reset the device or parts thereof (e.g., only reset MPM)
+            - find: finds all available USRPs in this network
+ 
+ OPTIONS
+        The options are not always mandatory. It depends on the given COMMAND.
+ 
+ find command
+        The  find command takes no further options. If ID is not given it scans
+        the system for available, supported devices and prints a list  of  dis-
+        covered  devices.  The print out is compatible to uhd_find_devices.  ID
+        can be used to narrow down the list of discovered devices.
+ 
+ probe command
+        Print a complete property tree:
+               -tree
+ 
+        The probe command can only be applied to a single device so  make  sure
+        that
+               ID  identifies exactly one device. Without arguments it displays
+               detailed information about the device such as name, serial,  re-
+               vision  numbers, firmware version sensor information on attached
+               motherboard and daughterboards.
+ 
+ EXAMPLES
+        usrpctl find
+                find all supported devices
+ 
+        usrpctl type=x300,product=X310find
+                find all x310 devices
+ 
+        usrpctl name=my_usrp find
+                find a device named my_usrp
+ 
+        usrpctl addr=192.168.10.2 find
+                find a device with the given IP.
+ 
+        usrpctl addr=192.168.10.2 probe
+                display device information for USRP with the given ID
+ 
+        usprctl name=my_usrp probe -tree
+                display property tree of device with the name my_usrp
+ 
+        SEE ALSO
+               UHD documentation: http://files.ettus.com/manual/
+ 
+ COPYRIGHT
+        Copyright (c) 2022 Ettus Research, A National Instruments Brand
+ 
+        This program is free software: you can redistribute it and/or modify it
+        under  the  terms of the GNU General Public License as published by the
+        Free Software Foundation, either version 3 of the License, or (at  your
+        option) any later version.
+ 
+        This  program  is  distributed  in the hope that it will be useful, but
+        WITHOUT ANY  WARRANTY;  without  even  the  implied  warranty  of  MER-
+        CHANTABILITY  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+        Public License for more details.
+ 
+ UHD                                  4.0.0                          usrpctl(1)
  ```
  
  - - -

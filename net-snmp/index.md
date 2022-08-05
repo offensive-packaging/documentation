@@ -3,7 +3,7 @@ Title: net-snmp
 Homepage: http://net-snmp.sourceforge.net/
 Repository: https://salsa.debian.org/debian/net-snmp
 Architectures: any all
-Version: 5.9.1+dfsg-4
+Version: 5.9.3+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -43,7 +43,7 @@ PackagesInfo: |
   description, you need to activate the non-free repository and install the
   "snmp-mibs-downloader" package.
  
- **Installed size:** `2.11 MB`  
+ **Installed size:** `2.13 MB`  
  **How to install:** `sudo apt install libsnmp-base`  
  
  
@@ -279,7 +279,7 @@ PackagesInfo: |
  SEE ALSO
         snmpcmd(1), snmp.conf(5)
  
- V5.9.1                            05 Apr 2010                         MIB2C(1)
+ V5.9.3                            05 Apr 2010                         MIB2C(1)
  ```
  
  - - -
@@ -289,37 +289,16 @@ PackagesInfo: |
  Script to merge custom code into updated mib2c code
  
  ```
- root@kali:~# man mib2c-update
- mib2c-update(1)                    Net-SNMP                    mib2c-update(1)
- 
- NAME
-        mib2c-update - script to merge custom code into updated mib2c code
- 
- SYNOPSIS
-        mib2c-update
- 
- DESCRIPTION
-        Use  mib2c-update  to  generate  your mib2c code templates, and it will
-        track the original code and the changes you make to the  code.  If  the
-        mib2c template changes (bug fixes, enhances in later releases), re-run-
-        ning mib2c will update the template and then attempt to  re-apply  your
-        changes.
- 
-        This can be extremely useful when developing your own mib2c templates.
- 
-        When you first run mib2c-update, it will create several hidden directo-
-        ries and a .mib2c-updaterc file. You must edit the .mib2c-udpaterc file
-        to  specify  two  values.  The  first, UPDATE_OID, is the table name to
-        specify when running mib2c. The second, UPDATE_CONF, is the mib2c  con-
-        figuration file to specify when running mib2c.
- 
-        Additional mib2c options can be specified in UPDATE_MIB2C_OPTS.
- 
- BUGS
-        mib2c-update  has  only  been tested on individual tables. Specifying a
-        scalar or and entire MIB might not work.
- 
- V5.9.1                            07 Apr 2010                  mib2c-update(1)
+ root@kali:~# mib2c-update -h
+ creating example .mib2c-udpaterc. edit as needed and re-run 
+ mib2c-update.
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.orig
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.new
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.merged
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.patch
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.backup
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.backup/curr
+ Creating missing directory /home/kali/kali-www/bin/kali-tools/tool-output/mib2c-update/.backup/orig
  ```
  
  - - -
@@ -418,14 +397,14 @@ PackagesInfo: |
   The Net-SNMP Perl5 support files provide the Perl functions for
   integration of SNMP into applications written in Perl.
  
- **Installed size:** `2.12 MB`  
+ **Installed size:** `2.14 MB`  
  **How to install:** `sudo apt install libsnmp-perl`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libnetsnmptrapd40 
  * libsnmp40 
- * perl
+ * perl 
  * perlapi-5.34.0
  {{< /spoiler >}}
  
@@ -442,7 +421,7 @@ PackagesInfo: |
   sending, receiving, decoding, and manipulation of the SNMP requests
   and responses.
  
- **Installed size:** `5.28 MB`  
+ **Installed size:** `5.30 MB`  
  **How to install:** `sudo apt install libsnmp40`  
  
  {{< spoiler "Dependencies:" >}}
@@ -485,7 +464,7 @@ PackagesInfo: |
  root@kali:~# agentxtrap -h
  USAGE: agentxtrap [OPTIONS] TRAP-PARAMETERS
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -607,7 +586,7 @@ PackagesInfo: |
         -fix   check  process against database /local/etc/fixproc.conf. Perform
                defined action, if check fails.
  
- V5.9.1                            16 Nov 2006                       fixproc(1)
+ V5.9.3                            16 Nov 2006                       fixproc(1)
  ```
  
  - - -
@@ -1151,7 +1130,7 @@ PackagesInfo: |
  root@kali:~# snmpbulkget -h
  USAGE: snmpbulkget [OPTIONS] AGENT OID [OID]...
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1247,7 +1226,7 @@ PackagesInfo: |
  root@kali:~# snmpbulkwalk -h
  USAGE: snmpbulkwalk [OPTIONS] AGENT [OID]
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1403,7 +1382,7 @@ PackagesInfo: |
  Usage: snmpdelta [-Cf] [-CF commandFile] [-Cl] [-CL SumFileName]
  	[-Cs] [-Ck] [-Ct] [-CS] [-Cv vars/pkt] [-Cp period]
  	[-CP peaks] [OPTIONS] AGENT oid [oid ...]
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1510,7 +1489,7 @@ PackagesInfo: |
  root@kali:~# snmpdf -h
  Usage: snmpdf [-Cu] [OPTIONS] AGENT
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1609,7 +1588,7 @@ PackagesInfo: |
  root@kali:~# snmpget -h
  USAGE: snmpget [OPTIONS] AGENT OID [OID]...
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1704,7 +1683,7 @@ PackagesInfo: |
  root@kali:~# snmpgetnext -h
  USAGE: snmpgetnext [OPTIONS] AGENT OID [OID]...
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1799,7 +1778,7 @@ PackagesInfo: |
  root@kali:~# snmpinform -h
  USAGE: snmpinform [OPTIONS] AGENT TRAP-PARAMETERS
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -1914,7 +1893,7 @@ PackagesInfo: |
  root@kali:~# snmpping -h
  Usage: snmpping [OPTIONS] AGENT DESTINATION
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2011,7 +1990,7 @@ PackagesInfo: |
  root@kali:~# snmpset -h
  USAGE: snmpset [OPTIONS] AGENT OID TYPE VALUE [OID TYPE VALUE]...
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2111,7 +2090,7 @@ PackagesInfo: |
  root@kali:~# snmpstatus -h
  USAGE: snmpstatus [OPTIONS] AGENT
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2206,7 +2185,7 @@ PackagesInfo: |
  root@kali:~# snmptable -h
  USAGE: snmptable [OPTIONS] AGENT TABLE-OID
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2311,7 +2290,7 @@ PackagesInfo: |
  root@kali:~# snmptest -h
  USAGE: snmptest [OPTIONS] AGENT
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2403,7 +2382,7 @@ PackagesInfo: |
  root@kali:~# snmptls -h
  USAGE: snmptls [-Cm mapTypeOID] [-Cd data] [-Cs storageType] [OPTIONS] AGENT<command> [command options]
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2507,7 +2486,7 @@ PackagesInfo: |
  invalid option: -?
  USAGE: snmptranslate [OPTIONS] OID [OID]...
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2589,7 +2568,7 @@ PackagesInfo: |
  root@kali:~# snmptrap -h
  USAGE: snmptrap [OPTIONS] AGENT TRAP-PARAMETERS
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2690,7 +2669,7 @@ PackagesInfo: |
  root@kali:~# snmpusm -h
  Usage: snmpusm [OPTIONS] AGENT COMMAND
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2803,7 +2782,7 @@ PackagesInfo: |
  root@kali:~# snmpvacm -h
  Usage: snmpvacm [OPTIONS] AGENT COMMAND
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -2906,7 +2885,7 @@ PackagesInfo: |
  root@kali:~# snmpwalk -h
  USAGE: snmpwalk [OPTIONS] AGENT [OID]
  
-   Version:  5.9.1
+   Version:  5.9.3
    Web:      http://www.net-snmp.org/
    Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -3047,63 +3026,7 @@ PackagesInfo: |
  
  Usage:  snmpd [OPTIONS] [LISTENING ADDRESSES]
  
- 	Version:  5.9.1
- 	Web:      http://www.net-snmp.org/
- 	Email:    net-snmp-coders@lists.sourceforge.net
- 
-   -a			log addresses
-   -A			append to the logfile rather than truncating it
-   -c FILE[,...]		read FILE(s) as configuration file(s)
-   -C			do not read the default configuration files
- 			  (config search path: /etc/snmp:/usr/share/snmp:/usr/lib/x86_64-linux-gnu/snmp:/root/.snmp)
-   -d			dump sent and received SNMP packets
-   -D[TOKEN[,...]]	turn on debugging output for the given TOKEN(s)
- 			  (try ALL for extremely verbose output)
- 			  Don't put space(s) between -D and TOKEN(s).
-   -f			do not fork from the shell
-   -g GID		change to this numeric gid after opening
- 			  transport endpoints
-   -h, --help		display this usage message
-   -H			display configuration file directives understood
-   -I [-]INITLIST	list of mib modules to initialize (or not)
- 			  (run snmpd with -Dmib_init for a list)
-   -L <LOGOPTS>		toggle options controlling where to log to
- 	e:           log to standard error
- 	o:           log to standard output
- 	n:           don't log at all
- 	f file:      log to the specified file
- 	s facility:  log to syslog (via the specified facility)
- 
- 	(variants)
- 	[EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
- 	[EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
- 	[FS] pri token:    log to file/syslog for level 'pri' and above
- 	[FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
-   -m MIBLIST		use MIBLIST instead of the default MIB list
-   -M DIRLIST		use DIRLIST as the list of locations to look for MIBs
- 			  (default $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
-   -p FILE		store process id in FILE
-   -q			print information in a more parsable format
-   -r			do not exit if files only accessible to root
- 			  cannot be opened
-   -u UID		change to this uid (numeric or textual) after
- 			  opening transport endpoints
-   -v, --version		display version information
-   -V			verbose display
-   -x ADDRESS		use ADDRESS as AgentX address
-   -X			run as an AgentX subagent rather than as an
- 			  SNMP master agent
- 
- Deprecated options:
-   -l FILE		use -Lf <FILE> instead
-   -P			use -p instead
-   -s			use -Lsd instead
-   -S d|i|0-7		use -Ls <facility> instead
- 
- 
- Usage:  snmpd [OPTIONS] [LISTENING ADDRESSES]
- 
- 	Version:  5.9.1
+ 	Version:  5.9.3
  	Web:      http://www.net-snmp.org/
  	Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -3189,7 +3112,7 @@ PackagesInfo: |
  root@kali:~# snmptrapd -h
  Usage: snmptrapd [OPTIONS] [LISTENING ADDRESSES]
  
- 	NET-SNMP Version:  5.9.1
+ 	NET-SNMP Version:  5.9.3
  	Web:      http://www.net-snmp.org/
  	Email:    net-snmp-coders@lists.sourceforge.net
  
@@ -3287,7 +3210,7 @@ PackagesInfo: |
   graphical frontend for the Net-SNMP tools. It can be used to browse
   the MIB tree and interactively send requests to SNMP agents.
  
- **Installed size:** `1.61 MB`  
+ **Installed size:** `1.63 MB`  
  **How to install:** `sudo apt install tkmib`  
  
  {{< spoiler "Dependencies:" >}}

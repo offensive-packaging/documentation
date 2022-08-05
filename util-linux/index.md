@@ -3,7 +3,7 @@ Title: util-linux
 Homepage: https://www.kernel.org/pub/linux/utils/util-linux/
 Repository: https://salsa.debian.org/debian/util-linux
 Architectures: any all
-Version: 2.38-4
+Version: 2.38-6
 Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   hd, hexdump, look, ul and write.
   Other BSD utilities are provided by bsdutils and calendar.
  
- **Installed size:** `393 KB`  
+ **Installed size:** `394 KB`  
  **How to install:** `sudo apt install bsdextrautils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -99,7 +99,6 @@ PackagesInfo: |
  ##### column
  
  Columnate lists
- Spreadsheet::WriteExcel::Chart::A writer class for Excel Column charts.
  
  ```
  root@kali:~# column -h
@@ -144,8 +143,8 @@ PackagesInfo: |
  
  ##### hd
  
- MFM/IDE hard disk devices
  Display file contents in hexadecimal, decimal, octal, or ascii
+ MFM/IDE hard disk devices
  
  ```
  root@kali:~# hd -h
@@ -297,7 +296,7 @@ PackagesInfo: |
   system: logger, renice, script, scriptlive, scriptreplay and wall. The
   remaining standard BSD utilities are provided by bsdextrautils.
  
- **Installed size:** `406 KB`  
+ **Installed size:** `407 KB`  
  **How to install:** `sudo apt install bsdutils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -519,7 +518,7 @@ PackagesInfo: |
   You can also use eject to properly disconnect external mass-storage
   devices like digital cameras or portable music players.
  
- **Installed size:** `188 KB`  
+ **Installed size:** `189 KB`  
  **How to install:** `sudo apt install eject`  
  
  {{< spoiler "Dependencies:" >}}
@@ -582,7 +581,7 @@ PackagesInfo: |
   The cfdisk utilitity gives a more userfriendly curses based interface.
   The sfdisk utility is mostly for automation and scripting uses.
  
- **Installed size:** `538 KB`  
+ **Installed size:** `535 KB`  
  **How to install:** `sudo apt install fdisk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -764,7 +763,7 @@ PackagesInfo: |
    
   This package contains the development environment for the blkid library.
  
- **Installed size:** `929 KB`  
+ **Installed size:** `930 KB`  
  **How to install:** `sudo apt install libblkid-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -783,7 +782,7 @@ PackagesInfo: |
   This allows system administrators to avoid specifying filesystems by
   hard-coded device names and use a logical naming system instead.
  
- **Installed size:** `450 KB`  
+ **Installed size:** `454 KB`  
  **How to install:** `sudo apt install libblkid1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -800,7 +799,7 @@ PackagesInfo: |
    
   This package contains the development environment for the fdisk library.
  
- **Installed size:** `132 KB`  
+ **Installed size:** `133 KB`  
  **How to install:** `sudo apt install libfdisk-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -836,7 +835,7 @@ PackagesInfo: |
    
   This package contains the development environment for the mount library.
  
- **Installed size:** `136 KB`  
+ **Installed size:** `137 KB`  
  **How to install:** `sudo apt install libmount-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -871,7 +870,7 @@ PackagesInfo: |
    
   This package contains the development environment for the mount library.
  
- **Installed size:** `116 KB`  
+ **Installed size:** `117 KB`  
  **How to install:** `sudo apt install libsmartcols-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -886,7 +885,7 @@ PackagesInfo: |
  
   This smart column output alignment library is used by fdisk utilities.
  
- **Installed size:** `341 KB`  
+ **Installed size:** `345 KB`  
  **How to install:** `sudo apt install libsmartcols1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -906,7 +905,7 @@ PackagesInfo: |
    
   See RFC 4122 for more information.
  
- **Installed size:** `133 KB`  
+ **Installed size:** `134 KB`  
  **How to install:** `sudo apt install libuuid1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -921,7 +920,7 @@ PackagesInfo: |
   This package provides the mount(8), umount(8), swapon(8),
   swapoff(8), and losetup(8) commands.
  
- **Installed size:** `449 KB`  
+ **Installed size:** `450 KB`  
  **How to install:** `sudo apt install mount`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1206,7 +1205,7 @@ PackagesInfo: |
   which is used to enable and disable wireless networking devices, typically
   WLAN, Bluetooth and mobile broadband.
  
- **Installed size:** `152 KB`  
+ **Installed size:** `153 KB`  
  **How to install:** `sudo apt install rfkill`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1265,7 +1264,7 @@ PackagesInfo: |
   messages, create new filesystems, view block device information,
   interface with real time clock, etc.
  
- **Installed size:** `4.89 MB`  
+ **Installed size:** `4.88 MB`  
  **How to install:** `sudo apt install util-linux`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4360,7 +4359,7 @@ PackagesInfo: |
   Tools commonly found on systems where humans login interactively,
   or are needed with non-standard system configurations.
  
- **Installed size:** `424 KB`  
+ **Installed size:** `417 KB`  
  **How to install:** `sudo apt install util-linux-extra`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4402,8 +4401,8 @@ PackagesInfo: |
  
  ##### hwclock
  
- Settings that affect the behaviour of the hwclock init script
  Time clocks utility
+ Settings that affect the behaviour of the hwclock init script
  
  ```
  root@kali:~# hwclock -h
@@ -4579,7 +4578,7 @@ PackagesInfo: |
    
   This package contains the development environment for the uuid library.
  
- **Installed size:** `165 KB`  
+ **Installed size:** `167 KB`  
  **How to install:** `sudo apt install uuid-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4607,7 +4606,7 @@ PackagesInfo: |
   large numbers of threads trying to grab UUIDs running on different CPUs.
   It is used by libuuid as well as the uuidgen program.
  
- **Installed size:** `225 KB`  
+ **Installed size:** `226 KB`  
  **How to install:** `sudo apt install uuid-runtime`  
  
  {{< spoiler "Dependencies:" >}}

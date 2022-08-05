@@ -3,7 +3,7 @@ Title: responder
 Homepage: https://github.com/lgandx/Responder
 Repository: https://gitlab.com/kalilinux/packages/responder
 Architectures: all
-Version: 3.1.2.0-0kali2
+Version: 3.1.3.0-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-sniffing-spoofing kali-tools-top10 
 Icon: images/responder-logo.svg
 PackagesInfo: |
@@ -43,7 +43,11 @@ PackagesInfo: |
    |__| |_____|_____|   __|_____|__|__|_____||_____|__|
                     |__|
  
-            NBT-NS, LLMNR & MDNS Responder 3.1.1.0
+            NBT-NS, LLMNR & MDNS Responder 3.1.3.0
+ 
+   To support this project:
+   Patreon -> https://www.patreon.com/PythonResponder
+   Paypal  -> https://paypal.me/PythonResponder
  
    Author: Laurent Gaffie (laurent.gaffie@gmail.com)
    To kill this script hit CTRL-C
@@ -85,8 +89,7 @@ PackagesInfo: |
                          False
    -P, --ProxyAuth       Force NTLM (transparently)/Basic (prompt)
                          authentication for the proxy. WPAD doesn't need to be
-                         ON. This option is highly effective when combined with
-                         -r. Default: False
+                         ON. This option is highly effective. Default: False
    --lm                  Force LM hashing downgrade for Windows XP/2003 and
                          earlier. Default: False
    --disable-ess         Force ESS downgrade. Default: False

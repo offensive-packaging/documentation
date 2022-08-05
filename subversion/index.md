@@ -3,7 +3,7 @@ Title: subversion
 Homepage: http://subversion.apache.org/
 Repository: https://salsa.debian.org/jamessan/subversion
 Architectures: any all
-Version: 1.14.2-2
+Version: 1.14.2-3
 Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   server backend, to serve repositories over the http and https
   protocols.  See the 'subversion' package for more information.
  
- **Installed size:** `444 KB`  
+ **Installed size:** `445 KB`  
  **How to install:** `sudo apt install libapache2-mod-svn`  
  
  {{< spoiler "Dependencies:" >}}
@@ -92,7 +92,7 @@ PackagesInfo: |
  * libapr1 
  * libc6 
  * libsvn1 
- * perl
+ * perl 
  * perlapi-5.34.0
  {{< /spoiler >}}
  
@@ -132,7 +132,7 @@ PackagesInfo: |
   script that manipulates a Subversion repository or working copy.  See
   the 'subversion' package for more information.
  
- **Installed size:** `8.54 MB`  
+ **Installed size:** `5.11 MB`  
  **How to install:** `sudo apt install python3-subversion`  
  
  {{< spoiler "Dependencies:" >}}
@@ -179,7 +179,7 @@ PackagesInfo: |
   This package includes the Subversion client (svn, svnsync), repository
   administration tools (svnadmin, svnlook) and a network server (svnserve).
  
- **Installed size:** `4.75 MB`  
+ **Installed size:** `4.76 MB`  
  **How to install:** `sudo apt install subversion`  
  
  {{< spoiler "Dependencies:" >}}

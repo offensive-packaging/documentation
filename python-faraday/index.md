@@ -3,7 +3,7 @@ Title: python-faraday
 Homepage: https://faradaysec.com
 Repository: https://gitlab.com/kalilinux/packages/python-faraday
 Architectures: all
-Version: 3.19.0-0kali3
+Version: 4.0.4+git20220701-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-reporting 
 Icon: images/python-faraday-logo.svg
 PackagesInfo: |
@@ -18,15 +18,13 @@ PackagesInfo: |
    
   This package no longer contains the GTK client like the upstream repo.
  
- **Installed size:** `6.51 MB`  
+ **Installed size:** `28.56 MB`  
  **How to install:** `sudo apt install faraday`  
  
  {{< spoiler "Dependencies:" >}}
  * curl
- * faraday-angular-frontend
  * gir1.2-gtk-3.0
  * gir1.2-vte-2.91
- * libjs-sphinxdoc 
  * pgcli
  * postgresql
  * python3
@@ -55,6 +53,7 @@ PackagesInfo: |
  * python3-flask-security
  * python3-flask-socketio
  * python3-flask-sqlalchemy 
+ * python3-jwt
  * python3-marshmallow 
  * python3-marshmallow-sqlalchemy 
  * python3-nplusone 
@@ -149,32 +148,6 @@ PackagesInfo: |
  
  - - -
  
- ##### faraday-searcher
- 
- 
- ```
- root@kali:~# faraday-searcher --help
- Usage: faraday-searcher [OPTIONS]
- 
- Options:
-   --workspace TEXT       Workspacer name  [required]
-   --server_address TEXT  Faraday server address  [required]
-   --user TEXT            [required]
-   --password TEXT        [required]
-   --output TEXT          Choose a custom output directory
-   --email_sender TEXT
-   --smtp_username TEXT
-   --smtp_password TEXT
-   --mail_protocol TEXT
-   --port_protocol TEXT
-   --ssl TEXT
-   --log TEXT
-   --rules TEXT           Filename with rules  [required]
-   --help                 Show this message and exit.
- ```
- 
- - - -
- 
  ##### faraday-server
  
  Faraday server's launcher
@@ -219,7 +192,7 @@ PackagesInfo: |
    
   This package is a transitional package. It can be remove safely.
  
- **Installed size:** `31 KB`  
+ **Installed size:** `32 KB`  
  **How to install:** `sudo apt install python-faraday`  
  
  {{< spoiler "Dependencies:" >}}

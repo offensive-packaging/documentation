@@ -4,7 +4,7 @@ Homepage: https://gitlab.com/cryptsetup/cryptsetup
 Repository: https://salsa.debian.org/cryptsetup-team/cryptsetup
 Architectures: linux-any all
 Version: 2:2.4.3-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-post-exploitation kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cryptsetup

@@ -518,6 +518,7 @@ PackagesInfo: |
  ##### sshd
  
  OpenSSH daemon
+ OpenSSH daemon
  
  ```
  root@kali:~# sshd -h

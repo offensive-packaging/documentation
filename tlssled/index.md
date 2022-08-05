@@ -40,7 +40,7 @@ PackagesInfo: |
      openssl version: OpenSSL 3.0.4 21 Jun 2022 (Library: OpenSSL 3.0.4 21 Jun 2022)
      
  ------------------------------------------------------
-     Date: 20220726-074137
+     Date: 20220805-105510
  ------------------------------------------------------
  
  [!] Usage: /usr/bin/tlssled <hostname or IP_address> <port>

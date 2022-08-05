@@ -3,7 +3,7 @@ Title: python-pip
 Homepage: https://pip.pypa.io/en/stable/
 Repository: https://salsa.debian.org/python-team/packages/python-pip
 Architectures: all
-Version: 22.1.1+dfsg-1
+Version: 22.2+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
    
   This is the Python 3 version of the package.
  
- **Installed size:** `6.93 MB`  
+ **Installed size:** `6.43 MB`  
  **How to install:** `sudo apt install python3-pip`  
  
  {{< spoiler "Dependencies:" >}}
@@ -41,6 +41,7 @@ PackagesInfo: |
    download                    Download packages.
    uninstall                   Uninstall packages.
    freeze                      Output installed packages in requirements format.
+   inspect                     Inspect the python environment.
    list                        List installed packages.
    show                        Show information about installed packages.
    check                       Verify installed packages have compatible dependencies.
@@ -120,6 +121,7 @@ PackagesInfo: |
    download                    Download packages.
    uninstall                   Uninstall packages.
    freeze                      Output installed packages in requirements format.
+   inspect                     Inspect the python environment.
    list                        List installed packages.
    show                        Show information about installed packages.
    check                       Verify installed packages have compatible dependencies.
@@ -198,6 +200,7 @@ PackagesInfo: |
    download                    Download packages.
    uninstall                   Uninstall packages.
    freeze                      Output installed packages in requirements format.
+   inspect                     Inspect the python environment.
    list                        List installed packages.
    show                        Show information about installed packages.
    check                       Verify installed packages have compatible dependencies.
@@ -271,7 +274,7 @@ PackagesInfo: |
   This is the support package for the PEP 427 wheel version of the package,
   required for using pip inside a virtual environment.
  
- **Installed size:** `1.79 MB`  
+ **Installed size:** `1.69 MB`  
  **How to install:** `sudo apt install python3-pip-whl`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: sslsplit
 Homepage: http://www.roe.ch/SSLsplit
 Repository: https://salsa.debian.org/debian/sslsplit
 Architectures: any
-Version: 0.5.5-2
+Version: 0.5.5-2.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-sniffing-spoofing kali-tools-web 
 Icon: images/sslsplit-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   logging all data transmitted. SSLsplit is intended to be useful for
   network forensics and penetration testing.
  
- **Installed size:** `250 KB`  
+ **Installed size:** `251 KB`  
  **How to install:** `sudo apt install sslsplit`  
  
  {{< spoiler "Dependencies:" >}}
@@ -27,7 +27,7 @@ PackagesInfo: |
  * libevent-pthreads-2.1-7 
  * libnet1 
  * libpcap0.8 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### sslsplit

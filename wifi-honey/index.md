@@ -42,7 +42,7 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     727 NetworkManager
+     583 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -53,7 +53,7 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     727 NetworkManager
+     583 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -64,7 +64,7 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     727 NetworkManager
+     583 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -75,7 +75,7 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     727 NetworkManager
+     583 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -86,7 +86,7 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     727 NetworkManager
+     583 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces

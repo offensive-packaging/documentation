@@ -40,7 +40,7 @@ PackagesInfo: |
   ==========================================================================
  
                   os = kali
-           osversion = 2022.2
+           osversion = 2022.3
         osmajversion = 2022
                 arch = x86_64
             trueuser = kali
@@ -54,7 +54,7 @@ PackagesInfo: |
            winedrive = /var/lib/veil/wine/drive_c
              gempath = Z:\var\lib\veil\wine\drive_c\Ruby187\bin\gem
  
-  [I] Kali Linux 2022.2 x86_64 detected...
+  [I] Kali Linux 2022.3 x86_64 detected...
  
  
  

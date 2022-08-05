@@ -62,16 +62,16 @@ PackagesInfo: |
       Loaded: loaded (/lib/systemd/system/dradis.service; disabled; vendor preset: disabled)
       Active: inactive (dead)
  
- Jul 26 06:56:32 kali bundle2.7[83285]:         /usr/lib/dradis/ruby/2.7.0/gems/railties-6.1.5.1/lib/rails/commands.rb:18:in `<main>'
- Jul 26 06:56:32 kali bundle2.7[83285]:         /usr/lib/dradis/ruby/2.7.0/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
- Jul 26 06:56:32 kali bundle2.7[83285]:         /usr/lib/dradis/ruby/2.7.0/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
- Jul 26 06:56:32 kali bundle2.7[83285]:         bin/rails:5:in `<main>'
- Jul 26 06:56:32 kali bundle2.7[83285]: [2022-07-26 06:56:32] INFO  going to shutdown ...
- Jul 26 06:56:32 kali bundle2.7[83285]: [2022-07-26 06:56:32] INFO  WEBrick::HTTPServer#start done.
- Jul 26 06:56:32 kali bundle2.7[83285]: Exiting
- Jul 26 06:56:32 kali systemd[1]: dradis.service: Deactivated successfully.
- Jul 26 06:56:32 kali systemd[1]: Stopped Dradis web application.
- Jul 26 06:56:32 kali systemd[1]: dradis.service: Consumed 1.631s CPU time.
+ Aug 05 10:07:22 kali bundle2.7[85803]:         /usr/lib/dradis/ruby/2.7.0/gems/railties-6.1.5.1/lib/rails/commands.rb:18:in `<main>'
+ Aug 05 10:07:22 kali bundle2.7[85803]:         /usr/lib/dradis/ruby/2.7.0/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+ Aug 05 10:07:22 kali bundle2.7[85803]:         /usr/lib/dradis/ruby/2.7.0/gems/bootsnap-1.12.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in `require'
+ Aug 05 10:07:22 kali bundle2.7[85803]:         bin/rails:5:in `<main>'
+ Aug 05 10:07:22 kali bundle2.7[85803]: [2022-08-05 10:07:22] INFO  going to shutdown ...
+ Aug 05 10:07:22 kali bundle2.7[85803]: [2022-08-05 10:07:22] INFO  WEBrick::HTTPServer#start done.
+ Aug 05 10:07:22 kali bundle2.7[85803]: Exiting
+ Aug 05 10:07:22 kali systemd[1]: dradis.service: Deactivated successfully.
+ Aug 05 10:07:22 kali systemd[1]: Stopped Dradis web application.
+ Aug 05 10:07:22 kali systemd[1]: dradis.service: Consumed 1.529s CPU time.
  ```
  
  - - -

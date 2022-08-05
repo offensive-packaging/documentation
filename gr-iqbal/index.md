@@ -33,7 +33,7 @@ PackagesInfo: |
  * libc6 
  * libgcc-s1 
  * libgnuradio-iqbalance3.9.0 
- * libgnuradio-runtime3.10.2 
+ * libgnuradio-runtime3.10.3 
  * libpython3.10 
  * libstdc++6 
  * python3
@@ -60,8 +60,8 @@ PackagesInfo: |
  * libc6 
  * libfftw3-single3 
  * libgcc-s1 
- * libgnuradio-pmt3.10.2 
- * libgnuradio-runtime3.10.2 
+ * libgnuradio-pmt3.10.3 
+ * libgnuradio-runtime3.10.3 
  * libstdc++6 
  {{< /spoiler >}}
  

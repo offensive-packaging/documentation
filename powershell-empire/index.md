@@ -3,7 +3,7 @@ Title: powershell-empire
 Homepage: https://github.com/BC-SECURITY/Empire
 Repository: https://gitlab.com/kalilinux/packages/powershell-empire
 Architectures: all
-Version: 4.7.0-kali-0kali1
+Version: 4.7.1-kali-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/powershell-empire-logo.svg
 PackagesInfo: |

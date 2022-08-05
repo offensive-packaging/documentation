@@ -1,9 +1,9 @@
 ---
 Title: cryptsetup-nuke-password
-Homepage: https://gitlab.com/kalilinux/packages/cryptsetup-nuke-password
-Repository: https://gitlab.com/kalilinux/packages/cryptsetup-nuke-password
+Homepage: https://salsa.debian.org/pkg-security-team/cryptsetup-nuke-password
+Repository: https://salsa.debian.org/pkg-security-team/cryptsetup-nuke-password
 Architectures: any
-Version: 2
+Version: 4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -20,13 +20,14 @@ PackagesInfo: |
   After installation, use “dpkg-reconfigure cryptsetup-nuke-password” to
   configure your nuke password.
  
- **Installed size:** `48 KB`  
+ **Installed size:** `56 KB`  
  **How to install:** `sudo apt install cryptsetup-nuke-password`  
  
  {{< spoiler "Dependencies:" >}}
  * cryptsetup-bin
  * debconf  | debconf-2.0
  * libc6 
+ * libcrypt1 
  {{< /spoiler >}}
  
  

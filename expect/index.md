@@ -897,7 +897,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# expect_mkpasswd -h
- tm=o4Rt3P
+ Ph6C<jw9a
  ```
  
  - - -

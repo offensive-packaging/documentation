@@ -85,7 +85,7 @@ PackagesInfo: |
  
      
  
-  CMSeeK says ~ auf Wiedersehen
+  CMSeeK says ~ sayonara
  ```
  
  - - -

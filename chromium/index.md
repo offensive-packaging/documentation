@@ -3,7 +3,7 @@ Title: chromium
 Homepage: http://www.chromium.org/Home
 Repository: https://salsa.debian.org/chromium-team/chromium
 Architectures: i386 amd64 arm64 armhf all
-Version: 103.0.5060.114-1
+Version: 103.0.5060.134-1
 Metapackages: kali-linux-everything 
 Icon: images/chromium-logo.svg
 PackagesInfo: |

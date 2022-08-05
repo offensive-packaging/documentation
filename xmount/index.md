@@ -55,13 +55,13 @@ PackagesInfo: |
      --cache <cfile> : Enable virtual write support.
        <cfile> specifies the cache file to use.
      --in <itype> <ifile> : Input image format and source file(s). May be specified multiple times.
-       <itype> can be "aaff", "aff", "ewf", "aewf", "raw", "dd".
+       <itype> can be "aaff", "aewf", "ewf", "aff", "raw", "dd".
        <ifile> specifies the source file. If your image is split into multiple files, you have to specify them all!
      --inopts <iopts> : Specify input library specific options.
        <iopts> specifies a comma separated list of key=value options. See below for details.
      --info : Print out infos about used compiler and libraries.
      --morph <mtype> : Morphing function to apply to input image(s). If not specified, defaults to "combine".
-       <mtype> can be "raid0", "unallocated", "combine".
+       <mtype> can be "raid0", "combine", "unallocated".
      --morphopts <mopts> : Specify morphing library specific options.
        <mopts> specifies a comma separated list of key=value options. See below for details.
      --offset <off> : Move the output image data start <off> bytes into the input image(s).

@@ -26,7 +26,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# ollydbg --help
+ root@kali:~# ollydbg -h
  ┏━(Message from Kali developers)
  ┃
  ┃ You may need to install the wine32 package first:

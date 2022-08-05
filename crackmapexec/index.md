@@ -70,15 +70,15 @@ PackagesInfo: |
  [*] Creating home directory structure
  [*] Creating default workspace
  [*] Initializing LDAP protocol database
- [*] Initializing SMB protocol database
  [*] Initializing WINRM protocol database
+ [*] Initializing SMB protocol database
  [*] Initializing SSH protocol database
  [*] Initializing MSSQL protocol database
  [*] Copying default configuration file
  [*] Generating SSL certificate
  usage: crackmapexec [-h] [-t THREADS] [--timeout TIMEOUT] [--jitter INTERVAL]
                      [--darrell] [--verbose]
-                     {ldap,smb,winrm,ssh,mssql} ...
+                     {ldap,winrm,smb,ssh,mssql} ...
  
        ______ .______           ___        ______  __  ___ .___  ___.      ___      .______    _______ ___   ___  _______   ______
       /      ||   _  \         /   \      /      ||  |/  / |   \/   |     /   \     |   _  \  |   ____|\  \ /  / |   ____| /      |
@@ -106,10 +106,10 @@ PackagesInfo: |
  protocols:
    available protocols
  
-   {ldap,smb,winrm,ssh,mssql}
+   {ldap,winrm,smb,ssh,mssql}
      ldap                own stuff using LDAP
-     smb                 own stuff using SMB
      winrm               own stuff using WINRM
+     smb                 own stuff using SMB
      ssh                 own stuff using SSH
      mssql               own stuff using MSSQL
  ```

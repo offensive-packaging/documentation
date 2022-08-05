@@ -3,7 +3,7 @@ Title: llvm-defaults
 Homepage: 
 Repository: https://salsa.debian.org/pkg-llvm-team/llvm-defaults/
 Architectures: any
-Version: 0.54
+Version: 0.55
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-fuzzing kali-tools-reverse-engineering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,11 +18,11 @@ PackagesInfo: |
    
   This is a dependency package providing the default clang compiler.
  
- **Installed size:** `24 KB`  
+ **Installed size:** `25 KB`  
  **How to install:** `sudo apt install clang`  
  
  {{< spoiler "Dependencies:" >}}
- * clang-13 
+ * clang-14 
  {{< /spoiler >}}
  
  ##### asan_symbolize
@@ -97,7 +97,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -148,11 +149,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -163,9 +167,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -178,8 +181,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -189,7 +190,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -201,7 +201,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -218,6 +217,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -260,20 +260,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -291,7 +289,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -349,9 +346,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -367,7 +365,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -382,8 +379,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -398,6 +397,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -431,49 +431,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -481,12 +465,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -496,41 +474,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -538,59 +502,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -609,12 +545,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -627,93 +563,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -732,18 +636,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -778,12 +681,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -825,14 +724,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -856,21 +755,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -888,16 +781,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -915,11 +807,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -929,13 +818,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -961,7 +850,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -974,14 +862,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -990,22 +875,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -1016,6 +896,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -1078,6 +960,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -1087,10 +971,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -1119,18 +1006,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -1155,14 +1046,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -1193,11 +1081,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -1213,6 +1100,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -1222,6 +1110,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -1231,14 +1121,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -1268,9 +1160,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -1313,6 +1208,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -1384,7 +1281,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -1435,11 +1333,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -1450,9 +1351,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -1465,8 +1365,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -1476,7 +1374,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -1488,7 +1385,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -1505,6 +1401,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -1547,20 +1444,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -1578,7 +1473,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -1636,9 +1530,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -1654,7 +1549,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -1669,8 +1563,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -1685,6 +1581,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -1718,49 +1615,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -1768,12 +1649,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -1783,41 +1658,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -1825,59 +1686,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -1896,12 +1729,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -1914,93 +1747,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -2019,18 +1820,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -2065,12 +1865,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -2112,14 +1908,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -2143,21 +1939,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -2175,16 +1965,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -2202,11 +1991,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -2216,13 +2002,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -2248,7 +2034,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -2261,14 +2046,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -2277,22 +2059,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -2303,6 +2080,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -2365,6 +2144,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -2374,10 +2155,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -2406,18 +2190,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -2442,14 +2230,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -2480,11 +2265,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -2500,6 +2284,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -2509,6 +2294,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -2518,14 +2305,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -2555,9 +2344,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -2600,6 +2392,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -2664,16 +2458,16 @@ PackagesInfo: |
    
   This is a dependency package providing the clang format tool.
  
- **Installed size:** `33 KB`  
+ **Installed size:** `34 KB`  
  **How to install:** `sudo apt install clang-format`  
  
  {{< spoiler "Dependencies:" >}}
- * clang-format-13 
+ * clang-format-14 
  {{< /spoiler >}}
  
  ##### clang-format
  
- Manual page for clang-format 13
+ Manual page for clang-format 14
  
  ```
  root@kali:~# clang-format --help
@@ -2691,77 +2485,81 @@ PackagesInfo: |
  
  Clang-format options:
  
-   --Werror                   - If set, changes formatting warnings to errors
-   --Wno-error=<value>        - If set don't error out on the specified warning type.
-     =unknown                 -   If set, unknown format options are only warned about.
-                                  This can be used to enable formatting, even if the
-                                  configuration contains unknown (newer) options.
-                                  Use with caution, as this might lead to dramatically
-                                  differing format depending on an option being
-                                  supported or not.
-   --assume-filename=<string> - Override filename used to determine the language.
-                                When reading from stdin, clang-format assumes this
-                                filename to determine the language.
-   --cursor=<uint>            - The position of the cursor when invoking
-                                clang-format from an editor integration
-   --dry-run                  - If set, do not actually make the formatting changes
-   --dump-config              - Dump configuration options to stdout and exit.
-                                Can be used with -style option.
-   --fallback-style=<string>  - The name of the predefined style used as a
-                                fallback in case clang-format is invoked with
-                                -style=file, but can not find the .clang-format
-                                file to use.
-                                Use -fallback-style=none to skip formatting.
-   --ferror-limit=<uint>      - Set the maximum number of clang-format errors to emit before stopping (0 = no limit). Used only with --dry-run or -n
-   -i                         - Inplace edit <file>s, if specified.
-   --length=<uint>            - Format a range of this length (in bytes).
-                                Multiple ranges can be formatted by specifying
-                                several -offset and -length pairs.
-                                When only a single -offset is specified without
-                                -length, clang-format will format up to the end
-                                of the file.
-                                Can only be used with one input file.
-   --lines=<string>           - <start line>:<end line> - format a range of
-                                lines (both 1-based).
-                                Multiple ranges can be formatted by specifying
-                                several -lines arguments.
-                                Can't be used with -offset and -length.
-                                Can only be used with one input file.
-   -n                         - Alias for --dry-run
-   --offset=<uint>            - Format a range starting at this byte offset.
-                                Multiple ranges can be formatted by specifying
-                                several -offset and -length pairs.
-                                Can only be used with one input file.
-   --output-replacements-xml  - Output replacements as XML.
-   --sort-includes            - If set, overrides the include sorting behavior determined by the SortIncludes style flag
-   --style=<string>           - Coding style, currently supports:
-                                  LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit.
-                                Use -style=file to load style configuration from
-                                .clang-format file located in one of the parent
-                                directories of the source file (or current
-                                directory for stdin).
-                                Use -style="{key: value, ...}" to set specific
-                                parameters, e.g.:
-                                  -style="{BasedOnStyle: llvm, IndentWidth: 8}"
-   --verbose                  - If set, shows the list of processed files
+   --Werror                       - If set, changes formatting warnings to errors
+   --Wno-error=<value>            - If set don't error out on the specified warning type.
+     =unknown                     -   If set, unknown format options are only warned about.
+                                      This can be used to enable formatting, even if the
+                                      configuration contains unknown (newer) options.
+                                      Use with caution, as this might lead to dramatically
+                                      differing format depending on an option being
+                                      supported or not.
+   --assume-filename=<string>     - Override filename used to determine the language.
+                                    When reading from stdin, clang-format assumes this
+                                    filename to determine the language.
+   --cursor=<uint>                - The position of the cursor when invoking
+                                    clang-format from an editor integration
+   --dry-run                      - If set, do not actually make the formatting changes
+   --dump-config                  - Dump configuration options to stdout and exit.
+                                    Can be used with -style option.
+   --fallback-style=<string>      - The name of the predefined style used as a
+                                    fallback in case clang-format is invoked with
+                                    -style=file, but can not find the .clang-format
+                                    file to use.
+                                    Use -fallback-style=none to skip formatting.
+   --ferror-limit=<uint>          - Set the maximum number of clang-format errors to emit before stopping (0 = no limit). Used only with --dry-run or -n
+   --files=<string>               - Provide a list of files to run clang-format
+   -i                             - Inplace edit <file>s, if specified.
+   --length=<uint>                - Format a range of this length (in bytes).
+                                    Multiple ranges can be formatted by specifying
+                                    several -offset and -length pairs.
+                                    When only a single -offset is specified without
+                                    -length, clang-format will format up to the end
+                                    of the file.
+                                    Can only be used with one input file.
+   --lines=<string>               - <start line>:<end line> - format a range of
+                                    lines (both 1-based).
+                                    Multiple ranges can be formatted by specifying
+                                    several -lines arguments.
+                                    Can't be used with -offset and -length.
+                                    Can only be used with one input file.
+   -n                             - Alias for --dry-run
+   --offset=<uint>                - Format a range starting at this byte offset.
+                                    Multiple ranges can be formatted by specifying
+                                    several -offset and -length pairs.
+                                    Can only be used with one input file.
+   --output-replacements-xml      - Output replacements as XML.
+   --qualifier-alignment=<string> - If set, overrides the qualifier alignment style determined by the QualifierAlignment style flag
+   --sort-includes                - If set, overrides the include sorting behavior determined by the SortIncludes style flag
+   --style=<string>               - Coding style, currently supports:
+                                      LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit.
+                                    Use -style=file to load style configuration from
+                                    .clang-format file located in one of the parent
+                                    directories of the source file (or current
+                                    directory for stdin).
+                                    Use -style=file:<format_file_path> to explicitly specifythe configuration file.
+                                    Use -style="{key: value, ...}" to set specific
+                                    parameters, e.g.:
+                                      -style="{BasedOnStyle: llvm, IndentWidth: 8}"
+   --verbose                      - If set, shows the list of processed files
  
  Generic Options:
  
-   --help                     - Display available options (--help-hidden for more)
-   --help-list                - Display list of available options (--help-list-hidden for more)
-   --version                  - Display the version of this program
+   --help                         - Display available options (--help-hidden for more)
+   --help-list                    - Display list of available options (--help-list-hidden for more)
+   --version                      - Display the version of this program
  ```
  
  - - -
  
  ##### clang-format-diff
  
- Manual page for clang-format-diff.py 13
+ Manual page for clang-format-diff.py 14
  
  ```
  root@kali:~# clang-format-diff -h
  usage: clang-format-diff [-h] [-i] [-p NUM] [-regex PATTERN] [-iregex PATTERN]
-                          [-sort-includes] [-v] [-style STYLE] [-binary BINARY]
+                          [-sort-includes] [-v] [-style STYLE]
+                          [-fallback-style FALLBACK_STYLE] [-binary BINARY]
  
  This script reads input from a unified diff and reformats all the changed
  lines. This is useful to reformat all the lines touched by a specific patch.
@@ -2776,18 +2574,22 @@ PackagesInfo: |
  current working directory.
  
  options:
-   -h, --help       show this help message and exit
-   -i               apply edits to files instead of displaying a diff
-   -p NUM           strip the smallest prefix containing P slashes
-   -regex PATTERN   custom pattern selecting file paths to reformat (case
-                    sensitive, overrides -iregex)
-   -iregex PATTERN  custom pattern selecting file paths to reformat (case
-                    insensitive, overridden by -regex)
-   -sort-includes   let clang-format sort include blocks
-   -v, --verbose    be more verbose, ineffective without -i
-   -style STYLE     formatting style to apply (LLVM, GNU, Google, Chromium,
-                    Microsoft, Mozilla, WebKit)
-   -binary BINARY   location of binary to use for clang-format
+   -h, --help            show this help message and exit
+   -i                    apply edits to files instead of displaying a diff
+   -p NUM                strip the smallest prefix containing P slashes
+   -regex PATTERN        custom pattern selecting file paths to reformat (case
+                         sensitive, overrides -iregex)
+   -iregex PATTERN       custom pattern selecting file paths to reformat (case
+                         insensitive, overridden by -regex)
+   -sort-includes        let clang-format sort include blocks
+   -v, --verbose         be more verbose, ineffective without -i
+   -style STYLE          formatting style to apply (LLVM, GNU, Google,
+                         Chromium, Microsoft, Mozilla, WebKit)
+   -fallback-style FALLBACK_STYLE
+                         The name of the predefined style used as afallback in
+                         case clang-format is invoked with-style=file, but can
+                         not find the .clang-formatfile to use.
+   -binary BINARY        location of binary to use for clang-format
  ```
  
  - - -
@@ -2797,11 +2599,11 @@ PackagesInfo: |
  
  ```
  root@kali:~# git-clang-format -h
- usage: git clang-format [OPTIONS] [<commit>] [<commit>] [--] [<file>...]
+ usage: git clang-format [OPTIONS] [<commit>] [<commit>|--staged] [--] [<file>...]
  
  If zero or one commits are given, run clang-format on all lines that differ
  between the working directory and <commit>, which defaults to HEAD.  Changes are
- only applied to the working directory.
+ only applied to the working directory, or in the stage/index.
  
  If two commits are given (requires --diff), run clang-format on all lines in the
  second <commit> that differ from the first <commit>.
@@ -2821,12 +2623,14 @@ PackagesInfo: |
    --binary BINARY       path to clang-format
    --commit COMMIT       default commit to use if none is specified
    --diff                print a diff instead of applying the changes
+   --diffstat            print a diffstat instead of applying the changes
    --extensions EXTENSIONS
                          comma-separated list of file extensions to format,
                          excluding the period and case-insensitive
    -f, --force           allow changes to unstaged files
    -p, --patch           select hunks interactively
    -q, --quiet           print less information
+   --staged, --cached    format lines in the stage instead of the working dir
    --style STYLE         passed to clang-format
    -v, --verbose         print extra information
  ```
@@ -2844,16 +2648,16 @@ PackagesInfo: |
    
   This is a dependency package providing the clang tidy tool.
  
- **Installed size:** `25 KB`  
+ **Installed size:** `26 KB`  
  **How to install:** `sudo apt install clang-tidy`  
  
  {{< spoiler "Dependencies:" >}}
- * clang-tidy-13 
+ * clang-tidy-14 
  {{< /spoiler >}}
  
  ##### clang-tidy
  
- Manual page for clang-tidy 13
+ Manual page for clang-tidy 14
  
  ```
  root@kali:~# clang-tidy -h
@@ -2963,6 +2767,7 @@ PackagesInfo: |
    --list-checks                  - 
                                     List all enabled checks and exit. Use with
                                     -checks=* to list all available checks.
+   --load=<pluginfilename>        - Load the specified plugin
    -p=<string>                    - Build path
    --quiet                        - 
                                     Run clang-tidy in quiet mode. This suppresses
@@ -3150,11 +2955,11 @@ PackagesInfo: |
    
   This is a dependency package providing the clang tools package.
  
- **Installed size:** `31 KB`  
+ **Installed size:** `32 KB`  
  **How to install:** `sudo apt install clang-tools`  
  
  {{< spoiler "Dependencies:" >}}
- * clang-tools-13 
+ * clang-tools-14 
  {{< /spoiler >}}
  
  ##### c-index-test
@@ -3214,7 +3019,7 @@ PackagesInfo: |
  
  ##### clang-apply-replacements
  
- Manual page for clang-apply-replacements 13
+ Manual page for clang-apply-replacements 14
  
  ```
  root@kali:~# clang-apply-replacements -h
@@ -3232,6 +3037,7 @@ PackagesInfo: |
                                 .clang-format file located in one of the parent
                                 directories of the source file (or current
                                 directory for stdin).
+                                Use -style=file:<format_file_path> to explicitly specifythe configuration file.
                                 Use -style="{key: value, ...}" to set specific
                                 parameters, e.g.:
                                   -style="{BasedOnStyle: llvm, IndentWidth: 8}"
@@ -3255,7 +3061,7 @@ PackagesInfo: |
  
  ##### clang-check
  
- Manual page for clang-check 13
+ Manual page for clang-check 14
  
  ```
  root@kali:~# clang-check -h
@@ -3265,24 +3071,25 @@ PackagesInfo: |
  
  Generic Options:
  
-   --help                      - Display available options (--help-hidden for more)
-   --help-list                 - Display list of available options (--help-list-hidden for more)
-   --version                   - Display the version of this program
+   --help                          - Display available options (--help-hidden for more)
+   --help-list                     - Display list of available options (--help-list-hidden for more)
+   --version                       - Display the version of this program
  
  clang-check options:
  
-   --analyze                   - Run static analysis engine
-   --ast-dump                  - Build ASTs and then debug dump them
-   --ast-dump-filter=<string>  - Use with -ast-dump or -ast-print to dump/print only AST declaration nodes having a certain substring in a qualified name. Use -ast-list to list all filterable declaration node names.
-   --ast-list                  - Build ASTs and print the list of declaration node qualified names
-   --ast-print                 - Build ASTs and then pretty-print them
-   --extra-arg=<string>        - Additional argument to append to the compiler command line
-   --extra-arg-before=<string> - Additional argument to prepend to the compiler command line
-   --fix-what-you-can          - Apply fix-it advice even in the presence of unfixable errors
-   --fixit                     - Apply fix-it advice to the input source
-   -p=<string>                 - Build path
-   --syntax-tree-dump          - dump the syntax tree
-   --tokens-dump               - dump the preprocessed tokens
+   --analyze                       - Run static analysis engine
+   --analyzer-output-path=<string> - Write output to <file>
+   --ast-dump                      - Build ASTs and then debug dump them
+   --ast-dump-filter=<string>      - Use with -ast-dump or -ast-print to dump/print only AST declaration nodes having a certain substring in a qualified name. Use -ast-list to list all filterable declaration node names.
+   --ast-list                      - Build ASTs and print the list of declaration node qualified names
+   --ast-print                     - Build ASTs and then pretty-print them
+   --extra-arg=<string>            - Additional argument to append to the compiler command line
+   --extra-arg-before=<string>     - Additional argument to prepend to the compiler command line
+   --fix-what-you-can              - Apply fix-it advice even in the presence of unfixable errors
+   --fixit                         - Apply fix-it advice to the input source
+   -p=<string>                     - Build path
+   --syntax-tree-dump              - dump the syntax tree
+   --tokens-dump                   - dump the preprocessed tokens
  
  -p <build-path> is used to read a compile command database.
  
@@ -3321,7 +3128,7 @@ PackagesInfo: |
  
  ##### clang-query
  
- Manual page for clang-query 13
+ Manual page for clang-query 14
  
  ```
  root@kali:~# clang-query -h
@@ -3372,7 +3179,7 @@ PackagesInfo: |
  
  ##### sancov
  
- Manual page for sancov 13
+ Manual page for sancov 14
  
  ```
  root@kali:~# sancov -h
@@ -3409,7 +3216,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                       - Use flat scratch instructions
    --amdgpu-enable-merge-m0                           - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>     - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill               - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                             - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                         - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                       - Verify AMDGPU HSA Metadata
@@ -3442,6 +3248,7 @@ PackagesInfo: |
        --html-report                                     - REMOVED. Use -symbolize & coverage-report-server.py.
        --symbolize                                       - Produces a symbolized JSON report from binary report.
        --merge                                           - Merges reports.
+   --debug-info-correlate                             - Use debug info to correlate profiles.
    --debugify-level=<value>                           - Kind of debug info to add
      =locations                                       -   Locations only
      =location+variables                              -   Locations and Variables
@@ -3467,8 +3274,11 @@ PackagesInfo: |
    --enable-loop-simplifycfg-term-folding             - 
    --enable-name-compression                          - Enable name/filename string compression
    --enable-split-backedge-in-load-pre                - 
+   --experimental-debug-variable-locations            - Use experimental new value-tracking variable locations
    --fatal-warnings                                   - Treat warnings as errors
-   --force-opaque-pointers                            - Force all pointers to be opaque pointers
+   --fs-profile-debug-bw-threshold=<uint>             - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>      - Only show debug message if the branch probility is greater than this value (in percentage).
+   --generate-merged-base-profiles                    - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                    - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                         - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                   - Enable hot-cold splitting pass
@@ -3498,6 +3308,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                     - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>           - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                     - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                           - tbd
    --merror-missing-parenthesis                       - Error for missing parenthesis around predicate registers
    --merror-noncontigious-register                    - Error for register names that aren't contigious
    --mhvx                                             - Enable Hexagon Vector eXtensions
@@ -3508,6 +3319,7 @@ PackagesInfo: |
      =v66                                             -   Build for HVX v66
      =v67                                             -   Build for HVX v67
      =v68                                             -   Build for HVX v68
+     =v69                                             -   Build for HVX v69
    --mips-compact-branches=<value>                    - MIPS Specific: Compact branch policy.
      =never                                           -   Do not use compact branches if possible.
      =optimal                                         -   Use compact branches where appropriate (default).
@@ -3527,7 +3339,9 @@ PackagesInfo: |
    --no-type-check                                    - Suppress type errors (Wasm)
    --no-warn                                          - Suppress all warnings
    --nvptx-sched4reg                                  - NVPTX Specific: schedule for register pressue
+   --opaque-pointers                                  - Use opaque pointers
    --poison-checking-function-local                   - Check that returns are non-poison (for testing)
+   --print-pipeline-passes                            - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                              - Use StructurizeCFG IR pass
    --rdf-dump                                         - 
    --rdf-limit=<uint>                                 - 
@@ -3553,6 +3367,8 @@ PackagesInfo: |
    --verify-region-info                               - Verify region info (time consuming)
    --vp-counters-per-site=<number>                    - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                  - Do static counter allocation for value profiler
+   --wasm-enable-eh                                   - WebAssembly exception handling
+   --wasm-enable-sjlj                                 - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                        - Specify types of branches to align (plus separated list of types):
                                                         jcc      indicates conditional jumps
                                                         fused    indicates fused conditional jumps
@@ -3595,10 +3411,13 @@ PackagesInfo: |
    --polly-parallel                                   - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                             - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                - Perform optimizations based on pattern matching
+   --polly-postopts                                   - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                          - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                     - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                       - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                            - Enable register tiling
    --polly-report                                     - Print information about the activities of Polly
+   --polly-reschedule                                 - Optimize SCoPs using ISL
    --polly-show                                       - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                  - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                   - Algorithm to use for splitting basic blocks into multiple statements
@@ -3826,6 +3645,7 @@ PackagesInfo: |
   + cplusplus.NewDeleteLeaks      Check for memory leaks. Traces memory managed by new/delete.
   + cplusplus.PlacementNew        Check if default placement new is provided with pointers to sufficient storage capacity
   + cplusplus.PureVirtualCall     Check pure virtual function calls during construction/destruction
+  + cplusplus.StringChecker       Checks C++ std::string bugs
   + deadcode.DeadStores           Check for values stored to variables that are never read afterwards
     fuchsia.HandleChecker         A Checker that detect leaks related to Fuchsia handles
   + nullability.NullPassedToNonnull
@@ -3939,7 +3759,7 @@ PackagesInfo: |
  
  ##### scan-view
  
- Manual page for scan-view 13
+ Manual page for scan-view 14
  
  ```
  root@kali:~# scan-view -h
@@ -3978,16 +3798,16 @@ PackagesInfo: |
    
   This is a dependency package providing clangd.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `21 KB`  
  **How to install:** `sudo apt install clangd`  
  
  {{< spoiler "Dependencies:" >}}
- * clangd-13 
+ * clangd-14 
  {{< /spoiler >}}
  
  ##### clangd
  
- Manual page for clangd 13
+ Manual page for clangd 14
  
  ```
  root@kali:~# clangd -h
@@ -4023,11 +3843,11 @@ PackagesInfo: |
      =detailed                     -   One completion item for each semantically distinct completion, with full type information
      =bundled                      -   Similar completion items (e.g. function overloads) are combined. Type information shown where possible
    --fallback-style=<string>       - clang-format style to apply by default when no .clang-format file is found
+   --function-arg-placeholders     - When disabled, completions contain only parentheses for function calls. When enabled, completions also contain placeholders for method parameters
    --header-insertion=<value>      - Add #include directives when accepting code completions
      =iwyu                         -   Include what you use. Insert the owning header for top-level symbols, unless the header is already directly included or the symbol is forward-declared
      =never                        -   Never insert #include directives as part of code completion
    --header-insertion-decorators   - Prepend a circular dot or space before the completion label, depending on whether an include line will be inserted or not
-   --inlay-hints                   - Enable preview of InlayHints feature
    --limit-references=<int>        - Limit the number of references returned by clangd. 0 means no limit (default=1000)
    --limit-results=<int>           - Limit the number of results returned by clangd. 0 means no limit (default=100)
    --project-root=<string>         - Path to the project root. Requires remote-index-address to be set.
@@ -4082,11 +3902,11 @@ PackagesInfo: |
   This is a dependency package providing the default LLVM C++ Standard library
   development files.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libc++-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libc++-13-dev 
+ * libc++-14-dev 
  {{< /spoiler >}}
  
  
@@ -4107,11 +3927,11 @@ PackagesInfo: |
     * Extensive unit tests.
   This is a dependency package providing the default LLVM C++ Standard library.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libc++1`  
  
  {{< spoiler "Dependencies:" >}}
- * libc++1-13 
+ * libc++1-14 
  {{< /spoiler >}}
  
  
@@ -4129,11 +3949,11 @@ PackagesInfo: |
   This is the development package providing low level support to
   LLVM C++ Standard library.
  
- **Installed size:** `18 KB`  
+ **Installed size:** `19 KB`  
  **How to install:** `sudo apt install libc++abi-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libc++abi-13-dev 
+ * libc++abi-14-dev 
  {{< /spoiler >}}
  
  
@@ -4151,11 +3971,11 @@ PackagesInfo: |
   This is a dependency package providing low level support to
   LLVM C++ Standard library.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libc++abi1`  
  
  {{< spoiler "Dependencies:" >}}
- * libc++abi1-13 
+ * libc++abi1-14 
  {{< /spoiler >}}
  
  
@@ -4172,11 +3992,11 @@ PackagesInfo: |
    
   This is a dependency package providing the default Clang C++ library.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libclang-cpp-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libclang-cpp13-dev 
+ * libclang-cpp14-dev 
  {{< /spoiler >}}
  
  
@@ -4194,11 +4014,11 @@ PackagesInfo: |
   This is a dependency package providing the default libclang libraries and
   headers.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libclang-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libclang-13-dev 
+ * libclang-14-dev 
  {{< /spoiler >}}
  
  
@@ -4221,11 +4041,11 @@ PackagesInfo: |
   locations with elements within the AST, and other facilities that support
   Clang-based development tools.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libclang1`  
  
  {{< spoiler "Dependencies:" >}}
- * libclang1-13 
+ * libclang1-14 
  {{< /spoiler >}}
  
  
@@ -4239,11 +4059,11 @@ PackagesInfo: |
    
   This package provides the header files to build extension over lldb.
  
- **Installed size:** `19 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install liblldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * liblldb-13-dev 
+ * liblldb-14-dev 
  {{< /spoiler >}}
  
  
@@ -4257,11 +4077,11 @@ PackagesInfo: |
    
   This is a dependency package providing the default bindings for OCaml.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `21 KB`  
  **How to install:** `sudo apt install libllvm-ocaml-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libllvm-13-ocaml-dev 
+ * libllvm-14-ocaml-dev 
  * llvm-runtime 
  {{< /spoiler >}}
  
@@ -4276,11 +4096,11 @@ PackagesInfo: |
   This is a dependency package providing the default LLVM OpenMP dev
   package.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libomp-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libomp-13-dev 
+ * libomp-14-dev 
  {{< /spoiler >}}
  
  
@@ -4293,11 +4113,11 @@ PackagesInfo: |
   while it is executing.
   This is a dependency package providing the default LLVM OpenMP runtime.
  
- **Installed size:** `15 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install libomp5`  
  
  {{< spoiler "Dependencies:" >}}
- * libomp5-13 
+ * libomp5-14 
  {{< /spoiler >}}
  
  
@@ -4309,11 +4129,11 @@ PackagesInfo: |
   components which highly leverage existing libraries in the larger LLVM
   Project.
  
- **Installed size:** `24 KB`  
+ **Installed size:** `25 KB`  
  **How to install:** `sudo apt install lld`  
  
  {{< spoiler "Dependencies:" >}}
- * lld-13 
+ * lld-14 
  {{< /spoiler >}}
  
  ##### ld.lld
@@ -4358,7 +4178,7 @@ PackagesInfo: |
    --color-diagnostics     Alias for --color-diagnostics=always
    --compress-debug-sections=[none,zlib]
                            Compress DWARF debug sections
-   --cref                  Output cross reference table
+   --cref                  Output cross reference table. If -Map is specified, print to the map file
    --dc                    Alias for --define-common
    --define-common         Assign space to common symbols
    --defsym=<symbol>=<value>
@@ -4375,7 +4195,7 @@ PackagesInfo: |
    --dp                    Alias for --define-common
    --dynamic-linker=<value>
                            Which dynamic linker to use
-   --dynamic-list=<file>   Read a list of dynamic symbols. (executable) Put matched non-local definedsymbols to the dynamic symbol table. (shared object) References to matchednon-local STV_DEFAULT symbols shouldn't be bound to definitions within the shared object. Implies -Bsymbolic but does not set DF_SYMBOLIC
+   --dynamic-list=<file>   Similar to --export-dynamic-symbol-list. When creating a shared object, this additionally implies -Bsymbolic but does not set DF_SYMBOLIC
    --dy                    Alias for --Bdynamic
    -d                      Alias for --define-common
    --EB                    Select the big-endian format in OUTPUT_FORMAT
@@ -4393,6 +4213,8 @@ PackagesInfo: |
                            Report unresolved symbols as errors
    --exclude-libs=<value>  Exclude static libraries from automatic export
    --execute-only          Mark executable sections unreadable
+   --export-dynamic-symbol-list=file
+                           Read a list of dynamic symbol patterns. Apply --export-dynamic-symbol on each pattern
    --export-dynamic-symbol=glob
                            (executable) Put matched symbols in the dynamic symbol table. (shared object) References to matched non-local STV_DEFAULT symbols shouldn't be bound to definitions within the shared object. Does not imply -Bsymbolic.
    --export-dynamic        Put symbols in the dynamic symbol table
@@ -4425,8 +4247,10 @@ PackagesInfo: |
    --init=<symbol>         Specify an initializer function
    --just-symbols=<value>  Just link symbols
    --keep-unique=<value>   Do not fold this symbol during ICF
-   --library-path=<dir>    Add a directory to the library search path
-   --library=<libName>     Root name of library to use
+   --library-path=<value>  Add <dir> to the library search path
+   --library-path <value>  Add <dir> to the library search path
+   --library=<value>       Search for library <libname>
+   --library <value>       Search for library <libname>
    --lto-aa-pipeline=<value>
                            AA pipeline to run during LTO. Used in conjunction with -lto-newpm-passes
    --lto-basic-block-sections=<value>
@@ -4445,16 +4269,15 @@ PackagesInfo: |
    --lto-O<opt-level>      Optimization level for LTO
    --lto-partitions=<value>
                            Number of LTO codegen partitions
-   --lto-pseudo-probe-for-profiling
-                           Emit pseudo probes for sample profiling
+   --lto-pgo-warn-mismatch turn on warnings about profile cfg mismatch (default)>
    --lto-sample-profile=<value>
                            Sample profile file path
    --lto-unique-basic-block-section-names
                            Give unique names to every basic block section for LTO
    --lto-whole-program-visibility
                            Asserts that the LTO link has whole program visibility
-   -L <value>              Alias for --library-path
-   -l <value>              Alias for --library
+   -L <dir>                Add <dir> to the library search path
+   -l <libname>            Search for library <libname>
    --Map=<value>           Print a link map to the specified file
    --merge-exidx-entries   Enable merging .ARM.exidx entries (default)
    --mllvm=<value>         Additional arguments to forward to LLVM's option processing
@@ -4488,6 +4311,8 @@ PackagesInfo: |
    --no-gnu-unique         Disable STB_GNU_UNIQUE symbol binding
    --no-lto-legacy-pass-manager
                            Use the new pass manager in LLVM
+   --no-lto-pgo-warn-mismatch
+                           turn off warnings about profile cfg mismatch
    --no-lto-unique-basic-block-section-names
                            Do not give unique names to every basic block section for LTO (default)
    --no-lto-whole-program-visibility
@@ -4499,18 +4324,18 @@ PackagesInfo: |
    --no-omagic             Do not set the text data sections to be writable, page align sections (default)
    --no-optimize-bb-jumps  Do not remove any direct jumps at the end to the next basic block (default)
    --no-pcrel-optimize     (PowerPC64) Disable PC-relative optimizations
-   --no-pic-executable     Alias for --no-pie
    --no-pie                Do not create a position independent executable (default)
    --no-power10-stubs      Alias for --power10-stubs=no
    --no-print-gc-sections  Do not list removed unused sections (default)
    --no-print-icf-sections Do not list identical folded sections (default)
+   --no-relax              Disable target-specific relaxations
    --no-rosegment          Do not put read-only non-executable sections in their own segment
    --no-toc-optimize       (PowerPC64) Disable TOC related optimizations
    --no-undefined-version  Report version scripts that refer undefined symbols
    --no-undefined          Report unresolved symbols even if the linker is creating a shared library
    --no-use-android-relr-tags
                            Use SHT_RELR / DT_RELR* tags (default)
-   --no-warn-backrefs      Do not warn about backward symbol references to fetch archive members (default)
+   --no-warn-backrefs      Do not warn about backward symbol references to extract archive members (default)
    --no-warn-common        Do not warn about duplicate common symbols (default)
    --no-warn-ifunc-textrel Do not warn about using ifunc symbols with text relocations (default)
    --no-warn-symbol-ordering
@@ -4521,7 +4346,7 @@ PackagesInfo: |
    --nostdlib              Only search directories specified on the command line
    -N                      Alias for --omagic
    -n                      Alias for --nmagic
-   --oformat <format>      Specify the binary format for the output object file
+   --oformat=[elf,binary]  Specify the binary format for the output object file
    --omagic                Set the text and data sections to be readable and writable, do not page align sections, link against static libraries
    --opt-remarks-filename <value>
                            YAML output file for optimization remarks
@@ -4579,8 +4404,6 @@ PackagesInfo: |
    --plugin-opt=opt-remarks-with-hotness
                            Alias for --opt-remarks-with_hotness
    --plugin-opt=O<value>   Alias for --lto-O
-   --plugin-opt=pseudo-probe-for-profiling<value>
-                           Alias for --lto-pseudo-probe-for-profiling
    --plugin-opt=sample-profile=<value>
                            Alias for --lto-sample-profile
    --plugin-opt=save-temps Alias for --save-temps
@@ -4595,18 +4418,19 @@ PackagesInfo: |
    --plugin-opt=thinlto-prefix-replace=<value>
                            Alias for --thinlto-prefix-replace=
    --plugin=<value>        Ignored for compatibility with GNU linkers
-   --pop-state             Undo the effect of -push-state
-   --power10-stubs=<value> Enables Power10 instructions in all stubs without options, options override previous flags.auto: Allow Power10 instructions in stubs if applicable.no:   No Power10 instructions in stubs.
+   --pop-state             Restore the states saved by --push-state
+   --power10-stubs=<mode>  Whether to use Power10 instructions in call stubs for R_PPC64_REL24_NOTOC and TOC/NOTOC interworking (yes (default): use; no: don't use). "auto" is currently the same as "yes"
    --power10-stubs         Alias for --power10-stubs=auto
    --print-archive-stats=<value>
-                           Write archive usage statistics to the specified file. Print the numbers of members and fetched members for each archive
+                           Write archive usage statistics to the specified file. Print the numbers of members and extracted members for each archive
    --print-gc-sections     List removed unused sections
    --print-icf-sections    List identical folded sections
    --print-map             Print a link map to the standard output
    --print-symbol-order=<value>
                            Print a symbol order specified by --call-graph-ordering-file into the specified file
-   --push-state            Save the current state of -as-needed, -static and -whole-archive
+   --push-state            Save the current state of --as-needed, -static and --whole-archive
    -q                      Alias for --emit-relocs
+   --relax                 Enable target-specific relaxations if supported (default)
    --relocatable           Create relocatable object file
    --reproduce=<value>     Write tar file containing inputs and command to reproduce link
    --retain-symbols-file=<file>
@@ -4680,13 +4504,14 @@ PackagesInfo: |
    -v                      Display the version number
    --warn-backrefs-exclude=<glob>
                            Glob describing an archive (or an object file within --start-lib) which should be ignored for --warn-backrefs.
-   --warn-backrefs         Warn about backward symbol references to fetch archive members
+   --warn-backrefs         Warn about backward symbol references to extract archive members
    --warn-common           Warn about duplicate common symbols
    --warn-ifunc-textrel    Warn about using ifunc symbols with text relocations
    --warn-symbol-ordering  Warn about problems with the symbol ordering file (default)
    --warn-unresolved-symbols
                            Report unresolved symbols as warnings
    --whole-archive         Force load of all members in a static library
+   --why-extract=<value>   Print to a file about why archive members are extracted
    --wrap=<symbol>         Redirect symbol references to __wrap_symbol and __real_symbol references to symbol
    -X                      Alias for --discard-locals
    -x                      Alias for --discard-all
@@ -4799,7 +4624,8 @@ PackagesInfo: |
               ally compresses well at that level, but if you want to compress
               it more, you can specify -O2 to set the compression level to 6.
  
-      --cref  Output cross reference table.
+      --cref  Output cross reference table. If -Map is specified, print to the
+              map file.
  
       --define-common, -d
               Assign space to common symbols.
@@ -4830,11 +4656,8 @@ PackagesInfo: |
               PT_INTERP.
  
       --dynamic-list=file
-              Read a list of dynamic symbols from file.  (executable) Put
-              matched non-local defined symbols to the dynamic symbol table.
-              (shared object) References to matched non-local STV_DEFAULT sym-
-              bols shouldn't be bound to definitions within the shared object.
-              Implies -Bsymbolic but does not set DF_SYMBOLIC
+              Similar to --export-dynamic-symbol-list.  When creating a shared
+              object, implies -Bsymbolic but does not set DF_SYMBOLIC
  
       --EB    Select the big-endian format in the OUTPUT_FORMAT command.
  
@@ -4888,6 +4711,10 @@ PackagesInfo: |
               STV_DEFAULT symbols shouldn't be bound to definitions within the
               shared object even if they would otherwise be due to -Bsymbolic ,
               -Bsymbolic-functions or --dynamic-list
+ 
+      --export-dynamic-symbol-list=file
+              Read a list of dynamic symbol patterns from file.  Apply
+              --export-dynamic-symbol on each pattern.
  
       --fatal-warnings
               Treat warnings as errors.
@@ -5014,7 +4841,8 @@ PackagesInfo: |
               tions.
  
       --no-relax
-              Disable target-specific relaxations. This is currently a no-op.
+              Disable target-specific relaxations. For x86-64 this disables
+              R_X86_64_GOTPCRELX and R_X86_64_REX_GOTPCRELX GOT optimization.
  
       --no-rosegment
               Do not put read-only non-executable sections in their own seg-
@@ -5113,6 +4941,16 @@ PackagesInfo: |
       --pie, --pic-executable
               Create a position independent executable.
  
+      --power10-stubs=mode
+              Whether to use Power10 instructions in call stubs for
+              R_PPC64_REL24_NOTOC and TOC/NOTOC interworking.  mode may be:
+ 
+              yes
+                  (default) Use.
+              auto
+                  Currently the same as yes.
+              no  Don't use.
+ 
       --print-gc-sections
               List removed unused sections.
  
@@ -5131,7 +4969,7 @@ PackagesInfo: |
               --whole-archive.
  
       --pop-state
-              Undo the effect of --push-state.
+              Restore the states saved by --push-state.
  
       --relocatable, -r
               Create relocatable object file.
@@ -5309,6 +5147,9 @@ PackagesInfo: |
       --whole-archive
               Force load of all members in a static library.
  
+      --why-extract=file
+              Print to a file about why archive members are extracted.
+ 
       --wrap=symbol
               Redirect symbol references to __wrap_symbol and __real_symbol
               references to symbol.
@@ -5326,6 +5167,19 @@ PackagesInfo: |
               execstack
                       Make the main stack executable.  Stack permissions are
                       recorded in the PT_GNU_STACK segment.
+ 
+              bti-report=[none|warning|error]
+                      Specify how to report the missing GNU_PROP-
+                      ERTY_AARCH64_FEATURE_1_BTI property.  none is the de-
+                      fault, linker will not report the missing property other-
+                      wise will be reported as a warning or an error.
+ 
+              cet-report=[none|warning|error]
+                      Specify how to report the missing GNU_PROPERTY_X86_FEA-
+                      TURE_1_IBT or GNU_PROPERTY_X86_FEATURE_1_SHSTK proper-
+                      ties.  none is the default, linker will not report the
+                      missing property otherwise will be reported as a warning
+                      or an error.
  
               force-bti
                       Force enable AArch64 BTI instruction in PLT, warn if In-
@@ -5501,7 +5355,7 @@ PackagesInfo: |
  OPTIONS:
    --allow-undefined-file=<value>
                           Allow symbols listed in <file> to be undefined in linked binary
-   --allow-undefined      Allow undefined symbols in linked binary. This options is equivelant to --import-undefined and --unresolved-symbols=ignore-all
+   --allow-undefined      Allow undefined symbols in linked binary. This options is equivalent to --import-undefined and --unresolved-symbols=ignore-all
    --Bsymbolic            Bind defined symbols locally
    --check-features       Check feature compatibility of linked objects (default)
    --color-diagnostics=[auto,always,never]
@@ -5612,16 +5466,16 @@ PackagesInfo: |
    
   This is a dependency package providing the default version of lldb.
  
- **Installed size:** `22 KB`  
+ **Installed size:** `23 KB`  
  **How to install:** `sudo apt install lldb`  
  
  {{< spoiler "Dependencies:" >}}
- * lldb-13 
+ * lldb-14 
  {{< /spoiler >}}
  
  ##### lldb
  
- Manual page for lldb 13
+ Manual page for lldb 14
  
  ```
  root@kali:~# lldb -h
@@ -5656,40 +5510,34 @@ PackagesInfo: |
                         Tells the debugger to read in and execute the lldb commands in the given file, before any file has been loaded.
    --source-on-crash <file>
                         When in batch mode, tells the debugger to source this file of lldb commands if the target crashes.
-   --source-quietly     Tells the debugger to execute this one-line lldb command before any file has been loaded.
+   --source-quietly     Tells the debugger not to echo commands while sourcing files or one-line commands provided on the command line.
    --source <file>      Tells the debugger to read in and execute the lldb commands in the given file, after any file has been loaded.
    -S <value>           Alias for --source-before-file
    -s <value>           Alias for --source
    -x                   Alias for --no-lldbinit
  
  OPTIONS:
-   --arch <architecture>  Tells the debugger to use the specified architecture when starting and running the program.
-   -a <value>             Alias for --arch
+   --arch <architecture> Tells the debugger to use the specified architecture when starting and running the program.
+   -a <value>            Alias for --arch
    --capture-path <filename>
-                          Tells the debugger to use the given filename for the reproducer.
-   --capture              Tells the debugger to capture a reproducer.
-   --core <filename>      Tells the debugger to use the full path to <filename> as the core file.
-   -c <value>             Alias for --core
-   --debug                Tells the debugger to print out extra information for debugging itself.
-   -d                     Alias for --debug
-   --editor               Tells the debugger to open source files using the host's "external editor" mechanism.
-   -e                     Alias for --editor
-   --file <filename>      Tells the debugger to use the file <filename> as the program to be debugged.
-   -f <value>             Alias for --file
-   --help                 Prints out the usage information for the LLDB debugger.
-   -h                     Alias for --help
-   --no-use-colors        Do not use colors.
-   --replay <filename>    Tells the debugger to replay a reproducer from <filename>.
+                         Tells the debugger to use the given filename for the reproducer.
+   --capture             Tells the debugger to capture a reproducer.
+   --core <filename>     Tells the debugger to use the full path to <filename> as the core file.
+   -c <value>            Alias for --core
+   --debug               Tells the debugger to print out extra information for debugging itself.
+   -d                    Alias for --debug
+   --editor              Tells the debugger to open source files using the host's "external editor" mechanism.
+   -e                    Alias for --editor
+   --file <filename>     Tells the debugger to use the file <filename> as the program to be debugged.
+   -f <value>            Alias for --file
+   --help                Prints out the usage information for the LLDB debugger.
+   -h                    Alias for --help
+   --no-use-colors       Do not use colors.
    --reproducer-generate-on-exit
-                          Generate reproducer on exit.
-   --reproducer-no-generate-on-signal
-                          Don't generate reproducer when a signal is received.
-   --reproducer-no-verify Disable the reproducer verification.
-   --reproducer-no-version-check
-                          Disable the reproducer version check.
-   --version              Prints out the current version number of the LLDB debugger.
-   -v                     Alias for --version
-   -X                     Alias for --no-use-color
+                         Generate reproducer on exit.
+   --version             Prints out the current version number of the LLDB debugger.
+   -v                    Alias for --version
+   -X                    Alias for --no-use-color
  
  REPL:
    -r=<flags>     Alias for --repl=<flags>
@@ -5702,6 +5550,8 @@ PackagesInfo: |
  
  SCRIPTING:
    -l <value>    Alias for --script-language
+   --print-script-interpreter-info
+                 Prints out a json dictionary with information about the scripting language interpreter.
    --python-path Prints out the path to the lldb.py file for this version of lldb.
    -P            Alias for --python-path
    --script-language <language>
@@ -5781,17 +5631,17 @@ PackagesInfo: |
    
   This is a dependency package providing the default llvm package.
  
- **Installed size:** `87 KB`  
+ **Installed size:** `88 KB`  
  **How to install:** `sudo apt install llvm`  
  
  {{< spoiler "Dependencies:" >}}
- * llvm-13 
+ * llvm-14 
  * llvm-runtime 
  {{< /spoiler >}}
  
  ##### bugpoint
  
- Bugpoint-13 (1)      - automatic test case reduction tool
+ Bugpoint-14 (1)      - automatic test case reduction tool
  
  ```
  root@kali:~# bugpoint -h
@@ -5830,7 +5680,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                       - Use flat scratch instructions
    --amdgpu-enable-merge-m0                           - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>     - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill               - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                             - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                         - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                       - Verify AMDGPU HSA Metadata
@@ -5856,6 +5705,7 @@ PackagesInfo: |
      =latency                                         -   Instruction latency
      =code-size                                       -   Code size
      =size-latency                                    -   Code size and latency
+   --debug-info-correlate                             - Use debug info to correlate profiles.
    --debugify-level=<value>                           - Kind of debug info to add
      =locations                                       -   Locations only
      =location+variables                              -   Locations and Variables
@@ -5892,11 +5742,14 @@ PackagesInfo: |
    --enable-split-backedge-in-load-pre                - 
    --enable-valgrind                                  - Run optimizations through valgrind
    --exec-command=<string>                            - Command to execute the bitcode (use with -run-custom) (default: simulate)
+   --experimental-debug-variable-locations            - Use experimental new value-tracking variable locations
    --fatal-warnings                                   - Treat warnings as errors
    --find-bugs                                        - Run many different optimization sequences on program to find bugs
-   --force-opaque-pointers                            - Force all pointers to be opaque pointers
+   --fs-profile-debug-bw-threshold=<uint>             - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>      - Only show debug message if the branch probility is greater than this value (in percentage).
    --gcc=<string>                                     - The gcc binary to use.
    --gcc-tool-args <string>...                        - <gcc-tool arguments>...
+   --generate-merged-base-profiles                    - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                    - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                         - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                   - Enable hot-cold splitting pass
@@ -5956,6 +5809,7 @@ PackagesInfo: |
        --correlated-propagation                          - Value Propagation
        --cost-model                                      - Cost Model Analysis
        --cross-dso-cfi                                   - Cross-DSO CFI
+       --cycles                                          - Cycle Info Analysis
        --da                                              - Dependence Analysis
        --dce                                             - Dead Code Elimination
        --deadargelim                                     - Dead Argument Elimination
@@ -6126,7 +5980,6 @@ PackagesInfo: |
        --polly-optree                                    - Polly - Forward operand tree
        --polly-prepare                                   - Polly - Prepare code for polly
        --polly-prune-unprofitable                        - Polly - Prune unprofitable SCoPs
-       --polly-rewrite-byref-params                      - Polly - Rewrite by reference parameters
        --polly-scop-inliner                              - inline functions based on how much of the function is a scop.
        --polly-scops                                     - Polly - Create polyhedral description of Scops
        --polly-simplify                                  - Polly - Simplify
@@ -6216,6 +6069,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                     - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>           - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                     - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                           - tbd
    --merror-missing-parenthesis                       - Error for missing parenthesis around predicate registers
    --merror-noncontigious-register                    - Error for register names that aren't contigious
    --mhvx                                             - Enable Hexagon Vector eXtensions
@@ -6226,6 +6080,7 @@ PackagesInfo: |
      =v66                                             -   Build for HVX v66
      =v67                                             -   Build for HVX v67
      =v68                                             -   Build for HVX v68
+     =v69                                             -   Build for HVX v69
    --mips-compact-branches=<value>                    - MIPS Specific: Compact branch policy.
      =never                                           -   Do not use compact branches if possible.
      =optimal                                         -   Use compact branches where appropriate (default).
@@ -6247,11 +6102,13 @@ PackagesInfo: |
    --no-type-check                                    - Suppress type errors (Wasm)
    --no-warn                                          - Suppress all warnings
    --nvptx-sched4reg                                  - NVPTX Specific: schedule for register pressue
+   --opaque-pointers                                  - Use opaque pointers
    --opt-args <string>...                             - <opt arguments>...
    --opt-command=<string>                             - Path to opt. (default: search path for 'opt'.)
    --output=<string>                                  - Specify a reference program output (for miscompilation detection)
    --output-prefix=<string>                           - Prefix to use for outputs (default: 'bugpoint')
    --poison-checking-function-local                   - Check that returns are non-poison (for testing)
+   --print-pipeline-passes                            - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                              - Use StructurizeCFG IR pass
    --rdf-dump                                         - 
    --rdf-limit=<uint>                                 - 
@@ -6302,6 +6159,8 @@ PackagesInfo: |
    --verify-region-info                               - Verify region info (time consuming)
    --vp-counters-per-site=<number>                    - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                  - Do static counter allocation for value profiler
+   --wasm-enable-eh                                   - WebAssembly exception handling
+   --wasm-enable-sjlj                                 - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                        - Specify types of branches to align (plus separated list of types):
                                                         jcc      indicates conditional jumps
                                                         fused    indicates fused conditional jumps
@@ -6344,10 +6203,13 @@ PackagesInfo: |
    --polly-parallel                                   - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                             - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                - Perform optimizations based on pattern matching
+   --polly-postopts                                   - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                          - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                     - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                       - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                            - Enable register tiling
    --polly-report                                     - Print information about the activities of Polly
+   --polly-reschedule                                 - Optimize SCoPs using ISL
    --polly-show                                       - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                  - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                   - Algorithm to use for splitting basic blocks into multiple statements
@@ -6367,7 +6229,7 @@ PackagesInfo: |
  
  ##### dsymutil
  
- Dsymutil-13 (1)      - manipulate archived DWARF debug symbol files
+ Dsymutil-14 (1)      - manipulate archived DWARF debug symbol files
  
  ```
  root@kali:~# dsymutil -h
@@ -6384,7 +6246,7 @@ PackagesInfo: |
    --accelerator <accelerator type>
                            Specify the desired type of accelerator table. Valid options are 'Apple' (.apple_names, .apple_namespaces, .apple_types, .apple_objc), 'Dwarf' (.debug_names), 'Pub' (.debug_pubnames, .debug_pubtypes) and 'Default'
    --arch <arch>           Link DWARF debug information only for specified CPU architecturetypes. This option can be specified multiple times, once for eachdesired architecture. All CPU architectures will be linked bydefault.
-   --dump-debug-map        Parse and dump the debug map to standard output. Not DWARF link will take place.
+   --dump-debug-map        Parse and dump the debug map to standard output. No DWARF link will take place.
    --flat                  Produce a flat dSYM file (not a bundle).
    -f                      Alias for --flat
    --gen-reproducer        Generate a reproducer consisting of the input object files.
@@ -6430,7 +6292,7 @@ PackagesInfo: |
  
  ##### llc
  
- Llc-13 (1)           - LLVM static compiler
+ Llc-14 (1)           - LLVM static compiler
  
  ```
  root@kali:~# llc -h
@@ -6454,6 +6316,7 @@ PackagesInfo: |
    --aarch64-use-aa                                                      - Enable the use of AA during codegen.
    --abort-on-max-devirt-iterations-reached                              - Abort when the max iterations for devirtualization CGSCC repeat pass is reached
    --addrsig                                                             - Emit an address-significance table
+   --align-loops=<uint>                                                  - Default alignment for loops
    --allow-ginsert-as-artifact                                           - Allow G_INSERT to be considered an artifact. Hack around AMDGPU test infinite loops.
    --amdgpu-bypass-slow-div                                              - Skip 64-bit divide for dynamic 32-bit values
    --amdgpu-disable-loop-alignment                                       - Do not align and prefetch loops
@@ -6463,7 +6326,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                                          - Use flat scratch instructions
    --amdgpu-enable-merge-m0                                              - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>                        - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill                                  - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                                                - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                                            - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                                          - Verify AMDGPU HSA Metadata
@@ -6496,6 +6358,7 @@ PackagesInfo: |
      =size-latency                                                       -   Code size and latency
    --data-sections                                                       - Emit data into separate sections
    --debug-entry-values                                                  - Enable debug info for the debug entry values.
+   --debug-info-correlate                                                - Use debug info to correlate profiles.
    --debugger-tune=<value>                                               - Tune debug info for a particular debugger
      =gdb                                                                -   gdb
      =lldb                                                               -   lldb
@@ -6560,7 +6423,6 @@ PackagesInfo: |
      =soft                                                               -   Soft float ABI (implied by -soft-float)
      =hard                                                               -   Hard float ABI (uses FP registers)
    --force-dwarf-frame-section                                           - Always emit a debug frame section.
-   --force-opaque-pointers                                               - Force all pointers to be opaque pointers
    --fp-contract=<value>                                                 - Enable aggressive formation of fused FP ops
      =fast                                                               -   Fuse FP ops whenever profitable
      =on                                                                 -   Only fuse 'blessed' FP ops.
@@ -6569,7 +6431,10 @@ PackagesInfo: |
      =all                                                                -   Disable frame pointer elimination
      =non-leaf                                                           -   Disable frame pointer elimination for non-leaf frame
      =none                                                               -   Enable frame pointer elimination
+   --fs-profile-debug-bw-threshold=<uint>                                - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>                         - Only show debug message if the branch probility is greater than this value (in percentage).
    --function-sections                                                   - Emit functions into separate sections
+   --generate-merged-base-profiles                                       - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                                       - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                                            - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                                      - Enable hot-cold splitting pass
@@ -6603,6 +6468,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                                        - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>                              - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                                        - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                                              - tbd
    --mcpu=<cpu-name>                                                     - Target a specific cpu type (-mcpu=help for details)
    --meabi=<value>                                                       - Set EABI type (default depends on triple):
      =default                                                            -   Triple default EABI version
@@ -6619,6 +6485,7 @@ PackagesInfo: |
      =v66                                                                -   Build for HVX v66
      =v67                                                                -   Build for HVX v67
      =v68                                                                -   Build for HVX v68
+     =v69                                                                -   Build for HVX v69
    --mips-compact-branches=<value>                                       - MIPS Specific: Compact branch policy.
      =never                                                              -   Do not use compact branches if possible.
      =optimal                                                            -   Use compact branches where appropriate (default).
@@ -6642,11 +6509,12 @@ PackagesInfo: |
    --nozero-initialized-in-bss                                           - Don't place zero-initialized symbols into bss section
    --nvptx-sched4reg                                                     - NVPTX Specific: schedule for register pressue
    -o=<filename>                                                         - Output filename
+   --opaque-pointers                                                     - Use opaque pointers
    --pass-remarks-filter=<regex>                                         - Only record optimization remarks from passes whose names match the given regular expression
    --pass-remarks-format=<format>                                        - The format used for serializing remarks (default: YAML)
    --pass-remarks-output=<filename>                                      - Output filename for pass remarks
    --poison-checking-function-local                                      - Check that returns are non-poison (for testing)
-   --pseudo-probe-for-profiling                                          - Emit pseudo probes for AutoFDO
+   --print-pipeline-passes                                               - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                                                 - Use StructurizeCFG IR pass
    --rdf-dump                                                            - 
    --rdf-limit=<uint>                                                    - 
@@ -6675,6 +6543,10 @@ PackagesInfo: |
    --stackrealign                                                        - Force align the stack to the minimum alignment
    --strict-dwarf                                                        - use strict dwarf
    --summary-file=<string>                                               - The summary file to use for function importing.
+   --swift-async-fp=<value>                                              - Determine when the Swift async frame pointer should be set
+     =auto                                                               -   Determine based on deployment target
+     =always                                                             -   Always set the bit
+     =never                                                              -   Never set the bit
    --tail-predication=<value>                                            - MVE tail-predication pass options
      =disabled                                                           -   Don't tail-predicate loops
      =enabled-no-reductions                                              -   Enable tail-predication, but not for reduction loops
@@ -6687,6 +6559,8 @@ PackagesInfo: |
      =posix                                                              -   POSIX thread model
      =single                                                             -   Single thread model
    --threads=<int>                                                       - 
+   --time-trace                                                          - Record time trace
+   --time-trace-file=<filename>                                          - Specify time trace file destination
    --tls-size=<uint>                                                     - Bit size of immediate TLS offsets
    --unique-basic-block-section-names                                    - Give unique names to every basic block section
    --unique-section-names                                                - Give unique names to every section
@@ -6695,6 +6569,8 @@ PackagesInfo: |
    --verify-region-info                                                  - Verify region info (time consuming)
    --vp-counters-per-site=<number>                                       - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                                     - Do static counter allocation for value profiler
+   --wasm-enable-eh                                                      - WebAssembly exception handling
+   --wasm-enable-sjlj                                                    - WebAssembly setjmp/longjmp handling
    -x=<string>                                                           - Input language ('ir' or 'mir')
    --x86-align-branch=<string>                                           - Specify types of branches to align (plus separated list of types):
                                                                            jcc      indicates conditional jumps
@@ -6739,10 +6615,13 @@ PackagesInfo: |
    --polly-parallel                                                      - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                                                - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                                   - Perform optimizations based on pattern matching
+   --polly-postopts                                                      - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                                             - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                                        - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                                          - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                                               - Enable register tiling
    --polly-report                                                        - Print information about the activities of Polly
+   --polly-reschedule                                                    - Optimize SCoPs using ISL
    --polly-show                                                          - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                                     - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                                      - Algorithm to use for splitting basic blocks into multiple statements
@@ -6768,7 +6647,7 @@ PackagesInfo: |
  
  ##### llvm-ar
  
- Llvm-ar-13 (1)       - LLVM archiver
+ Llvm-ar-14 (1)       - LLVM archiver
  
  ```
  root@kali:~# llvm-ar -h
@@ -6788,17 +6667,18 @@ PackagesInfo: |
    --rsp-quoting         - quoting style for response files
      =posix              -   posix
      =windows            -   windows
+   --thin                - create a thin archive
    --version             - print the version and exit
    @<file>               - read options from <file>
  
  OPERATIONS:
    d - delete [files] from the archive
    m - move [files] in the archive
-   p - print [files] found in the archive
+   p - print contents of [files] found in the archive
    q - quick append [files] to the archive
    r - replace or insert [files] into the archive
    s - act as ranlib
-   t - display contents of archive
+   t - display list of files in archive
    x - extract [files] from the archive
  
  MODIFIERS:
@@ -6816,7 +6696,7 @@ PackagesInfo: |
    [P] - use full names when matching (implied for thin archives)
    [s] - create an archive index (cf. ranlib)
    [S] - do not build a symbol table
-   [T] - create a thin archive
+   [T] - deprecated, use --thin instead
    [u] - update only [files] newer than archive contents
    [U] - use actual timestamps and uids/gids
    [v] - be verbose about actions taken
@@ -6827,7 +6707,7 @@ PackagesInfo: |
  
  ##### llvm-as
  
- Llvm-as-13 (1)       - LLVM assembler
+ Llvm-as-14 (1)       - LLVM assembler
  
  ```
  root@kali:~# llvm-as -h
@@ -6856,7 +6736,7 @@ PackagesInfo: |
  
  ##### llvm-bcanalyzer
  
- Llvm-bcanalyzer-13 (1) - LLVM bitcode analyzer
+ Llvm-bcanalyzer-14 (1) - LLVM bitcode analyzer
  
  ```
  root@kali:~# llvm-bcanalyzer -h
@@ -6872,6 +6752,7 @@ PackagesInfo: |
    --check-hash=<string> - Check module hash using the argument as a string table
    --disable-histogram   - Do not print per-code histogram
    --dump                - Dump low level bitcode trace
+   --dump-blockinfo      - Include BLOCKINFO details in low level dump
    --non-symbolic        - Emit numeric info in dump even if symbolic info is available
    --show-binary-blobs   - Print binary blobs using hex escapes
  
@@ -6973,7 +6854,7 @@ PackagesInfo: |
  root@kali:~# llvm-cfi-verify -h
  OVERVIEW: Identifies whether Control Flow Integrity protects all indirect control flow instructions in the provided object file, DSO or binary.
  Note: Anything statically linked into the provided file *must* be compiled with '-g'. This can be relaxed through the '--ignore-dwarf' flag.
- USAGE: llvm-cfi-verify [options] <input file> [blacklist file]
+ USAGE: llvm-cfi-verify [options] <input file> [ignorelist file]
  
  OPTIONS:
  
@@ -6999,7 +6880,7 @@ PackagesInfo: |
  
  ##### llvm-config
  
- Llvm-config-13 (1)   - Print LLVM compilation options
+ Llvm-config-14 (1)   - Print LLVM compilation options
  
  ```
  root@kali:~# llvm-config -h
@@ -7048,7 +6929,7 @@ PackagesInfo: |
  
  ##### llvm-cov
  
- Llvm-cov-13 (1)      - emit coverage information
+ Llvm-cov-14 (1)      - emit coverage information
  
  ```
  root@kali:~# llvm-cov -h
@@ -7075,15 +6956,16 @@ PackagesInfo: |
  USAGE: llvm-cvtres [options] file...
  
  OPTIONS:
-   /DEFINE:symbol     
-   /FOLDDUPS:         
+   /DEFINE:symbol     Not implemented
+   /FOLDDUPS:         Not implemented
+   /HELP              Display available options
    /MACHINE:{ARM|ARM64|EBC|IA64|X64|X86}
-                      
-   /NOLOGO            
-   /OUT:filename      
-   /READONLY          
+                      Machine architecture
+   /NOLOGO            Not implemented
+   /OUT:filename      Output file
+   /READONLY          Not implemented
    /TIMESTAMP:<value> Timestamp for coff header, defaults to current time
-   /VERBOSE           
+   /VERBOSE           Use verbose output
  ```
  
  - - -
@@ -7114,7 +6996,7 @@ PackagesInfo: |
  
  ##### llvm-cxxfilt
  
- Llvm-cxxfilt-13 (1)  - LLVM symbol name demangler
+ Llvm-cxxfilt-14 (1)  - LLVM symbol name demangler
  
  ```
  root@kali:~# llvm-cxxfilt -h
@@ -7131,7 +7013,6 @@ PackagesInfo: |
    -n                    Alias for --no-strip-underscore
    --strip-underscore    Strip the leading underscore
    -s                    Alias for --format
-   --types               
    -t                    Alias for --types
    --version             Display the version
  
@@ -7142,7 +7023,7 @@ PackagesInfo: |
  
  ##### llvm-diff
  
- Llvm-diff-13 (1)     - LLVM structural 'diff'
+ Llvm-diff-14 (1)     - LLVM structural 'diff'
  
  ```
  root@kali:~# llvm-diff -h
@@ -7165,7 +7046,7 @@ PackagesInfo: |
  
  ##### llvm-dis
  
- Llvm-dis-13 (1)      - LLVM disassembler
+ Llvm-dis-14 (1)      - LLVM disassembler
  
  ```
  root@kali:~# llvm-dis -h
@@ -7220,7 +7101,7 @@ PackagesInfo: |
  
  ##### llvm-dwarfdump
  
- Manual page for llvm-dwarfdump 13
+ Manual page for llvm-dwarfdump 14
  
  ```
  root@kali:~# llvm-dwarfdump -h
@@ -7283,7 +7164,7 @@ PackagesInfo: |
    -f                         - Alias for --find.
    --find=<name>              - Search for the exact match for <name> in the accelerator tables and print the matching debug information entries. When no accelerator tables are available, the slower but more complete -name option can be used instead.
    -i                         - Alias for --ignore-case.
-   --ignore-case              - Ignore case distinctions when searching.
+   --ignore-case              - Ignore case distinctions when using --name.
    --lookup=<address>         - Lookup <address> in the debug information and print out any available file, function, block and line table details.
    -n                         - Alias for --name
    --name=<pattern>           - Find and print all debug info entries whose name (DW_AT_name attribute) matches the exact text in <pattern>.  When used with the the -regex option <pattern> is interpreted as a regular expression.
@@ -7293,7 +7174,7 @@ PackagesInfo: |
    --quiet                    - Use with -verify to not emit to STDOUT.
    -r                         - Alias for --recurse-depth.
    --recurse-depth=<N>        - Only recurse to a depth of N when displaying children of debug info entries.
-   --regex                    - Treat any <pattern> strings as regular expressions when searching instead of just as an exact string match.
+   --regex                    - Treat any <pattern> strings as regular expressions when searching with --name. If --ignore-case is also specified, the regular expression becomes case-insensitive.
    --show-children            - Show a debug info entry's children when selectively printing entries.
    --show-form                - Show DWARF form types after the DWARF attribute types.
    --show-parents             - Show a debug info entry's parents when selectively printing entries.
@@ -7343,7 +7224,7 @@ PackagesInfo: |
  
  ##### llvm-exegesis
  
- Llvm-exegesis-13 (1) - LLVM Machine Instruction Benchmark
+ Llvm-exegesis-14 (1) - LLVM Machine Instruction Benchmark
  
  ```
  root@kali:~# llvm-exegesis -h
@@ -7353,94 +7234,115 @@ PackagesInfo: |
  
  Color Options:
  
-   --color                                           - Use colors in output (default=autodetect)
+   --color                                            - Use colors in output (default=autodetect)
  
  General options:
  
-   --allow-ginsert-as-artifact                       - Allow G_INSERT to be considered an artifact. Hack around AMDGPU test infinite loops.
-   --debugify-level=<value>                          - Kind of debug info to add
-     =locations                                      -   Locations only
-     =location+variables                             -   Locations and Variables
-   --debugify-quiet                                  - Suppress verbose debugify output
-   --disable-i2p-p2i-opt                             - Disables inttoptr/ptrtoint roundtrip optimization
-   --dot-cfg-mssa=<file name for generated dot file> - file name for generated dot file
-   --enable-cse-in-irtranslator                      - Should enable CSE in irtranslator
-   --enable-cse-in-legalizer                         - Should enable CSE in Legalizer
-   --enable-name-compression                         - Enable name/filename string compression
-   --force-opaque-pointers                           - Force all pointers to be opaque pointers
-   --mir-strip-debugify-only                         - Should mir-strip-debug only strip debug info from debugified modules by default
-   --sample-profile-check-record-coverage=<N>        - Emit a warning if less than N% of records in the input profile are matched to the IR.
-   --sample-profile-check-sample-coverage=<N>        - Emit a warning if less than N% of samples in the input profile are matched to the IR.
-   --sample-profile-max-propagate-iterations=<uint>  - Maximum number of iterations to go through when propagating sample block/edge weights through the CFG.
-   --x86-align-branch=<string>                       - Specify types of branches to align (plus separated list of types):
-                                                       jcc      indicates conditional jumps
-                                                       fused    indicates fused conditional jumps
-                                                       jmp      indicates direct unconditional jumps
-                                                       call     indicates direct and indirect calls
-                                                       ret      indicates rets
-                                                       indirect indicates indirect unconditional jumps
-   --x86-align-branch-boundary=<uint>                - Control how the assembler should align branches with NOP. If the boundary's size is not 0, it should be a power of 2 and no less than 32. Branches will be aligned to prevent from being across or against the boundary of specified size. The default value 0 does not align branches.
-   --x86-branches-within-32B-boundaries              - Align selected instructions to mitigate negative performance impact of Intel's micro code update for errata skx102.  May break assumptions about labels corresponding to particular instructions, and should be used with caution.
-   --x86-pad-max-prefix-size=<uint>                  - Maximum number of prefixes to use for padding
+   --allow-ginsert-as-artifact                        - Allow G_INSERT to be considered an artifact. Hack around AMDGPU test infinite loops.
+   --atomic-counter-update-promoted                   - Do counter update using atomic fetch add  for promoted counters only
+   --atomic-first-counter                             - Use atomic fetch add for first counter in a function (usually the entry counter)
+   --bounds-checking-single-trap                      - Use one trap block per function
+   --debug-info-correlate                             - Use debug info to correlate profiles.
+   --debugify-level=<value>                           - Kind of debug info to add
+     =locations                                       -   Locations only
+     =location+variables                              -   Locations and Variables
+   --debugify-quiet                                   - Suppress verbose debugify output
+   --disable-i2p-p2i-opt                              - Disables inttoptr/ptrtoint roundtrip optimization
+   --do-counter-promotion                             - Do counter register promotion
+   --dot-cfg-mssa=<file name for generated dot file>  - file name for generated dot file
+   --enable-cse-in-irtranslator                       - Should enable CSE in irtranslator
+   --enable-cse-in-legalizer                          - Should enable CSE in Legalizer
+   --enable-name-compression                          - Enable name/filename string compression
+   --experimental-debug-variable-locations            - Use experimental new value-tracking variable locations
+   --fs-profile-debug-bw-threshold=<uint>             - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>      - Only show debug message if the branch probility is greater than this value (in percentage).
+   --generate-merged-base-profiles                    - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
+   --hash-based-counter-split                         - Rename counter variable of a comdat function based on cfg hash
+   --instrprof-atomic-counter-update-all              - Make all profile counter updates atomic (for testing only)
+   --iterative-counter-promotion                      - Allow counter promotion across the whole loop nest.
+   --max-counter-promotions=<int>                     - Max number of allowed counter promotions
+   --max-counter-promotions-per-loop=<uint>           - Max number counter promotions per loop to avoid increasing register pressure too much
+   --mir-strip-debugify-only                          - Should mir-strip-debug only strip debug info from debugified modules by default
+   --opaque-pointers                                  - Use opaque pointers
+   --runtime-counter-relocation                       - Enable relocating counters at runtime.
+   --sample-profile-check-record-coverage=<N>         - Emit a warning if less than N% of records in the input profile are matched to the IR.
+   --sample-profile-check-sample-coverage=<N>         - Emit a warning if less than N% of samples in the input profile are matched to the IR.
+   --sample-profile-max-propagate-iterations=<uint>   - Maximum number of iterations to go through when propagating sample block/edge weights through the CFG.
+   --skip-ret-exit-block                              - Suppress counter promotion if exit blocks contain ret.
+   --speculative-counter-promotion-max-exiting=<uint> - The max number of exiting blocks of a loop to allow  speculative counter promotion
+   --speculative-counter-promotion-to-loop            - When the option is false, if the target block is in a loop, the promotion will be disallowed unless the promoted counter  update can be further/iteratively promoted into an acyclic  region.
+   --verify-region-info                               - Verify region info (time consuming)
+   --vp-counters-per-site=<number>                    - The average number of profile counters allocated per value profiling site.
+   --vp-static-alloc                                  - Do static counter allocation for value profiler
+   --x86-align-branch=<string>                        - Specify types of branches to align (plus separated list of types):
+                                                        jcc      indicates conditional jumps
+                                                        fused    indicates fused conditional jumps
+                                                        jmp      indicates direct unconditional jumps
+                                                        call     indicates direct and indirect calls
+                                                        ret      indicates rets
+                                                        indirect indicates indirect unconditional jumps
+   --x86-align-branch-boundary=<uint>                 - Control how the assembler should align branches with NOP. If the boundary's size is not 0, it should be a power of 2 and no less than 32. Branches will be aligned to prevent from being across or against the boundary of specified size. The default value 0 does not align branches.
+   --x86-branches-within-32B-boundaries               - Align selected instructions to mitigate negative performance impact of Intel's micro code update for errata skx102.  May break assumptions about labels corresponding to particular instructions, and should be used with caution.
+   --x86-pad-max-prefix-size=<uint>                   - Maximum number of prefixes to use for padding
  
  Generic Options:
  
-   --help                                            - Display available options (--help-hidden for more)
-   --help-list                                       - Display list of available options (--help-list-hidden for more)
-   --version                                         - Display the version of this program
+   --help                                             - Display available options (--help-hidden for more)
+   --help-list                                        - Display list of available options (--help-list-hidden for more)
+   --version                                          - Display the version of this program
  
  llvm-exegesis analysis options:
  
-   --analysis-clustering=<value>                     - the clustering algorithm to use
-     =dbscan                                         -   use DBSCAN/OPTICS algorithm
-     =naive                                          -   one cluster per opcode
-   --analysis-clustering-epsilon=<number>            - epsilon for benchmark point clustering
-   --analysis-clusters-output-file=<string>          - 
-   --analysis-display-unstable-clusters              - if there is more than one benchmark for an opcode, said benchmarks may end up not being clustered into the same cluster if the measured performance characteristics are different. by default all such opcodes are filtered out. this flag will instead show only such unstable opcodes
-   --analysis-inconsistencies-output-file=<string>   - 
-   --analysis-inconsistency-epsilon=<number>         - epsilon for detection of when the cluster is different from the LLVM schedule profile values
-   --analysis-numpoints=<uint>                       - minimum number of points in an analysis cluster (dbscan only)
+   --analysis-clustering=<value>                      - the clustering algorithm to use
+     =dbscan                                          -   use DBSCAN/OPTICS algorithm
+     =naive                                           -   one cluster per opcode
+   --analysis-clustering-epsilon=<number>             - epsilon for benchmark point clustering
+   --analysis-clusters-output-file=<string>           - 
+   --analysis-display-unstable-clusters               - if there is more than one benchmark for an opcode, said benchmarks may end up not being clustered into the same cluster if the measured performance characteristics are different. by default all such opcodes are filtered out. this flag will instead show only such unstable opcodes
+   --analysis-inconsistencies-output-file=<string>    - 
+   --analysis-inconsistency-epsilon=<number>          - epsilon for detection of when the cluster is different from the LLVM schedule profile values
+   --analysis-numpoints=<uint>                        - minimum number of points in an analysis cluster (dbscan only)
  
  llvm-exegesis benchmark options:
  
-   --dump-object-to-disk                             - dumps the generated benchmark object to disk and prints a message to access it
-   --ignore-invalid-sched-class                      - ignore instructions that do not define a sched class
-   --loop-body-size=<uint>                           - when repeating the instruction snippet by looping over it, duplicate the snippet until the loop body contains at least this many instruction
-   --max-configs-per-opcode=<uint>                   - allow to snippet generator to generate at most that many configs
-   --num-repetitions=<uint>                          - number of time to repeat the asm snippet
-   --opcode-index=<int>                              - opcode to measure, by index, or -1 to measure all opcodes
-   --opcode-name=<string>                            - comma-separated list of opcodes to measure, by name
-   --repetition-mode=<value>                         - how to repeat the instruction snippet
-     =duplicate                                      -   Duplicate the snippet
-     =loop                                           -   Loop over the snippet
-     =min                                            -   All of the above and take the minimum of measurements
-   --snippets-file=<string>                          - code snippets to measure
+   --dump-object-to-disk                              - dumps the generated benchmark object to disk and prints a message to access it
+   --ignore-invalid-sched-class                       - ignore instructions that do not define a sched class
+   --loop-body-size=<uint>                            - when repeating the instruction snippet by looping over it, duplicate the snippet until the loop body contains at least this many instruction
+   --max-configs-per-opcode=<uint>                    - allow to snippet generator to generate at most that many configs
+   --num-repetitions=<uint>                           - number of time to repeat the asm snippet
+   --opcode-index=<int>                               - opcode to measure, by index, or -1 to measure all opcodes
+   --opcode-name=<string>                             - comma-separated list of opcodes to measure, by name
+   --repetition-mode=<value>                          - how to repeat the instruction snippet
+     =duplicate                                       -   Duplicate the snippet
+     =loop                                            -   Loop over the snippet
+     =min                                             -   All of the above and take the minimum of measurements
+   --snippets-file=<string>                           - code snippets to measure
  
  llvm-exegesis benchmark x86-options:
  
-   --x86-lbr-sample-period=<uint>                    - The sample period (nbranches/sample), used for LBR sampling
+   --x86-lbr-sample-period=<uint>                     - The sample period (nbranches/sample), used for LBR sampling
  
  llvm-exegesis options:
  
-   --benchmarks-file=<string>                        - File to read (analysis mode) or write (latency/uops/inverse_throughput modes) benchmark results. “-” uses stdin/stdout.
-   --mcpu=<string>                                   - cpu name to use for pfm counters, leave empty to autodetect
-   --mode=<value>                                    - the mode to run
-     =latency                                        -   Instruction Latency
-     =inverse_throughput                             -   Instruction Inverse Throughput
-     =uops                                           -   Uop Decomposition
-     =analysis                                       -   Analysis
-   --result-aggregation-mode=<value>                 - How to aggregate multi-values result
-     =min                                            -   Keep min reading
-     =max                                            -   Keep max reading
-     =mean                                           -   Compute mean of all readings
-     =min-variance                                   -   Keep readings set with min-variance
+   --benchmarks-file=<string>                         - File to read (analysis mode) or write (latency/uops/inverse_throughput modes) benchmark results. “-” uses stdin/stdout.
+   --mcpu=<string>                                    - cpu name to use for pfm counters, leave empty to autodetect
+   --mode=<value>                                     - the mode to run
+     =latency                                         -   Instruction Latency
+     =inverse_throughput                              -   Instruction Inverse Throughput
+     =uops                                            -   Uop Decomposition
+     =analysis                                        -   Analysis
+   --result-aggregation-mode=<value>                  - How to aggregate multi-values result
+     =min                                             -   Keep min reading
+     =max                                             -   Keep max reading
+     =mean                                            -   Compute mean of all readings
+     =min-variance                                    -   Keep readings set with min-variance
  ```
  
  - - -
  
  ##### llvm-extract
  
- Llvm-extract-13 (1)  - extract a function from an LLVM module
+ Llvm-extract-14 (1)  - extract a function from an LLVM module
  
  ```
  root@kali:~# llvm-extract -h
@@ -7482,14 +7384,14 @@ PackagesInfo: |
  
  ##### llvm-lib
  
- Llvm-lib-13 (1)      - LLVM lib.exe compatible library tool
+ Llvm-lib-14 (1)      - LLVM lib.exe compatible library tool
  
  
  - - -
  
  ##### llvm-link
  
- Llvm-link-13 (1)     - LLVM bitcode linker
+ Llvm-link-14 (1)     - LLVM bitcode linker
  
  ```
  root@kali:~# llvm-link -h
@@ -7603,7 +7505,7 @@ PackagesInfo: |
  
  ##### llvm-mc
  
- Manual page for llvm-mc 13
+ Manual page for llvm-mc 14
  
  ```
  root@kali:~# llvm-mc -h
@@ -7672,7 +7574,7 @@ PackagesInfo: |
  
  ##### llvm-mca
  
- Llvm-mca-13 (1)      - LLVM Machine Code Analyzer
+ Llvm-mca-14 (1)      - LLVM Machine Code Analyzer
  
  ```
  root@kali:~# llvm-mca -h
@@ -7718,6 +7620,7 @@ PackagesInfo: |
    --resource-pressure              - Print the resource pressure view (enabled by default)
    --retire-stats                   - Print retire control unit statistics
    --scheduler-stats                - Print scheduler statistics
+   --show-barriers                  - Print memory barrier information in the instruction info view
    --show-encoding                  - Print encoding information in the instruction info view
    --timeline                       - Print the timeline view
    --timeline-max-cycles=<uint>     - Maximum number of cycles in the timeline view, or 0 for unlimited. Defaults to 80 cycles
@@ -7779,7 +7682,7 @@ PackagesInfo: |
    /manifest manifest     Used to specify each manifest that need to be processed
    /nodependency          Not supported
    /nologo                No effect as this tool never writes copyright data.  Included for parity
-   /notify_update         Not supported
+   /notify_update         Exit with a special exit code if the output file has changed
    /out:manifest          Name of the output manifest.  If this is skipped and only one manifest is being operated upon by the tool, that manifest is modified in place
    /outputresource:file   Not supported
    /outputresource        Not supported
@@ -7796,7 +7699,7 @@ PackagesInfo: |
  
  ##### llvm-nm
  
- Llvm-nm-13 (1)       - list LLVM bitcode and object file's symbol table
+ Llvm-nm-14 (1)       - list LLVM bitcode and object file's symbol table
  
  ```
  root@kali:~# llvm-nm -h
@@ -7865,7 +7768,7 @@ PackagesInfo: |
  
  ##### llvm-objcopy
  
- Llvm-objcopy-13 (1)  - object copying and editing tool
+ Llvm-objcopy-14 (1)  - object copying and editing tool
  
  ```
  root@kali:~# llvm-objcopy -h
@@ -7949,12 +7852,12 @@ PackagesInfo: |
    --remove-section=section
                            Remove <section>
    --rename-section=old=new[,flag1,...]
-                           Renames a section from old to new, optionally with specified flags. Flags supported for GNU compatibility: alloc, load, noload, readonly, debug, code, data, rom, share, contents, merge, strings.
+                           Renames a section from old to new, optionally with specified flags. Flags supported for GNU compatibility: alloc, load, noload, readonly, exclude, debug, code, data, rom, share, contents, merge, strings.
    -R <value>              Alias for --remove-section
    --set-section-alignment=section=align
                            Set alignment for a given section.
    --set-section-flags=section=flag1[,flag2,...]
-                           Set section flags for a given section. Flags supported for GNU compatibility: alloc, load, noload, readonly, debug, code, data, rom, share, contents, merge, strings.
+                           Set section flags for a given section. Flags supported for GNU compatibility: alloc, load, noload, readonly, exclude, debug, code, data, rom, share, contents, merge, strings.
    --set-start=addr        Set the start address to <addr>. Overrides any previous --change-start or --adjust-start values.
    --split-dwo=dwo-file    Equivalent to extract-dwo on the input file to <dwo-file>, then strip-dwo on the input file
    --strip-all-gnu         Compatible with GNU's --strip-all
@@ -7971,8 +7874,12 @@ PackagesInfo: |
    --strip-unneeded-symbols=filename
                            Reads a list of symbols from <filename> and removes them if they are not needed by relocations
    --strip-unneeded        Remove all symbols not needed by relocations
+   --subsystem=name[:version]
+                           Set PE subsystem and version
    -S                      Alias for --strip-all
    --target=<value>        Format of the input and output file
+   --update-section=name=file
+                           Add section <name> with contents from a file <file>.
    -U                      Alias for --disable-deterministic-archives
    --version               Print the version and exit.
    -V                      Alias for --version
@@ -7993,7 +7900,7 @@ PackagesInfo: |
  
  ##### llvm-objdump
  
- Manual page for llvm-objdump 13
+ Manual page for llvm-objdump 14
  
  ```
  root@kali:~# llvm-objdump --help
@@ -8003,28 +7910,28 @@ PackagesInfo: |
  
  OPTIONS:
    --adjust-vma=offset     Increase the displayed address by the specified offset
-   --all-headers           Display all available header information
+   --all-headers           Display all available header information, relocation entries and the symbol table
    --arch-name=<value>     Target arch to disassemble for, see --version for available targets
    --archive-headers       Display archive header information
    -a                      Alias for --archive-headers
    -C                      Alias for --demangle
    --debug-vars-indent=<value>
                            Distance to indent the source-level variable display, relative to the start of the disassembly
-   --debug-vars            Print the locations (in registers or memory) of source-level variables alongside disassembly
+   --debug-vars=<value>    Print the locations (in registers or memory) of source-level variables alongside disassembly. Supported formats: ascii, unicode (default)
    --demangle              Demangle symbol names
-   --disassemble-all       Display assembler mnemonics for the machine instructions
+   --disassemble-all       Disassemble all sections found in the input files
    --disassemble-symbols=<value>
                            List of symbols to disassemble. Accept demangled names when --demangle is specified, otherwise accept mangled names
    --disassemble-zeroes    Do not skip blocks of zeroes when disassembling
    --disassembler-options=options
                            Pass target specific disassembler options
-   --disassemble           Display assembler mnemonics for the machine instructions
-   --dwarf=<value>         Dump of dwarf debug sections
+   --disassemble           Disassemble all executable sections found in the input files
+   --dwarf=<value>         Dump the specified DWARF debug sections. The only supported value is 'frames'
    --dynamic-reloc         Display the dynamic relocation entries in the file
    --dynamic-syms          Display the contents of the dynamic symbol table
    -D                      Alias for --disassemble-all
    -d                      Alias for --disassemble
-   --fault-map-section     Display contents of faultmap section
+   --fault-map-section     Display the content of the fault map section
    --file-headers          Display the contents of the overall file header
    --full-contents         Display the content of each section
    -f                      Alias for --file-headers
@@ -8032,18 +7939,18 @@ PackagesInfo: |
    --help                  Display available options (--help-hidden for more)
    -h                      Alias for --section-headers
    -j <value>              Alias for --section
-   --line-numbers          Display source line numbers with disassembly. Implies disassemble object
+   --line-numbers          When disassembling, display source line numbers. Implies --disassemble
    -l                      Alias for --line-numbers
    --macho                 Use MachO specific object file parser
    --mattr=a1,+a2,-a3,...  Target specific attributes (--mattr=help for details)
    --mcpu=cpu-name         Target a specific cpu type (--mcpu=help for details)
    -M <value>              Alias for --disassembler-options=
    -m                      Alias for --macho
-   --no-leading-addr       Print no leading address
+   --no-leading-addr       When disassembling, do not print leading addresses
    --no-print-imm-hex      Do not use hex format for immediate values (default)
    --no-show-raw-insn      When disassembling instructions, do not print the instruction bytes.
-   --prefix-strip <value>  Strip out initial directories from absolute paths. No effect without --prefix
-   --prefix <value>        Add prefix to absolute paths
+   --prefix-strip=prefix   Strip out initial directories from absolute paths. No effect without --prefix
+   --prefix=prefix         Add prefix to absolute paths
    --print-imm-hex         Use hex format for immediate values
    --private-headers       Display format specific file headers
    -p                      Alias for --private-headers
@@ -8054,9 +7961,9 @@ PackagesInfo: |
    --section-headers       Display summaries of the headers for each section.
    --section=<value>       Operate on the specified sections only. With --macho dump segment,section
    --show-lma              Display LMA column when dumping ELF section headers
-   --source                Display source inlined with disassembly. Implies disassemble object
-   --start-address=address Disassemble beginning at address
-   --stop-address=address  Stop disassembly at address
+   --source                When disassembling, display source interleaved with the disassembly. Implies --disassemble
+   --start-address=address Set the start address for disassembling, printing relocations and printing symbols
+   --stop-address=address  Set the stop address for disassembling, printing relocations and printing symbols
    --symbol-description    Add symbol description for disassembly. This option is for XCOFF files only.
    --symbolize-operands    Symbolize instruction operands when disassembling
    --syms                  Display the symbol table
@@ -8138,7 +8045,7 @@ PackagesInfo: |
  
  ##### llvm-pdbutil
  
- Llvm-pdbutil-13 (1)  - PDB File forensics and diagnostics
+ Llvm-pdbutil-14 (1)  - PDB File forensics and diagnostics
  
  ```
  root@kali:~# llvm-pdbutil -h
@@ -8173,7 +8080,7 @@ PackagesInfo: |
  
  ##### llvm-profdata
  
- Llvm-profdata-13 (1) - Profile data tool
+ Llvm-profdata-14 (1) - Profile data tool
  
  ```
  root@kali:~# llvm-profdata -h
@@ -8190,7 +8097,7 @@ PackagesInfo: |
  
  ##### llvm-ranlib
  
- Manual page for llvm-ranlib 13
+ Manual page for llvm-ranlib 14
  
  ```
  root@kali:~# llvm-ranlib -h
@@ -8240,7 +8147,7 @@ PackagesInfo: |
  
  ##### llvm-readelf
  
- Llvm-readelf-13 (1)  - GNU-style LLVM Object Reader
+ Llvm-readelf-14 (1)  - GNU-style LLVM Object Reader
  
  ```
  root@kali:~# llvm-readelf --help
@@ -8275,20 +8182,21 @@ PackagesInfo: |
    -l                    Alias for --program-headers
    --no-demangle         Do not demangle symbol names (default)
    -n                    Alias for --notes
+   --pretty-print        Pretty print JSON output
    -p <name or index>    Alias for --string-dump
    --relocations         Alias for --relocs
    --relocs              Display the relocation entries in the file
    -r                    Alias for --relocs
    --sd                  Alias for --section-data
-   --section-data        Display section data for each section shown
+   --section-data        Display section data for each section shown. This option has no effect for GNU style output
    --section-details     Display the section details
    --section-headers     Display section headers
    --section-mapping     Display the section to segment mapping
-   --section-relocations Display relocations for each section shown
-   --section-symbols     Display symbols for each section shown
+   --section-relocations Display relocations for each section shown. This option has no effect for GNU style output
+   --section-symbols     Display symbols for each section shown. This option has no effect for GNU style output
    --sections            Alias for --section-headers
    --sr                  Alias for --section-relocations
-   --stack-sizes         Display contents of all stack sizes sections
+   --stack-sizes         Display contents of all stack sizes sections. This option has no effect for GNU style output
    --stackmap            Display contents of stackmap section
    --string-dump=<name or index>
                          Display the specified section(s) as a list of strings
@@ -8311,8 +8219,8 @@ PackagesInfo: |
    -d                   Alias for --dynamic-table
    --elf-linker-options Display the .linker-options section
    --elf-output-style=<value>
-                        Specify ELF dump style
-   --gnu-hash-table     Display .gnu.hash section
+                        Specify ELF dump style: LLVM, GNU, JSON
+   --gnu-hash-table     Display the GNU hash table for dynamic symbols
    -g                   Alias for --section-groups
    --hash-symbols       Display the dynamic symbols derived from the hash section
    --hash-table         Display .hash section
@@ -8351,6 +8259,9 @@ PackagesInfo: |
    --coff-resources        Display .rsrc section
    --coff-tls-directory    Display TLS directory
  
+ OPTIONS (XCOFF specific):
+   --auxiliary-header display the auxiliary header
+ 
  Pass @FILE as argument to read options from FILE.
  ```
  
@@ -8358,7 +8269,7 @@ PackagesInfo: |
  
  ##### llvm-readobj
  
- Llvm-readobj-13 (1)  - LLVM Object Reader
+ Llvm-readobj-14 (1)  - LLVM Object Reader
  
  ```
  root@kali:~# llvm-readobj --help
@@ -8393,20 +8304,21 @@ PackagesInfo: |
    -l                    Alias for --program-headers
    --no-demangle         Do not demangle symbol names (default)
    -n                    Alias for --notes
+   --pretty-print        Pretty print JSON output
    -p <name or index>    Alias for --string-dump
    --relocations         Alias for --relocs
    --relocs              Display the relocation entries in the file
    -r                    Alias for --relocs
    --sd                  Alias for --section-data
-   --section-data        Display section data for each section shown
+   --section-data        Display section data for each section shown. This option has no effect for GNU style output
    --section-details     Display the section details
    --section-headers     Display section headers
    --section-mapping     Display the section to segment mapping
-   --section-relocations Display relocations for each section shown
-   --section-symbols     Display symbols for each section shown
+   --section-relocations Display relocations for each section shown. This option has no effect for GNU style output
+   --section-symbols     Display symbols for each section shown. This option has no effect for GNU style output
    --sections            Alias for --section-headers
    --sr                  Alias for --section-relocations
-   --stack-sizes         Display contents of all stack sizes sections
+   --stack-sizes         Display contents of all stack sizes sections. This option has no effect for GNU style output
    --stackmap            Display contents of stackmap section
    --string-dump=<name or index>
                          Display the specified section(s) as a list of strings
@@ -8429,8 +8341,8 @@ PackagesInfo: |
    -d                   Alias for --dynamic-table
    --elf-linker-options Display the .linker-options section
    --elf-output-style=<value>
-                        Specify ELF dump style
-   --gnu-hash-table     Display .gnu.hash section
+                        Specify ELF dump style: LLVM, GNU, JSON
+   --gnu-hash-table     Display the GNU hash table for dynamic symbols
    -g                   Alias for --section-groups
    --hash-symbols       Display the dynamic symbols derived from the hash section
    --hash-table         Display .hash section
@@ -8469,6 +8381,9 @@ PackagesInfo: |
    --coff-resources        Display .rsrc section
    --coff-tls-directory    Display TLS directory
  
+ OPTIONS (XCOFF specific):
+   --auxiliary-header display the auxiliary header
+ 
  Pass @FILE as argument to read options from FILE.
  ```
  
@@ -8476,7 +8391,7 @@ PackagesInfo: |
  
  ##### llvm-rtdyld
  
- Manual page for llvm-rtdyld 13
+ Manual page for llvm-rtdyld 14
  
  ```
  root@kali:~# llvm-rtdyld -h
@@ -8518,7 +8433,7 @@ PackagesInfo: |
  
  ##### llvm-size
  
- Manual page for llvm-size 13
+ Manual page for llvm-size 14
  
  ```
  root@kali:~# llvm-size -h
@@ -8583,7 +8498,7 @@ PackagesInfo: |
  
  ##### llvm-stress
  
- Llvm-stress-13 (1)   - generate random .ll files
+ Llvm-stress-14 (1)   - generate random .ll files
  
  ```
  root@kali:~# llvm-stress -h
@@ -8614,7 +8529,7 @@ PackagesInfo: |
  
  ##### llvm-strings
  
- Llvm-strings-13 (1)  - print strings
+ Llvm-strings-14 (1)  - print strings
  
  ```
  root@kali:~# llvm-strings -h
@@ -8642,7 +8557,7 @@ PackagesInfo: |
  
  ##### llvm-strip
  
- Llvm-strip-13 (1)    - object stripping tool
+ Llvm-strip-14 (1)    - object stripping tool
  
  ```
  root@kali:~# llvm-strip -h
@@ -8700,7 +8615,7 @@ PackagesInfo: |
  
  ##### llvm-symbolizer
  
- Llvm-symbolizer-13 (1) - convert addresses into source code locations
+ Llvm-symbolizer-14 (1) - convert addresses into source code locations
  
  ```
  root@kali:~# llvm-symbolizer -h
@@ -8750,7 +8665,6 @@ PackagesInfo: |
    --relative-address    Interpret addresses as addresses relative to the image base
    --relativenames       Strip the compilation directory from paths
    -s                    Alias for --basenames
-   --untag-addresses     
    --verbose             Print verbose line info
    --version             Display the version
    -v                    Alias for --version
@@ -8766,7 +8680,7 @@ PackagesInfo: |
  
  ##### llvm-tblgen
  
- Llvm-tblgen-13 (1)   - Target Description to C++ Code for LLVM
+ Llvm-tblgen-14 (1)   - Target Description to C++ Code for LLVM
  
  ```
  root@kali:~# llvm-tblgen -h
@@ -8821,6 +8735,7 @@ PackagesInfo: |
        --gen-automata                    - Generate generic automata
        --gen-directive-decl              - Generate directive related declaration code (header file)
        --gen-directive-impl              - Generate directive related implementation code
+   --no-warn-on-unused-template-args  - Disable unused template argument warnings.
    -o=<filename>                      - Output filename
    --time-phases                      - Time phases of parser and backend
    --write-if-changed                 - Only write output if it changed
@@ -8946,7 +8861,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                       - Use flat scratch instructions
    --amdgpu-enable-merge-m0                           - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>     - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill               - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                             - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                         - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                       - Verify AMDGPU HSA Metadata
@@ -8969,6 +8883,7 @@ PackagesInfo: |
      =latency                                         -   Instruction latency
      =code-size                                       -   Code size
      =size-latency                                    -   Code size and latency
+   --debug-info-correlate                             - Use debug info to correlate profiles.
    --debugify-level=<value>                           - Kind of debug info to add
      =locations                                       -   Locations only
      =location+variables                              -   Locations and Variables
@@ -8993,8 +8908,11 @@ PackagesInfo: |
    --enable-loop-simplifycfg-term-folding             - 
    --enable-name-compression                          - Enable name/filename string compression
    --enable-split-backedge-in-load-pre                - 
+   --experimental-debug-variable-locations            - Use experimental new value-tracking variable locations
    --fatal-warnings                                   - Treat warnings as errors
-   --force-opaque-pointers                            - Force all pointers to be opaque pointers
+   --fs-profile-debug-bw-threshold=<uint>             - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>      - Only show debug message if the branch probility is greater than this value (in percentage).
+   --generate-merged-base-profiles                    - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                    - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                         - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                   - Enable hot-cold splitting pass
@@ -9024,6 +8942,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                     - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>           - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                     - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                           - tbd
    --merror-missing-parenthesis                       - Error for missing parenthesis around predicate registers
    --merror-noncontigious-register                    - Error for register names that aren't contigious
    --mhvx                                             - Enable Hexagon Vector eXtensions
@@ -9034,6 +8953,7 @@ PackagesInfo: |
      =v66                                             -   Build for HVX v66
      =v67                                             -   Build for HVX v67
      =v68                                             -   Build for HVX v68
+     =v69                                             -   Build for HVX v69
    --mips-compact-branches=<value>                    - MIPS Specific: Compact branch policy.
      =never                                           -   Do not use compact branches if possible.
      =optimal                                         -   Use compact branches where appropriate (default).
@@ -9053,7 +8973,9 @@ PackagesInfo: |
    --no-type-check                                    - Suppress type errors (Wasm)
    --no-warn                                          - Suppress all warnings
    --nvptx-sched4reg                                  - NVPTX Specific: schedule for register pressue
+   --opaque-pointers                                  - Use opaque pointers
    --poison-checking-function-local                   - Check that returns are non-poison (for testing)
+   --print-pipeline-passes                            - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                              - Use StructurizeCFG IR pass
    --rdf-dump                                         - 
    --rdf-limit=<uint>                                 - 
@@ -9077,6 +8999,8 @@ PackagesInfo: |
    --verify-region-info                               - Verify region info (time consuming)
    --vp-counters-per-site=<number>                    - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                  - Do static counter allocation for value profiler
+   --wasm-enable-eh                                   - WebAssembly exception handling
+   --wasm-enable-sjlj                                 - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                        - Specify types of branches to align (plus separated list of types):
                                                         jcc      indicates conditional jumps
                                                         fused    indicates fused conditional jumps
@@ -9119,10 +9043,13 @@ PackagesInfo: |
    --polly-parallel                                   - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                             - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                - Perform optimizations based on pattern matching
+   --polly-postopts                                   - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                          - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                     - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                       - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                            - Enable register tiling
    --polly-report                                     - Print information about the activities of Polly
+   --polly-reschedule                                 - Optimize SCoPs using ISL
    --polly-show                                       - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                  - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                   - Algorithm to use for splitting basic blocks into multiple statements
@@ -9151,25 +9078,28 @@ PackagesInfo: |
  
  Color Options:
  
-   --color                 - Use colors in output (default=autodetect)
+   --color               - Use colors in output (default=autodetect)
  
  General options:
  
-   --disable-i2p-p2i-opt   - Disables inttoptr/ptrtoint roundtrip optimization
-   --force-opaque-pointers - Force all pointers to be opaque pointers
+   --disable-i2p-p2i-opt - Disables inttoptr/ptrtoint roundtrip optimization
+   --opaque-pointers     - Use opaque pointers
+   --raw-segment=<value> - Mach-O: dump the raw contents of the listed segments instead of parsing them:
+     =data               -   __DATA
+     =linkedit           -   __LINKEDIT
  
  Generic Options:
  
-   --help                  - Display available options (--help-hidden for more)
-   --help-list             - Display list of available options (--help-list-hidden for more)
-   --version               - Display the version of this program
+   --help                - Display available options (--help-hidden for more)
+   --help-list           - Display list of available options (--help-list-hidden for more)
+   --version             - Display the version of this program
  ```
  
  - - -
  
  ##### opt
  
- Opt-13 (1)           - LLVM optimizer
+ Opt-14 (1)           - LLVM optimizer
  
  ```
  root@kali:~# opt -h
@@ -9198,6 +9128,7 @@ PackagesInfo: |
    --aarch64-use-aa                                                      - Enable the use of AA during codegen.
    --abort-on-max-devirt-iterations-reached                              - Abort when the max iterations for devirtualization CGSCC repeat pass is reached
    --addrsig                                                             - Emit an address-significance table
+   --align-loops=<uint>                                                  - Default alignment for loops
    --allow-ginsert-as-artifact                                           - Allow G_INSERT to be considered an artifact. Hack around AMDGPU test infinite loops.
    --amdgpu-bypass-slow-div                                              - Skip 64-bit divide for dynamic 32-bit values
    --amdgpu-disable-loop-alignment                                       - Do not align and prefetch loops
@@ -9207,7 +9138,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                                          - Use flat scratch instructions
    --amdgpu-enable-merge-m0                                              - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>                        - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill                                  - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                                                - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                                            - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                                          - Verify AMDGPU HSA Metadata
@@ -9242,6 +9172,7 @@ PackagesInfo: |
    --data-layout=<layout-string>                                         - data layout string to use
    --data-sections                                                       - Emit data into separate sections
    --debug-entry-values                                                  - Enable debug info for the debug entry values.
+   --debug-info-correlate                                                - Use debug info to correlate profiles.
    --debugger-tune=<value>                                               - Tune debug info for a particular debugger
      =gdb                                                                -   gdb
      =lldb                                                               -   lldb
@@ -9264,9 +9195,7 @@ PackagesInfo: |
    --disable-builtin=<string>                                            - Disable specific target library builtin function
    --disable-debug-info-type-map                                         - Don't use a uniquing type map for debug info
    --disable-i2p-p2i-opt                                                 - Disables inttoptr/ptrtoint roundtrip optimization
-   --disable-inlining                                                    - Do not run the inliner pass (legacy PM only)
    --disable-loop-unrolling                                              - Disable loop unrolling in all relevant passes
-   --disable-opt                                                         - Do not run any optimization passes
    --disable-promote-alloca-to-lds                                       - Disable promote alloca to LDS
    --disable-promote-alloca-to-vector                                    - Disable promote alloca to vector
    --disable-simplify-libcalls                                           - Disable simplify-libcalls
@@ -9316,7 +9245,6 @@ PackagesInfo: |
      =soft                                                               -   Soft float ABI (implied by -soft-float)
      =hard                                                               -   Hard float ABI (uses FP registers)
    --force-dwarf-frame-section                                           - Always emit a debug frame section.
-   --force-opaque-pointers                                               - Force all pointers to be opaque pointers
    --fp-contract=<value>                                                 - Enable aggressive formation of fused FP ops
      =fast                                                               -   Fuse FP ops whenever profitable
      =on                                                                 -   Only fuse 'blessed' FP ops.
@@ -9325,7 +9253,10 @@ PackagesInfo: |
      =all                                                                -   Disable frame pointer elimination
      =non-leaf                                                           -   Disable frame pointer elimination for non-leaf frame
      =none                                                               -   Enable frame pointer elimination
+   --fs-profile-debug-bw-threshold=<uint>                                - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>                         - Only show debug message if the branch probility is greater than this value (in percentage).
    --function-sections                                                   - Emit functions into separate sections
+   --generate-merged-base-profiles                                       - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                                       - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                                            - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                                      - Enable hot-cold splitting pass
@@ -9360,6 +9291,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                                        - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>                              - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                                        - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                                              - tbd
    --mcpu=<cpu-name>                                                     - Target a specific cpu type (-mcpu=help for details)
    --meabi=<value>                                                       - Set EABI type (default depends on triple):
      =default                                                            -   Triple default EABI version
@@ -9376,6 +9308,7 @@ PackagesInfo: |
      =v66                                                                -   Build for HVX v66
      =v67                                                                -   Build for HVX v67
      =v68                                                                -   Build for HVX v68
+     =v69                                                                -   Build for HVX v69
    --mips-compact-branches=<value>                                       - MIPS Specific: Compact branch policy.
      =never                                                              -   Do not use compact branches if possible.
      =optimal                                                            -   Use compact branches where appropriate (default).
@@ -9401,7 +9334,7 @@ PackagesInfo: |
    --nozero-initialized-in-bss                                           - Don't place zero-initialized symbols into bss section
    --nvptx-sched4reg                                                     - NVPTX Specific: schedule for register pressue
    -o=<filename>                                                         - Override output filename
-   -p                                                                    - Print module after each transformation
+   --opaque-pointers                                                     - Use opaque pointers
    --pass-remarks-filter=<regex>                                         - Only record optimization remarks from passes whose names match the given regular expression
    --pass-remarks-format=<format>                                        - The format used for serializing remarks (default: YAML)
    --pass-remarks-output=<filename>                                      - Output filename for pass remarks
@@ -9409,7 +9342,7 @@ PackagesInfo: |
    --poison-checking-function-local                                      - Check that returns are non-poison (for testing)
    --print-breakpoints-for-testing                                       - Print select breakpoints location for testing
    --print-passes                                                        - Print available passes that can be specified in -passes=foo and exit
-   --pseudo-probe-for-profiling                                          - Emit pseudo probes for AutoFDO
+   --print-pipeline-passes                                               - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                                                 - Use StructurizeCFG IR pass
    --rdf-dump                                                            - 
    --rdf-limit=<uint>                                                    - 
@@ -9445,6 +9378,7 @@ PackagesInfo: |
        --aarch64-ldst-opt                                                   - AArch64 load / store optimization pass
        --aarch64-local-dynamic-tls-cleanup                                  - AArch64 Local Dynamic TLS Access Clean-up
        --aarch64-lower-homogeneous-prolog-epilog                            - AArch64 homogeneous prolog/epilog lowering pass
+       --aarch64-mi-peephole-opt                                            - AArch64 MI Peephole Optimization
        --aarch64-post-select-optimize                                       - Optimize AArch64 selected instructions
        --aarch64-postlegalizer-combiner                                     - Combine AArch64 MachineInstrs after legalization
        --aarch64-postlegalizer-lowering                                     - Lower AArch64 MachineInstrs after legalization
@@ -9476,6 +9410,7 @@ PackagesInfo: |
        --amdgpu-fix-function-bitcasts                                       - Fix function bitcasts for AMDGPU
        --amdgpu-isel                                                        - AMDGPU DAG->DAG Pattern Instruction Selection
        --amdgpu-late-codegenprepare                                         - AMDGPU IR late optimizations
+       --amdgpu-lower-ctor-dtor                                             - Lower ctors and dtors for AMDGPU
        --amdgpu-lower-enqueued-block                                        - Lower OpenCL enqueued blocks
        --amdgpu-lower-intrinsics                                            - Lower intrinsics
        --amdgpu-lower-kernel-arguments                                      - AMDGPU Lower Kernel Arguments
@@ -9489,6 +9424,7 @@ PackagesInfo: |
        --amdgpu-printf-runtime-binding                                      - AMDGPU Printf lowering
        --amdgpu-promote-alloca                                              - AMDGPU promote alloca to vector or LDS
        --amdgpu-promote-alloca-to-vector                                    - AMDGPU promote alloca to vector
+       --amdgpu-promote-kernel-arguments                                    - AMDGPU Promote Kernel Arguments
        --amdgpu-propagate-attributes-early                                  - Early propagate attributes from kernels to functions
        --amdgpu-propagate-attributes-late                                   - Late propagate attributes from kernels to functions
        --amdgpu-regbank-combiner                                            - Combine AMDGPU machine instrs after regbankselect
@@ -9504,6 +9440,7 @@ PackagesInfo: |
        --annotation2metadata                                                - Annotation2Metadata
        --argpromotion                                                       - Promote 'by reference' arguments to scalars
        --arm-block-placement                                                - ARM block placement
+       --arm-branch-targets                                                 - ARM Branch Targets
        --arm-cp-islands                                                     - ARM constant island placement and branch shortening pass
        --arm-execution-domain-fix                                           - ARM Execution Domain Fix
        --arm-ldst-opt                                                       - ARM load / store optimization pass
@@ -9536,6 +9473,7 @@ PackagesInfo: |
        --bpf-abstract-member-access                                         - BPF Abstract Member Access
        --bpf-adjust-opt                                                     - BPF Adjust Optimization
        --bpf-check-and-opt-ir                                               - BPF Check And Adjust IR
+       --bpf-ir-peephole                                                    - BPF IR Peephole
        --bpf-mi-trunc-elim                                                  - BPF MachineSSA Peephole Optimization For TRUNC Eliminate
        --bpf-mi-zext-elim                                                   - BPF MachineSSA Peephole Optimization For ZEXT Eliminate
        --bpf-preserve-di-type                                               - BPF Preserve Debuginfo Type
@@ -9563,6 +9501,7 @@ PackagesInfo: |
        --cost-model                                                         - Cost Model Analysis
        --cross-dso-cfi                                                      - Cross-DSO CFI
        --cseinfo                                                            - Analysis containing CSE Info
+       --cycles                                                             - Cycle Info Analysis
        --da                                                                 - Dependence Analysis
        --dce                                                                - Dead Code Elimination
        --deadargelim                                                        - Dead Argument Elimination
@@ -9624,6 +9563,7 @@ PackagesInfo: |
        --hexagon-bit-simplify                                               - Hexagon bit simplification
        --hexagon-cext-opt                                                   - Hexagon constant-extender optimization
        --hexagon-constp                                                     - Hexagon Constant Propagation
+       --hexagon-copy-combine                                               - Hexagon Copy-To-Combine Pass
        --hexagon-early-if                                                   - Hexagon early if conversion
        --hexagon-gen-mux                                                    - Hexagon generate mux instructions
        --hexagon-loop-idiom                                                 - Recognize Hexagon-specific loop idioms
@@ -9675,6 +9615,7 @@ PackagesInfo: |
        --liveregmatrix                                                      - Live Register Matrix
        --livevars                                                           - Live Variable Analysis
        --load-store-vectorizer                                              - Vectorize load and store instructions
+       --loadstore-opt                                                      - Generic memory optimizations
        --localizer                                                          - Move/duplicate certain instructions close to their use
        --loop-accesses                                                      - Loop Access Analysis
        --loop-data-prefetch                                                 - Loop Data Prefetch
@@ -9738,6 +9679,7 @@ PackagesInfo: |
        --mips-branch-expansion                                              - Expand out of range branch instructions and fix forbidden slot hazards
        --mips-delay-slot-filler                                             - Fill delay slot for MIPS
        --mips-prelegalizer-combiner                                         - Combine Mips machine instrs before legalization
+       --mips-vr4300-mulmul-fix                                             - Mips VR4300 mulmul bugfix
        --mldst-motion                                                       - MergedLoadStoreMotion
        --module-debuginfo                                                   - Decodes module-level debug info
        --module-summary-analysis                                            - Module Summary Analysis
@@ -9793,7 +9735,6 @@ PackagesInfo: |
        --polly-optree                                                       - Polly - Forward operand tree
        --polly-prepare                                                      - Polly - Prepare code for polly
        --polly-prune-unprofitable                                           - Polly - Prune unprofitable SCoPs
-       --polly-rewrite-byref-params                                         - Polly - Rewrite by reference parameters
        --polly-scop-inliner                                                 - inline functions based on how much of the function is a scop.
        --polly-scops                                                        - Polly - Create polyhedral description of Scops
        --polly-simplify                                                     - Polly - Simplify
@@ -9849,8 +9790,10 @@ PackagesInfo: |
        --rewrite-statepoints-for-gc                                         - Make relocations explicit at statepoints
        --rewrite-symbols                                                    - Rewrite Symbols
        --riscv-expand-pseudo                                                - RISCV pseudo instruction expansion pass
+       --riscv-gather-scatter-lowering                                      - RISCV gather/scatter lowering pass
        --riscv-insert-vsetvli                                               - RISCV Insert VSETVLI pass
        --riscv-merge-base-offset                                            - RISCV Merge Base Offset
+       --riscv-sextw-removal                                                - RISCV sext.w Removal
        --rpo-function-attrs                                                 - Deduce function attributes in RPO
        --safe-stack                                                         - Safe Stack instrumentation pass
        --sample-profile                                                     - Sample Profile loader
@@ -9905,6 +9848,12 @@ PackagesInfo: |
        --strip-nondebug                                                     - Strip all symbols, except dbg symbols, from a module
        --strip-nonlinetable-debuginfo                                       - Strip all debug info except linetables
        --structurizecfg                                                     - Structurize the CFG
+       --systemz-elim-compare                                               - SystemZ Comparison Elimination
+       --systemz-ld-cleanup                                                 - SystemZ Local Dynamic TLS Access Clean-up
+       --systemz-long-branch                                                - SystemZ Long Branch
+       --systemz-post-rewrite                                               - SystemZ Post Rewrite pass
+       --systemz-shorten-inst                                               - SystemZ Instruction Shortening
+       --systemz-tdc                                                        - SystemZ Test Data Class optimization
        --tailcallelim                                                       - Tail Call Elimination
        --targetlibinfo                                                      - Target Library Information
        --targetpassconfig                                                   - Target Pass Configuration
@@ -9990,11 +9939,14 @@ PackagesInfo: |
    --stack-size-section                                                  - Emit a section containing stack size metadata
    --stack-symbol-ordering                                               - Order local stack symbols.
    --stackrealign                                                        - Force align the stack to the minimum alignment
-   --std-link-opts                                                       - Include the standard link time optimizations (legacy PM only)
    --strict-dwarf                                                        - use strict dwarf
    --strip-debug                                                         - Strip debugger symbol info from translation unit
    --strip-named-metadata                                                - Strip module-level named metadata
    --summary-file=<string>                                               - The summary file to use for function importing.
+   --swift-async-fp=<value>                                              - Determine when the Swift async frame pointer should be set
+     =auto                                                               -   Determine based on deployment target
+     =always                                                             -   Always set the bit
+     =never                                                              -   Never set the bit
    --tail-predication=<value>                                            - MVE tail-predication pass options
      =disabled                                                           -   Don't tail-predicate loops
      =enabled-no-reductions                                              -   Enable tail-predication, but not for reduction loops
@@ -10024,6 +9976,8 @@ PackagesInfo: |
    --verify-region-info                                                  - Verify region info (time consuming)
    --vp-counters-per-site=<number>                                       - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                                     - Do static counter allocation for value profiler
+   --wasm-enable-eh                                                      - WebAssembly exception handling
+   --wasm-enable-sjlj                                                    - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                                           - Specify types of branches to align (plus separated list of types):
                                                                            jcc      indicates conditional jumps
                                                                            fused    indicates fused conditional jumps
@@ -10067,10 +10021,13 @@ PackagesInfo: |
    --polly-parallel                                                      - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                                                - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                                   - Perform optimizations based on pattern matching
+   --polly-postopts                                                      - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                                             - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                                        - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                                          - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                                               - Enable register tiling
    --polly-report                                                        - Print information about the activities of Polly
+   --polly-reschedule                                                    - Optimize SCoPs using ISL
    --polly-show                                                          - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                                     - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                                      - Algorithm to use for splitting basic blocks into multiple statements
@@ -10118,7 +10075,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                       - Use flat scratch instructions
    --amdgpu-enable-merge-m0                           - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>     - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill               - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                             - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                         - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                       - Verify AMDGPU HSA Metadata
@@ -10141,6 +10097,7 @@ PackagesInfo: |
      =latency                                         -   Instruction latency
      =code-size                                       -   Code size
      =size-latency                                    -   Code size and latency
+   --debug-info-correlate                             - Use debug info to correlate profiles.
    --debugify-level=<value>                           - Kind of debug info to add
      =locations                                       -   Locations only
      =location+variables                              -   Locations and Variables
@@ -10166,8 +10123,11 @@ PackagesInfo: |
    --enable-loop-simplifycfg-term-folding             - 
    --enable-name-compression                          - Enable name/filename string compression
    --enable-split-backedge-in-load-pre                - 
+   --experimental-debug-variable-locations            - Use experimental new value-tracking variable locations
    --fatal-warnings                                   - Treat warnings as errors
-   --force-opaque-pointers                            - Force all pointers to be opaque pointers
+   --fs-profile-debug-bw-threshold=<uint>             - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>      - Only show debug message if the branch probility is greater than this value (in percentage).
+   --generate-merged-base-profiles                    - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                    - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                         - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                   - Enable hot-cold splitting pass
@@ -10197,6 +10157,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                     - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>           - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                     - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                           - tbd
    --merror-missing-parenthesis                       - Error for missing parenthesis around predicate registers
    --merror-noncontigious-register                    - Error for register names that aren't contigious
    --mhvx                                             - Enable Hexagon Vector eXtensions
@@ -10207,6 +10168,7 @@ PackagesInfo: |
      =v66                                             -   Build for HVX v66
      =v67                                             -   Build for HVX v67
      =v68                                             -   Build for HVX v68
+     =v69                                             -   Build for HVX v69
    --mips-compact-branches=<value>                    - MIPS Specific: Compact branch policy.
      =never                                           -   Do not use compact branches if possible.
      =optimal                                         -   Use compact branches where appropriate (default).
@@ -10226,7 +10188,9 @@ PackagesInfo: |
    --no-type-check                                    - Suppress type errors (Wasm)
    --no-warn                                          - Suppress all warnings
    --nvptx-sched4reg                                  - NVPTX Specific: schedule for register pressue
+   --opaque-pointers                                  - Use opaque pointers
    --poison-checking-function-local                   - Check that returns are non-poison (for testing)
+   --print-pipeline-passes                            - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                              - Use StructurizeCFG IR pass
    --rdf-dump                                         - 
    --rdf-limit=<uint>                                 - 
@@ -10250,6 +10214,8 @@ PackagesInfo: |
    --verify-region-info                               - Verify region info (time consuming)
    --vp-counters-per-site=<number>                    - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                  - Do static counter allocation for value profiler
+   --wasm-enable-eh                                   - WebAssembly exception handling
+   --wasm-enable-sjlj                                 - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                        - Specify types of branches to align (plus separated list of types):
                                                         jcc      indicates conditional jumps
                                                         fused    indicates fused conditional jumps
@@ -10292,10 +10258,13 @@ PackagesInfo: |
    --polly-parallel                                   - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                             - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                - Perform optimizations based on pattern matching
+   --polly-postopts                                   - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                          - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                     - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                       - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                            - Enable register tiling
    --polly-report                                     - Print information about the activities of Polly
+   --polly-reschedule                                 - Optimize SCoPs using ISL
    --polly-show                                       - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                  - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                   - Algorithm to use for splitting basic blocks into multiple statements
@@ -10344,7 +10313,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                       - Use flat scratch instructions
    --amdgpu-enable-merge-m0                           - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>     - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill               - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                             - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                         - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                       - Verify AMDGPU HSA Metadata
@@ -10367,6 +10335,7 @@ PackagesInfo: |
      =latency                                         -   Instruction latency
      =code-size                                       -   Code size
      =size-latency                                    -   Code size and latency
+   --debug-info-correlate                             - Use debug info to correlate profiles.
    --debugify-level=<value>                           - Kind of debug info to add
      =locations                                       -   Locations only
      =location+variables                              -   Locations and Variables
@@ -10391,8 +10360,11 @@ PackagesInfo: |
    --enable-loop-simplifycfg-term-folding             - 
    --enable-name-compression                          - Enable name/filename string compression
    --enable-split-backedge-in-load-pre                - 
+   --experimental-debug-variable-locations            - Use experimental new value-tracking variable locations
    --fatal-warnings                                   - Treat warnings as errors
-   --force-opaque-pointers                            - Force all pointers to be opaque pointers
+   --fs-profile-debug-bw-threshold=<uint>             - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>      - Only show debug message if the branch probility is greater than this value (in percentage).
+   --generate-merged-base-profiles                    - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                    - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                         - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                   - Enable hot-cold splitting pass
@@ -10422,6 +10394,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                     - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>           - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                     - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                           - tbd
    --merror-missing-parenthesis                       - Error for missing parenthesis around predicate registers
    --merror-noncontigious-register                    - Error for register names that aren't contigious
    --mhvx                                             - Enable Hexagon Vector eXtensions
@@ -10432,6 +10405,7 @@ PackagesInfo: |
      =v66                                             -   Build for HVX v66
      =v67                                             -   Build for HVX v67
      =v68                                             -   Build for HVX v68
+     =v69                                             -   Build for HVX v69
    --mips-compact-branches=<value>                    - MIPS Specific: Compact branch policy.
      =never                                           -   Do not use compact branches if possible.
      =optimal                                         -   Use compact branches where appropriate (default).
@@ -10452,7 +10426,9 @@ PackagesInfo: |
    --no-warn                                          - Suppress all warnings
    --num-shuffles=<uint>                              - Number of times to shuffle and verify use-lists
    --nvptx-sched4reg                                  - NVPTX Specific: schedule for register pressue
+   --opaque-pointers                                  - Use opaque pointers
    --poison-checking-function-local                   - Check that returns are non-poison (for testing)
+   --print-pipeline-passes                            - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                              - Use StructurizeCFG IR pass
    --rdf-dump                                         - 
    --rdf-limit=<uint>                                 - 
@@ -10477,6 +10453,8 @@ PackagesInfo: |
    --verify-region-info                               - Verify region info (time consuming)
    --vp-counters-per-site=<number>                    - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                  - Do static counter allocation for value profiler
+   --wasm-enable-eh                                   - WebAssembly exception handling
+   --wasm-enable-sjlj                                 - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                        - Specify types of branches to align (plus separated list of types):
                                                         jcc      indicates conditional jumps
                                                         fused    indicates fused conditional jumps
@@ -10519,10 +10497,13 @@ PackagesInfo: |
    --polly-parallel                                   - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                             - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                - Perform optimizations based on pattern matching
+   --polly-postopts                                   - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                          - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                     - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                       - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                            - Enable register tiling
    --polly-report                                     - Print information about the activities of Polly
+   --polly-reschedule                                 - Optimize SCoPs using ISL
    --polly-show                                       - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                  - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                   - Algorithm to use for splitting basic blocks into multiple statements
@@ -10552,14 +10533,16 @@ PackagesInfo: |
  
  Generic Options:
  
-   --help          - Display available options (--help-hidden for more)
-   --help-list     - Display list of available options (--help-list-hidden for more)
-   --version       - Display the version of this program
+   --help             - Display available options (--help-hidden for more)
+   --help-list        - Display list of available options (--help-list-hidden for more)
+   --version          - Display the version of this program
  
  yaml2obj Options:
  
-   --docnum=<uint> - Read specified document from input (default = 1)
-   -o=<filename>   - Output filename
+   -D=<string>        - Defined the specified macros to their specified definition. The syntax is <macro>=<definition>
+   --docnum=<uint>    - Read specified document from input (default = 1)
+   --max-size=<ulong> - Sets the maximum allowed output size (0 means no limit) [ELF only]
+   -o=<filename>      - Output filename
  ```
  
  - - -
@@ -10572,12 +10555,12 @@ PackagesInfo: |
    
   This is a dependency package providing the default libraries and headers.
  
- **Installed size:** `30 KB`  
+ **Installed size:** `31 KB`  
  **How to install:** `sudo apt install llvm-dev`  
  
  {{< spoiler "Dependencies:" >}}
  * llvm
- * llvm-13-dev 
+ * llvm-14-dev 
  * llvm-runtime 
  {{< /spoiler >}}
  
@@ -10592,16 +10575,16 @@ PackagesInfo: |
    
   This is a dependency package providing the default bytecode interpreter.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `21 KB`  
  **How to install:** `sudo apt install llvm-runtime`  
  
  {{< spoiler "Dependencies:" >}}
- * llvm-13-runtime 
+ * llvm-14-runtime 
  {{< /spoiler >}}
  
  ##### lli
  
- Manual page for lli 13
+ Manual page for lli 14
  
  ```
  root@kali:~# lli -h
@@ -10624,6 +10607,7 @@ PackagesInfo: |
    --aarch64-use-aa                                                      - Enable the use of AA during codegen.
    --abort-on-max-devirt-iterations-reached                              - Abort when the max iterations for devirtualization CGSCC repeat pass is reached
    --addrsig                                                             - Emit an address-significance table
+   --align-loops=<uint>                                                  - Default alignment for loops
    --allow-ginsert-as-artifact                                           - Allow G_INSERT to be considered an artifact. Hack around AMDGPU test infinite loops.
    --amdgpu-bypass-slow-div                                              - Skip 64-bit divide for dynamic 32-bit values
    --amdgpu-disable-loop-alignment                                       - Do not align and prefetch loops
@@ -10633,7 +10617,6 @@ PackagesInfo: |
    --amdgpu-enable-flat-scratch                                          - Use flat scratch instructions
    --amdgpu-enable-merge-m0                                              - Merge and hoist M0 initializations
    --amdgpu-promote-alloca-to-vector-limit=<uint>                        - Maximum byte size to consider promote alloca to vector
-   --amdgpu-reserve-vgpr-for-sgpr-spill                                  - Allocates one VGPR for future SGPR Spill
    --amdgpu-sdwa-peephole                                                - Enable SDWA peepholer
    --amdgpu-use-aa-in-codegen                                            - Enable the use of AA during codegen.
    --amdgpu-verify-hsa-metadata                                          - Verify AMDGPU HSA Metadata
@@ -10666,6 +10649,7 @@ PackagesInfo: |
      =size-latency                                                       -   Code size and latency
    --data-sections                                                       - Emit data into separate sections
    --debug-entry-values                                                  - Enable debug info for the debug entry values.
+   --debug-info-correlate                                                - Use debug info to correlate profiles.
    --debugger-tune=<value>                                               - Tune debug info for a particular debugger
      =gdb                                                                -   gdb
      =lldb                                                               -   lldb
@@ -10738,7 +10722,6 @@ PackagesInfo: |
      =hard                                                               -   Hard float ABI (uses FP registers)
    --force-dwarf-frame-section                                           - Always emit a debug frame section.
    --force-interpreter                                                   - Force interpretation: disable JIT
-   --force-opaque-pointers                                               - Force all pointers to be opaque pointers
    --fp-contract=<value>                                                 - Enable aggressive formation of fused FP ops
      =fast                                                               -   Fuse FP ops whenever profitable
      =on                                                                 -   Only fuse 'blessed' FP ops.
@@ -10747,7 +10730,10 @@ PackagesInfo: |
      =all                                                                -   Disable frame pointer elimination
      =non-leaf                                                           -   Disable frame pointer elimination for non-leaf frame
      =none                                                               -   Enable frame pointer elimination
+   --fs-profile-debug-bw-threshold=<uint>                                - Only show debug message if the source branch weight is greater  than this value.
+   --fs-profile-debug-prob-diff-threshold=<uint>                         - Only show debug message if the branch probility is greater than this value (in percentage).
    --function-sections                                                   - Emit functions into separate sections
+   --generate-merged-base-profiles                                       - When generating nested context-sensitive profiles, always generate extra base profile for function with all its context profiles merged into it.
    --gpsize=<uint>                                                       - Global Pointer Addressing Size.  The default size is 8.
    --hash-based-counter-split                                            - Rename counter variable of a comdat function based on cfg hash
    --hot-cold-split                                                      - Enable hot-cold splitting pass
@@ -10790,6 +10776,7 @@ PackagesInfo: |
    --max-counter-promotions=<int>                                        - Max number of allowed counter promotions
    --max-counter-promotions-per-loop=<uint>                              - Max number counter promotions per loop to avoid increasing register pressure too much
    --mc-relax-all                                                        - When used with filetype=obj, relax all fixups in the emitted object file
+   --mcabac                                                              - tbd
    --mcjit-remote-process=<filename>                                     - Specify the filename of the process to launch for remote MCJIT execution.  If none is specified,
                                                                            	remote execution will be simulated in-process.
    --mcpu=<cpu-name>                                                     - Target a specific cpu type (-mcpu=help for details)
@@ -10808,6 +10795,7 @@ PackagesInfo: |
      =v66                                                                -   Build for HVX v66
      =v67                                                                -   Build for HVX v67
      =v68                                                                -   Build for HVX v68
+     =v69                                                                -   Build for HVX v69
    --mips-compact-branches=<value>                                       - MIPS Specific: Compact branch policy.
      =never                                                              -   Do not use compact branches if possible.
      =optimal                                                            -   Use compact branches where appropriate (default).
@@ -10832,9 +10820,10 @@ PackagesInfo: |
    --nozero-initialized-in-bss                                           - Don't place zero-initialized symbols into bss section
    --nvptx-sched4reg                                                     - NVPTX Specific: schedule for register pressue
    --object-cache-dir=<string>                                           - Directory to store cached object files (must be user writable)
+   --opaque-pointers                                                     - Use opaque pointers
    --per-module-lazy                                                     - Performs lazy compilation on whole module boundaries rather than individual functions
    --poison-checking-function-local                                      - Check that returns are non-poison (for testing)
-   --pseudo-probe-for-profiling                                          - Emit pseudo probes for AutoFDO
+   --print-pipeline-passes                                               - Print a '-passes' compatible string describing the pipeline (best-effort only).
    --r600-ir-structurize                                                 - Use StructurizeCFG IR pass
    --rdf-dump                                                            - 
    --rdf-limit=<uint>                                                    - 
@@ -10862,6 +10851,10 @@ PackagesInfo: |
    --stackrealign                                                        - Force align the stack to the minimum alignment
    --strict-dwarf                                                        - use strict dwarf
    --summary-file=<string>                                               - The summary file to use for function importing.
+   --swift-async-fp=<value>                                              - Determine when the Swift async frame pointer should be set
+     =auto                                                               -   Determine based on deployment target
+     =always                                                             -   Always set the bit
+     =never                                                              -   Never set the bit
    --tail-predication=<value>                                            - MVE tail-predication pass options
      =disabled                                                           -   Don't tail-predicate loops
      =enabled-no-reductions                                              -   Enable tail-predication, but not for reduction loops
@@ -10883,6 +10876,8 @@ PackagesInfo: |
    --verify-region-info                                                  - Verify region info (time consuming)
    --vp-counters-per-site=<number>                                       - The average number of profile counters allocated per value profiling site.
    --vp-static-alloc                                                     - Do static counter allocation for value profiler
+   --wasm-enable-eh                                                      - WebAssembly exception handling
+   --wasm-enable-sjlj                                                    - WebAssembly setjmp/longjmp handling
    --x86-align-branch=<string>                                           - Specify types of branches to align (plus separated list of types):
                                                                            jcc      indicates conditional jumps
                                                                            fused    indicates fused conditional jumps
@@ -10926,10 +10921,13 @@ PackagesInfo: |
    --polly-parallel                                                      - Generate thread parallel code (isl codegen only)
    --polly-parallel-force                                                - Force generation of thread parallel code ignoring any cost model
    --polly-pattern-matching-based-opts                                   - Perform optimizations based on pattern matching
+   --polly-postopts                                                      - Apply post-rescheduling optimizations such as tiling (requires -polly-reschedule)
    --polly-pragma-based-opts                                             - Apply user-directed transformation from metadata
+   --polly-pragma-ignore-depcheck                                        - Skip the dependency check for pragma-based transformations
    --polly-process-unprofitable                                          - Process scops that are unlikely to benefit from Polly optimizations.
    --polly-register-tiling                                               - Enable register tiling
    --polly-report                                                        - Print information about the activities of Polly
+   --polly-reschedule                                                    - Optimize SCoPs using ISL
    --polly-show                                                          - Highlight the code regions that will be optimized in a (CFG BBs and LLVM-IR instructions)
    --polly-show-only                                                     - Highlight the code regions that will be optimized in a (CFG only BBs)
    --polly-stmt-granularity=<value>                                      - Algorithm to use for splitting basic blocks into multiple statements
@@ -10958,11 +10956,11 @@ PackagesInfo: |
    
   This binding package provides access to the Clang compiler and libraries.
  
- **Installed size:** `18 KB`  
+ **Installed size:** `19 KB`  
  **How to install:** `sudo apt install python3-clang`  
  
  {{< spoiler "Dependencies:" >}}
- * python3-clang-13 
+ * python3-clang-14 
  {{< /spoiler >}}
  
  
@@ -10976,11 +10974,11 @@ PackagesInfo: |
    
   This binding package provides access to lldb.
  
- **Installed size:** `18 KB`  
+ **Installed size:** `19 KB`  
  **How to install:** `sudo apt install python3-lldb`  
  
  {{< spoiler "Dependencies:" >}}
- * python3-lldb-13 
+ * python3-lldb-14 
  {{< /spoiler >}}
  
  
