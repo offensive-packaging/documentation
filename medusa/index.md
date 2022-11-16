@@ -4,7 +4,7 @@ Homepage: http://foofus.net/?page_id=51
 Repository: https://salsa.debian.org/pkg-security-team/medusa
 Architectures: any
 Version: 2.2-7
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-large kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-web 
 Icon: images/medusa-logo.svg
 PackagesInfo: |
  ### medusa

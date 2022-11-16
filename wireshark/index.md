@@ -3,8 +3,8 @@ Title: wireshark
 Homepage: https://www.wireshark.org/
 Repository: https://salsa.debian.org/debian/wireshark
 Architectures: any all
-Version: 3.6.6-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-forensics kali-tools-sniffing-spoofing kali-tools-top10 kali-tools-voip kali-tools-web kali-tools-wireless 
+Version: 4.0.1-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-forensics kali-tools-sniffing-spoofing kali-tools-top10 kali-tools-voip kali-tools-web kali-tools-wireless 
 Icon: images/wireshark-logo.svg
 PackagesInfo: |
  ### libwireshark-data
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the platform independent files.
  
- **Installed size:** `7.09 MB`  
+ **Installed size:** `7.21 MB`  
  **How to install:** `sudo apt install libwireshark-data`  
  
  
@@ -28,11 +28,11 @@ PackagesInfo: |
   This package contains the static library and the C header files that are
   needed for applications to use libwireshark services.
  
- **Installed size:** `4.49 MB`  
+ **Installed size:** `4.44 MB`  
  **How to install:** `sudo apt install libwireshark-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libwireshark15 
+ * libwireshark16 
  * libwiretap-dev
  * libwsutil-dev
  {{< /spoiler >}}
@@ -40,13 +40,13 @@ PackagesInfo: |
  
  - - -
  
- ### libwireshark15
+ ### libwireshark16
  
   The libwireshark library provides the network packet dissection services
   developed by the Wireshark project.
  
- **Installed size:** `102.16 MB`  
- **How to install:** `sudo apt install libwireshark15`  
+ **Installed size:** `107.80 MB`  
+ **How to install:** `sudo apt install libwireshark16`  
  
  {{< spoiler "Dependencies:" >}}
  * libbcg729-0 
@@ -56,18 +56,20 @@ PackagesInfo: |
  * libgcrypt20 
  * libglib2.0-0 
  * libgnutls30 
+ * libgpg-error0 
  * libk5crypto3 
  * libkrb5-3 
  * liblua5.2-0 
  * liblz4-1 
  * libnghttp2-14 
+ * libpcre2-8-0 
  * libsbc1 
  * libsmi2ldbl 
  * libsnappy1v5 
  * libspandsp2 
  * libwireshark-data 
- * libwiretap12 
- * libwsutil13 
+ * libwiretap13 
+ * libwsutil14 
  * libxml2 
  * libzstd1 
  * zlib1g 
@@ -105,17 +107,17 @@ PackagesInfo: |
    
   This package contains the static library and the C header files.
  
- **Installed size:** `225 KB`  
+ **Installed size:** `193 KB`  
  **How to install:** `sudo apt install libwiretap-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libwiretap12 
+ * libwiretap13 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libwiretap12
+ ### libwiretap13
  
   Wiretap, part of the Wireshark project, is a library that allows one to
   read and write several packet capture file formats.
@@ -142,14 +144,14 @@ PackagesInfo: |
   Wiretap's shortcomings are: no filter capability and no support for packet
   capture.
  
- **Installed size:** `720 KB`  
- **How to install:** `sudo apt install libwiretap12`  
+ **Installed size:** `692 KB`  
+ **How to install:** `sudo apt install libwiretap13`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libglib2.0-0 
  * liblz4-1 
- * libwsutil13 
+ * libwsutil14 
  * libzstd1 
  * zlib1g 
  {{< /spoiler >}}
@@ -164,28 +166,29 @@ PackagesInfo: |
   This package contains the static library and the C header files that are
   needed for applications to use the libwsutil library.
  
- **Installed size:** `337 KB`  
+ **Installed size:** `364 KB`  
  **How to install:** `sudo apt install libwsutil-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libwsutil13 
+ * libwsutil14 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libwsutil13
+ ### libwsutil14
  
   The libwsutil library provides utility functions for libwireshark15.
  
- **Installed size:** `282 KB`  
- **How to install:** `sudo apt install libwsutil13`  
+ **Installed size:** `267 KB`  
+ **How to install:** `sudo apt install libwsutil14`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcrypt20 
  * libglib2.0-0 
  * libgnutls30 
+ * libpcre2-8-0 
  {{< /spoiler >}}
  
  
@@ -200,16 +203,17 @@ PackagesInfo: |
   This package provides the console version of wireshark, named
   "tshark".
  
- **Installed size:** `422 KB`  
+ **Installed size:** `401 KB`  
  **How to install:** `sudo apt install tshark`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libglib2.0-0 
  * libpcap0.8 
- * libwireshark15 
- * libwiretap12 
- * libwsutil13 
+ * libpcre2-8-0 
+ * libwireshark16 
+ * libwiretap13 
+ * libwsutil14 
  * wireshark-common 
  * zlib1g 
  {{< /spoiler >}}
@@ -220,7 +224,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# tshark -h
- TShark (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ TShark (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Dump and analyze network traffic.
  See https://www.wireshark.org for more information.
  
@@ -303,6 +307,13 @@ PackagesInfo: |
    -P, --print              print packet summary even when writing to a file
    -S <separator>           the line separator to print between packets
    -x                       add output of hex and ASCII dump (Packet Bytes)
+   --hexdump <hexoption>    add hexdump, set options for data source and ASCII dump
+      all                   dump all data sources (-x default)
+      frames                dump only frame data source
+      ascii                 include ASCII dump text (-x default)
+      delimit               delimit ASCII dump text with '|' characters
+      noascii               exclude ASCII dump text
+      help                  display help for --hexdump and exit
    -T pdml|ps|psml|json|jsonraw|ek|tabs|text|fields|?
                             format of text output (def: text)
    -j <protocolfilter>      protocols layers filter if -T ek|pdml|json selected
@@ -347,6 +358,9 @@ PackagesInfo: |
                             values
    --elastic-mapping-filter <protocols> If -G elastic-mapping is specified, put only the
                             specified protocols within the mapping file
+   --temp-dir <directory>   write temporary files to this directory
+                            (default: /tmp)
+ 
  Diagnostic output:
    --log-level <level>      sets the active log level ("critical", "warning", etc.)
    --log-fatal <level>      sets level to abort the program ("critical" or "warning")
@@ -380,7 +394,7 @@ PackagesInfo: |
    
   This is a meta-package for Wireshark.
  
- **Installed size:** `67 KB`  
+ **Installed size:** `35 KB`  
  **How to install:** `sudo apt install wireshark`  
  
  {{< spoiler "Dependencies:" >}}
@@ -399,7 +413,7 @@ PackagesInfo: |
   This package provides files common to both wireshark and tshark
   (the console version).
  
- **Installed size:** `1.32 MB`  
+ **Installed size:** `1.34 MB`  
  **How to install:** `sudo apt install wireshark-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -414,12 +428,13 @@ PackagesInfo: |
  * libnl-3-200 
  * libnl-genl-3-200 
  * libpcap0.8 
+ * libpcre2-8-0 
  * libspeexdsp1 
  * libssh-gcrypt-4 
  * libsystemd0 
- * libwireshark15 
- * libwiretap12 
- * libwsutil13 
+ * libwireshark16 
+ * libwiretap13 
+ * libwsutil14 
  * zlib1g 
  {{< /spoiler >}}
  
@@ -429,7 +444,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# capinfos -h
- Capinfos (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Capinfos (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Print various information (infos) about capture files.
  See https://www.wireshark.org for more information.
  
@@ -505,7 +520,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# captype -h
- Captype (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Captype (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Print the file types of capture files.
  See https://www.wireshark.org for more information.
  
@@ -524,7 +539,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# dumpcap -h
- Dumpcap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Dumpcap (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Capture network packets and dump them into a pcapng or pcap file.
  See https://www.wireshark.org for more information.
  
@@ -586,6 +601,8 @@ PackagesInfo: |
    --capture-comment <comment>
                             add a capture comment to the output file
                             (only for pcapng)
+   --temp-dir <directory>   write temporary files to this directory
+                            (default: /tmp)
  
  Diagnostic output:
    --log-level <level>      sets the active log level ("critical", "warning", etc.)
@@ -594,6 +611,7 @@ PackagesInfo: |
    --log-debug <[!]list>    comma separated list of domains with "debug" level
    --log-noisy <[!]list>    comma separated list of domains with "noisy" level
    --log-file <path>        file to output messages to (in addition to stderr)
+ 
  Miscellaneous:
    -N <packet_limit>        maximum number of packets buffered within dumpcap
    -C <byte_limit>          maximum number of bytes used for buffering packets
@@ -622,13 +640,13 @@ PackagesInfo: |
  
  ```
  root@kali:~# editcap -h
- Editcap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Editcap (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Edit and/or translate the format of capture files.
  See https://www.wireshark.org for more information.
  
  Usage: editcap [options] ... <infile> <outfile> [ <packet#>[-<packet#>] ... ]
  
- <infile> and <outfile> must both be present.
+ <infile> and <outfile> must both be present; use '-' for stdin or stdout.
  A single packet or a range of packets can be selected.
  
  Packet selection:
@@ -646,14 +664,14 @@ PackagesInfo: |
    -d                     remove packet if duplicate (window == 5).
    -D <dup window>        remove packet if duplicate; configurable <dup window>.
                           Valid <dup window> values are 0 to 1000000.
-                          NOTE: A <dup window> of 0 with -v (verbose option) is
+                          NOTE: A <dup window> of 0 with -V (verbose option) is
                           useful to print MD5 hashes.
    -w <dup time window>   remove packet if duplicate packet is found EQUAL TO OR
                           LESS THAN <dup time window> prior to current packet.
                           A <dup time window> is specified in relative seconds
                           (e.g. 0.000001).
             NOTE: The use of the 'Duplicate packet removal' options with
-            other editcap options except -v may not always work as expected.
+            other editcap options except -V may not always work as expected.
             Specifically the -r, -t or -S options will very likely NOT have the
             desired effect if combined with the -d, -D or -w.
    --skip-radiotap-header skip radiotap header when checking for packet duplicates.
@@ -728,12 +746,12 @@ PackagesInfo: |
                           command line.
  
  Miscellaneous:
-   -h                     display this help and exit.
-   -v                     verbose output.
-                          If -v is used with any of the 'Duplicate Packet
+   -h, --help             display this help and exit.
+   -V                     verbose output.
+                          If -V is used with any of the 'Duplicate Packet
                           Removal' options (-d, -D or -w) then Packet lengths
                           and MD5 hashes are printed to standard-error.
-   -V, --version          print version information and exit.
+   -v, --version          print version information and exit.
  ```
  
  - - -
@@ -744,7 +762,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# mergecap -h
- Mergecap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Mergecap (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Merge two or more capture files into one.
  See https://www.wireshark.org for more information.
  
@@ -761,9 +779,9 @@ PackagesInfo: |
                      an empty "-I" option will list the merge modes.
  
  Miscellaneous:
-   -h                display this help and exit.
-   -v                verbose output.
-   -V                print version information and exit.
+   -h, --help        display this help and exit.
+   -V                verbose output.
+   -v, --version     print version information and exit.
  ```
  
  - - -
@@ -827,7 +845,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# rawshark -h
- Rawshark (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Rawshark (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Dump and analyze network traffic.
  See https://www.wireshark.org for more information.
  
@@ -853,6 +871,7 @@ PackagesInfo: |
    -S                       format string for fields
                             (%D - name, %S - stringval, %N numval)
    -t ad|a|r|d|dd|e         output format of time stamps (def: r: rel. to first)
+ 
  Diagnostic output:
    --log-level <level>      sets the active log level ("critical", "warning", etc.)
    --log-fatal <level>      sets level to abort the program ("critical" or "warning")
@@ -860,6 +879,7 @@ PackagesInfo: |
    --log-debug <[!]list>    comma separated list of domains with "debug" level
    --log-noisy <[!]list>    comma separated list of domains with "noisy" level
    --log-file <path>        file to output messages to (in addition to stderr)
+ 
  
  Miscellaneous:
    -h                       display this help and exit
@@ -875,7 +895,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# reordercap -h
- Reordercap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Reordercap (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Reorder timestamps of input file frames into output file.
  See https://www.wireshark.org for more information.
  
@@ -928,7 +948,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# text2pcap -h
- Text2pcap (Wireshark) 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Text2pcap (Wireshark) 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Generate a capture file from an ASCII hexdump of packets.
  See https://www.wireshark.org for more information.
  
@@ -938,38 +958,50 @@ PackagesInfo: |
        <outfile> specifies output filename (use - for standard output)
  
  Input:
-   -o hex|oct|dec         parse offsets as (h)ex, (o)ctal or (d)ecimal;
+   -o hex|oct|dec|none    parse offsets as (h)ex, (o)ctal, (d)ecimal, or (n)one;
                           default is hex.
    -t <timefmt>           treat the text before the packet as a date/time code;
-                          the specified argument is a format string of the sort
-                          supported by strptime.
+                          <timefmt> is a format string supported by strptime,
+                          with an optional %f descriptor for fractional seconds.
                           Example: The time "10:15:14.5476" has the format code
-                          "%H:%M:%S."
-                          NOTE: The subsecond component delimiter, '.', must be
-                          given, but no pattern is required; the remaining
-                          number is assumed to be fractions of a second.
+                          "%H:%M:%S.%f"
+                          The special format string ISO supports ISO-8601 times.
                           NOTE: Date/time fields from the current date/time are
                           used as the default for unspecified fields.
    -D                     the text before the packet starts with an I or an O,
                           indicating that the packet is inbound or outbound.
-                          This is used when generating dummy headers.
-                          The indication is only stored if the output format is pcapng.
+                          This is used when generating dummy headers if the
+                          output format supports it (e.g. pcapng).
    -a                     enable ASCII text dump identification.
                           The start of the ASCII text dump can be identified
                           and excluded from the packet data, even if it looks
                           like a HEX dump.
                           NOTE: Do not enable it if the input file does not
                           contain the ASCII text dump.
+   -r <regex>             enable regex mode. Scan the input using <regex>, a Perl
+                          compatible regular expression matching a single packet.
+                          Named capturing subgroups are used to identify fields:
+                          <data> (mand.), and <time>, <dir>, and <seqno> (opt.)
+                          The time field format is taken from the -t option
+                          Example: -r '^(?<dir>[<>])\s(?<time>\d+:\d\d:\d\d.\d+)\s(?<data>[0-9a-fA-F]+)$'
+                          could match a file with lines like
+                          > 0:00:00.265620 a130368b000000080060
+                          < 0:00:00.295459 a2010800000000000000000800000000
+   -b 2|8|16|64           encoding base (radix) of the packet data in regex mode
+                          (def: 16: hexadecimal) No effect in hexdump mode.
  
  Output:
-   -l <typenum>           link-layer type number; default is 1 (Ethernet).  See
+   -F <capture type>      set the output file type; default is pcapng.
+                          an empty "-F" option will list the file types.
+   -E <encap type>        set the output file encapsulation type; default is
+                          ether (Ethernet). An empty "-E" option will list
+                          the encapsulation types.
+   -l <typenum>           set the output file encapsulation type via link-layer
+                          type number; default is 1 (Ethernet). See
                           https://www.tcpdump.org/linktypes.html for a list of
-                          numbers.  Use this option if your dump is a complete
-                          hex dump of an encapsulated packet and you wish to
-                          specify the exact type of encapsulation.
+                          numbers.
                           Example: -l 7 for ARCNet packets.
    -m <max-packet>        max packet length in output; default is 262144
-   -n                     use pcapng instead of pcap as output format.
    -N <intf-name>         assign name to the interface in the pcapng file.
  
  Prepend dummy header:
@@ -978,14 +1010,15 @@ PackagesInfo: |
                           Example: -e 0x806 to specify an ARP packet.
    -i <proto>             prepend dummy IP header with specified IP protocol
                           (in DECIMAL).
-                          Automatically prepends Ethernet header as well.
+                          Automatically prepends Ethernet header as well if
+                          link-layer type is Ethernet.
                           Example: -i 46
    -4 <srcip>,<destip>    prepend dummy IPv4 header with specified
                           dest and source address.
                           Example: -4 10.0.0.1,10.0.0.2
    -6 <srcip>,<destip>    prepend dummy IPv6 header with specified
                           dest and source address.
-                          Example: -6 fe80::202:b3ff:fe1e:8329,2001:0db8:85a3::8a2e:0370:7334
+                          Example: -6 2001:db8::b3ff:fe1e:8329,2001:0db8:85a3::8a2e:0370:7334
    -u <srcp>,<destp>      prepend dummy UDP header with specified
                           source and destination ports (in DECIMAL).
                           Automatically prepends Ethernet & IP headers as well.
@@ -1004,12 +1037,23 @@ PackagesInfo: |
                           Automatically prepends a dummy SCTP DATA
                           chunk header with payload protocol identifier ppi.
                           Example: -S 30,40,34
+   -P <dissector>         prepend EXPORTED_PDU header with specified dissector
+                          as the payload DISSECTOR_NAME tag.
+                          Automatically sets link type to Upper PDU Export.
+                          EXPORTED_PDU payload defaults to "data" otherwise.
+ 
+ Diagnostic output:
+   --log-level <level>      sets the active log level ("critical", "warning", etc.)
+   --log-fatal <level>      sets level to abort the program ("critical" or "warning")
+   --log-domains <[!]list>  comma separated list of the active log domains
+   --log-debug <[!]list>    comma separated list of domains with "debug" level
+   --log-noisy <[!]list>    comma separated list of domains with "noisy" level
+   --log-file <path>        file to output messages to (in addition to stderr)
  
  Miscellaneous:
-   -h                     display this help and exit.
-   -v                     print version information and exit.
-   -d                     show detailed debug of parser states.
-   -q                     generate no output at all (automatically disables -d).
+   -h                     display this help and exit
+   -v                     print version information and exit
+   -q                     don't report processed packet counts
  ```
  
  - - -
@@ -1023,7 +1067,7 @@ PackagesInfo: |
   This package provides idl2wrs and other files necessary for developing
   new packet dissectors.
  
- **Installed size:** `577 KB`  
+ **Installed size:** `550 KB`  
  **How to install:** `sudo apt install wireshark-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1129,7 +1173,7 @@ PackagesInfo: |
   This package contains Wireshark User's guide, Wireshark Developer's Guide
   and the Lua Reference.
  
- **Installed size:** `12.95 MB`  
+ **Installed size:** `13.25 MB`  
  **How to install:** `sudo apt install wireshark-doc`  
  
  
@@ -1139,7 +1183,7 @@ PackagesInfo: |
  
   This is a transitional dummy package. It can safely be removed.
  
- **Installed size:** `65 KB`  
+ **Installed size:** `33 KB`  
  **How to install:** `sudo apt install wireshark-gtk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1157,7 +1201,7 @@ PackagesInfo: |
    
   This package provides the Qt version of Wireshark.
  
- **Installed size:** `8.90 MB`  
+ **Installed size:** `9.14 MB`  
  **How to install:** `sudo apt install wireshark-qt`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1170,6 +1214,7 @@ PackagesInfo: |
  * libnl-genl-3-200 
  * libnl-route-3-200 
  * libpcap0.8 
+ * libpcre2-8-0 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5multimedia5 
@@ -1178,9 +1223,9 @@ PackagesInfo: |
  * libqt5widgets5 
  * libspeexdsp1 
  * libstdc++6 
- * libwireshark15 
- * libwiretap12 
- * libwsutil13 
+ * libwireshark16 
+ * libwiretap13 
+ * libwsutil14 
  * wireshark-common 
  * zlib1g 
  {{< /spoiler >}}
@@ -1191,7 +1236,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# wireshark -h
- Wireshark 3.6.6 (Git v3.6.6 packaged as 3.6.6-1)
+ Wireshark 4.0.1 (Git v4.0.1 packaged as 4.0.1-1)
  Interactively dump and analyze network traffic.
  See https://www.wireshark.org for more information.
  
@@ -1274,6 +1319,9 @@ PackagesInfo: |
    -w <outfile|->           set the output filename (or '-' for stdout)
    --capture-comment <comment>
                             add a capture file comment, if supported
+   --temp-dir <directory>   write temporary files to this directory
+                            (default: /tmp)
+ 
  Diagnostic output:
    --log-level <level>      sets the active log level ("critical", "warning", etc.)
    --log-fatal <level>      sets level to abort the program ("critical" or "warning")

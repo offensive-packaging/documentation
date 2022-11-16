@@ -3,7 +3,7 @@ Title: socat
 Homepage: http://www.dest-unreach.org/socat/
 Repository: 
 Architectures: any
-Version: 1.7.4.3-3
+Version: 1.7.4.4-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

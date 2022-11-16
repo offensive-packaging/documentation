@@ -3,7 +3,7 @@ Title: massdns
 Homepage: https://github.com/blechschmidt/massdns
 Repository: https://gitlab.com/kalilinux/packages/massdns
 Architectures: any
-Version: 0.3-0kali2
+Version: 1.0.0-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   millions or even billions. Without special configuration, MassDNS is capable
   of resolving over 350,000 names per second using publicly available resolvers.
  
- **Installed size:** `100 KB`  
+ **Installed size:** `101 KB`  
  **How to install:** `sudo apt install massdns`  
  
  {{< spoiler "Dependencies:" >}}
@@ -32,8 +32,10 @@ PackagesInfo: |
    -c  --resolve-count    Number of resolves for a name before giving up. (Default: 50)
        --drop-group       Group to drop privileges to when running as root. (Default: nogroup)
        --drop-user        User to drop privileges to when running as root. (Default: nobody)
+       --filter           Only output packets with the specified response code.
        --flush            Flush the output file whenever a response was received.
    -h  --help             Show this help.
+       --ignore           Do not output packets with the specified response code.
    -i  --interval         Interval in milliseconds to wait between multiple resolves of the same
                           domain. (Default: 500)
    -l  --error-log        Error log file path. (Default: /dev/stderr)
@@ -68,7 +70,7 @@ PackagesInfo: |
    m - Only output reply records that match the question name.
    n - Include records from the answer section.
    q - Print the question.
-   r - Prepend resolver IP address, Unix timestamp and return code to the question line.
+   r - Print the question with resolver IP address, Unix timestamp and return code prepended.
    s - Separate packet sections using a line feed.
    t - Include TTL and record class within the output.
    u - Include records from the authority section.

@@ -3,7 +3,7 @@ Title: uhd-images
 Homepage: https://www.ettus.com
 Repository: https://gitlab.com/kalilinux/packages/uhd-images
 Architectures: all
-Version: 4.0.0.0-0kali1
+Version: 4.0.0.0-0kali2
 Metapackages: kali-linux-everything kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

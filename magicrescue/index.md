@@ -3,7 +3,7 @@ Title: magicrescue
 Homepage: https://github.com/jbj/magicrescue
 Repository: https://salsa.debian.org/pkg-security-team/magicrescue
 Architectures: any
-Version: 1.1.10+dfsg-1
+Version: 1.1.10+dfsg-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: images/magicrescue-logo.svg
 PackagesInfo: |
@@ -23,9 +23,9 @@ PackagesInfo: |
   msoffice, nikon-raw, perl, png, ppm, sqlite and zip.
    
   This package provides magicrescue, dupemap and magicsort commands.
-  magicrescue is a carver and is useful in forensics investigations.
+  magicrescue is a carver and it is useful in forensics investigations.
  
- **Installed size:** `259 KB`  
+ **Installed size:** `255 KB`  
  **How to install:** `sudo apt install magicrescue`  
  
  {{< spoiler "Dependencies:" >}}

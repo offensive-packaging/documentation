@@ -3,8 +3,8 @@ Title: cewl
 Homepage: https://github.com/digininja/CeWL
 Repository: https://salsa.debian.org/pkg-security-team/cewl
 Architectures: all
-Version: 5.5.2-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
+Version: 5.5.2-2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/cewl-logo.svg
 PackagesInfo: |
  ### cewl
@@ -29,11 +29,11 @@ PackagesInfo: |
   CeWL is useful in security tests and forensics investigations.
   CeWL is pronounced "cool".
  
- **Installed size:** `79 KB`  
+ **Installed size:** `80 KB`  
  **How to install:** `sudo apt install cewl`  
  
  {{< spoiler "Dependencies:" >}}
- * ruby | ruby-interpreter
+ * ruby
  * ruby-mime
  * ruby-mime-types
  * ruby-mini-exiftool

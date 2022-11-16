@@ -46,7 +46,7 @@ PackagesInfo: |
  ```
  root@kali:~# ftest --help
  /usr/bin/ftest version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: ftest [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  

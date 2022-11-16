@@ -3,16 +3,16 @@ Title: finalrecon
 Homepage: https://github.com/thewhiteh4t/FinalRecon
 Repository: https://gitlab.com/kalilinux/packages/finalrecon
 Architectures: all
-Version: 1.1.3-0kali2
+Version: 1.1.5-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### finalrecon
  
-  A fast and simple python script for web reconnaissance that follows
+  A fast and simple Python script for web reconnaissance that follows
   a modular structure and provides detailed information on various areas.
  
- **Installed size:** `309 KB`  
+ **Installed size:** `313 KB`  
  **How to install:** `sudo apt install finalrecon`  
  
  {{< spoiler "Dependencies:" >}}
@@ -35,12 +35,12 @@ PackagesInfo: |
  ```
  root@kali:~# finalrecon -h
  usage: finalrecon [-h] [--headers] [--sslinfo] [--whois] [--crawl] [--dns]
-                   [--sub] [--trace] [--dir] [--ps] [--full] [-t T] [-T T]
-                   [-w W] [-r] [-s] [-sp SP] [-d D] [-e E] [-m M] [-p P]
-                   [-tt TT] [-o O]
+                   [--sub] [--dir] [--wayback] [--ps] [--full] [-dt DT]
+                   [-pt PT] [-T T] [-w W] [-r] [-s] [-sp SP] [-d D] [-e E]
+                   [-o O]
                    url
  
- FinalRecon - The Last Web Recon Tool You Will Need | v1.1.3
+ FinalRecon - The Last Web Recon Tool You Will Need | v1.1.5
  
  positional arguments:
    url         Target URL
@@ -53,13 +53,14 @@ PackagesInfo: |
    --crawl     Crawl Target
    --dns       DNS Enumeration
    --sub       Sub-Domain Enumeration
-   --trace     Traceroute
    --dir       Directory Search
+   --wayback   Wayback URLs
    --ps        Fast Port Scan
    --full      Full Recon
  
  Extra Options:
-   -t T        Number of Threads [ Default : 30 ]
+   -dt DT      Number of threads for directory enum [ Default : 30 ]
+   -pt PT      Number of threads for port scan [ Default : 50 ]
    -T T        Request Timeout [ Default : 30.0 ]
    -w W        Path to Wordlist [ Default : wordlists/dirb_common.txt ]
    -r          Allow Redirect [ Default : False ]
@@ -67,10 +68,7 @@ PackagesInfo: |
    -sp SP      Specify SSL Port [ Default : 443 ]
    -d D        Custom DNS Servers [ Default : 1.1.1.1 ]
    -e E        File Extensions [ Example : txt, xml, php ]
-   -m M        Traceroute Mode [ Default : UDP ] [ Available : TCP, ICMP ]
-   -p P        Port for Traceroute [ Default : 80 / 33434 ]
-   -tt TT      Traceroute Timeout [ Default : 1.0 ]
-   -o O        Export Output [ Default : txt ] [ Available : xml, csv ]
+   -o O        Export Format [ Default : txt ]
  ```
  
  - - -

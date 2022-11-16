@@ -42,7 +42,7 @@ PackagesInfo: |
    
   Gpart is useful in recovery actions and forensics investigations.
  
- **Installed size:** `80 KB`  
+ **Installed size:** `81 KB`  
  **How to install:** `sudo apt install gpart`  
  
  {{< spoiler "Dependencies:" >}}

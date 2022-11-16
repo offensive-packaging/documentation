@@ -3,7 +3,7 @@ Title: berate-ap
 Homepage: https://github.com/sensepost/berate_ap
 Repository: https://gitlab.com/kalilinux/packages/berate-ap
 Architectures: any
-Version: 0.4.6+git20191120-0kali1
+Version: 0.4.6+git20191120-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

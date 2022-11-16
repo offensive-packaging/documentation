@@ -85,7 +85,7 @@ PackagesInfo: |
  
      
  
-  CMSeeK says ~ sayonara
+  CMSeeK says ~ Ja mata ne
  ```
  
  - - -

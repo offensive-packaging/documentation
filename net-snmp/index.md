@@ -397,7 +397,7 @@ PackagesInfo: |
   The Net-SNMP Perl5 support files provide the Perl functions for
   integration of SNMP into applications written in Perl.
  
- **Installed size:** `2.14 MB`  
+ **Installed size:** `2.10 MB`  
  **How to install:** `sudo apt install libsnmp-perl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -405,7 +405,7 @@ PackagesInfo: |
  * libnetsnmptrapd40 
  * libsnmp40 
  * perl 
- * perlapi-5.34.0
+ * perlapi-5.36.0
  {{< /spoiler >}}
  
  
@@ -421,13 +421,13 @@ PackagesInfo: |
   sending, receiving, decoding, and manipulation of the SNMP requests
   and responses.
  
- **Installed size:** `5.30 MB`  
+ **Installed size:** `5.27 MB`  
  **How to install:** `sudo apt install libsnmp40`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libpci3 
- * libperl5.34 
+ * libperl5.36 
  * libsensors5 
  * libsnmp-base
  * libssl3 
@@ -446,7 +446,7 @@ PackagesInfo: |
   The Net-SNMP applications are a collection of command line clients
   for issuing SNMP requests to agents.
  
- **Installed size:** `685 KB`  
+ **Installed size:** `681 KB`  
  **How to install:** `sudo apt install snmp`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3092,7 +3092,7 @@ PackagesInfo: |
   snmptrapd is an SNMP application (daemon) that receives and logs SNMP TRAP
   and INFORM messages.
  
- **Installed size:** `90 KB`  
+ **Installed size:** `91 KB`  
  **How to install:** `sudo apt install snmptrapd`  
  
  {{< spoiler "Dependencies:" >}}

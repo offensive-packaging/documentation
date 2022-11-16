@@ -3,7 +3,7 @@ Title: arp-scan
 Homepage: https://github.com/royhills/arp-scan
 Repository: https://salsa.debian.org/pkg-security-team/arp-scan
 Architectures: any
-Version: 1.9.7-2
+Version: 1.9.8-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   fingerprint IP hosts on the local network. It is available for Linux and BSD
   under the GPL licence
  
- **Installed size:** `1.04 MB`  
+ **Installed size:** `1.22 MB`  
  **How to install:** `sudo apt install arp-scan`  
  
  {{< spoiler "Dependencies:" >}}
@@ -114,6 +114,14 @@ PackagesInfo: |
  --retry=<i> or -r <i>	Set total number of attempts per host to <i>,
  			default=2.
  
+ --retry-send=<i> or -Y <i> Set total number of send packet attempts to <i>,
+ 			default=20.
+ 
+ --retry-send-interval=<i> or -E <i> Set interval between send packet attempts to <i>.
+ 			The interval specified is in milliseconds by default.
+ 			or in microseconds if "u" is appended to the value.
+ 			default=5.
+ 
  --timeout=<i> or -t <i>	Set initial per host timeout to <i> ms, default=500.
  			This timeout is for the first packet sent to each host.
  			subsequent timeouts are multiplied by the backoff
@@ -201,9 +209,14 @@ PackagesInfo: |
  			responding host. Useful if the output will be
  			parsed by a script.
  
+ --resolve or -d		Resolve IP addresses to hostnames.
+ 			Displays the hostname instead of IP address if name
+ 			resolution succeeds.
+ 
  --ignoredups or -g	Don't display duplicate packets.
  			By default, duplicate packets are displayed and are
- 			flagged with "(DUP: n)".
+ 			flagged with "(DUP: n)" where n is the number of
+ 			times this host has responded.
  
  --ouifile=<s> or -O <s>	Use IEEE Ethernet OUI to vendor mapping file <s>.
  			If this option is not specified, the default filename
@@ -344,6 +357,13 @@ PackagesInfo: |
  
  --rtt or -D		Display the packet round-trip time.
  
+ --limit=<i> or -M <i>	Exit after the specified number of hosts have responded.
+ 			When this option is used arp-scan will exit with status
+ 			1 if the number of responding hosts is less than the
+ 			specified limit. This can be used in scripts to check
+ 			if fewer hosts respond without having to parse the
+ 			program output.
+ 
  Report bugs or send suggestions at https://github.com/royhills/arp-scan
  See the arp-scan homepage at https://github.com/royhills/arp-scan
  ```
@@ -357,7 +377,7 @@ PackagesInfo: |
  ```
  root@kali:~# get-iab --help
  /usr/sbin/get-iab version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: get-iab [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  
@@ -380,7 +400,7 @@ PackagesInfo: |
  ```
  root@kali:~# get-oui --help
  /usr/sbin/get-oui version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: get-oui [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  

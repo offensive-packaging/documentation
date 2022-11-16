@@ -3,7 +3,7 @@ Title: proxytunnel
 Homepage: https://proxytunnel.sourceforge.io/
 Repository: https://salsa.debian.org/pkg-security-team/proxytunnel
 Architectures: any
-Version: 1.10.20210604-1
+Version: 1.10.20210604-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: images/proxytunnel-logo.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   by running it from inetd or as daemon listing on a local port to be
   forwarded through the tunnel.
  
- **Installed size:** `95 KB`  
+ **Installed size:** `92 KB`  
  **How to install:** `sudo apt install proxytunnel`  
  
  {{< spoiler "Dependencies:" >}}

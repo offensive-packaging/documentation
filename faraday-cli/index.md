@@ -3,7 +3,7 @@ Title: faraday-cli
 Homepage: https://github.com/infobyte/faraday-cli
 Repository: https://gitlab.com/kalilinux/packages/faraday-cli
 Architectures: all
-Version: 2.1.6-0kali2
+Version: 2.1.8-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package contains the official client that make automating your security
   workflows, easier.
  
- **Installed size:** `216 KB`  
+ **Installed size:** `220 KB`  
  **How to install:** `sudo apt install faraday-cli`  
  
  {{< spoiler "Dependencies:" >}}

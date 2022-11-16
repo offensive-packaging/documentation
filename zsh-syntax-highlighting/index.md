@@ -4,7 +4,7 @@ Homepage: https://github.com/zsh-users/zsh-syntax-highlighting/
 Repository: https://salsa.debian.org/debian/zsh-syntax-highlighting
 Architectures: all
 Version: 0.7.1-2
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### zsh-syntax-highlighting

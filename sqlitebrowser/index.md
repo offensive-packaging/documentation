@@ -3,7 +3,7 @@ Title: sqlitebrowser
 Homepage: https://sqlitebrowser.org/
 Repository: https://salsa.debian.org/sqlitebrowser-team/sqlitebrowser
 Architectures: any
-Version: 3.12.1-2
+Version: 3.12.2-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-database kali-tools-forensics kali-tools-web 
 Icon: images/sqlitebrowser-logo.svg
 PackagesInfo: |
@@ -29,7 +29,7 @@ PackagesInfo: |
   SQLite Database Browser is not a visual shell for the sqlite command line
   tool. It does not require familiarity with SQL commands.
  
- **Installed size:** `5.62 MB`  
+ **Installed size:** `5.71 MB`  
  **How to install:** `sudo apt install sqlitebrowser`  
  
  {{< spoiler "Dependencies:" >}}

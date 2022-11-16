@@ -3,7 +3,7 @@ Title: gvm
 Homepage: https://www.greenbone.net/
 Repository: https://salsa.debian.org/pkg-security-team/gvm
 Architectures: all
-Version: 21.4.4~kali1
+Version: 22.4.0+kali3
 Metapackages: kali-linux-everything kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,12 +17,13 @@ PackagesInfo: |
    
   The tool was previously named OpenVAS.
  
- **Installed size:** `44 KB`  
+ **Installed size:** `48 KB`  
  **How to install:** `sudo apt install gvm`  
  
  {{< spoiler "Dependencies:" >}}
  * gsad 
  * gvmd 
+ * notus-scanner 
  * openvas-scanner 
  * ospd-openvas 
  * psmisc
@@ -35,14 +36,20 @@ PackagesInfo: |
  
  ```
  root@kali:~# gvm-check-setup -h
- gvm-check-setup 21.4.3
-   Test completeness and readiness of GVM-21.4.3
+ gvm-check-setup 22.4.0
+   Test completeness and readiness of GVM-22.4.0
  Step 1: Checking OpenVAS (Scanner)... 
-         OK: OpenVAS Scanner is present in version 21.4.4.
-         ERROR: No CA certificate file for Server found.
-         FIX: Run 'sudo runuser -u _gvm -- gvm-manage-certs -a -f'.
+         OK: OpenVAS Scanner is present in version 22.4.0.
+         OK: Notus Scanner is present in version 22.4.1.
+         OK: Server CA Certificate is present as /var/lib/gvm/CA/servercert.pem.
+ Checking permissions of /var/lib/openvas/gnupg/*
+         OK: _gvm owns all files in /var/lib/openvas/gnupg
+         OK: redis-server is present.
+         OK: scanner (db_address setting) is configured properly using the redis-server socket: /var/run/redis-openvas/redis-server.sock
+         ERROR: redis-server is not running or not listening on socket: /var/run/redis-openvas/redis-server.sock
+         FIX: You should start the redis-server with 'systemctl start redis-server@openvas.service' or configure it to listen on socket: /var/run/redis-openvas/redis-server.sock
  
-  ERROR: Your GVM-21.4.3 installation is not yet complete!
+  ERROR: Your GVM-22.4.0 installation is not yet complete!
  
  Please follow the instructions marked with FIX above and run this
  script again.
@@ -73,28 +80,18 @@ PackagesInfo: |
  [>] Creating GVM's certificate files
  
  [>] Creating PostgreSQL database
- 
- [*] Creating database user
- 
- [*] Creating database
- 
- [*] Creating permissions
- CREATE ROLE
+ [i] User _gvm already exists in PostgreSQL
+ [i] Database gvmd already exists in PostgreSQL
+ [i] Role DBA already exists in PostgreSQL
  
  [*] Applying permissions
  GRANT ROLE
- 
- [*] Creating extension uuid-ossp
- CREATE EXTENSION
- 
- [*] Creating extension pgcrypto
- CREATE EXTENSION
+ [i] Extension uuid-ossp already exists for gvmd database
+ [i] Extension pgcrypto already exists for gvmd database
+ [i] Extension pg-gvm already exists for gvmd database
  [>] Migrating database
  [>] Checking for GVM admin user
- [*] Creating user admin for gvm
- [*] Please note the generated admin password
- [*] User created with password 'e762562e-6e82-4261-8172-338cfaf5b737'.
- [*] Define Feed Import Owner
+ [*] Configure Feed Import Owner
  [>] Updating GVM feeds
  [*] Updating NVT (Network Vulnerability Tests feed from Greenbone Security Feed/Community Feed)
  ```
@@ -118,34 +115,50 @@ PackagesInfo: |
  root@kali:~# gvm-stop -h
  [>] Stopping GVM services
  * gsad.service - Greenbone Security Assistant daemon (gsad)
-      Loaded: loaded (/lib/systemd/system/gsad.service; disabled; vendor preset: disabled)
+      Loaded: loaded (/lib/systemd/system/gsad.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: man:gsad(8)
               https://www.greenbone.net
  
  * gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)
-      Loaded: loaded (/lib/systemd/system/gvmd.service; disabled; vendor preset: disabled)
+      Loaded: loaded (/lib/systemd/system/gvmd.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: man:gvmd(8)
  
- Aug 05 10:18:16 kali systemd[1]: Starting Greenbone Vulnerability Manager daemon (gvmd)...
- Aug 05 10:18:16 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
- Aug 05 10:18:16 kali systemd[1]: Started Greenbone Vulnerability Manager daemon (gvmd).
- Aug 05 10:18:21 kali systemd[1]: Stopping Greenbone Vulnerability Manager daemon (gvmd)...
- Aug 05 10:18:21 kali systemd[1]: gvmd.service: Deactivated successfully.
- Aug 05 10:18:21 kali systemd[1]: Stopped Greenbone Vulnerability Manager daemon (gvmd).
+ Nov 17 05:44:10 kali systemd[1]: Starting Greenbone Vulnerability Manager daemon (gvmd)...
+ Nov 17 05:44:10 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
+ Nov 17 05:44:10 kali systemd[1]: Started Greenbone Vulnerability Manager daemon (gvmd).
+ Nov 17 05:44:14 kali systemd[1]: Stopping Greenbone Vulnerability Manager daemon (gvmd)...
+ Nov 17 05:44:14 kali systemd[1]: gvmd.service: Deactivated successfully.
+ Nov 17 05:44:14 kali systemd[1]: Stopped Greenbone Vulnerability Manager daemon (gvmd).
  
  * ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
-      Loaded: loaded (/lib/systemd/system/ospd-openvas.service; disabled; vendor preset: disabled)
+      Loaded: loaded (/lib/systemd/system/ospd-openvas.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: man:ospd-openvas(8)
               man:openvas(8)
  
- Aug 05 10:18:16 kali systemd[1]: Starting OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- Aug 05 10:18:16 kali systemd[1]: Started OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
- Aug 05 10:18:21 kali systemd[1]: Stopping OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- Aug 05 10:18:21 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
- Aug 05 10:18:21 kali systemd[1]: Stopped OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ Nov 17 05:44:10 kali systemd[1]: Starting OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ Nov 17 05:44:10 kali systemd[1]: Started OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ Nov 17 05:44:14 kali systemd[1]: Stopping OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ Nov 17 05:44:15 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
+ Nov 17 05:44:15 kali systemd[1]: Stopped OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ 
+ * notus-scanner.service - Notus Scanner
+      Loaded: loaded (/lib/systemd/system/notus-scanner.service; disabled; preset: disabled)
+      Active: inactive (dead)
+        Docs: https://github.com/greenbone/notus-scanner
+ 
+ Nov 17 05:44:10 kali notus-scanner[454434]:     raise AdvisoriesLoadingError(
+ Nov 17 05:44:10 kali notus-scanner[454434]: notus.scanner.errors.AdvisoriesLoadingError: Can't load advisories. /var/lib/notus/products is not a directory.
+ Nov 17 05:44:10 kali notus-scanner[454434]: Exception ignored in atexit callback: <function exit_cleanup at 0x7ffff533d870>
+ Nov 17 05:44:10 kali notus-scanner[454434]: Traceback (most recent call last):
+ Nov 17 05:44:10 kali notus-scanner[454434]:   File "/usr/lib/python3/dist-packages/notus/scanner/utils.py", line 112, in exit_cleanup
+ Nov 17 05:44:10 kali notus-scanner[454434]:     sys.exit()
+ Nov 17 05:44:10 kali notus-scanner[454434]: SystemExit:
+ Nov 17 05:44:10 kali systemd[1]: notus-scanner.service: Can't open PID file /run/notus-scanner/notus-scanner.pid (yet?) after start: Operation not permitted
+ Nov 17 05:44:14 kali systemd[1]: notus-scanner.service: Deactivated successfully.
+ Nov 17 05:44:14 kali systemd[1]: Stopped Notus Scanner.
  ```
  
  - - -
@@ -157,7 +170,7 @@ PackagesInfo: |
   This is a transitional package that pulls the new gvm, it can be safely
   removed once gvm has been installed.
  
- **Installed size:** `12 KB`  
+ **Installed size:** `11 KB`  
  **How to install:** `sudo apt install openvas`  
  
  {{< spoiler "Dependencies:" >}}

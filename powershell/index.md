@@ -3,7 +3,7 @@ Title: powershell
 Homepage: https://microsoft.com/powershell
 Repository: 
 Architectures: amd64
-Version: 7.2.4-1.deb
+Version: 7.2.6-1.deb
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/powershell-logo.svg
 PackagesInfo: |
@@ -11,7 +11,7 @@ PackagesInfo: |
  
   It consists of a cross-platform command-line shell and associated scripting language.
  
- **Installed size:** `182.61 MB`  
+ **Installed size:** `182.63 MB`  
  **How to install:** `sudo apt install powershell`  
  
  {{< spoiler "Dependencies:" >}}

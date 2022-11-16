@@ -4,7 +4,7 @@ Homepage: https://www.python.org/
 Repository: https://salsa.debian.org/cpython-team/python-defaults
 Architectures: any all
 Version: 2.7.18-3
-Metapackages: 
+Metapackages: kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libpython-all-dbg
@@ -62,6 +62,7 @@ PackagesInfo: |
  
  ##### x86_64-linux-gnu-python2-dbg-config
  
+ Output build options for python C/C++ extensions or embedding
  
  ```
  root@kali:~# x86_64-linux-gnu-python2-dbg-config --help
@@ -463,6 +464,7 @@ PackagesInfo: |
  
  ##### python2-dbg-config
  
+ Output build options for python C/C++ extensions or embedding
  
  ```
  root@kali:~# python2-dbg-config --help

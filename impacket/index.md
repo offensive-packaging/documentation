@@ -1,9 +1,9 @@
 ---
 Title: impacket
-Homepage: https://github.com/CoreSecurity/impacket
+Homepage: https://github.com/SecureAuthCorp/impacket
 Repository: https://salsa.debian.org/python-team/packages/impacket
 Architectures: all
-Version: 0.10.0-2
+Version: 0.10.0-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   object  oriented API  makes  it  simple to  work  with deep  protocol
   hierarchies.
  
- **Installed size:** `6.36 MB`  
+ **Installed size:** `6.35 MB`  
  **How to install:** `sudo apt install python3-impacket`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,7 +31,7 @@ PackagesInfo: |
  * python3-future
  * python3-ldap3
  * python3-ldapdomaindump
- * python3-openssl
+ * python3-openssl 
  * python3-pkg-resources
  * python3-pyasn1 
  * python3-pycryptodome

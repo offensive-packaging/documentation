@@ -14,7 +14,7 @@ PackagesInfo: |
   port 443 (e.g. from inside a corporate firewall, which almost never block
   port 443) while still serving HTTPS on that port.
  
- **Installed size:** `183 KB`  
+ **Installed size:** `177 KB`  
  **How to install:** `sudo apt install sslh`  
  
  {{< spoiler "Dependencies:" >}}
@@ -37,7 +37,7 @@ PackagesInfo: |
  ```
  root@kali:~# sslh -h
  sslh: option '-http' requires an argument
- sslh 1.20-1
+ sslh 1.20-1+b1
  usage:
  	sslh  [-v] [-i] [-V] [-f] [-n] [--transparent] [-F<file>]
  	[-t <timeout>] [-P <pidfile>] [-u <username>] [-C <chroot>] -p <addr> [-p <addr> ...] 
@@ -79,7 +79,7 @@ PackagesInfo: |
  ```
  root@kali:~# sslh-select -h
  sslh-select: option '-http' requires an argument
- sslh 1.20-1
+ sslh 1.20-1+b1
  usage:
  	sslh  [-v] [-i] [-V] [-f] [-n] [--transparent] [-F<file>]
  	[-t <timeout>] [-P <pidfile>] [-u <username>] [-C <chroot>] -p <addr> [-p <addr> ...] 

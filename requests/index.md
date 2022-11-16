@@ -4,7 +4,7 @@ Homepage: http://python-requests.org
 Repository: https://salsa.debian.org/python-team/packages/requests
 Architectures: all
 Version: 2.27.1+dfsg-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-reporting kali-tools-sdr kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-reporting kali-tools-sdr kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### python-requests-doc

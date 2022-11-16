@@ -3,7 +3,7 @@ Title: nuclei
 Homepage: https://github.com/projectdiscovery/nuclei
 Repository: https://gitlab.com/kalilinux/packages/nuclei
 Architectures: any
-Version: 2.7.4-0kali1
+Version: 2.7.9-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,12 +18,8 @@ PackagesInfo: |
   including TCP, DNS, HTTP, File, etc. With powerful and flexible
   templating, all kinds of security checks can be modelled with Nuclei.
  
- **Installed size:** `33.41 MB`  
+ **Installed size:** `47.45 MB`  
  **How to install:** `sudo apt install nuclei`  
- 
- {{< spoiler "Dependencies:" >}}
- * libc6 
- {{< /spoiler >}}
  
  ##### nuclei
  
@@ -53,19 +49,20 @@ PackagesInfo: |
     -nss, -no-strict-syntax                Disable strict syntax check on templates
     -tl                                    list all available templates
  FILTERING:
-    -a, -author string[]              templates to run based on authors (comma-separated, file)
-    -tags string[]                    templates to run based on tags (comma-separated, file)
-    -etags, -exclude-tags string[]    templates to exclude based on tags (comma-separated, file)
-    -itags, -include-tags string[]    tags to be executed even if they are excluded either by default or configuration
-    -id, -template-id string[]        templates to run based on template ids (comma-separated, file)
-    -eid, -exclude-id string[]        templates to exclude based on template ids (comma-separated, file)
-    -it, -include-templates string[]  templates to be executed even if they are excluded either by default or configuration
-    -et, -exclude-templates string[]  template or template directory to exclude (comma-separated, file)
-    -em, -exclude-matchers string[]   template matchers to exclude in result
-    -s, -severity value[]             templates to run based on severity. Possible values: info, low, medium, high, critical, unknown
-    -es, -exclude-severity value[]    templates to exclude based on severity. Possible values: info, low, medium, high, critical, unknown
-    -pt, -type value[]                templates to run based on protocol type. Possible values: dns, file, http, headless, network, workflow, ssl, websocket, whois
-    -ept, -exclude-type value[]       templates to exclude based on protocol type. Possible values: dns, file, http, headless, network, workflow, ssl, websocket, whois
+    -a, -author string[]               templates to run based on authors (comma-separated, file)
+    -tags string[]                     templates to run based on tags (comma-separated, file)
+    -etags, -exclude-tags string[]     templates to exclude based on tags (comma-separated, file)
+    -itags, -include-tags string[]     tags to be executed even if they are excluded either by default or configuration
+    -id, -template-id string[]         templates to run based on template ids (comma-separated, file)
+    -eid, -exclude-id string[]         templates to exclude based on template ids (comma-separated, file)
+    -it, -include-templates string[]   templates to be executed even if they are excluded either by default or configuration
+    -et, -exclude-templates string[]   template or template directory to exclude (comma-separated, file)
+    -em, -exclude-matchers string[]    template matchers to exclude in result
+    -s, -severity value[]              templates to run based on severity. Possible values: info, low, medium, high, critical, unknown
+    -es, -exclude-severity value[]     templates to exclude based on severity. Possible values: info, low, medium, high, critical, unknown
+    -pt, -type value[]                 templates to run based on protocol type. Possible values: dns, file, http, headless, network, workflow, ssl, websocket, whois
+    -ept, -exclude-type value[]        templates to exclude based on protocol type. Possible values: dns, file, http, headless, network, workflow, ssl, websocket, whois
+    -tc, -template-condition string[]  templates to run based on expression condition
  OUTPUT:
     -o, -output string            output file to write found issues/vulnerabilities
     -sresp, -store-resp           store all request/response passed through nuclei to output directory
@@ -81,23 +78,29 @@ PackagesInfo: |
     -me, -markdown-export string  directory to export results in markdown format
     -se, -sarif-export string     file to export results in SARIF format
  CONFIGURATIONS:
-    -config string              path to the nuclei configuration file
-    -fr, -follow-redirects      enable following redirects for http templates
-    -mr, -max-redirects int     max number of redirects to follow for http templates (default 10)
-    -dr, -disable-redirects     disable redirects for http templates
-    -rc, -report-config string  nuclei reporting module configuration file
-    -H, -header string[]        custom header/cookie to include in all http request in header:value format (cli, file)
-    -V, -var value              custom vars in key=value format
-    -r, -resolvers string       file containing resolver list for nuclei
-    -sr, -system-resolvers      use system DNS resolving as error fallback
-    -passive                    enable passive HTTP response processing mode
-    -ev, -env-vars              enable environment variables to be used in template
-    -cc, -client-cert string    client certificate file (PEM-encoded) used for authenticating against scanned hosts
-    -ck, -client-key string     client key file (PEM-encoded) used for authenticating against scanned hosts
-    -ca, -client-ca string      client certificate authority file (PEM-encoded) used for authenticating against scanned hosts
-    -sml, -show-match-line      show match lines for file templates, works with extractors only
-    -ztls                       use ztls library with autofallback to standard one for tls13
-    -sni string                 tls sni hostname to use (default: input domain name)
+    -config string                 path to the nuclei configuration file
+    -fr, -follow-redirects         enable following redirects for http templates
+    -fhr, -follow-host-redirects   follow redirects on the same host
+    -mr, -max-redirects int        max number of redirects to follow for http templates (default 10)
+    -dr, -disable-redirects        disable redirects for http templates
+    -rc, -report-config string     nuclei reporting module configuration file
+    -H, -header string[]           custom header/cookie to include in all http request in header:value format (cli, file)
+    -V, -var value                 custom vars in key=value format
+    -r, -resolvers string          file containing resolver list for nuclei
+    -sr, -system-resolvers         use system DNS resolving as error fallback
+    -passive                       enable passive HTTP response processing mode
+    -ev, -env-vars                 enable environment variables to be used in template
+    -cc, -client-cert string       client certificate file (PEM-encoded) used for authenticating against scanned hosts
+    -ck, -client-key string        client key file (PEM-encoded) used for authenticating against scanned hosts
+    -ca, -client-ca string         client certificate authority file (PEM-encoded) used for authenticating against scanned hosts
+    -sml, -show-match-line         show match lines for file templates, works with extractors only
+    -ztls                          use ztls library with autofallback to standard one for tls13
+    -sni string                    tls sni hostname to use (default: input domain name)
+    -i, -interface string          network interface to use for network scan
+    -sip, -source-ip string        source ip address to use for network scan
+    -config-directory string       Override the default config path ($home/.config)
+    -rsr, -response-size-read int  max response size to read in bytes (default 10485760)
+    -rss, -response-size-save int  max response size to read in bytes (default 1048576)
  INTERACTSH:
     -iserver, -interactsh-server string  interactsh server url for self-hosted instance (default: oast.pro,oast.live,oast.site,oast.online,oast.fun,oast.me)
     -itoken, -interactsh-token string    authentication token for self-hosted interactsh server
@@ -114,7 +117,7 @@ PackagesInfo: |
     -hbs, -headless-bulk-size int      maximum number of headless hosts to be analyzed in parallel per template (default 10)
     -headc, -headless-concurrency int  maximum number of headless templates to be executed in parallel (default 10)
  OPTIMIZATIONS:
-    -timeout int                        time to wait in seconds before timeout (default 5)
+    -timeout int                        time to wait in seconds before timeout (default 10)
     -retries int                        number of times to retry a failed request (default 1)
     -ldp, -leave-default-ports          leave default HTTP/HTTPS ports (eg. host:80,host:443
     -mhe, -max-host-error int           max errors for a host before skipping from scan (default 30)
@@ -125,21 +128,24 @@ PackagesInfo: |
     -irt, -input-read-timeout duration  timeout on input read (default 3m0s)
     -no-stdin                           Disable Stdin processing
  HEADLESS:
-    -headless            enable templates that require headless browser support (root user on linux will disable sandbox)
-    -page-timeout int    seconds to wait for each page in headless mode (default 20)
-    -sb, -show-browser   show the browser on the screen when running templates with headless mode
-    -sc, -system-chrome  Use local installed chrome browser instead of nuclei installed
+    -headless                    enable templates that require headless browser support (root user on linux will disable sandbox)
+    -page-timeout int            seconds to wait for each page in headless mode (default 20)
+    -sb, -show-browser           show the browser on the screen when running templates with headless mode
+    -sc, -system-chrome          Use local installed chrome browser instead of nuclei installed
+    -lha, -list-headless-action  list available headless actions
  DEBUG:
     -debug                    show all requests and responses
     -dreq, -debug-req         show all sent requests
     -dresp, -debug-resp       show all received responses
     -p, -proxy string[]       list of http/socks5 proxy to use (comma separated or file input)
     -pi, -proxy-internal      proxy all internal requests
+    -ldf, -list-dsl-function  list all supported DSL function signatures
     -tlog, -trace-log string  file to write sent requests trace log
     -elog, -error-log string  file to write sent requests error log
     -version                  show nuclei version
     -hm, -hang-monitor        enable nuclei hang monitoring
     -v, -verbose              show verbose output
+    -profile-mem string       optional nuclei memory profile dump file
     -vv                       display templates loaded for scan
     -ep, -enable-pprof        enable pprof debugging server
     -tv, -templates-version   shows the version of the installed nuclei-templates
@@ -154,6 +160,10 @@ PackagesInfo: |
     -si, -stats-interval int  number of seconds to wait between showing a statistics update (default 5)
     -m, -metrics              expose nuclei metrics on a port
     -mp, -metrics-port int    port to expose nuclei metrics on (default 9092)
+ CLOUD:
+    -cloud                      run scan on nuclei cloud
+    -cs, -cloud-server string   nuclei cloud server to use (default "http://cloud-dev.nuclei.sh")
+    -ak, -cloud-api-key string  api-key for the nuclei cloud server
  ```
  
  - - -

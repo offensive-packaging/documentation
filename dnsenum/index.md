@@ -3,7 +3,7 @@ Title: dnsenum
 Homepage: https://github.com/SparrowOchon/dnsenum2
 Repository: https://salsa.debian.org/pkg-security-team/dnsenum
 Architectures: all
-Version: 1.3.0-5
+Version: 1.3.1-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering 
 Icon: images/dnsenum-logo.svg
 PackagesInfo: |
@@ -14,19 +14,19 @@ PackagesInfo: |
   is to gather as much information as possible about a domain. The program
   currently performs the following operations:
    
-    1) Get the host's addresses (A record).
-    2) Get the namservers (threaded).
-    3) Get the MX record (threaded).
-    4) Perform axfr queries on nameservers and get BIND versions(threaded).
-    5) Get extra names and subdomains via google scraping (google query =
-       "allinurl: -www site:domain").
-    6) Brute force subdomains from file, can also perform recursion on subdomain
-       that have NS records (all threaded).
-    7) Calculate C class domain network ranges and perform whois queries on them
-       (threaded).
-    8) Perform reverse lookups on netranges (C class or/and whois netranges)
-       (threaded).
-    9) Write to domain_ips.txt file ip-blocks.
+    - Get the host's addresses (A record).
+    - Get the namservers (threaded).
+    - Get the MX record (threaded).
+    - Perform axfr queries on nameservers and get BIND versions(threaded).
+    - Get extra names and subdomains via google scraping (google query =
+      "allinurl: -www site:domain").
+    - Brute force subdomains from file, can also perform recursion on subdomain
+      that have NS records (all threaded).
+    - Calculate C class domain network ranges and perform whois queries on them
+      (threaded).
+    - Perform reverse lookups on netranges (C class or/and whois netranges)
+      (threaded).
+    - Write to domain_ips.txt file ip-blocks.
    
   This program is useful for pentesters, ethical hackers and forensics experts.
   It also can be used for security tests.
@@ -56,7 +56,7 @@ PackagesInfo: |
  Usage: dnsenum [Options] <domain>
  [Options]:
  Note: If no -f tag supplied will default to /usr/share/dnsenum/dns.txt or
- the dns.txt file in the same directory as dnsenum.pl
+ the dns.txt file in the same directory as dnsenum
  GENERAL OPTIONS:
    --dnsserver 	<server>
  			Use this DNS server for A, NS and MX queries.

@@ -4,7 +4,7 @@ Homepage: https://github.com/rofl0r/proxychains-ng
 Repository: https://salsa.debian.org/debian/proxychains-ng
 Architectures: any
 Version: 4.16-2
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libproxychains4

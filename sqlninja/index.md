@@ -1,9 +1,9 @@
 ---
 Title: sqlninja
-Homepage: http://sqlninja.sourceforge.net/
+Homepage: https://sqlninja.sourceforge.net/
 Repository: https://gitlab.com/kalilinux/packages/sqlninja
 Architectures: all
-Version: 0.2.6-r1-1kali1
+Version: 0.2.6-r1-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-web 
 Icon: images/sqlninja-logo.svg
 PackagesInfo: |
@@ -35,7 +35,7 @@ PackagesInfo: |
  ```
  root@kali:~# sqlninja --help
  /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: sqlninja [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  

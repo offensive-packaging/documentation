@@ -18,7 +18,7 @@ PackagesInfo: |
   The name PRINCE is used as an acronym and stands for PRobability INfinite
   Chained Elements, which are the building blocks of the algorithm.
  
- **Installed size:** `122 KB`  
+ **Installed size:** `123 KB`  
  **How to install:** `sudo apt install princeprocessor`  
  
  {{< spoiler "Dependencies:" >}}

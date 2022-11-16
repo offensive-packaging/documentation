@@ -3,7 +3,7 @@ Title: xplico
 Homepage: http://www.xplico.org
 Repository: https://gitlab.com/kalilinux/packages/xplico
 Architectures: amd64 i386
-Version: 1.2.2-0kali4
+Version: 1.2.2-0kali5
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: images/xplico-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   and SMTP protocols), all HTTP contents, each VoIP call (SIP, MGCP, H323),
   FTP, TFTP, and so on. Xplico is not a network protocol analyzer.
  
- **Installed size:** `10.02 MB`  
+ **Installed size:** `10.00 MB`  
  **How to install:** `sudo apt install xplico`  
  
  {{< spoiler "Dependencies:" >}}
@@ -230,29 +230,29 @@ PackagesInfo: |
  ```
  root@kali:~# xplico-webui-stop -h
  * apache2.service - The Apache HTTP Server
-      Loaded: loaded (/lib/systemd/system/apache2.service; disabled; vendor preset: disabled)
+      Loaded: loaded (/lib/systemd/system/apache2.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: https://httpd.apache.org/docs/2.4/
  
- Aug 05 11:01:41 kali systemd[1]: Starting The Apache HTTP Server...
- Aug 05 11:01:41 kali apachectl[568812]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Aug 05 11:01:41 kali systemd[1]: Started The Apache HTTP Server.
- Aug 05 11:01:51 kali systemd[1]: Stopping The Apache HTTP Server...
- Aug 05 11:01:51 kali apachectl[580783]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Aug 05 11:01:51 kali systemd[1]: apache2.service: Deactivated successfully.
- Aug 05 11:01:51 kali systemd[1]: Stopped The Apache HTTP Server.
+ Nov 17 06:24:56 kali systemd[1]: Starting The Apache HTTP Server...
+ Nov 17 06:24:56 kali apachectl[855140]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ Nov 17 06:24:56 kali systemd[1]: Started The Apache HTTP Server.
+ Nov 17 06:25:06 kali systemd[1]: Stopping The Apache HTTP Server...
+ Nov 17 06:25:06 kali apachectl[872536]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ Nov 17 06:25:06 kali systemd[1]: apache2.service: Deactivated successfully.
+ Nov 17 06:25:06 kali systemd[1]: Stopped The Apache HTTP Server.
  
  * xplico.service - Xplico
-      Loaded: loaded (/lib/systemd/system/xplico.service; disabled; vendor preset: disabled)
+      Loaded: loaded (/lib/systemd/system/xplico.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: https://www.xplico.org/docs
  
- Aug 05 11:01:41 kali systemd[1]: Starting Xplico...
- Aug 05 11:01:41 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
- Aug 05 11:01:41 kali systemd[1]: Started Xplico.
- Aug 05 11:01:51 kali systemd[1]: Stopping Xplico...
- Aug 05 11:01:51 kali systemd[1]: xplico.service: Deactivated successfully.
- Aug 05 11:01:51 kali systemd[1]: Stopped Xplico.
+ Nov 17 06:24:56 kali systemd[1]: Starting Xplico...
+ Nov 17 06:24:56 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
+ Nov 17 06:24:56 kali systemd[1]: Started Xplico.
+ Nov 17 06:25:06 kali systemd[1]: Stopping Xplico...
+ Nov 17 06:25:06 kali systemd[1]: xplico.service: Deactivated successfully.
+ Nov 17 06:25:06 kali systemd[1]: Stopped Xplico.
  ```
  
  - - -

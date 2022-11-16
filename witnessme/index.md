@@ -3,7 +3,7 @@ Title: witnessme
 Homepage: https://github.com/byt3bl33d3r/WitnessMe
 Repository: https://gitlab.com/kalilinux/packages/witnessme
 Architectures: all
-Version: 1.5.0+git20201026-0kali1
+Version: 1.5.0+git20201026-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,12 +13,13 @@ PackagesInfo: |
   written to be extensible allowing you to create custom functionality that can
   take advantage of the headless browser it drives in the back-end.
  
- **Installed size:** `398 KB`  
+ **Installed size:** `401 KB`  
  **How to install:** `sudo apt install witnessme`  
  
  {{< spoiler "Dependencies:" >}}
  * python3
  * python3-aiodns
+ * python3-aiosqlite
  * python3-fastapi
  * python3-jinja2
  * python3-lxml

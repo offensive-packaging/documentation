@@ -13,7 +13,7 @@ PackagesInfo: |
   probing tool, a chip dumper, register-level access helpers, EEPROM
   decoding scripts, and more.
  
- **Installed size:** `324 KB`  
+ **Installed size:** `318 KB`  
  **How to install:** `sudo apt install i2c-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -209,7 +209,7 @@ PackagesInfo: |
   This package contains what you need for compiling sources that
   use this library in your own code.
  
- **Installed size:** `36 KB`  
+ **Installed size:** `34 KB`  
  **How to install:** `sudo apt install libi2c-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -228,7 +228,7 @@ PackagesInfo: |
   This package contains what you need to run programs that use this
   library.
  
- **Installed size:** `38 KB`  
+ **Installed size:** `36 KB`  
  **How to install:** `sudo apt install libi2c0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -244,7 +244,7 @@ PackagesInfo: |
   Linux hosts.  The host kernel must have I2C support, I2C device interface
   support, and a bus adapter driver.
  
- **Installed size:** `49 KB`  
+ **Installed size:** `75 KB`  
  **How to install:** `sudo apt install python3-smbus`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: sherlock
 Homepage: https://github.com/sherlock-project/sherlock
 Repository: https://gitlab.com/kalilinux/packages/sherlock
 Architectures: all
-Version: 0.14.0+git20210115-0kali1
+Version: 0.14.2+git20221021-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,19 +11,18 @@ PackagesInfo: |
  
   This package contains a tool to find usernames across social networks.
  
- **Installed size:** `151 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install sherlock`  
  
  {{< spoiler "Dependencies:" >}}
  * python3
- * python3-bs4
  * python3-certifi
  * python3-colorama
- * python3-lxml
+ * python3-openpyxl
+ * python3-pandas
  * python3-requests
  * python3-requests-futures
  * python3-socks
- * python3-soupsieve
  * python3-stem
  * python3-torrequest
  {{< /spoiler >}}
@@ -34,16 +33,18 @@ PackagesInfo: |
  ```
  root@kali:~# sherlock -h
  usage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT]
-                 [--output OUTPUT] [--tor] [--unique-tor] [--csv]
+                 [--output OUTPUT] [--tor] [--unique-tor] [--csv] [--xlsx]
                  [--site SITE_NAME] [--proxy PROXY_URL] [--json JSON_FILE]
                  [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color]
-                 [--browse] [--local]
+                 [--browse] [--local] [--nsfw]
                  USERNAMES [USERNAMES ...]
  
- Sherlock: Find Usernames Across Social Networks (Version 0.14.0)
+ Sherlock: Find Usernames Across Social Networks (Version 0.14.2)
  
  positional arguments:
    USERNAMES             One or more usernames to check with social networks.
+                         Check similar usernames using {%} (replace to '_',
+                         '-', '.').
  
  options:
    -h, --help            show this help message and exit
@@ -62,6 +63,8 @@ PackagesInfo: |
                          request; increases runtime; requires Tor to be
                          installed and in system path.
    --csv                 Create Comma-Separated Values (CSV) File.
+   --xlsx                Create the standard file for the modern Microsoft
+                         Excel spreadsheet (xslx).
    --site SITE_NAME      Limit analysis to just the listed sites. Add multiple
                          options to specify more than one site.
    --proxy PROXY_URL, -p PROXY_URL
@@ -70,16 +73,14 @@ PackagesInfo: |
    --json JSON_FILE, -j JSON_FILE
                          Load data from a JSON file or an online, valid, JSON
                          file.
-   --timeout TIMEOUT     Time (in seconds) to wait for response to requests.
-                         Default timeout is infinity. A longer timeout will be
-                         more likely to get results from slow sites. On the
-                         other hand, this may cause a long delay to gather all
-                         results.
+   --timeout TIMEOUT     Time (in seconds) to wait for response to requests
+                         (Default: 60)
    --print-all           Output sites where the username was not found.
    --print-found         Output sites where the username was found.
    --no-color            Don't color terminal output
    --browse, -b          Browse to all results on default browser.
    --local, -l           Force the use of the local data.json file.
+   --nsfw                Include checking of NSFW sites from default list.
  ```
  
  - - -

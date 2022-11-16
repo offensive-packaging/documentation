@@ -3,7 +3,7 @@ Title: peass-ng
 Homepage: https://github.com/carlospolop/PEASS-ng
 Repository: https://gitlab.com/kalilinux/packages/peass-ng
 Architectures: all
-Version: 20220724-0kali1
+Version: 20221113-0kali1
 Metapackages: kali-linux-everything kali-tools-vulnerability 
 Icon: images/peass-ng-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   exploit and print them to you with nice colors so you can recognize the
   misconfigurations easily.
  
- **Installed size:** `29.38 MB`  
+ **Installed size:** `30.01 MB`  
  **How to install:** `sudo apt install peass`  
  
  {{< spoiler "Dependencies:" >}}

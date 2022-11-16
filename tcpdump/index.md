@@ -4,7 +4,7 @@ Homepage: https://www.tcpdump.org/
 Repository: https://salsa.debian.org/rfrancoise/tcpdump
 Architectures: any
 Version: 4.99.1-4
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-sniffing-spoofing 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-sniffing-spoofing 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### tcpdump
@@ -37,7 +37,7 @@ PackagesInfo: |
  root@kali:~# tcpdump -h
  tcpdump version 4.99.1
  libpcap version 1.10.1 (with TPACKET_V3)
- OpenSSL 3.0.4 21 Jun 2022
+ OpenSSL 3.0.7 1 Nov 2022
  Usage: tcpdump [-AbdDefhHIJKlLnNOpqStuUvxX#] [ -B size ] [ -c count ] [--count]
  		[ -C file_size ] [ -E algo:secret ] [ -F file ] [ -G seconds ]
  		[ -i interface ] [ --immediate-mode ] [ -j tstamptype ]

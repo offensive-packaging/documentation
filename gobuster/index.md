@@ -3,7 +3,7 @@ Title: gobuster
 Homepage: https://github.com/OJ/gobuster
 Repository: https://gitlab.com/kalilinux/packages/gobuster
 Architectures: any
-Version: 3.1.0-0kali1
+Version: 3.3.0-0kali1
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   Gobuster is a tool used to brute-force URIs including directories and
   files as well as DNS subdomains.
  
- **Installed size:** `7.23 MB`  
+ **Installed size:** `7.43 MB`  
  **How to install:** `sudo apt install gobuster`  
  
  {{< spoiler "Dependencies:" >}}
@@ -28,17 +28,20 @@ PackagesInfo: |
    gobuster [command]
  
  Available Commands:
+   completion  Generate the autocompletion script for the specified shell
    dir         Uses directory/file enumeration mode
    dns         Uses DNS subdomain enumeration mode
-   fuzz        Uses fuzzing mode
+   fuzz        Uses fuzzing mode. Replaces the keyword FUZZ in the URL, Headers and the request body
+   gcs         Uses gcs bucket enumeration mode
    help        Help about any command
    s3          Uses aws bucket enumeration mode
    version     shows the current version
-   vhost       Uses VHOST enumeration mode
+   vhost       Uses VHOST enumeration mode (you most probably want to use the IP address as the URL parameter)
  
  Flags:
        --delay duration    Time each thread waits between requests (e.g. 1500ms)
    -h, --help              help for gobuster
+       --no-color          Disable color output
        --no-error          Don't display errors
    -z, --no-progress       Don't display progress
    -o, --output string     Output file to write results to (defaults to stdout)

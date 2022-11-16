@@ -50,8 +50,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# siege -h
- New configuration template added to /root/.siege
- Run siege -C to view the current settings in that file
  Usage: siege [options]
         siege [options] URL
         siege -g URL

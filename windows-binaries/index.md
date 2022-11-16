@@ -4,7 +4,7 @@ Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/windows-binaries
 Architectures: all
 Version: 0.6.9
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-windows-resources 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### windows-binaries

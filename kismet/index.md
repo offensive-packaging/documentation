@@ -3,7 +3,7 @@ Title: kismet
 Homepage: https://www.kismetwireless.net/
 Repository: https://gitlab.com/kalilinux/packages/kismet
 Architectures: any all
-Version: 2022.02.R1-0kali1
+Version: 2022.08.R1-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-wireless 
 Icon: images/kismet-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This is a metapackage containing the kismet tools.
  
- **Installed size:** `38 KB`  
+ **Installed size:** `30 KB`  
  **How to install:** `sudo apt install kismet`  
  
  {{< spoiler "Dependencies:" >}}
@@ -55,7 +55,7 @@ PackagesInfo: |
    
   This package contains the debconf files for setuid capture binaries.
  
- **Installed size:** `57 KB`  
+ **Installed size:** `49 KB`  
  **How to install:** `sudo apt install kismet-capture-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -77,7 +77,7 @@ PackagesInfo: |
    
   This package contains the Kismet Linux Bluetooth capture helper.
  
- **Installed size:** `195 KB`  
+ **Installed size:** `183 KB`  
  **How to install:** `sudo apt install kismet-capture-linux-bluetooth`  
  
  {{< spoiler "Dependencies:" >}}
@@ -85,7 +85,7 @@ PackagesInfo: |
  * kismet-capture-common
  * libc6 
  * libprotobuf-c1 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_linux_bluetooth
@@ -160,7 +160,7 @@ PackagesInfo: |
    
   This package contains the Kismet Linux Wi-Fi capture helper.
  
- **Installed size:** `255 KB`  
+ **Installed size:** `244 KB`  
  **How to install:** `sudo apt install kismet-capture-linux-wifi`  
  
  {{< spoiler "Dependencies:" >}}
@@ -173,7 +173,7 @@ PackagesInfo: |
  * libnm0 
  * libpcap0.8 
  * libprotobuf-c1 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_linux_wifi
@@ -248,7 +248,7 @@ PackagesInfo: |
    
   This package contains the NRF51822 BTLE Sniffer capture helper.
  
- **Installed size:** `183 KB`  
+ **Installed size:** `171 KB`  
  **How to install:** `sudo apt install kismet-capture-nrf-51822`  
  
  {{< spoiler "Dependencies:" >}}
@@ -256,7 +256,7 @@ PackagesInfo: |
  * kismet-capture-common
  * libc6 
  * libprotobuf-c1 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_nrf_51822
@@ -331,7 +331,7 @@ PackagesInfo: |
    
   This package contains the NRF52840 BTLE Sniffer capture helper.
  
- **Installed size:** `183 KB`  
+ **Installed size:** `171 KB`  
  **How to install:** `sudo apt install kismet-capture-nrf-52840`  
  
  {{< spoiler "Dependencies:" >}}
@@ -339,7 +339,7 @@ PackagesInfo: |
  * kismet-capture-common
  * libc6 
  * libprotobuf-c1 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_nrf_52840
@@ -414,7 +414,7 @@ PackagesInfo: |
    
   This package contains the Kismet nRF MouseJack capture helper.
  
- **Installed size:** `183 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install kismet-capture-nrf-mousejack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -423,7 +423,7 @@ PackagesInfo: |
  * libc6 
  * libprotobuf-c1 
  * libusb-1.0-0 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_nrf_mousejack
@@ -499,7 +499,7 @@ PackagesInfo: |
   This package contains the Kismet NXP KW41Z BTLE and Zigbee Sniffer capture
   helper.
  
- **Installed size:** `183 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install kismet-capture-nxp-kw41z`  
  
  {{< spoiler "Dependencies:" >}}
@@ -507,7 +507,7 @@ PackagesInfo: |
  * kismet-capture-common
  * libc6 
  * libprotobuf-c1 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_nxp_kw41z
@@ -582,7 +582,7 @@ PackagesInfo: |
    
   This package contains the Kismet Killerbee Sniffer capture helper.
  
- **Installed size:** `187 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install kismet-capture-rz-killerbee`  
  
  {{< spoiler "Dependencies:" >}}
@@ -591,7 +591,7 @@ PackagesInfo: |
  * libc6 
  * libprotobuf-c1 
  * libusb-1.0-0 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_rz_killerbee
@@ -667,7 +667,7 @@ PackagesInfo: |
   This package contains the Kismet TICC2531 802.15.4 Zigbee Sniffer capture
   helper.
  
- **Installed size:** `187 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install kismet-capture-ti-cc-2531`  
  
  {{< spoiler "Dependencies:" >}}
@@ -676,7 +676,7 @@ PackagesInfo: |
  * libc6 
  * libprotobuf-c1 
  * libusb-1.0-0 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_ti_cc_2531
@@ -751,7 +751,7 @@ PackagesInfo: |
    
   This package contains the Kismet TICC2540 BTLE Sniffer capture helper.
  
- **Installed size:** `187 KB`  
+ **Installed size:** `175 KB`  
  **How to install:** `sudo apt install kismet-capture-ti-cc-2540`  
  
  {{< spoiler "Dependencies:" >}}
@@ -760,7 +760,7 @@ PackagesInfo: |
  * libc6 
  * libprotobuf-c1 
  * libusb-1.0-0 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_ti_cc_2540
@@ -835,7 +835,7 @@ PackagesInfo: |
    
   This package contains the Kismet Ubertooth One BT Sniffer capture helper.
  
- **Installed size:** `183 KB`  
+ **Installed size:** `171 KB`  
  **How to install:** `sudo apt install kismet-capture-ubertooth-one`  
  
  {{< spoiler "Dependencies:" >}}
@@ -844,7 +844,7 @@ PackagesInfo: |
  * libc6 
  * libprotobuf-c1 
  * libubertooth1 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### kismet_cap_ubertooth_one
@@ -919,7 +919,7 @@ PackagesInfo: |
    
   This package contains the Kismet Core.
  
- **Installed size:** `20.97 MB`  
+ **Installed size:** `20.44 MB`  
  **How to install:** `sudo apt install kismet-core`  
  
  {{< spoiler "Dependencies:" >}}
@@ -932,13 +932,12 @@ PackagesInfo: |
  * libsensors5 
  * libsqlite3-0 
  * libstdc++6 
- * libwebsockets16 
+ * libwebsockets17 
  * zlib1g 
  {{< /spoiler >}}
  
  ##### kismet
  
- Kismet_server (1)    - wireless sniffer and monitor
  Wireless sniffer and monitor
  
  ```
@@ -1168,7 +1167,7 @@ PackagesInfo: |
    
   This package contains the Kismet logtools.
  
- **Installed size:** `3.15 MB`  
+ **Installed size:** `3.07 MB`  
  **How to install:** `sudo apt install kismet-logtools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1449,7 +1448,7 @@ PackagesInfo: |
    
   This package contains the Kismet BLTE geiger datasource.
  
- **Installed size:** `215 KB`  
+ **Installed size:** `208 KB`  
  **How to install:** `sudo apt install python3-kismetcapturebtgeiger`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1510,7 +1509,7 @@ PackagesInfo: |
    
   This package contains the Kismet Freaklabs Zigbee datasource.
  
- **Installed size:** `215 KB`  
+ **Installed size:** `208 KB`  
  **How to install:** `sudo apt install python3-kismetcapturefreaklabszigbee`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1552,7 +1551,7 @@ PackagesInfo: |
    
   This package contains the Kismet rtl_433 datasource.
  
- **Installed size:** `219 KB`  
+ **Installed size:** `212 KB`  
  **How to install:** `sudo apt install python3-kismetcapturertl433`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1617,7 +1616,7 @@ PackagesInfo: |
    
   This package contains the Kismet rtladsb datasource.
  
- **Installed size:** `247 KB`  
+ **Installed size:** `240 KB`  
  **How to install:** `sudo apt install python3-kismetcapturertladsb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1680,7 +1679,7 @@ PackagesInfo: |
    
   This package contains the Kismet rtlamr datasource.
  
- **Installed size:** `237 KB`  
+ **Installed size:** `230 KB`  
  **How to install:** `sudo apt install python3-kismetcapturertlamr`  
  
  {{< spoiler "Dependencies:" >}}

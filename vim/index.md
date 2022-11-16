@@ -3,8 +3,8 @@ Title: vim
 Homepage: https://www.vim.org/
 Repository: https://salsa.debian.org/vim-team/vim
 Architectures: any all
-Version: 2:8.2.4793-1
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Version: 2:9.0.0813-1
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: images/vim-logo.svg
 PackagesInfo: |
  ### vim
@@ -20,7 +20,7 @@ PackagesInfo: |
   version of Vim.  See the other vim-* packages if you need more
   (or less).
  
- **Installed size:** `3.54 MB`  
+ **Installed size:** `3.46 MB`  
  **How to install:** `sudo apt install vim`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.basic -h
- VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Apr 21 2022 00:23:54)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -102,7 +102,7 @@ PackagesInfo: |
   This is a transitional package to install the vim-motif package.  You may
   remove this package if nothing depends on it.
  
- **Installed size:** `222 KB`  
+ **Installed size:** `60 KB`  
  **How to install:** `sudo apt install vim-athena`  
  
  {{< spoiler "Dependencies:" >}}
@@ -120,12 +120,8 @@ PackagesInfo: |
   available in Debian.  Examples of such shared files are: manpages and
   configuration files.
  
- **Installed size:** `388 KB`  
+ **Installed size:** `226 KB`  
  **How to install:** `sudo apt install vim-common`  
- 
- {{< spoiler "Dependencies:" >}}
- * xxd
- {{< /spoiler >}}
  
  ##### helpztags
  
@@ -141,7 +137,7 @@ PackagesInfo: |
   This package contains the HTML version of the online documentation.  It is
   built from the runtime/doc directory of the source tree.
  
- **Installed size:** `14.24 MB`  
+ **Installed size:** `14.43 MB`  
  **How to install:** `sudo apt install vim-doc`  
  
  
@@ -158,7 +154,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with a GTK3 GUI
   and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
  
- **Installed size:** `4.32 MB`  
+ **Installed size:** `4.26 MB`  
  **How to install:** `sudo apt install vim-gtk3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -174,7 +170,7 @@ PackagesInfo: |
  * liblua5.2-0 
  * libpango-1.0-0 
  * libpangocairo-1.0-0 
- * libperl5.34 
+ * libperl5.36 
  * libpython3.10 
  * libruby3.0 
  * libselinux1 
@@ -194,7 +190,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.gtk3 -h
- VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Apr 21 2022 00:23:54)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -229,6 +225,7 @@ PackagesInfo: |
     -H			Start in Hebrew mode
     -T <terminal>	Set terminal type to <terminal>
     --not-a-term		Skip warning for input/output not being a terminal
+    --gui-dialog-file {fname}  For testing: write dialog text
     --ttyfail		Exit if input or output is not a terminal
     -u <vimrc>		Use <vimrc> instead of any .vimrc
     -U <gvimrc>		Use <gvimrc> instead of any .gvimrc
@@ -285,7 +282,7 @@ PackagesInfo: |
   variants available in Debian.  Examples of such shared files are:
   gvimtutor, icons, and desktop environments settings.
  
- **Installed size:** `366 KB`  
+ **Installed size:** `204 KB`  
  **How to install:** `sudo apt install vim-gui-common`  
  
  ##### gvimtutor
@@ -322,10 +319,10 @@ PackagesInfo: |
         Vim is always started in Vi compatible mode.
  
  FILES
-        /usr/share/vim/vim82/tutor/tutor[.language]
+        /usr/share/vim/vim90/tutor/tutor[.language]
                        The Vimtutor text file(s).
  
-        /usr/share/vim/vim82/tutor/tutor.vim
+        /usr/share/vim/vim90/tutor/tutor.vim
                        The Vim script used to copy the Vimtutor text file.
  
  AUTHOR
@@ -355,7 +352,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with a Motif GUI
   and support for scripting with Lua, Perl, Python 3, and Tcl.
  
- **Installed size:** `4.36 MB`  
+ **Installed size:** `4.29 MB`  
  **How to install:** `sudo apt install vim-motif`  
  
  {{< spoiler "Dependencies:" >}}
@@ -365,7 +362,7 @@ PackagesInfo: |
  * libgpm2 
  * libice6 
  * liblua5.2-0 
- * libperl5.34 
+ * libperl5.36 
  * libpython3.10 
  * libruby3.0 
  * libselinux1 
@@ -386,7 +383,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.motif -h
- VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Apr 21 2022 00:23:54)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -421,6 +418,7 @@ PackagesInfo: |
     -H			Start in Hebrew mode
     -T <terminal>	Set terminal type to <terminal>
     --not-a-term		Skip warning for input/output not being a terminal
+    --gui-dialog-file {fname}  For testing: write dialog text
     --ttyfail		Exit if input or output is not a terminal
     -u <vimrc>		Use <vimrc> instead of any .vimrc
     -U <gvimrc>		Use <gvimrc> instead of any .gvimrc
@@ -484,7 +482,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with support for
   scripting with Lua, Perl, Python 3, Ruby, and Tcl but no GUI.
  
- **Installed size:** `4.01 MB`  
+ **Installed size:** `3.94 MB`  
  **How to install:** `sudo apt install vim-nox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -492,7 +490,7 @@ PackagesInfo: |
  * libc6 
  * libgpm2 
  * liblua5.2-0 
- * libperl5.34 
+ * libperl5.36 
  * libpython3.10 
  * libruby3.0 
  * libselinux1 
@@ -508,7 +506,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.nox -h
- VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Apr 21 2022 00:23:54)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -576,7 +574,7 @@ PackagesInfo: |
   language-specific syntax highlighting and indentation, color schemes,
   and standard plugins.
  
- **Installed size:** `33.34 MB`  
+ **Installed size:** `35.21 MB`  
  **How to install:** `sudo apt install vim-runtime`  
  
  ##### vimtutor
@@ -613,10 +611,10 @@ PackagesInfo: |
         Vim is always started in Vi compatible mode.
  
  FILES
-        /usr/share/vim/vim82/tutor/tutor[.language]
+        /usr/share/vim/vim90/tutor/tutor[.language]
                        The Vimtutor text file(s).
  
-        /usr/share/vim/vim82/tutor/tutor.vim
+        /usr/share/vim/vim90/tutor/tutor.vim
                        The Vim script used to copy the Vimtutor text file.
  
  AUTHOR
@@ -646,7 +644,7 @@ PackagesInfo: |
   If a vim binary is wanted, try one of the following more featureful
   packages: vim, vim-nox, vim-motif, or vim-gtk3.
  
- **Installed size:** `1.64 MB`  
+ **Installed size:** `1.60 MB`  
  **How to install:** `sudo apt install vim-tiny`  
  
  {{< spoiler "Dependencies:" >}}
@@ -662,7 +660,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.tiny -h
- VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Apr 21 2022 00:23:54)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -680,6 +678,7 @@ PackagesInfo: |
     -m			Modifications (writing files) not allowed
     -M			Modifications in text not allowed
     -b			Binary mode
+    -l			Lisp mode
     -C			Compatible with Vi: 'compatible'
     -N			Not fully Vi compatible: 'nocompatible'
     -V[N][fname]		Be verbose [level N] [log messages to fname]
@@ -715,7 +714,7 @@ PackagesInfo: |
   xxd creates a hex dump of a given file or standard input.  It can also convert
   a hex dump back to its original binary form.
  
- **Installed size:** `285 KB`  
+ **Installed size:** `123 KB`  
  **How to install:** `sudo apt install xxd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -743,6 +742,7 @@ PackagesInfo: |
      -h          print this summary.
      -i          output in C include file style.
      -l len      stop after <len> octets.
+     -n name     set the variable name used in C include output (-i).
      -o off      add <off> to the displayed file position.
      -ps         output in postscript plain hexdump style.
      -r          reverse operation: convert (or patch) hexdump into binary.

@@ -17,7 +17,7 @@ PackagesInfo: |
   understands bpf filter logic in the same fashion as more common
   packet sniffing tools, such as tcpdump and snoop.
  
- **Installed size:** `77 KB`  
+ **Installed size:** `78 KB`  
  **How to install:** `sudo apt install ngrep`  
  
  {{< spoiler "Dependencies:" >}}

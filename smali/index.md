@@ -3,7 +3,7 @@ Title: smali
 Homepage: https://github.com/JesusFreke/smali
 Repository: https://gitlab.com/kalilinux/packages/smali
 Architectures: all
-Version: 2.5.2+repack-0kali3
+Version: 2.5.2+repack-0kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

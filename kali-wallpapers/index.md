@@ -3,7 +3,7 @@ Title: kali-wallpapers
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/kali-wallpapers
 Architectures: all
-Version: 2022.1.1
+Version: 2022.1.3
 Metapackages: kali-linux-everything kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   This dummy package can be safely removed once kali-wallpapers-legacy
   is installed on the system.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `11 KB`  
  **How to install:** `sudo apt install kali-legacy-wallpapers`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,7 +34,7 @@ PackagesInfo: |
   remove them all except the latest which is a dependency of kali-themes-common
   and is thus required.
  
- **Installed size:** `17.99 MB`  
+ **Installed size:** `27.97 MB`  
  **How to install:** `sudo apt install kali-wallpapers-2019.4`  
  
  
@@ -49,7 +49,7 @@ PackagesInfo: |
   remove them all except the latest which is a dependency of kali-themes-common
   and is thus required.
  
- **Installed size:** `22.51 MB`  
+ **Installed size:** `37.25 MB`  
  **How to install:** `sudo apt install kali-wallpapers-2020.4`  
  
  
@@ -62,7 +62,7 @@ PackagesInfo: |
   This dummy package can be safely removed once kali-wallpapers-2022
   is installed on the system.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `11 KB`  
  **How to install:** `sudo apt install kali-wallpapers-2021.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -81,7 +81,7 @@ PackagesInfo: |
   remove them all except the latest which is a dependency of kali-themes-common
   and is thus required.
  
- **Installed size:** `10.27 MB`  
+ **Installed size:** `15.99 MB`  
  **How to install:** `sudo apt install kali-wallpapers-2022`  
  
  
@@ -92,7 +92,7 @@ PackagesInfo: |
   This metapackage depends on all kali-wallpapers-* packages, providing all the
   wallpapers used for BackTrack & Kali Linux
  
- **Installed size:** `10 KB`  
+ **Installed size:** `11 KB`  
  **How to install:** `sudo apt install kali-wallpapers-all`  
  
  {{< spoiler "Dependencies:" >}}
@@ -110,7 +110,7 @@ PackagesInfo: |
   Wallpapers and resources used over the years for BackTrack & Kali Linux,
   used for nostalgic cosmetic value
  
- **Installed size:** `86.59 MB`  
+ **Installed size:** `140.51 MB`  
  **How to install:** `sudo apt install kali-wallpapers-legacy`  
  
  

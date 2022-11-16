@@ -3,8 +3,8 @@ Title: cryptsetup
 Homepage: https://gitlab.com/cryptsetup/cryptsetup
 Repository: https://salsa.debian.org/cryptsetup-team/cryptsetup
 Architectures: linux-any all
-Version: 2:2.4.3-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-vulnerability kali-tools-web 
+Version: 2:2.5.0-6
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cryptsetup
@@ -23,7 +23,7 @@ PackagesInfo: |
   This package provides the cryptdisks_start and _stop wrappers, as well as
   luksformat.
  
- **Installed size:** `449 KB`  
+ **Installed size:** `400 KB`  
  **How to install:** `sudo apt install cryptsetup`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,9 +31,6 @@ PackagesInfo: |
  * debconf  | debconf-2.0
  * dmsetup
  * libc6 
- * libcryptsetup12 
- * libjson-c5 
- * libssh-4 
  {{< /spoiler >}}
  
  ##### cryptdisks_start
@@ -80,29 +77,27 @@ PackagesInfo: |
   device mapper target dm-crypt. It features integrated Linux Unified Key
   Setup (LUKS) support.
    
-  This package provides cryptsetup, cryptsetup-reencrypt, integritysetup
-  and veritysetup.
+  This package provides the cryptsetup, integritysetup and veritysetup
+  utilities.
  
- **Installed size:** `2.11 MB`  
+ **Installed size:** `2.09 MB`  
  **How to install:** `sudo apt install cryptsetup-bin`  
  
  {{< spoiler "Dependencies:" >}}
  * libblkid1 
  * libc6 
  * libcryptsetup12 
- * libjson-c5 
  * libpopt0 
- * libssh-4 
  * libuuid1 
  {{< /spoiler >}}
  
  ##### cryptsetup
  
- Manage plain dm-crypt and LUKS encrypted volumes
+ Manage plain dm-crypt, LUKS, and other encrypted volumes
  
  ```
  root@kali:~# cryptsetup --help
- cryptsetup 2.4.3
+ cryptsetup 2.5.0 flags: UDEV BLKID KEYRING KERNEL_CAPI 
  Usage: cryptsetup [OPTION...] <action> <action-specific>
  
  Help options:
@@ -137,12 +132,14 @@ PackagesInfo: |
        --disable-veracrypt               Do not scan for VeraCrypt compatible
                                          device
        --dump-json-metadata              Dump info in JSON format (LUKS2 only)
-       --dump-master-key                 Dump volume (master) key instead of
-                                         keyslots info
+       --dump-volume-key                 Dump volume key instead of keyslots
+                                         info
        --encrypt                         Encrypt LUKS2 device (in-place
                                          encryption).
        --force-password                  Disable password quality check (if
                                          enabled)
+       --force-offline-reencrypt         Force offline LUKS2 reencryption and
+                                         bypass active device detection.
    -h, --hash=STRING                     The hash used to create the encryption
                                          key from the passphrase
        --header=STRING                   Device or file with separated LUKS
@@ -162,6 +159,7 @@ PackagesInfo: |
                                          512 bytes)
        --json-file=STRING                Read or write the json from or to a
                                          file
+       --keep-key                        Do not change volume key.
        --key-description=STRING          Key description
    -d, --key-file=STRING                 Read the key from a file
    -s, --key-size=BITS                   The size of the encryption key
@@ -176,7 +174,7 @@ PackagesInfo: |
        --label=STRING                    Set label for the LUKS2 device
        --luks2-keyslots-size=bytes       LUKS2 header keyslots area size
        --luks2-metadata-size=bytes       LUKS2 header metadata area size
-       --master-key-file=STRING          Read the volume (master) key from file.
+       --volume-key-file=STRING          Use the volume key from file.
        --new-keyfile-offset=bytes        Number of bytes to skip in newly added
                                          keyfile
        --new-keyfile-size=bytes          Limits the read from newly added
@@ -200,6 +198,8 @@ PackagesInfo: |
                                          device
        --priority=STRING                 Keyslot priority: ignore, normal,
                                          prefer
+       --progress-json                   Print progress data in json format
+                                         (suitable for machine processing)
        --progress-frequency=secs         Progress line update (in seconds)
    -r, --readonly                        Create a readonly mapping
        --reduce-device-size=bytes        Reduce data device size (move data
@@ -236,6 +236,7 @@ PackagesInfo: |
        --token-id=INT                    Token number (default: any)
        --token-only                      Do not ask for passphrase if
                                          activation by token fails
+       --token-replace                   Replace the current token
        --token-type=STRING               Restrict allowed token types used to
                                          retrieve LUKS2 key
    -T, --tries=INT                       How often the input of the passphrase
@@ -258,6 +259,14 @@ PackagesInfo: |
    -v, --verbose                         Shows more detailed error messages
    -y, --verify-passphrase               Verifies the passphrase by asking for
                                          it twice
+   -B, --block-size=MiB                  Reencryption block size
+   -N, --new                             Create new header on not encrypted
+                                         device
+       --use-directio                    Use direct-io when accessing devices
+       --use-fsync                       Use fsync after each block
+       --write-log                       Update log file after every block
+       --dump-master-key                 Alias for --dump-volume-key
+       --master-key-file=STRING          Alias for --dump-volume-key-file
  
  <action> is one of:
  	open <device> [--type <type>] [<name>] - open device as <name>
@@ -316,119 +325,13 @@ PackagesInfo: |
  
  - - -
  
- ##### cryptsetup-reencrypt
- 
- Tool for offline LUKS device re-encryption
- 
- ```
- root@kali:~# cryptsetup-reencrypt --help
- cryptsetup-reencrypt 2.4.3
- Usage: cryptsetup-reencrypt [OPTION...] <device>
- 
- Help options:
-   -?, --help                            Show this help message
-       --usage                           Display brief usage
-   -V, --version                         Print package version
-   -q, --batch-mode                      Do not ask for confirmation
-   -B, --block-size=MiB                  Reencryption block size
-   -c, --cipher=STRING                   The cipher used to encrypt the disk
-                                         (see /proc/crypto)
-       --debug                           Show debug messages
-       --decrypt                         Permanently decrypt device (remove
-                                         encryption)
-       --device-size=bytes               Use only specified device size (ignore
-                                         rest of device). DANGEROUS!
-   -h, --hash=STRING                     The hash used to create the encryption
-                                         key from the passphrase
-       --header=STRING                   Device or file with separated LUKS
-                                         header
-   -i, --iter-time=msecs                 PBKDF iteration time for LUKS (in ms)
-       --keep-key                        Do not change key, no data area
-                                         reencryption
-   -d, --key-file=STRING                 Read the key from a file
-   -s, --key-size=BITS                   The size of the encryption key
-       --keyfile-offset=bytes            Number of bytes to skip in keyfile
-   -l, --keyfile-size=bytes              Limits the read from keyfile
-   -S, --key-slot=INT                    Use only this slot (others will be
-                                         disabled)
-       --master-key-file=STRING          Read new volume (master) key from file
-   -N, --new                             Create new header on not encrypted
-                                         device
-       --pbkdf=STRING                    PBKDF algorithm (for LUKS2): argon2i,
-                                         argon2id, pbkdf2
-       --pbkdf-force-iterations=LONG     PBKDF iterations cost (forced,
-                                         disables benchmark)
-       --pbkdf-memory=kilobytes          PBKDF memory cost limit
-       --pbkdf-parallel=threads          PBKDF parallel cost
-       --progress-frequency=secs         Progress line update (in seconds)
-       --reduce-device-size=bytes        Reduce data device size (move data
-                                         offset). DANGEROUS!
-   -T, --tries=INT                       How often the input of the passphrase
-                                         can be retried
-   -M, --type=STRING                     Type of LUKS metadata: luks1, luks2
-       --use-directio                    Use direct-io when accessing devices
-       --use-fsync                       Use fsync after each block
-       --use-random                      Use /dev/random for generating volume
-                                         key
-       --use-urandom                     Use /dev/urandom for generating volume
-                                         key
-       --uuid=STRING                     The UUID used to resume decryption
-   -v, --verbose                         Shows more detailed error messages
-       --write-log                       Update log file after every block
- ```
- 
- - - -
- 
- ##### cryptsetup-ssh
- 
- Manage LUKS2 SSH token
- 
- ```
- root@kali:~# cryptsetup-ssh --help
- Usage: cryptsetup-ssh [OPTION...] <action> <device>
- Experimental cryptsetup plugin for unlocking LUKS2 devices with token connected
- to an SSH server
- 
-  Options for the 'add' action:
-       --key-slot=NUM         Keyslot to assign the token to. If not specified,
-                              token will be assigned to the first keyslot
-                              matching provided passphrase.
-       --ssh-keypath=STRING   Path to the SSH key for connecting to the remote
-                              server
-       --ssh-path=STRING      Path to the key file on the remote server
-       --ssh-server=STRING    IP address/URL of the remote server for this token
-                             
-       --ssh-user=STRING      Username used for the remote server
- 
-  Generic options:
-       --debug                Show debug messages
-       --debug-json           Show debug messages including JSON metadata
-   -v, --verbose              Shows more detailed error messages
- 
-   -?, --help                 Give this help list
-       --usage                Give a short usage message
-   -V, --version              Print program version
- 
- This plugin currently allows only adding a token to an existing key slot.
- 
- Specified SSH server must contain a key file on the specified path with a
- passphrase for an existing key slot on the device.
- Provided credentials will be used by cryptsetup to get the password when
- opening the device using the token.
- 
- Note: The information provided when adding the token (SSH server address, user
- and paths) will be stored in the LUKS2 header in plaintext.
- ```
- 
- - - -
- 
  ##### integritysetup
  
  Manage dm-integrity (block level integrity) volumes
  
  ```
  root@kali:~# integritysetup --help
- integritysetup 2.4.3
+ integritysetup 2.5.0 flags: UDEV BLKID KEYRING KERNEL_CAPI 
  Usage: integritysetup [OPTION...] <action> <action-specific>
  
  Help options:
@@ -477,7 +380,12 @@ PackagesInfo: |
    -j, --journal-size=bytes                    Journal size
        --journal-watermark=percent             Journal watermark
        --no-wipe                               Do not wipe device after format
+       --wipe                                  Wipe the end of the device after
+                                               resize
        --progress-frequency=secs               Progress line update (in seconds)
+       --progress-json                         Print wipe progress data in json
+                                               format (suitable for machine
+                                               processing)
    -B, --integrity-bitmap-mode                 Use bitmap to track changes and
                                                disable journal for integrity
                                                device
@@ -491,6 +399,10 @@ PackagesInfo: |
    -t, --tag-size=bytes                        Tag size (per-sector)
    -v, --verbose                               Shows more detailed error
                                                messages
+       --device-size=bytes                     Use only specified device size
+                                               (ignore rest of device).
+                                               DANGEROUS!
+   -b, --size=SECTORS                          The size of the device
  
  <action> is one of:
  	format <integrity_device> - format device
@@ -498,6 +410,7 @@ PackagesInfo: |
  	close <name> - close device (remove mapping)
  	status <name> - show active device status
  	dump <integrity_device> - show on-disk information
+ 	resize <name> - resize active device
  
  <name> is the device to create under /dev/mapper
  <integrity_device> is the device containing data with integrity tags
@@ -515,7 +428,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# veritysetup --help
- veritysetup 2.4.3
+ veritysetup 2.5.0 flags: UDEV BLKID KEYRING KERNEL_CAPI 
  Usage: veritysetup [OPTION...] <action> <action-specific>
  
  Help options:
@@ -579,7 +492,7 @@ PackagesInfo: |
    
   This package provides initramfs integration for cryptsetup.
  
- **Installed size:** `141 KB`  
+ **Installed size:** `103 KB`  
  **How to install:** `sudo apt install cryptsetup-initramfs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -598,13 +511,79 @@ PackagesInfo: |
   cryptsetup package. It can safely be removed once no other package depends on
   it.
  
- **Installed size:** `70 KB`  
+ **Installed size:** `31 KB`  
  **How to install:** `sudo apt install cryptsetup-run`  
  
  {{< spoiler "Dependencies:" >}}
  * cryptsetup 
  {{< /spoiler >}}
  
+ 
+ - - -
+ 
+ ### cryptsetup-ssh
+ 
+  Cryptsetup provides an interface for configuring encryption on block
+  devices (such as /home or swap partitions), using the Linux kernel
+  device mapper target dm-crypt. It features integrated Linux Unified Key
+  Setup (LUKS) support.
+   
+  This package provides the cryptsetup-ssh(8) utility and an SSH token plugin
+  which can be used to unlock LUKS2 devices using a remote keyfile hosted on a
+  system accessible through SSH.  This is currently an *experimental* feature
+  and mostly serves as a demonstration of the plugin interface API.
+ 
+ **Installed size:** `98 KB`  
+ **How to install:** `sudo apt install cryptsetup-ssh`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libc6 
+ * libcryptsetup12 
+ * libjson-c5 
+ * libpopt0 
+ * libssh-4 
+ {{< /spoiler >}}
+ 
+ ##### cryptsetup-ssh
+ 
+ Manage LUKS2 SSH token
+ 
+ ```
+ root@kali:~# cryptsetup-ssh --help
+ Usage: cryptsetup-ssh [OPTION...] <action> <device>
+ Experimental cryptsetup plugin for unlocking LUKS2 devices with token connected
+ to an SSH server
+ 
+  Options for the 'add' action:
+       --key-slot=NUM         Keyslot to assign the token to. If not specified,
+                              token will be assigned to the first keyslot
+                              matching provided passphrase.
+       --ssh-keypath=STRING   Path to the SSH key for connecting to the remote
+                              server
+       --ssh-path=STRING      Path to the key file on the remote server
+       --ssh-server=STRING    IP address/URL of the remote server for this token
+                             
+       --ssh-user=STRING      Username used for the remote server
+ 
+  Generic options:
+       --debug                Show debug messages
+       --debug-json           Show debug messages including JSON metadata
+   -v, --verbose              Shows more detailed error messages
+ 
+   -?, --help                 Give this help list
+       --usage                Give a short usage message
+   -V, --version              Print program version
+ 
+ This plugin currently allows only adding a token to an existing key slot.
+ 
+ Specified SSH server must contain a key file on the specified path with a
+ passphrase for an existing key slot on the device.
+ Provided credentials will be used by cryptsetup to get the password when
+ opening the device using the token.
+ 
+ Note: The information provided when adding the token (SSH server address, user
+ and paths) will be stored in the LUKS2 header in plaintext.
+ ```
  
  - - -
  
@@ -622,7 +601,7 @@ PackagesInfo: |
   and requires systemd.  Moreover, this is an early implementation and may not
   be as mature as the other cryptsetup-* packages yet.
  
- **Installed size:** `118 KB`  
+ **Installed size:** `80 KB`  
  **How to install:** `sudo apt install cryptsetup-suspend`  
  
  {{< spoiler "Dependencies:" >}}
@@ -637,6 +616,15 @@ PackagesInfo: |
  
  - - -
  
+ ### cryptsetup-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install cryptsetup-udeb`  
+ 
+ 
+ - - -
+ 
  ### libcryptsetup-dev
  
   Cryptsetup provides an interface for configuring encryption on block
@@ -646,7 +634,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup development files.
  
- **Installed size:** `175 KB`  
+ **Installed size:** `138 KB`  
  **How to install:** `sudo apt install libcryptsetup-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -665,7 +653,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup shared library.
  
- **Installed size:** `559 KB`  
+ **Installed size:** `535 KB`  
  **How to install:** `sudo apt install libcryptsetup12`  
  
  {{< spoiler "Dependencies:" >}}
@@ -677,6 +665,15 @@ PackagesInfo: |
  * libssl3 
  * libuuid1 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libcryptsetup12-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libcryptsetup12-udeb`  
  
  
  - - -

@@ -3,7 +3,7 @@ Title: whois
 Homepage: 
 Repository: https://github.com/rfc1036/whois
 Architectures: any
-Version: 5.5.13
+Version: 5.5.14
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   The package also contains mkpasswd, a features-rich front end to the
   password encryption function crypt(3).
  
- **Installed size:** `376 KB`  
+ **Installed size:** `361 KB`  
  **How to install:** `sudo apt install whois`  
  
  {{< spoiler "Dependencies:" >}}

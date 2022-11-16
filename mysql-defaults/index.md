@@ -4,7 +4,7 @@ Homepage:
 Repository: https://salsa.debian.org/mariadb-team/mysql/-/tree/mysql-defaults/debian/master
 Architectures: any all
 Version: 1.0.8
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### default-libmysqlclient-dev

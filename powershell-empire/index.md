@@ -3,7 +3,7 @@ Title: powershell-empire
 Homepage: https://github.com/BC-SECURITY/Empire
 Repository: https://gitlab.com/kalilinux/packages/powershell-empire
 Architectures: all
-Version: 4.7.1-kali-0kali1
+Version: 4.8.3-kali-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/powershell-empire-logo.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   communications to evade network detection, all wrapped up in a
   usability-focused framework.
  
- **Installed size:** `152.32 MB`  
+ **Installed size:** `152.34 MB`  
  **How to install:** `sudo apt install powershell-empire`  
  
  {{< spoiler "Dependencies:" >}}

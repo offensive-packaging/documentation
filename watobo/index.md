@@ -49,11 +49,6 @@ PackagesInfo: |
  /usr/share/watobo/config/scanner.yml
  /usr/share/watobo/config/scope.yml
  /usr/share/watobo/config/sid_cache.yml
- Creating WATOBO's working directory /root/.watobo.* create configuration directory '/root/.watobo/conf' ...
- OK
- * create temp directory '/root/.watobo/tmp' ...
- OK
- * created workspace folder /root/.watobo/workspace
  ---
  uninitialized constant Watobo::Modules::Active::Ror
  when loading module file /usr/share/watobo/modules/active/RoR/cve_2013_015x.rb
@@ -62,9 +57,8 @@ PackagesInfo: |
  uninitialized constant Watobo::Modules::Active::Sap
  when loading module file /usr/share/watobo/modules/active/sap/business_objects.rb
  ---
- Done generating certificate for /C=DE/O=WATOBO/OU=WATOBO CA/CN=Watobo CA
- >> create DH key ...
- * creating SSL key (DH 2048) ... 
+ 
+ Loading FXRuby ... this may take some time ... [OK]
  ```
  
  - - -

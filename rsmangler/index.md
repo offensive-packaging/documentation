@@ -3,7 +3,7 @@ Title: rsmangler
 Homepage: https://digi.ninja/projects/rsmangler.php
 Repository: https://gitlab.com/kalilinux/packages/rsmangler
 Architectures: all
-Version: 1.5-0kali2
+Version: 1.5-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/rsmangler-logo.svg
 PackagesInfo: |

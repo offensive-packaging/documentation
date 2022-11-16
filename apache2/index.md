@@ -3,7 +3,7 @@ Title: apache2
 Homepage: https://httpd.apache.org/
 Repository: https://salsa.debian.org/apache-team/apache2
 Architectures: any all
-Version: 2.4.54-2
+Version: 2.4.54-3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-social-engineering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   Installing this package results in a full installation, including the
   configuration files, init scripts and support scripts.
  
- **Installed size:** `624 KB`  
+ **Installed size:** `562 KB`  
  **How to install:** `sudo apt install apache2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -501,7 +501,7 @@ PackagesInfo: |
  ```
  root@kali:~# a2query --help
  /usr/sbin/a2query version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: a2query [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  
@@ -602,7 +602,7 @@ PackagesInfo: |
   web-server instance. Install the "apache2" package to get a fully working
   instance.
  
- **Installed size:** `4.97 MB`  
+ **Installed size:** `4.89 MB`  
  **How to install:** `sudo apt install apache2-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -692,7 +692,7 @@ PackagesInfo: |
    - Site configuration files
    - Global configuration files
  
- **Installed size:** `1.12 MB`  
+ **Installed size:** `1.06 MB`  
  **How to install:** `sudo apt install apache2-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -766,7 +766,7 @@ PackagesInfo: |
   documentation is shipped in HTML format and can be accessed from a local
   running Apache HTTP server instance or by browsing the file system directly.
  
- **Installed size:** `24.57 MB`  
+ **Installed size:** `24.51 MB`  
  **How to install:** `sudo apt install apache2-doc`  
  
  
@@ -802,7 +802,7 @@ PackagesInfo: |
   recommended that you use the standard suexec helper program from the
   apache2-suexec-pristine package instead.
  
- **Installed size:** `242 KB`  
+ **Installed size:** `180 KB`  
  **How to install:** `sudo apt install apache2-suexec-custom`  
  
  {{< spoiler "Dependencies:" >}}
@@ -819,7 +819,7 @@ PackagesInfo: |
   compiled with document root /var/www and userdir suffix public_html. If you
   need different settings, use the package apache2-suexec-custom.
  
- **Installed size:** `232 KB`  
+ **Installed size:** `170 KB`  
  **How to install:** `sudo apt install apache2-suexec-pristine`  
  
  {{< spoiler "Dependencies:" >}}
@@ -846,7 +846,7 @@ PackagesInfo: |
    - check_forensic (Extract mod_log_forensic output from Apache log files)
    - httxt2dbm (Generate dbm files for use with RewriteMap)
  
- **Installed size:** `487 KB`  
+ **Installed size:** `425 KB`  
  **How to install:** `sudo apt install apache2-utils`  
  
  {{< spoiler "Dependencies:" >}}

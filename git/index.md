@@ -4,7 +4,7 @@ Homepage: https://git-scm.com/
 Repository: https://repo.or.cz/w/git/debian.git/
 Architectures: any all
 Version: 1:2.35.1-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: images/git-logo.svg
 PackagesInfo: |
  ### git
@@ -39,8 +39,8 @@ PackagesInfo: |
  
  ##### git
  
- The stupid content tracker
  Perl interface to the Git version control system
+ The stupid content tracker
  
  ```
  root@kali:~# git --help

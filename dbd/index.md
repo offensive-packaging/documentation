@@ -3,7 +3,7 @@ Title: dbd
 Homepage: https://github.com/gitdurandal/dbd
 Repository: https://gitlab.com/kalilinux/packages/dbd
 Architectures: any
-Version: 1.50-1kali6
+Version: 1.50-1kali7
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-windows-resources 
 Icon: images/dbd-logo.svg
 PackagesInfo: |

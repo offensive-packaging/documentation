@@ -1,9 +1,9 @@
 ---
 Title: cutecom
-Homepage: http://github.com/neundorf/CuteCom
+Homepage: https://gitlab.com/cutecom/cutecom
 Repository: 
 Architectures: any
-Version: 0.30.3-1
+Version: 0.51.0-1
 Metapackages: kali-linux-everything kali-tools-hardware 
 Icon: images/cutecom-logo.svg
 PackagesInfo: |
@@ -17,14 +17,15 @@ PackagesInfo: |
   other things.
   It is written using the Qt library originally by Trolltech (www.trolltech.com).
  
- **Installed size:** `353 KB`  
+ **Installed size:** `755 KB`  
  **How to install:** `sudo apt install cutecom`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libgcc1 
+ * libgcc-s1 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
+ * libqt5network5 
  * libqt5serialport5 
  * libqt5widgets5 
  * libstdc++6 

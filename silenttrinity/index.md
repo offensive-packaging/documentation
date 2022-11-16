@@ -3,7 +3,7 @@ Title: silenttrinity
 Homepage: https://github.com/byt3bl33d3r/SILENTTRINITY
 Repository: https://gitlab.com/kalilinux/packages/silenttrinity
 Architectures: all
-Version: 0.4.6dev~20200310-0kali2
+Version: 0.4.6dev~20200310-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

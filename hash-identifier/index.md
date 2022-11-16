@@ -3,7 +3,7 @@ Title: hash-identifier
 Homepage: https://github.com/blackploit/hash-identifier
 Repository: https://gitlab.com/kalilinux/packages/hash-identifier
 Architectures: all
-Version: 1.2+git20180314-0kali1
+Version: 1.2+git20180314-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/hash-identifier-logo.svg
 PackagesInfo: |

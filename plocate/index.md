@@ -29,7 +29,7 @@ PackagesInfo: |
   on a much smaller index. It is a drop-in replacement for mlocate in nearly
   all aspects, and is fast on SSDs and non-SSDs alike.
  
- **Installed size:** `517 KB`  
+ **Installed size:** `522 KB`  
  **How to install:** `sudo apt install plocate`  
  
  {{< spoiler "Dependencies:" >}}

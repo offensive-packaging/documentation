@@ -3,7 +3,7 @@ Title: goofile
 Homepage: https://github.com/sosukeinu/goofile
 Repository: https://gitlab.com/kalilinux/packages/goofile
 Architectures: all
-Version: 1.6+git20190819-0kali1
+Version: 1.6+git20190819-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

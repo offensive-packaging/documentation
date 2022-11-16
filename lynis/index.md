@@ -3,7 +3,7 @@ Title: lynis
 Homepage: https://cisofy.com/lynis/
 Repository: https://salsa.debian.org/debian/lynis
 Architectures: all
-Version: 3.0.7-1
+Version: 3.0.8-1.1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-vulnerability 
 Icon: images/lynis-logo.svg
 PackagesInfo: |
@@ -31,7 +31,7 @@ PackagesInfo: |
  ```
  root@kali:~# lynis -h
  
- [ Lynis 3.0.7 ]
+ [ Lynis 3.0.8 ]
  
  ################################################################################
    Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are

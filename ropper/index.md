@@ -3,7 +3,7 @@ Title: ropper
 Homepage: https://scoding.de/ropper/
 Repository: https://gitlab.com/kalilinux/packages/ropper
 Architectures: all
-Version: 1.12.5-0kali2
+Version: 1.13.8-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   (x86/x86_64, ARM/ARM64, MIPS, PowerPC). For disassembly ropper uses the
   Capstone Framework.
  
- **Installed size:** `398 KB`  
+ **Installed size:** `402 KB`  
  **How to install:** `sudo apt install ropper`  
  
  {{< spoiler "Dependencies:" >}}
@@ -29,9 +29,9 @@ PackagesInfo: |
  
  ```
  root@kali:~# ropper -h
- usage: ropper [-h] [-v] [--console] [-f <file> [<file> ...]] [-r] [-a <arch>]
-               [--section <section>] [--string [<string>]] [--hex]
-               [--asm [<asm> [H|S|R] ...]] [--disasm <opcode>]
+ usage: ropper [-h] [--help-examples] [-v] [--console] [-f <file> [<file> ...]]
+               [-r] [-a <arch>] [--section <section>] [--string [<string>]]
+               [--hex] [--asm [<asm> [H|S|R] ...]] [--disasm <opcode>]
                [--disassemble-address <address:length>] [-i] [-e] [--imagebase]
                [-c] [-s] [-S] [--imports] [--symbols] [--set <option>]
                [--unset <option>] [-I <imagebase>] [-p] [-j <reg>]
@@ -68,6 +68,7 @@ PackagesInfo: |
  
  options:
    -h, --help            show this help message and exit
+   --help-examples       Print examples
    -v, --version         Print version
    --console             Starts interactive commandline
    -f <file> [<file> ...], --file <file> [<file> ...]
@@ -110,9 +111,9 @@ PackagesInfo: |
    --search <regex>      Searches for gadgets
    --quality <quality>   The quality for gadgets which are found by search (1 =
                          best)
-   --opcode <opcode>     Searchs for opcodes (e.g. ffe4 or ffe? or ff??)
+   --opcode <opcode>     Searches for opcodes (e.g. ffe4 or ffe? or ff??)
    --instructions <instructions>
-                         Searchs for instructions (e.g. "jmp esp", "pop eax;
+                         Searches for instructions (e.g. "jmp esp", "pop eax;
                          ret")
    --type <type>         Sets the type of gadgets [rop, jop, sys, all]
                          (default: all)
@@ -136,62 +137,6 @@ PackagesInfo: |
                          Max count of gadgets which will be printed with
                          semantic search (0 = undefined, default: 5)
    --single              No multiple processes are used for gadget scanning
- 
- example uses:
-   [Generic]
-   /usr/bin/ropper
-   /usr/bin/ropper --file /bin/ls --console
- 
-   [Information]
-   /usr/bin/ropper --file /bin/ls --info
-   /usr/bin/ropper --file /bin/ls --imports
-   /usr/bin/ropper --file /bin/ls --sections
-   /usr/bin/ropper --file /bin/ls --segments
-   /usr/bin/ropper --file /bin/ls --set nx
-   /usr/bin/ropper --file /bin/ls --unset nx
-   /usr/bin/ropper --file /bin/ls --inst-count 5
-   /usr/bin/ropper --file /bin/ls --search "sub eax" --badbytes 000a0d
-   /usr/bin/ropper --file /bin/ls --search "sub eax" --detail
-   /usr/bin/ropper --file /bin/ls --filter "sub eax"
-   /usr/bin/ropper --file /bin/ls --opcode ffe4
-   /usr/bin/ropper --file /bin/ls --opcode ffe?
-   /usr/bin/ropper --file /bin/ls --opcode ??e4
-   /usr/bin/ropper --file /bin/ls --detailed
-   /usr/bin/ropper --file /bin/ls --ppr --nocolor
-   /usr/bin/ropper --file /bin/ls --jmp esp,eax
-   /usr/bin/ropper --file /bin/ls --type jop
-   /usr/bin/ropper --file /bin/ls --chain execve
-   /usr/bin/ropper --file /bin/ls --chain "execve cmd=/bin/sh" --badbytes 000a0d
-   /usr/bin/ropper --file /bin/ls --chain "mprotect address=0xbfdff000 size=0x21000"
-   /usr/bin/ropper --file /bin/ls /lib/libc.so.6 --console
- 
-   [Assemble/Disassemble]
-   /usr/bin/ropper --asm "jmp esp"
-   /usr/bin/ropper --asm "mov eax, ecx; ret"
-   /usr/bin/ropper --disasm ffe4
- 
-   [Search]
-   /usr/bin/ropper --file /bin/ls --search <searchstring>
-   ?		any character
-   %		any string
- 
-   Example:
- 
-   /usr/bin/ropper --file /bin/ls --search "mov e?x"
-   0x000067f1: mov edx, dword ptr [ebp + 0x14]; mov dword ptr [esp], edx; call eax
-   0x00006d03: mov eax, esi; pop ebx; pop esi; pop edi; pop ebp; ret ;
-   0x00006d6f: mov ebx, esi; mov esi, dword ptr [esp + 0x18]; add esp, 0x1c; ret ;
-   0x000076f8: mov eax, dword ptr [eax]; mov byte ptr [eax + edx], 0; add esp, 0x18; pop ebx; ret ;
- 
-   /usr/bin/ropper --file /bin/ls --search "mov [%], edx"
-   0x000067ed: mov dword ptr [esp + 4], edx; mov edx, dword ptr [ebp + 0x14]; mov dword ptr [esp], edx; call eax;
-   0x00006f4e: mov dword ptr [ecx + 0x14], edx; add esp, 0x2c; pop ebx; pop esi; pop edi; pop ebp; ret ;
-   0x000084b8: mov dword ptr [eax], edx; ret ;
-   0x00008d9b: mov dword ptr [eax], edx; add esp, 0x18; pop ebx; ret ;
- 
-   /usr/bin/ropper --file /bin/ls --search "mov [%], edx" --quality 1
-   0x000084b8: mov dword ptr [eax], edx; ret ;
-   
  ```
  
  - - -

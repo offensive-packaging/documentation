@@ -4,7 +4,7 @@ Homepage: https://github.com/nfc-tools/mfoc
 Repository: https://salsa.debian.org/pkg-security-team/mfoc
 Architectures: any
 Version: 0.10.7+git20180724-2
-Metapackages: kali-linux-arm kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-rfid kali-tools-wireless 
+Metapackages: kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-rfid kali-tools-wireless 
 Icon: images/mfoc-logo.svg
 PackagesInfo: |
  ### mfoc

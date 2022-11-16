@@ -3,7 +3,7 @@ Title: python-virtualenv
 Homepage: https://virtualenv.pypa.io/
 Repository: https://salsa.debian.org/python-team/packages/python-virtualenv
 Architectures: all
-Version: 20.15.0+ds-1
+Version: 20.16.6+ds-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
    
    * is slower (by not having the app-data seed method),
    * is not as extendable,
-   * cannot create virtual environments for arbitrarily installed python
+   * cannot create virtual environments for arbitrarily installed Python
      versions (and automatically discover these),
    * does not have as rich programmatic API (describe virtual environments
      without creating them).
@@ -28,7 +28,7 @@ PackagesInfo: |
   This is the Python 3 version of the library.  It includes the command line
   script.
  
- **Installed size:** `441 KB`  
+ **Installed size:** `405 KB`  
  **How to install:** `sudo apt install python3-virtualenv`  
  
  {{< spoiler "Dependencies:" >}}
@@ -37,11 +37,10 @@ PackagesInfo: |
  * python3-filelock
  * python3-importlib-metadata  | python3 
  * python3-importlib-resources | python3 
- * python3-pip 
  * python3-pip-whl
  * python3-platformdirs 
  * python3-setuptools-whl
- * python3-six
+ * python3-setuptools-whl  | python3-distutils
  * python3-wheel-whl
  {{< /spoiler >}}
  
@@ -128,7 +127,7 @@ PackagesInfo: |
    
   This is a dependency package and may be safely removed.
  
- **Installed size:** `30 KB`  
+ **Installed size:** `27 KB`  
  **How to install:** `sudo apt install virtualenv`  
  
  {{< spoiler "Dependencies:" >}}

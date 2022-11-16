@@ -3,7 +3,7 @@ Title: bing-ip2hosts
 Homepage: https://www.morningstarsecurity.com/research/bing-ip2hosts
 Repository: https://gitlab.com/kalilinux/packages/bing-ip2hosts
 Architectures: all
-Version: 1.0.4-0kali1
+Version: 1.0.5-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -28,6 +28,7 @@ PackagesInfo: |
  **How to install:** `sudo apt install bing-ip2hosts`  
  
  {{< spoiler "Dependencies:" >}}
+ * bind9-dnsutils
  * wget
  {{< /spoiler >}}
  
@@ -57,7 +58,7 @@ PackagesInfo: |
    ]#   j##,  ,##   ,#2        ##    @#   7#.   .#O  ,   ]#   ]#Q       ,#s
    ]#   j######'    #######x   ##    @#    s#####o    ####^    #Tt    ####^
         j#
-        j#          bing-ip2hosts (1.0.4) by Andrew Horton @urbanadventurer
+        j#          bing-ip2hosts (1.0.5) by Andrew Horton @urbanadventurer
         j#          https://morningstarsecurity.com/research/bing-ip2hosts
                     https://github.com/urbanadventurer/bing-ip2hosts
  [Press Enter]

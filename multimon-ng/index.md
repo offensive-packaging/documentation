@@ -3,7 +3,7 @@ Title: multimon-ng
 Homepage: https://github.com/EliasOenal/multimon-ng/
 Repository: https://salsa.debian.org/debian-hamradio-team/multimon-ng
 Architectures: any
-Version: 1.1.9+dfsg-2
+Version: 1.2.0+dfsg-1
 Metapackages: kali-linux-everything kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -31,7 +31,7 @@ PackagesInfo: |
   provided via a GNU Radio sink or the UDP audio stream in gqrx (via
   netcat and sox).
  
- **Installed size:** `130 KB`  
+ **Installed size:** `134 KB`  
  **How to install:** `sudo apt install multimon-ng`  
  
  {{< spoiler "Dependencies:" >}}
@@ -47,10 +47,10 @@ PackagesInfo: |
  ```
  root@kali:~# multimon-ng --help
  multimon-ng: unrecognized option '--help'
- multimon-ng 1.1.9
+ multimon-ng 1.2.0
    (C) 1996/1997 by Tom Sailer HB9JNX/AE4WA
-   (C) 2012-2020 by Elias Oenal
- Available demodulators: POCSAG512 POCSAG1200 POCSAG2400 FLEX EAS UFSK1200 CLIPFSK FMSFSK AFSK1200 AFSK2400 AFSK2400_2 AFSK2400_3 HAPN4800 FSK9600 DTMF ZVEI1 ZVEI2 ZVEI3 DZVEI PZVEI EEA EIA CCIR MORSE_CW DUMPCSV X10 SCOPE
+   (C) 2012-2022 by Elias Oenal
+ Available demodulators: POCSAG512 POCSAG1200 POCSAG2400 FLEX FLEX_NEXT EAS UFSK1200 CLIPFSK FMSFSK AFSK1200 AFSK2400 AFSK2400_2 AFSK2400_3 HAPN4800 FSK9600 DTMF ZVEI1 ZVEI2 ZVEI3 DZVEI PZVEI EEA EIA CCIR MORSE_CW DUMPCSV X10 SCOPE
  
  Usage: multimon-ng [file] [file] [file] ...
    If no [file] is given, input will be read from your default sound

@@ -3,7 +3,7 @@ Title: scalpel
 Homepage: http://www.digitalforensicssolutions.com/Scalpel
 Repository: https://salsa.debian.org/pkg-security-team/scalpel
 Architectures: any
-Version: 1.60-9
+Version: 1.60-9+nmu1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: images/scalpel-logo.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   scalpel is a complete rewrite of the Foremost 0.69 file carver and is
   useful for both digital forensics investigations and file recovery.
  
- **Installed size:** `87 KB`  
+ **Installed size:** `88 KB`  
  **How to install:** `sudo apt install scalpel`  
  
  {{< spoiler "Dependencies:" >}}

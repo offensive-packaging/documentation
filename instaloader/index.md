@@ -3,7 +3,7 @@ Title: instaloader
 Homepage: https://github.com/instaloader/instaloader
 Repository: https://salsa.debian.org/debian/instaloader
 Architectures: all
-Version: 4.9.2+ds-1
+Version: 4.9.4+ds-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
   be able to detect automatically stop previously interrupted
   download interactions.
  
- **Installed size:** `286 KB`  
+ **Installed size:** `288 KB`  
  **How to install:** `sudo apt install instaloader`  
  
  {{< spoiler "Dependencies:" >}}
@@ -30,7 +30,7 @@ PackagesInfo: |
  
  ##### instaloader
  
- Instagran automatic photo downloader
+ Instagram automatic photo downloader
  
  ```
  root@kali:~# instaloader -h

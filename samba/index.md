@@ -3,8 +3,8 @@ Title: samba
 Homepage: https://www.samba.org
 Repository: https://salsa.debian.org/samba-team/samba
 Architectures: any all
-Version: 2:4.16.3+dfsg-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-wireless 
+Version: 2:4.17.2+dfsg-8
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-wireless 
 Icon: images/samba-logo.svg
 PackagesInfo: |
  ### ctdb
@@ -36,7 +36,7 @@ PackagesInfo: |
      applications that depend on network or filesystem resources to be managed in
      a highly available manner on a cluster.
  
- **Installed size:** `3.48 MB`  
+ **Installed size:** `3.66 MB`  
  **How to install:** `sudo apt install ctdb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -58,8 +58,8 @@ PackagesInfo: |
  
  ##### ctdb
  
- Clustered TDB
  CTDB management utility
+ Clustered TDB
  
  ```
  root@kali:~# ctdb --help
@@ -109,17 +109,6 @@ PackagesInfo: |
  Help options:
    -?, --help            Show this help message
        --usage           Display brief usage message
- ```
- 
- - - -
- 
- ##### ctdbd_wrapper
- 
- Wrapper for ctdbd
- 
- ```
- root@kali:~# ctdbd_wrapper -h
- usage: /usr/sbin/ctdbd_wrapper {start|stop}
  ```
  
  - - -
@@ -267,7 +256,7 @@ PackagesInfo: |
         You should have received a copy of the GNU General Public License along
         with this program; if not, see http://www.gnu.org/licenses.
  
- ctdb                              07/18/2022                      PING_PONG(1)
+ ctdb                              11/03/2022                      PING_PONG(1)
  ```
  
  - - -
@@ -283,7 +272,7 @@ PackagesInfo: |
    
   This package contains bundled test and utility binaries
  
- **Installed size:** `285 KB`  
+ **Installed size:** `191 KB`  
  **How to install:** `sudo apt install ldb-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -314,7 +303,7 @@ PackagesInfo: |
    -a, --all                                    (|(objectClass=*)(distinguishedName=*))
        --nosync                                 non-synchronous transactions
    -S, --sorted                                 sort attributes
-   -o=OPTION                                    ldb_connect option
+   -o OPTION                                    ldb_connect option
        --controls=STRING                        controls
        --show-binary                            display binary LDIF
        --paged                                  use a paged search
@@ -372,7 +361,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -403,7 +392,7 @@ PackagesInfo: |
    -a, --all                                    (|(objectClass=*)(distinguishedName=*))
        --nosync                                 non-synchronous transactions
    -S, --sorted                                 sort attributes
-   -o=OPTION                                    ldb_connect option
+   -o OPTION                                    ldb_connect option
        --controls=STRING                        controls
        --show-binary                            display binary LDIF
        --paged                                  use a paged search
@@ -461,7 +450,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -492,7 +481,7 @@ PackagesInfo: |
    -a, --all                                    (|(objectClass=*)(distinguishedName=*))
        --nosync                                 non-synchronous transactions
    -S, --sorted                                 sort attributes
-   -o=OPTION                                    ldb_connect option
+   -o OPTION                                    ldb_connect option
        --controls=STRING                        controls
        --show-binary                            display binary LDIF
        --paged                                  use a paged search
@@ -550,7 +539,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -581,7 +570,7 @@ PackagesInfo: |
    -a, --all                                    (|(objectClass=*)(distinguishedName=*))
        --nosync                                 non-synchronous transactions
    -S, --sorted                                 sort attributes
-   -o=OPTION                                    ldb_connect option
+   -o OPTION                                    ldb_connect option
        --controls=STRING                        controls
        --show-binary                            display binary LDIF
        --paged                                  use a paged search
@@ -639,7 +628,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -670,7 +659,7 @@ PackagesInfo: |
    -a, --all                                    (|(objectClass=*)(distinguishedName=*))
        --nosync                                 non-synchronous transactions
    -S, --sorted                                 sort attributes
-   -o=OPTION                                    ldb_connect option
+   -o OPTION                                    ldb_connect option
        --controls=STRING                        controls
        --show-binary                            display binary LDIF
        --paged                                  use a paged search
@@ -728,7 +717,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -759,7 +748,7 @@ PackagesInfo: |
    -a, --all                                    (|(objectClass=*)(distinguishedName=*))
        --nosync                                 non-synchronous transactions
    -S, --sorted                                 sort attributes
-   -o=OPTION                                    ldb_connect option
+   -o OPTION                                    ldb_connect option
        --controls=STRING                        controls
        --show-binary                            display binary LDIF
        --paged                                  use a paged search
@@ -817,7 +806,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -838,7 +827,7 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `258 KB`  
+ **Installed size:** `167 KB`  
  **How to install:** `sudo apt install libldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -864,7 +853,7 @@ PackagesInfo: |
    
   This package contains the shared library file.
  
- **Installed size:** `699 KB`  
+ **Installed size:** `610 KB`  
  **How to install:** `sudo apt install libldb2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -892,7 +881,7 @@ PackagesInfo: |
   system; and nss_wins, which provides hostname lookups via both the NBNS and
   NetBIOS broadcast protocols.
  
- **Installed size:** `269 KB`  
+ **Installed size:** `179 KB`  
  **How to install:** `sudo apt install libnss-winbind`  
  
  {{< spoiler "Dependencies:" >}}
@@ -915,7 +904,7 @@ PackagesInfo: |
   This package provides pam_winbind, a plugin that integrates with a local
   winbindd server to provide Windows domain authentication to the system.
  
- **Installed size:** `249 KB`  
+ **Installed size:** `164 KB`  
  **How to install:** `sudo apt install libpam-winbind`  
  
  {{< spoiler "Dependencies:" >}}
@@ -936,7 +925,7 @@ PackagesInfo: |
   to talk to Microsoft Windows and Samba servers using the SMB/CIFS
   protocol.
  
- **Installed size:** `325 KB`  
+ **Installed size:** `228 KB`  
  **How to install:** `sudo apt install libsmbclient`  
  
  {{< spoiler "Dependencies:" >}}
@@ -957,7 +946,7 @@ PackagesInfo: |
   enables client applications to talk to Microsoft Windows and Samba servers
   using the SMB/CIFS protocol.
  
- **Installed size:** `357 KB`  
+ **Installed size:** `264 KB`  
  **How to install:** `sudo apt install libsmbclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -978,7 +967,7 @@ PackagesInfo: |
   applications that interact via the winbind pipe protocol with a Samba
   winbind server.
  
- **Installed size:** `199 KB`  
+ **Installed size:** `106 KB`  
  **How to install:** `sudo apt install libwbclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -997,7 +986,7 @@ PackagesInfo: |
   This package provides a library for client applications that interact
   via the winbind pipe protocol with a Samba winbind server.
  
- **Installed size:** `216 KB`  
+ **Installed size:** `120 KB`  
  **How to install:** `sudo apt install libwbclient0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1014,7 +1003,7 @@ PackagesInfo: |
    
   This package contains the Python 3 bindings.
  
- **Installed size:** `271 KB`  
+ **Installed size:** `178 KB`  
  **How to install:** `sudo apt install python3-ldb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1040,7 +1029,7 @@ PackagesInfo: |
    
   This package contains the development files for the Python 3 bindings.
  
- **Installed size:** `149 KB`  
+ **Installed size:** `56 KB`  
  **How to install:** `sudo apt install python3-ldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1062,7 +1051,7 @@ PackagesInfo: |
    
   This package contains Python 3 bindings for most Samba libraries.
  
- **Installed size:** `21.35 MB`  
+ **Installed size:** `21.53 MB`  
  **How to install:** `sudo apt install python3-samba`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1094,7 +1083,7 @@ PackagesInfo: |
   This package contains tools for viewing and manipulating the binary
   "registry" found on Windows machines, both locally and remote.
  
- **Installed size:** `242 KB`  
+ **Installed size:** `149 KB`  
  **How to install:** `sudo apt install registry-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1259,7 +1248,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -1340,7 +1329,7 @@ PackagesInfo: |
   This package is not required for connecting to existing SMB/CIFS servers
   (see smbclient) or for mounting remote filesystems (see cifs-utils).
  
- **Installed size:** `17.25 MB`  
+ **Installed size:** `17.15 MB`  
  **How to install:** `sudo apt install samba`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2006,6 +1995,7 @@ PackagesInfo: |
    -R, --profile-rates                Show call rates
    -B, --byterange                    Include byte range locks
    -n, --numeric                      Numeric uid/gid
+   -j, --json                         JSON output
    -f, --fast                         Skip checks if processes still exist
        --resolve-uids                 Try to resolve UIDs to usernames
  
@@ -2036,7 +2026,7 @@ PackagesInfo: |
    
   This package contains common files used by all parts of Samba.
  
- **Installed size:** `296 KB`  
+ **Installed size:** `202 KB`  
  **How to install:** `sudo apt install samba-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2058,7 +2048,7 @@ PackagesInfo: |
   (provided in the samba package) and the client (provided in the samba-clients
   package).
  
- **Installed size:** `4.40 MB`  
+ **Installed size:** `4.32 MB`  
  **How to install:** `sudo apt install samba-common-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2413,8 +2403,8 @@ PackagesInfo: |
  
  ##### smbpasswd
  
- Change a user's SMB password
  The Samba encrypted password file
+ Change a user's SMB password
  
  ```
  root@kali:~# smbpasswd -h
@@ -2487,7 +2477,7 @@ PackagesInfo: |
   This package contains include files shared by the various Samba-based
   libraries.
  
- **Installed size:** `1.83 MB`  
+ **Installed size:** `1.75 MB`  
  **How to install:** `sudo apt install samba-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2514,7 +2504,7 @@ PackagesInfo: |
   This package contains LDB plugins which add support for various Active
   Directory features to the LDB library.
  
- **Installed size:** `1.59 MB`  
+ **Installed size:** `1.51 MB`  
  **How to install:** `sudo apt install samba-dsdb-modules`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2542,7 +2532,7 @@ PackagesInfo: |
    
   This package contains the shared libraries.
  
- **Installed size:** `23.86 MB`  
+ **Installed size:** `23.97 MB`  
  **How to install:** `sudo apt install samba-libs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2581,7 +2571,7 @@ PackagesInfo: |
   This package contains programs for testing the reliability and speed
   of SMB servers, Samba in particular.
  
- **Installed size:** `8.91 MB`  
+ **Installed size:** `9.66 MB`  
  **How to install:** `sudo apt install samba-testsuite`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2599,6 +2589,7 @@ PackagesInfo: |
  * python3-samba 
  * samba-common-bin
  * samba-libs 
+ * winbind 
  {{< /spoiler >}}
  
  ##### gentest
@@ -2678,7 +2669,7 @@ PackagesInfo: |
  Version options:
    -V, --version                                Print version
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  ```
@@ -2756,7 +2747,7 @@ PackagesInfo: |
  Version options:
    -V, --version                                Print version
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  ```
@@ -2828,7 +2819,7 @@ PackagesInfo: |
  Version options:
    -V, --version                                Print version
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  ```
@@ -2881,7 +2872,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# smbtorture --help
- smbtorture 4.16.3-Debian
+ smbtorture 4.17.2-Debian
  Usage: <binding>|<unc> TEST1 TEST2 ...
        --fullname                               use full name for the test
        --format=STRING                          Output format (one of: simple,
@@ -2964,7 +2955,7 @@ PackagesInfo: |
  Version options:
    -V, --version                                Print version
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  ```
@@ -2990,7 +2981,7 @@ PackagesInfo: |
   Note: The runtime dependencies of vfs_ceph, vfs_glusterfs and vfs_snapper are
   moved to Recommends.
  
- **Installed size:** `1.81 MB`  
+ **Installed size:** `1.75 MB`  
  **How to install:** `sudo apt install samba-vfs-modules`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3019,7 +3010,7 @@ PackagesInfo: |
   Utilities for mounting shares locally are found in the package
   cifs-utils.
  
- **Installed size:** `2.01 MB`  
+ **Installed size:** `1.92 MB`  
  **How to install:** `sudo apt install smbclient`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3090,7 +3081,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos=STRING                        DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -3163,7 +3154,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -3231,7 +3222,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -3270,7 +3261,7 @@ PackagesInfo: |
                                                 modifications
    -t, --test-args                              Test arguments
        --domain-sid=SID                         Domain SID for sddl
-   -x, --maximum-access                         Query maximum persmissions
+   -x, --maximum-access                         Query maximum permissions
  
  Help options:
    -?, --help                                   Show this help message
@@ -3318,7 +3309,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -3399,7 +3390,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -3466,7 +3457,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -3622,7 +3613,7 @@ PackagesInfo: |
   the libnss-winbind package. Winbind based Windows domain authentication can
   be enabled via the libpam-winbind package.
  
- **Installed size:** `1.58 MB`  
+ **Installed size:** `1.55 MB`  
  **How to install:** `sudo apt install winbind`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3661,6 +3652,8 @@ PackagesInfo: |
                                                     the challenge (HEX encoded)
        --password=STRING                            User's plaintext password
        --request-lm-key                             Retrieve LM session key
+                                                    (or, with --diagnostics,
+                                                    expect LM support)
        --request-nt-key                             Retrieve User (NT) session
                                                     key
        --use-cached-creds                           Use cached credentials if

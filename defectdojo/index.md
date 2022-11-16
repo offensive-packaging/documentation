@@ -3,7 +3,7 @@ Title: defectdojo
 Homepage: https://github.com/DefectDojo/django-DefectDojo
 Repository: https://gitlab.com/kalilinux/packages/defectdojo
 Architectures: amd64 arm64 armhf
-Version: 2.10.0-0kali6
+Version: 2.12.0-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   vulnerability data using a number of heuristic algorithms that improve with
   the more you use the platform.
  
- **Installed size:** `165.30 MB`  
+ **Installed size:** `165.38 MB`  
  **How to install:** `sudo apt install defectdojo`  
  
  {{< spoiler "Dependencies:" >}}
@@ -80,10 +80,8 @@ PackagesInfo: |
  
  ```
  root@kali:~# defectdojo -h
- 
-  Creating database user
- 
-  Creating database
+ User _defectdojo already exists in PostgreSQL
+ Database defectdojo already exists in PostgreSQL
  ALTER ROLE
  Waiting for database to be reachable 
  Making migrations

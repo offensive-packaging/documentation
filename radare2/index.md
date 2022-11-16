@@ -197,9 +197,7 @@ PackagesInfo: |
  Radare2 package manager
  
  ```
- root@kali:~# r2pm --help
- git clone https://github.com/radareorg/radare2-pm
- /root/.local/share/radare2/r2pm/git/radare2-pm
+ root@kali:~# r2pm -h
  Usage: r2pm [init|update|cmd] [...]
  Commands:
   -I,info                     information about repository and installed packages
@@ -230,7 +228,7 @@ PackagesInfo: |
   R2PM_PLUGDIR=/root/.local/share/radare2/plugins
   R2PM_BINDIR=/root/.local/share/radare2/prefix/bin
   R2PM_OFFLINE=0              disabled by default, avoid init/update calls if set to !=0
-  R2PM_DBDIR=
+  R2PM_DBDIR=/root/.local/share/radare2/r2pm/db
   R2PM_GITDIR=/root/.local/share/radare2/r2pm/git
   R2PM_GITSKIP=
  ```

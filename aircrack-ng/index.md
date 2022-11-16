@@ -3,8 +3,8 @@ Title: aircrack-ng
 Homepage: https://www.aircrack-ng.org/
 Repository: https://salsa.debian.org/pkg-security-team/aircrack-ng
 Architectures: any all
-Version: 1:1.6+git20210130.91820bc-2
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-exploitation kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-wireless 
+Version: 1:1.7-5
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-exploitation kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-wireless 
 Icon: images/aircrack-ng-logo.svg
 PackagesInfo: |
  ### aircrack-ng
@@ -22,7 +22,7 @@ PackagesInfo: |
   aircrack-ng is a fork of aircrack, as that project has been stopped by
   the upstream maintainer.
  
- **Installed size:** `2.36 MB`  
+ **Installed size:** `2.33 MB`  
  **How to install:** `sudo apt install aircrack-ng`  
  
  {{< spoiler "Dependencies:" >}}
@@ -53,7 +53,7 @@ PackagesInfo: |
  ```
  root@kali:~# airbase-ng --help
  
-   Airbase-ng 1.6  - (C) 2008-2020 Thomas d'Otreppe
+   Airbase-ng 1.7  - (C) 2008-2022 Thomas d'Otreppe
    Original work: Martin Beck
    https://www.aircrack-ng.org
  
@@ -110,7 +110,7 @@ PackagesInfo: |
  ```
  root@kali:~# aircrack-ng --help
  
-   Aircrack-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   Aircrack-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: aircrack-ng [options] <input file(s)>
@@ -203,7 +203,7 @@ PackagesInfo: |
  ```
  root@kali:~# airdecap-ng --help
  
-   Airdecap-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   Airdecap-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: airdecap-ng [options] <pcap file>
@@ -238,7 +238,7 @@ PackagesInfo: |
  ```
  root@kali:~# airdecloak-ng -h
  
-   Airdecloak-ng 1.6  - (C) 2008-2020 Thomas d'Otreppe
+   Airdecloak-ng 1.7  - (C) 2008-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: airdecloak-ng [options]
@@ -287,7 +287,7 @@ PackagesInfo: |
  ```
  root@kali:~# aireplay-ng --help
  
-   Aireplay-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   Aireplay-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: aireplay-ng <options> <replay interface>
@@ -389,7 +389,7 @@ PackagesInfo: |
  ```
  root@kali:~# airodump-ng --help
  
-   Airodump-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   Airodump-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: airodump-ng <options> <interface>[,<interface>,...]
@@ -469,7 +469,7 @@ PackagesInfo: |
  ```
  root@kali:~# airolib-ng -h
  
-   Airolib-ng 1.6  - (C) 2007, 2008, 2009 ebfe
+   Airolib-ng 1.7  - (C) 2007, 2008, 2009 ebfe
    https://www.aircrack-ng.org
  
    Usage: airolib-ng <database> <operation> [options]
@@ -504,7 +504,7 @@ PackagesInfo: |
  ```
  root@kali:~# airserv-ng -h
  
-   Airserv-ng 1.6  - (C) 2007, 2008, 2009 Andrea Bittau
+   Airserv-ng 1.7  - (C) 2007, 2008, 2009 Andrea Bittau
    https://www.aircrack-ng.org
  
    Usage: airserv-ng <options>
@@ -528,7 +528,7 @@ PackagesInfo: |
  ```
  root@kali:~# airtun-ng --help
  
-   Airtun-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   Airtun-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    Original work: Martin Beck
    https://www.aircrack-ng.org
  
@@ -572,7 +572,7 @@ PackagesInfo: |
  ```
  root@kali:~# airventriloquist-ng --help
  
-   Airventriloquist-ng 1.6  - (C) 2015 Tim de Waal
+   Airventriloquist-ng 1.7  - (C) 2015 Tim de Waal
    https://www.aircrack-ng.org
  
    usage: airventriloquist-ng [options]
@@ -602,7 +602,7 @@ PackagesInfo: |
  ```
  root@kali:~# besside-ng -h
  
-   Besside-ng 1.6  - (C) 2010 Andrea Bittau
+   Besside-ng 1.7  - (C) 2010 Andrea Bittau
    https://www.aircrack-ng.org
  
    Usage: besside-ng [options] <interface>
@@ -647,7 +647,7 @@ PackagesInfo: |
  ```
  root@kali:~# buddy-ng -h
  
-   Buddy-ng 1.6  - (C) 2007,2008 Andrea Bittau
+   Buddy-ng 1.7  - (C) 2007,2008 Andrea Bittau
    https://www.aircrack-ng.org
  
    Usage: buddy-ng <options>
@@ -691,7 +691,7 @@ PackagesInfo: |
  ```
  root@kali:~# easside-ng -h
  
-   Easside-ng 1.6  - (C) 2007, 2008, 2009 Andrea Bittau
+   Easside-ng 1.7  - (C) 2007, 2008, 2009 Andrea Bittau
    https://www.aircrack-ng.org
  
    Usage: easside-ng <options>
@@ -719,7 +719,7 @@ PackagesInfo: |
  ```
  root@kali:~# ivstools -h
  
-   ivsTools 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   ivsTools 1.7  - (C) 2006-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
     usage: ivstools --convert <pcap file> <ivs output file>
@@ -748,7 +748,7 @@ PackagesInfo: |
  ```
  root@kali:~# makeivs-ng -h
  
-   makeivs-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   makeivs-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: makeivs-ng [options]
@@ -779,7 +779,7 @@ PackagesInfo: |
  ```
  root@kali:~# packetforge-ng --help
  
-   Packetforge-ng 1.6  - (C) 2006-2020 Thomas d'Otreppe
+   Packetforge-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
    Original work: Martin Beck
    https://www.aircrack-ng.org
  
@@ -827,7 +827,7 @@ PackagesInfo: |
  ```
  root@kali:~# tkiptun-ng --help
  
-   Tkiptun-ng 1.6  - (C) 2008-2020 Thomas d'Otreppe
+   Tkiptun-ng 1.7  - (C) 2008-2022 Thomas d'Otreppe
    https://www.aircrack-ng.org
  
    usage: tkiptun-ng <options> <replay interface>
@@ -878,7 +878,7 @@ PackagesInfo: |
  ```
  root@kali:~# wesside-ng -h
  
-   Wesside-ng 1.6  - (C) 2007, 2008, 2009 Andrea Bittau
+   Wesside-ng 1.7  - (C) 2007, 2008, 2009 Andrea Bittau
    https://www.aircrack-ng.org
  
    Usage: wesside-ng <options>
@@ -918,7 +918,7 @@ PackagesInfo: |
   with its -w option. The graph shows the relationships between the clients and
   the access points.
  
- **Installed size:** `105 KB`  
+ **Installed size:** `106 KB`  
  **How to install:** `sudo apt install airgraph-ng`  
  
  {{< spoiler "Dependencies:" >}}

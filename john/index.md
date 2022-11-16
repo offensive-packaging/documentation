@@ -3,8 +3,8 @@ Title: john
 Homepage: https://github.com/magnumripper/JohnTheRipper
 Repository: https://gitlab.com/kalilinux/packages/john
 Architectures: any all
-Version: 1.9.0-Jumbo-1+git20211102-0kali3
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-passwords kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web 
+Version: 1.9.0-Jumbo-1+git20211102-0kali5
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-passwords kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web 
 Icon: images/john-logo.svg
 PackagesInfo: |
  ### john
@@ -18,7 +18,7 @@ PackagesInfo: |
   Windows NT/2000/XP/2003 LM hashes, plus several more with contributed
   patches.
  
- **Installed size:** `77.32 MB`  
+ **Installed size:** `77.31 MB`  
  **How to install:** `sudo apt install john`  
  
  {{< spoiler "Dependencies:" >}}
@@ -58,7 +58,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# base64conv -h
- Created directory: /root/.john
  base64conv: invalid option -- 'h'
  Usage: base64conv [-l] [-i intype] [-o outtype] [-q] [-w] [-e] [-f flag] [data[data ...] | < stdin]
   - data must match input_type i.e. if hex, then data should be in hex
@@ -496,7 +495,7 @@ PackagesInfo: |
   This package contains architecture-independent character sets usable by
   john and architecture-independent scripts.
  
- **Installed size:** `61.08 MB`  
+ **Installed size:** `61.07 MB`  
  **How to install:** `sudo apt install john-data`  
  
  {{< spoiler "Dependencies:" >}}

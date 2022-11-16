@@ -31,7 +31,7 @@ PackagesInfo: |
    
   This package contains header files and static version of the library.
  
- **Installed size:** `2.62 MB`  
+ **Installed size:** `2.57 MB`  
  **How to install:** `sudo apt install libtsk-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -68,7 +68,7 @@ PackagesInfo: |
   functionality of the command line tools into an application that needs to
   analyze data from a disk image.
  
- **Installed size:** `1.16 MB`  
+ **Installed size:** `1.09 MB`  
  **How to install:** `sudo apt install libtsk19`  
  
  {{< spoiler "Dependencies:" >}}
@@ -324,7 +324,7 @@ PackagesInfo: |
  
  SleuthKit Version: 4.11.1
  AFFLIB Version:    3.7.19
- LIBEWF Version:    20140807
+ LIBEWF Version:    20140813
  ```
  
  - - -

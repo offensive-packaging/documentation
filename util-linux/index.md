@@ -3,8 +3,8 @@ Title: util-linux
 Homepage: https://www.kernel.org/pub/linux/utils/util-linux/
 Repository: https://salsa.debian.org/debian/util-linux
 Architectures: any all
-Version: 2.38-6
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
+Version: 2.38.1-1.1
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### bsdextrautils
@@ -13,7 +13,7 @@ PackagesInfo: |
   hd, hexdump, look, ul and write.
   Other BSD utilities are provided by bsdutils and calendar.
  
- **Installed size:** `394 KB`  
+ **Installed size:** `338 KB`  
  **How to install:** `sudo apt install bsdextrautils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -98,6 +98,7 @@ PackagesInfo: |
  
  ##### column
  
+ Spreadsheet::WriteExcel::Chart::A writer class for Excel Column charts.
  Columnate lists
  
  ```
@@ -272,6 +273,7 @@ PackagesInfo: |
  ##### write
  
  Send a message to another user
+ Write to a file descriptor
  
  ```
  root@kali:~# write -h
@@ -296,7 +298,7 @@ PackagesInfo: |
   system: logger, renice, script, scriptlive, scriptreplay and wall. The
   remaining standard BSD utilities are provided by bsdextrautils.
  
- **Installed size:** `407 KB`  
+ **Installed size:** `351 KB`  
  **How to install:** `sudo apt install bsdutils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -518,7 +520,7 @@ PackagesInfo: |
   You can also use eject to properly disconnect external mass-storage
   devices like digital cameras or portable music players.
  
- **Installed size:** `189 KB`  
+ **Installed size:** `133 KB`  
  **How to install:** `sudo apt install eject`  
  
  {{< spoiler "Dependencies:" >}}
@@ -568,6 +570,15 @@ PackagesInfo: |
  
  - - -
  
+ ### eject-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install eject-udeb`  
+ 
+ 
+ - - -
+ 
  ### fdisk
  
   This package contains the classic fdisk, sfdisk and cfdisk partitioning
@@ -581,7 +592,7 @@ PackagesInfo: |
   The cfdisk utilitity gives a more userfriendly curses based interface.
   The sfdisk utility is mostly for automation and scripting uses.
  
- **Installed size:** `535 KB`  
+ **Installed size:** `479 KB`  
  **How to install:** `sudo apt install fdisk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -754,6 +765,15 @@ PackagesInfo: |
  
  - - -
  
+ ### fdisk-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install fdisk-udeb`  
+ 
+ 
+ - - -
+ 
  ### libblkid-dev
  
   The blkid library allows system programs such as fsck and mount to
@@ -763,7 +783,7 @@ PackagesInfo: |
    
   This package contains the development environment for the blkid library.
  
- **Installed size:** `930 KB`  
+ **Installed size:** `874 KB`  
  **How to install:** `sudo apt install libblkid-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -782,12 +802,21 @@ PackagesInfo: |
   This allows system administrators to avoid specifying filesystems by
   hard-coded device names and use a logical naming system instead.
  
- **Installed size:** `454 KB`  
+ **Installed size:** `398 KB`  
  **How to install:** `sudo apt install libblkid1`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libblkid1-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libblkid1-udeb`  
  
  
  - - -
@@ -799,7 +828,7 @@ PackagesInfo: |
    
   This package contains the development environment for the fdisk library.
  
- **Installed size:** `133 KB`  
+ **Installed size:** `77 KB`  
  **How to install:** `sudo apt install libfdisk-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -817,7 +846,7 @@ PackagesInfo: |
   The libfdisk library is used for manipulating partition tables. It is
   the core of the fdisk, cfdisk, and sfdisk tools.
  
- **Installed size:** `585 KB`  
+ **Installed size:** `529 KB`  
  **How to install:** `sudo apt install libfdisk1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -829,13 +858,22 @@ PackagesInfo: |
  
  - - -
  
+ ### libfdisk1-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libfdisk1-udeb`  
+ 
+ 
+ - - -
+ 
  ### libmount-dev
  
   This device mounting library is used by mount and umount helpers.
    
   This package contains the development environment for the mount library.
  
- **Installed size:** `137 KB`  
+ **Installed size:** `81 KB`  
  **How to install:** `sudo apt install libmount-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -852,7 +890,7 @@ PackagesInfo: |
  
   This device mounting library is used by mount and umount helpers.
  
- **Installed size:** `510 KB`  
+ **Installed size:** `454 KB`  
  **How to install:** `sudo apt install libmount1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -864,13 +902,22 @@ PackagesInfo: |
  
  - - -
  
+ ### libmount1-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libmount1-udeb`  
+ 
+ 
+ - - -
+ 
  ### libsmartcols-dev
  
   This smart column output alignment library is used by fdisk utilities.
    
   This package contains the development environment for the mount library.
  
- **Installed size:** `117 KB`  
+ **Installed size:** `61 KB`  
  **How to install:** `sudo apt install libsmartcols-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -885,12 +932,21 @@ PackagesInfo: |
  
   This smart column output alignment library is used by fdisk utilities.
  
- **Installed size:** `345 KB`  
+ **Installed size:** `289 KB`  
  **How to install:** `sudo apt install libsmartcols1`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libsmartcols1-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libsmartcols1-udeb`  
  
  
  - - -
@@ -905,7 +961,7 @@ PackagesInfo: |
    
   See RFC 4122 for more information.
  
- **Installed size:** `134 KB`  
+ **Installed size:** `78 KB`  
  **How to install:** `sudo apt install libuuid1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -915,12 +971,21 @@ PackagesInfo: |
  
  - - -
  
+ ### libuuid1-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libuuid1-udeb`  
+ 
+ 
+ - - -
+ 
  ### mount
  
   This package provides the mount(8), umount(8), swapon(8),
   swapoff(8), and losetup(8) commands.
  
- **Installed size:** `450 KB`  
+ **Installed size:** `394 KB`  
  **How to install:** `sudo apt install mount`  
  
  {{< spoiler "Dependencies:" >}}
@@ -993,6 +1058,7 @@ PackagesInfo: |
  
  ##### mount
  
+ Mount filesystem
  Mount a filesystem
  
  ```
@@ -1070,6 +1136,7 @@ PackagesInfo: |
  
  ##### swapoff
  
+ Start/stop swapping to file/device
  Enable/disable devices and files for paging and swapping
  
  ```
@@ -1102,6 +1169,7 @@ PackagesInfo: |
  
  ##### swapon
  
+ Start/stop swapping to file/device
  Enable/disable devices and files for paging and swapping
  
  ```
@@ -1160,6 +1228,7 @@ PackagesInfo: |
  
  ##### umount
  
+ Unmount filesystem
  Unmount filesystems
  
  ```
@@ -1205,7 +1274,7 @@ PackagesInfo: |
   which is used to enable and disable wireless networking devices, typically
   WLAN, Bluetooth and mobile broadband.
  
- **Installed size:** `153 KB`  
+ **Installed size:** `97 KB`  
  **How to install:** `sudo apt install rfkill`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1264,7 +1333,7 @@ PackagesInfo: |
   messages, create new filesystems, view block device information,
   interface with real time clock, etc.
  
- **Installed size:** `4.88 MB`  
+ **Installed size:** `4.86 MB`  
  **How to install:** `sudo apt install util-linux`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1788,6 +1857,7 @@ PackagesInfo: |
  ##### fallocate
  
  Preallocate or deallocate space to a file
+ Manipulate file space
  
  ```
  root@kali:~# fallocate -h
@@ -1947,6 +2017,7 @@ PackagesInfo: |
  ##### flock
  
  Manage locks from shell scripts
+ Apply or remove an advisory lock on an open file
  
  ```
  root@kali:~# flock -h
@@ -2133,6 +2204,7 @@ PackagesInfo: |
  ##### getopt
  
  Parse command options (enhanced)
+ Parse command-line options
  
  ```
  root@kali:~# getopt -h
@@ -2240,6 +2312,7 @@ PackagesInfo: |
   -p, --ignore-mode          ignore changes of file mode
   -o, --ignore-owner         ignore owner changes
   -t, --ignore-time          ignore timestamps (when testing for equality)
+  -c, --content              compare only file contents, same as -pot
   -X, --respect-xattrs       respect extended attributes
       --reflink[=<when>]     create clone/CoW copies (auto, always, never)
       --skip-reflinks        skip already cloned files (enabled on --reflink)
@@ -2254,7 +2327,6 @@ PackagesInfo: |
   -S, --maximum-size <size>  maximum size for files.
   -b, --io-size <size>       I/O buffer size for file reading (speedup, using more RAM)
   -r, --cache-size <size>    memory limit for cached file content data
-  -c, --content              compare only file contents, same as -pot
  
   -h, --help                 display this help
   -V, --version              display version
@@ -3007,7 +3079,7 @@ PackagesInfo: |
            SHELL  login shell
          NOLOGIN  log in disabled by nologin(8) or pam_nologin(8)
         PWD-LOCK  password defined, but locked
-       PWD-EMPTY  password not required
+       PWD-EMPTY  password not defined
         PWD-DENY  login by password disabled
       PWD-METHOD  password encryption method
            GROUP  primary group name
@@ -3498,6 +3570,7 @@ PackagesInfo: |
  
  ##### pivot_root
  
+ Change the root mount
  Change the root filesystem
  
  ```
@@ -3520,6 +3593,8 @@ PackagesInfo: |
  ##### prlimit
  
  Get and set process resource limits
+ Get/set resource limits
+ Vlimit (3)           - get/set resource limits
  
  ```
  root@kali:~# prlimit -h
@@ -3588,7 +3663,7 @@ PackagesInfo: |
  
  Options:
   -m, --mapfile <mapfile>   (defaults: "/boot/System.map" and
-                                       "/boot/System.map-5.18.0-kali5-amd64")
+                                       "/boot/System.map-6.0.0-kali3-amd64")
   -p, --profile <pro-file>  (default:  "/proc/profile")
   -M, --multiplier <mult>   set the profiling multiplier to <mult>
   -i, --info                print only info about the sampling step
@@ -3603,6 +3678,35 @@ PackagesInfo: |
   -V, --version             display version
  
  For more details see readprofile(8).
+ ```
+ 
+ - - -
+ 
+ ##### rename.ul
+ 
+ Rename files
+ 
+ ```
+ root@kali:~# rename.ul -h
+ 
+ Usage:
+  rename.ul [options] <expression> <replacement> <file>...
+ 
+ Rename files.
+ 
+ Options:
+  -v, --verbose       explain what is being done
+  -s, --symlink       act on the target of symlinks
+  -n, --no-act        do not make any changes
+  -a, --all           replace all occurrences
+  -l, --last          replace only the last occurrence
+  -o, --no-overwrite  don't overwrite existing files
+  -i, --interactive   prompt before overwrite
+ 
+  -h, --help          display this help
+  -V, --version       display version
+ 
+ For more details see rename(1).
  ```
  
  - - -
@@ -3807,6 +3911,7 @@ PackagesInfo: |
  ##### setsid
  
  Run a program in a new session
+ Creates a session and sets the process group ID
  
  ```
  root@kali:~# setsid -h
@@ -4068,6 +4173,7 @@ PackagesInfo: |
  ##### unshare
  
  Run program in new namespaces
+ Disassociate parts of the process execution context
  
  ```
  root@kali:~# unshare -h
@@ -4359,7 +4465,7 @@ PackagesInfo: |
   Tools commonly found on systems where humans login interactively,
   or are needed with non-standard system configurations.
  
- **Installed size:** `417 KB`  
+ **Installed size:** `362 KB`  
  **How to install:** `sudo apt install util-linux-extra`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4401,8 +4507,8 @@ PackagesInfo: |
  
  ##### hwclock
  
- Time clocks utility
  Settings that affect the behaviour of the hwclock init script
+ Time clocks utility
  
  ```
  root@kali:~# hwclock -h
@@ -4561,12 +4667,21 @@ PackagesInfo: |
   They are needed when you want the programs in util-linux to print their
   messages in other languages than English.
  
- **Installed size:** `7.82 MB`  
+ **Installed size:** `7.83 MB`  
  **How to install:** `sudo apt install util-linux-locales`  
  
  {{< spoiler "Dependencies:" >}}
  * util-linux 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### util-linux-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install util-linux-udeb`  
  
  
  - - -
@@ -4578,7 +4693,7 @@ PackagesInfo: |
    
   This package contains the development environment for the uuid library.
  
- **Installed size:** `167 KB`  
+ **Installed size:** `112 KB`  
  **How to install:** `sudo apt install uuid-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4606,7 +4721,7 @@ PackagesInfo: |
   large numbers of threads trying to grab UUIDs running on different CPUs.
   It is used by libuuid as well as the uuidgen program.
  
- **Installed size:** `226 KB`  
+ **Installed size:** `171 KB`  
  **How to install:** `sudo apt install uuid-runtime`  
  
  {{< spoiler "Dependencies:" >}}

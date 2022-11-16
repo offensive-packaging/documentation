@@ -3,7 +3,7 @@ Title: pdf-parser
 Homepage: https://blog.didierstevens.com/programs/pdf-tools/
 Repository: https://gitlab.com/kalilinux/packages/pdf-parser
 Architectures: all
-Version: 0.7.6-0kali1
+Version: 0.7.7-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: images/pdf-parser-logo.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   fundamental elements used in the analyzed file. It will not
   render a PDF document.
  
- **Installed size:** `81 KB`  
+ **Installed size:** `83 KB`  
  **How to install:** `sudo apt install pdf-parser`  
  
  {{< spoiler "Dependencies:" >}}
@@ -26,7 +26,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# pdf-parser -h
- This program has not been tested with this version of Python (3.10.5)
+ This program has not been tested with this version of Python (3.10.8)
  Should you encounter problems, please use Python version 3.10.4
  Usage: pdf-parser [options] pdf-file|zip-file|url
  pdf-parser, use it to parse a PDF document

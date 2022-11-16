@@ -3,7 +3,7 @@ Title: gnuradio
 Homepage: https://www.gnuradio.org/
 Repository: https://salsa.debian.org/bottoms/pkg-gnuradio
 Architectures: any all
-Version: 3.10.3.0-2
+Version: 3.10.4.0-2
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -31,45 +31,45 @@ PackagesInfo: |
   creating signal flow graphs and generating flow-graph source code.
   Also included are a variety of tools and utility programs.
  
- **Installed size:** `20.58 MB`  
+ **Installed size:** `20.91 MB`  
  **How to install:** `sudo apt install gnuradio`  
  
  {{< spoiler "Dependencies:" >}}
  * gnome-terminal | x-terminal-emulator
  * libboost-program-options1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
  * libgmp10 
- * libgnuradio-analog3.10.3 
- * libgnuradio-audio3.10.3 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-channels3.10.3 
- * libgnuradio-digital3.10.3 
- * libgnuradio-dtv3.10.3 
- * libgnuradio-fec3.10.3 
- * libgnuradio-fft3.10.3 
- * libgnuradio-filter3.10.3 
- * libgnuradio-iio3.10.3 
- * libgnuradio-network3.10.3 
- * libgnuradio-pdu3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-qtgui3.10.3 
- * libgnuradio-runtime3.10.3 
- * libgnuradio-soapy3.10.3 
- * libgnuradio-trellis3.10.3 
- * libgnuradio-uhd3.10.3 
- * libgnuradio-video-sdl3.10.3 
- * libgnuradio-vocoder3.10.3 
- * libgnuradio-wavelet3.10.3 
- * libgnuradio-zeromq3.10.3 
+ * libgnuradio-analog3.10.4 
+ * libgnuradio-audio3.10.4 
+ * libgnuradio-blocks3.10.4 
+ * libgnuradio-channels3.10.4 
+ * libgnuradio-digital3.10.4 
+ * libgnuradio-dtv3.10.4 
+ * libgnuradio-fec3.10.4 
+ * libgnuradio-fft3.10.4 
+ * libgnuradio-filter3.10.4 
+ * libgnuradio-iio3.10.4 
+ * libgnuradio-network3.10.4 
+ * libgnuradio-pdu3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-qtgui3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libgnuradio-soapy3.10.4 
+ * libgnuradio-trellis3.10.4 
+ * libgnuradio-uhd3.10.4 
+ * libgnuradio-video-sdl3.10.4 
+ * libgnuradio-vocoder3.10.4 
+ * libgnuradio-wavelet3.10.4 
+ * libgnuradio-zeromq3.10.4 
  * libjs-mathjax
  * libqt5core5a 
  * libqt5widgets5 
  * libsoapysdr0.8 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
- * libuhd4.2.0 
+ * libuhd4.3.0 
  * libvolk2-bin
  * libvolk2.5 
  * python3
@@ -122,7 +122,7 @@ PackagesInfo: |
         tags_demo(1)      uhd_rx_cfile(1)     uhd_rx_nogui(1)     uhd_siggen(1)
         uhd_siggen_gui(1)
  
- DIAL_TONE 3.10.3.0                2022-07-23                      DIAL_TONE(1)
+ DIAL_TONE 3.10.4.0                2022-09-29                      DIAL_TONE(1)
  ```
  
  - - -
@@ -148,7 +148,7 @@ PackagesInfo: |
  SEE ALSO
         http://gnuradio.squarespace.com/examples/tag/qt
  
- display_qt 3.10.3.0               2022-07-23                     DISPLAY_QT(1)
+ display_qt 3.10.4.0               2022-09-29                     DISPLAY_QT(1)
  ```
  
  - - -
@@ -158,40 +158,20 @@ PackagesInfo: |
  GNU Radio Companion (GRC) is a graphical tool for creating GNU Radio signal flowgraphs.
  
  ```
- root@kali:~# man gnuradio-companion
- GNURADIO-COMPANION(1)            User Commands           GNURADIO-COMPANION(1)
+ root@kali:~# gnuradio-companion -h
+ usage: gnuradio-companion [-h] [--log {debug,info,warning,error,critical}]
+                           [flow_graphs ...]
  
- NAME
-        gnuradio-companion  - GNU Radio Companion (GRC) is a graphical tool for
-        creating GNU Radio signal flowgraphs.
+ GNU Radio Companion 3.10.4.0 This program is part of GNU Radio GRC comes with
+ ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to
+ redistribute it.
  
- SYNOPSIS
-        gnuradio-companion [options] [flowgraphs]
+ positional arguments:
+   flow_graphs
  
- DESCRIPTION
-        GNU Radio is a free & open-source  software  development  toolkit  that
-        provides  signal processing blocks to implement software-defined radios
-        and signal-processing systems. The GNU  Radio  applications  themselves
-        are  generally known as "flowgraphs", which are a series of signal pro-
-        cessing blocks connected together, thus describing a data flow.
- 
-        gnuradio-companion is effectively a Python code-generation tool. When a
-        flowgraph  is  "compiled" in GRC, it generates Python code that creates
-        the desired GUI windows and  widgets,  and  creates  and  connects  the
-        blocks in the flowgraph.
- 
- OPTIONS
-        flowgraphs Invoke the program with one or more existing flowgraphs.
- 
-        -h, --help
-               show a help message and exit.
- 
-        --log  defines the level of logging output.
- 
- SEE ALSO
-        https://wiki.gnuradio.org/index.php/GNURadioCompanion
- 
- GNU Radio Companion 3.10.3.0      2022-07-23             GNURADIO-COMPANION(1)
+ options:
+   -h, --help            show this help message and exit
+   --log {debug,info,warning,error,critical}
  ```
  
  - - -
@@ -227,46 +207,17 @@ PackagesInfo: |
  Gnuradio control port gui
  
  ```
- root@kali:~# man gr-ctrlport-monitor
- GR-CTRLPORT-MONITOR(1)           User Commands          GR-CTRLPORT-MONITOR(1)
+ root@kali:~# gr-ctrlport-monitor -h
+ usage: gr-ctrlport-monitor [-h] [host] port
  
- NAME
-        gr-ctrlport-monitor - gnuradio control port gui
+ GNU Radio Control Port Monitor
  
- SYNOPSIS
-        gr-ctrlport-monitor [options]
+ positional arguments:
+   host        host name or IP
+   port        port
  
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        -H HOST, --host=HOST
-               Hostname of ControlPort server.
- 
-        -p PORT, --port=PORT
-               Port number of host's ControlPort endpoint.
- 
-        -i INTERFACES, --interfaces=INTERFACES
-               Interfaces to use. [default=['lo']]
- 
-        -P PROTOCOL, --protocol=PROTOCOL
-               Type of protocol to use (usually tcp). [default=tcp]
- 
-        -a APP, --app=APP
-               Name of application [default=gnuradio]
- 
-        gr-ctrlport-monitor: error: no such option: --version
- 
- SEE ALSO
-        The  full  documentation  for Usage: is maintained as a Texinfo manual.
-        If the info and Usage: programs are properly installed  at  your  site,
-        the command
- 
-               info Usage:
- 
-        should give you access to the complete manual.
- 
- GNU Radio Companion 3.10.3.0      2022-07-23            GR-CTRLPORT-MONITOR(1)
+ options:
+   -h, --help  show this help message and exit
  ```
  
  - - -
@@ -276,46 +227,17 @@ PackagesInfo: |
  Gnuradio control port gui
  
  ```
- root@kali:~# man gr-perf-monitorx
- GR-CTRLPORT-MONITOR(1)           User Commands          GR-CTRLPORT-MONITOR(1)
+ root@kali:~# gr-perf-monitorx -h
+ usage: gr-perf-monitorx [-h] [host] port
  
- NAME
-        gr-ctrlport-monitor - gnuradio control port gui
+ GNU Radio Performance Monitor
  
- SYNOPSIS
-        gr-ctrlport-monitor [options]
+ positional arguments:
+   host        host name or IP
+   port        port
  
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        -H HOST, --host=HOST
-               Hostname of ControlPort server.
- 
-        -p PORT, --port=PORT
-               Port number of host's ControlPort endpoint.
- 
-        -i INTERFACES, --interfaces=INTERFACES
-               Interfaces to use. [default=['lo']]
- 
-        -P PROTOCOL, --protocol=PROTOCOL
-               Type of protocol to use (usually tcp). [default=tcp]
- 
-        -a APP, --app=APP
-               Name of application [default=gnuradio]
- 
-        gr-ctrlport-monitor: error: no such option: --version
- 
- SEE ALSO
-        The  full  documentation  for Usage: is maintained as a Texinfo manual.
-        If the info and Usage: programs are properly installed  at  your  site,
-        the command
- 
-               info Usage:
- 
-        should give you access to the complete manual.
- 
- GNU Radio Companion 3.10.3.0      2022-07-23            GR-CTRLPORT-MONITOR(1)
+ options:
+   -h, --help  show this help message and exit
  ```
  
  - - -
@@ -325,23 +247,11 @@ PackagesInfo: |
  GUI for creating filters for GNU Radio
  
  ```
- root@kali:~# man gr_filter_design
- GR_FILTER_DESIGN(1)              User Commands             GR_FILTER_DESIGN(1)
+ root@kali:~# gr_filter_design -h
+ Usage: gr_filter_design: [options] (input_filename)
  
- NAME
-        gr_filter_design - GUI for creating filters for GNU Radio
- 
- SYNOPSIS
-        gr_filter_design: [options] (input_filename)
- 
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
- SEE ALSO
-        gnuradio-companion(1)
- 
- gr_filter_design 3.10.3.0         2022-07-23               GR_FILTER_DESIGN(1)
+ Options:
+   -h, --help  show this help message and exit
  ```
  
  - - -
@@ -351,27 +261,27 @@ PackagesInfo: |
  The swiss army knife of module editing
  
  ```
- root@kali:~# man gr_modtool
- GNURADIO(1)                      User Commands                     GNURADIO(1)
+ root@kali:~# gr_modtool --help
+ Usage: gr_modtool [OPTIONS] COMMAND [ARGS]...
  
- NAME
-        gr-modtool - The swiss army knife of module editing
+   A tool for editing GNU Radio out-of-tree modules.
  
- DESCRIPTION
-        When  developing a module, there's a lot of boring, monotonous work in-
-        volved: boilerplate code, makefile editing etc. gr-modtool is a  script
-        which aims to help with all these things by automatically editing make-
-        files, using templates and doing as much work as possible for  the  de-
-        veloper, such that you can jump straight into the DSP coding.
+ Options:
+   --help  Show this message and exit.
  
-        Note  that gr-modtool makes a lot of assumptions on what the code looks
-        like. The more your module is custom and has specific changes, the less
-        useful gr-modtool becomes.
+ Commands:
+   add       Adds a block to the out-of-tree module.
+   bind      Generate Python bindings for GR block
+   disable   Disable selected block in module.
+   info      Return information about a given module
+   makeyaml  Generate YAML files for GRC block bindings.
+   newmod    Create new empty module, use add to add blocks.
+   rename    Rename a block inside a module.
+   rm        Remove a block from a module.
+   update    Update the grc bindings for a block
  
- SEE ALSO
-        https://wiki.gnuradio.org/index.php/OutOfTreeModules
- 
- gr_modtool 3.10.3.0               2022-07-23                       GNURADIO(1)
+   Manipulate with GNU Radio modules source code tree. Call it without options
+   to run specified command interactively
  ```
  
  - - -
@@ -578,7 +488,7 @@ PackagesInfo: |
         gr_plot_float(1)    gr_plot_int(1)    gr_plot_iq(1)    gr_plot_psd_c(1)
         gr_plot_psd_f(1)  gr_plot_qt(1)  gr_plot_short(1)
  
- gr_plot_qt 3.10.3.0               2022-07-23                     GR_PLOT_QT(1)
+ gr_plot_qt 3.10.4.0               2022-09-29                     GR_PLOT_QT(1)
  ```
  
  - - -
@@ -588,28 +498,17 @@ PackagesInfo: |
  A Gnu Radio Utility
  
  ```
- root@kali:~# man gr_read_file_metadata
- GR_READ_FILE_METADATA(1)         User Commands        GR_READ_FILE_METADATA(1)
+ root@kali:~# gr_read_file_metadata -h
+ usage: gr_read_file_metadata [-h] [-D] FILE
  
- NAME
-        gr_read_file_metadata - a Gnu Radio Utility
+ Read in a GNU Radio file with meta data, extracts the header and prints it.
  
- DESCRIPTION
-        Read in a GNU Radio file with meta data, extracts the header and prints
-        it.
+ positional arguments:
+   FILE            Input file
  
-        Metadata file source and sink blocks (Tom Rondeau)
- 
-        Two new blocks implement enhanced file source and sink blocks that  in-
-        corporate  metadata  passed using the stream tags feature in GNU Radio.
-        It is now possible to store things like frequency and sample rate  into
-        capture  files,  or  whatever key/value pairs you tag onto data streams
-        inside a flowgraph.
- 
- SEE ALSO
-        http://www.trondeau.com/home/2012/12/15/metadata-file-format.html
- 
- gr_read_file_metadata 3.10.3.0    2022-07-23          GR_READ_FILE_METADATA(1)
+ options:
+   -h, --help      show this help message and exit
+   -D, --detached  Used if header is detached.
  ```
  
  - - -
@@ -619,22 +518,19 @@ PackagesInfo: |
  Gnu Radio Companion Compiler
  
  ```
- root@kali:~# man grcc
- GRCC(1)                          User Commands                         GRCC(1)
+ root@kali:~# grcc -h
+ usage: grcc [-h] [-o DIR] [-u] [-r] GRC_FILE [GRC_FILE ...]
  
- NAME
-        grcc - Gnu Radio Companion Compiler
+ Compile a GRC file (.grc) into a GNU Radio Python program and run it.
  
- DESCRIPTION
-        Just compile a gnuradio companion flowgraph without invoking the gui.
+ positional arguments:
+   GRC_FILE              .grc file to compile
  
-        Given  an input GRC file and an output directory, create a runnable ap-
-        plication in the output directory.
- 
- SEE ALSO
-        gnuradio-companion(1)
- 
- grcc 3.10.3.0                     2022-07-23                           GRCC(1)
+ options:
+   -h, --help            show this help message and exit
+   -o DIR, --output DIR  Output directory for compiled program [default=.]
+   -u, --user-lib-dir    Output to default hier_block library (overwrites -o)
+   -r, --run             Run the program after compiling [default=False]
  ```
  
  - - -
@@ -644,44 +540,20 @@ PackagesInfo: |
  Gnu Radio Polar Configurator
  
  ```
- root@kali:~# man polar_channel_construction
- POLAR_CHANNEL_CONSTRUCTION(1)    User Commands   POLAR_CHANNEL_CONSTRUCTION(1)
+ root@kali:~# polar_channel_construction -h
+ POLAR code channel constructor commandline tool
+ usage: polar_channel_construction [-h] [-c {BEC,AWGN}] [-b BLOCK_SIZE]
+                                   [-s DESIGN_SNR] [-k MU]
  
- NAME
-        polar_channel_construction - Gnu Radio Polar Configurator
- 
- DESCRIPTION
-        POLAR code channel construction.
- 
- Channel Construction
-        polar_channel_construction  exposes  functionality  to  calculate polar
-        channels for different sizes.   It  may  be  used  to  calculate  Bhat-
-        tacharyya  parameters once and store them in a file in '~/.gnuradio/po-
-        lar'.  Frozen bit positions are recalculated on every run.
- 
-        polar_channel_construction provides a command-line  interface  for  all
-        the  channel construction code.  These features are also accessible via
-        the Polar Configurator block in GRC.
- 
- BEC
-        BEC channel construction can be calculated explicitly because  the  BEC
-        represents a special case which simplifies the task.  All functionality
-        regarding this channel is located in 'channel_construction_bec'.
- 
- AWGN
-        In general channel construction for polar codes is a very time  consum-
-        ing  task.  Tal and Vardy proposed a quantization algorithm for channel
-        construction which makes it feasible.  The corresponding implementation
-        is  located  in  'channel_construction_awgn'.   It should be noted that
-        this more of a baseline implementation which  lacks  all  the  advanced
-        features  the  original  implementation provides.  However, simulations
-        show that BEC channel construction with a design-SNR  of  0.0dB  yields
-        similar performance and should be preferred here.
- 
- SEE ALSO
-        gnuradio-companion(1)
- 
- polar_channel_construction 3.10.3.2022-07-23     POLAR_CHANNEL_CONSTRUCTION(1)
+ options:
+   -h, --help            show this help message and exit
+   -c {BEC,AWGN}, --channel {BEC,AWGN}
+                         specify channel, currently BEC or AWGN (default='BEC')
+   -b BLOCK_SIZE, --blocksize BLOCK_SIZE
+                         specify block size of polar code (default=16)
+   -s DESIGN_SNR, --design-snr DESIGN_SNR
+                         specify design SNR of polar code (default=0.0)
+   -k MU, --mu MU        specify block size of polar code (default=2)
  ```
  
  - - -
@@ -714,21 +586,74 @@ PackagesInfo: |
  Display spectrum from UHD receiver
  
  ```
- root@kali:~# man uhd_fft
- UHD_FFT(1)                       User Commands                      UHD_FFT(1)
+ root@kali:~# uhd_fft -h
+ usage: uhd_fft [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
+                [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
+                [-c CHANNELS] [--lo-export LO_EXPORT] [--lo-source LO_SOURCE]
+                [--otw-format {sc16,sc12,sc8}] [--stream-args STREAM_ARGS] [-v]
+                [--show-async-msg] [--sync {default,pps,auto}]
+                [--clock-source CLOCK_SOURCE] [--time-source TIME_SOURCE]
+                [--fft-size FFT_SIZE] [--fft-average {off,low,medium,high}]
+                [--avg-alpha AVG_ALPHA] [--update-rate UPDATE_RATE]
+                [--phase-relations]
  
- NAME
-        uhd_fft - Display spectrum from UHD receiver
+ UHD FFT
  
- DESCRIPTION
-        Show received signal spectrum
+ options:
+   -h, --help            show this help message and exit
  
-        Unable to access the X Display, is $DISPLAY set properly?
+ USRP Arguments:
+   -a ARGS, --args ARGS  UHD device address args
+   --spec SPEC           Subdevice(s) of UHD device where appropriate. Use a
+                         comma-separated list to set different boards to
+                         different specs.
+   -A ANTENNA, --antenna ANTENNA
+                         Select Rx antenna(s) where appropriate
+   -s SAMP_RATE, --samp-rate SAMP_RATE
+                         Sample rate
+   -g GAIN, --gain GAIN  Gain (default is midpoint)
+   -p POWER, --power POWER
+                         (Reference) power level (in dBm). Not supported by all
+                         devices (see UHD manual). Will fail if not supported.
+                         Precludes --gain. Behaviour may differ between
+                         applications.
+   -f FREQ, --freq FREQ  Set carrier frequency to FREQ
+   --lo-offset LO_OFFSET
+                         Set daughterboard LO offset to OFFSET [default=hw
+                         default]
+   -c CHANNELS, --channels CHANNELS
+                         Select Rx Channels
+   --lo-export LO_EXPORT
+                         Set TwinRX LO export {None, True, False} for each
+                         channel with a comma-separated list. None skips a
+                         channel.
+   --lo-source LO_SOURCE
+                         Set TwinRX LO source {None, internal, companion,
+                         external} for each channel with a comma-separated
+                         list. None skips this channel.
+   --otw-format {sc16,sc12,sc8}
+                         Choose over-the-wire data format
+   --stream-args STREAM_ARGS
+                         Set additional stream arguments
+   -v, --verbose         Use verbose console output
+   --show-async-msg      Show asynchronous message notifications from UHD
+   --sync {default,pps,auto}
+                         Set to 'pps' to sync devices to PPS
+   --clock-source CLOCK_SOURCE
+                         Set the clock source; typically 'internal', 'external'
+                         or 'gpsdo'
+   --time-source TIME_SOURCE
+                         Set the time source
  
- SEE ALSO
-        uhd_rx_cfile(1) uhd_rx_nogui(1) uhd_siggen(1) uhd_siggen_gui(1)
- 
- uhd_fft 3.10.3.0                  2022-07-23                        UHD_FFT(1)
+ UHD FFT Arguments:
+   --fft-size FFT_SIZE   Set number of FFT bins
+   --fft-average {off,low,medium,high}
+                         Set FFT averaging
+   --avg-alpha AVG_ALPHA
+                         Specify FFT average alpha (overrides --fft-average)
+   --update-rate UPDATE_RATE
+                         Set GUI widget update period in seconds
+   --phase-relations     Plot relative phases between multiple channels
  ```
  
  - - -
@@ -738,56 +663,40 @@ PackagesInfo: |
  Save UHD received data
  
  ```
- root@kali:~# man uhd_rx_cfile
- UHD_RX_CFILE(1)                  User Commands                 UHD_RX_CFILE(1)
+ root@kali:~# uhd_rx_cfile -h
+ Usage: uhd_rx_cfile: [options] output_filename
  
- NAME
-        uhd_rx_cfile - Save UHD received data
- 
- SYNOPSIS
-        uhd_rx_cfile: [options] output_filename
- 
- DESCRIPTION
-        Save I&Q data to a complex file for later use.
- 
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        -a ARGS, --args=ARGS
-               UHD device address args , [default=]
- 
-        --spec=SPEC
-               Subdevice of UHD device where appropriate
- 
-        -A ANTENNA, --antenna=ANTENNA
-               select Rx Antenna where appropriate
- 
-        --samp-rate=SAMP_RATE
-               set sample rate (bandwidth) [default=1000000.0]
- 
-        -f FREQ, --freq=FREQ
-               set frequency to FREQ
- 
-        -g GAIN, --gain=GAIN
-               set gain in dB (default is midpoint)
- 
-        -s, --output-shorts
-               output interleaved shorts instead of complex floats
- 
-        -N NSAMPLES, --nsamples=NSAMPLES
-               number of samples to collect [default=+inf]
- 
-        -v, --verbose
-               verbose output
- 
-        --lo-offset=LO_OFFSET
-               set daughterboard LO offset to OFFSET [default=hw default]
- 
- SEE ALSO
-        uhd_fft(1) uhd_rx_nogui(1) uhd_siggen(1) uhd_siggen_gui(1)
- 
- uhd_rx_cfile 3.10.3.0             2022-07-23                   UHD_RX_CFILE(1)
+ Options:
+   -h, --help            show this help message and exit
+   -a ARGS, --args=ARGS  UHD device address args , [default=]
+   --spec=SPEC           Subdevice of UHD device where appropriate
+   -c CHANNELS, --channels=CHANNELS
+                         Select receive channels
+   -A ANTENNA, --antenna=ANTENNA
+                         Select Rx Antenna(s) where appropriate. Use a comma-
+                         delimited list if different channels have different
+                         antenna ports.
+   -r SAMP_RATE, --samp-rate=SAMP_RATE
+                         Set sample rate (bandwidth) [default=1000000.0]
+   -f FREQ, --freq=FREQ  Set frequency to FREQ
+   --lo-offset=LO_OFFSET
+                         Set daughterboard LO offset to OFFSET [default=hw
+                         default]
+   -g GAIN, --gain=GAIN  Set gain in dB (default is midpoint)
+   --normalized-gain     Specify gain as normalized value (in [0, 1])
+   -m, --metafile        output metadata to file [default=False]
+   -s, --output-shorts   Output interleaved shorts instead of complex floats
+   -N NSAMPLES, --nsamples=NSAMPLES
+                         Number of samples to collect [default=+inf]
+   -v, --verbose         verbose output
+   --wire-format=WIRE_FORMAT
+                         Set wire format from USRP [default=sc16
+   --stream-args=STREAM_ARGS
+                         Set additional stream arguments
+   --show-async-msg      Show asynchronous message notifications from UHD
+                         [default=False]
+   --sync=SYNC           Set to 'pps' to sync devices to PPS instead of
+                         internal.
  ```
  
  - - -
@@ -797,60 +706,34 @@ PackagesInfo: |
  GNU Radio receiver
  
  ```
- root@kali:~# man uhd_rx_nogui
- UHD_RX_NOGUI(1)                  User Commands                 UHD_RX_NOGUI(1)
+ root@kali:~# uhd_rx_nogui -h
+ usage: uhd_rx_nogui [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-f Hz] [-c Hz]
+                     [-g dB] [-m TYPE] [-o RATE] [-r dB] [-p FREQ]
+                     [-O AUDIO_OUTPUT] [--show-async-msg]
  
- NAME
-        uhd_rx_nogui - GNU Radio receiver
- 
- SYNOPSIS
-        uhd_rx_nogui.py [options]
- 
- DESCRIPTION
-        Command line GNU Radio receiver that takes signal from a UHD peripheral
-        receiver and sends demodulated audio to the sound device.
- 
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        -a ARGS, --args=ARGS
-               UHD device address args , [default=]
- 
-        --spec=SPEC
-               Subdevice of UHD device where appropriate
- 
-        -A ANTENNA, --antenna=ANTENNA
-               select Rx Antenna where appropriate [default=none]
- 
-        -f Hz, --frequency=Hz
-               set receive frequency to Hz [default=none]
- 
-        -c Hz, --calibration=Hz
-               set frequency offset to Hz [default=0.0]
- 
-        -g dB, --gain=dB
-               set RF gain [default is midpoint]
- 
-        -m TYPE, --modulation=TYPE
-               set modulation type (AM,FM) [default=none]
- 
-        -o RATE, --output-rate=RATE
-               set audio output rate to RATE [default=32000]
- 
-        -r dB, --rf-squelch=dB
-               set RF squelch to dB [default=-50.0]
- 
-        -p FREQ, --ctcss=FREQ
-               set CTCSS squelch to FREQ [default=none]
- 
-        -O AUDIO_OUTPUT, --audio-output=AUDIO_OUTPUT
-               pcm device name.  E.g., hw:0,0 or surround51 or /dev/dsp
- 
- SEE ALSO
-        uhd_fft(1) uhd_rx_cfile(1) uhd_siggen(1) uhd_siggen_gui(1)
- 
- uhd_rx_nogui 3.10.3.0             2022-07-23                   UHD_RX_NOGUI(1)
+ options:
+   -h, --help            show this help message and exit
+   -a ARGS, --args ARGS  UHD device address args
+   --spec SPEC           Subdevice of UHD device where appropriate
+   -A ANTENNA, --antenna ANTENNA
+                         select Rx Antenna where appropriate
+   -f Hz, --frequency Hz
+                         set receive frequency to Hz
+   -c Hz, --calibration Hz
+                         set frequency offset to Hz
+   -g dB, --gain dB      set RF gain [default is midpoint]
+   -m TYPE, --modulation TYPE
+                         set modulation type (AM,FM,WFM)
+   -o RATE, --output-rate RATE
+                         set audio output rate to RATE
+   -r dB, --rf-squelch dB
+                         set RF squelch to dB [default=-50.0]
+   -p FREQ, --ctcss FREQ
+                         set CTCSS squelch to FREQ
+   -O AUDIO_OUTPUT, --audio-output AUDIO_OUTPUT
+                         pcm device name. E.g., hw:0,0 or surround51 or
+                         /dev/dsp
+   --show-async-msg      Show asynchronous message notifications from UHD
  ```
  
  - - -
@@ -860,76 +743,81 @@ PackagesInfo: |
  Signal Generator using UHD hardware
  
  ```
- root@kali:~# man uhd_siggen
- UHD_SIGGEN(1)                    User Commands                   UHD_SIGGEN(1)
+ root@kali:~# uhd_siggen -h
+ usage: uhd_siggen [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
+                   [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
+                   [-c CHANNELS] [--lo-export LO_EXPORT]
+                   [--lo-source LO_SOURCE] [--otw-format {sc16,sc12,sc8}]
+                   [--stream-args STREAM_ARGS] [-v] [--show-async-msg]
+                   [--sync {default,pps,auto}] [--clock-source CLOCK_SOURCE]
+                   [--time-source TIME_SOURCE] [-m AMPL] [-x WAVEFORM_FREQ]
+                   [-y WAVEFORM2_FREQ] [--sine] [--const] [--offset OFFSET]
+                   [--gaussian] [--uniform] [--2tone] [--sweep]
  
- NAME
-        uhd_siggen - Signal Generator using UHD hardware
+ USRP Signal Generator.
  
- SYNOPSIS
-        uhd_siggen: [options]
+ options:
+   -h, --help            show this help message and exit
  
- DESCRIPTION
-        Command-line signal generator application.
+ USRP Arguments:
+   -a ARGS, --args ARGS  UHD device address args
+   --spec SPEC           Subdevice(s) of UHD device where appropriate. Use a
+                         comma-separated list to set different boards to
+                         different specs.
+   -A ANTENNA, --antenna ANTENNA
+                         Select Tx antenna(s) where appropriate
+   -s SAMP_RATE, --samp-rate SAMP_RATE
+                         Sample rate
+   -g GAIN, --gain GAIN  Gain (default is midpoint)
+   -p POWER, --power POWER
+                         (Reference) power level (in dBm). Not supported by all
+                         devices (see UHD manual). Will fail if not supported.
+                         Precludes --gain. Behaviour may differ between
+                         applications.
+   -f FREQ, --freq FREQ  Set carrier frequency to FREQ
+   --lo-offset LO_OFFSET
+                         Set daughterboard LO offset to OFFSET [default=hw
+                         default]
+   -c CHANNELS, --channels CHANNELS
+                         Select Tx Channels
+   --lo-export LO_EXPORT
+                         Set TwinRX LO export {None, True, False} for each
+                         channel with a comma-separated list. None skips a
+                         channel.
+   --lo-source LO_SOURCE
+                         Set TwinRX LO source {None, internal, companion,
+                         external} for each channel with a comma-separated
+                         list. None skips this channel.
+   --otw-format {sc16,sc12,sc8}
+                         Choose over-the-wire data format
+   --stream-args STREAM_ARGS
+                         Set additional stream arguments
+   -v, --verbose         Use verbose console output
+   --show-async-msg      Show asynchronous message notifications from UHD
+   --sync {default,pps,auto}
+                         Set to 'pps' to sync devices to PPS
+   --clock-source CLOCK_SOURCE
+                         Set the clock source; typically 'internal', 'external'
+                         or 'gpsdo'
+   --time-source TIME_SOURCE
+                         Set the time source
  
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        -a ARGS, --args=ARGS
-               UHD device address args , [default=]
- 
-        --spec=SPEC
-               Subdevice of UHD device where appropriate
- 
-        -A ANTENNA, --antenna=ANTENNA
-               select Rx Antenna where appropriate
- 
-        -s SAMP_RATE, --samp-rate=SAMP_RATE
-               set sample rate (bandwidth) [default=1000000.0]
- 
-        -g GAIN, --gain=GAIN
-               set gain in dB (default is midpoint)
- 
-        -f FREQ, --tx-freq=FREQ
-               Set carrier frequency to FREQ [default=mid-point]
- 
-        -x WAVEFORM_FREQ, --waveform-freq=WAVEFORM_FREQ
-               Set baseband waveform frequency to FREQ [default=0]
- 
-        -y WAVEFORM2_FREQ, --waveform2-freq=WAVEFORM2_FREQ
-               Set 2nd waveform frequency to FREQ [default=none]
- 
-        --sine Generate a carrier modulated by a complex sine wave
- 
-        --const
-               Generate a constant carrier
- 
-        --offset=OFFSET
-               Set waveform phase offset to OFFSET [default=0]
- 
-        --gaussian
-               Generate Gaussian random output
- 
-        --uniform
-               Generate Uniform random output
- 
-        --2tone
-               Generate Two Tone signal for IMD testing
- 
-        --sweep
-               Generate a swept sine wave
- 
-        --amplitude=AMPL
-               Set output amplitude to AMPL (0.0-1.0) [default=0.15]
- 
-        -v, --verbose
-               Use verbose console output [default=False]
- 
- SEE ALSO
-        uhd_siggen_gui(1)
- 
- uhd_siggen 3.10.3.0               2022-07-23                     UHD_SIGGEN(1)
+ Siggen Arguments:
+   -m AMPL, --amplitude AMPL
+                         Set output amplitude to AMPL (0.0-1.0). Note that if
+                         --power is given, UHD will attempt to match the output
+                         power regardless of the amplitude.
+   -x WAVEFORM_FREQ, --waveform-freq WAVEFORM_FREQ
+                         Set baseband waveform frequency to FREQ
+   -y WAVEFORM2_FREQ, --waveform2-freq WAVEFORM2_FREQ
+                         Set 2nd waveform frequency to FREQ
+   --sine                Generate a carrier modulated by a complex sine wave
+   --const               Generate a constant carrier
+   --offset OFFSET       Set waveform phase offset to OFFSET
+   --gaussian            Generate Gaussian random output
+   --uniform             Generate Uniform random output
+   --2tone               Generate Two Tone signal for IMD testing
+   --sweep               Generate a swept sine wave
  ```
  
  - - -
@@ -939,76 +827,85 @@ PackagesInfo: |
  GNU Radio signal generator using UHD hardware
  
  ```
- root@kali:~# man uhd_siggen_gui
- UHD_SIGGEN_GUI(1)                User Commands               UHD_SIGGEN_GUI(1)
+ root@kali:~# uhd_siggen_gui -h
+ usage: uhd_siggen_gui [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
+                       [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
+                       [-c CHANNELS] [--lo-export LO_EXPORT]
+                       [--lo-source LO_SOURCE] [--otw-format {sc16,sc12,sc8}]
+                       [--stream-args STREAM_ARGS] [-v] [--show-async-msg]
+                       [--sync {default,pps,auto}]
+                       [--clock-source CLOCK_SOURCE]
+                       [--time-source TIME_SOURCE] [-m AMPL] [-x WAVEFORM_FREQ]
+                       [-y WAVEFORM2_FREQ] [--sine] [--const] [--offset OFFSET]
+                       [--gaussian] [--uniform] [--2tone] [--sweep] [-q]
  
- NAME
-        uhd_siggen_gui - GNU Radio signal generator using UHD hardware
+ USRP Signal Generator.
  
- SYNOPSIS
-        uhd_siggen_gui: [options]
+ options:
+   -h, --help            show this help message and exit
  
- DESCRIPTION
-        GUI to allow UHD supported hardware to be a signal generator.
+ USRP Arguments:
+   -a ARGS, --args ARGS  UHD device address args
+   --spec SPEC           Subdevice(s) of UHD device where appropriate. Use a
+                         comma-separated list to set different boards to
+                         different specs.
+   -A ANTENNA, --antenna ANTENNA
+                         Select Tx antenna(s) where appropriate
+   -s SAMP_RATE, --samp-rate SAMP_RATE
+                         Sample rate
+   -g GAIN, --gain GAIN  Gain (default is midpoint)
+   -p POWER, --power POWER
+                         (Reference) power level (in dBm). Not supported by all
+                         devices (see UHD manual). Will fail if not supported.
+                         Precludes --gain. Behaviour may differ between
+                         applications.
+   -f FREQ, --freq FREQ  Set carrier frequency to FREQ
+   --lo-offset LO_OFFSET
+                         Set daughterboard LO offset to OFFSET [default=hw
+                         default]
+   -c CHANNELS, --channels CHANNELS
+                         Select Tx Channels
+   --lo-export LO_EXPORT
+                         Set TwinRX LO export {None, True, False} for each
+                         channel with a comma-separated list. None skips a
+                         channel.
+   --lo-source LO_SOURCE
+                         Set TwinRX LO source {None, internal, companion,
+                         external} for each channel with a comma-separated
+                         list. None skips this channel.
+   --otw-format {sc16,sc12,sc8}
+                         Choose over-the-wire data format
+   --stream-args STREAM_ARGS
+                         Set additional stream arguments
+   -v, --verbose         Use verbose console output
+   --show-async-msg      Show asynchronous message notifications from UHD
+   --sync {default,pps,auto}
+                         Set to 'pps' to sync devices to PPS
+   --clock-source CLOCK_SOURCE
+                         Set the clock source; typically 'internal', 'external'
+                         or 'gpsdo'
+   --time-source TIME_SOURCE
+                         Set the time source
  
- OPTIONS
-        -h, --help
-               show this help message and exit
+ Siggen Arguments:
+   -m AMPL, --amplitude AMPL
+                         Set output amplitude to AMPL (0.0-1.0). Note that if
+                         --power is given, UHD will attempt to match the output
+                         power regardless of the amplitude.
+   -x WAVEFORM_FREQ, --waveform-freq WAVEFORM_FREQ
+                         Set baseband waveform frequency to FREQ
+   -y WAVEFORM2_FREQ, --waveform2-freq WAVEFORM2_FREQ
+                         Set 2nd waveform frequency to FREQ
+   --sine                Generate a carrier modulated by a complex sine wave
+   --const               Generate a constant carrier
+   --offset OFFSET       Set waveform phase offset to OFFSET
+   --gaussian            Generate Gaussian random output
+   --uniform             Generate Uniform random output
+   --2tone               Generate Two Tone signal for IMD testing
+   --sweep               Generate a swept sine wave
  
-        -a ARGS, --args=ARGS
-               UHD device address args , [default=]
- 
-        --spec=SPEC
-               Subdevice of UHD device where appropriate
- 
-        -A ANTENNA, --antenna=ANTENNA
-               select Rx Antenna where appropriate
- 
-        -s SAMP_RATE, --samp-rate=SAMP_RATE
-               set sample rate (bandwidth) [default=1000000.0]
- 
-        -g GAIN, --gain=GAIN
-               set gain in dB (default is midpoint)
- 
-        -f FREQ, --tx-freq=FREQ
-               Set carrier frequency to FREQ [default=mid-point]
- 
-        -x WAVEFORM_FREQ, --waveform-freq=WAVEFORM_FREQ
-               Set baseband waveform frequency to FREQ [default=0]
- 
-        -y WAVEFORM2_FREQ, --waveform2-freq=WAVEFORM2_FREQ
-               Set 2nd waveform frequency to FREQ [default=none]
- 
-        --sine Generate a carrier modulated by a complex sine wave
- 
-        --const
-               Generate a constant carrier
- 
-        --offset=OFFSET
-               Set waveform phase offset to OFFSET [default=0]
- 
-        --gaussian
-               Generate Gaussian random output
- 
-        --uniform
-               Generate Uniform random output
- 
-        --2tone
-               Generate Two Tone signal for IMD testing
- 
-        --sweep
-               Generate a swept sine wave
- 
-        --amplitude=AMPL
-               Set output amplitude to AMPL (0.0-1.0) [default=0.15]
- 
-        -v, --verbose
-               Use verbose console output [default=False]
- 
- SEE ALSO
-        uhd_siggen(1)
- 
- uhd_siggen_gui 3.10.3.0           2022-07-23                 UHD_SIGGEN_GUI(1)
+ GUI Arguments:
+   -q, --show-freq-sink  Show QT Frequency Widget
  ```
  
  - - -
@@ -1021,7 +918,7 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `2.52 MB`  
+ **Installed size:** `2.55 MB`  
  **How to install:** `sudo apt install gnuradio-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1054,30 +951,30 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `251.71 MB`  
+ **Installed size:** `248.40 MB`  
  **How to install:** `sudo apt install gnuradio-doc`  
  
  
  - - -
  
- ### libgnuradio-analog3.10.3
+ ### libgnuradio-analog3.10.4
  
   Library for handling analog signal processing functions.
   These functions are also in gnuradio-core.
   Part of the main gnuradio build.
  
- **Installed size:** `630 KB`  
- **How to install:** `sudo apt install libgnuradio-analog3.10.3`  
+ **Installed size:** `656 KB`  
+ **How to install:** `sudo apt install libgnuradio-analog3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-fft3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-blocks3.10.4 
+ * libgnuradio-fft3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1085,7 +982,7 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-audio3.10.3
+ ### libgnuradio-audio3.10.4
  
   This is the gr-audio library, used to connect to audio sources
   (mic-in) and sinks (speaker-out) ports on a computer. The underlying
@@ -1093,44 +990,44 @@ PackagesInfo: |
   automatically discover the correct one to use.  Part of the main
   gnuradio build.
  
- **Installed size:** `430 KB`  
- **How to install:** `sudo apt install libgnuradio-audio3.10.3`  
+ **Installed size:** `572 KB`  
+ **How to install:** `sudo apt install libgnuradio-audio3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libasound2 
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libjack-jackd2-0  | libjack-0.125
  * libportaudio2 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-blocks3.10.3
+ ### libgnuradio-blocks3.10.4
  
   Some non-signal processing blocks.
   These functions are also in gnuradio-core.
   Part of the main gnuradio build.
  
- **Installed size:** `2.71 MB`  
- **How to install:** `sudo apt install libgnuradio-blocks3.10.3`  
+ **Installed size:** `3.03 MB`  
+ **How to install:** `sudo apt install libgnuradio-blocks3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libsndfile1 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1138,23 +1035,23 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-channels3.10.3
+ ### libgnuradio-channels3.10.4
  
   Some channel oriented processing blocks.
   These functions are also in gnuradio-core.
   Part of the main gnuradio build.
  
- **Installed size:** `470 KB`  
- **How to install:** `sudo apt install libgnuradio-channels3.10.3`  
+ **Installed size:** `484 KB`  
+ **How to install:** `sudo apt install libgnuradio-channels3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libgnuradio-analog3.10.3 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-filter3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-analog3.10.4 
+ * libgnuradio-blocks3.10.4 
+ * libgnuradio-filter3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1162,25 +1059,25 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-digital3.10.3
+ ### libgnuradio-digital3.10.4
  
   All the functions for doing digital modulation and demodulation,
   including bpsk, qpsk, gmsk and ofdm signals.
   Part of the main gnuradio build.
  
- **Installed size:** `1.49 MB`  
- **How to install:** `sudo apt install libgnuradio-digital3.10.3`  
+ **Installed size:** `1.68 MB`  
+ **How to install:** `sudo apt install libgnuradio-digital3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-analog3.10.3 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-filter3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-analog3.10.4 
+ * libgnuradio-blocks3.10.4 
+ * libgnuradio-filter3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1188,25 +1085,25 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-dtv3.10.3
+ ### libgnuradio-dtv3.10.4
  
   ATSC support, gr-atsc ported to a new framework, as well as
   DVB-S2, DVB-T, DVB-T2 digital video broadcast standards.
   Part of the main gnuradio build.
  
- **Installed size:** `1.32 MB`  
- **How to install:** `sudo apt install libgnuradio-dtv3.10.3`  
+ **Installed size:** `1.42 MB`  
+ **How to install:** `sudo apt install libgnuradio-dtv3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-fec3.10.3 
- * libgnuradio-fft3.10.3 
- * libgnuradio-filter3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-fec3.10.4 
+ * libgnuradio-fft3.10.4 
+ * libgnuradio-filter3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1214,25 +1111,25 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-fec3.10.3
+ ### libgnuradio-fec3.10.4
  
   Handle forward error correction processing in gnuradio.
   Implements the GNU Radio FEC API, supporting encoders and
   decoders for no-op dummmy, repetition, and convolutional classes.
   Part of the main gnuradio build.
  
- **Installed size:** `757 KB`  
- **How to install:** `sudo apt install libgnuradio-fec3.10.3`  
+ **Installed size:** `965 KB`  
+ **How to install:** `sudo apt install libgnuradio-fec3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-blocks3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libgsl27 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1240,23 +1137,23 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-fft3.10.3
+ ### libgnuradio-fft3.10.4
  
   Library for Fourier transform techniques used in gnuradio.
   Uses single precision FFT from libfftw3-single3.
   Part of the main gnuradio build.
  
- **Installed size:** `306 KB`  
- **How to install:** `sudo apt install libgnuradio-fft3.10.3`  
+ **Installed size:** `344 KB`  
+ **How to install:** `sudo apt install libgnuradio-fft3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libfftw3-single3 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1264,24 +1161,24 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-filter3.10.3
+ ### libgnuradio-filter3.10.4
  
   Library of filter blocks used in gnuradio. Implements
   FIR, IIR and FFT filters, as well as Polyphase filterbank and
   PFB arbitrary resampler methods.
   Part of the main gnuradio build.
  
- **Installed size:** `1.00 MB`  
- **How to install:** `sudo apt install libgnuradio-filter3.10.3`  
+ **Installed size:** `1.04 MB`  
+ **How to install:** `sudo apt install libgnuradio-filter3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-fft3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-fft3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1289,7 +1186,7 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-iio3.10.3
+ ### libgnuradio-iio3.10.4
  
   Libiio is a library that has been conceived to ease the development of
   applications interfacing Industrial Input/Output (IIO) devices through
@@ -1300,19 +1197,19 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `495 KB`  
- **How to install:** `sudo apt install libgnuradio-iio3.10.3`  
+ **Installed size:** `572 KB`  
+ **How to install:** `sudo apt install libgnuradio-iio3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libad9361-0 
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libiio0 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1320,72 +1217,61 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-network3.10.3
+ ### libgnuradio-network3.10.4
  
   Library of  blocks that implement UDP and TCP source and
   sink blocks supporting both IPv4 and IPv6.
   Part of the main gnuradio build.
  
- **Installed size:** `546 KB`  
- **How to install:** `sudo apt install libgnuradio-network3.10.3`  
+ **Installed size:** `620 KB`  
+ **How to install:** `sudo apt install libgnuradio-network3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-pdu3.10.3
+ ### libgnuradio-pdu3.10.4
  
   Protocol Data Units library provides signal processing
   blocks that operate on Protocol Data Unit format messages. Many
   such blocks are analogs of streaming API functionality.
   Part of the main gnuradio build.
  
- **Installed size:** `590 KB`  
- **How to install:** `sudo apt install libgnuradio-pdu3.10.3`  
+ **Installed size:** `656 KB`  
+ **How to install:** `sudo apt install libgnuradio-pdu3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
- * libboost-atomic1.74.0 
- * libboost-program-options1.74.0 
- * libboost-thread1.74.0 
  * libc6 
- * libfftw3-single3 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgmp10 
- * libgmpxx4ldbl 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-fft3.10.3 
- * libgnuradio-filter3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libsndfile1 
- * libspdlog1-fmt8
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
- * libvolk2.5 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-pmt3.10.3
+ ### libgnuradio-pmt3.10.4
  
   Polymorphic Types are opaque data types that are designed as generic
   containers of data that can be safely passed around between blocks
   and threads in GNU Radio.
   Part of the main gnuradio build.
  
- **Installed size:** `406 KB`  
- **How to install:** `sudo apt install libgnuradio-pmt3.10.3`  
+ **Installed size:** `412 KB`  
+ **How to install:** `sudo apt install libgnuradio-pmt3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
@@ -1397,29 +1283,29 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-qtgui3.10.3
+ ### libgnuradio-qtgui3.10.4
  
   QT-based graphical sinks for gnuradio applications.
   Implements opengl, raster and native plotting methods, and
   supports a QT Style Sheet (QSS) file to adjust the look.
   Part of the main gnuradio build.
  
- **Installed size:** `1.75 MB`  
- **How to install:** `sudo apt install libgnuradio-qtgui3.10.3`  
+ **Installed size:** `1.85 MB`  
+ **How to install:** `sudo apt install libgnuradio-qtgui3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-fft3.10.3 
- * libgnuradio-filter3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-fft3.10.4 
+ * libgnuradio-filter3.10.4 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5widgets5 
  * libqwt-qt5-6 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1427,27 +1313,27 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-runtime3.10.3
+ ### libgnuradio-runtime3.10.4
  
   Top level component library. Defines core blocks. Handles
   settings for logging, performance counters, and control port.
   Part of the main gnuradio build.
  
- **Installed size:** `1.84 MB`  
- **How to install:** `sudo apt install libgnuradio-runtime3.10.3`  
+ **Installed size:** `2.07 MB`  
+ **How to install:** `sudo apt install libgnuradio-runtime3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-program-options1.74.0 
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
  * libgmp10 
- * libgnuradio-pmt3.10.3 
+ * libgnuradio-pmt3.10.4 
  * libpython3.10 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
- * libthrift-0.16.0 
+ * libthrift-0.17.0 
  * libunwind8
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1455,126 +1341,126 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-soapy3.10.3
+ ### libgnuradio-soapy3.10.4
  
   Soapy hardware drivers using the SoapySDR driver framework.
   Part of the main gnuradio build.
  
- **Installed size:** `426 KB`  
- **How to install:** `sudo apt install libgnuradio-soapy3.10.3`  
+ **Installed size:** `476 KB`  
+ **How to install:** `sudo apt install libgnuradio-soapy3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
  * libgmp10 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libsoapysdr0.8 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-trellis3.10.3
+ ### libgnuradio-trellis3.10.4
  
   Library for trellis coding modulation, including the Viterbi
   Algorithm, Concatenated Coding and Turbo Decoding
   based upon finite state machine (FSM) class.
   Part of the main gnuradio build.
  
- **Installed size:** `1006 KB`  
- **How to install:** `sudo apt install libgnuradio-trellis3.10.3`  
+ **Installed size:** `1.02 MB`  
+ **How to install:** `sudo apt install libgnuradio-trellis3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-uhd3.10.3
+ ### libgnuradio-uhd3.10.4
  
   The gnuradio interface to the UHD library to connect to and send and
   receive data between to the Ettus Research, LLC product line -
   including the USRP family of software radio peripheral devices.
   Part of the main gnuradio build.
  
- **Installed size:** `587 KB`  
- **How to install:** `sudo apt install libgnuradio-uhd3.10.3`  
+ **Installed size:** `636 KB`  
+ **How to install:** `sudo apt install libgnuradio-uhd3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
- * libuhd4.2.0 
+ * libuhd4.3.0 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-video-sdl3.10.3
+ ### libgnuradio-video-sdl3.10.4
  
   Library for handling SDL (Simple DirectMedia Layer) video data.
   Implements input and output blocks.
   Part of the main gnuradio build.
  
- **Installed size:** `229 KB`  
- **How to install:** `sudo apt install libgnuradio-video-sdl3.10.3`  
+ **Installed size:** `256 KB`  
+ **How to install:** `sudo apt install libgnuradio-video-sdl3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libsdl1.2debian 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-vocoder3.10.3
+ ### libgnuradio-vocoder3.10.4
  
   Library of vocoder blocks, including ulaw, alaw, gsm and codec2.
   Debian uses external libraries for gsm and codec2.
    
   Part of the main gnuradio build.
  
- **Installed size:** `314 KB`  
- **How to install:** `sudo apt install libgnuradio-vocoder3.10.3`  
+ **Installed size:** `336 KB`  
+ **How to install:** `sudo apt install libgnuradio-vocoder3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libcodec2-1.0 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libgsm1 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libgnuradio-wavelet3.10.3
+ ### libgnuradio-wavelet3.10.4
  
   Library of Daubechies wavelet function blocks.
   wvps computes the Wavelet Power Spectrum from
@@ -1582,25 +1468,23 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `125 KB`  
- **How to install:** `sudo apt install libgnuradio-wavelet3.10.3`  
+ **Installed size:** `128 KB`  
+ **How to install:** `sudo apt install libgnuradio-wavelet3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-atomic1.74.0 
  * libboost-program-options1.74.0 
  * libboost-thread1.74.0 
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
  * libgmp10 
  * libgmpxx4ldbl 
- * libgnuradio-blocks3.10.3 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libgsl27 
  * libgslcblas0 
- * libsndfile1 
- * libspdlog1-fmt8
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libvolk2.5 
  {{< /spoiler >}}
@@ -1608,7 +1492,7 @@ PackagesInfo: |
  
  - - -
  
- ### libgnuradio-zeromq3.10.3
+ ### libgnuradio-zeromq3.10.4
  
   0MQ messaging library support. Provide network socket
   endpoints for gnuradio data and message streams.
@@ -1616,16 +1500,16 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `354 KB`  
- **How to install:** `sudo apt install libgnuradio-zeromq3.10.3`  
+ **Installed size:** `400 KB`  
+ **How to install:** `sudo apt install libgnuradio-zeromq3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libfmt8 
+ * libfmt9 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
- * libspdlog1-fmt8
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
+ * libspdlog1.10-fmt9
  * libstdc++6 
  * libzmq5 
  {{< /spoiler >}}

@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: Do you have any Alcatel or Juniper switch? Share it!! ;)
+ MOTD: My notebook is totally deprecated... gimme one!... :)
  ```
  
  - - -

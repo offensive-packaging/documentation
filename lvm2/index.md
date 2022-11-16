@@ -3,8 +3,8 @@ Title: lvm2
 Homepage: https://sourceware.org/lvm2/
 Repository: https://salsa.debian.org/lvm-team/lvm2
 Architectures: linux-any all
-Version: 2.03.15-2+kali1
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-vulnerability kali-tools-web 
+Version: 2.03.16-2
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### dmeventd
@@ -17,7 +17,7 @@ PackagesInfo: |
    
   This package contains a daemon to monitor events of devmapper devices.
  
- **Installed size:** `233 KB`  
+ **Installed size:** `224 KB`  
  **How to install:** `sudo apt install dmeventd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -58,7 +58,7 @@ PackagesInfo: |
    
   This package contains a utility for modifying device mappings.
  
- **Installed size:** `256 KB`  
+ **Installed size:** `246 KB`  
  **How to install:** `sudo apt install dmsetup`  
  
  {{< spoiler "Dependencies:" >}}
@@ -241,6 +241,15 @@ PackagesInfo: |
  
  - - -
  
+ ### dmsetup-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install dmsetup-udeb`  
+ 
+ 
+ - - -
+ 
  ### libdevmapper-dev
  
   The Linux Kernel Device Mapper is the LVM (Linux Logical Volume Management)
@@ -253,7 +262,7 @@ PackagesInfo: |
   device-mapper; it allow usage of the device-mapper through a clean,
   consistent interface (as opposed to through kernel ioctls).
  
- **Installed size:** `174 KB`  
+ **Installed size:** `164 KB`  
  **How to install:** `sudo apt install libdevmapper-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -277,7 +286,7 @@ PackagesInfo: |
   This package contains the userspace library to help with event monitoring
   for devmapper devices, in conjunction with the dmevent daemon.
  
- **Installed size:** `63 KB`  
+ **Installed size:** `53 KB`  
  **How to install:** `sudo apt install libdevmapper-event1.02.1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -300,7 +309,7 @@ PackagesInfo: |
   device-mapper; it allows usage of the device-mapper through a clean,
   consistent interface (as opposed to through kernel ioctls).
  
- **Installed size:** `484 KB`  
+ **Installed size:** `474 KB`  
  **How to install:** `sudo apt install libdevmapper1.02.1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -313,12 +322,21 @@ PackagesInfo: |
  
  - - -
  
+ ### libdevmapper1.02.1-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libdevmapper1.02.1-udeb`  
+ 
+ 
+ - - -
+ 
  ### liblvm2-dev
  
   This package contains files needed to develop applications that use the
   lvm2app library.
  
- **Installed size:** `30 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install liblvm2-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -333,7 +351,7 @@ PackagesInfo: |
  
   This package contains the lvm2cmd shared library.
  
- **Installed size:** `2.97 MB`  
+ **Installed size:** `2.98 MB`  
  **How to install:** `sudo apt install liblvm2cmd2.03`  
  
  {{< spoiler "Dependencies:" >}}
@@ -364,7 +382,6 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * dmeventd 
  * dmsetup 
- * init-system-helpers 
  * libaio1 
  * libblkid1 
  * libc6 
@@ -374,7 +391,6 @@ PackagesInfo: |
  * libsystemd0 
  * libudev1 
  * lsb-base
- * systemd | systemd-tmpfiles
  {{< /spoiler >}}
  
  ##### fsadm
@@ -442,6 +458,7 @@ PackagesInfo: |
  	     --cachesettings String,
  	     --minrecoveryrate Size[k|UNIT],
  	     --maxrecoveryrate Size[k|UNIT],
+ 	     --vdosettings String,
  	     --writebehind Number,
  	     --writemostly PV[:t|n|y] )
  	 VG|LV|Tag|Select ...
@@ -714,6 +731,7 @@ PackagesInfo: |
  	[    --metadataprofile String ]
  	[    --compression y|n ]
  	[    --deduplication y|n ]
+ 	[    --vdosettings String ]
  	[ COMMON_OPTIONS ]
  
    Detach a cache from an LV.
@@ -923,6 +941,7 @@ PackagesInfo: |
  	[    --vdopool LV_new ]
  	[    --compression y|n ]
  	[    --deduplication y|n ]
+ 	[    --vdosettings String ]
  	[ COMMON_OPTIONS ]
  	[ PV ... ]
  
@@ -3251,7 +3270,7 @@ PackagesInfo: |
    
   This package includes the D-Bus daemon.
  
- **Installed size:** `243 KB`  
+ **Installed size:** `233 KB`  
  **How to install:** `sudo apt install lvm2-dbusd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3294,7 +3313,7 @@ PackagesInfo: |
    
   LVM commands use lvmlockd to coordinate access to shared storage.
  
- **Installed size:** `573 KB`  
+ **Installed size:** `563 KB`  
  **How to install:** `sudo apt install lvm2-lockd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3381,6 +3400,15 @@ PackagesInfo: |
    --adopt | -A 0|1
          Adopt locks from a previous instance of lvmlockd.
  ```
+ 
+ - - -
+ 
+ ### lvm2-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install lvm2-udeb`  
+ 
  
  - - -
  

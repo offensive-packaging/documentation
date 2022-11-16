@@ -3,7 +3,7 @@ Title: firmware-sof
 Homepage: https://github.com/thesofproject/sof-bin
 Repository: https://salsa.debian.org/mpearson/firmware-sof
 Architectures: all
-Version: 2.1.1-1
+Version: 2.2.2-1
 Metapackages: kali-linux-firmware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,8 +14,12 @@ PackagesInfo: |
    
   This package contains the pre-built and signed binaries.
  
- **Installed size:** `14.19 MB`  
+ **Installed size:** `15.92 MB`  
  **How to install:** `sudo apt install firmware-sof-signed`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * dpkg 
+ {{< /spoiler >}}
  
  
  - - -

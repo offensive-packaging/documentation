@@ -3,7 +3,7 @@ Title: edb-debugger
 Homepage: https://github.com/eteran/edb-debugger
 Repository: https://salsa.debian.org/debian/edb-debugger
 Architectures: amd64 i386
-Version: 1.3.0-1
+Version: 1.3.0-2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
 Icon: images/edb-debugger-logo.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   OpenBSD, OSX and Windows ports are underway with varying
   degrees of functionality.
  
- **Installed size:** `1.55 MB`  
+ **Installed size:** `1.61 MB`  
  **How to install:** `sudo apt install edb-debugger`  
  
  {{< spoiler "Dependencies:" >}}
@@ -118,7 +118,7 @@ PackagesInfo: |
    
   This package provides the plugins that used by edb.
  
- **Installed size:** `2.54 MB`  
+ **Installed size:** `2.61 MB`  
  **How to install:** `sudo apt install edb-debugger-plugins`  
  
  {{< spoiler "Dependencies:" >}}

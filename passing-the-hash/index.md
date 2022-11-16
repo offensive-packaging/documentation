@@ -4,7 +4,7 @@ Homepage: http://passing-the-hash.blogspot.fr
 Repository: https://gitlab.com/kalilinux/packages/passing-the-hash
 Architectures: any
 Version: 0~2015.12.33
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### passing-the-hash
@@ -184,7 +184,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  
@@ -264,7 +264,7 @@ PackagesInfo: |
        --client-protection=sign|encrypt|off     Configure used protection for
                                                 client connections
  
- Deprecated legcacy options:
+ Deprecated legacy options:
    -k, --kerberos                               DEPRECATED: Migrate to
                                                 --use-kerberos
  

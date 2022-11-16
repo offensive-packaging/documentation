@@ -3,7 +3,7 @@ Title: libimage-exiftool-perl
 Homepage: https://exiftool.org/
 Repository: https://salsa.debian.org/perl-team/modules/packages/libimage-exiftool-perl
 Architectures: all
-Version: 12.44+dfsg-1
+Version: 12.49+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -30,7 +30,7 @@ PackagesInfo: |
    * IO::Compress::RawDeflate + IO::Uncompress::RawInflate (in perl core): for
      reading FLIF images
  
- **Installed size:** `21.80 MB`  
+ **Installed size:** `21.96 MB`  
  **How to install:** `sudo apt install libimage-exiftool-perl`  
  
  {{< spoiler "Dependencies:" >}}

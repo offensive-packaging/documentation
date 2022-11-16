@@ -3,7 +3,7 @@ Title: dcfldd
 Homepage: https://github.com/resurrecting-open-source-projects/dcfldd
 Repository: https://salsa.debian.org/debian/dcfldd
 Architectures: any
-Version: 1.7.1-1
+Version: 1.8-1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -34,7 +34,7 @@ PackagesInfo: |
      of:, pattern, sizeprobe, split, splitformat, statusinterval, textpattern,
      totalhashformat, verifylog, verifylog:, vf.
  
- **Installed size:** `106 KB`  
+ **Installed size:** `113 KB`  
  **How to install:** `sudo apt install dcfldd`  
  
  {{< spoiler "Dependencies:" >}}

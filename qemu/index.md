@@ -3,7 +3,7 @@ Title: qemu
 Homepage: http://www.qemu.org/
 Repository: https://salsa.debian.org/qemu-team/qemu
 Architectures: any all
-Version: 1:7.0+dfsg-7
+Version: 1:7.1+dfsg-2
 Metapackages: kali-linux-everything kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -57,7 +57,7 @@ PackagesInfo: |
   Install this package on a system which is running as guest inside
   qemu virtual machine.  It is not used on the host.
  
- **Installed size:** `773 KB`  
+ **Installed size:** `1.10 MB`  
  **How to install:** `sudo apt install qemu-guest-agent`  
  
  {{< spoiler "Dependencies:" >}}
@@ -76,7 +76,7 @@ PackagesInfo: |
  ```
  root@kali:~# qemu-ga -h
  Usage: qemu-ga [-m <method> -p <path>] [<options>]
- QEMU Guest Agent 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU Guest Agent 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  
    -m, --method      transport method: one of unix-listen, virtio-serial,
@@ -158,7 +158,7 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `36.68 MB`  
+ **Installed size:** `41.67 MB`  
  **How to install:** `sudo apt install qemu-system-arm`  
  
  {{< spoiler "Dependencies:" >}}
@@ -170,7 +170,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgcc-s1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libibverbs1 
  * libjpeg62-turbo 
  * libnettle8
@@ -182,7 +184,6 @@ PackagesInfo: |
  * libsasl2-2 
  * libseccomp2 
  * libslirp0 
- * libstdc++6 
  * libudev1 
  * liburing2 
  * libvdeplug2 
@@ -198,7 +199,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-aarch64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-aarch64 [options] [disk_image]
  
@@ -221,6 +222,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -283,6 +285,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -319,10 +325,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -363,7 +365,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -392,10 +393,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -406,10 +407,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -592,7 +589,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -631,7 +630,6 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
  -xen-domid id   specify xen guest domain id
  -xen-attach     attach to existing xen domain
@@ -645,7 +643,7 @@ PackagesInfo: |
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -699,15 +697,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -747,7 +743,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-arm -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-arm [options] [disk_image]
  
@@ -770,6 +766,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -832,6 +829,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -868,10 +869,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -912,7 +909,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -941,10 +937,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -955,10 +951,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -1141,7 +1133,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -1180,7 +1174,6 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
  -xen-domid id   specify xen guest domain id
  -xen-attach     attach to existing xen domain
@@ -1194,7 +1187,7 @@ PackagesInfo: |
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -1248,15 +1241,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -1300,7 +1291,7 @@ PackagesInfo: |
   This package provides common files needed for target-specific
   full system emulation (qemu-system-*) packages.
  
- **Installed size:** `9.17 MB`  
+ **Installed size:** `10.84 MB`  
  **How to install:** `sudo apt install qemu-system-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1314,7 +1305,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgbm1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libncursesw6 
  * libnettle8
  * libpixman-1-0 
@@ -1403,6 +1396,14 @@ PackagesInfo: |
                           export the specified block node as a
                           vhost-user-blk device over file descriptor
  
+   --export [type=]vduse-blk,id=<id>,node-name=<node-name>
+            ,name=<vduse-name>[,writable=on|off]
+            [,num-queues=<num-queues>][,queue-size=<queue-size>]
+            [,logical-block-size=<logical-block-size>]
+            [,serial=<serial-number>]
+                          export the specified block node as a
+                          vduse-blk device
+ 
    --monitor [chardev=]name[,mode=control][,pretty[=on|off]]
                           configure a QMP monitor
  
@@ -1435,7 +1436,7 @@ PackagesInfo: |
   (such as keyboard definitions, icons) for system-mode
   QEMU emulation (qemu-system-*) packages.
  
- **Installed size:** `7.92 MB`  
+ **Installed size:** `7.93 MB`  
  **How to install:** `sudo apt install qemu-system-data`  
  
  
@@ -1449,7 +1450,7 @@ PackagesInfo: |
   The default GTK based qemu-system-gui is generally better and recommended,
   but a few corner cases still need SDL which is therefore provided as well.
  
- **Installed size:** `763 KB`  
+ **Installed size:** `1.06 MB`  
  **How to install:** `sudo apt install qemu-system-gui`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1488,7 +1489,7 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `56.17 MB`  
+ **Installed size:** `56.48 MB`  
  **How to install:** `sudo apt install qemu-system-mips`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1500,7 +1501,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgcc-s1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libibverbs1 
  * libjpeg62-turbo 
  * libnettle8
@@ -1528,7 +1531,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips [options] [disk_image]
  
@@ -1551,6 +1554,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -1613,6 +1617,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -1649,10 +1657,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -1693,7 +1697,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -1722,10 +1725,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -1736,10 +1739,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -1896,7 +1895,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -1935,21 +1936,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -2002,15 +1996,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -2050,7 +2042,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips64 [options] [disk_image]
  
@@ -2073,6 +2065,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -2135,6 +2128,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -2171,10 +2168,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -2215,7 +2208,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -2244,10 +2236,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -2258,10 +2250,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -2418,7 +2406,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -2457,21 +2447,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -2524,15 +2507,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -2572,7 +2553,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips64el -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips64el [options] [disk_image]
  
@@ -2595,6 +2576,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -2657,6 +2639,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -2693,10 +2679,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -2737,7 +2719,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -2766,10 +2747,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -2780,10 +2761,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -2940,7 +2917,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -2979,21 +2958,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -3046,15 +3018,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -3094,7 +3064,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mipsel -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mipsel [options] [disk_image]
  
@@ -3117,6 +3087,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -3179,6 +3150,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -3215,10 +3190,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -3259,7 +3230,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -3288,10 +3258,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -3302,10 +3272,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -3462,7 +3428,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -3501,21 +3469,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -3568,15 +3529,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -3620,15 +3579,15 @@ PackagesInfo: |
   This package provides the full system emulation binaries to emulate
   various other hardware which did not made into separate packages.
   Emulators for the following architectures are provided:
-    alpha avr cris hppa m68k microblaze microblazeel nios2
-   or1k riscv32 riscv64 rx sh4 sh4eb s390x tricore xtensa xtensaeb.
+    alpha avr cris hppa m68k loongarch64 microblaze microblazeel
+   nios2 or1k riscv32 riscv64 rx sh4 sh4eb s390x tricore xtensa xtensaeb.
    
   In system emulation mode QEMU emulates a full system, including a processor
   and various peripherals.  It enables easier testing and debugging of system
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `182.31 MB`  
+ **Installed size:** `195.81 MB`  
  **How to install:** `sudo apt install qemu-system-misc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3640,7 +3599,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgcc-s1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libibverbs1 
  * libjpeg62-turbo 
  * libnettle8
@@ -3667,7 +3628,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-alpha -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-alpha [options] [disk_image]
  
@@ -3690,6 +3651,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -3752,6 +3714,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -3788,10 +3754,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -3832,7 +3794,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -3861,10 +3822,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -3875,10 +3836,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -4035,7 +3992,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -4074,21 +4033,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -4138,15 +4089,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -4186,7 +4135,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-avr -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-avr [options] [disk_image]
  
@@ -4209,6 +4158,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -4271,6 +4221,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -4307,10 +4261,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -4351,7 +4301,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -4380,10 +4329,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -4394,10 +4343,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -4554,7 +4499,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -4593,21 +4540,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -4657,15 +4596,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -4705,7 +4642,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-cris -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-cris [options] [disk_image]
  
@@ -4728,6 +4665,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -4790,6 +4728,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -4826,10 +4768,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -4870,7 +4808,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -4899,10 +4836,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -4913,10 +4850,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -5073,7 +5006,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -5112,21 +5047,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -5176,15 +5103,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -5224,7 +5149,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-hppa -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-hppa [options] [disk_image]
  
@@ -5247,6 +5172,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -5309,6 +5235,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -5345,10 +5275,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -5389,7 +5315,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -5418,10 +5343,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -5432,10 +5357,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -5592,7 +5513,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -5631,21 +5554,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -5695,15 +5610,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -5737,15 +5650,15 @@ PackagesInfo: |
  
  - - -
  
- ##### qemu-system-m68k
+ ##### qemu-system-loongarch64
  
  QEMU User Documentation
  
  ```
- root@kali:~# qemu-system-m68k -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ root@kali:~# qemu-system-loongarch64 -h
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
- usage: qemu-system-m68k [options] [disk_image]
+ usage: qemu-system-loongarch64 [options] [disk_image]
  
  'disk_image' is a raw hard disk image for IDE hard disk 0
  
@@ -5766,6 +5679,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -5828,6 +5742,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -5864,10 +5782,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -5908,7 +5822,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -5937,10 +5850,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -5951,10 +5864,513 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
+ -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
+        [,x509-key-file=<file>][,x509-key-password=<file>]
+        [,x509-cert-file=<file>][,x509-cacert-file=<file>]
+        [,x509-dh-key-file=<file>][,addr=addr]
+        [,ipv4=on|off][,ipv6=on|off][,unix=on|off]
+        [,tls-ciphers=<list>]
+        [,tls-channel=[main|display|cursor|inputs|record|playback]]
+        [,plaintext-channel=[main|display|cursor|inputs|record|playback]]
+        [,sasl=on|off][,disable-ticketing=on|off]
+        [,password=<string>][,password-secret=<secret-id>]
+        [,image-compression=[auto_glz|auto_lz|quic|glz|lz|off]]
+        [,jpeg-wan-compression=[auto|never|always]]
+        [,zlib-glz-wan-compression=[auto|never|always]]
+        [,streaming-video=[off|all|filter]][,disable-copy-paste=on|off]
+        [,disable-agent-file-xfer=on|off][,agent-mouse=[on|off]]
+        [,playback-compression=[on|off]][,seamless-migration=[on|off]]
+        [,gl=[on|off]][,rendernode=<file>]
+    enable spice
+    at least one of {port, tls-port} is mandatory
+ -portrait       rotate graphical output 90 deg left (only PXA LCD)
+ -rotate <deg>   rotate graphical output some deg left (only PXA LCD)
+ -vga [std|cirrus|vmware|qxl|xenfb|tcx|cg3|virtio|none]
+                 select video card type
+ -full-screen    start in full screen
+ -vnc <display>  shorthand for -display vnc=<display>
+ 
+ Network options:
+ -netdev user,id=str[,ipv4=on|off][,net=addr[/mask]][,host=addr]
+          [,ipv6=on|off][,ipv6-net=addr[/int]][,ipv6-host=addr]
+          [,restrict=on|off][,hostname=host][,dhcpstart=addr]
+          [,dns=addr][,ipv6-dns=addr][,dnssearch=domain][,domainname=domain]
+          [,tftp=dir][,tftp-server-name=name][,bootfile=f][,hostfwd=rule][,guestfwd=rule][,smb=dir[,smbserver=addr]]
+                 configure a user mode network backend with ID 'str',
+                 its DHCP server and optional services
+ -netdev tap,id=str[,fd=h][,fds=x:y:...:z][,ifname=name][,script=file][,downscript=dfile]
+          [,br=bridge][,helper=helper][,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off]
+          [,vhostfd=h][,vhostfds=x:y:...:z][,vhostforce=on|off][,queues=n]
+          [,poll-us=n]
+                 configure a host TAP network backend with ID 'str'
+                 connected to a bridge (default=br0)
+                 use network scripts 'file' (default=/etc/qemu-ifup)
+                 to configure it and 'dfile' (default=/etc/qemu-ifdown)
+                 to deconfigure it
+                 use '[down]script=no' to disable script execution
+                 use network helper 'helper' (default=/usr/lib/qemu/qemu-bridge-helper) to
+                 configure it
+                 use 'fd=h' to connect to an already opened TAP interface
+                 use 'fds=x:y:...:z' to connect to already opened multiqueue capable TAP interfaces
+                 use 'sndbuf=nbytes' to limit the size of the send buffer (the
+                 default is disabled 'sndbuf=0' to enable flow control set 'sndbuf=1048576')
+                 use vnet_hdr=off to avoid enabling the IFF_VNET_HDR tap flag
+                 use vnet_hdr=on to make the lack of IFF_VNET_HDR support an error condition
+                 use vhost=on to enable experimental in kernel accelerator
+                     (only has effect for virtio guests which use MSIX)
+                 use vhostforce=on to force vhost on for non-MSIX virtio guests
+                 use 'vhostfd=h' to connect to an already opened vhost net device
+                 use 'vhostfds=x:y:...:z to connect to multiple already opened vhost net devices
+                 use 'queues=n' to specify the number of queues to be created for multiqueue TAP
+                 use 'poll-us=n' to specify the maximum number of microseconds that could be
+                 spent on busy polling for vhost net
+ -netdev bridge,id=str[,br=bridge][,helper=helper]
+                 configure a host TAP network backend with ID 'str' that is
+                 connected to a bridge (default=br0)
+                 using the program 'helper (default=/usr/lib/qemu/qemu-bridge-helper)
+ -netdev l2tpv3,id=str,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport]
+          [,rxsession=rxsession],txsession=txsession[,ipv6=on|off][,udp=on|off]
+          [,cookie64=on|off][,counter][,pincounter][,txcookie=txcookie]
+          [,rxcookie=rxcookie][,offset=offset]
+                 configure a network backend with ID 'str' connected to
+                 an Ethernet over L2TPv3 pseudowire.
+                 Linux kernel 3.3+ as well as most routers can talk
+                 L2TPv3. This transport allows connecting a VM to a VM,
+                 VM to a router and even VM to Host. It is a nearly-universal
+                 standard (RFC3931). Note - this implementation uses static
+                 pre-configured tunnels (same as the Linux kernel).
+                 use 'src=' to specify source address
+                 use 'dst=' to specify destination address
+                 use 'udp=on' to specify udp encapsulation
+                 use 'srcport=' to specify source udp port
+                 use 'dstport=' to specify destination udp port
+                 use 'ipv6=on' to force v6
+                 L2TPv3 uses cookies to prevent misconfiguration as
+                 well as a weak security measure
+                 use 'rxcookie=0x012345678' to specify a rxcookie
+                 use 'txcookie=0x012345678' to specify a txcookie
+                 use 'cookie64=on' to set cookie size to 64 bit, otherwise 32
+                 use 'counter=off' to force a 'cut-down' L2TPv3 with no counter
+                 use 'pincounter=on' to work around broken counter handling in peer
+                 use 'offset=X' to add an extra offset between header and data
+ -netdev socket,id=str[,fd=h][,listen=[host]:port][,connect=host:port]
+                 configure a network backend to connect to another network
+                 using a socket connection
+ -netdev socket,id=str[,fd=h][,mcast=maddr:port[,localaddr=addr]]
+                 configure a network backend to connect to a multicast maddr and port
+                 use 'localaddr=addr' to specify the host address to send packets from
+ -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
+ -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
+                 configure a network backend to connect to port 'n' of a vde switch
+                 running on host and listening for incoming connections on 'socketpath'.
+                 Use group 'groupname' and mode 'octalmode' to change default
+                 ownership and permissions for communication port.
+ -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
+                 configure a vhost-user network, backed by a chardev 'dev'
+ -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+                 configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+ -netdev hubport,id=str,hubid=n[,netdev=nd]
+                 configure a hub port on the hub with ID 'n'
+ -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
+                 initialize an on-board / default host NIC (using MAC address
+                 macaddr) and connect it to the given host network backend
+ -nic none       use it alone to have zero network devices (the default is to
+                 provided a 'user' network connection)
+ -net nic[,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
+                 configure or create an on-board (or machine default) NIC and
+                 connect it to hub 0 (please use -nic unless you need a hub)
+ -net [user|tap|bridge|vde|socket][,option][,option][,...]
+                 old way to initialize a host network interface
+                 (use the -netdev option if possible instead)
+ 
+ Character device options:
+ -chardev help
+ -chardev null,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev socket,id=id[,host=host],port=port[,to=to][,ipv4=on|off][,ipv6=on|off][,nodelay=on|off]
+          [,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds][,mux=on|off]
+          [,logfile=PATH][,logappend=on|off][,tls-creds=ID][,tls-authz=ID] (tcp)
+ -chardev socket,id=id,path=path[,server=on|off][,wait=on|off][,telnet=on|off][,websocket=on|off][,reconnect=seconds]
+          [,mux=on|off][,logfile=PATH][,logappend=on|off][,abstract=on|off][,tight=on|off] (unix)
+ -chardev udp,id=id[,host=host],port=port[,localaddr=localaddr]
+          [,localport=localport][,ipv4=on|off][,ipv6=on|off][,mux=on|off]
+          [,logfile=PATH][,logappend=on|off]
+ -chardev msmouse,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev vc,id=id[[,width=width][,height=height]][[,cols=cols][,rows=rows]]
+          [,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev ringbuf,id=id[,size=size][,logfile=PATH][,logappend=on|off]
+ -chardev file,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev pipe,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev pty,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev stdio,id=id[,mux=on|off][,signal=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev braille,id=id[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev serial,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev tty,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev parallel,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev parport,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
+ -chardev spicevmc,id=id,name=name[,debug=debug][,logfile=PATH][,logappend=on|off]
+ -chardev spiceport,id=id,name=name[,debug=debug][,logfile=PATH][,logappend=on|off]
+ 
+ TPM device options:
+ -tpmdev passthrough,id=id[,path=path][,cancel-path=path]
+                 use path to provide path to a character device; default is /dev/tpm0
+                 use cancel-path to provide path to TPM's cancel sysfs entry; if
+                 not provided it will be searched for in /sys/class/misc/tpm?/device
+ -tpmdev emulator,id=id,chardev=dev
+                 configure the TPM device using chardev backend
+ 
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
+ -kernel bzImage use 'bzImage' as kernel image
+ -append cmdline use 'cmdline' as kernel command line
+ -initrd file    use 'file' as initial ram disk
+ -dtb    file    use 'file' as device tree image
+ 
+ Debug/Expert options:
+ -compat [deprecated-input=accept|reject|crash][,deprecated-output=accept|hide]
+                 Policy for handling deprecated management interfaces
+ -compat [unstable-input=accept|reject|crash][,unstable-output=accept|hide]
+                 Policy for handling unstable management interfaces
+ -fw_cfg [name=]<name>,file=<file>
+                 add named fw_cfg entry with contents from file
+ -fw_cfg [name=]<name>,string=<str>
+                 add named fw_cfg entry with contents from string
+ -serial dev     redirect the serial port to char device 'dev'
+ -parallel dev   redirect the parallel port to char device 'dev'
+ -monitor dev    redirect the monitor to char device 'dev'
+ -qmp dev        like -monitor but opens in 'control' mode
+ -qmp-pretty dev like -qmp but uses pretty JSON formatting
+ -mon [chardev=]name[,mode=readline|control][,pretty[=on|off]]
+ -debugcon dev   redirect the debug console to char device 'dev'
+ -pidfile file   write PID to 'file'
+ -singlestep     always run in singlestep mode
+ --preconfig     pause QEMU before machine is initialized (experimental)
+ -S              freeze CPU at startup (use 'c' to start execution)
+ -overcommit [mem-lock=on|off][cpu-pm=on|off]
+                 run qemu with overcommit hints
+                 mem-lock=on|off controls memory lock support (default: off)
+                 cpu-pm=on|off controls cpu power management (default: off)
+ -gdb dev        accept gdb connection on 'dev'. (QEMU defaults to starting
+                 the guest without waiting for gdb to connect; use -S too
+                 if you want it to not start execution.)
+ -s              shorthand for -gdb tcp::1234
+ -d item1,...    enable logging of specified items (use '-d help' for a list of log items)
+ -D logfile      output log to logfile (default stderr)
+ -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
+ -seed number       seed the pseudo-random number generator
+ -L path         set the directory for the BIOS, VGA BIOS and keymaps
+ -no-reboot      exit instead of rebooting
+ -no-shutdown    stop before shutdown
+ -action reboot=reset|shutdown
+                    action when guest reboots [default=reset]
+ -action shutdown=poweroff|pause
+                    action when guest shuts down [default=poweroff]
+ -action panic=pause|shutdown|exit-failure|none
+                    action when guest panics [default=shutdown]
+ -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
+                    action when watchdog fires [default=reset]
+ -loadvm [tag|id]
+                 start right away with a saved state (loadvm in monitor)
+ -daemonize      daemonize QEMU after initializing
+ -option-rom rom load a file, rom, into the option ROM space
+ -rtc [base=utc|localtime|<datetime>][,clock=host|rt|vm][,driftfix=none|slew]
+                 set the RTC base and clock, enable drift fix for clock ticks (x86 only)
+ -icount [shift=N|auto][,align=on|off][,sleep=on|off][,rr=record|replay,rrfile=<filename>[,rrsnapshot=<snapshot>]]
+                 enable virtual instruction counter with 2^N clock ticks per
+                 instruction, enable aligning the host and virtual clocks
+                 or disable real time cpu sleeping, and optionally enable
+                 record-and-replay mode
+ -watchdog model
+                 enable virtual hardware watchdog [default=none]
+ -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
+                 action when watchdog fires [default=reset]
+ -echr chr       set terminal escape character instead of ctrl-a
+ -incoming tcp:[host]:port[,to=maxport][,ipv4=on|off][,ipv6=on|off]
+ -incoming rdma:host:port[,ipv4=on|off][,ipv6=on|off]
+ -incoming unix:socketpath
+                 prepare for incoming migration, listen on
+                 specified protocol and socket address
+ -incoming fd:fd
+ -incoming exec:cmdline
+                 accept incoming migration on given file descriptor
+                 or from given external command
+ -incoming defer
+                 wait for the URI to be specified via migrate_incoming
+ -only-migratable     allow only migratable devices
+ -nodefaults     don't create default devices
+ -chroot dir     chroot to dir just before starting the VM
+ -runas user     change to user id user just before starting the VM
+                 user can be numeric uid:gid instead
+ -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
+           [,spawn=allow|deny][,resourcecontrol=allow|deny]
+                 Enable seccomp mode 2 system call filter (default 'off').
+                 use 'obsolete' to allow obsolete system calls that are provided
+                     by the kernel, but typically no longer used by modern
+                     C library implementations.
+                 use 'elevateprivileges' to allow or deny the QEMU process ability
+                     to elevate privileges using set*uid|gid system calls.
+                     The value 'children' will deny set*uid|gid system calls for
+                     main QEMU process but will allow forks and execves to run unprivileged
+                 use 'spawn' to avoid QEMU to spawn new threads or processes by
+                      blocking *fork and execve
+                 use 'resourcecontrol' to disable process affinity and schedular priority
+ -readconfig <file>
+                 read config file
+ -no-user-config
+                 do not load default user-provided config files at startup
+ -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
+                 specify tracing options
+ -plugin [file=]<file>[,<argname>=<argvalue>]
+                 load a plugin
+ -msg [timestamp[=on|off]][,guest-name=[on|off]]
+                 control error message format
+                 timestamp=on enables timestamps (default: off)
+                 guest-name=on enables guest name prefix but only if
+                               -name guest option is set (default: off)
+ -dump-vmstate <file>
+                 Output vmstate information in JSON format to file.
+                 Use the scripts/vmstate-static-checker.py file to
+                 check for possible regressions in migration code
+                 by comparing two such vmstate dumps.
+ -enable-sync-profile
+                 enable synchronization profiling
+ 
+ Generic object creation:
+ -object TYPENAME[,PROP1=VALUE1,...]
+                 create a new object of type TYPENAME setting properties
+                 in the order they are specified.  Note that the 'id'
+                 property must be set.  These objects are placed in the
+                 '/objects' path.
+ 
+ During emulation, the following keys are useful:
+ ctrl-alt-f      toggle full screen
+ ctrl-alt-n      switch to virtual console 'n'
+ ctrl-alt        toggle mouse and keyboard grab
+ 
+ When using -nographic, press 'ctrl-a h' to get some help.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
+ 
+ - - -
+ 
+ ##### qemu-system-m68k
+ 
+ QEMU User Documentation
+ 
+ ```
+ root@kali:~# qemu-system-m68k -h
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+ usage: qemu-system-m68k [options] [disk_image]
+ 
+ 'disk_image' is a raw hard disk image for IDE hard disk 0
+ 
+ Standard options:
+ -h or -help     display this help and exit
+ -version        display version information and exit
+ -machine [type=]name[,prop[=value][,...]]
+                 selects emulated machine ('-machine help' for list)
+                 property accel=accel1[:accel2[:...]] selects accelerator
+                 supported accelerators are kvm, xen, hax, hvf, nvmm, whpx or tcg (default: tcg)
+                 vmport=on|off|auto controls emulation of vmport (default: auto)
+                 dump-guest-core=on|off include guest memory in a core dump (default=on)
+                 mem-merge=on|off controls memory merge support (default: on)
+                 aes-key-wrap=on|off controls support for AES key wrapping (default=on)
+                 dea-key-wrap=on|off controls support for DEA key wrapping (default=on)
+                 suppress-vmdesc=on|off disables self-describing migration (default=off)
+                 nvdimm=on|off controls NVDIMM support (default=off)
+                 memory-encryption=@var{} memory encryption object to use (default=none)
+                 hmat=on|off controls ACPI HMAT support (default=off)
+                 memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
+                 sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
+ -cpu cpu        select CPU ('-cpu help' for list)
+ -accel [accel=]accelerator[,prop[=value][,...]]
+                 select accelerator (kvm, xen, hax, hvf, nvmm, whpx or tcg; use 'help' for a list)
+                 igd-passthru=on|off (enable Xen integrated Intel graphics passthrough, default=off)
+                 kernel-irqchip=on|off|split controls accelerated irqchip support (default=on)
+                 kvm-shadow-mem=size of KVM shadow MMU in bytes
+                 split-wx=on|off (enable TCG split w^x mapping)
+                 tb-size=n (TCG translation block cache size)
+                 dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 thread=single|multi (enable multi-threaded TCG)
+ -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
+                 set the number of initial CPUs to 'n' [default=1]
+                 maxcpus= maximum number of total CPUs, including
+                 offline CPUs for hotplug, etc
+                 sockets= number of sockets on the machine board
+                 dies= number of dies in one socket
+                 clusters= number of clusters in one die
+                 cores= number of cores in one cluster
+                 threads= number of threads in one core
+ Note: Different machines may have different subsets of the CPU topology
+       parameters supported, so the actual meaning of the supported parameters
+       will vary accordingly. For example, for a machine type that supports a
+       three-level CPU hierarchy of sockets/cores/threads, the parameters will
+       sequentially mean as below:
+                 sockets means the number of sockets on the machine board
+                 cores means the number of cores in one socket
+                 threads means the number of threads in one core
+       For a particular machine type board, an expected CPU topology hierarchy
+       can be defined through the supported sub-option. Unsupported parameters
+       can also be provided in addition to the sub-option, but their values
+       must be set as 1 in the purpose of correct parsing.
+ -numa node[,mem=size][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=node]
+ -numa node[,memdev=id][,cpus=firstcpu[-lastcpu]][,nodeid=node][,initiator=node]
+ -numa dist,src=source,dst=destination,val=distance
+ -numa cpu,node-id=node[,socket-id=x][,core-id=y][,thread-id=z]
+ -numa hmat-lb,initiator=node,target=node,hierarchy=memory|first-level|second-level|third-level,data-type=access-latency|read-latency|write-latency[,latency=lat][,bandwidth=bw]
+ -numa hmat-cache,node-id=node,size=size,level=level[,associativity=none|direct|complex][,policy=none|write-back|write-through][,line=size]
+ -add-fd fd=fd,set=set[,opaque=opaque]
+                 Add 'fd' to fd 'set'
+ -set group.id.arg=value
+                 set <arg> parameter for item <id> of type <group>
+                 i.e. -set drive.$id.file=/path/to/image
+ -global driver.property=value
+ -global driver=driver,property=property,value=value
+                 set a global default for a driver property
+ -boot [order=drives][,once=drives][,menu=on|off]
+       [,splash=sp_name][,splash-time=sp_time][,reboot-timeout=rb_time][,strict=on|off]
+                 'drives': floppy (a), hard disk (c), CD-ROM (d), network (n)
+                 'sp_name': the file's name that would be passed to bios as logo picture, if menu=on
+                 'sp_time': the period that splash picture last if menu=on, unit is ms
+                 'rb_timeout': the timeout before guest reboot when boot failed, unit is ms
+ -m [size=]megs[,slots=n,maxmem=size]
+                 configure guest RAM
+                 size: initial amount of guest memory
+                 slots: number of hotplug slots (default: none)
+                 maxmem: maximum amount of guest memory (default: none)
+ NOTE: Some architectures might enforce a specific granularity
+ -mem-path FILE  provide backing storage for guest RAM
+ -mem-prealloc   preallocate guest memory (use with -mem-path)
+ -k language     use keyboard layout (for example 'fr' for French)
+ -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
+ -audiodev [driver=]driver,id=id[,prop[=value][,...]]
+                 specifies the audio backend to use
+                 id= identifier of the backend
+                 timer-period= timer period in microseconds
+                 in|out.mixing-engine= use mixing engine to mix streams inside QEMU
+                 in|out.fixed-settings= use fixed settings for host audio
+                 in|out.frequency= frequency to use with fixed settings
+                 in|out.channels= number of channels to use with fixed settings
+                 in|out.format= sample format to use with fixed settings
+                 valid values: s8, s16, s32, u8, u16, u32, f32
+                 in|out.voices= number of voices to use
+                 in|out.buffer-length= length of buffer in microseconds
+ -audiodev none,id=id,[,prop[=value][,...]]
+                 dummy driver that discards all output
+ -audiodev alsa,id=id[,prop[=value][,...]]
+                 in|out.dev= name of the audio device to use
+                 in|out.period-length= length of period in microseconds
+                 in|out.try-poll= attempt to use poll mode
+                 threshold= threshold (in microseconds) when playback starts
+ -audiodev oss,id=id[,prop[=value][,...]]
+                 in|out.dev= path of the audio device to use
+                 in|out.buffer-count= number of buffers
+                 in|out.try-poll= attempt to use poll mode
+                 try-mmap= try using memory mapped access
+                 exclusive= open device in exclusive mode
+                 dsp-policy= set timing policy (0..10), -1 to use fragment mode
+ -audiodev pa,id=id[,prop[=value][,...]]
+                 server= PulseAudio server address
+                 in|out.name= source/sink device name
+                 in|out.latency= desired latency in microseconds
+ -audiodev sdl,id=id[,prop[=value][,...]]
+                 in|out.buffer-count= number of buffers
+ -audiodev spice,id=id[,prop[=value][,...]]
+ -audiodev dbus,id=id[,prop[=value][,...]]
+ -audiodev wav,id=id[,prop[=value][,...]]
+                 path= path of wav file to record
+ -device driver[,prop[=value][,...]]
+                 add device (based on driver)
+                 prop=value,... sets driver properties
+                 use '-device help' to print all possible drivers
+                 use '-device driver,help' to print all possible properties
+ -name string1[,process=string2][,debug-threads=on|off]
+                 set the name of the guest
+                 string1 sets the window title and string2 the process name
+                 When debug-threads is enabled, individual threads are given a separate name
+                 NOTE: The thread names are for debugging and not a stable API.
+ -uuid %08x-%04x-%04x-%04x-%012x
+                 specify machine UUID
+ 
+ Block device options:
+ -fda/-fdb file  use 'file' as floppy disk 0/1 image
+ -hda/-hdb file  use 'file' as IDE hard disk 0/1 image
+ -hdc/-hdd file  use 'file' as IDE hard disk 2/3 image
+ -cdrom file     use 'file' as IDE cdrom image (cdrom is ide1 master)
+ -blockdev [driver=]driver[,node-name=N][,discard=ignore|unmap]
+           [,cache.direct=on|off][,cache.no-flush=on|off]
+           [,read-only=on|off][,auto-read-only=on|off]
+           [,force-share=on|off][,detect-zeroes=on|off|unmap]
+           [,driver specific parameters...]
+                 configure a block backend
+ -drive [file=file][,if=type][,bus=n][,unit=m][,media=d][,index=i]
+        [,cache=writethrough|writeback|none|directsync|unsafe][,format=f]
+        [,snapshot=on|off][,rerror=ignore|stop|report]
+        [,werror=ignore|stop|report|enospc][,id=name]
+        [,aio=threads|native|io_uring]
+        [,readonly=on|off][,copy-on-read=on|off]
+        [,discard=ignore|unmap][,detect-zeroes=on|off|unmap]
+        [[,bps=b]|[[,bps_rd=r][,bps_wr=w]]]
+        [[,iops=i]|[[,iops_rd=r][,iops_wr=w]]]
+        [[,bps_max=bm]|[[,bps_rd_max=rm][,bps_wr_max=wm]]]
+        [[,iops_max=im]|[[,iops_rd_max=irm][,iops_wr_max=iwm]]]
+        [[,iops_size=is]]
+        [[,group=g]]
+                 use 'file' as a drive image
+ -mtdblock file  use 'file' as on-board Flash memory image
+ -sd file        use 'file' as SecureDigital card image
+ -snapshot       write to temporary files instead of disk image files
+ -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
+  [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
+  [[,throttling.bps-total=b]|[[,throttling.bps-read=r][,throttling.bps-write=w]]]
+  [[,throttling.iops-total=i]|[[,throttling.iops-read=r][,throttling.iops-write=w]]]
+  [[,throttling.bps-total-max=bm]|[[,throttling.bps-read-max=rm][,throttling.bps-write-max=wm]]]
+  [[,throttling.iops-total-max=im]|[[,throttling.iops-read-max=irm][,throttling.iops-write-max=iwm]]]
+  [[,throttling.iops-size=is]]
+ -fsdev proxy,id=id,socket=socket[,writeout=immediate][,readonly=on]
+ -fsdev proxy,id=id,sock_fd=sock_fd[,writeout=immediate][,readonly=on]
+ -fsdev synth,id=id
+ -virtfs local,path=path,mount_tag=tag,security_model=mapped-xattr|mapped-file|passthrough|none
+         [,id=id][,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode][,multidevs=remap|forbid|warn]
+ -virtfs proxy,mount_tag=tag,socket=socket[,id=id][,writeout=immediate][,readonly=on]
+ -virtfs proxy,mount_tag=tag,sock_fd=sock_fd[,id=id][,writeout=immediate][,readonly=on]
+ -virtfs synth,mount_tag=tag[,id=id][,readonly=on]
+ -iscsi [user=user][,password=password]
+        [,header-digest=CRC32C|CR32C-NONE|NONE-CRC32C|NONE
+        [,initiator-name=initiator-iqn][,id=target-iqn]
+        [,timeout=timeout]
+                 iSCSI session parameters
+ 
+ USB convenience options:
+ -usb            enable on-board USB host controller (if not enabled by default)
+ -usbdevice name add the host or guest USB device 'name'
+ 
+ Display options:
+ -display spice-app[,gl=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
+ -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+ -display vnc=<display>[,<optargs>]
+ -display curses[,charset=<encoding>]
+ -display egl-headless[,rendernode=<file>]
+ -display dbus[,addr=<dbusaddr>]
+              [,gl=on|core|es|off][,rendernode=<file>]
+ -display none
+                 select display backend type
+                 The default display is equivalent to
+                 "-display gtk"
+ -nographic      disable graphical output and redirect serial I/Os to console
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -6112,7 +6528,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -6151,21 +6569,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -6218,15 +6628,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -6266,7 +6674,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-microblaze -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-microblaze [options] [disk_image]
  
@@ -6289,6 +6697,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -6351,6 +6760,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -6387,10 +6800,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -6431,7 +6840,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -6460,10 +6868,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -6474,10 +6882,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -6634,7 +7038,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -6673,21 +7079,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -6737,15 +7135,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -6785,7 +7181,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-microblazeel -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-microblazeel [options] [disk_image]
  
@@ -6808,6 +7204,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -6870,6 +7267,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -6906,10 +7307,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -6950,7 +7347,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -6979,10 +7375,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -6993,10 +7389,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -7153,7 +7545,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -7192,21 +7586,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -7256,15 +7642,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -7304,7 +7688,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-nios2 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-nios2 [options] [disk_image]
  
@@ -7327,6 +7711,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -7389,6 +7774,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -7425,10 +7814,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -7469,7 +7854,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -7498,10 +7882,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -7512,10 +7896,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -7672,7 +8052,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -7711,21 +8093,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -7778,15 +8152,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -7826,7 +8198,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-or1k -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-or1k [options] [disk_image]
  
@@ -7849,6 +8221,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -7911,6 +8284,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -7947,10 +8324,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -7991,7 +8364,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -8020,10 +8392,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -8034,10 +8406,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -8194,7 +8562,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -8233,21 +8603,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -8297,15 +8659,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -8345,7 +8705,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-riscv32 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-riscv32 [options] [disk_image]
  
@@ -8368,6 +8728,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -8430,6 +8791,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -8466,10 +8831,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -8510,7 +8871,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -8539,10 +8899,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -8553,10 +8913,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -8713,7 +9069,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -8752,21 +9110,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -8819,15 +9170,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -8867,7 +9216,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-riscv64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-riscv64 [options] [disk_image]
  
@@ -8890,6 +9239,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -8952,6 +9302,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -8988,10 +9342,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -9032,7 +9382,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -9061,10 +9410,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -9075,10 +9424,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -9235,7 +9580,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -9274,21 +9621,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -9341,15 +9681,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -9389,7 +9727,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-rx -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-rx [options] [disk_image]
  
@@ -9412,6 +9750,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -9474,6 +9813,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -9510,10 +9853,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -9554,7 +9893,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -9583,10 +9921,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -9597,10 +9935,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -9757,7 +10091,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -9796,21 +10132,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -9860,15 +10188,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -9908,7 +10234,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-s390x -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-s390x [options] [disk_image]
  
@@ -9931,6 +10257,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -9993,6 +10320,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -10029,10 +10360,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -10073,7 +10400,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -10102,10 +10428,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -10116,10 +10442,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -10276,7 +10598,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -10315,21 +10639,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -10379,15 +10696,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -10427,7 +10742,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sh4 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sh4 [options] [disk_image]
  
@@ -10450,6 +10765,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -10512,6 +10828,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -10548,10 +10868,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -10592,7 +10908,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -10621,10 +10936,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -10635,10 +10950,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -10795,7 +11106,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -10834,21 +11147,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -10898,15 +11203,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -10946,7 +11249,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sh4eb -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sh4eb [options] [disk_image]
  
@@ -10969,6 +11272,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -11031,6 +11335,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -11067,10 +11375,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -11111,7 +11415,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -11140,10 +11443,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -11154,10 +11457,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -11314,7 +11613,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -11353,21 +11654,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -11417,15 +11710,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -11465,7 +11756,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-tricore -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-tricore [options] [disk_image]
  
@@ -11488,6 +11779,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -11550,6 +11842,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -11586,10 +11882,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -11630,7 +11922,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -11659,10 +11950,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -11673,10 +11964,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -11833,7 +12120,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -11872,21 +12161,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -11936,15 +12217,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -11984,7 +12263,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-xtensa -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-xtensa [options] [disk_image]
  
@@ -12007,6 +12286,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -12069,6 +12349,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -12105,10 +12389,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -12149,7 +12429,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -12178,10 +12457,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -12192,10 +12471,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -12352,7 +12627,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -12391,21 +12668,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -12458,15 +12727,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -12506,7 +12773,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-xtensaeb -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-xtensaeb [options] [disk_image]
  
@@ -12529,6 +12796,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -12591,6 +12859,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -12627,10 +12899,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -12671,7 +12939,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -12700,10 +12967,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -12714,10 +12981,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -12874,7 +13137,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -12913,21 +13178,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -12980,15 +13237,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -13036,7 +13291,7 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `31.06 MB`  
+ **Installed size:** `30.90 MB`  
  **How to install:** `sudo apt install qemu-system-ppc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -13048,7 +13303,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgcc-s1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libibverbs1 
  * libjpeg62-turbo 
  * libnettle8
@@ -13075,7 +13332,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc [options] [disk_image]
  
@@ -13098,6 +13355,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -13160,6 +13418,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -13196,10 +13458,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -13240,7 +13498,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -13269,10 +13526,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -13283,10 +13540,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -13444,7 +13697,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -13483,21 +13738,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -13549,15 +13797,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -13597,7 +13843,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc64 [options] [disk_image]
  
@@ -13620,6 +13866,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -13682,6 +13929,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -13718,10 +13969,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -13762,7 +14009,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -13791,10 +14037,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -13805,10 +14051,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -13966,7 +14208,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -14005,21 +14249,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -14071,15 +14308,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -14119,7 +14354,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc64le -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc64le [options] [disk_image]
  
@@ -14142,6 +14377,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -14204,6 +14440,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -14240,10 +14480,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -14284,7 +14520,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -14313,10 +14548,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -14327,10 +14562,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -14488,7 +14719,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -14527,21 +14760,14 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -14593,15 +14819,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -14649,7 +14873,7 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `20.24 MB`  
+ **Installed size:** `20.21 MB`  
  **How to install:** `sudo apt install qemu-system-sparc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -14661,7 +14885,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgcc-s1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libibverbs1 
  * libjpeg62-turbo 
  * libnettle8
@@ -14688,7 +14914,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sparc -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sparc [options] [disk_image]
  
@@ -14711,6 +14937,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -14773,6 +15000,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -14809,10 +15040,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -14853,7 +15080,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -14882,10 +15108,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -14896,10 +15122,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -15057,7 +15279,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -15096,21 +15320,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -15162,15 +15378,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -15210,7 +15424,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sparc64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sparc64 [options] [disk_image]
  
@@ -15233,6 +15447,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -15295,6 +15510,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -15331,10 +15550,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -15375,7 +15590,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -15404,10 +15618,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -15418,10 +15632,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -15579,7 +15789,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -15618,21 +15830,13 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
- -enable-kvm     enable KVM full virtualization support
- -xen-domid id   specify xen guest domain id
- -xen-attach     attach to existing xen domain
-                 libxl will use this when starting QEMU
- -xen-domid-restrict     restrict set of available xen operations
-                         to specified domain id. (Does not affect
-                         xenpv machine type).
  -no-reboot      exit instead of rebooting
  -no-shutdown    stop before shutdown
  -action reboot=reset|shutdown
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -15684,15 +15888,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -15743,7 +15945,7 @@ PackagesInfo: |
   On x86 host hardware this package also enables KVM kernel virtual machine
   usage on systems which supports it.
  
- **Installed size:** `36.57 MB`  
+ **Installed size:** `41.70 MB`  
  **How to install:** `sudo apt install qemu-system-x86`  
  
  {{< spoiler "Dependencies:" >}}
@@ -15756,7 +15958,9 @@ PackagesInfo: |
  * libfuse3-3 
  * libgcc-s1 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libibverbs1 
  * libjpeg62-turbo 
  * libnettle8
@@ -15784,7 +15988,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# kvm -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: kvm [options] [disk_image]
  
@@ -15807,6 +16011,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -15869,6 +16074,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -15905,10 +16114,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -15949,7 +16154,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -15978,10 +16182,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -15992,10 +16196,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -16185,7 +16385,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -16224,7 +16426,6 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
  -xen-domid id   specify xen guest domain id
  -xen-attach     attach to existing xen domain
@@ -16238,7 +16439,7 @@ PackagesInfo: |
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -16288,15 +16489,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -16336,7 +16535,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-i386 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-i386 [options] [disk_image]
  
@@ -16359,6 +16558,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -16421,6 +16621,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -16457,10 +16661,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -16501,7 +16701,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -16530,10 +16729,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -16544,10 +16743,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -16737,7 +16932,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -16776,7 +16973,6 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
  -xen-domid id   specify xen guest domain id
  -xen-attach     attach to existing xen domain
@@ -16790,7 +16986,7 @@ PackagesInfo: |
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -16840,15 +17036,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -16888,7 +17082,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-x86_64 -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-x86_64 [options] [disk_image]
  
@@ -16911,6 +17105,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -16973,6 +17168,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -17009,10 +17208,6 @@ PackagesInfo: |
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -17053,7 +17248,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -17082,10 +17276,10 @@ PackagesInfo: |
  
  Display options:
  -display spice-app[,gl=on|off]
- -display sdl[,alt_grab=on|off][,ctrl_grab=on|off][,gl=on|core|es|off]
-             [,grab-mod=<mod>][,show-cursor=on|off][,window-close=on|off]
+ -display sdl[,gl=on|core|es|off][,grab-mod=<mod>][,show-cursor=on|off]
+             [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
-             [,show-cursor=on|off][,window-close=on|off]
+             [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -17096,10 +17290,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-display gtk"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -spice [port=port][,tls-port=secured-port][,x509-dir=<dir>]
         [,x509-key-file=<file>][,x509-key-password=<file>]
         [,x509-cert-file=<file>][,x509-cacert-file=<file>]
@@ -17289,7 +17479,9 @@ PackagesInfo: |
  -tpmdev emulator,id=id,chardev=dev
                  configure the TPM device using chardev backend
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -17328,7 +17520,6 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
  -xen-domid id   specify xen guest domain id
  -xen-attach     attach to existing xen domain
@@ -17342,7 +17533,7 @@ PackagesInfo: |
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -17392,15 +17583,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -17440,7 +17629,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-x86_64-microvm -h
- QEMU emulator version 7.0.0 (Debian 1:7.0+dfsg-7)
+ QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-x86_64-microvm [options] [disk_image]
  
@@ -17463,6 +17652,7 @@ PackagesInfo: |
                  memory-encryption=@var{} memory encryption object to use (default=none)
                  hmat=on|off controls ACPI HMAT support (default=off)
                  memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)
+                 cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]
                  sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid
  -cpu cpu        select CPU ('-cpu help' for list)
  -accel [accel=]accelerator[,prop[=value][,...]]
@@ -17525,6 +17715,10 @@ PackagesInfo: |
  -mem-prealloc   preallocate guest memory (use with -mem-path)
  -k language     use keyboard layout (for example 'fr' for French)
  -audio-help     show -audiodev equivalent of the currently specified audio settings
+ -audio [driver=]driver,model=value[,prop[=value][,...]]
+                 specifies the audio backend and device to use;
+                 apart from 'model', options are the same as for -audiodev.
+                 use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
                  id= identifier of the backend
@@ -17541,10 +17735,6 @@ PackagesInfo: |
                  dummy driver that discards all output
  -audiodev wav,id=id[,prop[=value][,...]]
                  path= path of wav file to record
- -soundhw c1,... enable audio support
-                 and only specified sound cards (comma separated list)
-                 use '-soundhw help' to get the list of supported cards
-                 use '-soundhw all' to enable all of them
  -device driver[,prop[=value][,...]]
                  add device (based on driver)
                  prop=value,... sets driver properties
@@ -17585,7 +17775,6 @@ PackagesInfo: |
                  use 'file' as a drive image
  -mtdblock file  use 'file' as on-board Flash memory image
  -sd file        use 'file' as SecureDigital card image
- -pflash file    use 'file' as a parallel flash image
  -snapshot       write to temporary files instead of disk image files
  -fsdev local,id=id,path=path,security_model=mapped-xattr|mapped-file|passthrough|none
   [,writeout=immediate][,readonly=on][,fmode=fmode][,dmode=dmode]
@@ -17619,10 +17808,6 @@ PackagesInfo: |
                  The default display is equivalent to
                  "-vnc localhost:0,to=99,id=default"
  -nographic      disable graphical output and redirect serial I/Os to console
- -curses         shorthand for -display curses
- -alt-grab       use Ctrl-Alt-Shift to grab mouse (instead of Ctrl-Alt)
- -ctrl-grab      use Right-Ctrl to grab mouse (instead of Ctrl-Alt)
- -sdl            shorthand for -display sdl
  -portrait       rotate graphical output 90 deg left (only PXA LCD)
  -rotate <deg>   rotate graphical output some deg left (only PXA LCD)
  -vga [std|cirrus|vmware|qxl|xenfb|tcx|cg3|virtio|none]
@@ -17770,7 +17955,9 @@ PackagesInfo: |
  -chardev parallel,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
  -chardev parport,id=id,path=path[,mux=on|off][,logfile=PATH][,logappend=on|off]
  
- Linux/Multiboot boot specific:
+ Boot Image or Kernel specific:
+ -bios file      set the filename for the BIOS
+ -pflash file    use 'file' as a parallel flash image
  -kernel bzImage use 'bzImage' as kernel image
  -append cmdline use 'cmdline' as kernel command line
  -initrd file    use 'file' as initial ram disk
@@ -17809,7 +17996,6 @@ PackagesInfo: |
  -dfilter range,..  filter debug output to range of addresses (useful for -d cpu,exec,etc..)
  -seed number       seed the pseudo-random number generator
  -L path         set the directory for the BIOS, VGA BIOS and keymaps
- -bios file      set the filename for the BIOS
  -enable-kvm     enable KVM full virtualization support
  -xen-domid id   specify xen guest domain id
  -xen-attach     attach to existing xen domain
@@ -17823,7 +18009,7 @@ PackagesInfo: |
                     action when guest reboots [default=reset]
  -action shutdown=poweroff|pause
                     action when guest shuts down [default=poweroff]
- -action panic=pause|shutdown|none
+ -action panic=pause|shutdown|exit-failure|none
                     action when guest panics [default=shutdown]
  -action watchdog=reset|shutdown|poweroff|inject-nmi|pause|debug|none
                     action when watchdog fires [default=reset]
@@ -17873,15 +18059,13 @@ PackagesInfo: |
                       blocking *fork and execve
                  use 'resourcecontrol' to disable process affinity and schedular priority
  -readconfig <file>
- -writeconfig <file>
-                 read/write config file (deprecated)
+                 read config file
  -no-user-config
                  do not load default user-provided config files at startup
  -trace [[enable=]<pattern>][,events=<file>][,file=<file>]
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
- -enable-fips    enable FIPS 140-2 compliance
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -17921,7 +18105,7 @@ PackagesInfo: |
   together with the Xen hypervisor for some types of DomUs.
   This package is not useful by its own.
  
- **Installed size:** `11.78 MB`  
+ **Installed size:** `14.27 MB`  
  **How to install:** `sudo apt install qemu-system-xen`  
  
  {{< spoiler "Dependencies:" >}}
@@ -17931,7 +18115,6 @@ PackagesInfo: |
  * libglib2.0-0 
  * libjpeg62-turbo 
  * libpixman-1-0 
- * libpng16-16 
  * libspice-server1 
  * libxendevicemodel1
  * libxenevtchn1
@@ -17965,7 +18148,7 @@ PackagesInfo: |
   possible to use qemu-user-static package instead of qemu-user-binmft, --
   qemu-user-static will register statically linked binfmt handlers instead.
  
- **Installed size:** `106.18 MB`  
+ **Installed size:** `99.91 MB`  
  **How to install:** `sudo apt install qemu-user`  
  
  {{< spoiler "Dependencies:" >}}
@@ -18480,6 +18663,64 @@ PackagesInfo: |
  
  Defaults:
  QEMU_LD_PREFIX  = /etc/qemu-binfmt/i386
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
+ 
+ - - -
+ 
+ ##### qemu-loongarch64
+ 
+ QEMU User Emulator
+ 
+ ```
+ root@kali:~# qemu-loongarch64 -h
+ usage: qemu-loongarch64 [options] program [arguments...]
+ Linux CPU emulator (compiled for loongarch64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -plugin              QEMU_PLUGIN       [file=]<file>[,<argname>=<argvalue>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/loongarch64
  QEMU_STACK_SIZE = 8388608 byte
  
  You can use -E and -U options or the QEMU_SET_ENV and
@@ -19965,7 +20206,7 @@ PackagesInfo: |
   not contain any additional files, only registration scripts which run
   at install and remove times.
  
- **Installed size:** `98 KB`  
+ **Installed size:** `101 KB`  
  **How to install:** `sudo apt install qemu-user-binfmt`  
  
  {{< spoiler "Dependencies:" >}}
@@ -19991,7 +20232,7 @@ PackagesInfo: |
   emulators can handle, so that it will be possible to run foreign binaries
   directly.
  
- **Installed size:** `294.77 MB`  
+ **Installed size:** `299.50 MB`  
  **How to install:** `sudo apt install qemu-user-static`  
  
  ##### qemu-aarch64-static
@@ -20518,6 +20759,63 @@ PackagesInfo: |
  
  Defaults:
  QEMU_LD_PREFIX  = /etc/qemu-binfmt/i386
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
+ 
+ - - -
+ 
+ ##### qemu-loongarch64-static
+ 
+ QEMU User Emulator (static version)
+ 
+ ```
+ root@kali:~# qemu-loongarch64-static -h
+ usage: qemu-loongarch64 [options] program [arguments...]
+ Linux CPU emulator (compiled for loongarch64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/loongarch64
  QEMU_STACK_SIZE = 8388608 byte
  
  You can use -E and -U options or the QEMU_SET_ENV and
@@ -21978,7 +22276,7 @@ PackagesInfo: |
    * qemu-io:  QEMU disk exerciser
    * qemu-nbd: QEMU disk network block device server
  
- **Installed size:** `6.53 MB`  
+ **Installed size:** `6.70 MB`  
  **How to install:** `sudo apt install qemu-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -21986,7 +22284,9 @@ PackagesInfo: |
  * libc6 
  * libfuse3-3 
  * libglib2.0-0 
+ * libgmp10 
  * libgnutls30 
+ * libhogweed6
  * libnettle8
  * libselinux1 
  * liburing2 
@@ -22000,7 +22300,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-img -h
- qemu-img version 7.0.0 (Debian 1:7.0+dfsg-7)
+ qemu-img version 7.1.0 (Debian 1:7.1+dfsg-2)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-img [standard options] command [command options]
  QEMU disk image utility

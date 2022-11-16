@@ -3,8 +3,8 @@ Title: hydra
 Homepage: https://github.com/vanhauser-thc/thc-hydra
 Repository: https://salsa.debian.org/pkg-security-team/hydra
 Architectures: any
-Version: 9.3-3
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web 
+Version: 9.4-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: images/hydra-logo.svg
 PackagesInfo: |
  ### hydra
@@ -23,7 +23,7 @@ PackagesInfo: |
   SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2),
   Telnet, VMware-Auth, VNC and XMPP.
  
- **Installed size:** `955 KB`  
+ **Installed size:** `956 KB`  
  **How to install:** `sudo apt install hydra`  
  
  {{< spoiler "Dependencies:" >}}
@@ -86,7 +86,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# hydra -h
- Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+ Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
  
  Syntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-ISOuvVd46] [-m MODULE_OPT] [service://server[:PORT][/OPT]]
  
@@ -238,7 +238,7 @@ PackagesInfo: |
    
   This package provides the GTK+ based GUI for hydra.
  
- **Installed size:** `111 KB`  
+ **Installed size:** `107 KB`  
  **How to install:** `sudo apt install hydra-gtk`  
  
  {{< spoiler "Dependencies:" >}}

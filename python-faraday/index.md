@@ -3,7 +3,7 @@ Title: python-faraday
 Homepage: https://faradaysec.com
 Repository: https://gitlab.com/kalilinux/packages/python-faraday
 Architectures: all
-Version: 4.0.4+git20220701-0kali1
+Version: 4.2.0-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-reporting 
 Icon: images/python-faraday-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This package no longer contains the GTK client like the upstream repo.
  
- **Installed size:** `28.56 MB`  
+ **Installed size:** `31.88 MB`  
  **How to install:** `sudo apt install faraday`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,6 +36,8 @@ PackagesInfo: |
  * python3-bleach
  * python3-click
  * python3-colorama
+ * python3-cryptography 
+ * python3-cvss
  * python3-dateutil
  * python3-distro
  * python3-distutils
@@ -60,6 +62,7 @@ PackagesInfo: |
  * python3-openssl
  * python3-pil
  * python3-psycopg2
+ * python3-psycopg3
  * python3-pyasn1
  * python3-pyotp
  * python3-requests
@@ -139,7 +142,7 @@ PackagesInfo: |
    initdb                          Create Faraday DB in Postgresql, also...
    list-plugins                    List Available Plugins
    migrate                         Migrates database schema.
-   openapi-yaml                    Show all URLs in OPENAPI format
+   openapi-swagger                 Creates Faraday Swagger config file
    rename-user                     Change username
    settings                        Manage settings
    show-urls                       Show all URLs in Faraday Server API
@@ -192,7 +195,7 @@ PackagesInfo: |
    
   This package is a transitional package. It can be remove safely.
  
- **Installed size:** `32 KB`  
+ **Installed size:** `30 KB`  
  **How to install:** `sudo apt install python-faraday`  
  
  {{< spoiler "Dependencies:" >}}

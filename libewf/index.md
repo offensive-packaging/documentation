@@ -3,7 +3,7 @@ Title: libewf
 Homepage: https://github.com/libyal/libewf-legacy
 Repository: https://salsa.debian.org/pkg-security-team/libewf
 Architectures: any
-Version: 20140807-2.1
+Version: 20140813-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This package contains tools to acquire, verify and export EWF files.
  
- **Installed size:** `6.03 MB`  
+ **Installed size:** `6.56 MB`  
  **How to install:** `sudo apt install ewf-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,7 +34,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfacquire -h
- ewfacquire 20140807
+ ewfacquire 20140813
  
  Use ewfacquire to acquire data from a file or device and store it in the EWF
  format (Expert Witness Compression Format).
@@ -116,7 +116,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfacquirestream -h
- ewfacquirestream 20140807
+ ewfacquirestream 20140813
  
  Use ewfacquirestream to acquire data from a pipe and store it in the EWF format
  (Expert Witness Compression Format).
@@ -188,7 +188,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfdebug -h
- ewfdebug 20140807
+ ewfdebug 20140813
  
  Use ewfdebug to analyze EWF file(s).
  
@@ -215,7 +215,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfexport -h
- ewfexport 20140807
+ ewfexport 20140813
  
  Use ewfexport to export data from the EWF format (Expert Witness Compression
  Format) to raw data or another EWF format.
@@ -280,7 +280,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfinfo -h
- ewfinfo 20140807
+ ewfinfo 20140813
  
  Use ewfinfo to determine information about the EWF format (Expert Witness
  Compression Format).
@@ -315,7 +315,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfmount -h
- ewfmount 20140807
+ ewfmount 20140813
  
  Use ewfmount to mount an Expert Witness Compression Format (EWF) image file
  
@@ -342,7 +342,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfrecover -h
- ewfrecover 20140807
+ ewfrecover 20140813
  
  Use ewfrecover to recover data from corrupt EWF (Expert Witness
  Compression Format) files.
@@ -380,7 +380,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ewfverify -h
- ewfverify 20140807
+ ewfverify 20140813
  
  Use ewfverify to verify data stored in the EWF format (Expert Witness
  Compression Format).
@@ -425,11 +425,11 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `2.85 MB`  
+ **Installed size:** `3.03 MB`  
  **How to install:** `sudo apt install libewf-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libbfio-dev 
+ * libbfio-dev
  * libewf2 
  * zlib1g-dev
  {{< /spoiler >}}
@@ -446,7 +446,7 @@ PackagesInfo: |
   by EnCase 1 to 6, linen and FTK Imager. The libewf is useful for forensics
   investigations.
  
- **Installed size:** `1.66 MB`  
+ **Installed size:** `1.73 MB`  
  **How to install:** `sudo apt install libewf2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -468,7 +468,7 @@ PackagesInfo: |
    
   This package contains Python 3 bindings for libewf.
  
- **Installed size:** `140 KB`  
+ **Installed size:** `159 KB`  
  **How to install:** `sudo apt install python3-libewf`  
  
  {{< spoiler "Dependencies:" >}}

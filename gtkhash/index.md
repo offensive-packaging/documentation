@@ -1,9 +1,9 @@
 ---
 Title: gtkhash
 Homepage: https://gtkhash.org
-Repository: https://gitlab.com/kalilinux/packages/gtkhash
+Repository: https://salsa.debian.org/debian/gtkhash
 Architectures: any
-Version: 1.4-0kali3
+Version: 1.4+git20220617-3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   Currently supported hash functions include MD5, MD6, SHA1,
   SHA256, SHA512, RIPEMD, TIGER and WHIRLPOOL.
  
- **Installed size:** `84 KB`  
+ **Installed size:** `91 KB`  
  **How to install:** `sudo apt install caja-gtkhash`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
   Currently supported hash functions include MD5, MD6, SHA1,
   SHA256, SHA512, RIPEMD, TIGER and WHIRLPOOL.
  
- **Installed size:** `436 KB`  
+ **Installed size:** `499 KB`  
  **How to install:** `sudo apt install gtkhash`  
  
  {{< spoiler "Dependencies:" >}}
@@ -79,31 +79,6 @@ PackagesInfo: |
  
  - - -
  
- ### nautilus-gtkhash
- 
-  The GtkHash extension for nautilus which allows users to compute
-  message digests or checksums using the mhash library.
-  Currently supported hash functions include MD5, MD6, SHA1,
-  SHA256, SHA512, RIPEMD, TIGER and WHIRLPOOL.
- 
- **Installed size:** `84 KB`  
- **How to install:** `sudo apt install nautilus-gtkhash`  
- 
- {{< spoiler "Dependencies:" >}}
- * gtkhash 
- * libb2-1 
- * libc6 
- * libgcrypt20 
- * libglib2.0-0 
- * libgtk-3-0 
- * libnautilus-extension1a 
- * libnettle8
- * zlib1g 
- {{< /spoiler >}}
- 
- 
- - - -
- 
  ### nemo-gtkhash
  
   The GtkHash extension for nemo which allows users to compute
@@ -111,7 +86,7 @@ PackagesInfo: |
   Currently supported hash functions include MD5, MD6, SHA1,
   SHA256, SHA512, RIPEMD, TIGER and WHIRLPOOL.
  
- **Installed size:** `84 KB`  
+ **Installed size:** `85 KB`  
  **How to install:** `sudo apt install nemo-gtkhash`  
  
  {{< spoiler "Dependencies:" >}}
@@ -136,7 +111,7 @@ PackagesInfo: |
   Currently supported hash functions include MD5, MD6, SHA1,
   SHA256, SHA512, RIPEMD, TIGER and WHIRLPOOL.
  
- **Installed size:** `83 KB`  
+ **Installed size:** `84 KB`  
  **How to install:** `sudo apt install thunar-gtkhash`  
  
  {{< spoiler "Dependencies:" >}}

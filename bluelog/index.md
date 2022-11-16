@@ -3,7 +3,7 @@ Title: bluelog
 Homepage: http://www.digifail.com/software/bluelog.shtml
 Repository: https://gitlab.com/kalilinux/packages/bluelog
 Architectures: any
-Version: 1.1.2-1kali2
+Version: 1.1.2-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-bluetooth kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   tool, identifying the number of possible Bluetooth targets
   there are in the surrounding environment.
  
- **Installed size:** `195 KB`  
+ **Installed size:** `198 KB`  
  **How to install:** `sudo apt install bluelog`  
  
  {{< spoiler "Dependencies:" >}}

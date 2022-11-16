@@ -3,7 +3,7 @@ Title: sliver
 Homepage: https://github.com/BishopFox/sliver
 Repository: https://gitlab.com/kalilinux/packages/sliver
 Architectures: amd64 arm64
-Version: 1.5.21-0kali1
+Version: 1.5.31-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   compiled with unique X.509 certificates signed by a per-instance certificate
   authority generated when you first run the binary.
  
- **Installed size:** `214.84 MB`  
+ **Installed size:** `238.49 MB`  
  **How to install:** `sudo apt install sliver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,6 +31,7 @@ PackagesInfo: |
    sliver-client [command]
  
  Available Commands:
+   completion  Generate the autocompletion script for the specified shell
    help        Help about any command
    import      Import a client configuration file
    version     Print version and exit
@@ -53,6 +54,8 @@ PackagesInfo: |
    sliver-server [command]
  
  Available Commands:
+   builder     Start the process as an external builder
+   completion  Generate the autocompletion script for the specified shell
    daemon      Force start server in daemon mode
    export-ca   Export certificate authority
    help        Help about any command

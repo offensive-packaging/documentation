@@ -3,7 +3,7 @@ Title: hostapd-wpe
 Homepage: https://github.com/aircrack-ng/aircrack-ng/tree/master/patches/wpe
 Repository: https://gitlab.com/kalilinux/packages/hostapd-wpe
 Architectures: any
-Version: 2.9+git20190816-0kali2
+Version: 2.10+git20220310-0kali1
 Metapackages: kali-linux-everything kali-tools-802-11 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -40,7 +40,7 @@ PackagesInfo: |
    
   hostapd-wpe logs all data to stdout and hostapd-wpe.log
  
- **Installed size:** `1.70 MB`  
+ **Installed size:** `2.24 MB`  
  **How to install:** `sudo apt install hostapd-wpe`  
  
  {{< spoiler "Dependencies:" >}}
@@ -48,7 +48,7 @@ PackagesInfo: |
  * libnl-3-200 
  * libnl-genl-3-200 
  * libsqlite3-0 
- * libssl1.0.2 
+ * libunsafessl1.0.2
  * make-guile | make
  * openssl
  {{< /spoiler >}}
@@ -59,17 +59,18 @@ PackagesInfo: |
  ```
  root@kali:~# hostapd-wpe --help
  hostapd-wpe: invalid option -- '-'
- hostapd-WPE v2.9
+ hostapd-WPE v2.10
  User space daemon for IEEE 802.11 AP management,
  IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator
- Copyright (c) 2002-2019, Jouni Malinen <j@w1.fi> and contributors
+ Copyright (c) 2002-2022, Jouni Malinen <j@w1.fi> and contributors
  -----------------------------------------------------
  WPE (Wireless Pwnage Edition)
  This version has been cleverly modified to target
  wired and wireless users.
  Twitter: @aircrackng
+ Website: https://aircrack-ng.org
  
- usage: hostapd-wpe [-hdBKtvskc] [-P <PID file>] [-e <entropy file>] \
+ usage: hostapd-wpe [-hdBKtvrkc] [-P <PID file>] [-e <entropy file>] \
           [-g <global ctrl_iface>] [-G <group>]\
           [-i <comma-separated list of interface names>]\
           <configuration file(s)>
@@ -83,18 +84,23 @@ PackagesInfo: |
     -G   group for control interfaces
     -P   PID file
     -K   include key data in debug messages
+    -f   log output to debug file instead of stdout
+    -T   record to Linux tracing in addition to logging
+         (records all messages regardless of debug verbosity)
     -i   list of interface names to use
+    -s   log output to syslog instead of stdout
     -S   start all the interfaces synchronously
     -t   include timestamps in some debug messages
     -v   show hostapd version
  
  
-  WPE Options -------------------
-        (credential logging always enabled)
-    -s   Return Success where possible
+ WPE options:
+    -r   Return Success where possible
     -c   Cupid Mode (Heartbleed clients)
  
     -k   Karma Mode (Respond to all probes)
+ 
+    Note: credentials logging is always enabled
  
  ```
  
@@ -105,10 +111,10 @@ PackagesInfo: |
  
  ```
  root@kali:~# hostapd-wpe_cli -h
- hostapd_cli v2.9
- Copyright (c) 2004-2019, Jouni Malinen <j@w1.fi> and contributors
+ hostapd_cli v2.10
+ Copyright (c) 2004-2022, Jouni Malinen <j@w1.fi> and contributors
  
- usage: hostapd_cli [-p<path>] [-i<ifname>] [-hvB] [-a<path>] \
+ usage: hostapd_cli [-p<path>] [-i<ifname>] [-hvBr] [-a<path>] \
                     [-P<pid file>] [-G<ping interval>] [command..]
  
  Options:
@@ -118,6 +124,8 @@ PackagesInfo: |
     -s<dir_path> dir path to open client sockets (default: /var/run/hostapd-wpe)
     -a<file>     run in daemon mode executing the action file based on events
                  from hostapd
+    -r           try to reconnect when client socket is disconnected.
+                 This is useful only when used with -a.
     -B           run a daemon in the background
     -i<ifname>   Interface to listen on (default: first interface found in the
                  socket path)
@@ -180,10 +188,30 @@ PackagesInfo: |
    pmksa_flush  = flush PMKSA cache
    set_neighbor <addr> <ssid=> <nr=> [lci=] [civic=] [stat]
      = add AP to neighbor database
-   remove_neighbor <addr> <ssid=> = remove AP from neighbor database
+   show_neighbor   = show neighbor database entries
+   remove_neighbor <addr> [ssid=<hex>] = remove AP from neighbor database
    req_lci <addr> = send LCI request to a station
    req_range  = send FTM range request
    driver_flags  = show supported driver flags
+   dpp_qr_code report a scanned DPP URI from a QR Code
+   dpp_bootstrap_gen type=<qrcode> [chan=..] [mac=..] [info=..] [curve=..] [key=..] = generate DPP bootstrap information
+   dpp_bootstrap_remove *|<id> = remove DPP bootstrap information
+   dpp_bootstrap_get_uri <id> = get DPP bootstrap URI
+   dpp_bootstrap_info <id> = show DPP bootstrap information
+   dpp_bootstrap_set <id> [conf=..] [ssid=<SSID>] [ssid_charset=#] [psk=<PSK>] [pass=<passphrase>] [configurator=<id>] [conn_status=#] [akm_use_selector=<0|1>] [group_id=..] [expiry=#] [csrattrs=..] = set DPP configurator parameters
+   dpp_auth_init peer=<id> [own=<id>] = initiate DPP bootstrapping
+   dpp_listen <freq in MHz> = start DPP listen
+   dpp_stop_listen = stop DPP listen
+   dpp_configurator_add [curve=..] [key=..] = add DPP configurator
+   dpp_configurator_remove *|<id> = remove DPP configurator
+   dpp_configurator_get_key <id> = Get DPP configurator's private key
+   dpp_configurator_sign conf=<role> configurator=<id> = generate self DPP configuration
+   dpp_pkex_add add PKEX code
+   dpp_pkex_remove *|<id> = remove DPP pkex information
+   dpp_controller_start [tcp_port=<port>] [role=..] = start DPP controller
+   dpp_controller_stop = stop DPP controller
+   dpp_chirp own=<BI ID> iter=<count> = start DPP chirp
+   dpp_stop_chirp = stop DPP chirp
    accept_acl =Add/Delete/Show/Clear accept MAC ACL
    deny_acl =Add/Delete/Show/Clear deny MAC ACL
    poll_sta <addr> = poll a STA to check connectivity with a QoS null frame

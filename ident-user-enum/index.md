@@ -1,9 +1,9 @@
 ---
 Title: ident-user-enum
-Homepage: http://pentestmonkey.net/tools/user-enumeration/ident-user-enum
+Homepage: https://pentestmonkey.net/tools/user-enumeration/ident-user-enum
 Repository: https://gitlab.com/kalilinux/packages/ident-user-enum
 Architectures: all
-Version: 1.0-0kali2
+Version: 1.0-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

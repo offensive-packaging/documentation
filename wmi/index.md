@@ -3,7 +3,7 @@ Title: wmi
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/wmi
 Architectures: any
-Version: 1.3.16-0kali6
+Version: 1.3.16-0kali7
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   This package contains the command line client to perform
   remote command execution on Windows systems.
  
- **Installed size:** `9.07 MB`  
+ **Installed size:** `9.06 MB`  
  **How to install:** `sudo apt install wmi-client`  
  
  {{< spoiler "Dependencies:" >}}

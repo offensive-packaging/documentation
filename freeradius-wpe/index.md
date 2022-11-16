@@ -19,7 +19,7 @@ PackagesInfo: |
     * EAP-TTLS/MSCHAPv2
     * EAP-MD5
  
- **Installed size:** `4.57 MB`  
+ **Installed size:** `4.55 MB`  
  **How to install:** `sudo apt install freeradius-wpe`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,7 +31,7 @@ PackagesInfo: |
  * libpam0g 
  * libpcap0.8 
  * libpcre3
- * libperl5.34 
+ * libperl5.36 
  * libpython3.10 
  * libsqlite3-0 
  * libssl3 

@@ -3,8 +3,8 @@ Title: vboot-utils
 Homepage: https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 Repository: https://salsa.debian.org/debian/vboot-utils
 Architectures: amd64 arm64 armel armhf i386
-Version: 0~R99-14469.B-2
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
+Version: 0~R106-15054.B-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cgpt
@@ -17,6 +17,7 @@ PackagesInfo: |
  **How to install:** `sudo apt install cgpt`  
  
  {{< spoiler "Dependencies:" >}}
+ * flashrom
  * libc6 
  * libuuid1 
  {{< /spoiler >}}
@@ -54,10 +55,12 @@ PackagesInfo: |
   program required to sign custom kernels in order to get them booted by Chrome
   OS devices (i.e. Chromebooks)).
  
- **Installed size:** `1004 KB`  
+ **Installed size:** `1014 KB`  
  **How to install:** `sudo apt install vboot-kernel-utils`  
  
  {{< spoiler "Dependencies:" >}}
+ * coreboot-utils
+ * flashrom
  * libc6 
  * libflashrom1
  * libssl3 
@@ -105,7 +108,7 @@ PackagesInfo: |
    vbutil_kernel        Creates, signs, and verifies the kernel partition
    vbutil_key           Wraps RSA keys with vboot headers
    vbutil_keyblock      Creates, signs, and verifies a keyblock
-   verify               Verify the signatures of various binary components
+   verify               Verify the signatures of various binary components. This does not verify GSCVD contents.
    version              Show the futility source revision and build date
  
  Use "futility help COMMAND" for more information.
@@ -197,10 +200,11 @@ PackagesInfo: |
   Most users don't need this package, and should look for the cgpt and
   vboot-kernel-utils packages instead.
  
- **Installed size:** `242 KB`  
+ **Installed size:** `278 KB`  
  **How to install:** `sudo apt install vboot-utils`  
  
  {{< spoiler "Dependencies:" >}}
+ * flashrom
  * libc6 
  * libssl3 
  * vboot-kernel-utils

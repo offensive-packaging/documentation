@@ -3,7 +3,7 @@ Title: cifs-utils
 Homepage: https://www.samba.org/~jlayton/cifs-utils/
 Repository: https://salsa.debian.org/samba-team/cifs-utils
 Architectures: linux-any
-Version: 2:6.14-1.1
+Version: 2:7.0-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,6 +21,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libcap-ng0 
+ * libgssapi-krb5-2 
  * libkeyutils1 
  * libkrb5-3 
  * libpam0g 
@@ -129,6 +130,12 @@ PackagesInfo: |
  
         --version|-v
                Print version number and exit.
+ 
+ ENVIRONMENT VARIABLES
+        GSS_USE_PROXY="yes"
+               Enable usage of gssproxy for credential retrieval. This includes
+               keytab based client initiation as well as (Resource Based)  Con-
+               strained Delegation.  See gssproxy-mech(8).
  
  CONFIGURATION FOR KEYCTL
         cifs.upcall  is  designed  to  be  called  from  the kernel via the re-

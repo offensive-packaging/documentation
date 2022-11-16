@@ -3,7 +3,7 @@ Title: cloud-enum
 Homepage: https://github.com/initstring/cloud_enum
 Repository: https://salsa.debian.org/pkg-security-team/cloud-enum
 Architectures: all
-Version: 0.7-1
+Version: 0.7-2
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

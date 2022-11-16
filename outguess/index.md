@@ -3,7 +3,7 @@ Title: outguess
 Homepage: https://github.com/resurrecting-open-source-projects/outguess
 Repository: https://salsa.debian.org/pkg-security-team/outguess
 Architectures: any
-Version: 1:0.4-1
+Version: 1:0.4-2
 Metapackages: kali-linux-everything kali-tools-crypto-stego 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
    
   This package is useful in forensics investigations and security actions.
  
- **Installed size:** `231 KB`  
+ **Installed size:** `230 KB`  
  **How to install:** `sudo apt install outguess`  
  
  {{< spoiler "Dependencies:" >}}

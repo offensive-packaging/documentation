@@ -3,7 +3,7 @@ Title: amass
 Homepage: https://github.com/OWASP/Amass
 Repository: https://gitlab.com/kalilinux/packages/amass
 Architectures: any all
-Version: 3.19.3-0kali1
+Version: 3.20.0-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -33,7 +33,7 @@ PackagesInfo: |
    
   This package contains the command amass.
  
- **Installed size:** `28.99 MB`  
+ **Installed size:** `29.30 MB`  
  **How to install:** `sudo apt install amass`  
  
  {{< spoiler "Dependencies:" >}}
@@ -60,7 +60,7 @@ PackagesInfo: |
        :W@@WWWW@@8       +              :&W@@@@&    &W  .o#@@W&.   :W@WWW@@&
          +o&&&&+.                                                    +oooo.
  
-                                                                      v3.19.3
+                                                                      v3.20.0
                                             OWASP Amass Project - @owaspamass
                           In-depth Attack Surface Mapping and Asset Discovery
  

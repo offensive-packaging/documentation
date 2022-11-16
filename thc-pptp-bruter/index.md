@@ -14,12 +14,12 @@ PackagesInfo: |
   and Cisco gateways.  Exploits a weakness in Microsoft's anti-brute force
   implementation which makes it possible to try 300 passwords the second.
  
- **Installed size:** `43 KB`  
+ **Installed size:** `48 KB`  
  **How to install:** `sudo apt install thc-pptp-bruter`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### thc-pptp-bruter

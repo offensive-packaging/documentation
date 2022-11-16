@@ -3,15 +3,15 @@ Title: wpscan
 Homepage: https://wpscan.com/wordpress-security-scanner
 Repository: https://gitlab.com/kalilinux/packages/wpscan
 Architectures: all
-Version: 3.8.22-0kali1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
+Version: 3.8.22-0kali2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/wpscan-logo.svg
 PackagesInfo: |
  ### wpscan
  
   WPScan scans remote WordPress installations to find security issues.
  
- **Installed size:** `396 KB`  
+ **Installed size:** `394 KB`  
  **How to install:** `sudo apt install wpscan`  
  
  {{< spoiler "Dependencies:" >}}
@@ -55,7 +55,7 @@ PackagesInfo: |
                                                    Default: true
      -o, --output FILE                             Output to FILE
      -f, --format FORMAT                           Output results in the format supplied
-                                                   Available choices: cli-no-colour, cli-no-color, json, cli
+                                                   Available choices: cli-no-colour, cli, cli-no-color, json
          --detection-mode MODE                     Default: mixed
                                                    Available choices: mixed, passive, aggressive
          --user-agent, --ua VALUE

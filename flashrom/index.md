@@ -4,7 +4,7 @@ Homepage: http://www.flashrom.org
 Repository: https://salsa.debian.org/myczko-guest/flashrom
 Architectures: any
 Version: 1.2-5
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### flashrom
@@ -83,7 +83,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# flashrom -h
- flashrom v1.2 on Linux 5.18.0-kali5-amd64 (x86_64)
+ flashrom v1.2 on Linux 6.0.0-kali3-amd64 (x86_64)
  flashrom is free software, get the source code at https://flashrom.org
  
  Usage: flashrom [-h|-R|-L|

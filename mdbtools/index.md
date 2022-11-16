@@ -14,7 +14,7 @@ PackagesInfo: |
    
   Allows one to use MDB files with PHP for example.
  
- **Installed size:** `163 KB`  
+ **Installed size:** `160 KB`  
  **How to install:** `sudo apt install libmdb3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -208,7 +208,7 @@ PackagesInfo: |
  BUGS
         Only a few types are currently supported.
  
- MDBTools 1.0.0                  31 October 2021                  mdb-header(1)
+ MDBTools 1.0.0                 18 September 2022                 mdb-header(1)
  ```
  
  - - -
@@ -270,7 +270,7 @@ PackagesInfo: |
  AUTHORS
         The mdb-hexdump utility was written by Brian Bruns.
  
- MDBTools 1.0.0                  31 October 2021                 mdb-hexdump(1)
+ MDBTools 1.0.0                 18 September 2022                mdb-hexdump(1)
  ```
  
  - - -
@@ -373,7 +373,7 @@ PackagesInfo: |
  AUTHORS
         The mdb-parsecsv utility was written by Brian Bruns.
  
- MDBTools 1.0.0                  31 October 2021                mdb-parsecsv(1)
+ MDBTools 1.0.0                 18 September 2022               mdb-parsecsv(1)
  ```
  
  - - -
@@ -572,7 +572,7 @@ PackagesInfo: |
  * libglib2.0-0 
  * libmdb3 
  * libmdbsql3 
- * odbcinst1debian2 
+ * libodbcinst2 
  {{< /spoiler >}}
  
  

@@ -3,7 +3,7 @@ Title: ssldump
 Homepage: https://github.com/adulau/ssldump
 Repository: https://salsa.debian.org/pkg-security-team/ssldump
 Architectures: any
-Version: 1.4-0kali1
+Version: 1.5-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-web 
 Icon: images/ssldump-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   ssldump is based on tcpdump, a network monitoring and data acquisition
   tool.
  
- **Installed size:** `181 KB`  
+ **Installed size:** `180 KB`  
  **How to install:** `sudo apt install ssldump`  
  
  {{< spoiler "Dependencies:" >}}

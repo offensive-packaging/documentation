@@ -3,7 +3,7 @@ Title: unhide
 Homepage: https://www.unhide-forensics.info
 Repository: https://salsa.debian.org/pkg-security-team/unhide
 Architectures: any
-Version: 20210124-2
+Version: 20220611-1
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -32,7 +32,7 @@ PackagesInfo: |
   This package is useful for network security checks, in addition to forensics
   investigations.
  
- **Installed size:** `197 KB`  
+ **Installed size:** `167 KB`  
  **How to install:** `sudo apt install unhide`  
  
  {{< spoiler "Dependencies:" >}}
@@ -42,8 +42,6 @@ PackagesInfo: |
  * net-tools
  * procps
  * psmisc
- * python3
- * python3-tk
  {{< /spoiler >}}
  
  ##### unhide
@@ -52,7 +50,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# unhide -h
- Unhide 20210124
+ Unhide 20211016
  Copyright © 2010-2021 Yago Jesus & Patrick Gouin
  License GPLv3+ : GNU GPL version 3 or later
  http://www.unhide-forensics.info
@@ -106,19 +104,13 @@ PackagesInfo: |
  
  - - -
  
- ##### unhide-gui
- 
- 
- 
- - - -
- 
  ##### unhide-linux
  
  Forensic tool to find hidden processes
  
  ```
  root@kali:~# unhide-linux -h
- Unhide 20210124
+ Unhide 20211016
  Copyright © 2010-2021 Yago Jesus & Patrick Gouin
  License GPLv3+ : GNU GPL version 3 or later
  http://www.unhide-forensics.info
@@ -178,7 +170,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# unhide-posix -h
- Unhide-posix 20210124
+ Unhide-posix 20211016
  Copyright © 2013-2021 Yago Jesus & Patrick Gouin
  License GPLv3+ : GNU GPL version 3 or later
  http://www.unhide-forensics.info
@@ -198,7 +190,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# unhide-tcp -h
- Unhide-tcp 20210124
+ Unhide-tcp 20211016
  Copyright © 2013-2021 Yago Jesus & Patrick Gouin
  License GPLv3+ : GNU GPL version 3 or later
  http://www.unhide-forensics.info
@@ -409,8 +401,8 @@ PackagesInfo: |
                unhide -m -d sys procall brute reverse
  
  BUGS
-        Report  unhide  bugs  on the bug tracker on sourceforge (http://source-
-        forge.net/projects/unhide/)
+        Report    unhide    bugs    on    the    bug    tracker    on    GitHub
+        (https://github.com/YJesus/Unhide/issues)
         With recent versions of Linux kernel (> 2.6.33), the sysinfo  test  may
         report  false  positives.   It may be due to optimization in the sched-
         uler, the use of cgroup or even the use of systemd.   The  use  of  the
@@ -421,10 +413,11 @@ PackagesInfo: |
         unhide-tcp (8).
  
  AUTHOR
-        This manual page was written by Francois Marier francois@debian.org and
-        Patrick Gouin.  Permission is granted to copy, distribute and/or modify
-        this document under the terms of the GNU General Public  License,  Ver-
-        sion 3 or any later version published by the Free Software Foundation.
+        This manual page was written by Francois  Marier  (francois@debian.org)
+        and Patrick Gouin (patrickg.github@free.fr).
+        Permission  is  granted to copy, distribute and/or modify this document
+        under the terms of the GNU General Public License,  Version  3  or  any
+        later version published by the Free Software Foundation.
  
  LICENSE
         License   GPLv3+:  GNU  GPL  version  3  or  later  <http://gnu.org/li-
@@ -432,8 +425,48 @@ PackagesInfo: |
         This is free software: you are free  to  change  and  redistribute  it.
         There is NO WARRANTY, to the extent permitted by law.
  
- Administration commands          January 2021                        UNHIDE(8)
+ Administration commands            June 2022                         UNHIDE(8)
  ```
+ 
+ - - -
+ 
+ ### unhide-gui
+ 
+  This package unhide-gui provides a graphical user interface for unhide.
+   
+  Unhide is a forensic tool to find processes and TCP/UDP ports hidden by
+  rootkits, Linux kernel modules or by other techniques. It includes two
+  utilities: unhide and unhide-tcp.
+   
+  unhide detects hidden processes using the following six techniques:
+    * Compare /proc vs /bin/ps output
+    * Compare info gathered from /bin/ps with info gathered by walking thru the
+      procfs.
+    * Compare info gathered from /bin/ps with info gathered from syscalls
+      (syscall scanning).
+    * Full PIDs space occupation (PIDs bruteforcing)
+    * Reverse search, verify that all thread seen by ps are also seen by the
+      kernel (/bin/ps output vs /proc, procfs walking and syscall)
+    * Quick compare /proc, procfs walking and syscall vs /bin/ps output
+   
+  unhide-tcp identifies TCP/UDP ports that are listening but are not listed in
+  /bin/netstat through brute forcing of all TCP/UDP ports available.
+   
+  This package is useful for network security checks, in addition to forensics
+  investigations.
+ 
+ **Installed size:** `52 KB`  
+ **How to install:** `sudo apt install unhide-gui`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * python3
+ * python3-tk
+ * unhide
+ {{< /spoiler >}}
+ 
+ ##### unhide-gui
+ 
+ 
  
  - - -
  

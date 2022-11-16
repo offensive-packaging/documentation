@@ -28,7 +28,7 @@ PackagesInfo: |
  ```
  root@kali:~# dnswalk --help
  /usr/bin/dnswalk version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: dnswalk [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  

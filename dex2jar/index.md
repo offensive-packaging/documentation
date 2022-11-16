@@ -411,6 +411,9 @@ PackagesInfo: |
                    root modules to resolve in addition to the initial module.
                    <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
                    ALL-MODULE-PATH.
+     --enable-native-access <module name>[,<module name>...]
+                   modules that are permitted to perform restricted native operations.
+                   <module name> can also be ALL-UNNAMED.
      --list-modules
                    list observable modules and exit
      -d <module name>
@@ -426,7 +429,7 @@ PackagesInfo: |
      -D<name>=<value>
                    set a system property
      -verbose:[class|module|gc|jni]
-                   enable verbose output
+                   enable verbose output for the given subsystem
      -version      print product version to the error stream and exit
      --version     print product version to the output stream and exit
      -showversion  print product version to the error stream and continue

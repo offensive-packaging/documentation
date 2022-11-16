@@ -3,7 +3,7 @@ Title: aflplusplus
 Homepage: https://github.com/vanhauser-thc/AFLplusplus
 Repository: https://salsa.debian.org/pkg-security-team/aflplusplus
 Architectures: any all
-Version: 4.00c-1
+Version: 4.02c-1
 Metapackages: kali-linux-everything kali-tools-fuzzing kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++ is
   installed.
  
- **Installed size:** `70 KB`  
+ **Installed size:** `71 KB`  
  **How to install:** `sudo apt install afl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -38,13 +38,13 @@ PackagesInfo: |
    
   afl++ is a fork of the unmaintained afl.
  
- **Installed size:** `1.95 MB`  
+ **Installed size:** `1.92 MB`  
  **How to install:** `sudo apt install afl++`  
  
  {{< spoiler "Dependencies:" >}}
  * build-essential
  * clang
- * clang-13
+ * clang-14
  * libc6 
  * libgcc-s1 
  * libpython3.10 
@@ -58,7 +58,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-analyze -h
- afl-analyze++4.00c by Michal Zalewski
+ afl-analyze++4.02c by Michal Zalewski
  
  afl-analyze [ options ] -- /path/to/target_app [ ... ]
  
@@ -96,7 +96,7 @@ PackagesInfo: |
  
  ##### afl-c++
  
- Afl-c++ (8)          - afl-cc++4.00c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-c++ (8)          - afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-c++ --help
@@ -115,7 +115,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -166,11 +167,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -181,9 +185,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -196,8 +199,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -207,7 +208,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -219,7 +219,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -236,6 +235,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -278,20 +278,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -309,7 +307,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -367,9 +364,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -385,7 +383,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -400,8 +397,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -416,6 +415,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -449,49 +449,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -499,12 +483,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -514,41 +492,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -556,59 +520,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -627,12 +563,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -645,93 +581,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -750,18 +654,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -796,12 +699,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -843,14 +742,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -874,21 +773,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -906,16 +799,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -933,11 +825,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -947,13 +836,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -979,7 +868,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -992,14 +880,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -1008,22 +893,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -1034,6 +914,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -1096,6 +978,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -1105,10 +989,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -1137,18 +1024,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -1173,14 +1064,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -1211,11 +1099,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -1231,6 +1118,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -1240,6 +1128,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -1249,14 +1139,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -1286,9 +1178,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -1331,6 +1226,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -1384,7 +1281,7 @@ PackagesInfo: |
  
  ##### afl-cc
  
- Afl-cc++4.00c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-cc --help
@@ -1403,7 +1300,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -1454,11 +1352,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -1469,9 +1370,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -1484,8 +1384,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -1495,7 +1393,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -1507,7 +1404,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -1524,6 +1420,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -1566,20 +1463,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -1597,7 +1492,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -1655,9 +1549,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -1673,7 +1568,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -1688,8 +1582,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -1704,6 +1600,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -1737,49 +1634,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -1787,12 +1668,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -1802,41 +1677,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -1844,59 +1705,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -1915,12 +1748,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -1933,93 +1766,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -2038,18 +1839,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -2084,12 +1884,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -2131,14 +1927,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -2162,21 +1958,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -2194,16 +1984,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -2221,11 +2010,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -2235,13 +2021,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -2267,7 +2053,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -2280,14 +2065,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -2296,22 +2078,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -2322,6 +2099,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -2384,6 +2163,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -2393,10 +2174,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -2425,18 +2209,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -2461,14 +2249,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -2499,11 +2284,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -2519,6 +2303,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -2528,6 +2313,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -2537,14 +2324,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -2574,9 +2363,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -2619,6 +2411,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -2690,7 +2484,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -2741,11 +2536,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -2756,9 +2554,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -2771,8 +2568,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -2782,7 +2577,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -2794,7 +2588,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -2811,6 +2604,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -2853,20 +2647,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -2884,7 +2676,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -2942,9 +2733,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -2960,7 +2752,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -2975,8 +2766,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -2991,6 +2784,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -3024,49 +2818,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -3074,12 +2852,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -3089,41 +2861,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -3131,59 +2889,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -3202,12 +2932,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -3220,93 +2950,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -3325,18 +3023,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -3371,12 +3068,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -3418,14 +3111,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -3449,21 +3142,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -3481,16 +3168,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -3508,11 +3194,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -3522,13 +3205,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -3554,7 +3237,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -3567,14 +3249,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -3583,22 +3262,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -3609,6 +3283,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -3671,6 +3347,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -3680,10 +3358,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -3712,18 +3393,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -3748,14 +3433,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -3786,11 +3468,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -3806,6 +3487,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -3815,6 +3497,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -3824,14 +3508,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -3861,9 +3547,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -3906,6 +3595,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -3977,7 +3668,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -4028,11 +3720,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -4043,9 +3738,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -4058,8 +3752,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -4069,7 +3761,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -4081,7 +3772,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -4098,6 +3788,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -4140,20 +3831,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -4171,7 +3860,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -4229,9 +3917,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -4247,7 +3936,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -4262,8 +3950,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -4278,6 +3968,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -4311,49 +4002,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -4361,12 +4036,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -4376,41 +4045,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -4418,59 +4073,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -4489,12 +4116,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -4507,93 +4134,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -4612,18 +4207,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -4658,12 +4252,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -4705,14 +4295,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -4736,21 +4326,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -4768,16 +4352,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -4795,11 +4378,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -4809,13 +4389,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -4841,7 +4421,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -4854,14 +4433,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -4870,22 +4446,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -4896,6 +4467,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -4958,6 +4531,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -4967,10 +4542,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -4999,18 +4577,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -5035,14 +4617,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -5073,11 +4652,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -5093,6 +4671,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -5102,6 +4681,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -5111,14 +4692,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -5148,9 +4731,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -5193,6 +4779,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -5246,7 +4834,7 @@ PackagesInfo: |
  
  ##### afl-clang-fast
  
- Afl-cc++4.00c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-clang-fast --help
@@ -5265,7 +4853,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -5316,11 +4905,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -5331,9 +4923,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -5346,8 +4937,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -5357,7 +4946,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -5369,7 +4957,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -5386,6 +4973,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -5428,20 +5016,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -5459,7 +5045,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -5517,9 +5102,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -5535,7 +5121,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -5550,8 +5135,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -5566,6 +5153,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -5599,49 +5187,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -5649,12 +5221,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -5664,41 +5230,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -5706,59 +5258,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -5777,12 +5301,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -5795,93 +5319,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -5900,18 +5392,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -5946,12 +5437,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -5993,14 +5480,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -6024,21 +5511,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -6056,16 +5537,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -6083,11 +5563,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -6097,13 +5574,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -6129,7 +5606,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -6142,14 +5618,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -6158,22 +5631,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -6184,6 +5652,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -6246,6 +5716,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -6255,10 +5727,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -6287,18 +5762,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -6323,14 +5802,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -6361,11 +5837,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -6381,6 +5856,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -6390,6 +5866,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -6399,14 +5877,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -6436,9 +5916,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -6481,6 +5964,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -6534,7 +6019,7 @@ PackagesInfo: |
  
  ##### afl-clang-fast++
  
- Afl-clang-fast++ (8) - afl-cc++4.00c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-clang-fast++ (8) - afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-clang-fast++ --help
@@ -6553,7 +6038,8 @@ PackagesInfo: |
                            Emit ARC errors even if the migrator can fix them
    -arcmt-migrate-report-output <value>
                            Output path for the plist report
-   -B <prefix>             Search $prefix/$triple-$file and $prefix$file for executables, libraries, includes, and data files used by the compiler. $prefix may or may not be a directory
+   -B <prefix>             Search $prefix$file for executables, libraries, and data files. If $prefix is a directory, search $prefix/$file
+   -b <arg>                Pass -b <arg> to the linker on AIX (only).
    -CC                     Include comments from within macros in preprocessed output
    -cl-denorms-are-zero    OpenCL only. Allow denormals to be flushed to zero.
    -cl-fast-relaxed-math   OpenCL only. Sets -cl-finite-math-only and -cl-unsafe-math-optimizations, and defines __FAST_RELAXED_MATH__.
@@ -6604,11 +6090,14 @@ PackagesInfo: |
    --emit-static-lib       Enable linker job to emit a static library.
    -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang
                            Trivial automatic variable initialization to zero is only here for benchmarks, it'll eventually be removed, and I'm OK with that because I'm only using it to benchmark
+   --end-no-unused-arguments
+                           Start emitting warnings for unused driver arguments
+   -extract-api            Extract API information
    -E                      Only run the preprocessor
    -faapcs-bitfield-load   Follows the AAPCS standard that all volatile bit-field write generates at least one load. (ARM only).
    -faapcs-bitfield-width  Follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
-   -faccess-control        
    -faddrsig               Emit an address-significance table
+   -falign-loops=<N>       N must be a power of two. Align loops to the boundary
    -faligned-allocation    Enable C++17 aligned allocation functions
    -fallow-editor-placeholders
                            Treat editor placeholders as valid source code
@@ -6619,9 +6108,8 @@ PackagesInfo: |
    -fapple-link-rtlib      Force linking the clang builtins runtime library
    -fapple-pragma-pack     Enable Apple gcc-compatible #pragma pack handling
    -fapplication-extension Restrict code to those available for App Extensions
-   -fasm-blocks            
+   -fapprox-func           Allow certain math function calls to be replaced with an approximately equivalent calculation
    -fasync-exceptions      Enable EH Asynchronous exceptions
-   -fautolink              
    -fbasic-block-sections=<value>
                            Place each function's basic blocks in unique sections (ELF Only) : all | labels | none | list=<file>
    -fbinutils-version=<major.minor>
@@ -6634,8 +6122,6 @@ PackagesInfo: |
                            Time when the current build session started
    -fbuiltin-module-map    Load the clang builtins module map file.
    -fc++-abi=<value>       C++ ABI to use. This will override the target C++ ABI.
-   -fc++-static-destructors
-                           
    -fcall-saved-x10        Make the x10 register call-saved (AArch64 only)
    -fcall-saved-x11        Make the x11 register call-saved (AArch64 only)
    -fcall-saved-x12        Make the x12 register call-saved (AArch64 only)
@@ -6645,7 +6131,6 @@ PackagesInfo: |
    -fcall-saved-x18        Make the x18 register call-saved (AArch64 only)
    -fcall-saved-x8         Make the x8 register call-saved (AArch64 only)
    -fcall-saved-x9         Make the x9 register call-saved (AArch64 only)
-   -fcaret-diagnostics     
    -fcf-protection=<value> Instrument control-flow architecture protection. Options: return, branch, full, none.
    -fcf-protection         Enable cf-protection in 'full' mode
    -fchar8_t               Enable C++ builtin type char8_t
@@ -6657,7 +6142,6 @@ PackagesInfo: |
    -fcommon                Place uninitialized global variables in a common block
    -fcomplete-member-pointers
                            Require member pointer base types to be complete if they would be significant under the Microsoft ABI
-   -fconstant-cfstrings    
    -fconvergent-functions  Assume functions may be convergent
    -fcoroutines-ts         Enable support for the C++ Coroutines TS
    -fcoverage-compilation-dir=<value>
@@ -6674,6 +6158,7 @@ PackagesInfo: |
                            Use approximate transcendental functions
    -fcuda-short-ptr        Use 32-bit pointers for accessing const/local/shared address spaces
    -fcxx-exceptions        Enable C++ exceptions
+   -fcxx-modules           Enable modules for C++
    -fdata-sections         Place each data in its own section
    -fdebug-compilation-dir=<value>
                            The compilation directory to embed in the debug info
@@ -6716,20 +6201,18 @@ PackagesInfo: |
                            Allow '$' in identifiers
    -fdouble-square-bracket-attributes
                            Enable '[[]]' attributes in all C and C++ language modes
-   -fdwarf-directory-asm   
    -fdwarf-exceptions      Use DWARF style exceptions
-   -felide-constructors    
    -feliminate-unused-debug-types
                            Do not emit  debug info for defined but unused types
    -fembed-bitcode-marker  Embed placeholder LLVM IR data as a marker
    -fembed-bitcode=<option>
                            Embed LLVM bitcode (option: off, all, bitcode, marker)
    -fembed-bitcode         Embed LLVM IR bitcode as data
+   -fembed-offload-object=<value>
+                           Embed Offloading device-side binary into host object file as a section.
    -femit-all-decls        Emit all declarations, even if unused
    -femulated-tls          Use emutls functions to access thread_local variables
    -fenable-matrix         Enable matrix data type and related builtin functions
-   -fescaping-block-tail-calls
-                           
    -fexceptions            Enable support for exception handling
    -fexperimental-new-constant-interpreter
                            Enable the experimental new constant interpreter
@@ -6747,7 +6230,6 @@ PackagesInfo: |
    -ffine-grained-bitfield-accesses
                            Use separate accesses for consecutive bitfield runs with legal widths and alignments.
    -ffinite-loops          Assume all loops are finite.
-   -ffinite-math-only      
    -ffixed-a0              Reserve the a0 register (M68k only)
    -ffixed-a1              Reserve the a1 register (M68k only)
    -ffixed-a2              Reserve the a2 register (M68k only)
@@ -6805,9 +6287,10 @@ PackagesInfo: |
                            Specifies the exception behavior of floating-point operations.
    -ffp-model=<value>      Controls the semantics of floating-point calculations.
    -ffreestanding          Assert that the compilation takes place in a freestanding environment
+   -ffuchsia-api-level=<value>
+                           Set Fuchsia API level
    -ffunction-sections     Place each function in its own section
    -fglobal-isel           Enables the global instruction selector
-   -fgnu-inline-asm        
    -fgnu-keywords          Allow GNU-extension keywords regardless of language standard
    -fgnu-runtime           Generate output compatible with the standard GNU Objective-C runtime
    -fgnu89-inline          Use the gnu89 inline semantics
@@ -6823,7 +6306,6 @@ PackagesInfo: |
    -fhip-new-launch-api    Use new kernel launching API for HIP
    -fignore-exceptions     Enable support for ignoring exception handling constructs
    -fimplicit-module-maps  Implicitly search the file system for module map files.
-   -fimplicit-modules      
    -finline-functions      Inline suitable functions
    -finline-hint-functions Inline functions which are (explicitly or implicitly) marked inline
    -finput-charset=<value> Specify the default character set for source files
@@ -6838,8 +6320,10 @@ PackagesInfo: |
    -fkeep-static-consts    Keep static const variables if unused
    -flax-vector-conversions=<value>
                            Enable implicit vector bit-casts
-   -flegacy-pass-manager   Use the legacy pass manager in LLVM
+   -flegacy-pass-manager   Use the legacy pass manager in LLVM (deprecated, to be removed in a future release)
    -flto-jobs=<value>      Controls the backend parallelism of -flto=thin (default of 0 means the number of threads will be derived from the number of CPUs detected)
+   -flto=auto              Enable LTO in 'full' mode
+   -flto=jobserver         Enable LTO in 'full' mode
    -flto=<value>           Set LTO mode to either 'full' or 'thin'
    -flto                   Enable LTO in 'full' mode
    -fmacro-prefix-map=<value>
@@ -6854,6 +6338,7 @@ PackagesInfo: |
    -fmerge-all-constants   Allow merging of constants
    -fmessage-length=<value>
                            Format message diagnostics so that they fit within N columns
+   -fminimize-whitespace   Minimize whitespace when emitting preprocessor output
    -fmodule-file=[<name>=]<file>
                            Specify the mapping of module name to precompiled module file, or load a module file if name is omitted.
    -fmodule-map-file=<file>
@@ -6887,49 +6372,33 @@ PackagesInfo: |
                            Dot-separated value representing the Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fms-compatibility      Enable full Microsoft Visual C++ compatibility
    -fms-extensions         Accept some non-standard constructs supported by the Microsoft compiler
+   -fms-hotpatch           Ensure that all functions can be hotpatched at runtime
    -fmsc-version=<value>   Microsoft compiler version number to report in _MSC_VER (0 = don't define it (default))
    -fnew-alignment=<align> Specifies the largest alignment guaranteed by '::operator new(size_t)'
+   -fnew-infallible        Enable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-aapcs-bitfield-width
                            Do not follow the AAPCS standard requirement stating that volatile bit-field width is dictated by the field container type. (ARM only).
    -fno-access-control     Disable C++ access control
    -fno-addrsig            Don't emit an address-significance table
-   -fno-aligned-allocation 
-   -fno-allow-editor-placeholders
-                           
-   -fno-apple-pragma-pack  
-   -fno-application-extension
-                           
-   -fno-asm-blocks         
    -fno-assume-sane-operator-new
                            Don't assume that C++'s global operator new can't alias any pointer
-   -fno-async-exceptions   
    -fno-autolink           Disable generation of linker directives for automatic library linking
-   -fno-blocks             
-   -fno-borland-extensions 
    -fno-builtin-<value>    Disable implicit builtin knowledge of a specific function
    -fno-builtin            Disable implicit builtin knowledge of functions
    -fno-c++-static-destructors
                            Disable C++ static destructor registration
-   -fno-caret-diagnostics  
    -fno-char8_t            Disable C++ builtin type char8_t
    -fno-color-diagnostics  Disable colors in diagnostics
    -fno-common             Compile common globals like normal definitions
    -fno-complete-member-pointers
                            Do not require member pointer base types to be complete if they would be significant under the Microsoft ABI
    -fno-constant-cfstrings Disable creation of CodeFoundation-type constant strings
-   -fno-coroutines-ts      
    -fno-coverage-mapping   Disable code coverage analysis
    -fno-crash-diagnostics  Disable auto-generation of preprocessed source files and a script for reproduction during a clang crash
    -fno-cuda-approx-transcendentals
                            Don't use approximate transcendental functions
-   -fno-cuda-short-ptr     
-   -fno-cxx-exceptions     
-   -fno-data-sections      
-   -fno-debug-info-for-profiling
-                           
+   -fno-cxx-modules        Disable modules for C++
    -fno-debug-macro        Do not emit macro debug information
-   -fno-debug-ranges-base-address
-                           
    -fno-declspec           Disallow __declspec as a keyword
    -fno-delayed-template-parsing
                            Disable delayed template parsing
@@ -6937,12 +6406,6 @@ PackagesInfo: |
                            Do not treat usage of null pointers as undefined behavior
    -fno-diagnostics-fixit-info
                            Do not include fixit information in diagnostics
-   -fno-diagnostics-show-hotness
-                           
-   -fno-diagnostics-show-note-include-stack
-                           
-   -fno-diagnostics-show-option
-                           
    -fno-digraphs           Disallow alternative token representations '<:', ':>', '<%', '%>', '%:', '%:%:'
    -fno-direct-access-external-data
                            Use GOT indirection to reference external data symbols
@@ -6952,41 +6415,27 @@ PackagesInfo: |
                            Disallow '$' in identifiers
    -fno-double-square-bracket-attributes
                            Disable '[[]]' attributes in all C and C++ language modes
-   -fno-dwarf-directory-asm
-                           
    -fno-elide-constructors Disable C++ copy constructor elision
    -fno-elide-type         Do not elide types when printing diagnostics
    -fno-eliminate-unused-debug-types
                            Emit  debug info for defined but unused types
-   -fno-emulated-tls       
-   -fno-escaping-block-tail-calls
-                           
    -fno-exceptions         Disable support for exception handling
    -fno-experimental-relative-c++-abi-vtables
                            Do not use the experimental C++ class ABI for classes with virtual tables
-   -fno-fast-math          
    -fno-fine-grained-bitfield-accesses
                            Use large-integer access for consecutive bitfield runs.
    -fno-finite-loops       Do not assume that any loop is finite.
-   -fno-finite-math-only   
    -fno-fixed-point        Disable fixed point types
-   -fno-force-dwarf-frame  
-   -fno-force-emit-vtables 
    -fno-force-enable-int128
                            Disable support for int128_t type
-   -fno-function-sections  
    -fno-global-isel        Disables the global instruction selector
    -fno-gnu-inline-asm     Disable GNU style inline asm
-   -fno-gnu-keywords       
-   -fno-gnu89-inline       
    -fno-gpu-allow-device-init
                            Don't allow device side init function in HIP (experimental)
    -fno-gpu-defer-diag     Don't defer host/device related diagnostic messages for CUDA/HIP
-   -fno-gpu-rdc            
    -fno-hip-fp32-correctly-rounded-divide-sqrt
                            Don't specify that single precision floating-point divide and sqrt used in the program source are correctly rounded (HIP device compilation only)
    -fno-hip-new-launch-api Don't use new kernel launching API for HIP
-   -fno-implicit-modules   
    -fno-integrated-as      Disable the integrated assembler
    -fno-integrated-cc1     Spawn a separate process for each cc1
    -fno-jump-tables        Do not use jump tables for lowering switches
@@ -6994,59 +6443,31 @@ PackagesInfo: |
    -fno-legacy-pass-manager
                            Use the new pass manager in LLVM
    -fno-lto                Disable LTO mode (default)
-   -fno-math-errno         
    -fno-memory-profile     Disable heap memory profiling
    -fno-merge-all-constants
                            Disallow merging of constants
-   -fno-modules-decluse    
-   -fno-modules-search-all 
-   -fno-modules-validate-system-headers
-                           
-   -fno-modules            
-   -fno-objc-arc-exceptions
-                           
-   -fno-objc-convert-messages-to-runtime-calls
-                           
-   -fno-objc-encode-cxx-class-template-spec
-                           
-   -fno-objc-exceptions    
+   -fno-new-infallible     Disable treating throwing global C++ operator new as always returning valid memory (annotates with __attribute__((returns_nonnull)) and throw()). This is detectable in source.
    -fno-objc-infer-related-result-type
                            do not infer Objective-C related result type based on method family
    -fno-offload-lto        Disable LTO mode (default) for offload compilation
-   -fno-openmp-target-new-runtime
-                           
+   -fno-openmp-extensions  Disable all Clang extensions for OpenMP directives and clauses
    -fno-operator-names     Do not treat C++ operator name keywords as synonyms for operators
-   -fno-pascal-strings     
    -fno-pch-codegen        Do not generate code for uses of this PCH that assumes an explicit object file will be built for the PCH
    -fno-pch-debuginfo      Do not generate debug info for types in an object file built from this PCH and do not generate them elsewhere
-   -fno-pch-instantiate-templates
-                           
    -fno-plt                Use GOT indirection instead of PLT to make external function calls (x86 only)
-   -fno-prebuilt-implicit-modules
-                           
    -fno-preserve-as-comments
                            Do not preserve comments in inline assembly
-   -fno-profile-arcs       
    -fno-profile-generate   Disable generation of profile instrumentation.
    -fno-profile-instr-generate
                            Disable generation of profile instrumentation.
    -fno-profile-instr-use  Disable using instrumentation data for profile-guided optimization
-   -fno-protect-parens     
    -fno-pseudo-probe-for-profiling
                            Do not emit pseudo probes for sample profiling
-   -fno-reciprocal-math    
    -fno-register-global-dtors-with-atexit
                            Don't use atexit or __cxa_atexit to register global destructors
-   -fno-relaxed-template-template-args
-                           
-   -fno-reroll-loops       
-   -fno-rewrite-imports    
-   -fno-rewrite-includes   
-   -fno-ropi               
    -fno-rtlib-add-rpath    Do not add -rpath with architecture-specific resource directory to the linker flags
    -fno-rtti-data          Disable generation of RTTI data
    -fno-rtti               Disable generation of rtti information
-   -fno-rwpi               
    -fno-sanitize-address-outline-instrumentation
                            Use default code inlining logic for the address sanitizer
    -fno-sanitize-address-poison-custom-array-cookie
@@ -7065,12 +6486,12 @@ PackagesInfo: |
                            Disable aliasing mode in HWAddressSanitizer
    -fno-sanitize-ignorelist
                            Don't use ignorelist file for sanitizers
+   -fno-sanitize-memory-param-retval
+                           Disable detection of uninitialized parameters and return values
    -fno-sanitize-memory-track-origins
                            Disable origins tracking in MemorySanitizer
    -fno-sanitize-memory-use-after-dtor
                            Disable use-after-destroy detection in MemorySanitizer
-   -fno-sanitize-minimal-runtime
-                           
    -fno-sanitize-recover=<value>
                            Disable recovery for specified sanitizers
    -fno-sanitize-stats     Disable sanitizer statistics gathering.
@@ -7083,93 +6504,61 @@ PackagesInfo: |
    -fno-sanitize-trap=<value>
                            Disable trapping for specified sanitizers
    -fno-sanitize-trap      Disable trapping for all sanitizers
-   -fno-semantic-interposition
-                           
-   -fno-short-enums        
    -fno-short-wchar        Force wchar_t to be an unsigned int
    -fno-show-column        Do not include column number on diagnostics
    -fno-show-source-location
                            Do not include source location information with diagnostics
    -fno-signed-char        char is unsigned
    -fno-signed-zeros       Allow optimizations that ignore the sign of floating point zeros
-   -fno-sized-deallocation 
    -fno-spell-checking     Disable spell-checking
-   -fno-split-dwarf-inlining
-                           
-   -fno-split-lto-unit     
    -fno-split-machine-functions
                            Disable late function splitting using profile information (x86 ELF)
    -fno-split-stack        Wouldn't use segmented stack
    -fno-stack-clash-protection
                            Disable stack clash protection
    -fno-stack-protector    Disable the use of stack protectors
-   -fno-stack-size-section 
    -fno-standalone-debug   Limit debug information produced to reduce size of debug binary
    -fno-strict-float-cast-overflow
                            Relax language rules and try to match the behavior of the target's native float-to-int conversion instructions
    -fno-strict-return      Don't treat control flow paths that fall off the end of a non-void function as unreachable
-   -fno-strict-vtable-pointers
-                           
    -fno-sycl               Disables SYCL kernels compilation for device
    -fno-temp-file          Directly create compilation output files. This may lead to incorrect incremental builds if the compiler crashes
-   -fno-test-coverage      
    -fno-threadsafe-statics Do not emit code to make initialization of local statics thread safe
    -fno-trigraphs          Do not process trigraph sequences
-   -fno-unique-basic-block-section-names
-                           
-   -fno-unique-internal-linkage-names
-                           
    -fno-unique-section-names
                            Don't use unique names for text and data sections
    -fno-unroll-loops       Turn off loop unroller
    -fno-use-cxa-atexit     Don't use __cxa_atexit for calling destructors
    -fno-use-init-array     Use .ctors/.dtors instead of .init_array/.fini_array
-   -fno-use-line-directives
-                           
-   -fno-virtual-function-elimination
-                           
-   -fno-visibility-from-dllstorageclass
-                           
    -fno-visibility-inlines-hidden-static-local-var
                            Disables -fvisibility-inlines-hidden-static-local-var (this is the default on non-darwin targets)
-   -fno-visibility-inlines-hidden
-                           
-   -fno-whole-program-vtables
-                           
-   -fno-xl-pragma-pack     
-   -fno-xray-always-emit-customevents
-                           
-   -fno-xray-always-emit-typedevents
-                           
    -fno-xray-function-index
                            Omit function index section at the expense of single-function patching performance
-   -fno-xray-ignore-loops  
-   -fno-xray-instrument    
    -fno-zero-initialized-in-bss
                            Don't place zero initialized data in BSS
-   -fno-zvector            
    -fobjc-arc-exceptions   Use EH-safe code when synthesizing retains and releases in -fobjc-arc
    -fobjc-arc              Synthesize retain and release calls for Objective-C pointers
-   -fobjc-convert-messages-to-runtime-calls
-                           
    -fobjc-disable-direct-methods-for-testing
                            Ignore attribute objc_direct so that direct methods can be tested
    -fobjc-encode-cxx-class-template-spec
                            Fully encode c++ class template specialization
    -fobjc-exceptions       Enable Objective-C exceptions
-   -fobjc-infer-related-result-type
-                           
    -fobjc-runtime=<value>  Specify the target Objective-C runtime kind and version
    -fobjc-weak             Enable ARC-style weak references in Objective-C
    -foffload-lto=<value>   Set LTO mode to either 'full' or 'thin' for offload compilation
    -foffload-lto           Enable LTO in 'full' mode for offload compilation
+   -fopenmp-extensions     Enable all Clang extensions for OpenMP directives and clauses
+   -fopenmp-implicit-rpath Set rpath on OpenMP executables
+   -fopenmp-new-driver     Use the new driver for OpenMP offloading.
    -fopenmp-simd           Emit OpenMP code only for SIMD-based constructs.
+   -fopenmp-target-debug   Enable debugging in the OpenMP offloading device RTL
    -fopenmp-target-new-runtime
                            Use the new bitcode library for OpenMP offloading
    -fopenmp-targets=<value>
                            Specify comma-separated list of triples OpenMP offloading targets to be supported
+   -fopenmp-version=<value>
+                           Set OpenMP version (e.g. 45 for OpenMP 4.5, 50 for OpenMP 5.0). Default value is 50.
    -fopenmp                Parse OpenMP pragmas and generate parallel code.
-   -foperator-names        
    -foptimization-record-file=<file>
                            Specify the output name of the file containing the optimization remarks. Implies -fsave-optimization-record. On Darwin platforms, this cannot be used with multiple -arch <arch> options.
    -foptimization-record-passes=<regex>
@@ -7188,18 +6577,17 @@ PackagesInfo: |
                            Instantiate templates already while building a PCH
    -fpch-validate-input-files-content
                            Validate PCH input files based on content if mtime differs
-   -fplt                   
+   -fplugin-arg-<name>-<arg>
+                           Pass <arg> to plugin <name>
    -fplugin=<dsopath>      Load the named plugin (dynamic shared object)
    -fprebuilt-implicit-modules
                            Look up implicit modules in the prebuilt module path
    -fprebuilt-module-path=<directory>
                            Specify the prebuilt module path
-   -fpreserve-as-comments  
    -fproc-stat-report=<value>
                            Save subprocess statistics to the given file
    -fproc-stat-report<value>
                            Print subprocess statistics
-   -fprofile-arcs          
    -fprofile-exclude-files=<value>
                            Instrument only functions from files where names don't match all the regexes separated by a semi-colon
    -fprofile-filter-files=<value>
@@ -7234,12 +6622,8 @@ PackagesInfo: |
    -frelaxed-template-template-args
                            Enable C++17 relaxed template template argument matching
    -freroll-loops          Turn on loop reroller
-   -frewrite-imports       
-   -frewrite-includes      
    -fropi                  Generate read-only position independent code (ARM only)
    -frtlib-add-rpath       Add -rpath with architecture-specific resource directory to the linker flags
-   -frtti-data             
-   -frtti                  
    -frwpi                  Generate read-write position independent code (ARM only)
    -fsanitize-address-destructor=<value>
                            Set destructor type used in ASan instrumentation
@@ -7281,14 +6665,14 @@ PackagesInfo: |
                            Enable aliasing mode in HWAddressSanitizer
    -fsanitize-ignorelist=<value>
                            Path to ignorelist file for sanitizers
+   -fsanitize-memory-param-retval
+                           Enable detection of uninitialized parameters and return values
    -fsanitize-memory-track-origins=<value>
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-track-origins
                            Enable origins tracking in MemorySanitizer
    -fsanitize-memory-use-after-dtor
                            Enable use-after-destroy detection in MemorySanitizer
-   -fsanitize-minimal-runtime
-                           
    -fsanitize-recover=<value>
                            Enable recovery for specified sanitizers
    -fsanitize-stats        Enable sanitizer statistics gathering.
@@ -7312,21 +6696,15 @@ PackagesInfo: |
    -fsave-optimization-record
                            Generate a YAML optimization record file
    -fseh-exceptions        Use SEH style exceptions
-   -fsemantic-interposition
-                           
    -fshort-enums           Allocate to an enum type only as many bytes as it needs for the declared range of possible values
    -fshort-wchar           Force wchar_t to be a short unsigned int
-   -fshow-column           
    -fshow-overloads=<value>
                            Which overload candidates to show when overload resolution fails: best|all; defaults to all
    -fshow-skipped-includes Show skipped includes in -H output.
-   -fshow-source-location  
    -fsigned-char           char is signed
-   -fsigned-zeros          
    -fsized-deallocation    Enable C++14 sized global deallocation functions
    -fsjlj-exceptions       Use SjLj style exceptions
    -fslp-vectorize         Enable the superword-level parallelism vectorization passes
-   -fspell-checking        
    -fsplit-dwarf-inlining  Provide minimal debug info in the object/executable to facilitate online symbolication/stack traces in the absence of .dwo/.dwp files when using Split DWARF
    -fsplit-lto-unit        Enables splitting of the LTO unit
    -fsplit-machine-functions
@@ -7344,16 +6722,15 @@ PackagesInfo: |
    -fstrict-enums          Enable optimizations based on the strict definition of an enum's value range
    -fstrict-float-cast-overflow
                            Assume that overflowing float-to-int casts are undefined (default)
-   -fstrict-return         
    -fstrict-vtable-pointers
                            Enable optimizations based on the strict rules for overwriting polymorphic C++ objects
+   -fswift-async-fp=<option>
+                           Control emission of Swift async extended frame info (option: auto, always, never)
    -fsycl                  Enables SYCL kernels compilation for device
    -fsystem-module         Build this module as a system module. Only used with -emit-module
-   -ftest-coverage         
    -fthin-link-bitcode=<value>
                            Write minimized bitcode to <file> for the ThinLTO thin link only
    -fthinlto-index=<value> Perform ThinLTO importing using provided function summary index
-   -fthreadsafe-statics    
    -ftime-report=<value>   (For new pass manager) "per-pass": one report for each pass; "per-pass-run": one report for each pass invocation
    -ftime-trace-granularity=<value>
                            Minimum time granularity (in microseconds) traced by time profiler
@@ -7371,11 +6748,8 @@ PackagesInfo: |
                            Use unique names for basic block sections (ELF Only)
    -funique-internal-linkage-names
                            Uniqueify Internal Linkage Symbol Names by appending the MD5 hash of the module path
-   -funique-section-names  
    -funroll-loops          Turn on loop unroller
-   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overriden by option '-cuid=[ID]' if it is specified.
-   -fuse-cxa-atexit        
-   -fuse-init-array        
+   -fuse-cuid=<value>      Method to generate ID's for compilation units for single source offloading languages CUDA and HIP: 'hash' (ID's generated by hashing file path and command line options) | 'random' (ID's generated as random numbers) | 'none' (disabled). Default is 'hash'. This option will be overridden by option '-cuid=[ID]' if it is specified.
    -fuse-line-directives   Use #line in preprocessed output
    -fvalidate-ast-input-files-content
                            Compute and store the hash of input files used to build an AST. Files with mismatching mtime's are considered valid if both contents is identical
@@ -7385,13 +6759,13 @@ PackagesInfo: |
    -fvirtual-function-elimination
                            Enables dead virtual function elimination optimization. Requires -flto=full
    -fvisibility-dllexport=<value>
-                           The visibility for dllexport defintions [-fvisibility-from-dllstorageclass]
+                           The visibility for dllexport definitions [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-dllimport=<value>
                            The visibility for dllimport external declarations [-fvisibility-from-dllstorageclass]
    -fvisibility-externs-nodllstorageclass=<value>
                            The visibility for external declarations without an explicit DLL dllstorageclass [-fvisibility-from-dllstorageclass]
    -fvisibility-from-dllstorageclass
-                           Set the visiblity of symbols in the generated code from their DLL storage class
+                           Set the visibility of symbols in the generated code from their DLL storage class
    -fvisibility-global-new-delete-hidden
                            Give global C++ operator new and delete declarations hidden visibility
    -fvisibility-inlines-hidden-static-local-var
@@ -7417,7 +6791,6 @@ PackagesInfo: |
                            Filename defining the list of functions/types for imbuing XRay attributes.
    -fxray-function-groups=<value>
                            Only instrument 1 of N groups
-   -fxray-function-index   
    -fxray-ignore-loops     Don't instrument functions with loops unless they also meet the minimum function size
    -fxray-instruction-threshold= <value>
                            Sets the minimum function size to instrument with XRay
@@ -7430,14 +6803,11 @@ PackagesInfo: |
                            DEPRECATED: Filename defining the whitelist for imbuing the 'never instrument' XRay attribute.
    -fxray-selected-function-group=<value>
                            When using -fxray-function-groups, select which group of functions to instrument. Valid range is 0 to fxray-function-groups - 1
-   -fzero-initialized-in-bss
-                           
    -fzvector               Enable System z vector language extension
    -F <value>              Add directory to framework include search path
    --gcc-toolchain=<value> Search for GCC installation in the specified directory on targets which commonly use GCC. The directory usually contains 'lib{,32,64}/gcc{,-cross}/$triple' and 'include'. If specified, sysroot is skipped for GCC detection. Note: executables (e.g. ld) used by the compiler are not overridden by the selected GCC installation
    -gcodeview-ghash        Emit type record hashes in a .debug$H section
    -gcodeview              Generate CodeView debug information
-   -gcolumn-info           
    -gdwarf-2               Generate source-level debug information with dwarf version 2
    -gdwarf-3               Generate source-level debug information with dwarf version 3
    -gdwarf-4               Generate source-level debug information with dwarf version 4
@@ -7446,22 +6816,17 @@ PackagesInfo: |
    -gdwarf64               Enables DWARF64 format for ELF binaries, if debug information emission is enabled.
    -gdwarf                 Generate source-level debug information with the default dwarf version
    -gembed-source          Embed source text in DWARF debug sections
-   -ginline-line-tables    
    -gline-directives-only  Emit debug line info directives only
    -gline-tables-only      Emit debug line number tables only
    -gmodules               Generate debug info with external references to clang modules or precompiled headers
-   -gno-codeview-ghash     
-   -gno-column-info        
    -gno-embed-source       Restore the default behavior of not embedding source text in DWARF debug sections
    -gno-inline-line-tables Don't emit inline line tables.
-   -gno-strict-dwarf       
    --gpu-bundle-output     Bundle output files of HIP device compilation
    --gpu-instrument-lib=<value>
                            Instrument device library for HIP, which is a LLVM bitcode containing __cyg_profile_func_enter and __cyg_profile_func_exit
    --gpu-max-threads-per-block=<value>
                            Default max threads per block for kernel launch bounds for HIP
    -gsplit-dwarf=<value>   Set DWARF fission mode to either 'split' or 'single'
-   -gstrict-dwarf          
    -gz=<value>             DWARF debug sections compression type
    -G <size>               Put objects of at most <size> bytes into small data section (MIPS / Hexagon)
    -g                      Generate source-level debug information
@@ -7472,6 +6837,8 @@ PackagesInfo: |
    --hip-link              Link clang-offload-bundler bundles for HIP
    --hip-path=<value>      HIP runtime installation path, used for finding HIP version and adding HIP include path.
    --hip-version=<value>   HIP version in the format of major.minor.patch
+   --hipspv-pass-plugin=<dsopath>
+                           path to a pass plugin for HIP to SPIR-V passes.
    -H                      Show header includes and nesting depth
    -I-                     Restrict all prior -I flags to double-quoted inclusion and remove current directory from include path
    -ibuiltininc            Enable builtin #include directories even when -nostdinc is used before or after -ibuiltininc. Using -nobuiltininc after the option disables it
@@ -7534,6 +6901,8 @@ PackagesInfo: |
    -mexecute-only          Disallow generation of data access to code sections (ARM only)
    -mextern-sdata          Assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
    -mfentry                Insert calls to fentry at function entry (x86/SystemZ only)
+   -mfix-cmse-cve-2021-35465
+                           Work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mfix-cortex-a53-835769 Workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mfp32                  Use 32-bit floating point registers (MIPS only)
    -mfp64                  Use 64-bit floating point registers (MIPS only)
@@ -7543,10 +6912,13 @@ PackagesInfo: |
    -mgpopt                 Use GP relative accesses for symbols known to be in a small data section (MIPS)
    -MG                     Add missing headers to depfile
    -mharden-sls=<value>    Select straight-line speculation hardening scope
+   -mhvx-ieee-fp           Enable Hexagon HVX IEEE floating-point
    -mhvx-length=<value>    Set Hexagon Vector Length
+   -mhvx-qfloat            Enable Hexagon HVX QFloat instructions
    -mhvx=<value>           Enable Hexagon Vector eXtensions
    -mhvx                   Enable Hexagon Vector eXtensions
    -miamcu                 Use Intel MCU ABI
+   -mibt-seal              Optimize fcf-protection=branch/full (requires LTO).
    -mignore-xcoff-visibility
                            Not emit the visibility attribute for asm in AIX OS or give all symbols 'unspecified' visibility in XCOFF object file
    --migrate               Run the migrator
@@ -7575,18 +6947,22 @@ PackagesInfo: |
    -mmt                    Enable MT ASE (MIPS only)
    -MM                     Like -MMD, but also implies -E and writes to stdout by default
    -mno-abicalls           Disable SVR4-style position-independent code (Mips only)
-   -mno-amdgpu-ieee        
-   -mno-backchain          
+   -mno-bti-at-return-twice
+                           Do not add a BTI instruction after a setjmp or other return-twice construct (Arm/AArch64 only)
    -mno-code-object-v3     Legacy option to specify code object ABI V2 (AMDGPU only)
    -mno-crc                Disallow use of CRC instructions (Mips only)
    -mno-cumode             Specify WGP wavefront execution mode (AMDGPU only)
    -mno-embedded-data      Do not place constants in the .rodata section instead of the .sdata if they meet the -G <size> threshold (MIPS)
    -mno-execute-only       Allow generation of data access to code sections (ARM only)
    -mno-extern-sdata       Do not assume that externally defined data is in the small data if it meets the -G <size> threshold (MIPS)
+   -mno-fix-cmse-cve-2021-35465
+                           Don't work around VLLDM erratum CVE-2021-35465 (ARM only)
    -mno-fix-cortex-a53-835769
                            Don't workaround Cortex-A53 erratum 835769 (AArch64 only)
    -mno-global-merge       Disable merging of globals
    -mno-gpopt              Do not use GP relative accesses for symbols known to be in a small data section (MIPS)
+   -mno-hvx-ieee-fp        Disable Hexagon HVX IEEE floating-point
+   -mno-hvx-qfloat         Disable Hexagon HVX QFloat instructions
    -mno-hvx                Disable Hexagon Vector eXtensions
    -mno-implicit-float     Don't generate implicit floating point instructions
    -mno-incremental-linker-compatible
@@ -7611,14 +6987,11 @@ PackagesInfo: |
    -mno-restrict-it        Allow generation of deprecated IT blocks for ARMv8. It is off by default for ARMv8 Thumb mode
    -mno-save-restore       Disable using library calls for save and restore
    -mno-seses              Disable speculative execution side effect suppression (SESES)
-   -mno-speculative-load-hardening
-                           
    -mno-stack-arg-probe    Disable stack probes which are enabled by default
    -mno-tgsplit            Disable threadgroup split execution mode (AMDGPU only)
    -mno-tls-direct-seg-refs
                            Disable direct TLS access through segment registers
    -mno-unaligned-access   Force all memory accesses to be aligned (AArch32/AArch64 only)
-   -mno-unsafe-fp-atomics  
    -mno-wavefrontsize64    Specify wavefront size 32 mode (AMDGPU only)
    -mnocrc                 Disallow use of CRC instructions (ARM only)
    -mnop-mcount            Generate mcount/__fentry__ calls as nops. To activate they need to be patched in.
@@ -7649,11 +7022,10 @@ PackagesInfo: |
    -mseses                 Enable speculative execution side effect suppression (SESES). Includes LVI control flow integrity mitigations
    -msign-return-address=<value>
                            Select return address signing scope
+   -mskip-rax-setup        Skip setting up RAX register when passing variable arguments (x86 only)
    -msmall-data-limit=<value>
                            Put global and static data smaller than the limit into a special section
    -msoft-float            Use software floating point
-   -mspeculative-load-hardening
-                           
    -mstack-alignment=<value>
                            Set the stack alignment
    -mstack-arg-probe       Enable stack probes
@@ -7669,6 +7041,7 @@ PackagesInfo: |
    -msve-vector-bits=<value>
                            Specify the size in bits of an SVE vector register. Defaults to the vector length agnostic value of "scalable". (AArch64 only)
    -msvr4-struct-return    Return small structs in registers (PPC32 only)
+   -mtargetos=<value>      Set the deployment target to be the specified OS and OS version
    -mtgsplit               Enable threadgroup split execution mode (AMDGPU only)
    -mthread-model <value>  The thread model to use, e.g. posix, single (posix by default)
    -mtls-direct-seg-refs   Enable direct TLS access through segment registers (default)
@@ -7678,6 +7051,8 @@ PackagesInfo: |
    -MT <value>             Specify name of main file output in depfile
    -munaligned-access      Allow memory accesses to be unaligned (AArch32/AArch64 only)
    -munsafe-fp-atomics     Enable unsafe floating point atomic instructions (AMDGPU only)
+   -mvscale-max=<value>    Specify the vscale maximum. Defaults to the vector length agnostic value of "0". (AArch64 only)
+   -mvscale-min=<value>    Specify the vscale minimum. Defaults to "1". (AArch64 only)
    -MV                     Use NMake/Jom format for the depfile
    -mwavefrontsize64       Specify wavefront size 64 mode (AMDGPU only)
    -M                      Like -MD, but also implies -E and writes to stdout by default
@@ -7687,14 +7062,16 @@ PackagesInfo: |
    --no-gpu-bundle-output  Do not bundle output files of HIP device compilation
    --no-offload-arch=<value>
                            Remove CUDA/HIP offloading device architecture (e.g. sm_35, gfx906) from the list of devices to compile for. 'all' resets the list to its default value.
-   -no-pthread             
    --no-system-header-prefix=<prefix>
                            Treat all #include paths starting with <prefix> as not including a system header.
    -nobuiltininc           Disable builtin #include directories
    -nogpuinc               Do not add include paths for CUDA/HIP and do not include the default CUDA/HIP wrapper headers
    -nogpulib               Do not link device library for CUDA/HIP device compilation
+   -nohipwrapperinc        Do not include the default HIP wrapper headers and include paths
    -nostdinc++             Disable standard #include directories for the C++ standard library
    -ObjC++                 Treat source input files as Objective-C++ inputs
+   -objcmt-allowlist-dir-path=<value>
+                           Only modify files with a filename contained in the provided directory path
    -objcmt-atomic-property Make migration to 'atomic' properties
    -objcmt-migrate-all     Enable migration to modern ObjC
    -objcmt-migrate-annotation
@@ -7724,9 +7101,12 @@ PackagesInfo: |
    -objcmt-returns-innerpointer-property
                            Enable migration to annotate property with NS_RETURNS_INNER_POINTER
    -objcmt-whitelist-dir-path=<value>
-                           Only modify files with a filename contained in the provided directory path
+                           Alias for -objcmt-allowlist-dir-path
    -ObjC                   Treat source input files as Objective-C inputs
+   -object-file-name=<file>
+                           Set the output <file> for debug infos
    --offload-arch=<value>  CUDA offloading device architecture (e.g. sm_35), or HIP offloading target ID in the form of a device architecture followed by target ID features delimited by a colon. Each target ID feature is a pre-defined string followed by a plus or minus sign (e.g. gfx908:xnack+:sramecc-).  May be specified more than once.
+   --offload=<value>       Specify comma-separated list of offloading target triples (CUDA and HIP only)
    -o <file>               Write output to <file>
    -pedantic               Warn on language extensions
    -pg                     Enable mcount instrumentation
@@ -7769,6 +7149,8 @@ PackagesInfo: |
    -serialize-diagnostics <value>
                            Serialize compiler diagnostics to a file
    -shared-libsan          Dynamically link the sanitizer runtime
+   --start-no-unused-arguments
+                           Don't emit warnings about unused arguments for the following arguments
    -static-libsan          Statically link the sanitizer runtime
    -static-openmp          Use the static host OpenMP runtime while linking.
    -std=<value>            Language standard to compile for
@@ -7907,7 +7289,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-fuzz --help
- afl-fuzz++4.00c based on afl by Michal Zalewski and a large online community
+ afl-fuzz++4.02c based on afl by Michal Zalewski and a large online community
  
  afl-fuzz [ options ] -- /path/to/fuzzed_app [ ... ]
  
@@ -7931,13 +7313,16 @@ PackagesInfo: |
    -Y            - use VM fuzzing (NYX mode - multiple instances mode)
  
  Mutator settings:
+   -g minlength  - set min length of generated fuzz input (default: 1)
+   -G maxlength  - set max length of generated fuzz input (default: 1048576)
    -D            - enable deterministic fuzzing (once per queue entry)
    -L minutes    - use MOpt(imize) mode and set the time limit for entering the
                    pacemaker mode (minutes of no new finds). 0 = immediately,
                    -1 = immediately and together with normal mutation.
                    See docs/README.MOpt.md
    -c program    - enable CmpLog by specifying a binary compiled for it.
-                   if using QEMU, just use -c 0.
+                   if using QEMU/FRIDA or the fuzzing target is compiled
+                   for CmpLog then just use -c 0.
    -l cmplog_opts - CmpLog configuration values (e.g. "2AT"):
                    1=small files, 2=larger files (default), 3=all files,
                    A=arithmetic solving, T=transformational solving.
@@ -7994,6 +7379,8 @@ PackagesInfo: |
  AFL_IGNORE_UNKNOWN_ENVS: don't warn on unknown env vars
  AFL_IGNORE_PROBLEMS: do not abort fuzzing if an incorrect setup is detected during a run
  AFL_IMPORT_FIRST: sync and import test cases from other fuzzer instances first
+ AFL_INPUT_LEN_MIN/AFL_INPUT_LEN_MAX: like -g/-G set min/max fuzz length produced
+ AFL_PIZZA_MODE: 1 - enforce pizza mode, 0 - disable for April 1st
  AFL_KILL_SIGNAL: Signal ID delivered to child processes on timeout, etc. (default: SIGKILL)
  AFL_MAP_SIZE: the shared memory size for that target. must be >= the size
                the target was compiled for
@@ -8022,10 +7409,16 @@ PackagesInfo: |
  AFL_STATSD_TAGS_FLAVOR: set statsd tags format (default: disable tags)
                          Supported formats are: 'dogstatsd', 'librato',
                          'signalfx' and 'influxdb'
+ AFL_SYNC_TIME: sync time between fuzzing instances (in minutes)
+ AFL_NO_CRASH_README: do not create a README in the crashes directory
  AFL_TESTCACHE_SIZE: use a cache for testcases, improves performance (in MB)
  AFL_TMPDIR: directory to use for input file generation (ramdisk recommended)
+ AFL_EARLY_FORKSERVER: force an early forkserver in an afl-clang-fast/
+                       afl-clang-lto/afl-gcc-fast target
+ AFL_PERSISTENT: enforce persistent mode (if __AFL_LOOP is in a shared lib
+ AFL_DEFER_FORKSRV: enforced deferred forkserver (__AFL_INIT is in a .so
  
- Compiled with Python 3.10.4 module support, see docs/custom_mutator.md
+ Compiled with Python 3.10.6 module support, see docs/custom_mutator.md
  Compiled without AFL_PERSISTENT_RECORD support.
  Compiled with shmat support.
  For additional help please consult docs/README.md :)
@@ -8043,7 +7436,7 @@ PackagesInfo: |
  Options:
    -pass-exit-codes         Exit with highest error code from a phase.
    --help                   Display this information.
-   --target-help            Display target specific command line options.
+   --target-help            Display target specific command line options (including assembler and linker options).
    --help={common|optimizers|params|target|warnings|[^]{joined|separate|undocumented}}[,...].
                             Display specific types of command line options.
    (Use '-v --help' to display command line options of sub-processes).
@@ -8051,6 +7444,7 @@ PackagesInfo: |
    -dumpspecs               Display all of the built in spec strings.
    -dumpversion             Display the version of the compiler.
    -dumpmachine             Display the compiler's target processor.
+   -foffload=<targets>      Specify offloading targets.
    -print-search-dirs       Display the directories in the compiler's search path.
    -print-libgcc-file-name  Display the name of the compiler's companion library.
    -print-file-name=<lib>   Display the full path to library <lib>.
@@ -8099,7 +7493,7 @@ PackagesInfo: |
   other options on to these processes the -W<letter> options must be used.
  
  For bug reporting instructions, please see:
- <file:///usr/share/doc/gcc-11/README.Bugs>.
+ <file:///usr/share/doc/gcc-12/README.Bugs>.
  ```
  
  - - -
@@ -8113,7 +7507,7 @@ PackagesInfo: |
  Options:
    -pass-exit-codes         Exit with highest error code from a phase.
    --help                   Display this information.
-   --target-help            Display target specific command line options.
+   --target-help            Display target specific command line options (including assembler and linker options).
    --help={common|optimizers|params|target|warnings|[^]{joined|separate|undocumented}}[,...].
                             Display specific types of command line options.
    (Use '-v --help' to display command line options of sub-processes).
@@ -8121,6 +7515,7 @@ PackagesInfo: |
    -dumpspecs               Display all of the built in spec strings.
    -dumpversion             Display the version of the compiler.
    -dumpmachine             Display the compiler's target processor.
+   -foffload=<targets>      Specify offloading targets.
    -print-search-dirs       Display the directories in the compiler's search path.
    -print-libgcc-file-name  Display the name of the compiler's companion library.
    -print-file-name=<lib>   Display the full path to library <lib>.
@@ -8169,7 +7564,7 @@ PackagesInfo: |
   other options on to these processes the -W<letter> options must be used.
  
  For bug reporting instructions, please see:
- <file:///usr/share/doc/gcc-11/README.Bugs>.
+ <file:///usr/share/doc/gcc-12/README.Bugs>.
  ```
  
  - - -
@@ -8180,7 +7575,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-gotcpu -h
- afl-gotcpu++4.00c by Michal Zalewski
+ afl-gotcpu++4.02c by Michal Zalewski
  
  afl-gotcpu 
  
@@ -8289,7 +7684,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-showmap -h
- afl-showmap++4.00c by Michal Zalewski
+ afl-showmap++4.02c by Michal Zalewski
  
  afl-showmap [ options ] -- /path/to/target_app [ ... ]
  
@@ -8364,7 +7759,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-tmin -h
- afl-tmin++4.00c by Michal Zalewski
+ afl-tmin++4.02c by Michal Zalewski
  
  afl-tmin [ options ] -- /path/to/target_app [ ... ]
  
@@ -8449,7 +7844,7 @@ PackagesInfo: |
   This package provides the documentation, a collection of special crafted test
   cases, vulnerability samples and experimental stuff.
  
- **Installed size:** `434 KB`  
+ **Installed size:** `438 KB`  
  **How to install:** `sudo apt install afl++-doc`  
  
  
@@ -8460,7 +7855,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++-clang is
   installed.
  
- **Installed size:** `70 KB`  
+ **Installed size:** `71 KB`  
  **How to install:** `sudo apt install afl-clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -8475,7 +7870,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++-doc is
   installed.
  
- **Installed size:** `70 KB`  
+ **Installed size:** `71 KB`  
  **How to install:** `sudo apt install afl-doc`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: tcpreplay
 Homepage: http://tcpreplay.appneta.com/
 Repository: https://git.in-ulm.de/cbiedl/tcpreplay
 Architectures: any
-Version: 4.3.4-1
+Version: 4.4.2-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-sniffing-spoofing 
 Icon: images/tcpreplay-logo.svg
 PackagesInfo: |
@@ -22,7 +22,7 @@ PackagesInfo: |
   executables tcpprep, tcprewrite, tcpreplay-edit, tcpbridge and pcap
   based captures are possible.
  
- **Installed size:** `1.82 MB`  
+ **Installed size:** `1.85 MB`  
  **How to install:** `sudo apt install tcpreplay`  
  
  {{< spoiler "Dependencies:" >}}
@@ -109,6 +109,7 @@ PackagesInfo: |
  				- requires the option 'enet-vlan'
  				- it must be in the range:
  				  0 to 7
+        --enet-vlan-proto=str  Specify VLAN tag protocol 802.1q or 802.1ad
         --hdlc-control=num     Specify HDLC control value
         --hdlc-address=num     Specify HDLC address
         --user-dlt=num         Set output file DLT type
@@ -351,7 +352,8 @@ PackagesInfo: |
  ```
  root@kali:~# tcpreplay --help
  tcpreplay (tcpreplay) - Replay network traffic stored in pcap files
- Usage:  tcpreplay [ -<flag> [<val>] | --<name>[{=| }<val>] ]... <pcap_file(s)>
+ Usage:  tcpreplay [ -<flag> [<val>] | --<name>[{=| }<val>] ]... \
+ 		<pcap_file(s)> | <pcap_dir(s)>
  
     -d, --dbug=num             Enable debugging output
  				- it must be in the range:
@@ -472,7 +474,8 @@ PackagesInfo: |
  ```
  root@kali:~# tcpreplay-edit --help
  tcpreplay (tcpreplay) - Replay network traffic stored in pcap files
- Usage:  tcpreplay-edit [ -<flag> [<val>] | --<name>[{=| }<val>] ]... <pcap_file(s)>
+ Usage:  tcpreplay-edit [ -<flag> [<val>] | --<name>[{=| }<val>] ]... \
+ 		<pcap_file(s)> | <pcap_dir(s)>
  
  
  :
@@ -546,6 +549,7 @@ PackagesInfo: |
  				- requires the option 'enet-vlan'
  				- it must be in the range:
  				  0 to 7
+        --enet-vlan-proto=str  Specify VLAN tag protocol 802.1q or 802.1ad
         --hdlc-control=num     Specify HDLC control value
         --hdlc-address=num     Specify HDLC address
         --user-dlt=num         Set output file DLT type
@@ -750,6 +754,7 @@ PackagesInfo: |
  				- requires the option 'enet-vlan'
  				- it must be in the range:
  				  0 to 7
+        --enet-vlan-proto=str  Specify VLAN tag protocol 802.1q or 802.1ad
         --hdlc-control=num     Specify HDLC control value
         --hdlc-address=num     Specify HDLC address
         --user-dlt=num         Set output file DLT type

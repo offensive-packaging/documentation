@@ -3,7 +3,7 @@ Title: unrar-nonfree
 Homepage: https://www.rarlab.com/
 Repository: https://github.com/debian-calibre/unrar-nonfree
 Architectures: any all
-Version: 1:6.1.7-2
+Version: 1:6.2.1-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,7 +11,7 @@ PackagesInfo: |
  
   This package contains the static library for the libunrar library.
  
- **Installed size:** `548 KB`  
+ **Installed size:** `563 KB`  
  **How to install:** `sudo apt install libunrar-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -26,7 +26,7 @@ PackagesInfo: |
  
   This package contains the header files for the libunrar library.
  
- **Installed size:** `205 KB`  
+ **Installed size:** `208 KB`  
  **How to install:** `sudo apt install libunrar-headers`  
  
  
@@ -36,7 +36,7 @@ PackagesInfo: |
  
   library for unarchiving .rar files
  
- **Installed size:** `275 KB`  
+ **Installed size:** `277 KB`  
  **How to install:** `sudo apt install libunrar5`  
  
  {{< spoiler "Dependencies:" >}}
@@ -53,7 +53,7 @@ PackagesInfo: |
   Unrar can extract files from .rar archives. If you want to create .rar
   archives, install package rar.
  
- **Installed size:** `347 KB`  
+ **Installed size:** `357 KB`  
  **How to install:** `sudo apt install unrar`  
  
  {{< spoiler "Dependencies:" >}}

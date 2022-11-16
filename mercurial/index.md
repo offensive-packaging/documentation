@@ -3,7 +3,7 @@ Title: mercurial
 Homepage: https://www.mercurial-scm.org/
 Repository: https://salsa.debian.org/python-team/packages/mercurial
 Architectures: any all
-Version: 6.1.3-1
+Version: 6.2.3-1
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -25,7 +25,7 @@ PackagesInfo: |
    
   This package contains the architecture dependent files.
  
- **Installed size:** `1.98 MB`  
+ **Installed size:** `1.95 MB`  
  **How to install:** `sudo apt install mercurial`  
  
  {{< spoiler "Dependencies:" >}}
@@ -330,7 +330,7 @@ PackagesInfo: |
   This package contains the architecture independent components of Mercurial,
   and is generally useless without the mercurial package.
  
- **Installed size:** `14.24 MB`  
+ **Installed size:** `14.23 MB`  
  **How to install:** `sudo apt install mercurial-common`  
  
  {{< spoiler "Dependencies:" >}}

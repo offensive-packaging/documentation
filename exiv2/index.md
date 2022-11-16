@@ -3,7 +3,7 @@ Title: exiv2
 Homepage: https://www.exiv2.org/
 Repository: https://salsa.debian.org/qt-kde-team/extras/exiv2
 Architectures: any all
-Version: 0.27.5-3
+Version: 0.27.5-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
    * print, set and delete the JPEG comment of JPEG images
    * fix the Exif ISO setting of picture taken with Canon and Nikon cameras
  
- **Installed size:** `303 KB`  
+ **Installed size:** `275 KB`  
  **How to install:** `sudo apt install exiv2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -172,7 +172,7 @@ PackagesInfo: |
      thumbnails
    * set and delete methods for Exif thumbnails
  
- **Installed size:** `7.50 MB`  
+ **Installed size:** `7.04 MB`  
  **How to install:** `sudo apt install libexiv2-27`  
  
  {{< spoiler "Dependencies:" >}}
@@ -212,7 +212,7 @@ PackagesInfo: |
    
   This package provides the Exiv2 HTML documentation.
  
- **Installed size:** `21.30 MB`  
+ **Installed size:** `22.36 MB`  
  **How to install:** `sudo apt install libexiv2-doc`  
  
  {{< spoiler "Dependencies:" >}}

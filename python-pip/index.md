@@ -3,7 +3,7 @@ Title: python-pip
 Homepage: https://pip.pypa.io/en/stable/
 Repository: https://salsa.debian.org/python-team/packages/python-pip
 Architectures: all
-Version: 22.2+dfsg-1
+Version: 22.3+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
    
   This is the Python 3 version of the package.
  
- **Installed size:** `6.43 MB`  
+ **Installed size:** `6.49 MB`  
  **How to install:** `sudo apt install python3-pip`  
  
  {{< spoiler "Dependencies:" >}}
@@ -64,6 +64,7 @@ PackagesInfo: |
                                environment variables and user configuration.
    --require-virtualenv        Allow pip to only run in a virtual environment;
                                exit with an error otherwise.
+   --python <python>           Run pip with the specified Python interpreter.
    -v, --verbose               Give more output. Option is additive, and can be
                                used up to 3 times.
    -V, --version               Show version and exit.
@@ -144,6 +145,7 @@ PackagesInfo: |
                                environment variables and user configuration.
    --require-virtualenv        Allow pip to only run in a virtual environment;
                                exit with an error otherwise.
+   --python <python>           Run pip with the specified Python interpreter.
    -v, --verbose               Give more output. Option is additive, and can be
                                used up to 3 times.
    -V, --version               Show version and exit.
@@ -223,6 +225,7 @@ PackagesInfo: |
                                environment variables and user configuration.
    --require-virtualenv        Allow pip to only run in a virtual environment;
                                exit with an error otherwise.
+   --python <python>           Run pip with the specified Python interpreter.
    -v, --verbose               Give more output. Option is additive, and can be
                                used up to 3 times.
    -V, --version               Show version and exit.

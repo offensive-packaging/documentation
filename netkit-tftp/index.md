@@ -2,212 +2,40 @@
 Title: netkit-tftp
 Homepage: 
 Repository: 
-Architectures: any
-Version: 0.17-23
+Architectures: all
+Version: 0.17-25
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### tftp
  
-  Tftp is the user interface to the Internet TFTP (Trivial File Transfer
-  Protocol), which allows users to transfer files to and from a remote machine.
-  The remote host may be specified on the command line, in which case tftp uses
-  host as the default host for future transfers.
+  This is a transitional package. It can safely be removed.
  
- **Installed size:** `53 KB`  
+ **Installed size:** `14 KB`  
  **How to install:** `sudo apt install tftp`  
  
  {{< spoiler "Dependencies:" >}}
- * libc6 
- * netbase
+ * tftp-hpa
  {{< /spoiler >}}
  
  ##### tftp
  
- Trivial file transfer program
+ IPv4 Trivial File Transfer Protocol client
  
  ```
- root@kali:~# man tftp
- TFTP(1)                   BSD General Commands Manual                  TFTP(1)
- 
- NAME
-      tftp -- trivial file transfer program
- 
- SYNOPSIS
-      tftp [host]
- 
- DESCRIPTION
-      Tftp is the user interface to the Internet TFTP (Trivial File Transfer
-      Protocol), which allows users to transfer files to and from a remote ma-
-      chine.  The remote host may be specified on the command line, in which
-      case tftp uses host as the default host for future transfers (see the
-      connect command below).
- 
- COMMANDS
-      Once tftp is running, it issues the prompt "tftp> " and recognizes the
-      following commands:
- 
-      ? command-name ...
-               Print help information.
- 
-      ascii    Shorthand for "mode ascii"
- 
-      binary   Shorthand for "mode binary"
- 
-      connect host-name [port]
-               Set the host (and optionally port) for transfers.  Note that the
-               TFTP protocol, unlike the FTP protocol, does not maintain con-
-               nections betwen transfers; thus, the connect command does not
-               actually create a connection, but merely remembers what host is
-               to be used for transfers.  You do not have to use the connect
-               command; the remote host can be specified as part of the get or
-               put commands.
- 
-      get filename
-      get remotename localname
-      get file1 file2 ... fileN
-               Get a file or set of files from the specified sources.  Source
-               can be in one of two forms: a filename on the remote host, if
-               the host has already been specified, or a string of the form
-               hosts:filename to specify both a host and filename at the same
-               time.  If the latter form is used, the last hostname specified
-               becomes the default for future transfers.
- 
-      mode transfer-mode
-               Set the mode for transfers; transfer-mode may be one of ascii or
-               binary.  The default is ascii.
- 
-      put file
-      put localfile remotefile
-      put file1 file2 ... fileN remote-directory
-               Put a file or set of files to the specified remote file or di-
-               rectory.  The destination can be in one of two forms: a filename
-               on the remote host, if the host has already been specified, or a
-               string of the form hosts:filename to specify both a host and
-               filename at the same time.  If the latter form is used, the
-               hostname specified becomes the default for future transfers.  If
-               the remote-directory form is used, the remote host is assumed to
-               be a UNIX machine.
- 
-      quit     Exit tftp.  An end of file also exits.
- 
-      rexmt retransmission-timeout
-               Set the per-packet retransmission timeout, in seconds.
- 
-      status   Show current status.
- 
-      timeout total-transmission-timeout
-               Set the total transmission timeout, in seconds.
- 
-      trace    Toggle packet tracing.
- 
-      verbose  Toggle verbose mode.
- 
- BUGS
-      Because there is no user-login or validation within the TFTP protocol,
-      the remote site will probably have some sort of file-access restrictions
-      in place.  The exact methods are specific to each site and therefore dif-
-      ficult to document here.
- 
- HISTORY
-      The tftp command appeared in 4.3BSD.
- 
- Linux NetKit (0.17)             August 15, 1999            Linux NetKit (0.17)
+ root@kali:~# tftp -h
+ Usage: tftp [-4][-6][-v][-l][-m mode] [host [port]] [-c command]
  ```
  
  - - -
  
  ##### tftp
  
- Trivial file transfer program
+ IPv4 Trivial File Transfer Protocol client
  
  ```
- root@kali:~# man tftp
- TFTP(1)                   BSD General Commands Manual                  TFTP(1)
- 
- NAME
-      tftp -- trivial file transfer program
- 
- SYNOPSIS
-      tftp [host]
- 
- DESCRIPTION
-      Tftp is the user interface to the Internet TFTP (Trivial File Transfer
-      Protocol), which allows users to transfer files to and from a remote ma-
-      chine.  The remote host may be specified on the command line, in which
-      case tftp uses host as the default host for future transfers (see the
-      connect command below).
- 
- COMMANDS
-      Once tftp is running, it issues the prompt "tftp> " and recognizes the
-      following commands:
- 
-      ? command-name ...
-               Print help information.
- 
-      ascii    Shorthand for "mode ascii"
- 
-      binary   Shorthand for "mode binary"
- 
-      connect host-name [port]
-               Set the host (and optionally port) for transfers.  Note that the
-               TFTP protocol, unlike the FTP protocol, does not maintain con-
-               nections betwen transfers; thus, the connect command does not
-               actually create a connection, but merely remembers what host is
-               to be used for transfers.  You do not have to use the connect
-               command; the remote host can be specified as part of the get or
-               put commands.
- 
-      get filename
-      get remotename localname
-      get file1 file2 ... fileN
-               Get a file or set of files from the specified sources.  Source
-               can be in one of two forms: a filename on the remote host, if
-               the host has already been specified, or a string of the form
-               hosts:filename to specify both a host and filename at the same
-               time.  If the latter form is used, the last hostname specified
-               becomes the default for future transfers.
- 
-      mode transfer-mode
-               Set the mode for transfers; transfer-mode may be one of ascii or
-               binary.  The default is ascii.
- 
-      put file
-      put localfile remotefile
-      put file1 file2 ... fileN remote-directory
-               Put a file or set of files to the specified remote file or di-
-               rectory.  The destination can be in one of two forms: a filename
-               on the remote host, if the host has already been specified, or a
-               string of the form hosts:filename to specify both a host and
-               filename at the same time.  If the latter form is used, the
-               hostname specified becomes the default for future transfers.  If
-               the remote-directory form is used, the remote host is assumed to
-               be a UNIX machine.
- 
-      quit     Exit tftp.  An end of file also exits.
- 
-      rexmt retransmission-timeout
-               Set the per-packet retransmission timeout, in seconds.
- 
-      status   Show current status.
- 
-      timeout total-transmission-timeout
-               Set the total transmission timeout, in seconds.
- 
-      trace    Toggle packet tracing.
- 
-      verbose  Toggle verbose mode.
- 
- BUGS
-      Because there is no user-login or validation within the TFTP protocol,
-      the remote site will probably have some sort of file-access restrictions
-      in place.  The exact methods are specific to each site and therefore dif-
-      ficult to document here.
- 
- HISTORY
-      The tftp command appeared in 4.3BSD.
- 
- Linux NetKit (0.17)             August 15, 1999            Linux NetKit (0.17)
+ root@kali:~# tftp -h
+ Usage: tftp [-4][-6][-v][-l][-m mode] [host [port]] [-c command]
  ```
  
  - - -

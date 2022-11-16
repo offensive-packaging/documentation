@@ -3,7 +3,7 @@ Title: jadx
 Homepage: https://github.com/skylot/jadx
 Repository: https://gitlab.com/kalilinux/packages/jadx
 Architectures: all
-Version: 1.4.3-0kali1
+Version: 1.4.5-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
 Icon: images/jadx-logo.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
      - find usage
      - full text search
  
- **Installed size:** `28.63 MB`  
+ **Installed size:** `29.64 MB`  
  **How to install:** `sudo apt install jadx`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
  ```
  root@kali:~# jadx -h
  
- jadx - dex to java decompiler, version: 1.4.3
+ jadx - dex to java decompiler, version: 1.4.5
  
  usage: jadx [options] <input files> (.apk, .dex, .jar, .class, .smali, .zip, .aar, .arsc, .aab)
  options:
@@ -61,6 +61,7 @@ PackagesInfo: |
    --add-debug-lines                   - add comments with debug line numbers if available
    --no-inline-anonymous               - disable anonymous classes inline
    --no-inline-methods                 - disable methods inline
+   --no-finally                        - don't extract finally block
    --no-replace-consts                 - don't replace constant value with matching constant field
    --escape-unicode                    - escape non latin characters in strings (with \u)
    --respect-bytecode-access-modifiers - don't change original access modifiers
@@ -75,6 +76,10 @@ PackagesInfo: |
                                           'ignore' - don't read and don't save
    --deobf-use-sourcename              - use source file name as class name alias
    --deobf-parse-kotlin-metadata       - parse kotlin metadata to class and package names
+   --deobf-res-name-source             - better name source for resources:
+                                          'auto' - automatically select best name (default)
+                                          'resources' - use resources names
+                                          'code' - use R class fields names
    --use-kotlin-methods-for-var-names  - use kotlin intrinsic methods to rename variables, values: disable, apply, apply-and-hide, default: apply
    --rename-flags                      - fix options (comma-separated list of):
                                           'case' - fix case sensitivity issues (according to --fs-case-sensitive option),
@@ -117,7 +122,7 @@ PackagesInfo: |
  ```
  root@kali:~# jadx-gui -h
  
- jadx - dex to java decompiler, version: 1.4.3
+ jadx - dex to java decompiler, version: 1.4.5
  
  usage: jadx [options] <input files> (.apk, .dex, .jar, .class, .smali, .zip, .aar, .arsc, .aab)
  options:
@@ -143,6 +148,7 @@ PackagesInfo: |
    --add-debug-lines                   - add comments with debug line numbers if available
    --no-inline-anonymous               - disable anonymous classes inline
    --no-inline-methods                 - disable methods inline
+   --no-finally                        - don't extract finally block
    --no-replace-consts                 - don't replace constant value with matching constant field
    --escape-unicode                    - escape non latin characters in strings (with \u)
    --respect-bytecode-access-modifiers - don't change original access modifiers
@@ -157,6 +163,10 @@ PackagesInfo: |
                                           'ignore' - don't read and don't save
    --deobf-use-sourcename              - use source file name as class name alias
    --deobf-parse-kotlin-metadata       - parse kotlin metadata to class and package names
+   --deobf-res-name-source             - better name source for resources:
+                                          'auto' - automatically select best name (default)
+                                          'resources' - use resources names
+                                          'code' - use R class fields names
    --use-kotlin-methods-for-var-names  - use kotlin intrinsic methods to rename variables, values: disable, apply, apply-and-hide, default: apply
    --rename-flags                      - fix options (comma-separated list of):
                                           'case' - fix case sensitivity issues (according to --fs-case-sensitive option),

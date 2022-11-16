@@ -3,7 +3,7 @@ Title: yara
 Homepage: https://virustotal.github.io/yara/
 Repository: https://salsa.debian.org/pkg-security-team/yara
 Architectures: any all
-Version: 4.2.1-1
+Version: 4.2.3-1
 Metapackages: kali-linux-everything kali-tools-forensics 
 Icon: images/yara-logo.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
    
   This package provides development libraries and headers.
  
- **Installed size:** `1.04 MB`  
+ **Installed size:** `1.03 MB`  
  **How to install:** `sudo apt install libyara-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -48,7 +48,7 @@ PackagesInfo: |
    
   This package provides a shared library.
  
- **Installed size:** `442 KB`  
+ **Installed size:** `438 KB`  
  **How to install:** `sudo apt install libyara9`  
  
  {{< spoiler "Dependencies:" >}}
@@ -87,7 +87,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# yara -h
- YARA 4.2.0, the pattern matching swiss army knife.
+ YARA 4.2.3, the pattern matching swiss army knife.
  Usage: yara [OPTION]... [NAMESPACE:]RULES_FILE... FILE | DIR | PID
  
  Mandatory arguments to long options are mandatory for short options too.

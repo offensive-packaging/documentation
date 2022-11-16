@@ -3,7 +3,7 @@ Title: gdisk
 Homepage: http://sourceforge.net/projects/gptfdisk/
 Repository: https://salsa.debian.org/debian/gdisk
 Architectures: any
-Version: 1.0.9-2
+Version: 1.0.9-2.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -24,7 +24,7 @@ PackagesInfo: |
    - Repair damaged MBR structures
    - Back up GPT data to a file (and restore from file)
  
- **Installed size:** `883 KB`  
+ **Installed size:** `885 KB`  
  **How to install:** `sudo apt install gdisk`  
  
  {{< spoiler "Dependencies:" >}}

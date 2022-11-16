@@ -3,23 +3,24 @@ Title: wifiphisher
 Homepage: https://github.com/sophron/wifiphisher
 Repository: https://gitlab.com/kalilinux/packages/wifiphisher
 Architectures: all
-Version: 1.4+git20200611-0kali1
+Version: 1.4+git20220707-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### wifiphisher
  
   This package contains a security tool that mounts automated phishing attacks
-  against WiFi networks in order to obtain secret passphrases or other
+  against Wi-Fi networks in order to obtain secret passphrases or other
   credentials. It is a social engineering attack that unlike other methods it
   does not include any brute forcing. It is an easy way for obtaining credentials
   from captive portals and third party login pages or WPA/WPA2 secret
   passphrases.
  
- **Installed size:** `7.72 MB`  
+ **Installed size:** `7.91 MB`  
  **How to install:** `sudo apt install wifiphisher`  
  
  {{< spoiler "Dependencies:" >}}
+ * cowpatty
  * dnsmasq-base
  * hostapd
  * iptables
@@ -40,8 +41,8 @@ PackagesInfo: |
  usage: wifiphisher [-h] [-i INTERFACE] [-eI EXTENSIONSINTERFACE]
                     [-aI APINTERFACE] [-iI INTERNETINTERFACE]
                     [-pI PROTECTINTERFACE [PROTECTINTERFACE ...]]
-                    [-iAM MAC_AP_INTERFACE] [-iEM MAC_EXTENSIONS_INTERFACE]
-                    [-iNM] [-kN] [-nE] [-nD]
+                    [-mI MITMINTERFACE] [-iAM MAC_AP_INTERFACE]
+                    [-iEM MAC_EXTENSIONS_INTERFACE] [-iNM] [-kN] [-nE] [-nD]
                     [-dC DEAUTH_CHANNELS [DEAUTH_CHANNELS ...]] [-e ESSID]
                     [-dE DEAUTH_ESSID] [-p PHISHINGSCENARIO] [-pK PRESHAREDKEY]
                     [-hC HANDSHAKE_CAPTURE] [-qS] [-lC] [-lE LURE10_EXPLOIT]
@@ -73,6 +74,10 @@ PackagesInfo: |
                          connection protected (i.e. NetworkManager will be
                          prevented from controlling them). Example: -pI wlan1
                          wlan2
+   -mI MITMINTERFACE, --mitminterface MITMINTERFACE
+                         Choose an interface that is connected on the Internet
+                         in order to perform a MITM attack. All other
+                         interfaces will be protected.Example: -mI wlan1
    -iAM MAC_AP_INTERFACE, --mac-ap-interface MAC_AP_INTERFACE
                          Specify the MAC address of the AP interface
    -iEM MAC_EXTENSIONS_INTERFACE, --mac-extensions-interface MAC_EXTENSIONS_INTERFACE
@@ -100,7 +105,8 @@ PackagesInfo: |
                          Example: -pK s3cr3tp4ssw0rd
    -hC HANDSHAKE_CAPTURE, --handshake-capture HANDSHAKE_CAPTURE
                          Capture of the WPA/WPA2 handshakes for verifying
-                         passphraseExample : -hC capture.pcap
+                         passphrase. Requires cowpatty. Example : -hC
+                         capture.pcap
    -qS, --quitonsuccess  Stop the script after successfully retrieving one pair
                          of credentials
    -lC, --lure10-capture

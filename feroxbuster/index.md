@@ -3,7 +3,7 @@ Title: feroxbuster
 Homepage: https://github.com/epi052/feroxbuster
 Repository: https://gitlab.com/kalilinux/packages/feroxbuster
 Architectures: amd64 arm64
-Version: 2.7.0-0kali1
+Version: 2.7.1-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   This attack is also known as Predictable Resource Location, File
   Enumeration, Directory Enumeration, and Resource Enumeration.
  
- **Installed size:** `8.92 MB`  
+ **Installed size:** `8.88 MB`  
  **How to install:** `sudo apt install feroxbuster`  
  
  {{< spoiler "Dependencies:" >}}
@@ -33,11 +33,11 @@ PackagesInfo: |
  
  ##### feroxbuster
  
- Manual page for feroxbuster 2.7.0
+ Manual page for feroxbuster 2.7.1
  
  ```
  root@kali:~# feroxbuster --help
- feroxbuster 2.7.0
+ feroxbuster 2.7.1
  Ben 'epi' Risher (@epi052)
  A fast, simple, recursive content discovery tool.
  
@@ -53,8 +53,8 @@ PackagesInfo: |
  
  Target selection:
          --resume-from <STATE_FILE>
-             State file from which to resume a partially complete scan (ex. --resume-from ferox-
-             1606586780.state)
+             State file from which to resume a partially complete scan (ex. --resume-from
+             ferox-1606586780.state)
  
          --stdin
              Read url(s) from STDIN
@@ -87,7 +87,7 @@ PackagesInfo: |
  
  Request settings:
      -a, --user-agent <USER_AGENT>
-             Sets the User-Agent (default: feroxbuster/2.7.0)
+             Sets the User-Agent (default: feroxbuster/2.7.1)
  
      -A, --random-agent
              Use a random User-Agent
@@ -205,8 +205,8 @@ PackagesInfo: |
              wordlist
  
      -I, --dont-collect <FILE_EXTENSION>...
-             File extension(s) to Ignore while collecting extensions (only used with --collect-
-             extensions)
+             File extension(s) to Ignore while collecting extensions (only used with
+             --collect-extensions)
  
  Output settings:
          --debug-log <FILE>

@@ -41,7 +41,6 @@ PackagesInfo: |
  ```
  root@kali:~# ohrwurm -h
  ohrwurm-0.1
- enabled kernel routing.
  
  usage: ohrwurm -a <IP target a> -b <IP target b> [-s <randomseed>] [-e <bit error ratio in %>] [-i <interface>] [-A <RTP port a> -B <RTP port b>]
  

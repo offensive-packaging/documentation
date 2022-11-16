@@ -19,7 +19,7 @@ PackagesInfo: |
   types look at the data structures of a given file format allowing
   for a more reliable and faster recovery.
  
- **Installed size:** `101 KB`  
+ **Installed size:** `102 KB`  
  **How to install:** `sudo apt install foremost`  
  
  {{< spoiler "Dependencies:" >}}

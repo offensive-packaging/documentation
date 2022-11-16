@@ -4,7 +4,7 @@ Homepage: http://subversion.apache.org/
 Repository: https://salsa.debian.org/jamessan/subversion
 Architectures: any all
 Version: 1.14.2-3
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libapache2-mod-svn
@@ -14,7 +14,7 @@ PackagesInfo: |
   server backend, to serve repositories over the http and https
   protocols.  See the 'subversion' package for more information.
  
- **Installed size:** `445 KB`  
+ **Installed size:** `403 KB`  
  **How to install:** `sudo apt install libapache2-mod-svn`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,7 +34,7 @@ PackagesInfo: |
   libraries.  This package is needed only in order to compile software
   that uses libsvn1.
  
- **Installed size:** `1.95 MB`  
+ **Installed size:** `1.92 MB`  
  **How to install:** `sudo apt install libsvn-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -64,7 +64,7 @@ PackagesInfo: |
   for example, write a Java class that manipulates a Subversion repository
   or working copy.  See the 'subversion' package for more information.
  
- **Installed size:** `1.24 MB`  
+ **Installed size:** `1.20 MB`  
  **How to install:** `sudo apt install libsvn-java`  
  
  {{< spoiler "Dependencies:" >}}
@@ -85,7 +85,7 @@ PackagesInfo: |
   manipulates a Subversion repository or working copy.  See the
   'subversion' package for more information.
  
- **Installed size:** `5.37 MB`  
+ **Installed size:** `5.15 MB`  
  **How to install:** `sudo apt install libsvn-perl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -93,7 +93,7 @@ PackagesInfo: |
  * libc6 
  * libsvn1 
  * perl 
- * perlapi-5.34.0
+ * perlapi-5.36.0
  {{< /spoiler >}}
  
  
@@ -105,7 +105,7 @@ PackagesInfo: |
   (svn) repositories and working copies.  See the 'subversion' package for
   more information.
  
- **Installed size:** `4.23 MB`  
+ **Installed size:** `4.19 MB`  
  **How to install:** `sudo apt install libsvn1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -153,7 +153,7 @@ PackagesInfo: |
   manipulates a Subversion repository or working copy.  See the
   'subversion' package for more information.
  
- **Installed size:** `2.75 MB`  
+ **Installed size:** `2.70 MB`  
  **How to install:** `sudo apt install ruby-svn`  
  
  {{< spoiler "Dependencies:" >}}
@@ -179,7 +179,7 @@ PackagesInfo: |
   This package includes the Subversion client (svn, svnsync), repository
   administration tools (svnadmin, svnlook) and a network server (svnserve).
  
- **Installed size:** `4.76 MB`  
+ **Installed size:** `4.72 MB`  
  **How to install:** `sudo apt install subversion`  
  
  {{< spoiler "Dependencies:" >}}
@@ -697,7 +697,7 @@ PackagesInfo: |
   change radically or disappear in future releases.  Some of these
   scripts require packages on the Recommends list.
  
- **Installed size:** `1.06 MB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install subversion-tools`  
  
  {{< spoiler "Dependencies:" >}}

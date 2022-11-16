@@ -3,8 +3,8 @@ Title: nmap
 Homepage: https://nmap.org/
 Repository: https://gitlab.com/kalilinux/packages/nmap
 Architectures: any all
-Version: 7.92+dfsg2-1kali1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web 
+Version: 7.93+dfsg1-0kali1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web 
 Icon: images/nmap-logo.svg
 PackagesInfo: |
  ### ncat
@@ -14,13 +14,13 @@ PackagesInfo: |
   with some new features such as IPv6 and SSL support. Port scanning
   support has been removed.
  
- **Installed size:** `800 KB`  
+ **Installed size:** `831 KB`  
  **How to install:** `sudo apt install ncat`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * liblua5.3-0
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### ncat
@@ -29,7 +29,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ncat -h
- Ncat 7.92 ( https://nmap.org/ncat )
+ Ncat 7.93 ( https://nmap.org/ncat )
  Usage: ncat [options] [hostname] [port]
  
  Options taking a time assume seconds. Append 'ms' for milliseconds,
@@ -97,7 +97,7 @@ PackagesInfo: |
   hosts coming up and down, ports becoming open or closed, and things like that.
   It can produce output in human-readable text or machine-readable XML formats.
  
- **Installed size:** `407 KB`  
+ **Installed size:** `434 KB`  
  **How to install:** `sudo apt install ndiff`  
  
  {{< spoiler "Dependencies:" >}}
@@ -136,7 +136,7 @@ PackagesInfo: |
   supported in both GUI and commandline modes. Several popular handheld
   devices are also supported, including the Sharp Zaurus and the iPAQ.
  
- **Installed size:** `4.83 MB`  
+ **Installed size:** `4.86 MB`  
  **How to install:** `sudo apt install nmap`  
  
  {{< spoiler "Dependencies:" >}}
@@ -146,7 +146,7 @@ PackagesInfo: |
  * liblua5.3-0
  * libpcre3
  * libssh2-1 
- * libssl1.1 
+ * libssl3 
  * libstdc++6 
  * lua-lpeg 
  * nmap-common 
@@ -159,7 +159,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# nmap -h
- Nmap 7.92 ( https://nmap.org )
+ Nmap 7.93 ( https://nmap.org )
  Usage: nmap [Scan Type(s)] [Options] {target specification}
  TARGET SPECIFICATION:
    Can pass hostnames, IP addresses, networks, etc.
@@ -193,7 +193,7 @@ PackagesInfo: |
      Ex: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9
    --exclude-ports <port ranges>: Exclude the specified ports from scanning
    -F: Fast mode - Scan fewer ports than the default scan
-   -r: Scan ports consecutively - don't randomize
+   -r: Scan ports sequentially - don't randomize
    --top-ports <number>: Scan <number> most common ports
    --port-ratio <ratio>: Scan ports more common than <ratio>
  SERVICE/VERSION DETECTION:
@@ -284,7 +284,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# nping -h
- Nping 0.7.92 ( https://nmap.org/nping )
+ Nping 0.7.93 ( https://nmap.org/nping )
  Usage: nping [Probe mode] [Options] {target specification}
  
  TARGET SPECIFICATION:
@@ -339,6 +339,7 @@ PackagesInfo: |
    --id  <id>                       : Set identification field (16 bits).
    --df                             : Set Don't Fragment flag.
    --mf                             : Set More Fragments flag.
+   --evil                           : Set Reserved / Evil flag.
    --ttl <hops>                     : Set time to live [0-255].
    --badsum-ip                      : Use a random invalid checksum. 
    --ip-options <S|R [route]|L [route]|T|U ...> : Set IP options
@@ -421,7 +422,7 @@ PackagesInfo: |
    
   This package contains the nmap files shared by all architectures.
  
- **Installed size:** `20.39 MB`  
+ **Installed size:** `20.74 MB`  
  **How to install:** `sudo apt install nmap-common`  
  
  

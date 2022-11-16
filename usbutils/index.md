@@ -61,8 +61,8 @@ PackagesInfo: |
  
  T:  Bus=01 Lev=00 Prnt=00 Port=00 Cnt=00 Dev#=  1 Spd=12  MxCh=12
  D:  Ver= 1.10 Cls=09(hub  ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
- P:  Vendor=1d6b ProdID=0001 Rev=05.18
- S:  Manufacturer=Linux 5.18.0-kali5-amd64 ohci_hcd
+ P:  Vendor=1d6b ProdID=0001 Rev=06.00
+ S:  Manufacturer=Linux 6.0.0-kali3-amd64 ohci_hcd
  S:  Product=OHCI PCI host controller
  S:  SerialNumber=0000:00:06.0
  C:  #Ifs= 1 Cfg#= 1 Atr=e0 MxPwr=0mA

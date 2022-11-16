@@ -3,14 +3,14 @@ Title: ridenum
 Homepage: https://github.com/trustedsec/ridenum
 Repository: https://gitlab.com/kalilinux/packages/ridenum
 Architectures: all
-Version: 1.7-0kali2
+Version: 1.7-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ridenum
  
   Rid Enum is a RID cycling attack that attempts to enumerate user accounts
-  through  null sessions and the SID to RID enum. If you specify a password file,
+  through null sessions and the SID to RID enum. If you specify a password file,
   it will automatically attempt to brute force the user accounts when its
   finished enumerating.
  

@@ -23,13 +23,13 @@ PackagesInfo: |
   This attack further exploits the SSL secure Renegotiation feature
   to trigger thousands of renegotiations via single TCP connection.
  
- **Installed size:** `35 KB`  
+ **Installed size:** `36 KB`  
  **How to install:** `sudo apt install thc-ssl-dos`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libpcap0.8
- * libssl1.1 
+ * libssl3 
  * openssl
  {{< /spoiler >}}
  

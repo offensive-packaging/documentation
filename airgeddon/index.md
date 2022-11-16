@@ -3,7 +3,7 @@ Title: airgeddon
 Homepage: https://github.com/v1s1t0r1sh3r3/airgeddon
 Repository: https://gitlab.com/kalilinux/packages/airgeddon
 Architectures: any
-Version: 11.01+ds-0kali1
+Version: 11.02+ds-0kali1
 Metapackages: kali-linux-everything kali-tools-802-11 kali-tools-wireless 
 Icon: images/airgeddon-logo.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   airgeddon is a menu driven 3rd party tools wrapper to audit wireless networks
   with many features.
  
- **Installed size:** `3.65 MB`  
+ **Installed size:** `3.66 MB`  
  **How to install:** `sudo apt install airgeddon`  
  
  {{< spoiler "Dependencies:" >}}
@@ -33,7 +33,7 @@ PackagesInfo: |
  ```
  root@kali:~# airgeddon -h
  *********************************** Welcome ************************************ 
- Welcome to airgeddon script v11.01 
+ Welcome to airgeddon script v11.02 
  
                    .__                         .___  .___
             _____  |__|______  ____   ____   __| _/__| _/____   ____

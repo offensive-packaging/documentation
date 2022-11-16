@@ -4,7 +4,7 @@ Homepage: https://github.com/lanmaster53/recon-ng
 Repository: https://salsa.debian.org/pkg-security-team/recon-ng
 Architectures: all
 Version: 5.1.2-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-information-gathering 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-information-gathering 
 Icon: images/recon-ng-logo.svg
 PackagesInfo: |
  ### recon-ng

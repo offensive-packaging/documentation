@@ -3,7 +3,7 @@ Title: rfcat
 Homepage: https://github.com/atlas0fd00m/rfcat
 Repository: https://gitlab.com/kalilinux/packages/rfcat
 Architectures: any
-Version: 1:1.9.5-0kali1
+Version: 1:1.9.6-0kali1
 Metapackages: kali-linux-everything kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   time for security researchers to create needed tools for analyzing unknown
   targets, to aid in reverse-engineering of hardware.
  
- **Installed size:** `441 KB`  
+ **Installed size:** `443 KB`  
  **How to install:** `sudo apt install rfcat`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,6 +31,7 @@ PackagesInfo: |
  
  ##### rfcat
  
+ (unknown subject)
  
  ```
  root@kali:~# rfcat -h

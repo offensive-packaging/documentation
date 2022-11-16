@@ -3,7 +3,7 @@ Title: sslyze
 Homepage: https://github.com/nabla-c0d3/sslyze
 Repository: https://gitlab.com/kalilinux/packages/sslyze
 Architectures: all
-Version: 5.0.5-0kali1
+Version: 5.0.6-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-web 
 Icon: images/sslyze-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   comprehensive, and should help organizations and testers
   identify misconfigurations affecting their SSL servers.
  
- **Installed size:** `2.09 MB`  
+ **Installed size:** `2.10 MB`  
  **How to install:** `sudo apt install sslyze`  
  
  {{< spoiler "Dependencies:" >}}
@@ -38,16 +38,16 @@ PackagesInfo: |
                [--json_out JSON_FILE] [--targets_in TARGET_FILE] [--quiet]
                [--slow_connection] [--https_tunnel PROXY_SETTINGS]
                [--starttls PROTOCOL] [--xmpp_to HOSTNAME]
-               [--sni SERVER_NAME_INDICATION] [--openssl_ccs] [--tlsv1_3]
-               [--early_data] [--sslv3] [--reneg] [--sslv2] [--tlsv1]
-               [--elliptic_curves] [--http_headers] [--tlsv1_2] [--robot]
-               [--heartbleed] [--certinfo]
-               [--certinfo_ca_file CERTINFO_CA_FILE] [--tlsv1_1] [--fallback]
-               [--resum] [--resum_attempts RESUM_ATTEMPTS] [--compression]
+               [--sni SERVER_NAME_INDICATION] [--robot] [--openssl_ccs]
+               [--heartbleed] [--http_headers] [--resum]
+               [--resum_attempts RESUM_ATTEMPTS] [--tlsv1_3] [--sslv3]
+               [--tlsv1_2] [--compression] [--sslv2] [--early_data]
+               [--fallback] [--certinfo] [--certinfo_ca_file CERTINFO_CA_FILE]
+               [--reneg] [--tlsv1] [--elliptic_curves] [--tlsv1_1]
                [--mozilla_config {modern,intermediate,old,disable}]
                [target ...]
  
- SSLyze version 5.0.5
+ SSLyze version 5.0.6
  
  positional arguments:
    target                The list of servers to scan.
@@ -121,31 +121,13 @@ PackagesInfo: |
                          connect to. Will only affect TLS 1.0+ connections.
  
  Scan commands:
+   --robot               Test a server for the ROBOT vulnerability.
    --openssl_ccs         Test a server for the OpenSSL CCS Injection
                          vulnerability (CVE-2014-0224).
-   --tlsv1_3             Test a server for TLS 1.3 support.
-   --early_data          Test a server for TLS 1.3 early data support.
-   --sslv3               Test a server for SSL 3.0 support.
-   --reneg               Test a server for for insecure TLS renegotiation and
-                         client-initiated renegotiation.
-   --sslv2               Test a server for SSL 2.0 support.
-   --tlsv1               Test a server for TLS 1.0 support.
-   --elliptic_curves     Test a server for supported elliptic curves.
-   --http_headers        Test a server for the presence of security-related
-                         HTTP headers.
-   --tlsv1_2             Test a server for TLS 1.2 support.
-   --robot               Test a server for the ROBOT vulnerability.
    --heartbleed          Test a server for the OpenSSL Heartbleed
                          vulnerability.
-   --certinfo            Retrieve and analyze a server's certificate(s) to
-                         verify its validity.
-   --certinfo_ca_file CERTINFO_CA_FILE
-                         To be used with --certinfo. Path to a file containing
-                         root certificates in PEM format that will be used to
-                         verify the validity of the server's certificate.
-   --tlsv1_1             Test a server for TLS 1.1 support.
-   --fallback            Test a server for the TLS_FALLBACK_SCSV mechanism to
-                         prevent downgrade attacks.
+   --http_headers        Test a server for the presence of security-related
+                         HTTP headers.
    --resum               Test a server for TLS 1.2 session resumption support
                          using session IDs and TLS tickets.
    --resum_attempts RESUM_ATTEMPTS
@@ -155,8 +137,26 @@ PackagesInfo: |
                          value such as 100 can be used to get a more accurate
                          measure of how often session resumption succeeds or
                          fails with the server.
+   --tlsv1_3             Test a server for TLS 1.3 support.
+   --sslv3               Test a server for SSL 3.0 support.
+   --tlsv1_2             Test a server for TLS 1.2 support.
    --compression         Test a server for TLS compression support, which can
                          be leveraged to perform a CRIME attack.
+   --sslv2               Test a server for SSL 2.0 support.
+   --early_data          Test a server for TLS 1.3 early data support.
+   --fallback            Test a server for the TLS_FALLBACK_SCSV mechanism to
+                         prevent downgrade attacks.
+   --certinfo            Retrieve and analyze a server's certificate(s) to
+                         verify its validity.
+   --certinfo_ca_file CERTINFO_CA_FILE
+                         To be used with --certinfo. Path to a file containing
+                         root certificates in PEM format that will be used to
+                         verify the validity of the server's certificate.
+   --reneg               Test a server for for insecure TLS renegotiation and
+                         client-initiated renegotiation.
+   --tlsv1               Test a server for TLS 1.0 support.
+   --elliptic_curves     Test a server for supported elliptic curves.
+   --tlsv1_1             Test a server for TLS 1.1 support.
  ```
  
  - - -

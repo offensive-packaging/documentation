@@ -26,14 +26,14 @@ PackagesInfo: |
   software achieve the same things (sdr# for eg, although there are
   significant differences in the actual implementation).
  
- **Installed size:** `1.12 MB`  
+ **Installed size:** `1.19 MB`  
  **How to install:** `sudo apt install gr-iqbal`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
  * libgnuradio-iqbalance3.9.0 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-runtime3.10.4 
  * libpython3.10 
  * libstdc++6 
  * python3
@@ -60,8 +60,8 @@ PackagesInfo: |
  * libc6 
  * libfftw3-single3 
  * libgcc-s1 
- * libgnuradio-pmt3.10.3 
- * libgnuradio-runtime3.10.3 
+ * libgnuradio-pmt3.10.4 
+ * libgnuradio-runtime3.10.4 
  * libstdc++6 
  {{< /spoiler >}}
  

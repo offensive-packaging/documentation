@@ -3,7 +3,7 @@ Title: stunnel4
 Homepage: https://www.stunnel.org/
 Repository: https://salsa.debian.org/debian/stunnel/
 Architectures: any
-Version: 3:5.63-1
+Version: 3:5.67-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: images/stunnel4-logo.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
    
   This package contains a wrapper script for compatibility with stunnel 3.x
  
- **Installed size:** `548 KB`  
+ **Installed size:** `530 KB`  
  **How to install:** `sudo apt install stunnel4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -169,10 +169,17 @@ PackagesInfo: |
             Level is one of the syslog level names or numbers emerg (0), alert
             (1), crit (2), err (3), warning (4), notice (5), info (6), or debug
             (7).  All logs for the specified level and all levels numerically
-            less than it will be shown.  Use debug = debug or debug = 7 for
-            greatest debugging output.  The default is notice (5).
+            less than it will be shown.
  
-            The syslog facility 'daemon' will be used unless a facility name is
+            The debug = debug (or the equivalent <debug = 7>) level produces
+            for the most verbose log output.  This logging level is only meant
+            to be understood by stunnel developers, and not by users.  Please
+            either use the debug level when requested to do so by an stunnel
+            developer, or when you intend to get confused.
+ 
+            The default logging level is notice (5).
+ 
+            The syslog 'daemon' facility will be used unless a facility name is
             supplied.  (Facilities are not supported on Win32.)
  
             Case is ignored for both facilities and levels.
@@ -932,26 +939,27 @@ PackagesInfo: |
             address of sessiond TLS cache server
  
         sni = SERVICE_NAME:SERVER_NAME_PATTERN (server mode)
-            Use the service as a slave service (a name-based virtual server)
-            for Server Name Indication TLS extension (RFC 3546).
+            Use the service as a secondary service (a name-based virtual
+            server) for Server Name Indication TLS extension (RFC 3546).
  
-            SERVICE_NAME specifies the master service that accepts client
+            SERVICE_NAME specifies the primary service that accepts client
             connections with the accept option.  SERVER_NAME_PATTERN specifies
             the host name to be redirected.  The pattern may start with the '*'
-            character, e.g.  '*.example.com'.  Multiple slave services are
-            normally specified for a single master service.  The sni option can
-            also be specified more than once within a single slave service.
+            character, e.g.  '*.example.com'.  Multiple secondary services are
+            normally specified for a single primary service.  The sni option
+            can also be specified more than once within a single secondary
+            service.
  
-            This service, as well as the master service, may not be configured
+            This service, as well as the primary service, may not be configured
             in client mode.
  
-            The connect option of the slave service is ignored when the
+            The connect option of the secondary service is ignored when the
             protocol option is specified, as protocol connects to the remote
             host before TLS handshake.
  
-            Libwrap checks (Unix only) are performed twice: with the master
-            service name after TCP connection is accepted, and with the slave
-            service name during the TLS handshake.
+            Libwrap checks (Unix only) are performed twice: with the primary
+            service name after TCP connection is accepted, and with the
+            secondary service name during the TLS handshake.
  
             The sni option is only available when compiled with OpenSSL 1.0.0
             and later.
@@ -1335,19 +1343,19 @@ PackagesInfo: |
         An example server mode SNI configuration:
  
             [virtual]
-            ; master service
+            ; primary service
             accept = 443
             cert =  default.pem
             connect = default.internal.mydomain.com:8080
  
             [sni1]
-            ; slave service 1
+            ; secondary service 1
             sni = virtual:server1.mydomain.com
             cert = server1.pem
             connect = server1.internal.mydomain.com:8081
  
             [sni2]
-            ; slave service 2
+            ; secondary service 2
             sni = virtual:server2.mydomain.com
             cert = server2.pem
             connect = server2.internal.mydomain.com:8082
@@ -1513,7 +1521,7 @@ PackagesInfo: |
         Michal Trojnara
             <Michal.Trojnara@stunnel.org>
  
- 5.63                              2022.01.18                        stunnel(8)
+ 5.67                              2022.10.08                        stunnel(8)
  ```
  
  - - -
@@ -1525,7 +1533,7 @@ PackagesInfo: |
  ```
  root@kali:~# stunnel3 --help
  /usr/bin/stunnel3 version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: stunnel3 [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  
@@ -1539,14 +1547,14 @@ PackagesInfo: |
     See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]
  [ ] Initializing inetd mode configuration
  [ ] Clients allowed=500
- [.] stunnel 5.63 on x86_64-pc-linux-gnu platform
- [.] Compiled/running with OpenSSL 3.0.4 21 Jun 2022
+ [.] stunnel 5.67 on x86_64-pc-linux-gnu platform
+ [.] Compiled/running with OpenSSL 3.0.7 1 Nov 2022
  [.] Threading:PTHREAD Sockets:POLL,IPv6,SYSTEMD TLS:ENGINE,OCSP,PSK,SNI Auth:LIBWRAP
  [ ] errno: (*__errno_location ())
  [ ] Initializing inetd mode configuration
  [.] Reading configuration from descriptor 3
  [.] FIPS mode disabled
- [ ] Compression enabled: 0 methods
+ [ ] Compression disabled
  [ ] No PRNG seeding was required
  [!] Inetd mode: TLS server needs a certificate
  [!] Configuration failed
@@ -1686,10 +1694,17 @@ PackagesInfo: |
             Level is one of the syslog level names or numbers emerg (0), alert
             (1), crit (2), err (3), warning (4), notice (5), info (6), or debug
             (7).  All logs for the specified level and all levels numerically
-            less than it will be shown.  Use debug = debug or debug = 7 for
-            greatest debugging output.  The default is notice (5).
+            less than it will be shown.
  
-            The syslog facility 'daemon' will be used unless a facility name is
+            The debug = debug (or the equivalent <debug = 7>) level produces
+            for the most verbose log output.  This logging level is only meant
+            to be understood by stunnel developers, and not by users.  Please
+            either use the debug level when requested to do so by an stunnel
+            developer, or when you intend to get confused.
+ 
+            The default logging level is notice (5).
+ 
+            The syslog 'daemon' facility will be used unless a facility name is
             supplied.  (Facilities are not supported on Win32.)
  
             Case is ignored for both facilities and levels.
@@ -2449,26 +2464,27 @@ PackagesInfo: |
             address of sessiond TLS cache server
  
         sni = SERVICE_NAME:SERVER_NAME_PATTERN (server mode)
-            Use the service as a slave service (a name-based virtual server)
-            for Server Name Indication TLS extension (RFC 3546).
+            Use the service as a secondary service (a name-based virtual
+            server) for Server Name Indication TLS extension (RFC 3546).
  
-            SERVICE_NAME specifies the master service that accepts client
+            SERVICE_NAME specifies the primary service that accepts client
             connections with the accept option.  SERVER_NAME_PATTERN specifies
             the host name to be redirected.  The pattern may start with the '*'
-            character, e.g.  '*.example.com'.  Multiple slave services are
-            normally specified for a single master service.  The sni option can
-            also be specified more than once within a single slave service.
+            character, e.g.  '*.example.com'.  Multiple secondary services are
+            normally specified for a single primary service.  The sni option
+            can also be specified more than once within a single secondary
+            service.
  
-            This service, as well as the master service, may not be configured
+            This service, as well as the primary service, may not be configured
             in client mode.
  
-            The connect option of the slave service is ignored when the
+            The connect option of the secondary service is ignored when the
             protocol option is specified, as protocol connects to the remote
             host before TLS handshake.
  
-            Libwrap checks (Unix only) are performed twice: with the master
-            service name after TCP connection is accepted, and with the slave
-            service name during the TLS handshake.
+            Libwrap checks (Unix only) are performed twice: with the primary
+            service name after TCP connection is accepted, and with the
+            secondary service name during the TLS handshake.
  
             The sni option is only available when compiled with OpenSSL 1.0.0
             and later.
@@ -2852,19 +2868,19 @@ PackagesInfo: |
         An example server mode SNI configuration:
  
             [virtual]
-            ; master service
+            ; primary service
             accept = 443
             cert =  default.pem
             connect = default.internal.mydomain.com:8080
  
             [sni1]
-            ; slave service 1
+            ; secondary service 1
             sni = virtual:server1.mydomain.com
             cert = server1.pem
             connect = server1.internal.mydomain.com:8081
  
             [sni2]
-            ; slave service 2
+            ; secondary service 2
             sni = virtual:server2.mydomain.com
             cert = server2.pem
             connect = server2.internal.mydomain.com:8082
@@ -3030,7 +3046,7 @@ PackagesInfo: |
         Michal Trojnara
             <Michal.Trojnara@stunnel.org>
  
- 5.63                              2022.01.18                        stunnel(8)
+ 5.67                              2022.10.08                        stunnel(8)
  ```
  
  - - -

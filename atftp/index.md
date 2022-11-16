@@ -3,7 +3,7 @@ Title: atftp
 Homepage: https://sourceforge.net/projects/atftp
 Repository: https://salsa.debian.org/debian/atftp
 Architectures: any
-Version: 0.7.git20210915-4
+Version: 0.8.0-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   booting from LAN. The atftp client also supports non-interactive invocation
   for easy use in scripts.
  
- **Installed size:** `99 KB`  
+ **Installed size:** `97 KB`  
  **How to install:** `sudo apt install atftp`  
  
  {{< spoiler "Dependencies:" >}}
@@ -57,12 +57,13 @@ PackagesInfo: |
  ### atftpd
  
   Multi-threaded TFTP server implementing all options (option extension and
-  multicast) as specified in RFC1350, RFC2090, RFC2347, RFC2348 and RFC2349.
-  Atftpd also supports multicast protocol known as mtftp, defined in the PXE
-  specification. The server is socket activated by default but supports being
-  started from inetd(8) as well as in daemon mode using init scripts.
+  multicast) as specified in RFC1350, RFC2090, RFC2347, RFC2348, RFC2349 and
+  RFC7440. Atftpd also supports the multicast protocol known as mtftp, defined
+  in the PXE specification. The server is socket activated by default but
+  supports being started from inetd(8) as well as in daemon mode using init
+  scripts.
  
- **Installed size:** `184 KB`  
+ **Installed size:** `182 KB`  
  **How to install:** `sudo apt install atftpd`  
  
  {{< spoiler "Dependencies:" >}}

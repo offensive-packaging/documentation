@@ -3,7 +3,7 @@ Title: legion
 Homepage: https://govanguard.com/legion/
 Repository: https://gitlab.com/kalilinux/packages/legion
 Architectures: all
-Version: 0.3.8-0kali5
+Version: 0.3.9-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-information-gathering kali-tools-vulnerability 
 Icon: images/legion-logo.svg
 PackagesInfo: |

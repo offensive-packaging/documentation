@@ -3,8 +3,8 @@ Title: parted
 Homepage: https://www.gnu.org/software/parted
 Repository: https://salsa.debian.org/parted-team/parted
 Architectures: any all
-Version: 3.5-1
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics 
+Version: 3.5-2
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libparted-dev
@@ -17,7 +17,7 @@ PackagesInfo: |
   This package contains the static library and header files for
   libparted, which are really only of interest to parted developers.
  
- **Installed size:** `1.22 MB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install libparted-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -42,13 +42,22 @@ PackagesInfo: |
   This package contains the libparted-fs-resize shared library for
   resizing HFS+ and FAT file systems.
  
- **Installed size:** `303 KB`  
+ **Installed size:** `106 KB`  
  **How to install:** `sudo apt install libparted-fs-resize0`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libparted2 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libparted-fs-resize0-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libparted-fs-resize0-udeb`  
  
  
  - - -
@@ -62,7 +71,7 @@ PackagesInfo: |
    
   This package contains localization data.
  
- **Installed size:** `2.05 MB`  
+ **Installed size:** `2.06 MB`  
  **How to install:** `sudo apt install libparted-i18n`  
  
  {{< spoiler "Dependencies:" >}}
@@ -81,7 +90,7 @@ PackagesInfo: |
    
   This package contains the shared library.
  
- **Installed size:** `614 KB`  
+ **Installed size:** `617 KB`  
  **How to install:** `sudo apt install libparted2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -91,6 +100,15 @@ PackagesInfo: |
  * libdevmapper1.02.1 
  * libuuid1 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libparted2-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libparted2-udeb`  
  
  
  - - -
@@ -118,7 +136,7 @@ PackagesInfo: |
   could exist, so please back up all important files before running
   it, and do so at your own risk.
  
- **Installed size:** `315 KB`  
+ **Installed size:** `122 KB`  
  **How to install:** `sudo apt install parted`  
  
  {{< spoiler "Dependencies:" >}}
@@ -211,12 +229,17 @@ PackagesInfo: |
   This package contains user documentation for parted and API
   documentation for the library packages.
  
- **Installed size:** `289 KB`  
+ **Installed size:** `274 KB`  
  **How to install:** `sudo apt install parted-doc`  
  
- {{< spoiler "Dependencies:" >}}
- * install-info
- {{< /spoiler >}}
+ 
+ - - -
+ 
+ ### parted-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install parted-udeb`  
  
  
  - - -

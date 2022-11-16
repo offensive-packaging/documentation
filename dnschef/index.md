@@ -3,7 +3,7 @@ Title: dnschef
 Homepage: https://github.com/iphelix/dnschef
 Repository: https://gitlab.com/kalilinux/packages/dnschef
 Architectures: all
-Version: 0.4+git20190327-0kali2
+Version: 0.4+git20190327-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-sniffing-spoofing kali-tools-windows-resources 
 Icon: images/dnschef-logo.svg
 PackagesInfo: |

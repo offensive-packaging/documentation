@@ -3,7 +3,7 @@ Title: wifite
 Homepage: https://github.com/kimocoder/wifite2
 Repository: https://salsa.debian.org/pkg-security-team/wifite
 Architectures: all
-Version: 2.6.0+ds1-1
+Version: 2.6.6-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-wireless 
 Icon: images/wifite-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   This tool is customizable to be automated with only a few arguments
   and can be trusted to run without supervision.
  
- **Installed size:** `2.35 MB`  
+ **Installed size:** `2.34 MB`  
  **How to install:** `sudo apt install wifite`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,6 +23,7 @@ PackagesInfo: |
  * ieee-data
  * net-tools
  * python3
+ * python3-chardet
  * reaver
  * tshark
  {{< /spoiler >}}
@@ -34,7 +35,7 @@ PackagesInfo: |
  ```
  root@kali:~# wifite -h
     .               .    
-  .´  ·  .     .  ·  `.  wifite2 2.6.0
+  .´  ·  .     .  ·  `.  wifite2 2.6.6
   :  :  :  (¯)  :  :  :  a wireless auditor by derv82
   `.  ·  ` /¯\ ´  ·  .´  maintained by kimocoder
     `     /¯¯¯\     ´    https://github.com/kimocoder/wifite2
@@ -87,7 +88,7 @@ PackagesInfo: |
    --pmkid                                    Only use PMKID capture, avoids other WPS & WPA attacks (default:
                                               off)
    --no-pmkid                                 Don't use PMKID capture (default: off)
-   --pmkid-timeout [sec]                      Time to wait for PMKID capture (default: 120 seconds)
+   --pmkid-timeout [sec]                      Time to wait for PMKID capture (default: 300 seconds)
  
  COMMANDS:
    --cracked                                  Print previously-cracked access points

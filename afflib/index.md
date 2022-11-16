@@ -3,7 +3,7 @@ Title: afflib
 Homepage: https://github.com/sshock/AFFLIBv3
 Repository: https://salsa.debian.org/pkg-security-team/afflib
 Architectures: any
-Version: 3.7.19-2
+Version: 3.7.19-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -47,7 +47,7 @@ PackagesInfo: |
   affcopy, affcrypto, affdiskprint, affinfo, affix, affrecover, affsegment,
   affsign, affstats, affuse, affverify and affxml.
  
- **Installed size:** `594 KB`  
+ **Installed size:** `589 KB`  
  **How to install:** `sudo apt install afflib-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -525,7 +525,7 @@ PackagesInfo: |
    
   This package provides the development files.
  
- **Installed size:** `859 KB`  
+ **Installed size:** `869 KB`  
  **How to install:** `sudo apt install libafflib-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -548,7 +548,7 @@ PackagesInfo: |
      decrypted on-the-fly for processing. This allows disk images
      containing privacy sensitive material to be stored on the Internet.
  
- **Installed size:** `567 KB`  
+ **Installed size:** `570 KB`  
  **How to install:** `sudo apt install libafflib0v5`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: crowbar
 Homepage: https://github.com/galkan/crowbar
 Repository: https://gitlab.com/kalilinux/packages/crowbar
 Architectures: all
-Version: 4.1-0kali1
+Version: 4.2-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
      * SSH private key authentication (-b sshkey)
      * VNC key authentication (-b vpn)
  
- **Installed size:** `398 KB`  
+ **Installed size:** `450 KB`  
  **How to install:** `sudo apt install crowbar`  
  
  {{< spoiler "Dependencies:" >}}

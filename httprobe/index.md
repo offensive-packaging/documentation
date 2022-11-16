@@ -3,7 +3,7 @@ Title: httprobe
 Homepage: https://github.com/tomnomnom/httprobe
 Repository: https://gitlab.com/kalilinux/packages/httprobe
 Architectures: any
-Version: 0.1.2+git20200411-0kali1
+Version: 0.2-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package contains a tool to test a domains list. It takes a list of
   domains and probe for working http and https servers.
  
- **Installed size:** `4.55 MB`  
+ **Installed size:** `4.43 MB`  
  **How to install:** `sudo apt install httprobe`  
  
  {{< spoiler "Dependencies:" >}}

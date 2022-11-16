@@ -146,7 +146,6 @@ PackagesInfo: |
  
  ##### dislocker-fuse
  
- Dislocker (1)        - Read/write BitLocker encrypted volumes under Linux, OSX and FreeBSD.
  Read/write BitLocker encrypted volumes under Linux, OSX and FreeBSD.
  
  ```

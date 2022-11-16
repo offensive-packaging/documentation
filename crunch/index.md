@@ -4,7 +4,7 @@ Homepage: http://sourceforge.net/projects/crunch-wordlist/
 Repository: https://salsa.debian.org/debian/crunch
 Architectures: any
 Version: 3.6-3
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/crunch-logo.svg
 PackagesInfo: |
  ### crunch

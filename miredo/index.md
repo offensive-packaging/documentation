@@ -17,7 +17,7 @@ PackagesInfo: |
   NAT. It can also operate as a Teredo relay which forwards IPv6 packets
   between the IPv6 Internet and remote Teredo clients.
  
- **Installed size:** `388 KB`  
+ **Installed size:** `389 KB`  
  **How to install:** `sudo apt install miredo`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: nishang
 Homepage: https://github.com/samratashok/nishang
 Repository: https://gitlab.com/kalilinux/packages/nishang
 Architectures: all
-Version: 0.7.6-0kali4
+Version: 0.7.6+git20210724.414ee11-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-web 
 Icon: images/nishang-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   Penetration Tests. The scripts are written on the basis of requirement by the
   author during real Penetration Tests.
  
- **Installed size:** `5.05 MB`  
+ **Installed size:** `6.41 MB`  
  **How to install:** `sudo apt install nishang`  
  
  {{< spoiler "Dependencies:" >}}

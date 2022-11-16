@@ -3,7 +3,7 @@ Title: cherrytree
 Homepage: https://www.giuspen.net/cherrytree/
 Repository: https://salsa.debian.org/debian/cherrytree
 Architectures: any
-Version: 0.99.47+dfsg-1
+Version: 0.99.48+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large 
 Icon: images/cherrytree-logo.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   syntax highlighting, images handling, hyperlinks, import/export with support
   for multiple formats, support for multiple languages, and more.
  
- **Installed size:** `9.19 MB`  
+ **Installed size:** `9.80 MB`  
  **How to install:** `sudo apt install cherrytree`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,7 +23,8 @@ PackagesInfo: |
  * libcairo2 
  * libcairomm-1.0-1v5 
  * libcurl4 
- * libfmt8 
+ * libfmt9 
+ * libfribidi0 
  * libgcc-s1 
  * libglib2.0-0 
  * libglibmm-2.4-1v5 

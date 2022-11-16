@@ -20,7 +20,7 @@ PackagesInfo: |
    
   This package is useful in forensics investigations.
  
- **Installed size:** `64 KB`  
+ **Installed size:** `65 KB`  
  **How to install:** `sudo apt install recoverdm`  
  
  {{< spoiler "Dependencies:" >}}

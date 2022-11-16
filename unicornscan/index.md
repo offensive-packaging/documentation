@@ -1,9 +1,9 @@
 ---
 Title: unicornscan
-Homepage: <insert the upstream URL, if relevant>
+Homepage: http://www.unicornscan.org/
 Repository: https://gitlab.com/kalilinux/packages/unicornscan
 Architectures: any
-Version: 0.4.7-1kali3
+Version: 0.4.7-1kali5
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -32,12 +32,13 @@ PackagesInfo: |
      - Custom module support
      - Customized data-set views
  
- **Installed size:** `2.82 MB`  
+ **Installed size:** `3.77 MB`  
  **How to install:** `sudo apt install unicornscan`  
  
  {{< spoiler "Dependencies:" >}}
  * flex
  * libc6 
+ * libpcap0.8 
  {{< /spoiler >}}
  
  ##### fantaip

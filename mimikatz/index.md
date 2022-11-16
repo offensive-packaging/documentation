@@ -3,7 +3,7 @@ Title: mimikatz
 Homepage: https://blog.gentilkiwi.com/mimikatz
 Repository: https://gitlab.com/kalilinux/packages/mimikatz
 Architectures: all
-Version: 2.2.0-git20210810-2-0kali1
+Version: 2.2.0-git20220919-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords kali-tools-post-exploitation kali-tools-windows-resources 
 Icon: images/mimikatz-logo.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   Mimikatz uses admin rights on Windows to display passwords of currently logged
   in users in plaintext.
  
- **Installed size:** `2.64 MB`  
+ **Installed size:** `2.54 MB`  
  **How to install:** `sudo apt install mimikatz`  
  
  {{< spoiler "Dependencies:" >}}

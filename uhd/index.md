@@ -3,7 +3,7 @@ Title: uhd
 Homepage: https://www.ettus.com/sdr-software/uhd-usrp-hardware-driver/
 Repository: https://salsa.debian.org/bottoms/pkg-uhd
 Architectures: any all
-Version: 4.2.0.0+ds1-3
+Version: 4.3.0.0+ds1-3
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,17 +18,17 @@ PackagesInfo: |
   This package contains the header files for developing with libuhd.
   Doxygen generated documentation is in the uhd-host package.
  
- **Installed size:** `1.07 MB`  
+ **Installed size:** `1.13 MB`  
  **How to install:** `sudo apt install libuhd-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * libuhd4.2.0 
+ * libuhd4.3.0 
  {{< /spoiler >}}
  
  
  - - -
  
- ### libuhd4.2.0
+ ### libuhd4.3.0
  
   Host library for the Universal Hardware Driver for Ettus Research products.
    
@@ -36,8 +36,8 @@ PackagesInfo: |
   along with digital interfaces for getting signals to and from a software
   defined radio running on the host computer.
  
- **Installed size:** `13.52 MB`  
- **How to install:** `sudo apt install libuhd4.2.0`  
+ **Installed size:** `13.55 MB`  
+ **How to install:** `sudo apt install libuhd4.3.0`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-chrono1.74.0 
@@ -54,7 +54,7 @@ PackagesInfo: |
  
  - - -
  
- ### libuhd4.2.0-dpdk
+ ### libuhd4.3.0-dpdk
  
   Host library for the Universal Hardware Driver for Ettus Research products.
    
@@ -65,8 +65,8 @@ PackagesInfo: |
   This package is built with the Data Plane Development Kit and has additional
   dependencies and system configuration requirements to use those features.
  
- **Installed size:** `13.69 MB`  
- **How to install:** `sudo apt install libuhd4.2.0-dpdk`  
+ **Installed size:** `13.74 MB`  
+ **How to install:** `sudo apt install libuhd4.3.0-dpdk`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-chrono1.74.0 
@@ -76,12 +76,12 @@ PackagesInfo: |
  * libc6 
  * libgcc-s1 
  * libpython3.10 
- * librte-eal21 
- * librte-ethdev21 
- * librte-hash21 
- * librte-mbuf21 
- * librte-mempool21 
- * librte-ring21 
+ * librte-eal22 
+ * librte-ethdev22 
+ * librte-hash22 
+ * librte-mbuf22 
+ * librte-mempool22 
+ * librte-ring22 
  * libstdc++6 
  * libusb-1.0-0 
  {{< /spoiler >}}
@@ -89,30 +89,30 @@ PackagesInfo: |
  
  - - -
  
- ### libuhd4.2.0-dpdk-tests
+ ### libuhd4.3.0-dpdk-tests
  
   Network tests for the Universal Hardware Driver for Ettus Research products.
    
   This package is built with the Data Plane Development Kit and has additional
   dependencies and system configuration requirements to use those features.
  
- **Installed size:** `1.02 MB`  
- **How to install:** `sudo apt install libuhd4.2.0-dpdk-tests`  
+ **Installed size:** `1.03 MB`  
+ **How to install:** `sudo apt install libuhd4.3.0-dpdk-tests`  
  
  {{< spoiler "Dependencies:" >}}
  * libboost-filesystem1.74.0 
  * libboost-program-options1.74.0 
  * libc6 
  * libgcc-s1 
- * librte-eal21 
- * librte-ethdev21 
- * librte-hash21 
- * librte-mbuf21 
- * librte-mempool21 
- * librte-net21 
- * librte-ring21 
+ * librte-eal22 
+ * librte-ethdev22 
+ * librte-hash22 
+ * librte-mbuf22 
+ * librte-mempool22 
+ * librte-net22 
+ * librte-ring22 
  * libstdc++6 
- * libuhd4.2.0-dpdk 
+ * libuhd4.3.0-dpdk 
  {{< /spoiler >}}
  
  
@@ -128,7 +128,7 @@ PackagesInfo: |
    
   This package contains the Python API support for Python3.
  
- **Installed size:** `3.13 MB`  
+ **Installed size:** `3.27 MB`  
  **How to install:** `sudo apt install python3-uhd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -136,7 +136,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libpython3.10 
  * libstdc++6 
- * libuhd4.2.0 
+ * libuhd4.3.0 
  * python3
  * python3 
  * python3-numpy 
@@ -153,7 +153,7 @@ PackagesInfo: |
    
   This package includes the Doxygen generated documentation.
  
- **Installed size:** `30.13 MB`  
+ **Installed size:** `32.62 MB`  
  **How to install:** `sudo apt install uhd-doc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -176,7 +176,7 @@ PackagesInfo: |
   display hardware configuration information and Doxygen generated
   documentation.
  
- **Installed size:** `21.21 MB`  
+ **Installed size:** `20.72 MB`  
  **How to install:** `sudo apt install uhd-host`  
  
  {{< spoiler "Dependencies:" >}}
@@ -189,7 +189,7 @@ PackagesInfo: |
  * libncurses6 
  * libstdc++6 
  * libtinfo6 
- * libuhd4.2.0 
+ * libuhd4.3.0 
  * python3
  * python3-numpy 
  * python3-numpy-abi9
@@ -530,7 +530,7 @@ PackagesInfo: |
    --download-limit DOWNLOAD_LIMIT
                          Set threshold for download limits. Any download larger
                          than this will require approval, either interactively,
-                         or by providing --yes. (default: 104857600)
+                         or by providing --yes. (default: 1073741824)
    --http-proxy HTTP_PROXY
                          Specify HTTP(S) proxy in the format
                          http[s]://user:pass@1.2.3.4:port If this this option

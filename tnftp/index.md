@@ -4,7 +4,7 @@ Homepage: http://en.wikipedia.org/wiki/Tnftp
 Repository: https://salsa.debian.org/debian/tnftp
 Architectures: any all
 Version: 20210827-4
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ftp

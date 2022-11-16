@@ -25,7 +25,7 @@ PackagesInfo: |
  ```
  root@kali:~# CAT --help
  /usr/bin/CAT version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.34.0.
+ running under Perl version 5.36.0.
  
  Usage: CAT [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  

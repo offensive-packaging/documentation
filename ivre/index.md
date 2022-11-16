@@ -45,22 +45,22 @@ PackagesInfo: |
  Copyright 2011 - 2022 Pierre LALET <pierre@droids-corp.org>
  Version 0.9.18-kali
  
- Python 3.10.5 (main, Jun  8 2022, 09:26:22) [GCC 11.3.0]
+ Python 3.10.8 (main, Nov  4 2022, 09:21:25) [GCC 12.2.0]
  
- Linux kali 5.18.0-kali5-amd64 #1 SMP PREEMPT_DYNAMIC Debian 5.18.5-1kali6 (2022-07-07) x86_64
+ Linux kali 6.0.0-kali3-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.0.7-1kali1 (2022-11-07) x86_64
  
  Dependencies:
      Python module pymongo: 3.11.0
      Python module sqlalchemy: 1.4.31
-     Python module psycopg2: 2.9.2 (dt dec pq3 ext lo64)
+     Python module psycopg2: 2.9.4 (dt dec pq3 ext lo64)
      Python module cryptography: 3.4.8
      Python module krbV: missing
-     Python module pycurl: PycURL/7.44.1 libcurl/7.84.0 GnuTLS/3.7.7 zlib/1.2.11 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.3 libpsl/0.21.0 (+libidn2/2.3.0) libssh2/1.10.0 nghttp2/1.48.0 librtmp/2.3 OpenLDAP/2.5.12
+     Python module pycurl: PycURL/7.45.1 libcurl/7.85.0 GnuTLS/3.7.8 zlib/1.2.11 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.3 libpsl/0.21.0 (+libidn2/2.3.0) libssh2/1.10.0 nghttp2/1.50.0 librtmp/2.3
      Python module PIL: 9.2.0
      Python module MySQLdb: 1.4.6
-     Python module dbus: 1.2.18
+     Python module dbus: 1.3.2
      Python module matplotlib: 3.5.2
-     Python module bottle: 0.12.21
+     Python module bottle: 0.12.23
      Python module OpenSSL: 21.0.0
      Python module tinydb: 3.15.2
  

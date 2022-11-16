@@ -312,23 +312,12 @@ PackagesInfo: |
  ##### ss_spike
  
  
- ```
- root@kali:~# ss_spike -h
- Target is -h
- Buffer[0]=**
- ```
  
  - - -
  
  ##### statd_spike
  
  
- ```
- root@kali:~# statd_spike -h
- Target is -h
- reading
- Buffer[0]=**
- ```
  
  - - -
  
@@ -368,11 +357,6 @@ PackagesInfo: |
  ##### x11_spike
  
  
- ```
- root@kali:~# x11_spike -h
- Target is -h
- 
- ```
  
  - - -
  

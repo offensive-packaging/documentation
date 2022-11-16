@@ -3,7 +3,7 @@ Title: testssl.sh
 Homepage: https://testssl.sh/
 Repository: https://salsa.debian.org/pkg-security-team/testssl.sh
 Architectures: all
-Version: 3.0.7+dfsg-1
+Version: 3.0.8+dfsg-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -38,7 +38,7 @@ PackagesInfo: |
     going on and you can change it. Heck, even the development is open
     (github)
  
- **Installed size:** `2.96 MB`  
+ **Installed size:** `3.04 MB`  
  **How to install:** `sudo apt install testssl.sh`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,8 +3,8 @@ Title: dnsrecon
 Homepage: https://github.com/darkoperator/dnsrecon
 Repository: https://salsa.debian.org/pkg-security-team/dnsrecon
 Architectures: all
-Version: 1.1.1-1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering 
+Version: 1.1.3-2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering 
 Icon: images/dnsrecon-logo.svg
 PackagesInfo: |
  ### dnsrecon
@@ -40,11 +40,11 @@ PackagesInfo: |
  
  ```
  root@kali:~# dnsrecon -h
- usage: dnsrecon.py [-h] [-d DOMAIN] [-n NS_SERVER] [-r RANGE] [-D DICTIONARY]
-                    [-f] [-a] [-s] [-b] [-y] [-k] [-w] [-z] [--threads THREADS]
-                    [--lifetime LIFETIME] [--tcp] [--db DB] [-x XML] [-c CSV]
-                    [-j JSON] [--iw] [--disable_check_recursion]
-                    [--disable_check_bindversion] [-V] [-v] [-t TYPE]
+ usage: dnsrecon [-h] [-d DOMAIN] [-n NS_SERVER] [-r RANGE] [-D DICTIONARY]
+                 [-f] [-a] [-s] [-b] [-y] [-k] [-w] [-z] [--threads THREADS]
+                 [--lifetime LIFETIME] [--tcp] [--db DB] [-x XML] [-c CSV]
+                 [-j JSON] [--iw] [--disable_check_recursion]
+                 [--disable_check_bindversion] [-V] [-v] [-t TYPE]
  
  options:
    -h, --help            show this help message and exit
@@ -55,7 +55,7 @@ PackagesInfo: |
    -r RANGE, --range RANGE
                          IP range for reverse lookup brute force in formats   (first-last) or in (range/bitmask).
    -D DICTIONARY, --dictionary DICTIONARY
-                         Dictionary file of subdomain and hostnames to use for brute force. Filter out of brute force domain lookup, records that resolve to the wildcard defined IP address when saving records.
+                         Dictionary file of subdomain and hostnames to use for brute force.
    -f                    Filter out of brute force domain lookup, records that resolve to the wildcard defined IP address when saving records.
    -a                    Perform AXFR with standard enumeration.
    -s                    Perform a reverse lookup of IPv4 ranges in the SPF record with standard enumeration.

@@ -3,7 +3,7 @@ Title: tightvnc
 Homepage: https://www.tightvnc.com
 Repository: https://salsa.debian.org/debian-remote-team/tightvnc
 Architectures: any
-Version: 1:1.3.10-5
+Version: 1:1.3.10-6
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   This package provides the vncpasswd tool mandatory for the tightvncserver
   and optional for the xtightvncviewer.
  
- **Installed size:** `77 KB`  
+ **Installed size:** `67 KB`  
  **How to install:** `sudo apt install tightvncpasswd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -121,7 +121,7 @@ PackagesInfo: |
   see something. However, this viewer may also be on a computer running other
   operating systems in the local net.
  
- **Installed size:** `1.68 MB`  
+ **Installed size:** `1.69 MB`  
  **How to install:** `sudo apt install tightvncserver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -280,16 +280,16 @@ PackagesInfo: |
   xvncviewer (> 3.3.3r2) support a new automatic encoding that should be equally
   good as the tightvnc encoding.
  
- **Installed size:** `193 KB`  
+ **Installed size:** `182 KB`  
  **How to install:** `sudo apt install xtightvncviewer`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libjpeg62-turbo 
  * libx11-6
- * libxaw7
+ * libxaw7 
  * libxext6
- * libxmu6
+ * libxmu6 
  * libxt6
  * zlib1g 
  {{< /spoiler >}}

@@ -1,9 +1,9 @@
 ---
 Title: cadaver
-Homepage: http://www.webdav.org/cadaver/
-Repository: http://git.tokkee.org/?p=pkg-cadaver.git
+Homepage: https://github.com/notroj/cadaver
+Repository: https://salsa.debian.org/debian/cadaver
 Architectures: any
-Version: 0.23.3-2.2
+Version: 0.24+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/cadaver-logo.svg
 PackagesInfo: |
@@ -22,7 +22,7 @@ PackagesInfo: |
   extensions to the HTTP protocol which allow users to collaboratively edit and
   manage files on remote web servers.
  
- **Installed size:** `242 KB`  
+ **Installed size:** `225 KB`  
  **How to install:** `sudo apt install cadaver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -45,7 +45,7 @@ PackagesInfo: |
    -p, --proxy=PROXY[:PORT]  Use proxy host PROXY and optional proxy port PORT.
    -V, --version             Display version information.
    -h, --help                Display this help message.
- Please send bug reports and feature requests to <cadaver@webdav.org>
+ Please send bug reports and feature requests via <https://github.com/notroj/cadaver>
  ```
  
  - - -

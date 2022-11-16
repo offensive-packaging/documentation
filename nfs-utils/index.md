@@ -3,7 +3,7 @@ Title: nfs-utils
 Homepage: https://linux-nfs.org/
 Repository: https://salsa.debian.org/kernel-team/nfs-utils
 Architectures: any
-Version: 1:2.6.1-2
+Version: 1:2.6.2-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   libnfsidmap provides functions to map between NFSv4 names (which are
   of the form user@domain) and local uid's and gid's.
  
- **Installed size:** `137 KB`  
+ **Installed size:** `108 KB`  
  **How to install:** `sudo apt install libnfsidmap-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -30,7 +30,7 @@ PackagesInfo: |
   libnfsidmap provides functions to map between NFSv4 names (which are
   of the form user@domain) and local uid's and gid's.
  
- **Installed size:** `306 KB`  
+ **Installed size:** `276 KB`  
  **How to install:** `sudo apt install libnfsidmap1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -47,7 +47,7 @@ PackagesInfo: |
   server.  Programs included: lockd, statd, showmount, nfsstat, gssd,
   idmapd and mount.nfs.
  
- **Installed size:** `1.07 MB`  
+ **Installed size:** `1.08 MB`  
  **How to install:** `sudo apt install nfs-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -329,6 +329,26 @@ PackagesInfo: |
  
  - - -
  
+ ##### rpcctl
+ 
+ Displays SunRPC connection information
+ 
+ ```
+ root@kali:~# rpcctl -h
+ usage: rpcctl [-h] {client,switch,xprt} ...
+ 
+ options:
+   -h, --help            show this help message and exit
+ 
+ commands:
+   {client,switch,xprt}
+     client              Commands for rpc clients
+     switch              Commands for xprt switches
+     xprt                Commands for individual xprts
+ ```
+ 
+ - - -
+ 
  ##### rpcdebug
  
  Set and clear NFS and RPC kernel debug flags
@@ -426,7 +446,7 @@ PackagesInfo: |
   NFS kernel server. Most administrators wishing to set up an NFS server
   would want to install this package.
  
- **Installed size:** `636 KB`  
+ **Installed size:** `610 KB`  
  **How to install:** `sudo apt install nfs-kernel-server`  
  
  {{< spoiler "Dependencies:" >}}

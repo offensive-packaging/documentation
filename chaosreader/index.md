@@ -1,9 +1,9 @@
 ---
 Title: chaosreader
-Homepage: http://www.brendangregg.com/chaosreader.html
+Homepage: https://www.brendangregg.com/chaosreader.html
 Repository: https://salsa.debian.org/pkg-security-team/chaosreader
 Architectures: all
-Version: 0.96-10
+Version: 0.96-12
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

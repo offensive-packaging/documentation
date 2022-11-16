@@ -4,7 +4,7 @@ Homepage: http://www.nfc-tools.org/
 Repository: https://salsa.debian.org/debian/libnfc
 Architectures: any
 Version: 1.8.0-2
-Metapackages: kali-linux-arm kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-rfid kali-tools-wireless 
+Metapackages: kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-rfid kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libnfc-bin

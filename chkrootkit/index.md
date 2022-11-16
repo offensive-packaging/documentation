@@ -22,7 +22,7 @@ PackagesInfo: |
   signify a genuine problem: human judgement and further investigation
   will always be needed to assure the security of your system.
  
- **Installed size:** `989 KB`  
+ **Installed size:** `922 KB`  
  **How to install:** `sudo apt install chkrootkit`  
  
  {{< spoiler "Dependencies:" >}}

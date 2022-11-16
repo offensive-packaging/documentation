@@ -3,7 +3,7 @@ Title: brutespray
 Homepage: https://github.com/x90skysn3k/brutespray
 Repository: https://salsa.debian.org/pkg-security-team/brutespray
 Architectures: all
-Version: 1.6.8-1
+Version: 1.8-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   services with default credentials using Medusa.
   BruteSpray can even find non-standard ports by using the -sV inside Nmap.
  
- **Installed size:** `114 KB`  
+ **Installed size:** `119 KB`  
  **How to install:** `sudo apt install brutespray`  
  
  {{< spoiler "Dependencies:" >}}
@@ -29,8 +29,9 @@ PackagesInfo: |
  ```
  root@kali:~# brutespray -h
  usage: brutespray [-h] [-f FILE] [-o OUTPUT] [-s SERVICE] [-t THREADS]
-                   [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-u USERNAME]
-                   [-p PASSWORD] [-c] [-i] [-m] [-q]
+                   [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-C COMBO]
+                   [-u USERNAME] [-p PASSWORD] [-c] [-i] [-m] [-q] [-v VERBOSE]
+                   [-w DEBUG]
  
  Usage: python brutespray.py <OPTIONS> 
  
@@ -51,6 +52,8 @@ PackagesInfo: |
                          reference a custom username file
    -P PASSLIST, --passlist PASSLIST
                          reference a custom password file
+   -C COMBO, --combo COMBO
+                         specify a combo input (host:user:password)
    -u USERNAME, --username USERNAME
                          specify a single username
    -p PASSWORD, --password PASSWORD
@@ -59,6 +62,10 @@ PackagesInfo: |
    -i, --interactive     interactive mode
    -m, --modules         dump a list of available modules to brute
    -q, --quiet           supress banner
+   -v VERBOSE, --verbose VERBOSE
+                         verbose output from medusa [0-6], default=5
+   -w DEBUG, --debug DEBUG
+                         debug error output from medusa [0-10], default=5
  ```
  
  - - -

@@ -3,7 +3,7 @@ Title: crackmapexec
 Homepage: https://github.com/byt3bl33d3r/CrackMapExec
 Repository: https://gitlab.com/kalilinux/packages/crackmapexec
 Architectures: all
-Version: 5.2.2-0kali1
+Version: 5.4.0-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-top10 
 Icon: images/crackmapexec-logo.svg
 PackagesInfo: |
@@ -29,15 +29,18 @@ PackagesInfo: |
   to easily keep track of credential sets and gain additional situational
   awareness in large environments.
  
- **Installed size:** `16.37 MB`  
+ **Installed size:** `2.30 MB`  
  **How to install:** `sudo apt install crackmapexec`  
  
  {{< spoiler "Dependencies:" >}}
  * python3
+ * python3-aardwolf
  * python3-aioconsole
  * python3-bs4
+ * python3-dsinternals
  * python3-impacket
  * python3-lsassy
+ * python3-masky
  * python3-msgpack
  * python3-neo4j
  * python3-paramiko
@@ -45,9 +48,9 @@ PackagesInfo: |
  * python3-pypsrp
  * python3-pywerview
  * python3-requests
- * python3-requests-ntlm
  * python3-termcolor
  * python3-terminaltables
+ * python3-unicrypto
  * python3-xmltodict
  {{< /spoiler >}}
  
@@ -56,7 +59,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# cmedb -h
- [-] Unable to find config file
+ cmedb (default)(smb) > 
  ```
  
  - - -
@@ -66,19 +69,9 @@ PackagesInfo: |
  
  ```
  root@kali:~# crackmapexec -h
- [*] First time use detected
- [*] Creating home directory structure
- [*] Creating default workspace
- [*] Initializing LDAP protocol database
- [*] Initializing WINRM protocol database
- [*] Initializing SMB protocol database
- [*] Initializing SSH protocol database
- [*] Initializing MSSQL protocol database
- [*] Copying default configuration file
- [*] Generating SSL certificate
  usage: crackmapexec [-h] [-t THREADS] [--timeout TIMEOUT] [--jitter INTERVAL]
                      [--darrell] [--verbose]
-                     {ldap,winrm,smb,ssh,mssql} ...
+                     {ldap,smb,ftp,winrm,rdp,mssql,ssh} ...
  
        ______ .______           ___        ______  __  ___ .___  ___.      ___      .______    _______ ___   ___  _______   ______
       /      ||   _  \         /   \      /      ||  |/  / |   \/   |     /   \     |   _  \  |   ____|\  \ /  / |   ____| /      |
@@ -91,9 +84,10 @@ PackagesInfo: |
                                      Forged by @byt3bl33d3r and @mpgn_x64 using the powah of dank memes
  
                                             Exclusive release for Porchetta Industries users
+                                                        https://porchetta.industries/
  
-                                                    Version : 5.2.2
-                                                    Codename: The Dark Knight
+                                                    Version : 5.4.0
+                                                    Codename: Indestructible G0thm0g
  
  options:
    -h, --help            show this help message and exit
@@ -106,12 +100,14 @@ PackagesInfo: |
  protocols:
    available protocols
  
-   {ldap,winrm,smb,ssh,mssql}
+   {ldap,smb,ftp,winrm,rdp,mssql,ssh}
      ldap                own stuff using LDAP
-     winrm               own stuff using WINRM
      smb                 own stuff using SMB
-     ssh                 own stuff using SSH
+     ftp                 own stuff using FTP
+     winrm               own stuff using WINRM
+     rdp                 own stuff using RDP
      mssql               own stuff using MSSQL
+     ssh                 own stuff using SSH
  ```
  
  - - -

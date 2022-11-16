@@ -3,7 +3,7 @@ Title: bruteshark
 Homepage: https://github.com/odedshimon/BruteShark
 Repository: https://gitlab.com/kalilinux/packages/bruteshark
 Architectures: amd64
-Version: 1.2.5-0kali3
+Version: 1.2.5-0kali7
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,49 +23,21 @@ PackagesInfo: |
    
   On Linux it is a Command Line Interface tool.
  
- **Installed size:** `80.21 MB`  
+ **Installed size:** `93.29 MB`  
  **How to install:** `sudo apt install bruteshark`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libc6
+ * libgcc1
+ * libgssapi-krb5-2
+ * libpcap0.8
+ * libstdc++6
+ * zlib1g
+ {{< /spoiler >}}
  
  ##### brutesharkcli
  
  
- ```
- root@kali:~# brutesharkcli -h
- Process terminated. Couldn't find a valid ICU package installed on the system. Set the configuration flag System.Globalization.Invariant to true if you want to run with no globalization support.
-    at System.Environment.FailFast(System.String)
-    at System.Globalization.GlobalizationMode.GetGlobalizationInvariantMode()
-    at System.Globalization.GlobalizationMode..cctor()
-    at System.Globalization.CultureData.CreateCultureWithInvariantData()
-    at System.Globalization.CultureData.get_Invariant()
-    at System.Globalization.CultureInfo..cctor()
-    at System.Globalization.CultureInfo.get_CurrentCulture()
-    at System.Text.RegularExpressions.Regex..ctor(System.String, System.Text.RegularExpressions.RegexOptions, System.TimeSpan, Boolean)
-    at System.Text.RegularExpressions.Regex..ctor(System.String)
-    at PcapAnalyzer.FtpPasswordParser..ctor()
-    at System.RuntimeTypeHandle.CreateInstance(System.RuntimeType, Boolean, Boolean, Boolean ByRef, System.RuntimeMethodHandleInternal ByRef, Boolean ByRef)
-    at System.RuntimeType.CreateInstanceDefaultCtorSlow(Boolean, Boolean, Boolean)
-    at System.RuntimeType.CreateInstanceDefaultCtor(Boolean, Boolean, Boolean, Boolean)
-    at System.Activator.CreateInstance(System.Type, Boolean, Boolean)
-    at System.Activator.CreateInstance(System.Type)
-    at PcapAnalyzer.PasswordsModule+<>c.<_initilyzePasswordParsersList>b__10_2(System.Type)
-    at System.Linq.Enumerable+WhereSelectEnumerableIterator`2[[System.__Canon, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.__Canon, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].ToList()
-    at System.Linq.Enumerable.ToList[[System.__Canon, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](System.Collections.Generic.IEnumerable`1<System.__Canon>)
-    at PcapAnalyzer.PasswordsModule._initilyzePasswordParsersList()
-    at PcapAnalyzer.PasswordsModule..ctor()
-    at System.RuntimeTypeHandle.CreateInstance(System.RuntimeType, Boolean, Boolean, Boolean ByRef, System.RuntimeMethodHandleInternal ByRef, Boolean ByRef)
-    at System.RuntimeType.CreateInstanceDefaultCtorSlow(Boolean, Boolean, Boolean)
-    at System.RuntimeType.CreateInstanceDefaultCtor(Boolean, Boolean, Boolean, Boolean)
-    at System.Activator.CreateInstance(System.Type, Boolean, Boolean)
-    at System.Activator.CreateInstance(System.Type)
-    at PcapAnalyzer.Analyzer+<>c.<InitilyzeModulesList>b__17_2(System.Type)
-    at System.Linq.Enumerable+WhereSelectEnumerableIterator`2[[System.__Canon, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.__Canon, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]].ToList()
-    at System.Linq.Enumerable.ToList[[System.__Canon, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]](System.Collections.Generic.IEnumerable`1<System.__Canon>)
-    at PcapAnalyzer.Analyzer.InitilyzeModulesList()
-    at PcapAnalyzer.Analyzer..ctor()
-    at BruteSharkCli.BruteSharkCli..ctor(System.String[])
-    at BruteSharkCli.Program.Main(System.String[])
- Aborted
- ```
  
  - - -
  

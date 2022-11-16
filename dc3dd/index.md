@@ -19,7 +19,7 @@ PackagesInfo: |
    * progress report;
    * possibility to split output.
  
- **Installed size:** `480 KB`  
+ **Installed size:** `489 KB`  
  **How to install:** `sudo apt install dc3dd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -207,7 +207,7 @@ PackagesInfo: |
  7. Sending an interrupt (e.g., CTRL+C) to dc3dd will cause
     the program to report the work completed at the time
     the interrupt is received and then exit.
- dc3dd completed at 2022-08-05 10:05:53 -0400
+ dc3dd completed at 2022-11-17 05:33:41 -0500
  
  ```
  

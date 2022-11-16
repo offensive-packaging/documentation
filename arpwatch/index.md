@@ -17,7 +17,7 @@ PackagesInfo: |
   If you want to maintain a list authorized MAC addresses manually, take a look
   at the arpalert package which may fit your needs better.
  
- **Installed size:** `157 KB`  
+ **Installed size:** `152 KB`  
  **How to install:** `sudo apt install arpwatch`  
  
  {{< spoiler "Dependencies:" >}}

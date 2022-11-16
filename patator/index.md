@@ -75,7 +75,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# patator -h
- Patator 0.9 (https://github.com/lanjelot/patator) with python-3.10.5
+ Patator 0.9 (https://github.com/lanjelot/patator) with python-3.10.8
  Usage: patator module --help
  
  Available modules:

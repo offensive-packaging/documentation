@@ -3,7 +3,7 @@ Title: chirp
 Homepage: https://chirp.danplanet.com/
 Repository: https://salsa.debian.org/debian-hamradio-team/chirp
 Architectures: all
-Version: 1:20200227+py3+20200213-3
+Version: 1:20221106+py3-1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sdr kali-tools-wireless 
 Icon: images/chirp-logo.svg
 PackagesInfo: |
@@ -27,12 +27,13 @@ PackagesInfo: |
   Most popular modern amateur radios are supported by CHIRP via their interface
   cables.
  
- **Installed size:** `4.10 MB`  
+ **Installed size:** `5.13 MB`  
  **How to install:** `sudo apt install chirp`  
  
  {{< spoiler "Dependencies:" >}}
  * python3
  * python3-future
+ * python3-requests
  * python3-serial
  * python3-six
  * python3-wxgtk4.0
@@ -45,8 +46,9 @@ PackagesInfo: |
  ```
  root@kali:~# chirpw -h
  usage: chirpw [-h] [--module module] [--version] [--profile]
-               [--onlydriver ONLYDRIVER [ONLYDRIVER ...]] [--inspect] [-q] [-v]
-               [--log LOG_FILE] [--log-level LOG_LEVEL]
+               [--onlydriver ONLYDRIVER [ONLYDRIVER ...]] [--inspect]
+               [--no-linux-gdk-backend] [-q] [-v] [--log LOG_FILE]
+               [--log-level LOG_LEVEL]
                [file ...]
  
  positional arguments:
@@ -60,6 +62,8 @@ PackagesInfo: |
    --onlydriver ONLYDRIVER [ONLYDRIVER ...]
                          Include this driver while loading
    --inspect             Show wxPython inspector
+   --no-linux-gdk-backend
+                         Do not force GDK_BACKEND=x11
    -q, --quiet           Decrease verbosity
    -v, --verbose         Increase verbosity
    --log LOG_FILE        Log messages to a file

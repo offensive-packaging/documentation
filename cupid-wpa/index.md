@@ -3,7 +3,7 @@ Title: cupid-wpa
 Homepage: https://github.com/lgrangeia/cupid/
 Repository: https://gitlab.com/kalilinux/packages/cupid-wpa
 Architectures: linux-any kfreebsd-any
-Version: 1:2.1-0.1kali4
+Version: 1:2.1-0.1kali5
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   Please see presentation slides for a simple introduction to cupid:
   http://www.slideshare.net/lgrangeia
  
- **Installed size:** `780 KB`  
+ **Installed size:** `772 KB`  
  **How to install:** `sudo apt install cupid-hostapd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -27,7 +27,7 @@ PackagesInfo: |
  * libc6 
  * libnl-3-200 
  * libnl-genl-3-200 
- * libssl1.0.2 
+ * libunsafessl1.0.2
  * lsb-base 
  {{< /spoiler >}}
  
@@ -113,7 +113,7 @@ PackagesInfo: |
   Please see presentation slides for a simple introduction to cupid:
   http://www.slideshare.net/lgrangeia
  
- **Installed size:** `2.21 MB`  
+ **Installed size:** `2.18 MB`  
  **How to install:** `sudo apt install cupid-wpasupplicant`  
  
  {{< spoiler "Dependencies:" >}}
@@ -125,7 +125,7 @@ PackagesInfo: |
  * libnl-genl-3-200 
  * libpcsclite1 
  * libreadline8 
- * libssl1.0.2 
+ * libunsafessl1.0.2
  * lsb-base 
  {{< /spoiler >}}
  
@@ -336,7 +336,7 @@ PackagesInfo: |
         This program is licensed under the BSD license (the one with advertise-
         ment clause removed).
  
-                                30 September 2020             WPA_PASSPHRASE(8)
+                                12 September 2022             WPA_PASSPHRASE(8)
  ```
  
  - - -

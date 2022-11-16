@@ -13,7 +13,7 @@ PackagesInfo: |
   information from for a given hostname, and follows the chain of DNS
   servers back to the authoritative answer.
  
- **Installed size:** `60 KB`  
+ **Installed size:** `61 KB`  
  **How to install:** `sudo apt install dnstracer`  
  
  {{< spoiler "Dependencies:" >}}

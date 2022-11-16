@@ -43,6 +43,7 @@ PackagesInfo: |
  
  ##### usleep
  
+ Suspend execution for microsecond intervals
  
  
  - - -

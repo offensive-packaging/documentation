@@ -37,10 +37,10 @@ PackagesInfo: |
   TLSSLed - (1.3) based on sslscan and openssl
                   by Raul Siles (www.taddong.com)
  ------------------------------------------------------
-     openssl version: OpenSSL 3.0.4 21 Jun 2022 (Library: OpenSSL 3.0.4 21 Jun 2022)
+     openssl version: OpenSSL 3.0.7 1 Nov 2022 (Library: OpenSSL 3.0.7 1 Nov 2022)
      
  ------------------------------------------------------
-     Date: 20220805-105510
+     Date: 20221117-061759
  ------------------------------------------------------
  
  [!] Usage: /usr/bin/tlssled <hostname or IP_address> <port>

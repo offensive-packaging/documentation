@@ -1,9 +1,9 @@
 ---
 Title: snowdrop
 Homepage: http://lcamtuf.coredump.cx/
-Repository: https://salsa.debian.org/pkg-security-team/snowdrop
+Repository: https://salsa.debian.org/pkg-security-team/snowdrop/tree/debian/master
 Architectures: any
-Version: 0.02b-13
+Version: 0.02b-14
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -29,7 +29,7 @@ PackagesInfo: |
   Warning: Snowdrop is currently in beta, and may produce bad or corrupted
   results, especially when run on C source code.
  
- **Installed size:** `188 KB`  
+ **Installed size:** `187 KB`  
  **How to install:** `sudo apt install snowdrop`  
  
  {{< spoiler "Dependencies:" >}}

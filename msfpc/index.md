@@ -3,7 +3,7 @@ Title: msfpc
 Homepage: https://github.com/g0tmi1k/msfpc
 Repository: https://gitlab.com/kalilinux/packages/msfpc
 Architectures: any
-Version: 1.4.5-0kali2
+Version: 1.4.5-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-social-engineering 
 Icon: images/msfpc-logo.svg
 PackagesInfo: |

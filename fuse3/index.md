@@ -3,8 +3,8 @@ Title: fuse3
 Homepage: https://github.com/libfuse/libfuse/wiki
 Repository: 
 Architectures: linux-any kfreebsd-any
-Version: 3.11.0-1
-Metapackages: kali-linux-everything kali-tools-hardware 
+Version: 3.12.0-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### fuse3
@@ -84,6 +84,15 @@ PackagesInfo: |
  
  - - -
  
+ ### fuse3-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install fuse3-udeb`  
+ 
+ 
+ - - -
+ 
  ### libfuse3-3
  
   Filesystem in Userspace (FUSE) is a simple interface for userspace programs to
@@ -93,12 +102,21 @@ PackagesInfo: |
    
   This package contains the shared library.
  
- **Installed size:** `295 KB`  
+ **Installed size:** `296 KB`  
  **How to install:** `sudo apt install libfuse3-3`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libfuse3-3-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install libfuse3-3-udeb`  
  
  
  - - -
@@ -112,7 +130,7 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `681 KB`  
+ **Installed size:** `689 KB`  
  **How to install:** `sudo apt install libfuse3-dev`  
  
  {{< spoiler "Dependencies:" >}}

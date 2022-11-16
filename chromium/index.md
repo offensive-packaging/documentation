@@ -2,8 +2,8 @@
 Title: chromium
 Homepage: http://www.chromium.org/Home
 Repository: https://salsa.debian.org/chromium-team/chromium
-Architectures: i386 amd64 arm64 armhf all
-Version: 103.0.5060.134-1
+Architectures: i386 amd64 arm64 armhf ppc64el all
+Version: 107.0.5304.87-1
 Metapackages: kali-linux-everything 
 Icon: images/chromium-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the web browser component.
  
- **Installed size:** `198.10 MB`  
+ **Installed size:** `203.18 MB`  
  **How to install:** `sudo apt install chromium`  
  
  {{< spoiler "Dependencies:" >}}
@@ -24,14 +24,16 @@ PackagesInfo: |
  * libatk1.0-0 
  * libatomic1 
  * libatspi2.0-0 
+ * libbrotli1 
  * libc6 
  * libcairo2 
  * libcups2 
  * libdbus-1-3 
+ * libdouble-conversion3 
  * libdrm2 
  * libevent-2.1-7 
  * libexpat1 
- * libflac8 
+ * libflac12 
  * libfontconfig1 
  * libfreetype6 
  * libgbm1 
@@ -52,11 +54,11 @@ PackagesInfo: |
  * libre2-9 
  * libsnappy1v5 
  * libstdc++6 
- * libwayland-client0 
  * libwebp7
  * libwebpdemux2
  * libwebpmux3
- * libx11-6 
+ * libwoff1 
+ * libx11-6
  * libxcb1 
  * libxcomposite1 
  * libxdamage1 
@@ -64,6 +66,7 @@ PackagesInfo: |
  * libxfixes3
  * libxkbcommon0 
  * libxml2 
+ * libxnvctrl0
  * libxrandr2
  * libxslt1.1 
  * zlib1g 
@@ -197,15 +200,15 @@ PackagesInfo: |
   This package contains resources that are in common to different chromium
   packages.
  
- **Installed size:** `16.56 MB`  
+ **Installed size:** `15.89 MB`  
  **How to install:** `sudo apt install chromium-common`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
+ * libdouble-conversion3 
  * libstdc++6 
- * libx11-6 
- * libxext6
- * sse3-support
+ * libx11-6
+ * libxnvctrl0
  * x11-utils
  * xdg-utils
  * zlib1g 
@@ -222,13 +225,15 @@ PackagesInfo: |
   This package provides a bridge between the browser component and the selenium
   automatic webdriver.
  
- **Installed size:** `12.29 MB`  
+ **Installed size:** `12.70 MB`  
  **How to install:** `sudo apt install chromium-driver`  
  
  {{< spoiler "Dependencies:" >}}
  * chromium 
  * libatomic1 
+ * libbrotli1 
  * libc6 
+ * libdouble-conversion3 
  * libevent-2.1-7 
  * libgcc-s1 
  * libglib2.0-0 
@@ -278,7 +283,7 @@ PackagesInfo: |
   hi, hr, hu, id, it, ja, kn, ko, lt, lv, ml, mr, nb, nl, pl, pt-BR, pt-PT,
   ro, ru, sk, sl, sr, sv, sw, ta, te, th, tr, uk, vi, zh-CN, zh-TW
  
- **Installed size:** `66.11 MB`  
+ **Installed size:** `69.84 MB`  
  **How to install:** `sudo apt install chromium-l10n`  
  
  {{< spoiler "Dependencies:" >}}
@@ -295,7 +300,7 @@ PackagesInfo: |
    
   This package contains the setuid chromium sandbox.
  
- **Installed size:** `378 KB`  
+ **Installed size:** `331 KB`  
  **How to install:** `sudo apt install chromium-sandbox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -313,7 +318,7 @@ PackagesInfo: |
   This package provides a minimal version of the chromium user interface
   (the content shell).
  
- **Installed size:** `140.42 MB`  
+ **Installed size:** `145.34 MB`  
  **How to install:** `sudo apt install chromium-shell`  
  
  {{< spoiler "Dependencies:" >}}
@@ -323,13 +328,15 @@ PackagesInfo: |
  * libatk1.0-0 
  * libatomic1 
  * libatspi2.0-0 
+ * libbrotli1 
  * libc6 
  * libcairo2 
  * libdbus-1-3 
+ * libdouble-conversion3 
  * libdrm2 
  * libevent-2.1-7 
  * libexpat1 
- * libflac8 
+ * libflac12 
  * libfontconfig1 
  * libfreetype6 
  * libgbm1 
@@ -347,11 +354,11 @@ PackagesInfo: |
  * libre2-9 
  * libsnappy1v5 
  * libstdc++6 
- * libwayland-client0 
  * libwebp7
  * libwebpdemux2
  * libwebpmux3
- * libx11-6 
+ * libwoff1 
+ * libx11-6
  * libxcb1 
  * libxcomposite1 
  * libxdamage1 
@@ -359,6 +366,7 @@ PackagesInfo: |
  * libxfixes3
  * libxkbcommon0 
  * libxml2 
+ * libxnvctrl0
  * libxrandr2
  * libxslt1.1 
  * zlib1g 

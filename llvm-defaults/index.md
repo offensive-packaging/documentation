@@ -3,7 +3,7 @@ Title: llvm-defaults
 Homepage: 
 Repository: https://salsa.debian.org/pkg-llvm-team/llvm-defaults/
 Architectures: any
-Version: 0.55
+Version: 0.55.2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-fuzzing kali-tools-reverse-engineering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default clang compiler.
  
- **Installed size:** `25 KB`  
+ **Installed size:** `26 KB`  
  **How to install:** `sudo apt install clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2458,7 +2458,7 @@ PackagesInfo: |
    
   This is a dependency package providing the clang format tool.
  
- **Installed size:** `34 KB`  
+ **Installed size:** `35 KB`  
  **How to install:** `sudo apt install clang-format`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2648,7 +2648,7 @@ PackagesInfo: |
    
   This is a dependency package providing the clang tidy tool.
  
- **Installed size:** `26 KB`  
+ **Installed size:** `27 KB`  
  **How to install:** `sudo apt install clang-tidy`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2955,7 +2955,7 @@ PackagesInfo: |
    
   This is a dependency package providing the clang tools package.
  
- **Installed size:** `32 KB`  
+ **Installed size:** `33 KB`  
  **How to install:** `sudo apt install clang-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3798,7 +3798,7 @@ PackagesInfo: |
    
   This is a dependency package providing clangd.
  
- **Installed size:** `21 KB`  
+ **Installed size:** `22 KB`  
  **How to install:** `sudo apt install clangd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3899,10 +3899,11 @@ PackagesInfo: |
     * ABI compatibility with gcc's libstdc++ for some low-level features such
       as exception objects, rtti and memory allocation.
     * Extensive unit tests.
+   
   This is a dependency package providing the default LLVM C++ Standard library
   development files.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libc++-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3925,9 +3926,10 @@ PackagesInfo: |
     * ABI compatibility with gcc's libstdc++ for some low-level features such
       as exception objects, rtti and memory allocation.
     * Extensive unit tests.
+   
   This is a dependency package providing the default LLVM C++ Standard library.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libc++1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3946,10 +3948,11 @@ PackagesInfo: |
    
     * Correctness as defined by the C++ standards.
     * Provide a portable sublayer to ease the porting of libc++
-  This is the development package providing low level support to
-  LLVM C++ Standard library.
+   
+  This is a dependency package providing low level support to
+  dev LLVM C++ Standard library.
  
- **Installed size:** `19 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install libc++abi-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3968,10 +3971,11 @@ PackagesInfo: |
    
     * Correctness as defined by the C++ standards.
     * Provide a portable sublayer to ease the porting of libc++
+   
   This is a dependency package providing low level support to
   LLVM C++ Standard library.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libc++abi1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3992,7 +3996,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default Clang C++ library.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libclang-cpp-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4014,7 +4018,7 @@ PackagesInfo: |
   This is a dependency package providing the default libclang libraries and
   headers.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libclang-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4041,11 +4045,29 @@ PackagesInfo: |
   locations with elements within the AST, and other facilities that support
   Clang-based development tools.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libclang1`  
  
  {{< spoiler "Dependencies:" >}}
  * libclang1-14 
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### liblld-dev
+ 
+  LLD is a new, high-performance linker. It is built as a set of reusable
+  components which highly leverage existing libraries in the larger LLVM
+  Project.
+   
+  This is a dependency package providing the default liblld-dev package.
+ 
+ **Installed size:** `19 KB`  
+ **How to install:** `sudo apt install liblld-dev`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * liblld-14-dev 
  {{< /spoiler >}}
  
  
@@ -4059,7 +4081,7 @@ PackagesInfo: |
    
   This package provides the header files to build extension over lldb.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `21 KB`  
  **How to install:** `sudo apt install liblldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4077,7 +4099,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default bindings for OCaml.
  
- **Installed size:** `21 KB`  
+ **Installed size:** `22 KB`  
  **How to install:** `sudo apt install libllvm-ocaml-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4093,10 +4115,11 @@ PackagesInfo: |
   The runtime is the part of the OpenMP implementation that your code is
   linked against, and that manages the multiple threads in an OpenMP program
   while it is executing.
+   
   This is a dependency package providing the default LLVM OpenMP dev
   package.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libomp-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4111,9 +4134,10 @@ PackagesInfo: |
   The runtime is the part of the OpenMP implementation that your code is
   linked against, and that manages the multiple threads in an OpenMP program
   while it is executing.
+   
   This is a dependency package providing the default LLVM OpenMP runtime.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install libomp5`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4128,8 +4152,10 @@ PackagesInfo: |
   LLD is a new, high-performance linker. It is built as a set of reusable
   components which highly leverage existing libraries in the larger LLVM
   Project.
+   
+  This is a dependency package providing the lld linker.
  
- **Installed size:** `25 KB`  
+ **Installed size:** `26 KB`  
  **How to install:** `sudo apt install lld`  
  
  {{< spoiler "Dependencies:" >}}
@@ -5466,7 +5492,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default version of lldb.
  
- **Installed size:** `23 KB`  
+ **Installed size:** `24 KB`  
  **How to install:** `sudo apt install lldb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -5631,7 +5657,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default llvm package.
  
- **Installed size:** `88 KB`  
+ **Installed size:** `115 KB`  
  **How to install:** `sudo apt install llvm`  
  
  {{< spoiler "Dependencies:" >}}
@@ -5641,7 +5667,7 @@ PackagesInfo: |
  
  ##### bugpoint
  
- Bugpoint-14 (1)      - automatic test case reduction tool
+ Automatic test case reduction tool
  
  ```
  root@kali:~# bugpoint -h
@@ -6229,7 +6255,7 @@ PackagesInfo: |
  
  ##### dsymutil
  
- Dsymutil-14 (1)      - manipulate archived DWARF debug symbol files
+ Manipulate archived DWARF debug symbol files
  
  ```
  root@kali:~# dsymutil -h
@@ -6292,7 +6318,7 @@ PackagesInfo: |
  
  ##### llc
  
- Llc-14 (1)           - LLVM static compiler
+ LLVM static compiler
  
  ```
  root@kali:~# llc -h
@@ -6645,9 +6671,74 @@ PackagesInfo: |
  
  - - -
  
+ ##### llvm-addr2line
+ 
+ A drop-in replacement for addr2line
+ 
+ ```
+ root@kali:~# llvm-addr2line -h
+ OVERVIEW: llvm-addr2line
+ 
+ USAGE: llvm-addr2line [options] addresses...
+ 
+ OPTIONS:
+   --addresses           Show address before line information
+   --adjust-vma=<offset> Add specified offset to object file addresses
+   -a                    Alias for --addresses
+   --basenames           Strip directory names from paths
+   -C                    Alias for --demangle
+   --debug-file-directory=<dir>
+                         Path to directory where to look for debug files
+   -demangle=false       Alias for --no-demangle
+   -demangle=true        Alias for --demangle
+   --demangle            Demangle function names
+   --dia                 Use the DIA library to access symbols (Windows only)
+   --dwp=<file>          Path to DWP file to be use for any split CUs
+   -e=<file>             Alias for --obj
+   --exe=<file>          Alias for --obj
+   --exe <file>          Alias for --obj
+   -e <file>             Alias for --obj
+   -f=<value>            Alias for --functions=
+   --fallback-debug-path=<dir>
+                         Fallback path for debug binaries
+   --functions=<value>   Print function name for a given address
+   --functions           Print function name for a given address
+   -f                    Alias for --functions
+   --help                Display this help
+   --inlines             Print all inlined frames for a given address
+   --inlining=false      Alias for --no-inlines
+   --inlining=true       Alias for --inlines
+   --inlining            Alias for --inlines
+   -i                    Alias for --inlines
+   --no-demangle         Don't demangle function names
+   --no-inlines          Do not print inlined frames
+   --no-untag-addresses  Remove memory tags from addresses before symbolization
+   --obj=<file>          Path to object file to be symbolized (if not provided, object file should be specified for each input line)
+   --output-style=style  Specify print style. Supported styles: LLVM, GNU, JSON
+   --pretty-print        Make the output more human friendly
+   --print-address       Alias for --addresses
+   --print-source-context-lines=<value>
+                         Print N lines of source file context
+   -p                    Alias for --pretty-print
+   --relative-address    Interpret addresses as addresses relative to the image base
+   --relativenames       Strip the compilation directory from paths
+   -s                    Alias for --basenames
+   --verbose             Print verbose line info
+   --version             Display the version
+   -v                    Alias for --version
+ 
+ llvm-symbolizer Mach-O Specific Options:
+   --default-arch=<value> Default architecture (for multi-arch objects)
+   --dsym-hint=<dir>      Path to .dSYM bundles to search for debug info for the object files
+ 
+ Pass @FILE as argument to read options from FILE.
+ ```
+ 
+ - - -
+ 
  ##### llvm-ar
  
- Llvm-ar-14 (1)       - LLVM archiver
+ LLVM archiver
  
  ```
  root@kali:~# llvm-ar -h
@@ -6707,7 +6798,7 @@ PackagesInfo: |
  
  ##### llvm-as
  
- Llvm-as-14 (1)       - LLVM assembler
+ LLVM assembler
  
  ```
  root@kali:~# llvm-as -h
@@ -6736,7 +6827,7 @@ PackagesInfo: |
  
  ##### llvm-bcanalyzer
  
- Llvm-bcanalyzer-14 (1) - LLVM bitcode analyzer
+ LLVM bitcode analyzer
  
  ```
  root@kali:~# llvm-bcanalyzer -h
@@ -6880,7 +6971,7 @@ PackagesInfo: |
  
  ##### llvm-config
  
- Llvm-config-14 (1)   - Print LLVM compilation options
+ Print LLVM compilation options
  
  ```
  root@kali:~# llvm-config -h
@@ -6929,7 +7020,7 @@ PackagesInfo: |
  
  ##### llvm-cov
  
- Llvm-cov-14 (1)      - emit coverage information
+ Emit coverage information
  
  ```
  root@kali:~# llvm-cov -h
@@ -6996,7 +7087,7 @@ PackagesInfo: |
  
  ##### llvm-cxxfilt
  
- Llvm-cxxfilt-14 (1)  - LLVM symbol name demangler
+ LLVM symbol name demangler
  
  ```
  root@kali:~# llvm-cxxfilt -h
@@ -7023,7 +7114,7 @@ PackagesInfo: |
  
  ##### llvm-diff
  
- Llvm-diff-14 (1)     - LLVM structural 'diff'
+ LLVM structural 'diff'
  
  ```
  root@kali:~# llvm-diff -h
@@ -7046,7 +7137,7 @@ PackagesInfo: |
  
  ##### llvm-dis
  
- Llvm-dis-14 (1)      - LLVM disassembler
+ LLVM disassembler
  
  ```
  root@kali:~# llvm-dis -h
@@ -7224,7 +7315,7 @@ PackagesInfo: |
  
  ##### llvm-exegesis
  
- Llvm-exegesis-14 (1) - LLVM Machine Instruction Benchmark
+ LLVM Machine Instruction Benchmark
  
  ```
  root@kali:~# llvm-exegesis -h
@@ -7342,7 +7433,7 @@ PackagesInfo: |
  
  ##### llvm-extract
  
- Llvm-extract-14 (1)  - extract a function from an LLVM module
+ Extract a function from an LLVM module
  
  ```
  root@kali:~# llvm-extract -h
@@ -7384,14 +7475,14 @@ PackagesInfo: |
  
  ##### llvm-lib
  
- Llvm-lib-14 (1)      - LLVM lib.exe compatible library tool
+ LLVM lib.exe compatible library tool
  
  
  - - -
  
  ##### llvm-link
  
- Llvm-link-14 (1)     - LLVM bitcode linker
+ LLVM bitcode linker
  
  ```
  root@kali:~# llvm-link -h
@@ -7574,7 +7665,7 @@ PackagesInfo: |
  
  ##### llvm-mca
  
- Llvm-mca-14 (1)      - LLVM Machine Code Analyzer
+ LLVM Machine Code Analyzer
  
  ```
  root@kali:~# llvm-mca -h
@@ -7699,7 +7790,7 @@ PackagesInfo: |
  
  ##### llvm-nm
  
- Llvm-nm-14 (1)       - list LLVM bitcode and object file's symbol table
+ List LLVM bitcode and object file's symbol table
  
  ```
  root@kali:~# llvm-nm -h
@@ -7768,7 +7859,7 @@ PackagesInfo: |
  
  ##### llvm-objcopy
  
- Llvm-objcopy-14 (1)  - object copying and editing tool
+ Object copying and editing tool
  
  ```
  root@kali:~# llvm-objcopy -h
@@ -8045,7 +8136,7 @@ PackagesInfo: |
  
  ##### llvm-pdbutil
  
- Llvm-pdbutil-14 (1)  - PDB File forensics and diagnostics
+ PDB File forensics and diagnostics
  
  ```
  root@kali:~# llvm-pdbutil -h
@@ -8080,7 +8171,7 @@ PackagesInfo: |
  
  ##### llvm-profdata
  
- Llvm-profdata-14 (1) - Profile data tool
+ Profile data tool
  
  ```
  root@kali:~# llvm-profdata -h
@@ -8147,7 +8238,7 @@ PackagesInfo: |
  
  ##### llvm-readelf
  
- Llvm-readelf-14 (1)  - GNU-style LLVM Object Reader
+ GNU-style LLVM Object Reader
  
  ```
  root@kali:~# llvm-readelf --help
@@ -8269,7 +8360,7 @@ PackagesInfo: |
  
  ##### llvm-readobj
  
- Llvm-readobj-14 (1)  - LLVM Object Reader
+ LLVM Object Reader
  
  ```
  root@kali:~# llvm-readobj --help
@@ -8498,7 +8589,7 @@ PackagesInfo: |
  
  ##### llvm-stress
  
- Llvm-stress-14 (1)   - generate random .ll files
+ Generate random .ll files
  
  ```
  root@kali:~# llvm-stress -h
@@ -8529,7 +8620,7 @@ PackagesInfo: |
  
  ##### llvm-strings
  
- Llvm-strings-14 (1)  - print strings
+ Print strings
  
  ```
  root@kali:~# llvm-strings -h
@@ -8557,7 +8648,7 @@ PackagesInfo: |
  
  ##### llvm-strip
  
- Llvm-strip-14 (1)    - object stripping tool
+ Object stripping tool
  
  ```
  root@kali:~# llvm-strip -h
@@ -8615,7 +8706,7 @@ PackagesInfo: |
  
  ##### llvm-symbolizer
  
- Llvm-symbolizer-14 (1) - convert addresses into source code locations
+ Convert addresses into source code locations
  
  ```
  root@kali:~# llvm-symbolizer -h
@@ -8680,7 +8771,7 @@ PackagesInfo: |
  
  ##### llvm-tblgen
  
- Llvm-tblgen-14 (1)   - Target Description to C++ Code for LLVM
+ Target Description to C++ Code for LLVM
  
  ```
  root@kali:~# llvm-tblgen -h
@@ -9099,7 +9190,7 @@ PackagesInfo: |
  
  ##### opt
  
- Opt-14 (1)           - LLVM optimizer
+ LLVM optimizer
  
  ```
  root@kali:~# opt -h
@@ -10555,7 +10646,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default libraries and headers.
  
- **Installed size:** `31 KB`  
+ **Installed size:** `32 KB`  
  **How to install:** `sudo apt install llvm-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -10575,7 +10666,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default bytecode interpreter.
  
- **Installed size:** `21 KB`  
+ **Installed size:** `22 KB`  
  **How to install:** `sudo apt install llvm-runtime`  
  
  {{< spoiler "Dependencies:" >}}
@@ -10954,9 +11045,9 @@ PackagesInfo: |
   Clang implements all of the ISO C++ 1998, 11 and 14 standards and also
   provides most of the support of C++17.
    
-  This binding package provides access to the Clang compiler and libraries.
+  This is a dependency package providing the Python binding to Clang.
  
- **Installed size:** `19 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install python3-clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -10972,9 +11063,9 @@ PackagesInfo: |
   reusable components which highly leverage existing libraries in the larger LLVM
   Project, such as the Clang expression parser and LLVM disassembler.
    
-  This binding package provides access to lldb.
+  This is a dependency package providing the Python binding to lldb.
  
- **Installed size:** `19 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install python3-lldb`  
  
  {{< spoiler "Dependencies:" >}}

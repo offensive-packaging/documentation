@@ -23,7 +23,7 @@ PackagesInfo: |
     * WPA TKIP Denial-of-Service.
     * WDS Confusion - Shuts down large scale multi-AP installations.
  
- **Installed size:** `171 KB`  
+ **Installed size:** `172 KB`  
  **How to install:** `sudo apt install mdk3`  
  
  {{< spoiler "Dependencies:" >}}

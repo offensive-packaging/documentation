@@ -4,7 +4,7 @@ Homepage: https://sourceforge.net/projects/winexe
 Repository: https://gitlab.com/kalilinux/packages/winexe
 Architectures: any
 Version: 1.1~20140107-0kali14
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### winexe
@@ -13,7 +13,7 @@ PackagesInfo: |
   GNU/Linux (and possibly also from other Unices capable of building the Samba 4
   software package).
  
- **Installed size:** `159 KB`  
+ **Installed size:** `158 KB`  
  **How to install:** `sudo apt install winexe`  
  
  {{< spoiler "Dependencies:" >}}

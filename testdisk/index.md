@@ -3,7 +3,7 @@ Title: testdisk
 Homepage: 
 Repository: 
 Architectures: any
-Version: 7.1-5
+Version: 7.1-5+nmu1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -64,7 +64,7 @@ PackagesInfo: |
    * Sigma/Foveon X3 raw picture (.x3f)
    * zip archive (.zip)
  
- **Installed size:** `1.39 MB`  
+ **Installed size:** `1.37 MB`  
  **How to install:** `sudo apt install testdisk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -150,27 +150,6 @@ PackagesInfo: |
  - XFS, SGI's Journaled File System      - Wii WBFS
  - Sun ZFS
  ```
- 
- - - -
- 
- ### testdisk-dbg
- 
-  TestDisk checks the partition and boot sectors of your disks.
-  It is very useful in forensics, recovering lost partitions.
-   
-  PhotoRec is file data recovery software designed to recover
-  lost pictures from digital camera memory or even Hard Disks.
-  It has been extended to search also for non audio/video headers.
-   
-  This package includes the debugging symbols.
- 
- **Installed size:** `2.19 MB`  
- **How to install:** `sudo apt install testdisk-dbg`  
- 
- {{< spoiler "Dependencies:" >}}
- * testdisk 
- {{< /spoiler >}}
- 
  
  - - -
  

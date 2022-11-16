@@ -3,7 +3,7 @@ Title: nbtscan
 Homepage: https://github.com/resurrecting-open-source-projects/nbtscan
 Repository: https://salsa.debian.org/pkg-security-team/nbtscan
 Architectures: any
-Version: 1.7.2-1
+Version: 1.7.2-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-vulnerability 
 Icon: images/nbtscan-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   This program is useful for security checks, network discovery and forensics
   investigations.
  
- **Installed size:** `59 KB`  
+ **Installed size:** `57 KB`  
  **How to install:** `sudo apt install nbtscan`  
  
  {{< spoiler "Dependencies:" >}}

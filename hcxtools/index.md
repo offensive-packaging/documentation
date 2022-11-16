@@ -3,7 +3,7 @@ Title: hcxtools
 Homepage: https://github.com/ZerBea/hcxtools
 Repository: https://salsa.debian.org/pkg-security-team/hcxtools
 Architectures: any
-Version: 6.2.7-1
+Version: 6.2.7-2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
    - c = capture, convert and calculate candidates
    - x = different hashtypes
  
- **Installed size:** `613 KB`  
+ **Installed size:** `616 KB`  
  **How to install:** `sudo apt install hcxtools`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,8 +3,8 @@ Title: metasploit-framework
 Homepage: https://www.metasploit.com/
 Repository: https://gitlab.com/kalilinux/packages/metasploit-framework
 Architectures: any
-Version: 6.2.9-0kali1
-Metapackages: kali-linux-arm kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web 
+Version: 6.2.26-0kali1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web 
 Icon: images/metasploit-framework-logo.svg
 PackagesInfo: |
  ### metasploit-framework
@@ -13,7 +13,7 @@ PackagesInfo: |
   vulnerability research, exploit development, and the creation of custom
   security tools.
  
- **Installed size:** `452.45 MB`  
+ **Installed size:** `456.18 MB`  
  **How to install:** `sudo apt install metasploit-framework`  
  
  {{< spoiler "Dependencies:" >}}
@@ -317,7 +317,7 @@ PackagesInfo: |
  Console options:
      -a, --ask                        Ask before exiting Metasploit or accept 'exit -y'
      -H, --history-file FILE          Save command history to the specified file
-     -l, --logger STRING              Specify a logger to use (TimestampColorlessFlatfile, Flatfile, Stderr, Stdout, StdoutWithoutTimestamps)
+     -l, --logger STRING              Specify a logger to use (TimestampColorlessFlatfile, Flatfile, StdoutWithoutTimestamps, Stdout, Stderr)
          --[no-]readline
      -L, --real-readline              Use the system Readline library instead of RbReadline
      -o, --output FILE                Output to the specified file

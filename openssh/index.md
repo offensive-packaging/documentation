@@ -4,7 +4,7 @@ Homepage: http://www.openssh.com/
 Repository: https://salsa.debian.org/ssh-team/openssh
 Architectures: any all
 Version: 1:9.0p1-1
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### openssh-client
@@ -31,7 +31,7 @@ PackagesInfo: |
   ssh replaces the insecure rsh, rcp and rlogin programs, which are
   obsolete for most purposes.
  
- **Installed size:** `5.47 MB`  
+ **Installed size:** `5.50 MB`  
  **How to install:** `sudo apt install openssh-client`  
  
  {{< spoiler "Dependencies:" >}}
@@ -463,6 +463,15 @@ PackagesInfo: |
  
  - - -
  
+ ### openssh-client-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install openssh-client-udeb`  
+ 
+ 
+ - - -
+ 
  ### openssh-server
  
   This is the portable version of OpenSSH, a free implementation of
@@ -485,7 +494,7 @@ PackagesInfo: |
   sshd replaces the insecure rshd program, which is obsolete for most
   purposes.
  
- **Installed size:** `1.76 MB`  
+ **Installed size:** `1.78 MB`  
  **How to install:** `sudo apt install openssh-server`  
  
  {{< spoiler "Dependencies:" >}}
@@ -518,16 +527,24 @@ PackagesInfo: |
  ##### sshd
  
  OpenSSH daemon
- OpenSSH daemon
  
  ```
  root@kali:~# sshd -h
  option requires an argument -- h
- OpenSSH_9.0p1 Debian-1+b1, OpenSSL 3.0.4 21 Jun 2022
+ OpenSSH_9.0p1 Debian-1+b2, OpenSSL 3.0.7 1 Nov 2022
  usage: sshd [-46DdeiqTt] [-C connection_spec] [-c host_cert_file]
              [-E log_file] [-f config_file] [-g login_grace_time]
              [-h host_key_file] [-o option] [-p port] [-u len]
  ```
+ 
+ - - -
+ 
+ ### openssh-server-udeb
+ 
+ 
+ **Installed size:** ` KB`  
+ **How to install:** `sudo apt install openssh-server-udeb`  
+ 
  
  - - -
  
@@ -575,7 +592,7 @@ PackagesInfo: |
   intended for use with the autopkgtest system, though can also be run
   directly using /usr/lib/openssh/regress/run-tests.
  
- **Installed size:** `7.34 MB`  
+ **Installed size:** `7.39 MB`  
  **How to install:** `sudo apt install openssh-tests`  
  
  {{< spoiler "Dependencies:" >}}
@@ -621,7 +638,7 @@ PackagesInfo: |
   You probably want the ssh-askpass package instead, but this is
   provided to add to your choice and/or confusion.
  
- **Installed size:** `303 KB`  
+ **Installed size:** `221 KB`  
  **How to install:** `sudo apt install ssh-askpass-gnome`  
  
  {{< spoiler "Dependencies:" >}}

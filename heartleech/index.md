@@ -3,7 +3,7 @@ Title: heartleech
 Homepage: https://github.com/robertdavidgraham/heartleech
 Repository: https://gitlab.com/kalilinux/packages/heartleech
 Architectures: any
-Version: 0~20140515-0kali6
+Version: 0~git20140607.3ab1d60-0kali1
 Metapackages: kali-linux-everything kali-tools-web kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

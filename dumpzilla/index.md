@@ -3,7 +3,7 @@ Title: dumpzilla
 Homepage: http://www.dumpzilla.org/
 Repository: https://gitlab.com/kalilinux/packages/dumpzilla
 Architectures: all
-Version: 20180324-0kali1
+Version: 20210311-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   Dumpzilla allows one to visualize following sections, search customization and
   extract certain content.
  
- **Installed size:** `137 KB`  
+ **Installed size:** `136 KB`  
  **How to install:** `sudo apt install dumpzilla`  
  
  {{< spoiler "Dependencies:" >}}

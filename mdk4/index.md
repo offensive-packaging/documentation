@@ -19,7 +19,7 @@ PackagesInfo: |
   IMPORTANT: It is your responsibility to make sure you have permission from the
   network owner before running MDK against it.
  
- **Installed size:** `231 KB`  
+ **Installed size:** `232 KB`  
  **How to install:** `sudo apt install mdk4`  
  
  {{< spoiler "Dependencies:" >}}

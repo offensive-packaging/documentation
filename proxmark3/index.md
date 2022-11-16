@@ -3,7 +3,7 @@ Title: proxmark3
 Homepage: https://github.com/RfidResearchGroup/proxmark3
 Repository: https://gitlab.com/kalilinux/packages/proxmark3
 Architectures: any all
-Version: 4.14831-0kali4
+Version: 4.15864-0kali1
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `3.74 MB`  
+ **Installed size:** `3.93 MB`  
  **How to install:** `sudo apt install proxmark3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,11 +23,12 @@ PackagesInfo: |
  * libgcc-s1 
  * libjansson4 
  * liblua5.2-0 
- * libpython3.9 
+ * libpython3.10 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5widgets5 
  * libreadline8 
+ * libssl3 
  * libstdc++6 
  * libwhereami0 
  * proxmark3-common 
@@ -66,7 +67,9 @@ PackagesInfo: |
  
  Options in flasher mode:
        --flash                             flash Proxmark3, requires at least one --image
-       --unlock-bootloader                 Enable flashing of bootloader area *DANGEROUS* (need --flash or --flash-info)
+       --reboot-bootloader                 reboot Proxmark3 into bootloader mode
+       --unlock-bootloader                 Enable flashing of bootloader area *DANGEROUS* (need --flash)
+       --force                             Enable flashing even if firmware seems to not match client version
        --image <imagefile>                 image to flash. Can be specified several times.
  
  Examples:
@@ -108,7 +111,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `38.35 MB`  
+ **Installed size:** `38.48 MB`  
  **How to install:** `sudo apt install proxmark3-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -246,7 +249,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `227 KB`  
+ **Installed size:** `243 KB`  
  **How to install:** `sudo apt install proxmark3-doc`  
  
  
@@ -258,7 +261,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `20.68 MB`  
+ **Installed size:** `25.48 MB`  
  **How to install:** `sudo apt install proxmark3-firmwares`  
  
  

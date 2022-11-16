@@ -3,7 +3,7 @@ Title: netdiscover
 Homepage: https://github.com/netdiscover-scanner/netdiscover
 Repository: https://salsa.debian.org/debian/netdiscover
 Architectures: any
-Version: 0.9-1
+Version: 0.10-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering 
 Icon: images/netdiscover-logo.svg
 PackagesInfo: |
@@ -24,7 +24,7 @@ PackagesInfo: |
   address discovered and is very useful for security checks or in
   pentests.
  
- **Installed size:** `2.61 MB`  
+ **Installed size:** `2.71 MB`  
  **How to install:** `sudo apt install netdiscover`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
  ```
  root@kali:~# netdiscover --help
  
- Netdiscover 0.9 [Active/passive ARP reconnaissance tool]
+ Netdiscover 0.10 [Active/passive ARP reconnaissance tool]
  Written by: Jaime Penalba <jpenalbae@gmail.com>
  
  Usage: netdiscover [-i device] [-r range | -l file | -p] [-m file] [-F filter] [-s time] [-c count] [-n node] [-dfPLNS]

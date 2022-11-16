@@ -2,8 +2,8 @@
 Title: hackrf
 Homepage: http://greatscottgadgets.com/hackrf/
 Repository: https://salsa.debian.org/bottoms/pkg-hackrf
-Architectures: any
-Version: 2021.03.1-2
+Architectures: any all
+Version: 2022.09.1-3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,15 +14,16 @@ PackagesInfo: |
   It is a High Speed USB device powered by the USB bus.
    
   This package contains a set of command line utilities:
+   * hackrf_clock: HackRF clock configuration utility
    * hackrf_cpldjtag: program CLPD
+   * hackrf_debug: chip register read/write/config tool
    * hackrf_info: probe device and show configuration
-   * hackrf_max2837: chip register read/write tool
-   * hackrf_rffc5071: chip register read/write tool
-   * hackrf_si5351c: chip register read/write tool
+   * hackrf_operacake: control of operacake board via hackrf
    * hackrf_spiflash: read and write flash data from file.
+   * hackrf_sweep: control frequency sweep of hackrf
    * hackrf_transfer: file based transmit and receive sdr
  
- **Installed size:** `195 KB`  
+ **Installed size:** `198 KB`  
  **How to install:** `sudo apt install hackrf`  
  
  {{< spoiler "Dependencies:" >}}
@@ -42,6 +43,7 @@ PackagesInfo: |
  	-h, --help: this help
  	-r, --read <clock_num>: read settings for clock_num
  	-a, --all: read settings for all clocks
+ 	-i, --clkin: get CLKIN status
  	-o, --clkout <clkout_enable>: enable/disable CLKOUT
  	-d, --device <serial_number>: Serial number of desired HackRF.
  
@@ -82,6 +84,9 @@ PackagesInfo: |
  	-m, --max2837: target MAX2837
  	-s, --si5351c: target SI5351C
  	-f, --rffc5072: target RFFC5072
+ 	-S, --state: display M0 state
+ 	-T, --tx-underrun-limit <n>: set TX underrun limit in bytes (0 for no limit)
+ 	-R, --rx-overrun-limit <n>: set RX overrun limit in bytes (0 for no limit)
  	-u, --ui <1/0>: enable/disable UI
  
  Examples:
@@ -89,6 +94,7 @@ PackagesInfo: |
  	hackrf_debug --si5351c -c          # displays si5351c multisynth configuration
  	hackrf_debug --rffc5072 -r         # reads all rffc5072 registers
  	hackrf_debug --max2837 -n 10 -w 22 # writes max2837 register 10 with 22 decimal
+ 	hackrf_debug --state               # displays M0 state
  ```
  
  - - -
@@ -128,9 +134,8 @@ PackagesInfo: |
  
         Other hackrf programs:
  
-        hackrf_cpldjtag(1),          hackrf_info(1),         hackrf_max2837(1),
-        hackrf_rffc5071(1),       hackrf_si5351c(1),        hackrf_spiflash(1),
-        hackrf_transfer(1)
+        hackrf_cpldjtag(1),    hackrf_debug(1),   hackrf_info(1),   hackrf_spi-
+        flash(1), hackrf_transfer(1)
  
  AUTHOR
         This manual page was written by Maitland Bottoms for the Debian project
@@ -140,13 +145,13 @@ PackagesInfo: |
         Copyright (c) 2013 A. Maitland Bottoms <bottoms@debian.org>
  
         This program is free software: you can redistribute it and/or modify it
-        under  the  terms of the GNU General Public License as published by the
-        Free Software Foundation, either version 2 of the License, or (at  your
+        under the terms of the GNU General Public License as published  by  the
+        Free  Software Foundation, either version 2 of the License, or (at your
         option) any later version.
  
-        This  program  is  distributed  in the hope that it will be useful, but
-        WITHOUT ANY  WARRANTY;  without  even  the  implied  warranty  of  MER-
-        CHANTABILITY  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+        This program is distributed in the hope that it  will  be  useful,  but
+        WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of MER-
+        CHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  General
         Public License for more details.
  
  HACKRF                             2013.07.1                    hackrf_info(1)
@@ -164,14 +169,15 @@ PackagesInfo: |
  Usage:
  	-h, --help: this help
  	-d, --device <n>: specify a particular device by serial number
- 	-o, --address <n>: specify a particular operacake by address [default: 0]
+ 	-o, --address <n>: specify a particular Opera Cake by address [default: 0]
  	-m, --mode <mode>: specify switching mode [options: manual, frequency, time]
- 	-a <n>: set port A connection
- 	-b <n>: set port B connection
- 	-f <port:min:max>: automatically assign <port> for range <min:max> in MHz
- 	-t <port:dwell>: in time-switching mode, dwell on <port> for <dwell> samples. Specify only <port> to use the default dwell time (with -w). This argument can be repeated to specify a list of ports.
- 	-w <n>: set default dwell time for time-switching mode	-l, --list: list available operacake boards
- 	-g, --gpio_test: test GPIO functionality of an opera cake
+ 	-a <port>: set port connected to port A0
+ 	-b <port>: set port connected to port B0
+ 	-f <port:min:max>: automatically assign <port> for range <min:max> in MHz. This argument can be repeated to specify a list of ports.
+ 	-t <port:dwell>: in time mode, dwell on <port> for <dwell> samples. Specify only <port> to use the default dwell time (with -w). This argument can be repeated to specify a list of ports.
+ 	-w <n>: set default dwell time in samples for time mode
+ 	-l, --list: list available Opera Cake boards
+ 	-g, --gpio_test: test GPIO functionality of an Opera Cake
  ```
  
  - - -
@@ -239,7 +245,7 @@ PackagesInfo: |
  	-t <filename> # Transmit data from file (use '-' for stdin).
  	-w # Receive data into file with WAV header and automatic name.
  	   # This is for SDR# compatibility and may not work with other software.
- 	[-f freq_hz] # Frequency in Hz [0MHz to 7250MHz].
+ 	[-f freq_hz] # Frequency in Hz [1MHz to 6000MHz supported, 0MHz to 7250MHz forceable].
  	[-i if_freq_hz] # Intermediate Frequency (IF) in Hz [2150MHz to 2750MHz].
  	[-o lo_freq_hz] # Front-end Local Oscillator (LO) frequency in Hz [84MHz to 5400MHz].
  	[-m image_reject] # Image rejection filter selection, 0=bypass, 1=low pass, 2=high pass.
@@ -248,16 +254,61 @@ PackagesInfo: |
  	[-l gain_db] # RX LNA (IF) gain, 0-40dB, 8dB steps
  	[-g gain_db] # RX VGA (baseband) gain, 0-62dB, 2dB steps
  	[-x gain_db] # TX VGA (IF) gain, 0-47dB, 1dB steps
- 	[-s sample_rate_hz] # Sample rate in Hz (2-20MHz, default 10MHz).
+ 	[-s sample_rate_hz] # Sample rate in Hz (2-20MHz supported, default 10MHz).
+ 	[-F force] # Force use of parameters outside supported ranges.
  	[-n num_samples] # Number of samples to transfer (default is unlimited).
  	[-S buf_size] # Enable receive streaming with buffer size buf_size.
+ 	[-B] # Print buffer statistics during transfer
  	[-c amplitude] # CW signal source mode, amplitude 0-127 (DC value to DAC).
  	[-R] # Repeat TX mode (default is off) 
  	[-b baseband_filter_bw_hz] # Set baseband filter bandwidth in Hz.
  	Possible values: 1.75/2.5/3.5/5/5.5/6/7/8/9/10/12/14/15/20/24/28MHz, default <= 0.75 * sample_rate_hz.
  	[-C ppm] # Set Internal crystal clock error in ppm.
- 	[-H hw_sync_enable] # Synchronise USB transfer using GPIO pins.
+ 	[-H] # Synchronize RX/TX to external trigger input.
  ```
+ 
+ - - -
+ 
+ ### hackrf-doc
+ 
+  HackRF is an open source Software Defined Radio that can receive
+  and transmit between 30 MHz and 6 GHz. HackRF has a 20 MHz bandwidth.
+  It is a High Speed USB device powered by the USB bus.
+   
+  This package contains generated documentation.
+ 
+ **Installed size:** `5.55 MB`  
+ **How to install:** `sudo apt install hackrf-doc`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * fonts-font-awesome
+ * fonts-lato
+ * fonts-roboto-slab
+ * libjs-jquery
+ * libjs-underscore
+ * sphinx
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### hackrf-firmware
+ 
+  The HackRF hardware needs some firmware to run. The firmware is built with
+  arm-none-eabi-gcc. This package contains a number of firmware images that
+  may be programmed into the HackRF hardware using the 'hackrf_spiflash -w'
+  command or dfu-util.
+   
+  The following hardware is supported:
+   * hackrf_jawbreaker
+   * hackrf_one
+   * hackrf_rad1o
+   
+  The firmware images are installed in /usr/share/hackrf/firmware/
+ 
+ **Installed size:** `360 KB`  
+ **How to install:** `sudo apt install hackrf-firmware`  
+ 
  
  - - -
  
@@ -269,7 +320,7 @@ PackagesInfo: |
    
   This package contains development files.
  
- **Installed size:** `67 KB`  
+ **Installed size:** `78 KB`  
  **How to install:** `sudo apt install libhackrf-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -287,7 +338,7 @@ PackagesInfo: |
    
   This package contains the shared library.
  
- **Installed size:** `59 KB`  
+ **Installed size:** `67 KB`  
  **How to install:** `sudo apt install libhackrf0`  
  
  {{< spoiler "Dependencies:" >}}

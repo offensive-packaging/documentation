@@ -13,7 +13,7 @@ PackagesInfo: |
   server. This can be usable in different situations where internet access is
   firewalled, but DNS queries are allowed.
  
- **Installed size:** `249 KB`  
+ **Installed size:** `243 KB`  
  **How to install:** `sudo apt install iodine`  
  
  {{< spoiler "Dependencies:" >}}

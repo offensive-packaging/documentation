@@ -3,8 +3,8 @@ Title: tmux
 Homepage: https://tmux.github.io/
 Repository: https://salsa.debian.org/rfrancoise/tmux
 Architectures: any
-Version: 3.3a-1
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-wireless 
+Version: 3.3a-3
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### tmux
@@ -21,7 +21,7 @@ PackagesInfo: |
   binding, or from the shell. It offers a choice of vim or Emacs key
   layouts.
  
- **Installed size:** `1.09 MB`  
+ **Installed size:** `1.08 MB`  
  **How to install:** `sudo apt install tmux`  
  
  {{< spoiler "Dependencies:" >}}

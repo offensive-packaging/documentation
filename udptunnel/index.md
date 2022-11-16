@@ -3,7 +3,7 @@ Title: udptunnel
 Homepage: http://www1.cs.columbia.edu/~lennox/udptunnel/
 Repository: https://salsa.debian.org/debian/udptunnel
 Architectures: any
-Version: 1.1-8
+Version: 1.1-9
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation 
 Icon: images/udptunnel-logo.svg
 PackagesInfo: |

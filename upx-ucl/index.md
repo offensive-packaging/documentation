@@ -17,7 +17,7 @@ PackagesInfo: |
    
   NOTE: This package is based on the UCL library, which is licensed under GPL.
  
- **Installed size:** `1.96 MB`  
+ **Installed size:** `1.97 MB`  
  **How to install:** `sudo apt install upx-ucl`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: wifipumpkin3
 Homepage: https://github.com/P0cL4bs/wifipumpkin3
 Repository: https://gitlab.com/kalilinux/packages/wifipumpkin3
 Architectures: all
-Version: 1.1.3-R3-0kali1
+Version: 1.1.4-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   and reverse engineers to mount a wireless network to conduct a
   man-in-the-middle attack.
  
- **Installed size:** `17.89 MB`  
+ **Installed size:** `17.91 MB`  
  **How to install:** `sudo apt install wifipumpkin3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -25,14 +25,14 @@ PackagesInfo: |
  * python3
  * python3-bs4
  * python3-dhcplib
+ * python3-distutils
  * python3-dnslib
  * python3-dnspython
  * python3-flask 
- * python3-flask-restx
+ * python3-flask-restful
  * python3-isc-dhcp-leases
  * python3-jwt
  * python3-loguru
- * python3-markupsafe
  * python3-netaddr
  * python3-netifaces
  * python3-openssl
@@ -44,7 +44,6 @@ PackagesInfo: |
  * python3-termcolor
  * python3-twisted
  * python3-urwid
- * python3-werkzeug
  * wireless-tools
  {{< /spoiler >}}
  
@@ -54,8 +53,8 @@ PackagesInfo: |
  ```
  root@kali:~# captiveflask -h
  [*] CaptiveFlask v1.0.2 - subtool from wifipumpkin3
- usage: captiveflask [-h] [-t TEMPLATE] [-s STATIC] [-r REDIRECT]
-                     [-f FORCE_REDIRECT] [-v VERSION]
+ usage: captiveflask [-h] [-t TEMPLATE] [-s STATIC] [-r REDIRECT] [-p PORT]
+                     [-rU REDIRECT_URL] [-f FORCE_REDIRECT] [-v VERSION]
  
  CaptiveFlask - Server to create captive portal with flask doc:
  https://github.com/mh4x0f/captiveportals
@@ -68,6 +67,10 @@ PackagesInfo: |
                          path of the static files from webpage
    -r REDIRECT, --redirect REDIRECT
                          IpAddress from gataway captive portal
+   -p PORT, --port PORT  The port for captive portal
+   -rU REDIRECT_URL, --redirect-url REDIRECT_URL
+                         Url for redirect after user insert the credentials on
+                         captive portal
    -f FORCE_REDIRECT, --force-login_successful-template FORCE_REDIRECT
                          force redirect to login_successful.html template
    -v VERSION, --version VERSION
@@ -106,7 +109,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# wifipumpkin3 --help
+ root@kali:~# wifipumpkin3 -h
  usage: wifipumpkin3 [-h] [-i INTERFACE] [-s SESSION] [-p PULP] [-x XPULP]
                      [-m WIRELESS_MODE] [--no-colors] [--rest]
                      [--restport RESTPORT] [--username USERNAME]

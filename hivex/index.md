@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains a few command line programs that utilize libhivex.
  
- **Installed size:** `266 KB`  
+ **Installed size:** `263 KB`  
  **How to install:** `sudo apt install libhivex-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -105,7 +105,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-07-23                       hivexget(1)
+ hivex-1.3.21                      2022-11-12                       hivexget(1)
  ```
  
  - - -
@@ -166,7 +166,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-07-23                        hivexml(1)
+ hivex-1.3.21                      2022-11-12                        hivexml(1)
  ```
  
  - - -
@@ -434,7 +434,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-07-23                        hivexsh(1)
+ hivex-1.3.21                      2022-11-12                        hivexsh(1)
  ```
  
  - - -
@@ -463,7 +463,7 @@ PackagesInfo: |
    
   This package include only the shared runtime stub libraries.
  
- **Installed size:** `73 KB`  
+ **Installed size:** `70 KB`  
  **How to install:** `sudo apt install libhivex-ocaml`  
  
  {{< spoiler "Dependencies:" >}}
@@ -483,7 +483,7 @@ PackagesInfo: |
   This package contains all the files needed to develop OCaml programs
   which use OCaml bindings to libhivex.
  
- **Installed size:** `120 KB`  
+ **Installed size:** `119 KB`  
  **How to install:** `sudo apt install libhivex-ocaml-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -506,7 +506,7 @@ PackagesInfo: |
   through a C API, or there is a separate program to export the hive as
   XML.
  
- **Installed size:** `130 KB`  
+ **Installed size:** `135 KB`  
  **How to install:** `sudo apt install libhivex0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -524,14 +524,14 @@ PackagesInfo: |
   This package also contains hivexregedit, a low-level command-line
   tool for manipulating and dumping registry hives.
  
- **Installed size:** `159 KB`  
+ **Installed size:** `152 KB`  
  **How to install:** `sudo apt install libwin-hivex-perl`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libhivex0 
  * perl 
- * perlapi-5.34.0
+ * perlapi-5.36.0
  {{< /spoiler >}}
  
  ##### hivexregedit
@@ -655,7 +655,7 @@ PackagesInfo: |
   Python 3 bindings for libhivex, a library for reading and writing
   Windows Registry "hive" binary files.
  
- **Installed size:** `83 KB`  
+ **Installed size:** `104 KB`  
  **How to install:** `sudo apt install python3-hivex`  
  
  {{< spoiler "Dependencies:" >}}
@@ -673,14 +673,15 @@ PackagesInfo: |
   Ruby bindings for libhivex, a library for reading and writing
   Windows Registry "hive" binary files.
  
- **Installed size:** `83 KB`  
+ **Installed size:** `113 KB`  
  **How to install:** `sudo apt install ruby-hivex`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libhivex0 
- * libruby3.0 
- * ruby 
+ * libruby 
+ * libruby  | libruby 
+ * libruby3.0  | libruby3.1 
  {{< /spoiler >}}
  
  

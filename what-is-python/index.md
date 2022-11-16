@@ -191,6 +191,10 @@ PackagesInfo: |
           -X pycache_prefix=PATH: enable writing .pyc files to a parallel tree rooted at the
               given directory instead of to the code tree
           -X warn_default_encoding: enable opt-in EncodingWarning for 'encoding=None'
+          -X int_max_str_digits=number: limit the size of int<->str conversions.
+              This helps avoid denial of service attacks when parsing untrusted data.
+              The default is sys.int_info.default_max_str_digits.  0 disables.
+ 
  --check-hash-based-pycs always|default|never:
      control how Python invalidates hash-based .pyc files
  file   : program read from script file
@@ -212,6 +216,10 @@ PackagesInfo: |
     to seed the hashes of str and bytes objects.  It can also be set to an
     integer in the range [0,4294967295] to get hash values with a
     predictable seed.
+ PYTHONINTMAXSTRDIGITS: limits the maximum digit characters in an int value
+    when converting from a string and when converting an int back to a str.
+    A value of 0 disables the limit.  Conversions to or from bases 2, 4, 8,
+    16, and 32 are never limited.
  PYTHONMALLOC: set the Python memory allocators and/or install debug hooks
     on Python memory allocators. Use PYTHONMALLOC=debug to install debug
     hooks.

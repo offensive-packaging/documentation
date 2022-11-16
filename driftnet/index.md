@@ -31,7 +31,7 @@ PackagesInfo: |
  * libjs-lightbox2 
  * libpcap0.8 
  * libpng16-16 
- * libwebsockets16 
+ * libwebsockets17 
  {{< /spoiler >}}
  
  ##### driftnet

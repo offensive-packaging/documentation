@@ -3,7 +3,7 @@ Title: inspectrum
 Homepage: https://github.com/miek/inspectrum
 Repository: https://salsa.debian.org/debian-hamradio-team/inspectrum
 Architectures: any
-Version: 0.2.3-2
+Version: 0.2.3-3
 Metapackages: kali-linux-everything kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,10 +13,17 @@ PackagesInfo: |
   software-defined radio receivers.
    
   inspectrum supports the following file types:
+   *.sigmf-meta, *.sigmf-data - Signal Metadata Format (SigMF) recordings
    *.cf32, *.cfile - Complex 32-bit floating point (GNURadio, osmocom_fft)
+   *.cf64 - Complex 64-bit floating point samples
    *.cs16 - Complex 16-bit signed integer (BladeRF)
    *.cs8 - Complex 8-bit signed integer (HackRF)
    *.cu8 - Complex 8-bit unsigned integer (RTL-SDR)
+   *.f32 - Real 32-bit floating point samples
+   *.f64 - Real 64-bit floating point samples (MATLAB)
+   *.s16 - Real 16-bit signed integer samples
+   *.s8 - Real 8-bit signed integer samples
+   *.u8 - Real 8-bit unsigned integer samples
    
   Features:
    * Large (100GB+) file support
@@ -25,7 +32,7 @@ PackagesInfo: |
    * Cursors for measuring period, symbol rate and extracting symbols
    * Export of selected time period, filtered samples and demodulated data
  
- **Installed size:** `276 KB`  
+ **Installed size:** `303 KB`  
  **How to install:** `sudo apt install inspectrum`  
  
  {{< spoiler "Dependencies:" >}}

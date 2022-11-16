@@ -17,7 +17,7 @@ PackagesInfo: |
   Masks are defined using the description also used in the Hashcat password
   recovery utility.
  
- **Installed size:** `44 KB`  
+ **Installed size:** `45 KB`  
  **How to install:** `sudo apt install maskprocessor`  
  
  {{< spoiler "Dependencies:" >}}

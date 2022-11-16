@@ -3,7 +3,7 @@ Title: gdb
 Homepage: https://www.gnu.org/s/gdb/
 Repository: https://salsa.debian.org/gdb-team/gdb
 Architectures: any all
-Version: 10.1-2
+Version: 12.1-3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2,
   Go, and Ada. A must-have for any serious programmer.
  
- **Installed size:** `9.56 MB`  
+ **Installed size:** `10.69 MB`  
  **How to install:** `sudo apt install gdb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -24,11 +24,12 @@ PackagesInfo: |
  * libdebuginfod1 
  * libexpat1 
  * libgcc-s1 
+ * libgmp10 
  * libipt2 
  * liblzma5 
  * libmpfr6 
  * libncursesw6 
- * libpython3.9 
+ * libpython3.10 
  * libreadline8 
  * libsource-highlight4v5 
  * libstdc++6 
@@ -71,7 +72,7 @@ PackagesInfo: |
  
  Selection of debuggee and its files:
  
-   --args             Arguments after executable-file are passed to inferior
+   --args             Arguments after executable-file are passed to inferior.
    --core=COREFILE    Analyze the core dump COREFILE.
    --exec=EXECFILE    Use EXECFILE as the executable.
    --pid=PID          Attach to running process PID.
@@ -86,13 +87,13 @@ PackagesInfo: |
  
    --command=FILE, -x Execute GDB commands from FILE.
    --init-command=FILE, -ix
-                      Like -x but execute commands before loading inferior.
+ 		     Like -x but execute commands before loading inferior.
    --eval-command=COMMAND, -ex
-                      Execute a single GDB command.
-                      May be used multiple times and in conjunction
-                      with --command.
+ 		     Execute a single GDB command.
+ 		     May be used multiple times and in conjunction
+ 		     with --command.
    --init-eval-command=COMMAND, -iex
-                      Like -ex but before loading inferior.
+ 		     Like -ex but before loading inferior.
    --nh               Do not read ~/.gdbinit.
    --nx               Do not read any .gdbinit files in any directory.
  
@@ -100,21 +101,21 @@ PackagesInfo: |
  
    --fullname         Output information used by emacs-GDB interface.
    --interpreter=INTERP
-                      Select a specific interpreter / user interface
+ 		     Select a specific interpreter / user interface.
    --tty=TTY          Use TTY for input/output by the program being debugged.
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
    --dbx              DBX compatibility mode.
    -q, --quiet, --silent
-                      Do not print version number on startup.
+ 		     Do not print version number on startup.
  
  Operating modes:
  
    --batch            Exit after processing options.
    --batch-silent     Like --batch, but suppress all gdb stdout output.
    --return-child-result
-                      GDB exit code will be the child's exit code.
+ 		     GDB exit code will be the child's exit code.
    --configuration    Print details about GDB configuration and then exit.
    --help             Print this message and then exit.
    --version          Print version information and then exit.
@@ -128,7 +129,11 @@ PackagesInfo: |
  
    --cd=DIR           Change current directory to DIR.
    --data-directory=DIR, -D
-                      Set GDB's data-directory to DIR.
+ 		     Set GDB's data-directory to DIR.
+ 
+ At startup, GDB reads the following early init files and executes their
+ commands:
+    None found.
  
  At startup, GDB reads the following init files and executes their commands:
     * system-wide init files: /etc/gdb/gdbinit
@@ -156,7 +161,7 @@ PackagesInfo: |
  
  Selection of debuggee and its files:
  
-   --args             Arguments after executable-file are passed to inferior
+   --args             Arguments after executable-file are passed to inferior.
    --core=COREFILE    Analyze the core dump COREFILE.
    --exec=EXECFILE    Use EXECFILE as the executable.
    --pid=PID          Attach to running process PID.
@@ -171,13 +176,13 @@ PackagesInfo: |
  
    --command=FILE, -x Execute GDB commands from FILE.
    --init-command=FILE, -ix
-                      Like -x but execute commands before loading inferior.
+ 		     Like -x but execute commands before loading inferior.
    --eval-command=COMMAND, -ex
-                      Execute a single GDB command.
-                      May be used multiple times and in conjunction
-                      with --command.
+ 		     Execute a single GDB command.
+ 		     May be used multiple times and in conjunction
+ 		     with --command.
    --init-eval-command=COMMAND, -iex
-                      Like -ex but before loading inferior.
+ 		     Like -ex but before loading inferior.
    --nh               Do not read ~/.gdbinit.
    --nx               Do not read any .gdbinit files in any directory.
  
@@ -185,21 +190,21 @@ PackagesInfo: |
  
    --fullname         Output information used by emacs-GDB interface.
    --interpreter=INTERP
-                      Select a specific interpreter / user interface
+ 		     Select a specific interpreter / user interface.
    --tty=TTY          Use TTY for input/output by the program being debugged.
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
    --dbx              DBX compatibility mode.
    -q, --quiet, --silent
-                      Do not print version number on startup.
+ 		     Do not print version number on startup.
  
  Operating modes:
  
    --batch            Exit after processing options.
    --batch-silent     Like --batch, but suppress all gdb stdout output.
    --return-child-result
-                      GDB exit code will be the child's exit code.
+ 		     GDB exit code will be the child's exit code.
    --configuration    Print details about GDB configuration and then exit.
    --help             Print this message and then exit.
    --version          Print version information and then exit.
@@ -213,7 +218,11 @@ PackagesInfo: |
  
    --cd=DIR           Change current directory to DIR.
    --data-directory=DIR, -D
-                      Set GDB's data-directory to DIR.
+ 		     Set GDB's data-directory to DIR.
+ 
+ At startup, GDB reads the following early init files and executes their
+ commands:
+    None found.
  
  At startup, GDB reads the following init files and executes their commands:
     * system-wide init files: /etc/gdb/gdbinit
@@ -247,7 +256,7 @@ PackagesInfo: |
  
  Selection of debuggee and its files:
  
-   --args             Arguments after executable-file are passed to inferior
+   --args             Arguments after executable-file are passed to inferior.
    --core=COREFILE    Analyze the core dump COREFILE.
    --exec=EXECFILE    Use EXECFILE as the executable.
    --pid=PID          Attach to running process PID.
@@ -262,13 +271,13 @@ PackagesInfo: |
  
    --command=FILE, -x Execute GDB commands from FILE.
    --init-command=FILE, -ix
-                      Like -x but execute commands before loading inferior.
+ 		     Like -x but execute commands before loading inferior.
    --eval-command=COMMAND, -ex
-                      Execute a single GDB command.
-                      May be used multiple times and in conjunction
-                      with --command.
+ 		     Execute a single GDB command.
+ 		     May be used multiple times and in conjunction
+ 		     with --command.
    --init-eval-command=COMMAND, -iex
-                      Like -ex but before loading inferior.
+ 		     Like -ex but before loading inferior.
    --nh               Do not read ~/.gdbinit.
    --nx               Do not read any .gdbinit files in any directory.
  
@@ -276,21 +285,21 @@ PackagesInfo: |
  
    --fullname         Output information used by emacs-GDB interface.
    --interpreter=INTERP
-                      Select a specific interpreter / user interface
+ 		     Select a specific interpreter / user interface.
    --tty=TTY          Use TTY for input/output by the program being debugged.
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
    --dbx              DBX compatibility mode.
    -q, --quiet, --silent
-                      Do not print version number on startup.
+ 		     Do not print version number on startup.
  
  Operating modes:
  
    --batch            Exit after processing options.
    --batch-silent     Like --batch, but suppress all gdb stdout output.
    --return-child-result
-                      GDB exit code will be the child's exit code.
+ 		     GDB exit code will be the child's exit code.
    --configuration    Print details about GDB configuration and then exit.
    --help             Print this message and then exit.
    --version          Print version information and then exit.
@@ -304,7 +313,11 @@ PackagesInfo: |
  
    --cd=DIR           Change current directory to DIR.
    --data-directory=DIR, -D
-                      Set GDB's data-directory to DIR.
+ 		     Set GDB's data-directory to DIR.
+ 
+ At startup, GDB reads the following early init files and executes their
+ commands:
+    None found.
  
  At startup, GDB reads the following init files and executes their commands:
     * system-wide init files: /etc/gdb/gdbinit
@@ -331,7 +344,7 @@ PackagesInfo: |
   This package contains a minimal version of GDB with optional features
   disabled.
  
- **Installed size:** `8.08 MB`  
+ **Installed size:** `9.18 MB`  
  **How to install:** `sudo apt install gdb-minimal`  
  
  {{< spoiler "Dependencies:" >}}
@@ -339,6 +352,7 @@ PackagesInfo: |
  * libdebuginfod1 
  * libexpat1 
  * libgcc-s1 
+ * libgmp10 
  * libipt2 
  * liblzma5 
  * libreadline8 
@@ -371,7 +385,7 @@ PackagesInfo: |
  
  Selection of debuggee and its files:
  
-   --args             Arguments after executable-file are passed to inferior
+   --args             Arguments after executable-file are passed to inferior.
    --core=COREFILE    Analyze the core dump COREFILE.
    --exec=EXECFILE    Use EXECFILE as the executable.
    --pid=PID          Attach to running process PID.
@@ -386,13 +400,13 @@ PackagesInfo: |
  
    --command=FILE, -x Execute GDB commands from FILE.
    --init-command=FILE, -ix
-                      Like -x but execute commands before loading inferior.
+ 		     Like -x but execute commands before loading inferior.
    --eval-command=COMMAND, -ex
-                      Execute a single GDB command.
-                      May be used multiple times and in conjunction
-                      with --command.
+ 		     Execute a single GDB command.
+ 		     May be used multiple times and in conjunction
+ 		     with --command.
    --init-eval-command=COMMAND, -iex
-                      Like -ex but before loading inferior.
+ 		     Like -ex but before loading inferior.
    --nh               Do not read ~/.gdbinit.
    --nx               Do not read any .gdbinit files in any directory.
  
@@ -400,20 +414,20 @@ PackagesInfo: |
  
    --fullname         Output information used by emacs-GDB interface.
    --interpreter=INTERP
-                      Select a specific interpreter / user interface
+ 		     Select a specific interpreter / user interface.
    --tty=TTY          Use TTY for input/output by the program being debugged.
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --dbx              DBX compatibility mode.
    -q, --quiet, --silent
-                      Do not print version number on startup.
+ 		     Do not print version number on startup.
  
  Operating modes:
  
    --batch            Exit after processing options.
    --batch-silent     Like --batch, but suppress all gdb stdout output.
    --return-child-result
-                      GDB exit code will be the child's exit code.
+ 		     GDB exit code will be the child's exit code.
    --configuration    Print details about GDB configuration and then exit.
    --help             Print this message and then exit.
    --version          Print version information and then exit.
@@ -427,7 +441,11 @@ PackagesInfo: |
  
    --cd=DIR           Change current directory to DIR.
    --data-directory=DIR, -D
-                      Set GDB's data-directory to DIR.
+ 		     Set GDB's data-directory to DIR.
+ 
+ At startup, GDB reads the following early init files and executes their
+ commands:
+    None found.
  
  At startup, GDB reads the following init files and executes their commands:
     * system-wide init files: /etc/gdb/gdbinit
@@ -454,7 +472,7 @@ PackagesInfo: |
   This package contains a version of GDB which supports multiple
   target architectures.
  
- **Installed size:** `15.39 MB`  
+ **Installed size:** `16.97 MB`  
  **How to install:** `sudo apt install gdb-multiarch`  
  
  {{< spoiler "Dependencies:" >}}
@@ -464,11 +482,12 @@ PackagesInfo: |
  * libdebuginfod1 
  * libexpat1 
  * libgcc-s1 
+ * libgmp10 
  * libipt2 
  * liblzma5 
  * libmpfr6 
  * libncursesw6 
- * libpython3.9 
+ * libpython3.10 
  * libreadline8 
  * libsource-highlight4v5 
  * libstdc++6 
@@ -489,7 +508,7 @@ PackagesInfo: |
  
  Selection of debuggee and its files:
  
-   --args             Arguments after executable-file are passed to inferior
+   --args             Arguments after executable-file are passed to inferior.
    --core=COREFILE    Analyze the core dump COREFILE.
    --exec=EXECFILE    Use EXECFILE as the executable.
    --pid=PID          Attach to running process PID.
@@ -504,13 +523,13 @@ PackagesInfo: |
  
    --command=FILE, -x Execute GDB commands from FILE.
    --init-command=FILE, -ix
-                      Like -x but execute commands before loading inferior.
+ 		     Like -x but execute commands before loading inferior.
    --eval-command=COMMAND, -ex
-                      Execute a single GDB command.
-                      May be used multiple times and in conjunction
-                      with --command.
+ 		     Execute a single GDB command.
+ 		     May be used multiple times and in conjunction
+ 		     with --command.
    --init-eval-command=COMMAND, -iex
-                      Like -ex but before loading inferior.
+ 		     Like -ex but before loading inferior.
    --nh               Do not read ~/.gdbinit.
    --nx               Do not read any .gdbinit files in any directory.
  
@@ -518,21 +537,21 @@ PackagesInfo: |
  
    --fullname         Output information used by emacs-GDB interface.
    --interpreter=INTERP
-                      Select a specific interpreter / user interface
+ 		     Select a specific interpreter / user interface.
    --tty=TTY          Use TTY for input/output by the program being debugged.
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
    --dbx              DBX compatibility mode.
    -q, --quiet, --silent
-                      Do not print version number on startup.
+ 		     Do not print version number on startup.
  
  Operating modes:
  
    --batch            Exit after processing options.
    --batch-silent     Like --batch, but suppress all gdb stdout output.
    --return-child-result
-                      GDB exit code will be the child's exit code.
+ 		     GDB exit code will be the child's exit code.
    --configuration    Print details about GDB configuration and then exit.
    --help             Print this message and then exit.
    --version          Print version information and then exit.
@@ -546,7 +565,11 @@ PackagesInfo: |
  
    --cd=DIR           Change current directory to DIR.
    --data-directory=DIR, -D
-                      Set GDB's data-directory to DIR.
+ 		     Set GDB's data-directory to DIR.
+ 
+ At startup, GDB reads the following early init files and executes their
+ commands:
+    None found.
  
  At startup, GDB reads the following init files and executes their commands:
     * system-wide init files: /etc/gdb/gdbinit
@@ -573,7 +596,7 @@ PackagesInfo: |
   This package contains the sources and patches which are needed
   to build GDB.
  
- **Installed size:** `28.50 MB`  
+ **Installed size:** `21.91 MB`  
  **How to install:** `sudo apt install gdb-source`  
  
  
@@ -590,7 +613,7 @@ PackagesInfo: |
   This package contains gdbserver.  Install this to debug remotely
   from another system where GDB is installed.
  
- **Installed size:** `845 KB`  
+ **Installed size:** `669 KB`  
  **How to install:** `sudo apt install gdbserver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -649,10 +672,11 @@ PackagesInfo: |
                              none
                              timestamp
    --remote-debug        Enable remote protocol debugging output.
+   --event-loop-debug    Enable event loop debugging output.
    --disable-packet=OPT1[,OPT2,...]
                          Disable support for RSP packets or features.
                            Options:
-                             vCont, Tthread, qC, qfThreadInfo and 
+                             vCont, T, Tthread, qC, qfThreadInfo and 
                              threads (disable all threading packets).
  
  For more information, consult the GDB manual (available as on-line 
