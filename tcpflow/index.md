@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: tcpflow
 Homepage: https://github.com/simsong/tcpflow
 Repository: https://salsa.debian.org/debian/tcpflow

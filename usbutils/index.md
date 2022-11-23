@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: usbutils
 Homepage: https://github.com/gregkh/usbutils
 Repository: 

@@ -42,8 +42,8 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     559 dhclient
-     714 NetworkManager
+     574 dhclient
+     686 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -54,8 +54,8 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     559 dhclient
-     714 NetworkManager
+     574 dhclient
+     686 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -66,8 +66,8 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     559 dhclient
-     714 NetworkManager
+     574 dhclient
+     686 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -78,8 +78,8 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     559 dhclient
-     714 NetworkManager
+     574 dhclient
+     686 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces
@@ -90,8 +90,8 @@ PackagesInfo: |
  and sometimes putting the interface back in managed mode
  
      PID Name
-     559 dhclient
-     714 NetworkManager
+     574 dhclient
+     686 NetworkManager
  
  Requested device "wlan0" does not exist.
  Run /usr/sbin/airmon-ng without any arguments to see available interfaces

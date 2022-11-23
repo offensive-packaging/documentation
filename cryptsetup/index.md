@@ -616,15 +616,6 @@ PackagesInfo: |
  
  - - -
  
- ### cryptsetup-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install cryptsetup-udeb`  
- 
- 
- - - -
- 
  ### libcryptsetup-dev
  
   Cryptsetup provides an interface for configuring encryption on block
@@ -665,15 +656,6 @@ PackagesInfo: |
  * libssl3 
  * libuuid1 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### libcryptsetup12-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libcryptsetup12-udeb`  
  
  
  - - -

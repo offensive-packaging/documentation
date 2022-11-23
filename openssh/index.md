@@ -463,15 +463,6 @@ PackagesInfo: |
  
  - - -
  
- ### openssh-client-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install openssh-client-udeb`  
- 
- 
- - - -
- 
  ### openssh-server
  
   This is the portable version of OpenSSH, a free implementation of
@@ -536,15 +527,6 @@ PackagesInfo: |
              [-E log_file] [-f config_file] [-g login_grace_time]
              [-h host_key_file] [-o option] [-p port] [-u len]
  ```
- 
- - - -
- 
- ### openssh-server-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install openssh-server-udeb`  
- 
  
  - - -
  

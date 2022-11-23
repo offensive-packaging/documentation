@@ -48,7 +48,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# msf-egghunter --help
+ root@kali:~# msf-egghunter -h
  Usage: msf-egghunter [options]
  Example: msf-egghunter -f python -e W00T
  

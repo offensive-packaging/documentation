@@ -81,10 +81,8 @@ PackagesInfo: |
  ```
  root@kali:~# defectdojo -h
  User _defectdojo already exists in PostgreSQL
- Database defectdojo already exists in PostgreSQL
- ALTER ROLE
- Waiting for database to be reachable 
- Making migrations
+ 
+  Creating database
  ```
  
  - - -

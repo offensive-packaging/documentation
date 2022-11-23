@@ -54,64 +54,64 @@ PackagesInfo: |
  
  ```
  root@kali:~# freerdp-shadow-cli -h
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - Usage: freerdp-shadow-cli [options]
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - Syntax:
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /flag (enables flag)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /option:<value> (specifies option with value)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     +toggle -toggle (enables or disables toggle, where '/' is a synonym of '+')
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - port:<number>       
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Server port
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - ipc-socket:<ipc-socket>
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Server IPC socket
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - bind-address:<bind-address>[,<another address>, ...]
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	An address to bind to. Use '[<ipv6>]' for IPv6 addresses, e.g. '[::1]' for localhost
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - monitors:<0,1,2...> 
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Select or list monitors
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - rect:<x,y,w,h>      
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Select rectangle within monitor to share
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     +
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - auth (default:off)  
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Clients must authenticate
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     -
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - may-view (default:on)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Clients may view without prompt
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     -
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - may-interact (default:on)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Clients may interact without prompt
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - sec:<rdp|tls|nla|ext>
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	force specific protocol security
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     -
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - sec-rdp (default:on)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	rdp protocol security
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     -
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - sec-tls (default:on)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	tls protocol security
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     -
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - sec-nla (default:on)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	nla protocol security
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     +
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - sec-ext (default:off)
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	nla extended protocol security
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - sam-file:<file>     
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	NTLM SAM file for NLA authentication
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - version             
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Print version
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - buildconfig         
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Print the build configuration
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] -     /
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - help                
- [05:40:08:645] [116517:116517] [INFO][com.freerdp.server.shadow] - 	Print help
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - Usage: freerdp-shadow-cli [options]
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - Syntax:
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /flag (enables flag)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /option:<value> (specifies option with value)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     +toggle -toggle (enables or disables toggle, where '/' is a synonym of '+')
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - port:<number>       
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Server port
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - ipc-socket:<ipc-socket>
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Server IPC socket
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - bind-address:<bind-address>[,<another address>, ...]
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	An address to bind to. Use '[<ipv6>]' for IPv6 addresses, e.g. '[::1]' for localhost
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - monitors:<0,1,2...> 
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Select or list monitors
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - rect:<x,y,w,h>      
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Select rectangle within monitor to share
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     +
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - auth (default:off)  
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Clients must authenticate
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     -
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - may-view (default:on)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Clients may view without prompt
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     -
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - may-interact (default:on)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Clients may interact without prompt
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - sec:<rdp|tls|nla|ext>
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	force specific protocol security
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     -
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - sec-rdp (default:on)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	rdp protocol security
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     -
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - sec-tls (default:on)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	tls protocol security
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     -
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - sec-nla (default:on)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	nla protocol security
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     +
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - sec-ext (default:off)
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	nla extended protocol security
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - sam-file:<file>     
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	NTLM SAM file for NLA authentication
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:718] [3059011:3059011] [INFO][com.freerdp.server.shadow] - version             
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Print version
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] - buildconfig         
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Print the build configuration
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] -     /
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] - help                
+ [10:01:53:719] [3059011:3059011] [INFO][com.freerdp.server.shadow] - 	Print help
  ```
  
  - - -

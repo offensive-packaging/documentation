@@ -3,7 +3,7 @@ Title: kali-wallpapers
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/kali-wallpapers
 Architectures: all
-Version: 2022.1.3
+Version: 2022.4.0
 Metapackages: kali-linux-everything kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -112,6 +112,21 @@ PackagesInfo: |
  
  **Installed size:** `140.51 MB`  
  **How to install:** `sudo apt install kali-wallpapers-legacy`  
+ 
+ 
+ - - -
+ 
+ ### kali-wallpapers-mobile-2023
+ 
+  This package contains multiple wallpapers for Kali Linux Mobile 2023 and future
+  releases.
+   
+  If you have multiple kali-wallpapers-YYYY.X packages on your system, you can
+  remove them all except the latest which is a dependency of kali-themes-common
+  and is thus required.
+ 
+ **Installed size:** `22.43 MB`  
+ **How to install:** `sudo apt install kali-wallpapers-mobile-2023`  
  
  
  - - -

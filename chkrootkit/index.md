@@ -33,50 +33,6 @@ PackagesInfo: |
  
  Check lastlog file for deleted entries
  
- ```
- root@kali:~# man chklastlog
- CHKLASTLOG(8)               System Manager's Manual              CHKLASTLOG(8)
- 
- NAME
-        chklastlog - check lastlog file for deleted entries
- 
- SYNOPSIS
-        chklastlog looks for users whose login has been erased from the lastlog
-        database.
- 
- DESCRIPTION
-        chklastlog reads all entries from /var/log/wtmp (a database of informa-
-        tion about logins and logouts) and checks that every user found in this
-        file has an entry in /var/log/lastlog.  It lists any users with  logins
-        in wtmp but no lastlogin information. This may suggest the user account
-        has been compromised and the attacker has tried to cover their tracks.
- 
-        chklastlog needs to be able to read /var/log/wtmp and  /var/log/lastlo-
-        gin.   Normally these files are world-readable so no special privileges
-        are required.
- 
- FILES
-        /var/log/wtmp
-               database of logins and logouts.
- 
-        /var/log/lastlog
-               database which contains info on the last login of each user.
- 
- SEE ALSO
-        wtmp(5), who(1), lastlog(8), last(1)
- 
- LIMITATIONS
-        wtmp may itself be incomplete because not all programmes  record  their
-        activity using utmp logging. See wtmp(8).
- 
-        chklastlog  will  not  detect missing entries if the user has logged in
-        after the lastlog entry was deleted.
- 
-        This program was originally designed to run on SunOS  4.x  systems.  On
-        other systems the output is undefined.
- 
-                                  Oct 23, 2021                    CHKLASTLOG(8)
- ```
  
  - - -
  

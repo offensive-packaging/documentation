@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: faraday-client
 Homepage: https://github.com/infobyte/faraday-client
 Repository: https://gitlab.com/kalilinux/packages/faraday-client

@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: My notebook is totally deprecated... gimme one!... :)
+ MOTD: Zaragoza, Palencia, Soria... Nice spanish cities to live in, give them a try!
  ```
  
  - - -

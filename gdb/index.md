@@ -3,7 +3,7 @@ Title: gdb
 Homepage: https://www.gnu.org/s/gdb/
 Repository: https://salsa.debian.org/gdb-team/gdb
 Architectures: any all
-Version: 12.1-3
+Version: 12.1-4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2,
   Go, and Ada. A must-have for any serious programmer.
  
- **Installed size:** `10.69 MB`  
+ **Installed size:** `10.59 MB`  
  **How to install:** `sudo apt install gdb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -344,7 +344,7 @@ PackagesInfo: |
   This package contains a minimal version of GDB with optional features
   disabled.
  
- **Installed size:** `9.18 MB`  
+ **Installed size:** `9.08 MB`  
  **How to install:** `sudo apt install gdb-minimal`  
  
  {{< spoiler "Dependencies:" >}}
@@ -472,7 +472,7 @@ PackagesInfo: |
   This package contains a version of GDB which supports multiple
   target architectures.
  
- **Installed size:** `16.97 MB`  
+ **Installed size:** `16.88 MB`  
  **How to install:** `sudo apt install gdb-multiarch`  
  
  {{< spoiler "Dependencies:" >}}
@@ -596,7 +596,7 @@ PackagesInfo: |
   This package contains the sources and patches which are needed
   to build GDB.
  
- **Installed size:** `21.91 MB`  
+ **Installed size:** `21.92 MB`  
  **How to install:** `sudo apt install gdb-source`  
  
  
@@ -613,7 +613,7 @@ PackagesInfo: |
   This package contains gdbserver.  Install this to debug remotely
   from another system where GDB is installed.
  
- **Installed size:** `669 KB`  
+ **Installed size:** `665 KB`  
  **How to install:** `sudo apt install gdbserver`  
  
  {{< spoiler "Dependencies:" >}}

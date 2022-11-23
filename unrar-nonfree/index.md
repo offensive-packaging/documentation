@@ -3,7 +3,7 @@ Title: unrar-nonfree
 Homepage: https://www.rarlab.com/
 Repository: https://github.com/debian-calibre/unrar-nonfree
 Architectures: any all
-Version: 1:6.2.1-2
+Version: 1:6.2.2-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

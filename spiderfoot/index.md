@@ -3,7 +3,7 @@ Title: spiderfoot
 Homepage: https://www.spiderfoot.net
 Repository: https://gitlab.com/kalilinux/packages/spiderfoot
 Architectures: all
-Version: 4.0-0kali2
+Version: 4.0-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/spiderfoot-logo.svg
 PackagesInfo: |

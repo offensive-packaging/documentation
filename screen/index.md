@@ -3,7 +3,7 @@ Title: screen
 Homepage: https://savannah.gnu.org/projects/screen
 Repository: https://salsa.debian.org/debian/screen
 Architectures: any
-Version: 4.9.0-2
+Version: 4.9.0-3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-sniffing-spoofing kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -22,6 +22,7 @@ PackagesInfo: |
  **How to install:** `sudo apt install screen`  
  
  {{< spoiler "Dependencies:" >}}
+ * debianutils 
  * libc6 
  * libcrypt1 
  * libpam0g 
@@ -74,15 +75,6 @@ PackagesInfo: |
  -x            Attach to a not detached screen. (Multi display mode).
  -X            Execute <cmd> as a screen command in the specified session.
  ```
- 
- - - -
- 
- ### screen-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install screen-udeb`  
- 
  
  - - -
  

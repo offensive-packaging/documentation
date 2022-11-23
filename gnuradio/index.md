@@ -3,7 +3,7 @@ Title: gnuradio
 Homepage: https://www.gnuradio.org/
 Repository: https://salsa.debian.org/bottoms/pkg-gnuradio
 Architectures: any all
-Version: 3.10.4.0-2
+Version: 3.10.4.0-3
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -31,7 +31,7 @@ PackagesInfo: |
   creating signal flow graphs and generating flow-graph source code.
   Also included are a variety of tools and utility programs.
  
- **Installed size:** `20.91 MB`  
+ **Installed size:** `20.89 MB`  
  **How to install:** `sudo apt install gnuradio`  
  
  {{< spoiler "Dependencies:" >}}
@@ -122,7 +122,7 @@ PackagesInfo: |
         tags_demo(1)      uhd_rx_cfile(1)     uhd_rx_nogui(1)     uhd_siggen(1)
         uhd_siggen_gui(1)
  
- DIAL_TONE 3.10.4.0                2022-09-29                      DIAL_TONE(1)
+ DIAL_TONE 3.10.4.0                2022-10-26                      DIAL_TONE(1)
  ```
  
  - - -
@@ -148,7 +148,7 @@ PackagesInfo: |
  SEE ALSO
         http://gnuradio.squarespace.com/examples/tag/qt
  
- display_qt 3.10.4.0               2022-09-29                     DISPLAY_QT(1)
+ display_qt 3.10.4.0               2022-10-26                     DISPLAY_QT(1)
  ```
  
  - - -
@@ -488,7 +488,7 @@ PackagesInfo: |
         gr_plot_float(1)    gr_plot_int(1)    gr_plot_iq(1)    gr_plot_psd_c(1)
         gr_plot_psd_f(1)  gr_plot_qt(1)  gr_plot_short(1)
  
- gr_plot_qt 3.10.4.0               2022-09-29                     GR_PLOT_QT(1)
+ gr_plot_qt 3.10.4.0               2022-10-26                     GR_PLOT_QT(1)
  ```
  
  - - -
@@ -918,7 +918,7 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `2.55 MB`  
+ **Installed size:** `2.53 MB`  
  **How to install:** `sudo apt install gnuradio-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -951,7 +951,7 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `248.40 MB`  
+ **Installed size:** `248.38 MB`  
  **How to install:** `sudo apt install gnuradio-doc`  
  
  
@@ -963,7 +963,7 @@ PackagesInfo: |
   These functions are also in gnuradio-core.
   Part of the main gnuradio build.
  
- **Installed size:** `656 KB`  
+ **Installed size:** `635 KB`  
  **How to install:** `sudo apt install libgnuradio-analog3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -990,7 +990,7 @@ PackagesInfo: |
   automatically discover the correct one to use.  Part of the main
   gnuradio build.
  
- **Installed size:** `572 KB`  
+ **Installed size:** `551 KB`  
  **How to install:** `sudo apt install libgnuradio-audio3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1016,7 +1016,7 @@ PackagesInfo: |
   These functions are also in gnuradio-core.
   Part of the main gnuradio build.
  
- **Installed size:** `3.03 MB`  
+ **Installed size:** `3.01 MB`  
  **How to install:** `sudo apt install libgnuradio-blocks3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1041,7 +1041,7 @@ PackagesInfo: |
   These functions are also in gnuradio-core.
   Part of the main gnuradio build.
  
- **Installed size:** `484 KB`  
+ **Installed size:** `463 KB`  
  **How to install:** `sudo apt install libgnuradio-channels3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1065,7 +1065,7 @@ PackagesInfo: |
   including bpsk, qpsk, gmsk and ofdm signals.
   Part of the main gnuradio build.
  
- **Installed size:** `1.68 MB`  
+ **Installed size:** `1.66 MB`  
  **How to install:** `sudo apt install libgnuradio-digital3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1091,7 +1091,7 @@ PackagesInfo: |
   DVB-S2, DVB-T, DVB-T2 digital video broadcast standards.
   Part of the main gnuradio build.
  
- **Installed size:** `1.42 MB`  
+ **Installed size:** `1.40 MB`  
  **How to install:** `sudo apt install libgnuradio-dtv3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1118,7 +1118,7 @@ PackagesInfo: |
   decoders for no-op dummmy, repetition, and convolutional classes.
   Part of the main gnuradio build.
  
- **Installed size:** `965 KB`  
+ **Installed size:** `944 KB`  
  **How to install:** `sudo apt install libgnuradio-fec3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1143,7 +1143,7 @@ PackagesInfo: |
   Uses single precision FFT from libfftw3-single3.
   Part of the main gnuradio build.
  
- **Installed size:** `344 KB`  
+ **Installed size:** `323 KB`  
  **How to install:** `sudo apt install libgnuradio-fft3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1168,7 +1168,7 @@ PackagesInfo: |
   PFB arbitrary resampler methods.
   Part of the main gnuradio build.
  
- **Installed size:** `1.04 MB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install libgnuradio-filter3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1197,7 +1197,7 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `572 KB`  
+ **Installed size:** `551 KB`  
  **How to install:** `sudo apt install libgnuradio-iio3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1223,7 +1223,7 @@ PackagesInfo: |
   sink blocks supporting both IPv4 and IPv6.
   Part of the main gnuradio build.
  
- **Installed size:** `620 KB`  
+ **Installed size:** `599 KB`  
  **How to install:** `sudo apt install libgnuradio-network3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1247,7 +1247,7 @@ PackagesInfo: |
   such blocks are analogs of streaming API functionality.
   Part of the main gnuradio build.
  
- **Installed size:** `656 KB`  
+ **Installed size:** `635 KB`  
  **How to install:** `sudo apt install libgnuradio-pdu3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1270,7 +1270,7 @@ PackagesInfo: |
   and threads in GNU Radio.
   Part of the main gnuradio build.
  
- **Installed size:** `412 KB`  
+ **Installed size:** `391 KB`  
  **How to install:** `sudo apt install libgnuradio-pmt3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1290,7 +1290,7 @@ PackagesInfo: |
   supports a QT Style Sheet (QSS) file to adjust the look.
   Part of the main gnuradio build.
  
- **Installed size:** `1.85 MB`  
+ **Installed size:** `1.83 MB`  
  **How to install:** `sudo apt install libgnuradio-qtgui3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1319,7 +1319,7 @@ PackagesInfo: |
   settings for logging, performance counters, and control port.
   Part of the main gnuradio build.
  
- **Installed size:** `2.07 MB`  
+ **Installed size:** `2.05 MB`  
  **How to install:** `sudo apt install libgnuradio-runtime3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1346,7 +1346,7 @@ PackagesInfo: |
   Soapy hardware drivers using the SoapySDR driver framework.
   Part of the main gnuradio build.
  
- **Installed size:** `476 KB`  
+ **Installed size:** `459 KB`  
  **How to install:** `sudo apt install libgnuradio-soapy3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1371,7 +1371,7 @@ PackagesInfo: |
   based upon finite state machine (FSM) class.
   Part of the main gnuradio build.
  
- **Installed size:** `1.02 MB`  
+ **Installed size:** `1.00 MB`  
  **How to install:** `sudo apt install libgnuradio-trellis3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1394,7 +1394,7 @@ PackagesInfo: |
   including the USRP family of software radio peripheral devices.
   Part of the main gnuradio build.
  
- **Installed size:** `636 KB`  
+ **Installed size:** `631 KB`  
  **How to install:** `sudo apt install libgnuradio-uhd3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1418,7 +1418,7 @@ PackagesInfo: |
   Implements input and output blocks.
   Part of the main gnuradio build.
  
- **Installed size:** `256 KB`  
+ **Installed size:** `235 KB`  
  **How to install:** `sudo apt install libgnuradio-video-sdl3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1442,7 +1442,7 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `336 KB`  
+ **Installed size:** `315 KB`  
  **How to install:** `sudo apt install libgnuradio-vocoder3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1468,25 +1468,16 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `128 KB`  
+ **Installed size:** `107 KB`  
  **How to install:** `sudo apt install libgnuradio-wavelet3.10.4`  
  
  {{< spoiler "Dependencies:" >}}
- * libboost-atomic1.74.0 
- * libboost-program-options1.74.0 
- * libboost-thread1.74.0 
  * libc6 
- * libfmt9 
  * libgcc-s1 
- * libgmp10 
- * libgmpxx4ldbl 
  * libgnuradio-pmt3.10.4 
  * libgnuradio-runtime3.10.4 
  * libgsl27 
- * libgslcblas0 
- * libspdlog1.10-fmt9
  * libstdc++6 
- * libvolk2.5 
  {{< /spoiler >}}
  
  
@@ -1500,7 +1491,7 @@ PackagesInfo: |
    
   Part of the main gnuradio build.
  
- **Installed size:** `400 KB`  
+ **Installed size:** `379 KB`  
  **How to install:** `sudo apt install libgnuradio-zeromq3.10.4`  
  
  {{< spoiler "Dependencies:" >}}

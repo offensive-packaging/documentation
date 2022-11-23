@@ -3,7 +3,7 @@ Title: subversion
 Homepage: http://subversion.apache.org/
 Repository: https://salsa.debian.org/jamessan/subversion
 Architectures: any all
-Version: 1.14.2-3
+Version: 1.14.2-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   server backend, to serve repositories over the http and https
   protocols.  See the 'subversion' package for more information.
  
- **Installed size:** `403 KB`  
+ **Installed size:** `402 KB`  
  **How to install:** `sudo apt install libapache2-mod-svn`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,7 +34,7 @@ PackagesInfo: |
   libraries.  This package is needed only in order to compile software
   that uses libsvn1.
  
- **Installed size:** `1.92 MB`  
+ **Installed size:** `1.91 MB`  
  **How to install:** `sudo apt install libsvn-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -51,7 +51,7 @@ PackagesInfo: |
   This package contains development (API) documentation for libsvn1, the
   Apache Subversion libraries.  See the 'libsvn1' package for more information.
  
- **Installed size:** `24.88 MB`  
+ **Installed size:** `25.37 MB`  
  **How to install:** `sudo apt install libsvn-doc`  
  
  
@@ -64,7 +64,7 @@ PackagesInfo: |
   for example, write a Java class that manipulates a Subversion repository
   or working copy.  See the 'subversion' package for more information.
  
- **Installed size:** `1.20 MB`  
+ **Installed size:** `1.21 MB`  
  **How to install:** `sudo apt install libsvn-java`  
  
  {{< spoiler "Dependencies:" >}}
@@ -132,7 +132,7 @@ PackagesInfo: |
   script that manipulates a Subversion repository or working copy.  See
   the 'subversion' package for more information.
  
- **Installed size:** `5.11 MB`  
+ **Installed size:** `8.56 MB`  
  **How to install:** `sudo apt install python3-subversion`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: commix
 Homepage: https://commixproject.com
 Repository: https://gitlab.com/kalilinux/packages/commix
 Architectures: all
-Version: 3.5-0kali1
+Version: 3.6-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/commix-logo.svg
 PackagesInfo: |

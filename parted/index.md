@@ -3,7 +3,7 @@ Title: parted
 Homepage: https://www.gnu.org/software/parted
 Repository: https://salsa.debian.org/parted-team/parted
 Architectures: any all
-Version: 3.5-2
+Version: 3.5-3
 Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   This package contains the static library and header files for
   libparted, which are really only of interest to parted developers.
  
- **Installed size:** `1.02 MB`  
+ **Installed size:** `950 KB`  
  **How to install:** `sudo apt install libparted-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -53,15 +53,6 @@ PackagesInfo: |
  
  - - -
  
- ### libparted-fs-resize0-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libparted-fs-resize0-udeb`  
- 
- 
- - - -
- 
  ### libparted-i18n
  
   GNU Parted is a program that allows you to create, destroy, resize,
@@ -71,7 +62,7 @@ PackagesInfo: |
    
   This package contains localization data.
  
- **Installed size:** `2.06 MB`  
+ **Installed size:** `2.04 MB`  
  **How to install:** `sudo apt install libparted-i18n`  
  
  {{< spoiler "Dependencies:" >}}
@@ -90,7 +81,7 @@ PackagesInfo: |
    
   This package contains the shared library.
  
- **Installed size:** `617 KB`  
+ **Installed size:** `524 KB`  
  **How to install:** `sudo apt install libparted2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -100,15 +91,6 @@ PackagesInfo: |
  * libdevmapper1.02.1 
  * libuuid1 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### libparted2-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libparted2-udeb`  
  
  
  - - -
@@ -229,17 +211,8 @@ PackagesInfo: |
   This package contains user documentation for parted and API
   documentation for the library packages.
  
- **Installed size:** `274 KB`  
+ **Installed size:** `249 KB`  
  **How to install:** `sudo apt install parted-doc`  
- 
- 
- - - -
- 
- ### parted-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install parted-udeb`  
  
  
  - - -

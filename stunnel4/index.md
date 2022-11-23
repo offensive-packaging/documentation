@@ -3,7 +3,7 @@ Title: stunnel4
 Homepage: https://www.stunnel.org/
 Repository: https://salsa.debian.org/debian/stunnel/
 Architectures: any
-Version: 3:5.67-1
+Version: 3:5.67-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: images/stunnel4-logo.svg
 PackagesInfo: |

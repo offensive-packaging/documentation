@@ -4,7 +4,7 @@ Homepage: https://hak5.org
 Repository: https://gitlab.com/kalilinux/packages/hak5-wifi-coconut
 Architectures: any
 Version: 1.1.0-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### hak5-wifi-coconut

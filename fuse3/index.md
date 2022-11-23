@@ -84,15 +84,6 @@ PackagesInfo: |
  
  - - -
  
- ### fuse3-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install fuse3-udeb`  
- 
- 
- - - -
- 
  ### libfuse3-3
  
   Filesystem in Userspace (FUSE) is a simple interface for userspace programs to
@@ -108,15 +99,6 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### libfuse3-3-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libfuse3-3-udeb`  
  
  
  - - -

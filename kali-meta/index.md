@@ -3,7 +3,7 @@ Title: kali-meta
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-meta
 Architectures: any all
-Version: 2022.4.9
+Version: 2022.4.10
 Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -296,56 +296,6 @@ PackagesInfo: |
  
  - - -
  
- ### kali-linux-arm
- 
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on applications that are particularly interesting
-  to run on ARM devices.
- 
- **Installed size:** `21 KB`  
- **How to install:** `sudo apt install kali-linux-arm`  
- 
- {{< spoiler "Dependencies:" >}}
- * abootimg
- * aircrack-ng
- * cewl
- * cgpt
- * crunch
- * dnsrecon
- * ethtool
- * exploitdb
- * fake-hwclock
- * hydra
- * initramfs-tools
- * john
- * kali-linux-core
- * libnfc-bin
- * medusa
- * metasploit-framework
- * mfoc
- * ncrack
- * nmap
- * passing-the-hash
- * proxychains4
- * recon-ng
- * sqlmap
- * tcpdump
- * theharvester
- * tshark
- * u-boot-tools
- * usbutils
- * vboot-kernel-utils
- * vboot-utils
- * windows-binaries
- * winexe
- * wpscan
- {{< /spoiler >}}
- 
- 
- - - -
- 
  ### kali-linux-core
  
   This is Kali Linux, the most advanced penetration testing and security
@@ -437,6 +387,7 @@ PackagesInfo: |
  * bettercap-ui
  * bing-ip2hosts
  * bloodhound
+ * bloodhound.py
  * bruteforce-salted-openssl
  * bruteforce-wallet
  * bruteshark
@@ -488,6 +439,7 @@ PackagesInfo: |
  * google-nexus-tools
  * gospider
  * gtkhash
+ * hak5-wifi-coconut
  * hashrat
  * hb-honeypot
  * hcxtools

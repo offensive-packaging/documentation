@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: u-boot
 Homepage: https://www.denx.de/wiki/U-Boot/
 Repository: https://salsa.debian.org/debian/u-boot

@@ -570,15 +570,6 @@ PackagesInfo: |
  
  - - -
  
- ### eject-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install eject-udeb`  
- 
- 
- - - -
- 
  ### fdisk
  
   This package contains the classic fdisk, sfdisk and cfdisk partitioning
@@ -765,15 +756,6 @@ PackagesInfo: |
  
  - - -
  
- ### fdisk-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install fdisk-udeb`  
- 
- 
- - - -
- 
  ### libblkid-dev
  
   The blkid library allows system programs such as fsck and mount to
@@ -808,15 +790,6 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### libblkid1-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libblkid1-udeb`  
  
  
  - - -
@@ -858,15 +831,6 @@ PackagesInfo: |
  
  - - -
  
- ### libfdisk1-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libfdisk1-udeb`  
- 
- 
- - - -
- 
  ### libmount-dev
  
   This device mounting library is used by mount and umount helpers.
@@ -902,15 +866,6 @@ PackagesInfo: |
  
  - - -
  
- ### libmount1-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libmount1-udeb`  
- 
- 
- - - -
- 
  ### libsmartcols-dev
  
   This smart column output alignment library is used by fdisk utilities.
@@ -942,15 +897,6 @@ PackagesInfo: |
  
  - - -
  
- ### libsmartcols1-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libsmartcols1-udeb`  
- 
- 
- - - -
- 
  ### libuuid1
  
   The libuuid library generates and parses 128-bit Universally Unique
@@ -967,15 +913,6 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### libuuid1-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libuuid1-udeb`  
  
  
  - - -
@@ -4673,15 +4610,6 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * util-linux 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### util-linux-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install util-linux-udeb`  
  
  
  - - -

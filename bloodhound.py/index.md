@@ -4,7 +4,7 @@ Homepage: https://github.com/fox-it/BloodHound.py
 Repository: https://gitlab.com/kalilinux/packages/bloodhound.py
 Architectures: all
 Version: 1.4.1-0kali1
-Metapackages: 
+Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### bloodhound.py

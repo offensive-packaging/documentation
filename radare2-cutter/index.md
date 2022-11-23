@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: radare2-cutter
 Homepage: https://cutter.re
 Repository: https://salsa.debian.org/pkg-security-team/radare2-cutter

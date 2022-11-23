@@ -3,7 +3,7 @@ Title: aflplusplus
 Homepage: https://github.com/vanhauser-thc/AFLplusplus
 Repository: https://salsa.debian.org/pkg-security-team/aflplusplus
 Architectures: any all
-Version: 4.02c-1
+Version: 4.04c-1
 Metapackages: kali-linux-everything kali-tools-fuzzing kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++ is
   installed.
  
- **Installed size:** `71 KB`  
+ **Installed size:** `73 KB`  
  **How to install:** `sudo apt install afl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -38,7 +38,7 @@ PackagesInfo: |
    
   afl++ is a fork of the unmaintained afl.
  
- **Installed size:** `1.92 MB`  
+ **Installed size:** `2.05 MB`  
  **How to install:** `sudo apt install afl++`  
  
  {{< spoiler "Dependencies:" >}}
@@ -58,7 +58,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-analyze -h
- afl-analyze++4.02c by Michal Zalewski
+ afl-analyze++4.04c by Michal Zalewski
  
  afl-analyze [ options ] -- /path/to/target_app [ ... ]
  
@@ -96,7 +96,7 @@ PackagesInfo: |
  
  ##### afl-c++
  
- Afl-c++ (8)          - afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-c++ (8)          - afl-cc++4.04c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-c++ --help
@@ -1281,7 +1281,7 @@ PackagesInfo: |
  
  ##### afl-cc
  
- Afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-cc++4.04c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-cc --help
@@ -4834,7 +4834,7 @@ PackagesInfo: |
  
  ##### afl-clang-fast
  
- Afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-cc++4.04c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-clang-fast --help
@@ -6019,7 +6019,7 @@ PackagesInfo: |
  
  ##### afl-clang-fast++
  
- Afl-clang-fast++ (8) - afl-cc++4.02c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ Afl-clang-fast++ (8) - afl-cc++4.04c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
  
  ```
  root@kali:~# afl-clang-fast++ --help
@@ -7219,12 +7219,13 @@ PackagesInfo: |
  Execution control settings:
    -f file       - location read by the fuzzed program (stdin)
    -m megs       - memory limit for child process ( MB)
-   -t msec       - run time limit for child process (none)
+   -t msec       - run time limit for child process (default: none)
    -O            - use binary-only instrumentation (FRIDA mode)
    -Q            - use binary-only instrumentation (QEMU mode)
    -U            - use unicorn-based instrumentation (unicorn mode)
  
  Minimization settings:
+   -A            - allow crashes and timeouts (not recommended)
    -C            - keep crashing inputs, reject everything else
    -e            - solve for edge coverage only, ignore hit counts
  
@@ -7237,6 +7238,7 @@ PackagesInfo: |
  AFL_KEEP_TRACES: leave the temporary <out_dir>/.traces directory
  AFL_KILL_SIGNAL: Signal delivered to child processes on timeout (default: SIGKILL)
  AFL_NO_FORKSRV: run target via execve instead of using the forkserver
+ AFL_CMIN_ALLOW_ANY: write tuples for crashing inputs also
  AFL_PATH: path for the afl-showmap binary if not found anywhere in PATH
  AFL_PRINT_FILENAMES: If set, the filename currently processed will be printed to stdout
  AFL_SKIP_BIN_CHECK: skip afl instrumentation checks for target binary
@@ -7269,6 +7271,7 @@ PackagesInfo: |
    
  Minimization settings:
  
+   -A            - allow crashing and timeout inputs
    -C            - keep crashing inputs, reject everything else
    -e            - solve for edge coverage only, ignore hit counts
  
@@ -7289,7 +7292,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-fuzz --help
- afl-fuzz++4.02c based on afl by Michal Zalewski and a large online community
+ afl-fuzz++4.04c based on afl by Michal Zalewski and a large online community
  
  afl-fuzz [ options ] -- /path/to/fuzzed_app [ ... ]
  
@@ -7340,8 +7343,9 @@ PackagesInfo: |
                    Note: not precise and can have several more executions.
  
  Other stuff:
-   -M/-S id      - distributed mode (see docs/parallel_fuzzing.md)
-                   -M auto-sets -D, -Z (use -d to disable -D) and no trimming
+   -M/-S id      - distributed mode (-M sets -Z and disables trimming)
+                   see docs/fuzzing_in_depth.md#c-using-multiple-cores
+                   for effective recommendations for parallel fuzzing.
    -F path       - sync to a foreign fuzzer queue directory (requires -M, can
                    be specified up to 32 times)
    -T text       - text banner to show on the screen
@@ -7394,6 +7398,7 @@ PackagesInfo: |
  AFL_NO_CPU_RED: avoid red color for showing very high cpu usage
  AFL_NO_FORKSRV: run target via execve instead of using the forkserver
  AFL_NO_SNAPSHOT: do not use the snapshot feature (if the snapshot lkm is loaded)
+ AFL_NO_STARTUP_CALIBRATION: no initial seed calibration, start fuzzing at once
  AFL_NO_UI: switch status screen off
  AFL_PATH: path to AFL support binaries
  AFL_PYTHON_MODULE: mutate and trim inputs with the specified Python module
@@ -7418,7 +7423,7 @@ PackagesInfo: |
  AFL_PERSISTENT: enforce persistent mode (if __AFL_LOOP is in a shared lib
  AFL_DEFER_FORKSRV: enforced deferred forkserver (__AFL_INIT is in a .so
  
- Compiled with Python 3.10.6 module support, see docs/custom_mutator.md
+ Compiled with Python 3.10.8 module support, see docs/custom_mutator.md
  Compiled without AFL_PERSISTENT_RECORD support.
  Compiled with shmat support.
  For additional help please consult docs/README.md :)
@@ -7432,6 +7437,78 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-g++ --help
+ Usage: g++ [options] file...
+ Options:
+   -pass-exit-codes         Exit with highest error code from a phase.
+   --help                   Display this information.
+   --target-help            Display target specific command line options (including assembler and linker options).
+   --help={common|optimizers|params|target|warnings|[^]{joined|separate|undocumented}}[,...].
+                            Display specific types of command line options.
+   (Use '-v --help' to display command line options of sub-processes).
+   --version                Display compiler version information.
+   -dumpspecs               Display all of the built in spec strings.
+   -dumpversion             Display the version of the compiler.
+   -dumpmachine             Display the compiler's target processor.
+   -foffload=<targets>      Specify offloading targets.
+   -print-search-dirs       Display the directories in the compiler's search path.
+   -print-libgcc-file-name  Display the name of the compiler's companion library.
+   -print-file-name=<lib>   Display the full path to library <lib>.
+   -print-prog-name=<prog>  Display the full path to compiler component <prog>.
+   -print-multiarch         Display the target's normalized GNU triplet, used as
+                            a component in the library path.
+   -print-multi-directory   Display the root directory for versions of libgcc.
+   -print-multi-lib         Display the mapping between command line options and
+                            multiple library search directories.
+   -print-multi-os-directory Display the relative path to OS libraries.
+   -print-sysroot           Display the target libraries directory.
+   -print-sysroot-headers-suffix Display the sysroot suffix used to find headers.
+   -Wa,<options>            Pass comma-separated <options> on to the assembler.
+   -Wp,<options>            Pass comma-separated <options> on to the preprocessor.
+   -Wl,<options>            Pass comma-separated <options> on to the linker.
+   -Xassembler <arg>        Pass <arg> on to the assembler.
+   -Xpreprocessor <arg>     Pass <arg> on to the preprocessor.
+   -Xlinker <arg>           Pass <arg> on to the linker.
+   -save-temps              Do not delete intermediate files.
+   -save-temps=<arg>        Do not delete intermediate files.
+   -no-canonical-prefixes   Do not canonicalize paths when building relative
+                            prefixes to other gcc components.
+   -pipe                    Use pipes rather than intermediate files.
+   -time                    Time the execution of each subprocess.
+   -specs=<file>            Override built-in specs with the contents of <file>.
+   -std=<standard>          Assume that the input sources are for <standard>.
+   --sysroot=<directory>    Use <directory> as the root directory for headers
+                            and libraries.
+   -B <directory>           Add <directory> to the compiler's search paths.
+   -v                       Display the programs invoked by the compiler.
+   -###                     Like -v but options quoted and commands not executed.
+   -E                       Preprocess only; do not compile, assemble or link.
+   -S                       Compile only; do not assemble or link.
+   -c                       Compile and assemble, but do not link.
+   -o <file>                Place the output into <file>.
+   -pie                     Create a dynamically linked position independent
+                            executable.
+   -shared                  Create a shared library.
+   -x <language>            Specify the language of the following input files.
+                            Permissible languages include: c c++ assembler none
+                            'none' means revert to the default behavior of
+                            guessing the language based on the file's extension.
+ 
+ Options starting with -g, -f, -m, -O, -W, or --param are automatically
+  passed on to the various sub-processes invoked by g++.  In order to pass
+  other options on to these processes the -W<letter> options must be used.
+ 
+ For bug reporting instructions, please see:
+ <file:///usr/share/doc/gcc-12/README.Bugs>.
+ ```
+ 
+ - - -
+ 
+ ##### afl-g++-fast
+ 
+ Afl-g++-fast (8)     - afl-cc++4.04c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ 
+ ```
+ root@kali:~# afl-g++-fast --help
  Usage: g++ [options] file...
  Options:
    -pass-exit-codes         Exit with highest error code from a phase.
@@ -7569,13 +7646,85 @@ PackagesInfo: |
  
  - - -
  
+ ##### afl-gcc-fast
+ 
+ Afl-cc++4.04c by Michal Zalewski, Laszlo Szekeres, Marc Heuse afl-cc
+ 
+ ```
+ root@kali:~# afl-gcc-fast --help
+ Usage: gcc [options] file...
+ Options:
+   -pass-exit-codes         Exit with highest error code from a phase.
+   --help                   Display this information.
+   --target-help            Display target specific command line options (including assembler and linker options).
+   --help={common|optimizers|params|target|warnings|[^]{joined|separate|undocumented}}[,...].
+                            Display specific types of command line options.
+   (Use '-v --help' to display command line options of sub-processes).
+   --version                Display compiler version information.
+   -dumpspecs               Display all of the built in spec strings.
+   -dumpversion             Display the version of the compiler.
+   -dumpmachine             Display the compiler's target processor.
+   -foffload=<targets>      Specify offloading targets.
+   -print-search-dirs       Display the directories in the compiler's search path.
+   -print-libgcc-file-name  Display the name of the compiler's companion library.
+   -print-file-name=<lib>   Display the full path to library <lib>.
+   -print-prog-name=<prog>  Display the full path to compiler component <prog>.
+   -print-multiarch         Display the target's normalized GNU triplet, used as
+                            a component in the library path.
+   -print-multi-directory   Display the root directory for versions of libgcc.
+   -print-multi-lib         Display the mapping between command line options and
+                            multiple library search directories.
+   -print-multi-os-directory Display the relative path to OS libraries.
+   -print-sysroot           Display the target libraries directory.
+   -print-sysroot-headers-suffix Display the sysroot suffix used to find headers.
+   -Wa,<options>            Pass comma-separated <options> on to the assembler.
+   -Wp,<options>            Pass comma-separated <options> on to the preprocessor.
+   -Wl,<options>            Pass comma-separated <options> on to the linker.
+   -Xassembler <arg>        Pass <arg> on to the assembler.
+   -Xpreprocessor <arg>     Pass <arg> on to the preprocessor.
+   -Xlinker <arg>           Pass <arg> on to the linker.
+   -save-temps              Do not delete intermediate files.
+   -save-temps=<arg>        Do not delete intermediate files.
+   -no-canonical-prefixes   Do not canonicalize paths when building relative
+                            prefixes to other gcc components.
+   -pipe                    Use pipes rather than intermediate files.
+   -time                    Time the execution of each subprocess.
+   -specs=<file>            Override built-in specs with the contents of <file>.
+   -std=<standard>          Assume that the input sources are for <standard>.
+   --sysroot=<directory>    Use <directory> as the root directory for headers
+                            and libraries.
+   -B <directory>           Add <directory> to the compiler's search paths.
+   -v                       Display the programs invoked by the compiler.
+   -###                     Like -v but options quoted and commands not executed.
+   -E                       Preprocess only; do not compile, assemble or link.
+   -S                       Compile only; do not assemble or link.
+   -c                       Compile and assemble, but do not link.
+   -o <file>                Place the output into <file>.
+   -pie                     Create a dynamically linked position independent
+                            executable.
+   -shared                  Create a shared library.
+   -x <language>            Specify the language of the following input files.
+                            Permissible languages include: c c++ assembler none
+                            'none' means revert to the default behavior of
+                            guessing the language based on the file's extension.
+ 
+ Options starting with -g, -f, -m, -O, -W, or --param are automatically
+  passed on to the various sub-processes invoked by gcc.  In order to pass
+  other options on to these processes the -W<letter> options must be used.
+ 
+ For bug reporting instructions, please see:
+ <file:///usr/share/doc/gcc-12/README.Bugs>.
+ ```
+ 
+ - - -
+ 
  ##### afl-gotcpu
  
  (unknown subject)
  
  ```
  root@kali:~# afl-gotcpu -h
- afl-gotcpu++4.02c by Michal Zalewski
+ afl-gotcpu++4.04c by Michal Zalewski
  
  afl-gotcpu 
  
@@ -7684,7 +7833,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-showmap -h
- afl-showmap++4.02c by Michal Zalewski
+ afl-showmap++4.04c by Michal Zalewski
  
  afl-showmap [ options ] -- /path/to/target_app [ ... ]
  
@@ -7759,7 +7908,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# afl-tmin -h
- afl-tmin++4.02c by Michal Zalewski
+ afl-tmin++4.04c by Michal Zalewski
  
  afl-tmin [ options ] -- /path/to/target_app [ ... ]
  
@@ -7825,7 +7974,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++ is
   installed.
  
- **Installed size:** `71 KB`  
+ **Installed size:** `73 KB`  
  **How to install:** `sudo apt install afl++-clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -7844,7 +7993,7 @@ PackagesInfo: |
   This package provides the documentation, a collection of special crafted test
   cases, vulnerability samples and experimental stuff.
  
- **Installed size:** `438 KB`  
+ **Installed size:** `440 KB`  
  **How to install:** `sudo apt install afl++-doc`  
  
  
@@ -7855,7 +8004,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++-clang is
   installed.
  
- **Installed size:** `71 KB`  
+ **Installed size:** `73 KB`  
  **How to install:** `sudo apt install afl-clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -7870,7 +8019,7 @@ PackagesInfo: |
   This is a transitional package. It can safely be removed once afl++-doc is
   installed.
  
- **Installed size:** `71 KB`  
+ **Installed size:** `73 KB`  
  **How to install:** `sudo apt install afl-doc`  
  
  {{< spoiler "Dependencies:" >}}

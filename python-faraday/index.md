@@ -156,20 +156,50 @@ PackagesInfo: |
  Faraday server's launcher
  
  ```
- root@kali:~# faraday-server -h
- usage: faraday-server [-h] [--debug] [--port PORT]
-                       [--websocket_port WEBSOCKET_PORT]
-                       [--bind_address BIND_ADDRESS] [-v]
+ root@kali:~# man faraday-server
+ FARADAY-SERVER(1)                User Commands               FARADAY-SERVER(1)
  
- options:
-   -h, --help            show this help message and exit
-   --debug               run Faraday Server in debug mode
-   --port PORT           Overides server.ini port configuration
-   --websocket_port WEBSOCKET_PORT
-                         Overides server.ini websocket port configuration
-   --bind_address BIND_ADDRESS
-                         Overides server.ini bind_address configuration
-   -v, --version         show program's version number and exit
+ NAME
+        faraday-server - Faraday server's launcher
+ 
+ SYNOPSIS
+        faraday-server  [-h]  [--ssl]  [--debug] [--start] [--stop] [--restart]
+        [--port PORT] [--websocket_port WEBSOCKET_PORT] [--ind_address BIND_AD-
+        DRESS] [-v]
+ 
+ OPTIONS
+        -h, --help
+               show this help message and exit
+ 
+        --ssl  enable HTTPS
+ 
+        --debug
+               run Faraday Server in debug mode
+ 
+        --start
+               run Faraday Server in background
+ 
+        --stop stop Faraday Server
+ 
+        --restart
+               Restart Faraday Server
+ 
+        --port PORT
+               Overrides server.ini port configuration
+ 
+        --websocket_port WEBSOCKET_PORT
+               Overrides server.ini websocket port configuration
+ 
+        --bind_address BIND_ADDRESS
+               Overrides server.ini bind_address configuration
+ 
+        -v, --version
+               show program's version number and exit
+ 
+ SEE ALSO
+        /usr/share/doc/python-faraday/README.Debian
+ 
+ Faraday v3.8.0                     june 2019                 FARADAY-SERVER(1)
  ```
  
  - - -
@@ -179,7 +209,11 @@ PackagesInfo: |
  
  ```
  root@kali:~# python-faraday -h
- >>> Start faraday.service
+ >>> Init database
+ This script will  create a new postgres user  and  save faraday-server settings (server.ini).
+ WARNING: Role faraday_postgresql already exists, skipping creation 
+ Could not find connection string.
+ Please configure [database] section with correct postgresql string. Ex. postgresql+psycopg2://faraday_postgresql:PASSWORD@localhost/faraday
  ```
  
  - - -

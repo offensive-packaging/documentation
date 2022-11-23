@@ -241,15 +241,6 @@ PackagesInfo: |
  
  - - -
  
- ### dmsetup-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install dmsetup-udeb`  
- 
- 
- - - -
- 
  ### libdevmapper-dev
  
   The Linux Kernel Device Mapper is the LVM (Linux Logical Volume Management)
@@ -318,15 +309,6 @@ PackagesInfo: |
  * libselinux1 
  * libudev1 
  {{< /spoiler >}}
- 
- 
- - - -
- 
- ### libdevmapper1.02.1-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install libdevmapper1.02.1-udeb`  
  
  
  - - -
@@ -3400,15 +3382,6 @@ PackagesInfo: |
    --adopt | -A 0|1
          Adopt locks from a previous instance of lvmlockd.
  ```
- 
- - - -
- 
- ### lvm2-udeb
- 
- 
- **Installed size:** ` KB`  
- **How to install:** `sudo apt install lvm2-udeb`  
- 
  
  - - -
  

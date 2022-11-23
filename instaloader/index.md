@@ -3,7 +3,7 @@ Title: instaloader
 Homepage: https://github.com/instaloader/instaloader
 Repository: https://salsa.debian.org/debian/instaloader
 Architectures: all
-Version: 4.9.4+ds-1
+Version: 4.9.5+ds-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

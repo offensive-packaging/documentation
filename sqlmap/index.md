@@ -34,9 +34,9 @@ PackagesInfo: |
  root@kali:~# sqlmap -h
          ___
         __H__
-  ___ ___[)]_____ ___ ___  {1.6.11#stable}
- |_ -| . [,]     | .'| . |
- |___|_  [,]_|_|_|__,|  _|
+  ___ ___["]_____ ___ ___  {1.6.11#stable}
+ |_ -| . [']     | .'| . |
+ |___|_  [)]_|_|_|__,|  _|
        |_|V...       |_|   https://sqlmap.org
  
  Usage: python3 sqlmap [options]
