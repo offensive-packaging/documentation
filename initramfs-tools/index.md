@@ -1,5 +1,5 @@
 ---
-archived: true
+archived: "true"
 Title: initramfs-tools
 Homepage: 
 Repository: https://salsa.debian.org/kernel-team/initramfs-tools

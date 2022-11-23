@@ -1,5 +1,5 @@
 ---
-archived: true
+archived: "true"
 Title: xprobe
 Homepage: 
 Repository: https://salsa.debian.org/pkg-security-team/xprobe

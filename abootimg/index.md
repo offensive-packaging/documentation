@@ -1,5 +1,5 @@
 ---
-archived: true
+archived: "true"
 Title: abootimg
 Homepage: http://gitorious.org/ac100/abootimg
 Repository: 

@@ -1,5 +1,5 @@
 ---
-archived: true
+archived: "true"
 Title: netkit-telnet
 Homepage: http://www.hcs.harvard.edu/~dholland/computers/netkit.html
 Repository: https://salsa.debian.org/debian/netkit-telnet

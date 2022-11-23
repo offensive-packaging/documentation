@@ -1,5 +1,5 @@
 ---
-archived: true
+archived: "true"
 Title: netkit-ftp
 Homepage: 
 Repository: 

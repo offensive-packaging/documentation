@@ -1,5 +1,5 @@
 ---
-archived: true
+archived: "true"
 Title: fake-hwclock
 Homepage: 
 Repository: https://git.einval.com/cgi-bin/gitweb.cgi?p=fake-hwclock.git
