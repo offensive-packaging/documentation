@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: crack
 Homepage: https://www.crypticide.com/alecm/software/crack/
 Repository: https://salsa.debian.org/pkg-security-team/crack
@@ -55,7 +56,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# Crack-Reporter -h
- ---- passwords cracked as of Wed Nov 23 08:01:32 EST 2022 ----
+ ---- passwords cracked as of Wed Nov 23 17:20:08 EST 2022 ----
  
  
  ---- errors and warnings ----
@@ -72,7 +73,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# Crack-Reporter -h
- ---- passwords cracked as of Wed Nov 23 08:01:32 EST 2022 ----
+ ---- passwords cracked as of Wed Nov 23 17:20:08 EST 2022 ----
  
  
  ---- errors and warnings ----
@@ -139,7 +140,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# Crack-Reporter -h
- ---- passwords cracked as of Wed Nov 23 08:01:37 EST 2022 ----
+ ---- passwords cracked as of Wed Nov 23 17:20:12 EST 2022 ----
  
  
  ---- errors and warnings ----

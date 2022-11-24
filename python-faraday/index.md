@@ -87,34 +87,8 @@ PackagesInfo: |
  Kali script to start and stop faraday-server and faraday-client
  
  ```
- root@kali:~# man faraday
- FARADAY(1)                       User Commands                      FARADAY(1)
- 
- NAME
-        Faraday  -  Kali  script  to start and stop faraday-server and faraday-
-        client
- 
- SYNOPSIS
-        faraday [OPTIONS for faraday-client]
- 
- DESCRIPTION
-        Kali Faraday's launcher
- 
-        It starts the faraday server with starting the Kali python-faraday ser-
-        vice  and  the  first time it initializes the PostgreSQL database.  The
-        first time it asks you a new password for the username  "faraday"  Then
-        it starts the faraday client.
- 
-        The  client and server is closed when the client windows is closed.  It
-        also stops the service.
- 
- OPTIONS
-        See faraday-client manpage or faraday-client -h
- 
- SEE ALSO
-        /usr/share/doc/python-faraday/README.Debian
- 
- Faraday                            June 2019                        FARADAY(1)
+ root@kali:~# faraday -h
+ >>> Start faraday.service
  ```
  
  - - -
@@ -156,50 +130,20 @@ PackagesInfo: |
  Faraday server's launcher
  
  ```
- root@kali:~# man faraday-server
- FARADAY-SERVER(1)                User Commands               FARADAY-SERVER(1)
+ root@kali:~# faraday-server -h
+ usage: faraday-server [-h] [--debug] [--port PORT]
+                       [--websocket_port WEBSOCKET_PORT]
+                       [--bind_address BIND_ADDRESS] [-v]
  
- NAME
-        faraday-server - Faraday server's launcher
- 
- SYNOPSIS
-        faraday-server  [-h]  [--ssl]  [--debug] [--start] [--stop] [--restart]
-        [--port PORT] [--websocket_port WEBSOCKET_PORT] [--ind_address BIND_AD-
-        DRESS] [-v]
- 
- OPTIONS
-        -h, --help
-               show this help message and exit
- 
-        --ssl  enable HTTPS
- 
-        --debug
-               run Faraday Server in debug mode
- 
-        --start
-               run Faraday Server in background
- 
-        --stop stop Faraday Server
- 
-        --restart
-               Restart Faraday Server
- 
-        --port PORT
-               Overrides server.ini port configuration
- 
-        --websocket_port WEBSOCKET_PORT
-               Overrides server.ini websocket port configuration
- 
-        --bind_address BIND_ADDRESS
-               Overrides server.ini bind_address configuration
- 
-        -v, --version
-               show program's version number and exit
- 
- SEE ALSO
-        /usr/share/doc/python-faraday/README.Debian
- 
- Faraday v3.8.0                     june 2019                 FARADAY-SERVER(1)
+ options:
+   -h, --help            show this help message and exit
+   --debug               run Faraday Server in debug mode
+   --port PORT           Overides server.ini port configuration
+   --websocket_port WEBSOCKET_PORT
+                         Overides server.ini websocket port configuration
+   --bind_address BIND_ADDRESS
+                         Overides server.ini bind_address configuration
+   -v, --version         show program's version number and exit
  ```
  
  - - -
@@ -209,11 +153,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# python-faraday -h
- >>> Init database
- This script will  create a new postgres user  and  save faraday-server settings (server.ini).
- WARNING: Role faraday_postgresql already exists, skipping creation 
- Could not find connection string.
- Please configure [database] section with correct postgresql string. Ex. postgresql+psycopg2://faraday_postgresql:PASSWORD@localhost/faraday
+ >>> Start faraday.service
  ```
  
  - - -

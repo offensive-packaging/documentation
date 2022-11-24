@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: Zaragoza, Palencia, Soria... Nice spanish cities to live in, give them a try!
+ MOTD: M4t30 31337 M4t30 31337 M4t30 31337 M4t30 31337 M4t30 31337
  ```
  
  - - -

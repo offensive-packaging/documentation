@@ -71,7 +71,7 @@ PackagesInfo: |
  root@kali:~# crackmapexec -h
  usage: crackmapexec [-h] [-t THREADS] [--timeout TIMEOUT] [--jitter INTERVAL]
                      [--darrell] [--verbose]
-                     {ldap,smb,ftp,winrm,rdp,mssql,ssh} ...
+                     {ldap,smb,rdp,mssql,ssh,winrm,ftp} ...
  
        ______ .______           ___        ______  __  ___ .___  ___.      ___      .______    _______ ___   ___  _______   ______
       /      ||   _  \         /   \      /      ||  |/  / |   \/   |     /   \     |   _  \  |   ____|\  \ /  / |   ____| /      |
@@ -100,14 +100,14 @@ PackagesInfo: |
  protocols:
    available protocols
  
-   {ldap,smb,ftp,winrm,rdp,mssql,ssh}
+   {ldap,smb,rdp,mssql,ssh,winrm,ftp}
      ldap                own stuff using LDAP
      smb                 own stuff using SMB
-     ftp                 own stuff using FTP
-     winrm               own stuff using WINRM
      rdp                 own stuff using RDP
      mssql               own stuff using MSSQL
      ssh                 own stuff using SSH
+     winrm               own stuff using WINRM
+     ftp                 own stuff using FTP
  ```
  
  - - -

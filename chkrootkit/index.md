@@ -65,6 +65,41 @@ PackagesInfo: |
  
  Check wtmp file deleted entries
  
+ ```
+ root@kali:~# man chkwtmp
+ CHKWTMP(8)                  System Manager's Manual                 CHKWTMP(8)
+ 
+ NAME
+        chkwtmp - check wtmp file deleted entries
+ 
+ SYNOPSIS
+        chkwtmp looks for data deleted from wtmp
+ 
+ DESCRIPTION
+        chkwtmp  examines  the  file  /var/log/wtmp for entries which have been
+        overwritten (containing only null-bytes). If such entries are found the
+        program  displays  the  timestamps  of the entries before and after the
+        deleted entry, providing an idea of when the entry was deleted.
+ 
+        chkwtmp needs to be able to read /var/log/wtmp.  Normally this file  is
+        world-readable so no special privileges are required.
+ 
+ FILES
+        /var/log/wtmp
+               database of logins and logouts.
+ 
+ SEE ALSO
+        wtmp(4), who(1)
+ 
+ LIMITATIONS
+        An  entry is recognized as overwritten if the time-information has been
+        overwritten with null-bytes.
+ 
+        This program was originally designed to run on SunOS  4.x  systems.  On
+        other systems the output is undefined.
+ 
+                                  Oct 23, 2021                       CHKWTMP(8)
+ ```
  
  - - -
  

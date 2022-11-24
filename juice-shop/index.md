@@ -54,16 +54,16 @@ PackagesInfo: |
       Loaded: loaded (/lib/systemd/system/juice-shop.service; disabled; preset: disabled)
       Active: inactive (dead)
  
- Nov 23 10:54:17 kali npm[191382]: info: Required file vendor.js is present (OK)
- Nov 23 10:54:17 kali npm[191382]: (node:191382) [DEP0152] DeprecationWarning: Custom PerformanceEntry accessors are deprecated. Please use the detail property.
- Nov 23 10:54:17 kali npm[191382]: (Use `node --trace-deprecation ...` to show where the warning was created)
- Nov 23 10:54:17 kali npm[191382]: info: Port 42000 is available (OK)
- Nov 23 10:54:22 kali npm[191382]: info: Server listening on port 42000
- Nov 23 10:54:25 kali systemd[1]: Stopping juice-shop web application...
- Nov 23 10:54:25 kali systemd[1]: juice-shop.service: Killing process 191509 (node) with signal SIGKILL.
- Nov 23 10:54:25 kali systemd[1]: juice-shop.service: Deactivated successfully.
- Nov 23 10:54:25 kali systemd[1]: Stopped juice-shop web application.
- Nov 23 10:54:25 kali systemd[1]: juice-shop.service: Consumed 4.534s CPU time.
+ Nov 24 05:41:36 kali npm[1143047]: info: Required file main.js is present (OK)
+ Nov 24 05:41:36 kali npm[1143047]: info: Required file vendor.js is present (OK)
+ Nov 24 05:41:36 kali npm[1143047]: info: Required file polyfills.js is present (OK)
+ Nov 24 05:41:36 kali npm[1143047]: (node:1143047) [DEP0152] DeprecationWarning: Custom PerformanceEntry accessors are deprecated. Please use the detail property.
+ Nov 24 05:41:36 kali npm[1143047]: (Use `node --trace-deprecation ...` to show where the warning was created)
+ Nov 24 05:41:36 kali npm[1143047]: info: Port 42000 is available (OK)
+ Nov 24 05:41:40 kali systemd[1]: Stopping juice-shop web application...
+ Nov 24 05:41:40 kali systemd[1]: juice-shop.service: Deactivated successfully.
+ Nov 24 05:41:40 kali systemd[1]: Stopped juice-shop web application.
+ Nov 24 05:41:40 kali systemd[1]: juice-shop.service: Consumed 4.771s CPU time.
  ```
  
  - - -

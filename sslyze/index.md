@@ -38,12 +38,12 @@ PackagesInfo: |
                [--json_out JSON_FILE] [--targets_in TARGET_FILE] [--quiet]
                [--slow_connection] [--https_tunnel PROXY_SETTINGS]
                [--starttls PROTOCOL] [--xmpp_to HOSTNAME]
-               [--sni SERVER_NAME_INDICATION] [--early_data] [--http_headers]
-               [--resum] [--resum_attempts RESUM_ATTEMPTS] [--reneg]
-               [--tlsv1_1] [--robot] [--elliptic_curves] [--compression]
-               [--certinfo] [--certinfo_ca_file CERTINFO_CA_FILE] [--tlsv1_3]
-               [--tlsv1] [--tlsv1_2] [--openssl_ccs] [--sslv2] [--fallback]
-               [--sslv3] [--heartbleed]
+               [--sni SERVER_NAME_INDICATION] [--openssl_ccs] [--tlsv1_2]
+               [--certinfo] [--certinfo_ca_file CERTINFO_CA_FILE] [--tlsv1]
+               [--http_headers] [--early_data] [--resum]
+               [--resum_attempts RESUM_ATTEMPTS] [--sslv2] [--tlsv1_3]
+               [--heartbleed] [--robot] [--compression] [--elliptic_curves]
+               [--tlsv1_1] [--sslv3] [--fallback] [--reneg]
                [--mozilla_config {modern,intermediate,old,disable}]
                [target ...]
  
@@ -121,9 +121,19 @@ PackagesInfo: |
                          connect to. Will only affect TLS 1.0+ connections.
  
  Scan commands:
-   --early_data          Test a server for TLS 1.3 early data support.
+   --openssl_ccs         Test a server for the OpenSSL CCS Injection
+                         vulnerability (CVE-2014-0224).
+   --tlsv1_2             Test a server for TLS 1.2 support.
+   --certinfo            Retrieve and analyze a server's certificate(s) to
+                         verify its validity.
+   --certinfo_ca_file CERTINFO_CA_FILE
+                         To be used with --certinfo. Path to a file containing
+                         root certificates in PEM format that will be used to
+                         verify the validity of the server's certificate.
+   --tlsv1               Test a server for TLS 1.0 support.
    --http_headers        Test a server for the presence of security-related
                          HTTP headers.
+   --early_data          Test a server for TLS 1.3 early data support.
    --resum               Test a server for TLS 1.2 session resumption support
                          using session IDs and TLS tickets.
    --resum_attempts RESUM_ATTEMPTS
@@ -133,30 +143,20 @@ PackagesInfo: |
                          value such as 100 can be used to get a more accurate
                          measure of how often session resumption succeeds or
                          fails with the server.
-   --reneg               Test a server for for insecure TLS renegotiation and
-                         client-initiated renegotiation.
-   --tlsv1_1             Test a server for TLS 1.1 support.
-   --robot               Test a server for the ROBOT vulnerability.
-   --elliptic_curves     Test a server for supported elliptic curves.
-   --compression         Test a server for TLS compression support, which can
-                         be leveraged to perform a CRIME attack.
-   --certinfo            Retrieve and analyze a server's certificate(s) to
-                         verify its validity.
-   --certinfo_ca_file CERTINFO_CA_FILE
-                         To be used with --certinfo. Path to a file containing
-                         root certificates in PEM format that will be used to
-                         verify the validity of the server's certificate.
-   --tlsv1_3             Test a server for TLS 1.3 support.
-   --tlsv1               Test a server for TLS 1.0 support.
-   --tlsv1_2             Test a server for TLS 1.2 support.
-   --openssl_ccs         Test a server for the OpenSSL CCS Injection
-                         vulnerability (CVE-2014-0224).
    --sslv2               Test a server for SSL 2.0 support.
-   --fallback            Test a server for the TLS_FALLBACK_SCSV mechanism to
-                         prevent downgrade attacks.
-   --sslv3               Test a server for SSL 3.0 support.
+   --tlsv1_3             Test a server for TLS 1.3 support.
    --heartbleed          Test a server for the OpenSSL Heartbleed
                          vulnerability.
+   --robot               Test a server for the ROBOT vulnerability.
+   --compression         Test a server for TLS compression support, which can
+                         be leveraged to perform a CRIME attack.
+   --elliptic_curves     Test a server for supported elliptic curves.
+   --tlsv1_1             Test a server for TLS 1.1 support.
+   --sslv3               Test a server for SSL 3.0 support.
+   --fallback            Test a server for the TLS_FALLBACK_SCSV mechanism to
+                         prevent downgrade attacks.
+   --reneg               Test a server for for insecure TLS renegotiation and
+                         client-initiated renegotiation.
  ```
  
  - - -

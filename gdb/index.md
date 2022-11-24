@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: gdb
 Homepage: https://www.gnu.org/s/gdb/
 Repository: https://salsa.debian.org/gdb-team/gdb
