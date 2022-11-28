@@ -38,6 +38,39 @@ PackagesInfo: |
  ##### brutesharkcli
  
  
+ ```
+ root@kali:~# brutesharkcli -h
+ BruteSharkCli 1.0.0.0
+ Copyright ©  2018
+ 
+ ERROR(S):
+   Option 'h' is unknown.
+ 
+   -d, --input-dir       The input directory containing the files to be
+                         processed.
+ 
+   -i, --input           The files to be processed separated by comma.
+ 
+   -m, --modules         The modules to be separated by comma: Credentials,
+                         FileExtracting, NetworkMap, DNS, Voip.
+ 
+   -o, --output          Output directory for the results files.
+ 
+   -p, --promiscuous     Configures whether to start live capture with
+                         promiscuous mode (sometimes needs super user privileges
+                         to do so),use along with -l for live capture.
+ 
+   -l, --live-capture    Capture and process packets live from a network
+                         interface.
+ 
+   -f, --filter          Set a capture BPF filter to the live traffic processing.
+ 
+   --help                Display this help screen.
+ 
+   --version             Display version information.
+ 
+ Killed
+ ```
  
  - - -
  

@@ -24,7 +24,35 @@ PackagesInfo: |
  
  ```
  root@kali:~# merlinagent -h
- Merlin Agent
+   -debug
+     	Enable debug output
+   -host string
+     	HTTP Host header
+   -ja3 string
+     	JA3 signature string (not the MD5 hash). Overrides -proto flag
+   -killdate string
+     	The date, as a Unix EPOCH timestamp, that the agent will quit running (default "0")
+   -maxretry string
+     	The maximum amount of failed checkins before the agent will quit running (default "7")
+   -padding string
+     	The maximum amount of data that will be randomly selected and appended to every message (default "4096")
+   -proto string
+     	Protocol for the agent to connect with [https (HTTP/1.1), http (HTTP/1.1 Clear-Text), h2 (HTTP/2), h2c (HTTP/2 Clear-Text), http3 (QUIC or HTTP/3.0)] (default "h2")
+   -proxy string
+     	Hardcoded proxy to use for http/1.1 traffic only that will override host configuration
+   -psk string
+     	Pre-Shared Key used to encrypt initial communications (default "merlin")
+   -skew string
+     	Amount of skew, or variance, between agent checkins (default "3000")
+   -sleep string
+     	Time for agent to sleep (default "30s")
+   -url string
+     	Full URL for agent to connect to (default "https://127.0.0.1:443")
+   -useragent string
+     	The HTTP User-Agent header string that the Agent will use while sending traffic (default "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36")
+   -v	Enable verbose output
+   -version
+     	Print the agent version and exit
  ```
  
  - - -
@@ -75,7 +103,22 @@ PackagesInfo: |
  
  ```
  root@kali:~# prism -h
- Merlin PRISM
+   -debug
+     	Enable debug output
+   -host string
+     	HTTP Host header
+   -ja3 string
+     	JA3 signature string (not the MD5 hash). Overrides -proto flag
+   -proto string
+     	Protocol for the agent to connect with [https (HTTP/1.1), h2 (HTTP/2), hq (QUIC or HTTP/3.0)] (default "h2")
+   -proxy string
+     	Hardcoded proxy to use for http/1.1 traffic only that will override host configuration
+   -psk string
+     	Pre-Shared Key used to encrypt initial communications (default "merlin")
+   -url string
+     	Full URL for agent to connect to (default "https://127.0.0.1:443")
+   -verbose
+     	Enable verbose output
  ```
  
  - - -

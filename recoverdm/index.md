@@ -33,8 +33,15 @@ PackagesInfo: |
  
  ```
  root@kali:~# mergebad -h
- mergebad v0.20, (c) 2004 by folkert@vanheusden.com
- 
+ -i <mapfile> <imagefile>
+ 		With -i one selects a mapfile+imagefile to read.
+ -o <outputfile>
+ 		File to write output to.
+ -l <mapfile>	In case all inputimages had a badblock on the same
+ 		place, this file will list those blocks.
+ -s <size>	Limit or extend the size of the outputimage.
+ -v		Be verbose.
+ -h		This help.
  ```
  
  - - -

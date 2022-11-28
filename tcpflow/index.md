@@ -1,5 +1,4 @@
 ---
-archived: "true"
 Title: tcpflow
 Homepage: https://github.com/simsong/tcpflow
 Repository: https://salsa.debian.org/debian/tcpflow
@@ -264,8 +263,6 @@ PackagesInfo: |
     -s: strip non-printable characters (change to '.')
     -J: output json format.
     -D: output in hex (useful to combine with -c or -C)
- 
- Rendering not available because Cairo was not installed.
  
  expression: tcpdump-like filtering expression
  

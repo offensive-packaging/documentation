@@ -213,7 +213,24 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# xplico-webui -h
+ root@kali:~# xplico-webui --help
+ [i] Something is already using port: 9876/tcp
+ COMMAND     PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+ apache2 1282381     root    6u  IPv6 867317      0t0  TCP *:9876 (LISTEN)
+ apache2 1282420 www-data    6u  IPv6 867317      0t0  TCP *:9876 (LISTEN)
+ apache2 1282422 www-data    6u  IPv6 867317      0t0  TCP *:9876 (LISTEN)
+ apache2 1282424 www-data    6u  IPv6 867317      0t0  TCP *:9876 (LISTEN)
+ apache2 1282425 www-data    6u  IPv6 867317      0t0  TCP *:9876 (LISTEN)
+ apache2 1282427 www-data    6u  IPv6 867317      0t0  TCP *:9876 (LISTEN)
+ 
+ UID          PID    PPID  C STIME TTY      STAT   TIME CMD
+ root     1282381       1  0 15:52 ?        Ss     0:00 /usr/sbin/apache2 -k start
+ www-data 1282420 1282381  0 15:52 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data 1282422 1282381  0 15:52 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data 1282424 1282381  0 15:52 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data 1282425 1282381  0 15:52 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data 1282427 1282381  0 15:52 ?        S      0:00 /usr/sbin/apache2 -k start
+ 
  [*] Please wait for the Xplico service to start.
  [*]
  [*] You might need to refresh your browser once it opens.
@@ -234,25 +251,25 @@ PackagesInfo: |
       Active: inactive (dead)
         Docs: https://httpd.apache.org/docs/2.4/
  
- Nov 24 05:38:53 kali systemd[1]: Starting The Apache HTTP Server...
- Nov 24 05:38:53 kali apachectl[860846]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Nov 24 05:38:53 kali systemd[1]: Started The Apache HTTP Server.
- Nov 24 05:39:03 kali systemd[1]: Stopping The Apache HTTP Server...
- Nov 24 05:39:03 kali apachectl[879434]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Nov 24 05:39:03 kali systemd[1]: apache2.service: Deactivated successfully.
- Nov 24 05:39:03 kali systemd[1]: Stopped The Apache HTTP Server.
+ Nov 27 15:52:58 kali systemd[1]: Starting The Apache HTTP Server...
+ Nov 27 15:52:58 kali apachectl[1282344]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ Nov 27 15:52:58 kali systemd[1]: Started The Apache HTTP Server.
+ Nov 27 15:53:08 kali systemd[1]: Stopping The Apache HTTP Server...
+ Nov 27 15:53:08 kali apachectl[1297234]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ Nov 27 15:53:08 kali systemd[1]: apache2.service: Deactivated successfully.
+ Nov 27 15:53:08 kali systemd[1]: Stopped The Apache HTTP Server.
  
  * xplico.service - Xplico
       Loaded: loaded (/lib/systemd/system/xplico.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: https://www.xplico.org/docs
  
- Nov 24 05:38:53 kali systemd[1]: Starting Xplico...
- Nov 24 05:38:53 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
- Nov 24 05:38:53 kali systemd[1]: Started Xplico.
- Nov 24 05:39:03 kali systemd[1]: Stopping Xplico...
- Nov 24 05:39:03 kali systemd[1]: xplico.service: Deactivated successfully.
- Nov 24 05:39:03 kali systemd[1]: Stopped Xplico.
+ Nov 27 15:52:58 kali systemd[1]: Starting Xplico...
+ Nov 27 15:52:58 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
+ Nov 27 15:52:58 kali systemd[1]: Started Xplico.
+ Nov 27 15:53:08 kali systemd[1]: Stopping Xplico...
+ Nov 27 15:53:08 kali systemd[1]: xplico.service: Deactivated successfully.
+ Nov 27 15:53:08 kali systemd[1]: Stopped Xplico.
  ```
  
  - - -

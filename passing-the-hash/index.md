@@ -308,6 +308,48 @@ PackagesInfo: |
  ##### pth-sqsh
  
  
+ ```
+ root@kali:~# pth-sqsh --help
+ Use: sqsh [-a count] [-A packet_size] [-b] [-B] [-c [cmdend]] [-C sql]
+           [-d severity] [-D database] [-e] [-E editor] [-f severity]
+           [-G TDS version] [-h] [-H hostname] [-i filename] [-I interfaces]
+           [-J charset] [-k keywords] [-K keytab] [-l level|flags]
+           [-L var=value] [-m style] [-n {on|off}] [-N appname] [-o filename]
+           [-p] [-P [password]] [-Q query_timeout] [-r [sqshrc]]
+           [-R principal] [-s colsep] [-S server] [-t [filter]]
+           [-T login_timeout] [-U username] [-v] [-V [bcdimoqru]] [-w width]
+           [-X] [-y directory] [-z language] [-Z [secmech]]
+           [--appname        appname] [--clientapplname clientapplname]
+           [--clienthostname clienthostname] [--clientname     clientname]
+           [--hostname       hostname] [--help          ] [--version       ]
+ 
+  -a  Max. # of errors before abort       -p  Display performance stats
+  -A  Adjust TDS packet size              -P  Sybase password (NULL)
+  -b  Suppress banner message on startup  -Q  Query timeout period in seconds
+  -B  Turn off file buffering on startup  -r  Specify name of .sqshrc
+  -c  Alias for the 'go' command          -R  Network security server principal
+  -C  Send sql statement to server        -s  Alternate column separator (\t)
+  -d  Min. severity level to display      -S  Name of Sybase server ($DSQUERY)
+  -D  Change database context on startup  -t  Filter batches through program
+  -e  Echo batch prior to executing       -T  Login timeout period in seconds
+  -E  Replace default editor (vi)         -U  Name of Sybase user
+  -f  Min. severity level for failure     -v  Display current version and exit
+  -G  TDS version to use                  -V  Request network security services
+  -h  Disable headers and footers         -w  Adjust result display width
+  -H  Set the client hostname             -X  Enable client password encryption
+  -i  Read input from file                -y  Override value of $SYBASE
+  -I  Alternate interfaces file           -z  Alternate display language
+  -J  Client character set                -Z  Network security mechanism
+  -k  Specify alternate keywords file     --appname         Set application name
+  -K  Network security keytab file (DCE)  --clientapplname  Set client appl name
+  -l  Set debugging level                 --clienthostname  Set client host name
+  -L  Set the value of a given variable   --clientname      Set client name
+  -m  Set display mode                    --hostname        Set hostname
+  -n  Set chained transaction mode        --help            Show help text only
+  -N  Set application name (sqsh-3.0)     --version         Show version only
+  -o  Direct all output to file          
+ 
+ ```
  
  - - -
  

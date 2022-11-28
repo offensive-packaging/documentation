@@ -1,5 +1,4 @@
 ---
-archived: "true"
 Title: crack
 Homepage: https://www.crypticide.com/alecm/software/crack/
 Repository: https://salsa.debian.org/pkg-security-team/crack
