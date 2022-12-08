@@ -33,3 +33,38 @@ PackagesInfo: |
  
 ---
 {{% hidden-comment "<!--Do not edit anything above this line-->" %}}
+
+## How to install and run Bloodhound
+
+Install Bloodhound from the apt repository with:
+
+```console
+┌──(kali㉿kali)-[~]
+└─$ sudo apt update && sudo apt install -y bloodhound
+```
+
+After installation completes, start neo4j with the following command:
+
+```console
+┌──(kali㉿kali)-[~]
+└─$ sudo neo4j console
+```
+
+![](images/start-neo4j.png)
+
+Now we need to change the default credentials for neo4j. Navigate to [localhost:7474](localhost:7474) and login with the default credentials
+
+```plain
+username: neo4j
+password: neo4j
+```
+
+![](images/login-neo4j.png)
+
+After logging in, you will be asked to change the default password with a new one. You need this password to later login in the Bloodhound interface.
+
+![](images/neo4j-change-password.png)
+
+Now that the password has been successfully modified you can finally launch Bloodhound with the new credentials.
+
+![](images/bloodhound-login.png)
