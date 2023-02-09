@@ -20,7 +20,7 @@ PackagesInfo: |
   Use a Bluetooth Class 1 adapter for long range
   location detection. Switch to a Class 3 adapter
   for more precise short range locating. The
-  recision and accuracy depend on the build quality
+  precision and accuracy depend on the build quality
   of the Bluetooth adapter, interference, and response
   from the remote device. Fluctuations may occur even
   when neither device is in motion.
