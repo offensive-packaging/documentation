@@ -3,7 +3,7 @@ Title: firewalk
 Homepage: http://packetfactory.openwall.net/projects/firewalk/
 Repository: https://salsa.debian.org/pkg-security-team/firewalk
 Architectures: any
-Version: 5.0-4
+Version: 5.0-5
 Metapackages: kali-linux-everything kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

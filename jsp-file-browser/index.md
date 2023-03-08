@@ -3,7 +3,7 @@ Title: jsp-file-browser
 Homepage: https://www.vonloesch.de/filebrowser.html
 Repository: https://gitlab.com/kalilinux/packages/jsp-file-browser
 Architectures: all
-Version: 1.2-0kali3
+Version: 1.2-0kali4
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

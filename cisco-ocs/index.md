@@ -3,7 +3,7 @@ Title: cisco-ocs
 Homepage: http://hacklab.altervista.org/
 Repository: https://gitlab.com/kalilinux/packages/cisco-ocs
 Architectures: any
-Version: 0.2-1kali1
+Version: 0.2-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

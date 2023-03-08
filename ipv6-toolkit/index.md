@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: ipv6-toolkit
 Homepage: https://www.si6networks.com/tools/ipv6toolkit/
 Repository: https://gitlab.com/kalilinux/packages/ipv6-toolkit

@@ -3,7 +3,7 @@ Title: 0trace
 Homepage: https://lcamtuf.coredump.cx
 Repository: https://gitlab.com/kalilinux/packages/0trace
 Architectures: any
-Version: 0.01-3kali2
+Version: 0.01-3kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: images/0trace-logo.svg
 PackagesInfo: |
@@ -43,7 +43,6 @@ PackagesInfo: |
  
  ##### usleep
  
- Suspend execution for microsecond intervals
  
  
  - - -

@@ -3,8 +3,8 @@ Title: yara
 Homepage: https://virustotal.github.io/yara/
 Repository: https://salsa.debian.org/pkg-security-team/yara
 Architectures: any all
-Version: 4.2.3-1
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 4.2.3-4
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: images/yara-logo.svg
 PackagesInfo: |
  ### libyara-dev
@@ -48,7 +48,7 @@ PackagesInfo: |
    
   This package provides a shared library.
  
- **Installed size:** `438 KB`  
+ **Installed size:** `434 KB`  
  **How to install:** `sudo apt install libyara9`  
  
  {{< spoiler "Dependencies:" >}}
@@ -73,7 +73,7 @@ PackagesInfo: |
   wild-cards, case-insensitive text strings, special operators, regular
   expressions and many other features.
  
- **Installed size:** `86 KB`  
+ **Installed size:** `82 KB`  
  **How to install:** `sudo apt install yara`  
  
  {{< spoiler "Dependencies:" >}}
@@ -163,7 +163,7 @@ PackagesInfo: |
    
   This package contains the documentation in HTML format.
  
- **Installed size:** `1.15 MB`  
+ **Installed size:** `1.20 MB`  
  **How to install:** `sudo apt install yara-doc`  
  
  {{< spoiler "Dependencies:" >}}

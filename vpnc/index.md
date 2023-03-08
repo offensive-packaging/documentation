@@ -3,7 +3,7 @@ Title: vpnc
 Homepage: https://github.com/streambinder/vpnc
 Repository: https://salsa.debian.org/debian/vpnc
 Architectures: any
-Version: 0.5.3+git20220503-1
+Version: 0.5.3+git20220927-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   VPN concentrator: MD5 and SHA1 hashes, 3DES and AES ciphers, PFS and
   various IKE DH group settings.
  
- **Installed size:** `236 KB`  
+ **Installed size:** `231 KB`  
  **How to install:** `sudo apt install vpnc`  
  
  {{< spoiler "Dependencies:" >}}

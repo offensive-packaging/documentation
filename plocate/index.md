@@ -3,7 +3,7 @@ Title: plocate
 Homepage: https://plocate.sesse.net/
 Repository: 
 Architectures: any all
-Version: 1.1.16-1
+Version: 1.1.18-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -33,6 +33,7 @@ PackagesInfo: |
  **How to install:** `sudo apt install plocate`  
  
  {{< spoiler "Dependencies:" >}}
+ * adduser
  * libc6 
  * libgcc-s1 
  * libstdc++6 
@@ -78,6 +79,7 @@ PackagesInfo: |
  
    -b, --block-size SIZE  number of filenames to store in each block (default 32)
    -p, --plaintext        input is a plaintext file, not an mlocate database
+   -l, --require-visibility FLAG  check visibility before reporting files
        --help             print this help
        --version          print version information
  ```

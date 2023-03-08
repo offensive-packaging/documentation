@@ -4,7 +4,7 @@ Homepage: https://github.com/jbruchon/winregfs
 Repository: https://salsa.debian.org/pkg-security-team/winregfs
 Architectures: any
 Version: 0.7-4
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### winregfs

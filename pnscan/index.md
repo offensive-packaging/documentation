@@ -3,7 +3,7 @@ Title: pnscan
 Homepage: https://github.com/ptrrkssn/pnscan
 Repository: https://salsa.debian.org/pkg-security-team/pnscan
 Architectures: any
-Version: 1.14.1-1
+Version: 1.14.1-2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   very quickly. If does not have all the features that nmap have but
   is much faster.
  
- **Installed size:** `66 KB`  
+ **Installed size:** `65 KB`  
  **How to install:** `sudo apt install pnscan`  
  
  {{< spoiler "Dependencies:" >}}
@@ -57,7 +57,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# t_listen -h
- 34151
+ 41926
  ```
  
  - - -

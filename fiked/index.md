@@ -3,7 +3,7 @@ Title: fiked
 Homepage: https://www.roe.ch/FakeIKEd
 Repository: https://gitlab.com/kalilinux/packages/fiked
 Architectures: any
-Version: 0.0.5-1kali5
+Version: 0.0.5-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sniffing-spoofing 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

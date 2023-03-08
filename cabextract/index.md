@@ -4,7 +4,7 @@ Homepage:
 Repository: 
 Architectures: any
 Version: 1.9-3
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cabextract

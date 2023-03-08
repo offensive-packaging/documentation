@@ -1,9 +1,9 @@
 ---
 Title: sbd
-Homepage: http://mirrors.kernel.org/gentoo/distfiles/sbd-1.37.tar.gz
+Homepage: https://mirrors.kernel.org/gentoo/distfiles/sbd-1.37.tar.gz
 Repository: https://gitlab.com/kalilinux/packages/sbd
 Architectures: any
-Version: 1.37-1kali3
+Version: 1.37-1kali4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-windows-resources 
 Icon: images/sbd-logo.svg
 PackagesInfo: |

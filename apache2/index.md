@@ -3,8 +3,8 @@ Title: apache2
 Homepage: https://httpd.apache.org/
 Repository: https://salsa.debian.org/apache-team/apache2
 Architectures: any all
-Version: 2.4.54-3
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-social-engineering kali-tools-web 
+Version: 2.4.55-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-respond kali-tools-social-engineering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### apache2
@@ -16,7 +16,7 @@ PackagesInfo: |
   Installing this package results in a full installation, including the
   configuration files, init scripts and support scripts.
  
- **Installed size:** `562 KB`  
+ **Installed size:** `565 KB`  
  **How to install:** `sudo apt install apache2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -25,7 +25,7 @@ PackagesInfo: |
  * apache2-utils 
  * init-system-helpers 
  * lsb-base
- * mime-support
+ * media-types
  * perl
  * procps
  {{< /spoiler >}}
@@ -766,7 +766,7 @@ PackagesInfo: |
   documentation is shipped in HTML format and can be accessed from a local
   running Apache HTTP server instance or by browsing the file system directly.
  
- **Installed size:** `24.51 MB`  
+ **Installed size:** `24.53 MB`  
  **How to install:** `sudo apt install apache2-doc`  
  
  
@@ -802,7 +802,7 @@ PackagesInfo: |
   recommended that you use the standard suexec helper program from the
   apache2-suexec-pristine package instead.
  
- **Installed size:** `180 KB`  
+ **Installed size:** `184 KB`  
  **How to install:** `sudo apt install apache2-suexec-custom`  
  
  {{< spoiler "Dependencies:" >}}
@@ -819,7 +819,7 @@ PackagesInfo: |
   compiled with document root /var/www and userdir suffix public_html. If you
   need different settings, use the package apache2-suexec-custom.
  
- **Installed size:** `170 KB`  
+ **Installed size:** `174 KB`  
  **How to install:** `sudo apt install apache2-suexec-pristine`  
  
  {{< spoiler "Dependencies:" >}}
@@ -846,7 +846,7 @@ PackagesInfo: |
    - check_forensic (Extract mod_log_forensic output from Apache log files)
    - httxt2dbm (Generate dbm files for use with RewriteMap)
  
- **Installed size:** `425 KB`  
+ **Installed size:** `429 KB`  
  **How to install:** `sudo apt install apache2-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -917,6 +917,30 @@ PackagesInfo: |
  
  Tool to extract mod_log_forensic output from apache log files
  
+ ```
+ root@kali:~# man check_forensic
+ check_forensic(8)           System Manager's Manual          check_forensic(8)
+ 
+ NAME
+        check_forensic  -  tool  to extract mod_log_forensic output from apache
+        log files
+ 
+ SYNOPSIS
+        check_forensic <log_file>
+ 
+ DESCRIPTION
+        chech_forensic is a simple shell script designed to help apache  admin-
+        istrators  to  extract  mod_log_forensic output from apache2 log files.
+        It checks the forensic log for requests that did not complete and  out-
+        puts the request log for each one.
+ 
+ AUTHOR
+        This  manual  page  was  written  by  Fabio  M. Di Nitto <fabbione@fab-
+        bione.net>, for the Debian GNU/Linux system (but may be  used  by  oth-
+        ers).
+ 
+                                                              check_forensic(8)
+ ```
  
  - - -
  
@@ -970,8 +994,8 @@ PackagesInfo: |
  Clean up the disk cache
  
  ```
- root@kali:~# htcacheclean -h
- htcacheclean: illegal option -- h
+ root@kali:~# htcacheclean --help
+ htcacheclean error: Option -p must be specified
  htcacheclean -- program for cleaning the disk cache.
  Usage: htcacheclean [-Dvtrn] -pPATH [-lLIMIT] [-LLIMIT] [-PPIDFILE]
         htcacheclean [-nti] -dINTERVAL -pPATH [-lLIMIT] [-LLIMIT] [-PPIDFILE]

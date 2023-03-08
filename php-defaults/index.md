@@ -3,8 +3,8 @@ Title: php-defaults
 Homepage: 
 Repository: https://salsa.debian.org/php-team/php-defaults
 Architectures: all
-Version: 92+nmu1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-social-engineering kali-tools-web 
+Version: 93
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-respond kali-tools-social-engineering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libapache2-mod-php
@@ -16,13 +16,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `14 KB`  
  **How to install:** `sudo apt install libapache2-mod-php`  
  
  {{< spoiler "Dependencies:" >}}
- * libapache2-mod-php8.1
+ * libapache2-mod-php8.2
  {{< /spoiler >}}
  
  
@@ -38,13 +38,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libphp-embed`  
  
  {{< spoiler "Dependencies:" >}}
- * libphp8.1-embed
+ * libphp8.2-embed
  {{< /spoiler >}}
  
  
@@ -57,13 +57,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1
+ * php8.2
  {{< /spoiler >}}
  
  
@@ -79,10 +79,10 @@ PackagesInfo: |
  **How to install:** `sudo apt install php-all-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1-dev
- * php8.1-json
- * php8.1-mbstring
- * php8.1-xml
+ * php8.2-dev
+ * php8.2-json
+ * php8.2-mbstring
+ * php8.2-xml
  {{< /spoiler >}}
  
  
@@ -97,14 +97,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-bcmath`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-bcmath
+ * php8.2-bcmath
  {{< /spoiler >}}
  
  
@@ -119,14 +119,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-bz2`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-bz2
+ * php8.2-bz2
  {{< /spoiler >}}
  
  
@@ -144,13 +144,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `20 KB`  
  **How to install:** `sudo apt install php-cgi`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1-cgi
+ * php8.2-cgi
  {{< /spoiler >}}
  
  ##### php-cgi.default
@@ -159,8 +159,8 @@ PackagesInfo: |
  
  ```
  root@kali:~# php-cgi.default -h
- Usage: php [-q] [-h] [-s] [-v] [-i] [-f <file>]
-        php <file> [args...]
+ Usage: php-cgi [-q] [-h] [-s] [-v] [-i] [-f <file>]
+        php-cgi <file> [args...]
    -a               Run interactively
    -b <address:port>|<port> Bind Path for external FASTCGI Server mode
    -C               Do not chdir to the script's directory
@@ -193,13 +193,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `21 KB`  
  **How to install:** `sudo apt install php-cli`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1-cli
+ * php8.2-cli
  {{< /spoiler >}}
  
  ##### phar.default
@@ -543,7 +543,7 @@ PackagesInfo: |
  
  BUGS
         You can view the list of known bugs or report any new bug you found at:
-        http://bugs.php.net
+        https://github.com/php/php-src/issues
  
  AUTHORS
         The PHP Group: Thies C. Arntzen, Stig Bakken, Andi Gutmans, Rasmus Ler-
@@ -559,7 +559,7 @@ PackagesInfo: |
         of contributors all around the world.
  
  VERSION INFORMATION
-        This manpage describes phar, version 8.1.12.
+        This manpage describes phar, version 8.2.2.
  
  COPYRIGHT
         Copyright (C) The PHP Group
@@ -573,7 +573,7 @@ PackagesInfo: |
         tain  it  through  the  world-wide-web,  please  send  a  note  to  li-
         cense@php.net so we can mail you a copy immediately.
  
- The PHP Group                        2021                              PHAR(1)
+ The PHP Group                        2022                              PHAR(1)
  ```
  
  - - -
@@ -919,7 +919,7 @@ PackagesInfo: |
  
  BUGS
         You can view the list of known bugs or report any new bug you found at:
-        http://bugs.php.net
+        https://github.com/php/php-src/issues
  
  AUTHORS
         The PHP Group: Thies C. Arntzen, Stig Bakken, Andi Gutmans, Rasmus Ler-
@@ -935,7 +935,7 @@ PackagesInfo: |
         of contributors all around the world.
  
  VERSION INFORMATION
-        This manpage describes phar, version 8.1.12.
+        This manpage describes phar, version 8.2.2.
  
  COPYRIGHT
         Copyright (C) The PHP Group
@@ -949,7 +949,7 @@ PackagesInfo: |
         tain  it  through  the  world-wide-web,  please  send  a  note  to  li-
         cense@php.net so we can mail you a copy immediately.
  
- The PHP Group                        2021                              PHAR(1)
+ The PHP Group                        2022                              PHAR(1)
  ```
  
  - - -
@@ -1061,14 +1061,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-curl`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-curl
+ * php8.2-curl
  {{< /spoiler >}}
  
  
@@ -1083,13 +1083,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `19 KB`  
  **How to install:** `sudo apt install php-dev`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1-dev
+ * php8.2-dev
  {{< /spoiler >}}
  
  ##### php-config.default
@@ -1101,20 +1101,20 @@ PackagesInfo: |
  Usage: /usr/bin/php-config.default [OPTION]
  Options:
    --prefix            [/usr]
-   --includes          [-I/usr/include/php/20210902 -I/usr/include/php/20210902/main -I/usr/include/php/20210902/TSRM -I/usr/include/php/20210902/Zend -I/usr/include/php/20210902/ext -I/usr/include/php/20210902/ext/date/lib ]
-   --ldflags           [-L/usr/lib/php/20210902 ]
-   --libs              [-lcrypt   -lcrypt -lrt -lm  -lxml2 -lssl -lcrypto -lpcre2-8 -lz -lsodium -largon2 -lrt -ldl -lcrypt ]
-   --extension-dir     [/usr/lib/php/20210902]
-   --include-dir       [/usr/include/php/20210902]
+   --includes          [-I/usr/include/php/20220829 -I/usr/include/php/20220829/main -I/usr/include/php/20220829/TSRM -I/usr/include/php/20220829/Zend -I/usr/include/php/20220829/ext -I/usr/include/php/20220829/ext/date/lib ]
+   --ldflags           [-L/usr/lib/php/20220829 ]
+   --libs              [-lcrypt   -lrt -lm  -lxml2 -lssl -lcrypto -lpcre2-8 -lz -lsodium -largon2 -lrt -ldl -lcrypt ]
+   --extension-dir     [/usr/lib/php/20220829]
+   --include-dir       [/usr/include/php/20220829]
    --man-dir           [/usr/share/man]
-   --php-binary        [/usr/bin/php8.1]
-   --php-sapis         [apache2handler cgi cli fpm phpdbg ]
-   --phpapi            [20210902]
-   --ini-path          [/etc/php/8.1/cli]
-   --ini-dir           [/etc/php/8.1/cli/conf.d]
-   --configure-options [--includedir=/usr/include --mandir=/usr/share/man --infodir=/usr/share/info --disable-option-checking --disable-silent-rules --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu --disable-maintainer-mode --disable-dependency-tracking --prefix=/usr --enable-cli --disable-cgi --disable-phpdbg --with-config-file-path=/etc/php/8.1/cli --with-config-file-scan-dir=/etc/php/8.1/cli/conf.d --build=x86_64-linux-gnu --host=x86_64-linux-gnu --config-cache --cache-file=/tmp/buildd/nonexistent/config.cache --libdir=${prefix}/lib/php --libexecdir=${prefix}/lib/php --datadir=${prefix}/share/php/8.1 --program-suffix=8.1 --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --disable-all --disable-debug --disable-rpath --disable-static --with-pic --with-layout=GNU --without-pear --enable-filter --with-openssl --with-password-argon2=/usr --with-external-pcre --enable-hash --with-mhash=/usr --with-libxml --enable-session --with-sodium --with-system-tzdata --with-zlib=/usr --with-zlib-dir=/usr --enable-dtrace --enable-pcntl --with-libedit=shared,/usr build_alias=x86_64-linux-gnu host_alias=x86_64-linux-gnu CFLAGS=-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -O2 -Wall -pedantic -fsigned-char -fno-strict-aliasing -DOPENSSL_SUPPRESS_DEPRECATED -g]
-   --version           [8.1.12]
-   --vernum            [80112]
+   --php-binary        [/usr/bin/php8.2]
+   --php-sapis         [apache2handler cgi cli fpm ]
+   --phpapi            [20220829]
+   --ini-path          [/etc/php/8.2/cli]
+   --ini-dir           [/etc/php/8.2/cli/conf.d]
+   --configure-options [--includedir=/usr/include --mandir=/usr/share/man --infodir=/usr/share/info --disable-option-checking --disable-silent-rules --libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu --disable-maintainer-mode --disable-dependency-tracking --prefix=/usr --enable-cli --disable-cgi --disable-phpdbg --with-config-file-path=/etc/php/8.2/cli --with-config-file-scan-dir=/etc/php/8.2/cli/conf.d --build=x86_64-linux-gnu --host=x86_64-linux-gnu --config-cache --cache-file=/tmp/buildd/nonexistent/config.cache --libdir=${prefix}/lib/php --libexecdir=${prefix}/lib/php --datadir=${prefix}/share/php/8.2 --program-suffix=8.2 --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --disable-all --disable-debug --disable-rpath --disable-static --with-pic --with-layout=GNU --without-pear --enable-filter --with-openssl --with-password-argon2=/usr --with-external-pcre --enable-hash --with-mhash=/usr --with-libxml --enable-session --with-sodium --with-system-tzdata --with-zlib=/usr --with-zlib-dir=/usr --enable-dtrace --enable-pcntl --with-libedit=shared,/usr build_alias=x86_64-linux-gnu host_alias=x86_64-linux-gnu CFLAGS=-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -O2 -Wall -pedantic -fsigned-char -fno-strict-aliasing -DOPENSSL_SUPPRESS_DEPRECATED -g]
+   --version           [8.2.2]
+   --vernum            [80202]
  ```
  
  - - -
@@ -1139,14 +1139,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-enchant`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-enchant
+ * php8.2-enchant
  {{< /spoiler >}}
  
  
@@ -1162,13 +1162,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-fpm`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1-fpm
+ * php8.2-fpm
  {{< /spoiler >}}
  
  
@@ -1183,14 +1183,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-gd`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-gd
+ * php8.2-gd
  {{< /spoiler >}}
  
  
@@ -1205,14 +1205,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-gmp`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-gmp
+ * php8.2-gmp
  {{< /spoiler >}}
  
  
@@ -1227,14 +1227,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-imap`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-imap
+ * php8.2-imap
  {{< /spoiler >}}
  
  
@@ -1249,14 +1249,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-interbase`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-interbase
+ * php8.2-interbase
  {{< /spoiler >}}
  
  
@@ -1271,14 +1271,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-intl`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-intl
+ * php8.2-intl
  {{< /spoiler >}}
  
  
@@ -1293,14 +1293,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-json`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-json
+ * php8.2-json
  {{< /spoiler >}}
  
  
@@ -1315,14 +1315,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-ldap`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-ldap
+ * php8.2-ldap
  {{< /spoiler >}}
  
  
@@ -1337,14 +1337,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-mbstring`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-mbstring
+ * php8.2-mbstring
  {{< /spoiler >}}
  
  
@@ -1359,14 +1359,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-mysql`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-mysql
+ * php8.2-mysql
  {{< /spoiler >}}
  
  
@@ -1381,14 +1381,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-odbc`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-odbc
+ * php8.2-odbc
  {{< /spoiler >}}
  
  
@@ -1403,14 +1403,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-pgsql`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-pgsql
+ * php8.2-pgsql
  {{< /spoiler >}}
  
  
@@ -1426,13 +1426,13 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on latest stable
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `17 KB`  
  **How to install:** `sudo apt install php-phpdbg`  
  
  {{< spoiler "Dependencies:" >}}
- * php8.1-phpdbg
+ * php8.2-phpdbg
  {{< /spoiler >}}
  
  ##### phpdbg.default
@@ -1495,14 +1495,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-pspell`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-pspell
+ * php8.2-pspell
  {{< /spoiler >}}
  
  
@@ -1517,14 +1517,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-readline`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-readline
+ * php8.2-readline
  {{< /spoiler >}}
  
  
@@ -1539,14 +1539,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-snmp`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-snmp
+ * php8.2-snmp
  {{< /spoiler >}}
  
  
@@ -1561,14 +1561,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-soap`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-soap
+ * php8.2-soap
  {{< /spoiler >}}
  
  
@@ -1583,14 +1583,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-sqlite3`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-sqlite3
+ * php8.2-sqlite3
  {{< /spoiler >}}
  
  
@@ -1605,14 +1605,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-sybase`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-sybase
+ * php8.2-sybase
  {{< /spoiler >}}
  
  
@@ -1627,14 +1627,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-tidy`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-tidy
+ * php8.2-tidy
  {{< /spoiler >}}
  
  
@@ -1649,14 +1649,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-xml`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-xml
+ * php8.2-xml
  {{< /spoiler >}}
  
  
@@ -1671,14 +1671,14 @@ PackagesInfo: |
   for web development and can be embedded into HTML.
    
   This package is a dependency package, which depends on Debian's default
-  PHP version (currently 8.1).
+  PHP version (currently 8.2).
  
  **Installed size:** `10 KB`  
  **How to install:** `sudo apt install php-zip`  
  
  {{< spoiler "Dependencies:" >}}
  * php-common
- * php8.1-zip
+ * php8.2-zip
  {{< /spoiler >}}
  
  

@@ -3,7 +3,7 @@ Title: nfs-utils
 Homepage: https://linux-nfs.org/
 Repository: https://salsa.debian.org/kernel-team/nfs-utils
 Architectures: any
-Version: 1:2.6.2-1
+Version: 1:2.6.2-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -446,7 +446,7 @@ PackagesInfo: |
   NFS kernel server. Most administrators wishing to set up an NFS server
   would want to install this package.
  
- **Installed size:** `610 KB`  
+ **Installed size:** `611 KB`  
  **How to install:** `sudo apt install nfs-kernel-server`  
  
  {{< spoiler "Dependencies:" >}}

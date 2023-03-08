@@ -4,7 +4,7 @@ Homepage: http://myrescue.sf.net
 Repository: https://salsa.debian.org/pkg-security-team/myrescue
 Architectures: any
 Version: 0.9.8-3
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### myrescue

@@ -3,7 +3,7 @@ Title: gss-ntlmssp
 Homepage: https://github.com/gssapi/gss-ntlmssp/
 Repository: https://salsa.debian.org/freeipa-team/gss-ntlmssp
 Architectures: any
-Version: 1.0.0-1
+Version: 1.2.0-1
 Metapackages: 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
    
   This package supplies the MIT GSSAPI plugin.
  
- **Installed size:** `148 KB`  
+ **Installed size:** `156 KB`  
  **How to install:** `sudo apt install gss-ntlmssp`  
  
  {{< spoiler "Dependencies:" >}}

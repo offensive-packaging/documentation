@@ -3,7 +3,7 @@ Title: ftester
 Homepage: https://dev.inversepath.com/ftester/
 Repository: https://gitlab.com/kalilinux/packages/ftester
 Architectures: all
-Version: 1.0-1kali2
+Version: 1.0-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

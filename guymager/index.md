@@ -1,10 +1,10 @@
 ---
 Title: guymager
-Homepage: http://guymager.sourceforge.net/
+Homepage: https://guymager.sourceforge.net/
 Repository: https://salsa.debian.org/pkg-security-team/guymager
 Architectures: any
-Version: 0.8.13-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 0.8.13-2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/guymager-logo.svg
 PackagesInfo: |
  ### guymager
@@ -15,7 +15,7 @@ PackagesInfo: |
   compression for best performance on multi-processor and hyper-threading
   machines.
  
- **Installed size:** `1.01 MB`  
+ **Installed size:** `1021 KB`  
  **How to install:** `sudo apt install guymager`  
  
  {{< spoiler "Dependencies:" >}}
@@ -103,7 +103,7 @@ PackagesInfo: |
  AUTHOR
         Guy Voncken (develop (at) faert.net)
  
- version 0.8.13-1                  2021-08-13                       guymager(1)
+ version 0.8.13-2                  2022-12-31                       guymager(1)
  ```
  
  - - -

@@ -3,7 +3,7 @@ Title: jboss-autopwn
 Homepage: https://github.com/SpiderLabs/jboss-autopwn
 Repository: https://gitlab.com/kalilinux/packages/jboss-autopwn
 Architectures: all
-Version: 0.1-1kali1
+Version: 0.1-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-web 
 Icon: images/jboss-autopwn-logo.svg
 PackagesInfo: |
@@ -32,11 +32,90 @@ PackagesInfo: |
  
  ```
  root@kali:~# jboss-linux -h
- [x] Retrieving cookie
- [x] Now creating BSH script...
- [!] Cound not create BSH script..
- [x] Now deploying .war file:
- [x] Something went wrong...
+ [v1.10-47]
+ connect to somewhere:	nc [-options] hostname port[s] [ports] ... 
+ listen for inbound:	nc -l -p port [-options] [hostname] [port]
+ options:
+ 	-c shell commands	as `-e'; use /bin/sh to exec [dangerous!!]
+ 	-e filename		program to exec after connect [dangerous!!]
+ 	-b			allow broadcasts
+ 	-g gateway		source-routing hop point[s], up to 8
+ 	-G num			source-routing pointer: 4, 8, 12, ...
+ 	-h			this cruft
+ 	-i secs			delay interval for lines sent, ports scanned
+         -k                      set keepalive option on socket
+ 	-l			listen mode, for inbound connects
+ 	-n			numeric-only IP addresses, no DNS
+ 	-o file			hex dump of traffic
+ 	-p port			local port number
+ 	-r			randomize local and remote ports
+ 	-q secs			quit after EOF on stdin and delay of secs
+ 	-s addr			local source address
+ 	-T tos			set Type Of Service
+ 	-t			answer TELNET negotiation
+ 	-u			UDP mode
+ 	-v			verbose [use twice to be more verbose]
+ 	-w secs			timeout for connects and final net reads
+ 	-C			Send CRLF as line-ending
+ 	-z			zero-I/O mode [used for scanning]
+ port numbers can be individual or ranges: lo-hi [inclusive];
+ hyphens in port names must be backslash escaped (e.g. 'ftp\-data').
+ [v1.10-47]
+ connect to somewhere:	nc [-options] hostname port[s] [ports] ... 
+ listen for inbound:	nc -l -p port [-options] [hostname] [port]
+ options:
+ 	-c shell commands	as `-e'; use /bin/sh to exec [dangerous!!]
+ 	-e filename		program to exec after connect [dangerous!!]
+ 	-b			allow broadcasts
+ 	-g gateway		source-routing hop point[s], up to 8
+ 	-G num			source-routing pointer: 4, 8, 12, ...
+ 	-h			this cruft
+ 	-i secs			delay interval for lines sent, ports scanned
+         -k                      set keepalive option on socket
+ 	-l			listen mode, for inbound connects
+ 	-n			numeric-only IP addresses, no DNS
+ 	-o file			hex dump of traffic
+ 	-p port			local port number
+ 	-r			randomize local and remote ports
+ 	-q secs			quit after EOF on stdin and delay of secs
+ 	-s addr			local source address
+ 	-T tos			set Type Of Service
+ 	-t			answer TELNET negotiation
+ 	-u			UDP mode
+ 	-v			verbose [use twice to be more verbose]
+ 	-w secs			timeout for connects and final net reads
+ 	-C			Send CRLF as line-ending
+ 	-z			zero-I/O mode [used for scanning]
+ port numbers can be individual or ranges: lo-hi [inclusive];
+ hyphens in port names must be backslash escaped (e.g. 'ftp\-data').
+ [v1.10-47]
+ connect to somewhere:	nc [-options] hostname port[s] [ports] ... 
+ listen for inbound:	nc -l -p port [-options] [hostname] [port]
+ options:
+ 	-c shell commands	as `-e'; use /bin/sh to exec [dangerous!!]
+ 	-e filename		program to exec after connect [dangerous!!]
+ 	-b			allow broadcasts
+ 	-g gateway		source-routing hop point[s], up to 8
+ 	-G num			source-routing pointer: 4, 8, 12, ...
+ 	-h			this cruft
+ 	-i secs			delay interval for lines sent, ports scanned
+         -k                      set keepalive option on socket
+ 	-l			listen mode, for inbound connects
+ 	-n			numeric-only IP addresses, no DNS
+ 	-o file			hex dump of traffic
+ 	-p port			local port number
+ 	-r			randomize local and remote ports
+ 	-q secs			quit after EOF on stdin and delay of secs
+ 	-s addr			local source address
+ 	-T tos			set Type Of Service
+ 	-t			answer TELNET negotiation
+ 	-u			UDP mode
+ 	-v			verbose [use twice to be more verbose]
+ 	-w secs			timeout for connects and final net reads
+ 	-C			Send CRLF as line-ending
+ 	-z			zero-I/O mode [used for scanning]
+ port numbers can be individual or ranges: lo-hi [inclusive];
+ hyphens in port names must be backslash escaped (e.g. 'ftp\-data').
  ```
  
  - - -
@@ -46,20 +125,90 @@ PackagesInfo: |
  
  ```
  root@kali:~# jboss-win -h
- [x] Retrieving cookie
- [x] Now creating BSH script...
- [x] .war file created successfully on c: 
- [x] Now deploying .war file:
- [x] Web shell enabled!: http://-h:/browserwin/browser/Browser.jsp
- [x] Server name...:
- Usage: ncat [options] [hostname] [port]
-   -n, --nodns                Do not resolve hostnames via DNS
-       --allow                Allow only given hosts to connect to Ncat
-       --allowfile            A file of hosts allowed to connect to Ncat
-       --deny                 Deny given hosts from connecting to Ncat
-       --denyfile             A file of hosts denied from connecting to Ncat
-       --proxy <addr[:port]>  Specify address of host to proxy through
- [x] Would you like a reverse or bind shell or vnc(bind)? 
+ [v1.10-47]
+ connect to somewhere:	nc [-options] hostname port[s] [ports] ... 
+ listen for inbound:	nc -l -p port [-options] [hostname] [port]
+ options:
+ 	-c shell commands	as `-e'; use /bin/sh to exec [dangerous!!]
+ 	-e filename		program to exec after connect [dangerous!!]
+ 	-b			allow broadcasts
+ 	-g gateway		source-routing hop point[s], up to 8
+ 	-G num			source-routing pointer: 4, 8, 12, ...
+ 	-h			this cruft
+ 	-i secs			delay interval for lines sent, ports scanned
+         -k                      set keepalive option on socket
+ 	-l			listen mode, for inbound connects
+ 	-n			numeric-only IP addresses, no DNS
+ 	-o file			hex dump of traffic
+ 	-p port			local port number
+ 	-r			randomize local and remote ports
+ 	-q secs			quit after EOF on stdin and delay of secs
+ 	-s addr			local source address
+ 	-T tos			set Type Of Service
+ 	-t			answer TELNET negotiation
+ 	-u			UDP mode
+ 	-v			verbose [use twice to be more verbose]
+ 	-w secs			timeout for connects and final net reads
+ 	-C			Send CRLF as line-ending
+ 	-z			zero-I/O mode [used for scanning]
+ port numbers can be individual or ranges: lo-hi [inclusive];
+ hyphens in port names must be backslash escaped (e.g. 'ftp\-data').
+ [v1.10-47]
+ connect to somewhere:	nc [-options] hostname port[s] [ports] ... 
+ listen for inbound:	nc -l -p port [-options] [hostname] [port]
+ options:
+ 	-c shell commands	as `-e'; use /bin/sh to exec [dangerous!!]
+ 	-e filename		program to exec after connect [dangerous!!]
+ 	-b			allow broadcasts
+ 	-g gateway		source-routing hop point[s], up to 8
+ 	-G num			source-routing pointer: 4, 8, 12, ...
+ 	-h			this cruft
+ 	-i secs			delay interval for lines sent, ports scanned
+         -k                      set keepalive option on socket
+ 	-l			listen mode, for inbound connects
+ 	-n			numeric-only IP addresses, no DNS
+ 	-o file			hex dump of traffic
+ 	-p port			local port number
+ 	-r			randomize local and remote ports
+ 	-q secs			quit after EOF on stdin and delay of secs
+ 	-s addr			local source address
+ 	-T tos			set Type Of Service
+ 	-t			answer TELNET negotiation
+ 	-u			UDP mode
+ 	-v			verbose [use twice to be more verbose]
+ 	-w secs			timeout for connects and final net reads
+ 	-C			Send CRLF as line-ending
+ 	-z			zero-I/O mode [used for scanning]
+ port numbers can be individual or ranges: lo-hi [inclusive];
+ hyphens in port names must be backslash escaped (e.g. 'ftp\-data').
+ [v1.10-47]
+ connect to somewhere:	nc [-options] hostname port[s] [ports] ... 
+ listen for inbound:	nc -l -p port [-options] [hostname] [port]
+ options:
+ 	-c shell commands	as `-e'; use /bin/sh to exec [dangerous!!]
+ 	-e filename		program to exec after connect [dangerous!!]
+ 	-b			allow broadcasts
+ 	-g gateway		source-routing hop point[s], up to 8
+ 	-G num			source-routing pointer: 4, 8, 12, ...
+ 	-h			this cruft
+ 	-i secs			delay interval for lines sent, ports scanned
+         -k                      set keepalive option on socket
+ 	-l			listen mode, for inbound connects
+ 	-n			numeric-only IP addresses, no DNS
+ 	-o file			hex dump of traffic
+ 	-p port			local port number
+ 	-r			randomize local and remote ports
+ 	-q secs			quit after EOF on stdin and delay of secs
+ 	-s addr			local source address
+ 	-T tos			set Type Of Service
+ 	-t			answer TELNET negotiation
+ 	-u			UDP mode
+ 	-v			verbose [use twice to be more verbose]
+ 	-w secs			timeout for connects and final net reads
+ 	-C			Send CRLF as line-ending
+ 	-z			zero-I/O mode [used for scanning]
+ port numbers can be individual or ranges: lo-hi [inclusive];
+ hyphens in port names must be backslash escaped (e.g. 'ftp\-data').
  ```
  
  - - -

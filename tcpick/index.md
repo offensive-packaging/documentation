@@ -4,7 +4,7 @@ Homepage: http://tcpick.sourceforge.net
 Repository: https://salsa.debian.org/pkg-security-team/tcpick
 Architectures: any
 Version: 0.2.1-10
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### tcpick

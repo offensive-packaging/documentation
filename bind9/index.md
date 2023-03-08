@@ -3,7 +3,7 @@ Title: bind9
 Homepage: https://www.isc.org/downloads/bind/
 Repository: https://salsa.debian.org/dns-team/bind9
 Architectures: any all
-Version: 1:9.18.8-1
+Version: 1:9.18.12-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -35,6 +35,7 @@ PackagesInfo: |
  * libnghttp2-14 
  * libprotobuf-c1 
  * libssl3 
+ * libsystemd0
  * libuv1 
  * libxml2 
  * lsb-base 
@@ -67,9 +68,9 @@ PackagesInfo: |
         Internet Systems Consortium
  
  COPYRIGHT
-        2022, Internet Systems Consortium
+        2023, Internet Systems Consortium
  
- 9.18.8-1-Debian                   2022-10-10                       ARPANAME(1)
+ 9.18.12-1-Debian                  2023-02-03                       ARPANAME(1)
  ```
  
  - - -
@@ -103,7 +104,7 @@ PackagesInfo: |
  
      dnssec-importkey options -f file [keyname]
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  Options:
      -f file: read key from zone file
      -K <directory>: directory in which to store the key files
@@ -125,218 +126,14 @@ PackagesInfo: |
  Internet domain name server
  
  ```
- root@kali:~# man named
- NAMED(8)                            BIND 9                            NAMED(8)
- 
- NAME
-        named - Internet domain name server
- 
- SYNOPSIS
-        named  [  [-4]  |  [-6]  ]  [-c  config-file] [-C] [-d debug-level] [-D
-        string] [-E engine-name] [-f] [-g] [-L logfile] [-M option]  [-m  flag]
-        [-n #cpus] [-p port] [-s] [-t directory] [-U #listeners] [-u user] [-v]
-        [-V] [-X lock-file]
- 
- DESCRIPTION
-        named is a Domain Name System (DNS) server, part of the BIND 9  distri-
-        bution  from  ISC.  For  more information on the DNS, see RFC 1033, RFC
-        1034, and RFC 1035.
- 
-        When invoked without arguments, named reads the  default  configuration
-        file  /etc/bind/named.conf,  reads  any  initial  data, and listens for
-        queries.
- 
- OPTIONS
-        -4     This option tells named to use only IPv4, even if the  host  ma-
-               chine is capable of IPv6. -4 and -6 are mutually exclusive.
- 
-        -6     This  option  tells named to use only IPv6, even if the host ma-
-               chine is capable of IPv4. -4 and -6 are mutually exclusive.
- 
-        -c config-file
-               This option tells named to use config-file as its  configuration
-               file  instead  of  the  default, /etc/bind/named.conf. To ensure
-               that the configuration file can be reloaded after the server has
-               changed its working directory due to to a possible directory op-
-               tion in the configuration file, config-file should be  an  abso-
-               lute pathname.
- 
-        -C     This  option  prints  out the default built-in configuration and
-               exits.
- 
-               NOTE: This is for debugging purposes only and is not an accurate
-               representation of the actual configuration used by named at run-
-               time.
- 
-        -d debug-level
-               This option sets the daemon's debug level to debug-level. Debug-
-               ging  traces  from  named become more verbose as the debug level
-               increases.
- 
-        -D string
-               This option specifies a string that is used to  identify  a  in-
-               stance of named in a process listing. The contents of string are
-               not examined.
- 
-        -E engine-name
-               When applicable, this option specifies the hardware to  use  for
-               cryptographic  operations,  such  as a secure key store used for
-               signing.
- 
-               When BIND 9 is built with OpenSSL, this needs to be set  to  the
-               OpenSSL engine identifier that drives the cryptographic acceler-
-               ator or hardware service module (usually pkcs11).
- 
-        -f     This option runs the server in the foreground (i.e., do not dae-
-               monize).
- 
-        -g     This  option  runs  the  server in the foreground and forces all
-               logging to stderr.
- 
-        -L logfile
-               This option sets the log to the file logfile by default, instead
-               of the system log.
- 
-        -M option
-               This  option  sets  the default (comma-separated) memory context
-               options. The possible flags are:
- 
-               o fill: fill blocks of memory with tag values when they are  al-
-                 located or freed, to assist debugging of memory problems; this
-                 is the implicit default if named has been compiled with  --en-
-                 able-developer.
- 
-               o nofill:  disable the behavior enabled by fill; this is the im-
-                 plicit default unless  named  has  been  compiled  with  --en-
-                 able-developer.
- 
-        -m flag
-               This  option  turns  on  memory  usage debugging flags. Possible
-               flags are usage, trace, record, size, and mctx. These correspond
-               to the ISC_MEM_DEBUGXXXX flags described in <isc/mem.h>.
- 
-        -n #cpus
-               This  option  creates  #cpus worker threads to take advantage of
-               multiple CPUs. If not specified, named tries  to  determine  the
-               number  of CPUs present and creates one thread per CPU. If it is
-               unable to determine the number of CPUs, a single  worker  thread
-               is created.
- 
-        -p value
-               This  option specifies the port(s) on which the server will lis-
-               ten for queries. If value is of the form <portnum> or dns=<port-
-               num>,  the server will listen for DNS queries on portnum; if not
-               not specified, the default is port 53. If value is of  the  form
-               tls=<portnum>,  the  server will listen for TLS queries on port-
-               num; the default is 853.  If value is of the  form  https=<port-
-               num>,  the  server will listen for HTTPS queries on portnum; the
-               default is 443.  If value is of  the  form  http=<portnum>,  the
-               server  will  listen for HTTP queries on portnum; the default is
-               80.
- 
-        -s     This option writes memory usage statistics to stdout on exit.
- 
-        NOTE:
-           This option is mainly of interest to BIND 9 developers  and  may  be
-           removed or changed in a future release.
- 
-        -S #max-socks
-               This option is deprecated and no longer has any function.
- 
-        WARNING:
-           This  option  should  be unnecessary for the vast majority of users.
-           The use of this option could even be harmful, because the  specified
-           value  may exceed the limitation of the underlying system API. It is
-           therefore set only when the default configuration causes  exhaustion
-           of file descriptors and the operational environment is known to sup-
-           port the specified number of sockets. Note also that the actual max-
-           imum number is normally slightly fewer than the specified value, be-
-           cause named reserves some file descriptors for its internal use.
- 
-        -t directory
-               This option tells named to chroot to directory after  processing
-               the command-line arguments, but before reading the configuration
-               file.
- 
-        WARNING:
-           This option should be used in conjunction with the -u option, as ch-
-           rooting  a  process running as root doesn't enhance security on most
-           systems; the way chroot is defined allows a process with root privi-
-           leges to escape a chroot jail.
- 
-        -U #listeners
-               This  option tells named the number of #listeners worker threads
-               to listen on, for incoming UDP packets on each address.  If  not
-               specified,  named calculates a default value based on the number
-               of detected CPUs: 1 for 1 CPU, and the number of  detected  CPUs
-               minus one for machines with more than 1 CPU.  This cannot be in-
-               creased to a value higher than the number of CPUs.   If  -n  has
-               been  set  to  a  higher value than the number of detected CPUs,
-               then -U may be increased as high as that value, but no higher.
- 
-        -u user
-               This option sets the setuid to user after completing  privileged
-               operations,  such  as creating sockets that listen on privileged
-               ports.
- 
-        NOTE:
-           On Linux, named uses the kernel's capability mechanism to  drop  all
-           root  privileges except the ability to bind to a privileged port and
-           set process resource limits. Unfortunately, this means that  the  -u
-           option  only  works  when named is run on kernel 2.2.18 or later, or
-           kernel 2.3.99-pre3 or later, since previous kernels  did  not  allow
-           privileges to be retained after setuid.
- 
-        -v     This option reports the version number and exits.
- 
-        -V     This option reports the version number, build options, supported
-               cryptographics algorithms, and exits.
- 
-        -X lock-file
-               This option acquires a lock on the specified  file  at  runtime;
-               this helps to prevent duplicate named instances from running si-
-               multaneously.  Use of this option overrides the lock-file option
-               in named.conf. If set to none, the lock file check is disabled.
- 
- SIGNALS
-        In  routine  operation, signals should not be used to control the name-
-        server; rndc should be used instead.
- 
-        SIGHUP This signal forces a reload of the server.
- 
-        SIGINT, SIGTERM
-               These signals shut down the server.
- 
-        The result of sending any other signals to the server is undefined.
- 
- CONFIGURATION
-        The named configuration file is too complex to describe in detail here.
-        A  complete  description is provided in the BIND 9 Administrator Refer-
-        ence Manual.
- 
-        named inherits the umask (file creation  mode  mask)  from  the  parent
-        process. If files created by named, such as journal files, need to have
-        custom permissions, the umask should be set explicitly  in  the  script
-        used to start the named process.
- 
- FILES
-        /etc/bind/named.conf
-               The default configuration file.
- 
-        /run/named.pid
-               The default process-id file.
- 
- SEE ALSO
-        RFC  1033,  RFC 1034, RFC 1035, named-checkconf(8), named-checkzone(8),
-        rndc(8), named.conf(5), BIND 9 Administrator Reference Manual.
- 
- AUTHOR
-        Internet Systems Consortium
- 
- COPYRIGHT
-        2022, Internet Systems Consortium
- 
- 9.18.8-1-Debian                   2022-10-10                          NAMED(8)
+ root@kali:~# named -h
+ usage: named [-4|-6] [-c conffile] [-d debuglevel] [-D comment] [-E engine]
+              [-f|-g] [-L logfile] [-n number_of_cpus] [-p port] [-s]
+              [-S sockets] [-t chrootdir] [-u username] [-U listeners]
+              [-X lockfile] [-m {usage|trace|record|size|mctx}]
+              [-M fill|nofill]
+ usage: named [-v|-V|-C]
+ named: unknown option '-h'
  ```
  
  - - -
@@ -357,6 +154,39 @@ PackagesInfo: |
  
  Convert an NZD database to NZF text format
  
+ ```
+ root@kali:~# man named-nzd2nzf
+ NAMED-NZD2NZF(1)                    BIND 9                    NAMED-NZD2NZF(1)
+ 
+ NAME
+        named-nzd2nzf - convert an NZD database to NZF text format
+ 
+ SYNOPSIS
+        named-nzd2nzf {filename}
+ 
+ DESCRIPTION
+        named-nzd2nzf  converts  an NZD database to NZF format and prints it to
+        standard output. This can be used to review the configuration of  zones
+        that  were  added to named via rndc addzone. It can also be used to re-
+        store the old file format when rolling back from  a  newer  version  of
+        BIND to an older version.
+ 
+ ARGUMENTS
+        filename
+               This  is  the  name  of  the  .nzd file whose contents should be
+               printed.
+ 
+ SEE ALSO
+        BIND 9 Administrator Reference Manual.
+ 
+ AUTHOR
+        Internet Systems Consortium
+ 
+ COPYRIGHT
+        2023, Internet Systems Consortium
+ 
+ 9.18.12-1-Debian                  2023-02-03                  NAMED-NZD2NZF(1)
+ ```
  
  - - -
  
@@ -418,7 +248,7 @@ PackagesInfo: |
   Please be aware that the BIND 9 libraries are considered private by upstream
   developers and the API and ABI might break at any time.
  
- **Installed size:** `1.75 MB`  
+ **Installed size:** `1.76 MB`  
  **How to install:** `sudo apt install bind9-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -441,7 +271,7 @@ PackagesInfo: |
    - nslookup - the older way to do it
    - nsupdate - perform dynamic updates (See RFC2136)
  
- **Installed size:** `718 KB`  
+ **Installed size:** `721 KB`  
  **How to install:** `sudo apt install bind9-dnsutils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -558,7 +388,6 @@ PackagesInfo: |
                   +[no]dns64prefix    (Get the DNS64 prefixes from ipv4only.arpa)
                   +[no]dnssec         (Request DNSSEC records)
                   +domain=###         (Set default domainname)
-                  +[no]dscp[=###]     (Set the DSCP value to ### [0..63])
                   +[no]edns[=###]     (Set EDNS version) [0]
                   +ednsflags=###      (Set EDNS flag bits)
                   +[no]ednsnegotiation (Set EDNS version negotiation)
@@ -630,44 +459,13 @@ PackagesInfo: |
  Print dnstap data in human-readable form
  
  ```
- root@kali:~# man dnstap-read
- DNSTAP-READ(1)                      BIND 9                      DNSTAP-READ(1)
- 
- NAME
-        dnstap-read - print dnstap data in human-readable form
- 
- SYNOPSIS
-        dnstap-read [-m] [-p] [-x] [-y] {file}
- 
- DESCRIPTION
-        dnstap-read  reads dnstap data from a specified file and prints it in a
-        human-readable format. By default, dnstap data is printed  in  a  short
-        summary  format,  but  if the -y option is specified, a longer and more
-        detailed YAML format is used.
- 
- OPTIONS
-        -m     This option indicates trace memory allocations, and is used  for
-               debugging memory leaks.
- 
-        -p     This option prints the text form of the DNS message that was en-
-               capsulated in the dnstap frame, after printing the dnstap data.
- 
-        -x     This option prints a hex dump of the wire form of the  DNS  mes-
-               sage  that  was encapsulated in the dnstap frame, after printing
-               the dnstap data.
- 
-        -y     This option prints dnstap data in a detailed YAML format.
- 
- SEE ALSO
-        named(8), rndc(8), BIND 9 Administrator Reference Manual.
- 
- AUTHOR
-        Internet Systems Consortium
- 
- COPYRIGHT
-        2022, Internet Systems Consortium
- 
- 9.18.8-1-Debian                   2022-10-10                    DNSTAP-READ(1)
+ root@kali:~# dnstap-read -h
+ dnstap-read: illegal option -- h
+ dnstap-read [-mpxy] [filename]
+ 	-m	trace memory allocations
+ 	-p	print the full DNS message
+ 	-x	use hex format to print DNS message
+ 	-y	print YAML format (implies -p)
  ```
  
  - - -
@@ -691,7 +489,6 @@ PackagesInfo: |
                   -b address[#port]   (bind to source address/port)
                   -p port             (specify port number)
                   -m                  (enable memory usage debugging)
-                  +[no]dscp[=###]     (Set the DSCP value to ### [0..63])
                   +[no]vc             (TCP mode)
                   +[no]tcp            (TCP mode, alternate syntax)
                   +[no]besteffort     (Try to parse even illegal messages)
@@ -918,9 +715,9 @@ PackagesInfo: |
         Internet Systems Consortium
  
  COPYRIGHT
-        2022, Internet Systems Consortium
+        2023, Internet Systems Consortium
  
- 9.18.8-1-Debian                   2022-10-10                       NSLOOKUP(1)
+ 9.18.12-1-Debian                  2023-02-03                       NSLOOKUP(1)
  ```
  
  - - -
@@ -954,7 +751,7 @@ PackagesInfo: |
   This package provides the 'host' DNS lookup utility in the form that
   is bundled with the BIND 9 sources.
  
- **Installed size:** `374 KB`  
+ **Installed size:** `381 KB`  
  **How to install:** `sudo apt install bind9-host`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1005,7 +802,7 @@ PackagesInfo: |
    
   This package contains a bundle of shared libraries used by BIND 9.
  
- **Installed size:** `8.51 MB`  
+ **Installed size:** `8.58 MB`  
  **How to install:** `sudo apt install bind9-libs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1033,7 +830,7 @@ PackagesInfo: |
   This package provides various utilities that are useful for maintaining a
   working BIND 9 installation.
  
- **Installed size:** `837 KB`  
+ **Installed size:** `840 KB`  
  **How to install:** `sudo apt install bind9-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1049,7 +846,7 @@ PackagesInfo: |
  root@kali:~# dnssec-cds -h
  Usage:
      dnssec-cds options [options] -f <file> -d <path> <domain>
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  Options:
      -a <algorithm>     digest algorithm (SHA-1 / SHA-256 / SHA-384)
      -c <class>         of domain (default IN)
@@ -1082,7 +879,7 @@ PackagesInfo: |
  
      dnssec-dsfromkey [-h|-V]
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  Options:
      -1: digest algorithm SHA-1
      -2: digest algorithm SHA-256
@@ -1112,7 +909,7 @@ PackagesInfo: |
  Usage:
      dnssec-keyfromlabel -l label [options] name
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  Required options:
      -l label: label of the key pair
      name: owner of the key
@@ -1166,7 +963,7 @@ PackagesInfo: |
  Usage:
      dnssec-keygen [options] name
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
      name: owner of the key
  Options:
      -K <directory>: write keys into directory
@@ -1236,7 +1033,7 @@ PackagesInfo: |
  Usage:
      dnssec-revoke [options] keyfile
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
      -E engine:    specify OpenSSL engine
      -f:           force overwrite
      -h:           help
@@ -1260,7 +1057,7 @@ PackagesInfo: |
  Usage:
      dnssec-settime [options] keyfile
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  General options:
      -E engine:          specify OpenSSL engine
      -f:                 force update of old-style keys
@@ -1308,7 +1105,7 @@ PackagesInfo: |
  Usage:
  	dnssec-signzone [options] zonefile [keys]
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  Options: (default value in parenthesis) 
  	-S:	smart signing: automatically finds key files
  		for the zone and determines how they are to be used
@@ -1382,7 +1179,7 @@ PackagesInfo: |
  Usage:
  	dnssec-verify [options] zonefile [keys]
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  Options: (default value in parenthesis) 
  	-v debuglevel (0)
  	-q quiet
@@ -1570,7 +1367,7 @@ PackagesInfo: |
    zonestatus zone [class [view]]
  		Display the current status of a zone.
  
- Version: 9.18.8-1-Debian
+ Version: 9.18.12-1-Debian
  ```
  
  - - -
@@ -1601,7 +1398,7 @@ PackagesInfo: |
  
   This is a transitional package. It can safely be removed.
  
- **Installed size:** `257 KB`  
+ **Installed size:** `260 KB`  
  **How to install:** `sudo apt install bind9utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1615,7 +1412,7 @@ PackagesInfo: |
  
   This is a transitional package. It can safely be removed.
  
- **Installed size:** `257 KB`  
+ **Installed size:** `260 KB`  
  **How to install:** `sudo apt install dnsutils`  
  
  {{< spoiler "Dependencies:" >}}

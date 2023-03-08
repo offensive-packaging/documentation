@@ -3,7 +3,7 @@ Title: pskracker
 Homepage: https://github.com/soxrok2212/PSKracker
 Repository: https://gitlab.com/kalilinux/packages/pskracker
 Architectures: amd64 arm64 all
-Version: 0.3.1+git20210601-0kali1
+Version: 0.3.1+git20230102-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   generators/pingens written in C. This is useful for testing/auditing wireless
   networks and contains bleeding edge algorithms.
  
- **Installed size:** `40 KB`  
+ **Installed size:** `37 KB`  
  **How to install:** `sudo apt install pskracker`  
  
  {{< spoiler "Dependencies:" >}}
@@ -61,7 +61,7 @@ PackagesInfo: |
    
   This package contains the dicts directory.
  
- **Installed size:** `137.42 MB`  
+ **Installed size:** `110.85 MB`  
  **How to install:** `sudo apt install pskracker-data`  
  
  

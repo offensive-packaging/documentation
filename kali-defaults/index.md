@@ -3,8 +3,8 @@ Title: kali-defaults
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-defaults
 Architectures: all
-Version: 2022.4.3
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-database kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-vulnerability kali-tools-web kali-tools-windows-resources 
+Version: 2023.1.5
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-database kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-respond kali-tools-reverse-engineering kali-tools-vulnerability kali-tools-web kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### kali-defaults
@@ -15,7 +15,7 @@ PackagesInfo: |
   because it is included in all Kali images, even minimalistic ones such as
   docker images.
  
- **Installed size:** `1.34 MB`  
+ **Installed size:** `1.14 MB`  
  **How to install:** `sudo apt install kali-defaults`  
  
  ##### kali-deprecated
@@ -29,6 +29,12 @@ PackagesInfo: |
  - - -
  
  ##### kali-motd
+ 
+ 
+ 
+ - - -
+ 
+ ##### kali-pulseaudio-default-volume
  
  
  
@@ -69,7 +75,7 @@ PackagesInfo: |
   have a high cost in terms of diskspace due to the size of the dependencies.
   This includes notably all gsettings overrides.
  
- **Installed size:** `26 KB`  
+ **Installed size:** `27 KB`  
  **How to install:** `sudo apt install kali-defaults-desktop`  
  
  {{< spoiler "Dependencies:" >}}

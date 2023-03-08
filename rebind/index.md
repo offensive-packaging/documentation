@@ -1,9 +1,9 @@
 ---
 Title: rebind
-Homepage: https://code.google.com/p/rebind/
+Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/rebind
 Architectures: any
-Version: 0.3.4-1kali6
+Version: 0.3.4-1kali7
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-sniffing-spoofing 
 Icon: images/rebind-logo.svg
 PackagesInfo: |
@@ -24,7 +24,7 @@ PackagesInfo: |
   the target network surf to a Web site that is controlled,
   or has been compromised, by the attacker.
  
- **Installed size:** `2.59 MB`  
+ **Installed size:** `2.60 MB`  
  **How to install:** `sudo apt install rebind`  
  
  ##### dns-rebind

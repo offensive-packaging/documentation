@@ -3,7 +3,7 @@ Title: ffuf
 Homepage: https://github.com/ffuf/ffuf
 Repository: https://gitlab.com/kalilinux/packages/ffuf
 Architectures: any
-Version: 1.5.0-0kali1
+Version: 2.0.0-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/ffuf-logo.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   discovery, virtual host discovery (without DNS records) and GET and POST
   parameter fuzzing.
  
- **Installed size:** `6.53 MB`  
+ **Installed size:** `6.99 MB`  
  **How to install:** `sudo apt install ffuf`  
  
  {{< spoiler "Dependencies:" >}}
@@ -26,7 +26,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ffuf -h
- Fuzz Faster U Fool - v1.5.0 Kali Exclusive <3
+ Fuzz Faster U Fool - v2.0.0-dev
  
  HTTP OPTIONS:
    -H                  Header `"Name: Value"`, separated by colon. Multiple -H flags are accepted.
@@ -62,7 +62,10 @@ PackagesInfo: |
    -rate               Rate of requests per second (default: 0)
    -s                  Do not print additional information (silent mode) (default: false)
    -sa                 Stop on all error cases. Implies -sf and -se. (default: false)
+   -scraperfile        Custom scraper file path
+   -scrapers           Active scraper groups (default: all)
    -se                 Stop on spurious errors (default: false)
+   -search             Search for a FFUFHASH payload from ffuf history
    -sf                 Stop when > 95% of responses return 403 Forbidden (default: false)
    -t                  Number of concurrent threads. (default: 40)
    -v                  Verbose output, printing full URL and redirect location (if any) with the results. (default: false)

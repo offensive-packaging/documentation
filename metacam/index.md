@@ -4,7 +4,7 @@ Homepage: http://www.cheeseplant.org/~daniel/pages/metacam.html
 Repository: https://salsa.debian.org/pkg-security-team/metacam
 Architectures: any
 Version: 1.2-14
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### metacam

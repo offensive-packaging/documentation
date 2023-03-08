@@ -4,7 +4,7 @@ Homepage: https://www.rfc1149.net/devel/recoverjpeg
 Repository: https://salsa.debian.org/pkg-security-team/recoverjpeg
 Architectures: any
 Version: 2.6.3-4
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### recoverjpeg
@@ -82,6 +82,43 @@ PackagesInfo: |
  
  Remove duplicates of the same file in the current directory
  
+ ```
+ root@kali:~# man remove-duplicates
+ REMOVE-DUPLICATES(1)                                      REMOVE-DUPLICATES(1)
+ 
+ NAME
+        remove-duplicates  -  remove duplicates of the same file in the current
+        directory
+ 
+ SYNOPSIS
+        remove-duplicate [-f]
+ 
+ DESCRIPTION
+        Removes duplicates of the same file in the current directory if  -f  is
+        given.  If -f is not given, duplicate will be identified twice (once in
+        every direction).
+ 
+ OPTIONS
+        -f
+ 
+ COPYRIGHT
+        Copyright (c) 2004-2016 Samuel Tardieu <sam@rfc1149.net>.  This is free
+        software; see the source for copying conditions.  There is NO warranty;
+        not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+        If recoverjpeg saves your day and you liked it, you are welcome to send
+        me the best rescued ones by email (please send only 800x600 versions of
+        the pictures) and authorize me to put them online (indicate which  con-
+        tact information you want me to use for credits).
+ 
+ SEE ALSO
+        recoverjpeg(1) sort-pictures(1)
+ 
+ AUTHORS
+        Samuel Tardieu <sam@rfc1149.net>.
+ 
+ User Manuals                   November 12, 2016          REMOVE-DUPLICATES(1)
+ ```
  
  - - -
  

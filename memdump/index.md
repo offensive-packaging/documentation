@@ -4,7 +4,7 @@ Homepage: http://www.porcupine.org/forensics/tct.html
 Repository: https://salsa.debian.org/pkg-security-team/memdump
 Architectures: any
 Version: 1.01-9
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### memdump

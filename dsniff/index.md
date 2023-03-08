@@ -3,7 +3,7 @@ Title: dsniff
 Homepage: https://www.monkey.org/~dugsong/dsniff/
 Repository: https://salsa.debian.org/pkg-security-team/dsniff
 Architectures: any
-Version: 2.4b1+debian-30
+Version: 2.4b1+debian-31
 Metapackages: kali-linux-everything kali-linux-large kali-linux-nethunter kali-tools-sniffing-spoofing kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -31,7 +31,7 @@ PackagesInfo: |
    
   Please do not abuse this software.
  
- **Installed size:** `439 KB`  
+ **Installed size:** `430 KB`  
  **How to install:** `sudo apt install dsniff`  
  
  {{< spoiler "Dependencies:" >}}

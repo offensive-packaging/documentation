@@ -3,7 +3,7 @@ Title: copy-router-config
 Homepage: https://www.offensive-security.com
 Repository: https://gitlab.com/kalilinux/packages/copy-router-config
 Architectures: all
-Version: 1.0-1kali3
+Version: 1.0-1kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

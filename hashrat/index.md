@@ -4,7 +4,7 @@ Homepage: http://www.cjpaget.co.uk/Code/Hashrat
 Repository: https://salsa.debian.org/pkg-security-team/hashrat
 Architectures: any
 Version: 1.13-1
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### hashrat

@@ -3,7 +3,7 @@ Title: dnsmap
 Homepage: https://github.com/resurrecting-open-source-projects/dnsmap
 Repository: https://salsa.debian.org/pkg-security-team/dnsmap
 Architectures: any
-Version: 0.36-1
+Version: 0.36-3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -215,6 +215,52 @@ PackagesInfo: |
  
  Mass scan using dnsmap
  
+ ```
+ root@kali:~# man dnsmap-bulk
+ dnsmap-bulk(1)              mass scan using dnsmap              dnsmap-bulk(1)
+ 
+ NAME
+        dnsmap-bulk - mass scan using dnsmap
+ 
+ SYNOPSIS
+        dnsmap-bulk <domains-file> [results-path]
+ 
+ DESCRIPTION
+        dnsmap-bulk  is used to bruteforce several target domains in bulk fash-
+        ion. In other words, is possible get a list of domains from a  file  to
+        scan multiple targets using dnsmap as backend.
+ 
+        WARNING: using dnsmap-bulk, dnsmap will always use the default options,
+        i.e. built-in wordlist, delay = 10 ms, never ignoring IPs.
+ 
+ OPTIONS
+        domain-file
+               A file with domains to be scanned, one per line.
+ 
+        results-path
+               A path where the results will be saved. dnsmap will use  the  -r
+               option to name files and will be created a file for each domain.
+               This item is optional and if not supplied, dnsmap  won't  create
+               files.
+ 
+ EXAMPLE
+        For bruteforcing a list of target domains in a bulk fashion, saving all
+        results inside a directory:
+ 
+            $ dnsmap-bulk domains.txt /tmp/results/
+ 
+ SEE ALSO
+        dnsmap(1)
+ 
+ AUTHOR
+        dnsmap-bulk was originally written by "pagvac" in 2006. Currently it is
+        maintained     by     volunteers,    inside    dnsmap    project,    at
+        https://github.com/resurrecting-open-source-projects/dnsmap/
+ 
+        This manpage was written by Joao Eriberto Mota Filho.
+ 
+ dnsmap-bulk-0.1                   18 Nov 2019                   dnsmap-bulk(1)
+ ```
  
  - - -
  

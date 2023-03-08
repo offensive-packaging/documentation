@@ -3,7 +3,7 @@ Title: darkstat
 Homepage: https://unix4lyfe.org/darkstat/
 Repository: 
 Architectures: any
-Version: 3.0.719-1
+Version: 3.0.719-1.1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sniffing-spoofing 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
    
   It is known to be smaller (in terms of memory footprint) and stabler than ntop.
  
- **Installed size:** `170 KB`  
+ **Installed size:** `171 KB`  
  **How to install:** `sudo apt install darkstat`  
  
  {{< spoiler "Dependencies:" >}}
@@ -33,7 +33,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# darkstat --help
- darkstat 3.0.719 (using libpcap version 1.10.1 (with TPACKET_V3))
+ darkstat 3.0.719 (using libpcap version 1.10.3 (with TPACKET_V3))
  
  usage: darkstat [ -i interface ]
                  [ -f filter ]

@@ -4,7 +4,7 @@ Homepage: http://netsniff-ng.org/
 Repository: https://salsa.debian.org/debian/netsniff-ng
 Architectures: any
 Version: 0.6.8-3
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-sniffing-spoofing 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-respond kali-tools-sniffing-spoofing 
 Icon: images/netsniff-ng-logo.svg
 PackagesInfo: |
  ### netsniff-ng

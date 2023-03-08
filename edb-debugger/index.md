@@ -4,7 +4,7 @@ Homepage: https://github.com/eteran/edb-debugger
 Repository: https://salsa.debian.org/debian/edb-debugger
 Architectures: amd64 i386
 Version: 1.3.0-2
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/edb-debugger-logo.svg
 PackagesInfo: |
  ### edb-debugger

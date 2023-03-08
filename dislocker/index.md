@@ -31,7 +31,7 @@ PackagesInfo: |
  * libc6 
  * libdislocker0.7 
  * libfuse2 
- * libruby3.0 
+ * libruby3.1 
  {{< /spoiler >}}
  
  ##### dislocker
@@ -249,7 +249,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libmbedcrypto7 
- * libruby3.0 
+ * libruby3.1 
  {{< /spoiler >}}
  
  

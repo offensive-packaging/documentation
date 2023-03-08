@@ -3,7 +3,7 @@ Title: sherlock
 Homepage: https://github.com/sherlock-project/sherlock
 Repository: https://gitlab.com/kalilinux/packages/sherlock
 Architectures: all
-Version: 0.14.2+git20221021-0kali1
+Version: 0.14.3+git20230216-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,7 +11,7 @@ PackagesInfo: |
  
   This package contains a tool to find usernames across social networks.
  
- **Installed size:** `175 KB`  
+ **Installed size:** `158 KB`  
  **How to install:** `sudo apt install sherlock`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
                  [--browse] [--local] [--nsfw]
                  USERNAMES [USERNAMES ...]
  
- Sherlock: Find Usernames Across Social Networks (Version 0.14.2)
+ Sherlock: Find Usernames Across Social Networks (Version 0.14.3)
  
  positional arguments:
    USERNAMES             One or more usernames to check with social networks.

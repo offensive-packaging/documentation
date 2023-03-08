@@ -3,7 +3,7 @@ Title: zsh
 Homepage: https://www.zsh.org/
 Repository: https://salsa.debian.org/debian/zsh
 Architectures: any all
-Version: 5.9-2
+Version: 5.9-4
 Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-reporting 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   shell functions (with autoloading), a history mechanism, and a
   host of other features.
  
- **Installed size:** `2.37 MB`  
+ **Installed size:** `2.40 MB`  
  **How to install:** `sudo apt install zsh`  
  
  {{< spoiler "Dependencies:" >}}
@@ -905,7 +905,7 @@ PackagesInfo: |
   This package contains headers and scripts necessary to compile
   third-party modules.
  
- **Installed size:** `682 KB`  
+ **Installed size:** `684 KB`  
  **How to install:** `sudo apt install zsh-dev`  
  
  {{< spoiler "Dependencies:" >}}

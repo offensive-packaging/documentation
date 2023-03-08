@@ -4,7 +4,7 @@ Homepage: https://github.com/log2timeline/dfvfs
 Repository: https://salsa.debian.org/pkg-security-team/dfvfs
 Architectures: all
 Version: 20211228-0kali1
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### python3-dfvfs

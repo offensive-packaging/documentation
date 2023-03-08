@@ -276,83 +276,23 @@ PackagesInfo: |
  Disconnect and reconnect processes
  
  ```
- root@kali:~# man dislocate
- DISLOCATE(1)                General Commands Manual               DISLOCATE(1)
- 
- NAME
-        Dislocate - disconnect and reconnect processes
- 
- SYNOPSIS
-        dislocate [ program args...  ]
- 
- INTRODUCTION
-        Dislocate  allows  processes  to be disconnected and reconnected to the
-        terminal.  Possible uses:
- 
-               o   You can disconnect a process from a terminal at work and re-
-                   connect from home, to continue working.
- 
-               o   After  having your line be dropped due to noise, you can get
-                   back to your process  without  having  to  restart  it  from
-                   scratch.
- 
-               o   If  you  have a problem that you would like to show someone,
-                   you can set up the scenario at your  own  terminal,  discon-
-                   nect, walk down the hall, and reconnect on another terminal.
- 
-               o   If  you are in the middle of a great game (or whatever) that
-                   does not allow you to save, and someone else kicks  you  off
-                   the terminal, you can disconnect, and reconnect later.
- 
- USAGE
-        When run with no arguments, Dislocate tells you about your disconnected
-        processes and lets you reconnect to one.  Otherwise, Dislocate runs the
-        named program along with any arguments.
- 
-        By default, ^] is an escape that lets you talk to Dislocate itself.  At
-        that point, you can disconnect (by pressing ^D)  or  suspend  Dislocate
-        (by pressing ^Z).
- 
-        Any  Tcl or Expect command is also acceptable at this point.  For exam-
-        ple, to insert the contents of a the file /etc/motd as if you had typed
-        it, say:
- 
-             send -i $out [exec cat /etc/motd]
- 
-        To send the numbers 1 to 100 in response to the prompt "next #", say:
- 
-             for {set i 0} {$i<100} {incr i} {
-                 expect -i $in "next #"
-                 send -i $out "$i\r"
-             }
- 
-        Scripts  can  also be prepared and sourced in so that you don't have to
-        type them on the spot.
- 
-        Dislocate is actually just a simple Expect script.  Feel free  to  make
-        it do what you want it to do or just use Expect directly, without going
-        through Dislocate.  Dislocate  understands  a  few  special  arguments.
-        These  should appear before any program name.  Each should be separated
-        by whitespace.  If the  arguments  themselves  takes  arguments,  these
-        should also be separated by whitespace.
- 
-        The  -escape flag sets the escape to whatever follows.  The default es-
-        cape is ^].
- 
- CAVEATS
-        This program was written by the author as an exercise to show that com-
-        municating  with  disconnected  processes is easy.  There are many fea-
-        tures that could be added, but that is not the intent of this program.
- 
- SEE ALSO
-        Tcl(3), libexpect(3)
-        "Exploring Expect: A Tcl-Based Toolkit for Automating Interactive  Pro-
-        grams" by Don Libes, O'Reilly and Associates, January 1995.
- 
- AUTHOR
-        Don Libes, National Institute of Standards and Technology
- 
-                                 7 October 1993                    DISLOCATE(1)
+ root@kali:~# dislocate -h
+ bad flag "-h": must be -console, -ignore, -leaveopen, -noecho, -nottycopy, -nottyinit, -open, or -pty
+     while executing
+ "spawn -h"
+     ("eval" body line 1)
+     invoked from within
+ "eval spawn $argv"
+     (procedure "child" line 11)
+     invoked from within
+ "child $datearg $argv"
+     invoked from within
+ "if {$argc} {
+     # initial creation occurs before fork because if we do it after
+     # then either the child or the parent may have to spin retrying
+  ..."
+     (file "/usr/bin/dislocate" line 264)
+ Killed
  ```
  
  - - -
@@ -616,83 +556,23 @@ PackagesInfo: |
  Disconnect and reconnect processes
  
  ```
- root@kali:~# man expect_dislocate
- DISLOCATE(1)                General Commands Manual               DISLOCATE(1)
- 
- NAME
-        Dislocate - disconnect and reconnect processes
- 
- SYNOPSIS
-        dislocate [ program args...  ]
- 
- INTRODUCTION
-        Dislocate  allows  processes  to be disconnected and reconnected to the
-        terminal.  Possible uses:
- 
-               o   You can disconnect a process from a terminal at work and re-
-                   connect from home, to continue working.
- 
-               o   After  having your line be dropped due to noise, you can get
-                   back to your process  without  having  to  restart  it  from
-                   scratch.
- 
-               o   If  you  have a problem that you would like to show someone,
-                   you can set up the scenario at your  own  terminal,  discon-
-                   nect, walk down the hall, and reconnect on another terminal.
- 
-               o   If  you are in the middle of a great game (or whatever) that
-                   does not allow you to save, and someone else kicks  you  off
-                   the terminal, you can disconnect, and reconnect later.
- 
- USAGE
-        When run with no arguments, Dislocate tells you about your disconnected
-        processes and lets you reconnect to one.  Otherwise, Dislocate runs the
-        named program along with any arguments.
- 
-        By default, ^] is an escape that lets you talk to Dislocate itself.  At
-        that point, you can disconnect (by pressing ^D)  or  suspend  Dislocate
-        (by pressing ^Z).
- 
-        Any  Tcl or Expect command is also acceptable at this point.  For exam-
-        ple, to insert the contents of a the file /etc/motd as if you had typed
-        it, say:
- 
-             send -i $out [exec cat /etc/motd]
- 
-        To send the numbers 1 to 100 in response to the prompt "next #", say:
- 
-             for {set i 0} {$i<100} {incr i} {
-                 expect -i $in "next #"
-                 send -i $out "$i\r"
-             }
- 
-        Scripts  can  also be prepared and sourced in so that you don't have to
-        type them on the spot.
- 
-        Dislocate is actually just a simple Expect script.  Feel free  to  make
-        it do what you want it to do or just use Expect directly, without going
-        through Dislocate.  Dislocate  understands  a  few  special  arguments.
-        These  should appear before any program name.  Each should be separated
-        by whitespace.  If the  arguments  themselves  takes  arguments,  these
-        should also be separated by whitespace.
- 
-        The  -escape flag sets the escape to whatever follows.  The default es-
-        cape is ^].
- 
- CAVEATS
-        This program was written by the author as an exercise to show that com-
-        municating  with  disconnected  processes is easy.  There are many fea-
-        tures that could be added, but that is not the intent of this program.
- 
- SEE ALSO
-        Tcl(3), libexpect(3)
-        "Exploring Expect: A Tcl-Based Toolkit for Automating Interactive  Pro-
-        grams" by Don Libes, O'Reilly and Associates, January 1995.
- 
- AUTHOR
-        Don Libes, National Institute of Standards and Technology
- 
-                                 7 October 1993                    DISLOCATE(1)
+ root@kali:~# expect_dislocate -h
+ bad flag "-h": must be -console, -ignore, -leaveopen, -noecho, -nottycopy, -nottyinit, -open, or -pty
+     while executing
+ "spawn -h"
+     ("eval" body line 1)
+     invoked from within
+ "eval spawn $argv"
+     (procedure "child" line 11)
+     invoked from within
+ "child $datearg $argv"
+     invoked from within
+ "if {$argc} {
+     # initial creation occurs before fork because if we do it after
+     # then either the child or the parent may have to spin retrying
+  ..."
+     (file "/usr/bin/expect_dislocate" line 264)
+ Killed
  ```
  
  - - -
@@ -897,7 +777,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# expect_mkpasswd -h
- g56GFs$vs
+ :18APfjci
  ```
  
  - - -
@@ -1304,14 +1184,6 @@ PackagesInfo: |
  ```
  root@kali:~# expect_rlogin-cwd -h
  spawn rlogin -h
- unknown option -- h
- usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
-            [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
-            [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
-            [-i identity_file] [-J [user@]host[:port]] [-L address]
-            [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
-            [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
-            [-w local_tun[:remote_tun]] destination [command [argument ...]]
  ```
  
  - - -
@@ -1702,77 +1574,20 @@ PackagesInfo: |
  Unbuffer output
  
  ```
- root@kali:~# man expect_unbuffer
- UNBUFFER(1)                 General Commands Manual                UNBUFFER(1)
- 
- NAME
-        unbuffer - unbuffer output
- 
- SYNOPSIS
-        unbuffer program [ args ]
- 
- INTRODUCTION
-        unbuffer  disables the output buffering that occurs when program output
-        is redirected from non-interactive programs.  For example, suppose  you
-        are  watching  the output from a fifo by running it through od and then
-        more.
- 
-             od -c /tmp/fifo | more
- 
-        You will not see anything until a full page of  output  has  been  pro-
-        duced.
- 
-        You can disable this automatic buffering as follows:
- 
-             unbuffer od -c /tmp/fifo | more
- 
-        Normally,  unbuffer  does  not read from stdin.  This simplifies use of
-        unbuffer in some situations.  To use unbuffer in a pipeline, use the -p
-        flag.  Example:
- 
-                process1 | unbuffer -p process2 | process3
- 
- CAVEATS
-        unbuffer  -p  may appear to work incorrectly if a process feeding input
-        to unbuffer exits.  Consider:
-                process1 | unbuffer -p process2 | process3
- 
-        If process1 exits, process2 may not yet have finished.  It is  impossi-
-        ble for unbuffer to know long to wait for process2 and process2 may not
-        ever finish, for example, if it is a filter.  For expediency,  unbuffer
-        simply  exits  when  it  encounters  an  EOF  from  either its input or
-        process2.
- 
-        In order to have a version of unbuffer that worked in  all  situations,
-        an  oracle would be necessary.  If you want an application-specific so-
-        lution, workarounds or hand-coded Expect may be more suitable.  For ex-
-        ample, the following example shows how to allow grep to finish process-
-        ing when the cat before it finishes first.   Using  cat  to  feed  grep
-        would  never require unbuffer in real life.  It is merely a placeholder
-        for some imaginary process that may or may not finish.  Similarly,  the
-        final  cat at the end of the pipeline is also a placeholder for another
-        process.
- 
-        $ cat /tmp/abcdef.log | grep abc | cat
-        abcdef
-        xxxabc defxxx
-        $ cat /tmp/abcdef.log | unbuffer grep abc | cat
-        $ (cat /tmp/abcdef.log ; sleep 1) | unbuffer grep abc | cat
-        abcdef
-        xxxabc defxxx
-        $
- 
- BUGS
-        The man page is longer than the program.
- 
- SEE ALSO
-        "Exploring Expect: A Tcl-Based Toolkit for Automating Interactive  Pro-
-        grams" by Don Libes, O'Reilly and Associates, January 1995.
- 
- AUTHOR
-        Don Libes, National Institute of Standards and Technology
- 
-                                   1 June 1994                      UNBUFFER(1)
+ root@kali:~# expect_unbuffer -h
+ bad flag "-h": must be -console, -ignore, -leaveopen, -noecho, -nottycopy, -nottyinit, -open, or -pty
+     while executing
+ "spawn -noecho -h"
+     ("eval" body line 1)
+     invoked from within
+ "eval [list spawn -noecho] $argv"
+     invoked from within
+ "if {[string compare [lindex $argv 0] "-p"] == 0} {
+     # pipeline
+     set stty_init "-echo"
+     eval [list spawn -noecho] [lrange $argv 1 end]
+     clo..."
+     (file "/usr/bin/expect_unbuffer" line 13)
  ```
  
  - - -
@@ -1793,136 +1608,20 @@ PackagesInfo: |
  Allow multiple people to interact in an xterm
  
  ```
- root@kali:~# man expect_xkibitz
- XKIBITZ(1)                  General Commands Manual                 XKIBITZ(1)
- 
- NAME
-        xkibitz - allow multiple people to interact in an xterm
- 
- SYNOPSIS
-        xkibitz [ xkibitz-args ] [ program program-args...  ]
- 
- INTRODUCTION
-        xkibitz allows users in separate xterms to share one shell (or any pro-
-        gram that runs in an xterm).  Uses include:
- 
-               o   A novice user can ask an expert user for help.  Using  xkib-
-                   itz,  the  expert  can see what the user is doing, and offer
-                   advice or show how to do it right.
- 
-               o   By running xkibitz and then starting a  full-screen  editor,
-                   people  may  carry out a conversation, retaining the ability
-                   to scroll backwards, save the entire conversation,  or  even
-                   edit it while in progress.
- 
-               o   People  can team up on games, document editing, or other co-
-                   operative tasks where each person has  strengths  and  weak-
-                   nesses that complement one another.
- 
-               o   If  you  want to have a large number of people do an on-line
-                   code walk-through, you can sit two in front of each worksta-
-                   tion,  and then connect them all together while you everyone
-                   looks at code together in the editor.
- 
- USAGE
-        To start xkibitz, one user (the master) runs xkibitz with no arguments.
- 
-        xkibitz starts a new shell (or another program, if given on the command
-        line).  The user can interact normally with the shell, or upon entering
-        an escape (described when xkibitz starts) can add users to the interac-
-        tion.
- 
-        To  add  users,  enter "+ display" where display is the X display name.
-        If there is no ":X.Y" in the display name, ":0.0" is assumed.  The mas-
-        ter  user must have permission to access each display.  Each display is
-        assigned a tag - a small integer which can be  used  to  reference  the
-        display.
- 
-        To show the current tags and displays, enter "=".
- 
-        To drop a display, enter "- tag" where tag is the display's tag accord-
-        ing to the "=" command.
- 
-        To return to the shared shell, enter "return".  Then the keystrokes  of
-        all  users become the input of the shell.  Similarly, all users receive
-        the output from the shell.
- 
-        To terminate xkibitz it suffices to terminate the  shell  itself.   For
-        example,  if  any user types ^D (and the shell accepts this to be EOF),
-        the shell terminates followed by xkibitz.
- 
-        Normally, all characters are passed uninterpreted.  However, in the es-
-        cape  dialogue the user talks directly to the xkibitz interpreter.  Any
-        Expect(1) or Tcl(3) commands may also be given.  Also, job control  may
-        be  used  while in the interpreter, to, for example, suspend or restart
-        xkibitz.
- 
-        Various processes can produce various effects.  For  example,  you  can
-        emulate a multi-way write(1) session with the command:
- 
-             xkibitz sleep 1000000
- 
- ARGUMENTS
-        xkibitz  understands a few special arguments which should appear before
-        the program name (if given).  Each  argument  should  be  separated  by
-        whitespace.   If the arguments themselves takes arguments, these should
-        also be separated by whitespace.
- 
-        -escape sets the escape character.  The default escape character is ^].
- 
-        -display adds a display much like the "+" command.   Multiple  -display
-        flags  can be given.  For example, to start up xkibitz with three addi-
-        tional displays:
- 
-             xkibitz -display mercury -display fox -display dragon:1.0
- 
- CAVEATS
-        Due to limitations in both X and UNIX, resize propagation is weak.
- 
-        When the master user resizes the xterm, all the other xterms are  logi-
-        cally  resized.  Unfortunately, xkibitz cannot force the physical xterm
-        size to correspond with the logical xterm sizes.
- 
-        The other users are free to resize their xterm but their sizes are  not
-        propagated.   The  master can check the logical sizes with the "=" com-
-        mand.
- 
-        Deducing the window size is a  non-portable  operation.   The  code  is
-        known  to  work  for  recent  versions of SunOS, AIX, Unicos, and HPUX.
-        Send back mods if you add support for anything else.
- 
- ENVIRONMENT
-        The environment variable SHELL is used to determine and start a  shell,
-        if no other program is given on the command line.
- 
-        If  the  environment variable DISPLAY is defined, its value is used for
-        the display name of the xkibitz master (the display with tag number 0).
-        Otherwise this name remains empty.
- 
-        Additional  arguments  may be passed to new xterms through the environ-
-        ment variable XKIBITZ_XTERM_ARGS.  For example, to create xterms with a
-        scrollbar and a green pointer cursor:
- 
-             XKIBITZ_XTERM_ARGS="-sb -ms green"
-             export XKIBITZ_XTERM_ARGS
- 
-        (this  is for the Bourne shell - use whatever syntax is appropriate for
-        your favorite shell). Any option can be given that  is  valid  for  the
-        xterm  command,  with  the  exception  of -display, -geometry and -S as
-        those are set by xkibitz.
- 
- SEE ALSO
-        Tcl(3), libexpect(3) kibitz(1)
-        "Exploring Expect: A Tcl-Based Toolkit for Automating Interactive  Pro-
-        grams" by Don Libes, O'Reilly and Associates, January 1995.
-        "kibitz  -  Connecting  Multiple Interactive Programs Together", by Don
-        Libes, Software - Practice & Experience, John Wiley & Sons,  West  Sus-
-        sex, England, Vol. 23, No. 5, May, 1993.
- 
- AUTHOR
-        Don Libes, National Institute of Standards and Technology
- 
-                                 06 October 1994                     XKIBITZ(1)
+ root@kali:~# expect_xkibitz -h
+ bad flag "-h": must be -console, -ignore, -leaveopen, -noecho, -nottycopy, -nottyinit, -open, or -pty
+     while executing
+ "spawn -noecho -h"
+     ("eval" body line 1)
+     invoked from within
+ "eval spawn -noecho $argv"
+     invoked from within
+ "if {[llength $argv]>0} {
+     eval spawn -noecho $argv
+ } else {
+     spawn -noecho $env(SHELL)
+ }"
+     (file "/usr/bin/expect_xkibitz" line 201)
  ```
  
  - - -
@@ -2515,14 +2214,6 @@ PackagesInfo: |
  ```
  root@kali:~# rlogin-cwd -h
  spawn rlogin -h
- unknown option -- h
- usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
-            [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
-            [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
-            [-i identity_file] [-J [user@]host[:port]] [-L address]
-            [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
-            [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
-            [-w local_tun[:remote_tun]] destination [command [argument ...]]
  ```
  
  - - -
@@ -2913,77 +2604,20 @@ PackagesInfo: |
  Unbuffer output
  
  ```
- root@kali:~# man unbuffer
- UNBUFFER(1)                 General Commands Manual                UNBUFFER(1)
- 
- NAME
-        unbuffer - unbuffer output
- 
- SYNOPSIS
-        unbuffer program [ args ]
- 
- INTRODUCTION
-        unbuffer  disables the output buffering that occurs when program output
-        is redirected from non-interactive programs.  For example, suppose  you
-        are  watching  the output from a fifo by running it through od and then
-        more.
- 
-             od -c /tmp/fifo | more
- 
-        You will not see anything until a full page of  output  has  been  pro-
-        duced.
- 
-        You can disable this automatic buffering as follows:
- 
-             unbuffer od -c /tmp/fifo | more
- 
-        Normally,  unbuffer  does  not read from stdin.  This simplifies use of
-        unbuffer in some situations.  To use unbuffer in a pipeline, use the -p
-        flag.  Example:
- 
-                process1 | unbuffer -p process2 | process3
- 
- CAVEATS
-        unbuffer  -p  may appear to work incorrectly if a process feeding input
-        to unbuffer exits.  Consider:
-                process1 | unbuffer -p process2 | process3
- 
-        If process1 exits, process2 may not yet have finished.  It is  impossi-
-        ble for unbuffer to know long to wait for process2 and process2 may not
-        ever finish, for example, if it is a filter.  For expediency,  unbuffer
-        simply  exits  when  it  encounters  an  EOF  from  either its input or
-        process2.
- 
-        In order to have a version of unbuffer that worked in  all  situations,
-        an  oracle would be necessary.  If you want an application-specific so-
-        lution, workarounds or hand-coded Expect may be more suitable.  For ex-
-        ample, the following example shows how to allow grep to finish process-
-        ing when the cat before it finishes first.   Using  cat  to  feed  grep
-        would  never require unbuffer in real life.  It is merely a placeholder
-        for some imaginary process that may or may not finish.  Similarly,  the
-        final  cat at the end of the pipeline is also a placeholder for another
-        process.
- 
-        $ cat /tmp/abcdef.log | grep abc | cat
-        abcdef
-        xxxabc defxxx
-        $ cat /tmp/abcdef.log | unbuffer grep abc | cat
-        $ (cat /tmp/abcdef.log ; sleep 1) | unbuffer grep abc | cat
-        abcdef
-        xxxabc defxxx
-        $
- 
- BUGS
-        The man page is longer than the program.
- 
- SEE ALSO
-        "Exploring Expect: A Tcl-Based Toolkit for Automating Interactive  Pro-
-        grams" by Don Libes, O'Reilly and Associates, January 1995.
- 
- AUTHOR
-        Don Libes, National Institute of Standards and Technology
- 
-                                   1 June 1994                      UNBUFFER(1)
+ root@kali:~# unbuffer -h
+ bad flag "-h": must be -console, -ignore, -leaveopen, -noecho, -nottycopy, -nottyinit, -open, or -pty
+     while executing
+ "spawn -noecho -h"
+     ("eval" body line 1)
+     invoked from within
+ "eval [list spawn -noecho] $argv"
+     invoked from within
+ "if {[string compare [lindex $argv 0] "-p"] == 0} {
+     # pipeline
+     set stty_init "-echo"
+     eval [list spawn -noecho] [lrange $argv 1 end]
+     clo..."
+     (file "/usr/bin/unbuffer" line 13)
  ```
  
  - - -
@@ -2993,136 +2627,20 @@ PackagesInfo: |
  Allow multiple people to interact in an xterm
  
  ```
- root@kali:~# man xkibitz
- XKIBITZ(1)                  General Commands Manual                 XKIBITZ(1)
- 
- NAME
-        xkibitz - allow multiple people to interact in an xterm
- 
- SYNOPSIS
-        xkibitz [ xkibitz-args ] [ program program-args...  ]
- 
- INTRODUCTION
-        xkibitz allows users in separate xterms to share one shell (or any pro-
-        gram that runs in an xterm).  Uses include:
- 
-               o   A novice user can ask an expert user for help.  Using  xkib-
-                   itz,  the  expert  can see what the user is doing, and offer
-                   advice or show how to do it right.
- 
-               o   By running xkibitz and then starting a  full-screen  editor,
-                   people  may  carry out a conversation, retaining the ability
-                   to scroll backwards, save the entire conversation,  or  even
-                   edit it while in progress.
- 
-               o   People  can team up on games, document editing, or other co-
-                   operative tasks where each person has  strengths  and  weak-
-                   nesses that complement one another.
- 
-               o   If  you  want to have a large number of people do an on-line
-                   code walk-through, you can sit two in front of each worksta-
-                   tion,  and then connect them all together while you everyone
-                   looks at code together in the editor.
- 
- USAGE
-        To start xkibitz, one user (the master) runs xkibitz with no arguments.
- 
-        xkibitz starts a new shell (or another program, if given on the command
-        line).  The user can interact normally with the shell, or upon entering
-        an escape (described when xkibitz starts) can add users to the interac-
-        tion.
- 
-        To  add  users,  enter "+ display" where display is the X display name.
-        If there is no ":X.Y" in the display name, ":0.0" is assumed.  The mas-
-        ter  user must have permission to access each display.  Each display is
-        assigned a tag - a small integer which can be  used  to  reference  the
-        display.
- 
-        To show the current tags and displays, enter "=".
- 
-        To drop a display, enter "- tag" where tag is the display's tag accord-
-        ing to the "=" command.
- 
-        To return to the shared shell, enter "return".  Then the keystrokes  of
-        all  users become the input of the shell.  Similarly, all users receive
-        the output from the shell.
- 
-        To terminate xkibitz it suffices to terminate the  shell  itself.   For
-        example,  if  any user types ^D (and the shell accepts this to be EOF),
-        the shell terminates followed by xkibitz.
- 
-        Normally, all characters are passed uninterpreted.  However, in the es-
-        cape  dialogue the user talks directly to the xkibitz interpreter.  Any
-        Expect(1) or Tcl(3) commands may also be given.  Also, job control  may
-        be  used  while in the interpreter, to, for example, suspend or restart
-        xkibitz.
- 
-        Various processes can produce various effects.  For  example,  you  can
-        emulate a multi-way write(1) session with the command:
- 
-             xkibitz sleep 1000000
- 
- ARGUMENTS
-        xkibitz  understands a few special arguments which should appear before
-        the program name (if given).  Each  argument  should  be  separated  by
-        whitespace.   If the arguments themselves takes arguments, these should
-        also be separated by whitespace.
- 
-        -escape sets the escape character.  The default escape character is ^].
- 
-        -display adds a display much like the "+" command.   Multiple  -display
-        flags  can be given.  For example, to start up xkibitz with three addi-
-        tional displays:
- 
-             xkibitz -display mercury -display fox -display dragon:1.0
- 
- CAVEATS
-        Due to limitations in both X and UNIX, resize propagation is weak.
- 
-        When the master user resizes the xterm, all the other xterms are  logi-
-        cally  resized.  Unfortunately, xkibitz cannot force the physical xterm
-        size to correspond with the logical xterm sizes.
- 
-        The other users are free to resize their xterm but their sizes are  not
-        propagated.   The  master can check the logical sizes with the "=" com-
-        mand.
- 
-        Deducing the window size is a  non-portable  operation.   The  code  is
-        known  to  work  for  recent  versions of SunOS, AIX, Unicos, and HPUX.
-        Send back mods if you add support for anything else.
- 
- ENVIRONMENT
-        The environment variable SHELL is used to determine and start a  shell,
-        if no other program is given on the command line.
- 
-        If  the  environment variable DISPLAY is defined, its value is used for
-        the display name of the xkibitz master (the display with tag number 0).
-        Otherwise this name remains empty.
- 
-        Additional  arguments  may be passed to new xterms through the environ-
-        ment variable XKIBITZ_XTERM_ARGS.  For example, to create xterms with a
-        scrollbar and a green pointer cursor:
- 
-             XKIBITZ_XTERM_ARGS="-sb -ms green"
-             export XKIBITZ_XTERM_ARGS
- 
-        (this  is for the Bourne shell - use whatever syntax is appropriate for
-        your favorite shell). Any option can be given that  is  valid  for  the
-        xterm  command,  with  the  exception  of -display, -geometry and -S as
-        those are set by xkibitz.
- 
- SEE ALSO
-        Tcl(3), libexpect(3) kibitz(1)
-        "Exploring Expect: A Tcl-Based Toolkit for Automating Interactive  Pro-
-        grams" by Don Libes, O'Reilly and Associates, January 1995.
-        "kibitz  -  Connecting  Multiple Interactive Programs Together", by Don
-        Libes, Software - Practice & Experience, John Wiley & Sons,  West  Sus-
-        sex, England, Vol. 23, No. 5, May, 1993.
- 
- AUTHOR
-        Don Libes, National Institute of Standards and Technology
- 
-                                 06 October 1994                     XKIBITZ(1)
+ root@kali:~# xkibitz -h
+ bad flag "-h": must be -console, -ignore, -leaveopen, -noecho, -nottycopy, -nottyinit, -open, or -pty
+     while executing
+ "spawn -noecho -h"
+     ("eval" body line 1)
+     invoked from within
+ "eval spawn -noecho $argv"
+     invoked from within
+ "if {[llength $argv]>0} {
+     eval spawn -noecho $argv
+ } else {
+     spawn -noecho $env(SHELL)
+ }"
+     (file "/usr/bin/xkibitz" line 201)
  ```
  
  - - -

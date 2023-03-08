@@ -3,7 +3,7 @@ Title: qsslcaudit
 Homepage: https://github.com/gremwell/qsslcaudit
 Repository: https://gitlab.com/kalilinux/packages/qsslcaudit
 Architectures: any
-Version: 0.8.1-0kali2
+Version: 0.8.3-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

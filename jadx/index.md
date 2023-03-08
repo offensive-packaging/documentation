@@ -3,8 +3,8 @@ Title: jadx
 Homepage: https://github.com/skylot/jadx
 Repository: https://gitlab.com/kalilinux/packages/jadx
 Architectures: all
-Version: 1.4.5-0kali1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
+Version: 1.4.6-0kali1
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/jadx-logo.svg
 PackagesInfo: |
  ### jadx
@@ -23,7 +23,7 @@ PackagesInfo: |
      - find usage
      - full text search
  
- **Installed size:** `29.64 MB`  
+ **Installed size:** `34.35 MB`  
  **How to install:** `sudo apt install jadx`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
  ```
  root@kali:~# jadx -h
  
- jadx - dex to java decompiler, version: 1.4.5
+ jadx - dex to java decompiler, version: 1.4.6
  
  usage: jadx [options] <input files> (.apk, .dex, .jar, .class, .smali, .zip, .aar, .arsc, .aab)
  options:
@@ -122,7 +122,7 @@ PackagesInfo: |
  ```
  root@kali:~# jadx-gui -h
  
- jadx - dex to java decompiler, version: 1.4.5
+ jadx - dex to java decompiler, version: 1.4.6
  
  usage: jadx [options] <input files> (.apk, .dex, .jar, .class, .smali, .zip, .aar, .arsc, .aab)
  options:

@@ -3,7 +3,7 @@ Title: zim
 Homepage: https://zim-wiki.org
 Repository: https://salsa.debian.org/debian/zim
 Architectures: all
-Version: 0.74.3-1
+Version: 0.75.1-1
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: images/zim-logo.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
    * Draft blog entries and emails
    * Do brainstorming
  
- **Installed size:** `4.72 MB`  
+ **Installed size:** `4.86 MB`  
  **How to install:** `sudo apt install zim`  
  
  {{< spoiler "Dependencies:" >}}
@@ -44,14 +44,19 @@ PackagesInfo: |
  
  ```
  root@kali:~# zim -h
- usage: zim [OPTIONS] [NOTEBOOK [PAGE]]
+ usage: zim [OPTIONS] [NOTEBOOK [PAGE_LINK]]
+    or: zim --gui [OPTIONS] [NOTEBOOK [PAGE_LINK]]
     or: zim --server [OPTIONS] [NOTEBOOK]
     or: zim --export [OPTIONS] NOTEBOOK [PAGE]
     or: zim --search NOTEBOOK QUERY
-    or: zim --index  NOTEBOOK
+    or: zim --index  [OPTIONS] NOTEBOOK
     or: zim --plugin PLUGIN [ARGUMENTS]
-    or: zim --manual [OPTIONS] [PAGE]
+    or: zim --manual [OPTIONS] [PAGE_LINK]
     or: zim --help
+ 
+ NOTEBOOK can be a local file path, a local file URI or a notebook name
+ PAGE is be a fully specified page name
+ PAGE_LINK is a fully specified page name optionally extended with an anchor ID
  
  General Options:
    --gui            run the editor (this is the default)
@@ -75,14 +80,14 @@ PackagesInfo: |
  
  Server Options:
    --port           port to use (defaults to 8080)
-   --template       name of the template to use
+   --template       name or filepath of the template to use
    --private        serve only to localhost
    --gui            run the gui wrapper for the server
  
  Export Options:
    -o, --output     output directory (mandatory option)
    --format         format to use (defaults to 'html')
-   --template       name of the template to use
+   --template       name or filepath of the template to use
    --root-url       url to use for the document root
    --index-page     index page name
    -r, --recursive  when exporting a page, also export sub-pages

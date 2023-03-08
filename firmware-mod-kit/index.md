@@ -4,7 +4,7 @@ Homepage: https://github.com/rampageX/firmware-mod-kit
 Repository: https://gitlab.com/kalilinux/packages/firmware-mod-kit
 Architectures: i386 amd64
 Version: 0.99+git20190714-0kali1
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### firmware-mod-kit

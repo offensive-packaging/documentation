@@ -3,8 +3,8 @@ Title: ssdeep
 Homepage: https://github.com/ssdeep-project/ssdeep
 Repository: https://salsa.debian.org/pkg-security-team/ssdeep
 Architectures: any
-Version: 2.14.1+git20180629.57fcfff-2
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 2.14.1+git20180629.57fcfff-3
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: images/ssdeep-logo.svg
 PackagesInfo: |
  ### libfuzzy-dev
@@ -21,7 +21,7 @@ PackagesInfo: |
    
   This package contains the developments files.
  
- **Installed size:** `60 KB`  
+ **Installed size:** `59 KB`  
  **How to install:** `sudo apt install libfuzzy-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -45,7 +45,7 @@ PackagesInfo: |
    
   This package contains the library.
  
- **Installed size:** `50 KB`  
+ **Installed size:** `49 KB`  
  **How to install:** `sudo apt install libfuzzy2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -69,7 +69,7 @@ PackagesInfo: |
    
   This package is useful in forensics investigations.
  
- **Installed size:** `83 KB`  
+ **Installed size:** `82 KB`  
  **How to install:** `sudo apt install ssdeep`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: libfindrtp
 Homepage: http://www.hackingvoip.com/sec_tools.html
 Repository: https://gitlab.com/kalilinux/packages/libfindrtp
 Architectures: any
-Version: 0.4b-1kali1
+Version: 0.4b-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,7 +11,7 @@ PackagesInfo: |
  
   This package contains a library used by multiple VoIP tools.
  
- **Installed size:** `32 KB`  
+ **Installed size:** `35 KB`  
  **How to install:** `sudo apt install libfindrtp`  
  
  {{< spoiler "Dependencies:" >}}

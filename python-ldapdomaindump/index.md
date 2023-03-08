@@ -4,7 +4,7 @@ Homepage: https://github.com/dirkjanm/ldapdomaindump
 Repository: https://salsa.debian.org/python-team/packages/python-ldapdomaindump
 Architectures: all
 Version: 0.9.3-2
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-respond kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### python3-ldapdomaindump

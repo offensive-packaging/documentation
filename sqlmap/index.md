@@ -3,7 +3,7 @@ Title: sqlmap
 Homepage: https://sqlmap.org/
 Repository: https://salsa.debian.org/pkg-security-team/sqlmap
 Architectures: all
-Version: 1.6.11-1
+Version: 1.7.2-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-database kali-tools-exploitation kali-tools-information-gathering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: images/sqlmap-logo.svg
 PackagesInfo: |
@@ -34,7 +34,7 @@ PackagesInfo: |
  root@kali:~# sqlmap -h
          ___
         __H__
-  ___ ___[']_____ ___ ___  {1.6.11#stable}
+  ___ ___[)]_____ ___ ___  {1.7.2#stable}
  |_ -| . [(]     | .'| . |
  |___|_  [']_|_|_|__,|  _|
        |_|V...       |_|   https://sqlmap.org
@@ -93,6 +93,7 @@ PackagesInfo: |
      --current-user      Retrieve DBMS current user
      --current-db        Retrieve DBMS current database
      --passwords         Enumerate DBMS users password hashes
+     --dbs               Enumerate DBMS databases
      --tables            Enumerate DBMS database tables
      --columns           Enumerate DBMS database table columns
      --schema            Enumerate DBMS schema

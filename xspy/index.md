@@ -3,7 +3,7 @@ Title: xspy
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/xspy
 Architectures: any
-Version: 1.1-1kali3
+Version: 1.1-1kali4
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   Sniffs keystrokes on remote or local
   X-Windows servers.
  
- **Installed size:** `24 KB`  
+ **Installed size:** `25 KB`  
  **How to install:** `sudo apt install xspy`  
  
  {{< spoiler "Dependencies:" >}}

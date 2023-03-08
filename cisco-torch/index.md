@@ -3,14 +3,14 @@ Title: cisco-torch
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/cisco-torch
 Architectures: all
-Version: 0.4b-1kali5
+Version: 0.4b-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cisco-torch
  
   The main feature that makes cisco-torch different from
-  similar tools is the extensive use of forking  to launch
+  similar tools is the extensive use of forking to launch
   multiple scanning processes on the background for maximum
   scanning efficiency. Also, it uses several methods of
   application layer fingerprinting simultaneoulsy, if needed.

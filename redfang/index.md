@@ -3,7 +3,7 @@ Title: redfang
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/redfang
 Architectures: any
-Version: 2.5-1kali2
+Version: 2.5-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-bluetooth kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

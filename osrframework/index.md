@@ -4,7 +4,7 @@ Homepage: https://github.com/i3visio/osrframework
 Repository: https://gitlab.com/kalilinux/packages/osrframework
 Architectures: all
 Version: 0.20.1-0kali1
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### osrframework

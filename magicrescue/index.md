@@ -4,7 +4,7 @@ Homepage: https://github.com/jbj/magicrescue
 Repository: https://salsa.debian.org/pkg-security-team/magicrescue
 Architectures: any
 Version: 1.1.10+dfsg-2
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/magicrescue-logo.svg
 PackagesInfo: |
  ### magicrescue

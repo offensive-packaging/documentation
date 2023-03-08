@@ -4,7 +4,7 @@ Homepage: http://extundelete.sourceforge.net/
 Repository: https://salsa.debian.org/pkg-security-team/extundelete
 Architectures: any
 Version: 0.2.4-3
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### extundelete

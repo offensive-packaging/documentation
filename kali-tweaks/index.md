@@ -3,7 +3,7 @@ Title: kali-tweaks
 Homepage: https://gitlab.com/kalilinux/packages/kali-tweaks
 Repository: https://gitlab.com/kalilinux/packages/kali-tweaks
 Architectures: all
-Version: 2022.4.1
+Version: 2023.1.5
 Metapackages: 
 Icon: images/kali-tweaks-logo.svg
 PackagesInfo: |
@@ -17,8 +17,9 @@ PackagesInfo: |
    * Kali Linux metapackages installation and removal
    * Hardening of the system
    * Additional configuration for virtualized environments
+   * Kernel settings
  
- **Installed size:** `130 KB`  
+ **Installed size:** `146 KB`  
  **How to install:** `sudo apt install kali-tweaks`  
  
  {{< spoiler "Dependencies:" >}}

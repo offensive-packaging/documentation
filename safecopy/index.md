@@ -3,8 +3,8 @@ Title: safecopy
 Homepage: http://safecopy.sf.net
 Repository: https://salsa.debian.org/pkg-security-team/safecopy
 Architectures: any
-Version: 1.7-6
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 1.7-7
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### safecopy
@@ -33,7 +33,7 @@ PackagesInfo: |
    
   Safecopy is useful in forensics investigations and disaster recovery.
  
- **Installed size:** `98 KB`  
+ **Installed size:** `93 KB`  
  **How to install:** `sudo apt install safecopy`  
  
  {{< spoiler "Dependencies:" >}}

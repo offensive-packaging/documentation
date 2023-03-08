@@ -3,7 +3,7 @@ Title: covenant-kbx
 Homepage: https://github.com/cobbr/Covenant
 Repository: https://gitlab.com/kalilinux/packages/covenant-kbx
 Architectures: amd64
-Version: 0.6-0kali5
+Version: 0.6-0kali7
 Metapackages: 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   Covenant is an ASP.NET Core, cross-platform application that includes a
   web-based interface that allows for multi-user collaboration.
  
- **Installed size:** `25.12 MB`  
+ **Installed size:** `25.13 MB`  
  **How to install:** `sudo apt install covenant-kbx`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: screen
 Homepage: https://savannah.gnu.org/projects/screen
 Repository: https://salsa.debian.org/debian/screen
 Architectures: any
-Version: 4.9.0-3
+Version: 4.9.0-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-sniffing-spoofing kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

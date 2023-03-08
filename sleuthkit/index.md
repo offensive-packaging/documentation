@@ -4,7 +4,7 @@ Homepage: http://www.sleuthkit.org/sleuthkit
 Repository: https://salsa.debian.org/pkg-security-team/sleuthkit
 Architectures: any
 Version: 4.11.1+dfsg-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libtsk-dev
@@ -323,7 +323,7 @@ PackagesInfo: |
      -v = Enable SleuthKit verbose flag
  
  SleuthKit Version: 4.11.1
- AFFLIB Version:    3.7.19
+ AFFLIB Version:    3.7.20
  LIBEWF Version:    20140813
  ```
  
@@ -642,85 +642,21 @@ PackagesInfo: |
  Create an ASCII time line of file activity
  
  ```
- root@kali:~# man mactime
- MACTIME(1)                  General Commands Manual                 MACTIME(1)
- 
- NAME
-        mactime - Create an ASCII time line of file activity
- 
- SYNOPSIS
-        mactime  [-b body ] [-g group file ] [-p password file ] [-i (day|hour)
-        index file ] [-dhmVy] [-z TIME_ZONE ] [DATE_RANGE]
- 
- DESCRIPTION
-        mactime creates an ASCII time line of file activity based on  the  body
-        file specified by '-b' or from STDIN.  The time line is written to STD-
-        OUT.  The body file must be in the time machine format that is  created
-        by 'ils -m', 'fls -m', or the mac-robber tool.
- 
- ARGUMENTS
-        -b body
-               Specify  the  location of a body file.  This file must be gener-
-               ated by a tool such as 'fls -m' or 'ils -m'.   The  'mac-robber'
-               and 'grave-robber' tools can also be used to generate the file.
- 
-        -g group file
-               Specify  the  location  of the group file.  mactime will display
-               the group name instead of the GID if this is given.
- 
-        -p password file
-               Specify the location of the passwd file.  mactime  will  display
-               the user name instead of the UID of this is given.
- 
-        -i day|hour index file
-               Specify  the  location  of an index file to write to.  The first
-               argument specifies the granularity, either an hourly summary  or
-               daily.  If the '-d' flag is given, then the summary will be sep-
-               arated by a ',' to import into a spread sheet.
- 
-        -d     Display timeline and index  files  in  comma  delimited  format.
-               This  is used to import the data into a spread sheet for presen-
-               tations or graphs.
- 
-        -h     Display header info about the session including time range,  in-
-               put source, and passwd or group files.
- 
-        -V     Display version to STDOUT.
- 
-        -m     The  month  is  given as a number instead of name (does not work
-               with -y).
- 
-        -y     The date is displayed in ISO8601 format.
- 
-        -z TIME_ZONE
-               The timezone from where the data was  collected.   The  name  of
-               this  argument  is  system  dependent (examples include EST5EDT,
-               GMT+1).  Does not work with -y.
- 
-        -z list
-               List valid timezones.
- 
-        DATE_RANGE
-               The range of dates to make the time line for.  The standard for-
-               mat is yyyy-mm-dd for a starting date and no ending date. For an
-               ending date, use yyyy-mm-dd..yyyy-mm-dd.  Date can contain time,
-               use format yyyy-mm-ddThh:mm:ss for starting and/or ending date.
- 
- LICENSE
-        The changes from mactime in TCT and mac-daddy are distributed under the
-        Common Public License, found in the cpl1.0.txt file in the  The  Sleuth
-        Kit licenses directory.
- 
- HISTORY
-        A version of mactime first appeared in The Coroner's Toolkit (TCT) (Dan
-        Farmer) and later mac-daddy (Rob Lee).
- 
- AUTHOR
-        Brian Carrier <carrier at sleuthkit dot org>
- 
-        Send documentation updates to <doc-updates at sleuthkit dot org>
- 
-                                                                     MACTIME(1)
+ root@kali:~# mactime --help
+ Unknown option: --help
+ mactime [-b body_file] [-p password_file] [-g group_file] [-i day|hour idx_file] [-d] [-h] [-V] [-y] [-z TIME_ZONE] [DATE]
+ 		-b: Specifies the body file location, else STDIN is used
+ 		-d: Output in comma delimited format
+ 		-h: Display a header with session information
+ 		-i [day | hour] file: Specifies the index file with a summary of results
+ 		-y: Dates are displayed in ISO 8601 format
+ 		-m: Dates have month as number instead of word (does not work with -y)
+ 		-z: Specify the timezone the data came from (in the local system format) (does not work with -y)
+ 		-g: Specifies the group file location, else GIDs are used
+ 		-p: Specifies the password file location, else UIDs are used
+ 		-V: Prints the version to STDOUT
+ 		[DATE]: starting date (yyyy-mm-dd) or range (yyyy-mm-dd..yyyy-mm-dd) 
+ 		[DATE]: date with time (yyyy-mm-ddThh:mm:ss), using with range one or both can have time
  ```
  
  - - -
@@ -730,62 +666,16 @@ PackagesInfo: |
  Output the contents of a partition to stdout
  
  ```
- root@kali:~# man mmcat
- MMCAT(1)                    General Commands Manual                   MMCAT(1)
- 
- NAME
-        mmcat - Output the contents of a partition to stdout
- 
- SYNOPSIS
-        mmcat  [-t  mmtype  ]  [-o offset ] [ -i imgtype ] [-b dev_sector_size]
-        [-vV] image [images] part_num
- 
- DESCRIPTION
-        mmcat outputs the contents of a specific volume to stdout.  This allows
-        you to extract the contents of a partition to a separate file.
- 
- ARGUMENTS
-        -t mmtype
-               Specify  the  media  management type.  Use '-t list' to list the
-               supported types.  If not given, autodetection methods are used.
- 
-        -o offset
-               Specify the offset into the image where  the  volume  containing
-               the  partition system starts.  The relative offset of the parti-
-               tion system will be added to this value.
- 
-        -b dev_sector_size
-               The size, in bytes, of the underlying device  sectors.   If  not
-               given,  the  value in the image format is used (if it exists) or
-               512-bytes is assumed.
- 
-        -i imgtype
-               Identify the type of image file, such as raw.  Use '-i list'  to
-               list  the  supported types.  If not given, autodetection methods
-               are used.
- 
-        -v     Verbose output of debugging statements to stderr
- 
-        -V     Display version
- 
-        image [images]
-               The disk or partition image to read, whose format is given  with
-               '-i'.   Multiple  image  file names can be given if the image is
-               split into multiple segments.  If only one image file is  given,
-               and  its  name is the first in a sequence (e.g., as indicated by
-               ending in '.001'), subsequent image segments  will  be  included
-               automatically.
- 
-        part_num
-               Address  of partition to process.  See the mmls output to deter-
-               mine the address of the partitions.
- 
- AUTHOR
-        Brian Carrier <carrier at sleuthkit dot org>
- 
-        Send documentation updates to <doc-updates at sleuthkit dot org>
- 
-                                                                       MMCAT(1)
+ root@kali:~# mmcat -h
+ mmcat: invalid option -- 'h'
+ Unknown argument
+ mmcat [-i imgtype] [-b dev_sector_size] [-o imgoffset] [-vV] [-t vstype] image [images] part_num
+ 	-t vstype: The type of partition system (use '-t list' for list of supported types)
+ 	-i imgtype: The format of the image file (use '-i list' for list of supported types)
+ 	-b dev_sector_size: The size (in bytes) of the device sectors
+ 	-o imgoffset: Offset to the start of the volume that contains the partition system (in sectors)
+ 	-v: verbose output
+ 	-V: print the version
  ```
  
  - - -
@@ -795,103 +685,23 @@ PackagesInfo: |
  Display the partition layout of a volume system (partition tables)
  
  ```
- root@kali:~# man mmls
- MMLS(1)                     General Commands Manual                    MMLS(1)
- 
- NAME
-        mmls  - Display the partition layout of a volume system  (partition ta-
-        bles)
- 
- SYNOPSIS
-        mmls [-t mmtype ] [-o offset ] [  -i  imgtype  ]  [-b  dev_sector_size]
-        [-BrvV] [-aAmM] image [images]
- 
- DESCRIPTION
-        mmls  displays  the  layout of the partitions in a volume system, which
-        include partition tables and disk labels.
- 
- ARGUMENTS
-        -t mmtype
-               Specify the media management type.  Use '-t list'  to  list  the
-               supported types.  If not given, autodetection methods are used.
- 
-        -o offset
-               Specify  the  offset  into the image where the volume containing
-               the partition system starts.  The relative offset of the  parti-
-               tion system will be added to this value.
- 
-        -b dev_sector_size
-               The  size,  in  bytes, of the underlying device sectors.  If not
-               given, the value in the image format is used (if it  exists)  or
-               512-bytes is assumed.
- 
-        -i imgtype
-               Identify  the type of image file, such as raw.  Use '-i list' to
-               list the supported types.  If not given,  autodetection  methods
-               are used.
- 
-        -B     Include a column with the partition sizes in bytes
- 
-        -r     Recurse into DOS partitions and look for other partition tables.
-               This setup frequently occurs when Unix is installed on x86  sys-
-               tems.
- 
-        -v     Verbose output of debugging statements to stderr
- 
-        -V     Display version
- 
-        -a     Show allocated volumes
- 
-        -A     Show unallocated volumes
- 
-        -m     Show metadata volumes
- 
-        -M     Hide metadata volumes
- 
-        image [images]
-               The  disk or partition image to read, whose format is given with
-               '-i'.  Multiple image file names can be given if  the  image  is
-               split  into multiple segments.  If only one image file is given,
-               and its name is the first in a sequence (e.g., as  indicated  by
-               ending  in  '.001'),  subsequent image segments will be included
-               automatically.
- 
-        'mmls' is similar to 'fdisk -lu'  in  Linux  with  a  few  differences.
-        Namely, it will show which sectors are not being used so that those can
-        be searched for hidden data.  It also gives the length value so that it
-        can be plugged into 'dd' more easily for extracting the partitions.  It
-        also will show BSD disk labels for Free, Open, and NetBSD and will dis-
-        play the output in sectors and not cylinders.  Lastly, it works on non-
-        Linux systems.
- 
-        If none of -a, -A, -m, or -M are given then all volume  types  will  be
-        listed.  If any of them are given, then only the types specified on the
-        command line will be listed.
- 
-        Allocated volumes are those that are listed in a partition table in the
-        volume  system  AND  can store data.  Unallocated volumes are virtually
-        created by mmls to show you which sectors have not been allocated to  a
-        volume.   The  metadata  volumes  overlap the allocated and unallocated
-        volumes and describe where the  partition  tables  and  other  metadata
-        structures  are  located.  In some volume systems, these structures are
-        in allocated space and in others they are  in  unallocated  space.   In
-        some  volume  systems, their location is explicitly given in the parti-
-        tion tables and in others they are not.
- 
- EXAMPLES
-        To list the partition table of a Windows system using autodetect:
- 
-        # mmls disk_image.dd
- 
-        To list the contents of a BSD system that starts in sector 12345  of  a
-        split image:
- 
-        # mmls -t bsd -o 12345 -i split disk-1.dd disk-2.dd
- 
- AUTHOR
-        Brian Carrier <carrier at sleuthkit dot org>
- 
-                                                                        MMLS(1)
+ root@kali:~# mmls -h
+ mmls: invalid option -- 'h'
+ Unknown argument
+ mmls [-i imgtype] [-b dev_sector_size] [-o imgoffset] [-BrvV] [-aAmM] [-t vstype] image [images]
+ 	-t vstype: The type of volume system (use '-t list' for list of supported types)
+ 	-i imgtype: The format of the image file (use '-i list' for list supported types)
+ 	-b dev_sector_size: The size (in bytes) of the device sectors
+ 	-o imgoffset: Offset to the start of the volume that contains the partition system (in sectors)
+ 	-B: print the rounded length in bytes
+ 	-r: recurse and look for other partition tables in partitions (DOS Only)
+ 	-v: verbose output
+ 	-V: print the version
+ Unless any of these are specified, all volume types are shown
+ 	-a: Show allocated volumes
+ 	-A: Show unallocated volumes
+ 	-m: Show metadata volumes
+ 	-M: Hide metadata volumes
  ```
  
  - - -
@@ -901,58 +711,16 @@ PackagesInfo: |
  Display details about the volume system (partition tables)
  
  ```
- root@kali:~# man mmstat
- MMSTAT(1)                   General Commands Manual                  MMSTAT(1)
- 
- NAME
-        mmstat - Display details about the volume system (partition tables)
- 
- SYNOPSIS
-        mmstat  [-t  mmtype  ] [-o offset ] [ -i imgtype ] [-b dev_sector_size]
-        [-vV] image [images]
- 
- DESCRIPTION
-        mmstat displays the general details of a volume system, which  includes
-        partition tables and disk labels.  Mainly, the type is given.
- 
- ARGUMENTS
-        -t mmtype
-               Specify  the  media  management type.  Use '-t list' to list the
-               supported types.  If not given, autodetection methods are used.
- 
-        -o offset
-               Specify the offset into the image where  the  volume  containing
-               the  partition system starts.  The relative offset of the parti-
-               tion system will be added to this value.
- 
-        -b dev_sector_size
-               The size, in bytes, of the underlying device  sectors.   If  not
-               given,  the  value in the image format is used (if it exists) or
-               512-bytes is assumed.
- 
-        -i imgtype
-               Identify the type of image file, such as raw.  Use '-i list'  to
-               list  the  supported types.  If not given, autodetection methods
-               are used.
- 
-        -v     Verbose output of debugging statements to stderr
- 
-        -V     Display version
- 
-        image [images]
-               The disk or partition image to read, whose format is given  with
-               '-i'.   Multiple  image  file names can be given if the image is
-               split into multiple segments.  If only one image file is  given,
-               and  its  name is the first in a sequence (e.g., as indicated by
-               ending in '.001'), subsequent image segments  will  be  included
-               automatically.
- 
- AUTHOR
-        Brian Carrier <carrier at sleuthkit dot org>
- 
-        Send documentation updates to <doc-updates at sleuthkit dot org>
- 
-                                                                      MMSTAT(1)
+ root@kali:~# mmstat -h
+ mmstat: invalid option -- 'h'
+ Unknown argument
+ mmstat [-i imgtype] [-b dev_sector_size] [-o imgoffset] [-vV] [-t vstype] image [images]
+ 	-t vstype: The volume system type (use '-t list' for list of supported types)
+ 	-i imgtype: The format of the image file (use '-i list' for list of supported types)
+ 	-b dev_sector_size: The size (in bytes) of the device sectors
+ 	-o imgoffset: Offset to the start of the volume that contains the partition system (in sectors)
+ 	-v: verbose output
+ 	-V: print the version
  ```
  
  - - -
@@ -981,58 +749,15 @@ PackagesInfo: |
  Find a binary signature in a file
  
  ```
- root@kali:~# man sigfind
- SIGFIND(1)                  General Commands Manual                 SIGFIND(1)
- 
- NAME
-        sigfind - Find a binary signature in a file
- 
- SYNOPSIS
-        sigfind [-b bsize ] [-o offset ] [-t template ] [-lV] [ hex_signature ]
-        file
- 
- DESCRIPTION
-        sigfind searches through a file and looks for the  hex_signature  at  a
-        given  offset.   This  can be used to search for lost boot sectors, su-
-        perblocks, and partition tables.
- 
- ARGUMENTS
-        -b bsize
-               Specify the block size in which to search.  The default  is  512
-               and the value must be a multiple of 512.
- 
-        -o offset
-               Specify the offset in a block in which the signature must exist.
-               The default is 0.
- 
-        -t template
-               Specify a template name that defines  the  signature  value  and
-               offset.   Run  with  no  options to get a list of supported tem-
-               plates.
- 
-        -l     The signature is  stored  in  little-endian  ordering  and  must
-               therefore be reversed.
- 
-        -V     Display version
- 
-        [hex_signature]
-               The  binary  signature  that  you are searching for.  It must be
-               given in hexadecimal format.  This argument must exist if -t  is
-               not used.
- 
-        file   Any raw data.
- 
- EXAMPLES
-        sigfind -o 510 -l AA55 disk.dd
- 
-        sigfind -t fat disk.dd
- 
- AUTHOR
-        Brian Carrier <carrier at sleuthkit dot org>
- 
-        Send documentation updates to <doc-updates at sleuthkit dot org>
- 
-                                                                     SIGFIND(1)
+ root@kali:~# sigfind -h
+ sigfind: invalid option -- 'h'
+ sigfind [-b bsize] [-o offset] [-t template] [-lV] [hex_signature] file
+ 	-b bsize: Give block size (default 512)
+ 	-o offset: Give offset into block where signature should exist (default 0)
+ 	-l: Signature will be little endian in image
+ 	-V: Version
+ 	-t template: The name of a data structure template:
+ 		dospart, ext2, ext3, ext4, fat, hfs, hfs+, ntfs, ufs1, ufs2
  ```
  
  - - -

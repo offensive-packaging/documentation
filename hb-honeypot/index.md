@@ -3,8 +3,8 @@ Title: hb-honeypot
 Homepage: https://packetstormsecurity.com/files/126068/Heartbleed-Honeypot-Script.html
 Repository: https://gitlab.com/kalilinux/packages/hb-honeypot
 Architectures: all
-Version: 0.1.1-1kali2
-Metapackages: kali-linux-everything 
+Version: 0.1.1-1kali4
+Metapackages: kali-linux-everything kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### hb-honeypot
@@ -16,12 +16,18 @@ PackagesInfo: |
   of suspected heartbleed scan to the console. Rickrolls scanner in the hex
   dump.
  
- **Installed size:** `12 KB`  
+ **Installed size:** `13 KB`  
  **How to install:** `sudo apt install hb-honeypot`  
  
  {{< spoiler "Dependencies:" >}}
  * perl
  {{< /spoiler >}}
+ 
+ ##### hb-honeypot
+ 
+ 
+ 
+ - - -
  
  ##### hb_honeypot.pl
  

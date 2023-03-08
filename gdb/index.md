@@ -1,11 +1,10 @@
 ---
-archived: "true"
 Title: gdb
 Homepage: https://www.gnu.org/s/gdb/
 Repository: https://salsa.debian.org/gdb-team/gdb
 Architectures: any all
-Version: 12.1-4
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 13.1-2
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### gdb
@@ -16,7 +15,7 @@ PackagesInfo: |
   Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2,
   Go, and Ada. A must-have for any serious programmer.
  
- **Installed size:** `10.59 MB`  
+ **Installed size:** `11.35 MB`  
  **How to install:** `sudo apt install gdb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -30,12 +29,13 @@ PackagesInfo: |
  * liblzma5 
  * libmpfr6 
  * libncursesw6 
- * libpython3.10 
+ * libpython3.11 
  * libreadline8 
  * libsource-highlight4v5 
  * libstdc++6 
  * libtinfo6 
  * libxxhash0 
+ * libzstd1 
  * zlib1g 
  {{< /spoiler >}}
  
@@ -107,7 +107,6 @@ PackagesInfo: |
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
-   --dbx              DBX compatibility mode.
    -q, --quiet, --silent
  		     Do not print version number on startup.
  
@@ -196,7 +195,6 @@ PackagesInfo: |
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
-   --dbx              DBX compatibility mode.
    -q, --quiet, --silent
  		     Do not print version number on startup.
  
@@ -291,7 +289,6 @@ PackagesInfo: |
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
-   --dbx              DBX compatibility mode.
    -q, --quiet, --silent
  		     Do not print version number on startup.
  
@@ -345,7 +342,7 @@ PackagesInfo: |
   This package contains a minimal version of GDB with optional features
   disabled.
  
- **Installed size:** `9.08 MB`  
+ **Installed size:** `9.67 MB`  
  **How to install:** `sudo apt install gdb-minimal`  
  
  {{< spoiler "Dependencies:" >}}
@@ -360,6 +357,7 @@ PackagesInfo: |
  * libstdc++6 
  * libtinfo6 
  * libxxhash0 
+ * libzstd1 
  * zlib1g 
  {{< /spoiler >}}
  
@@ -419,7 +417,7 @@ PackagesInfo: |
    --tty=TTY          Use TTY for input/output by the program being debugged.
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
-   --dbx              DBX compatibility mode.
+   --tui              Use a terminal user interface.
    -q, --quiet, --silent
  		     Do not print version number on startup.
  
@@ -473,7 +471,7 @@ PackagesInfo: |
   This package contains a version of GDB which supports multiple
   target architectures.
  
- **Installed size:** `16.88 MB`  
+ **Installed size:** `17.75 MB`  
  **How to install:** `sudo apt install gdb-multiarch`  
  
  {{< spoiler "Dependencies:" >}}
@@ -488,12 +486,13 @@ PackagesInfo: |
  * liblzma5 
  * libmpfr6 
  * libncursesw6 
- * libpython3.10 
+ * libpython3.11 
  * libreadline8 
  * libsource-highlight4v5 
  * libstdc++6 
  * libtinfo6 
  * libxxhash0 
+ * libzstd1 
  * zlib1g 
  {{< /spoiler >}}
  
@@ -543,7 +542,6 @@ PackagesInfo: |
    -w                 Use the GUI interface.
    --nw               Do not use the GUI interface.
    --tui              Use a terminal user interface.
-   --dbx              DBX compatibility mode.
    -q, --quiet, --silent
  		     Do not print version number on startup.
  
@@ -597,7 +595,7 @@ PackagesInfo: |
   This package contains the sources and patches which are needed
   to build GDB.
  
- **Installed size:** `21.92 MB`  
+ **Installed size:** `22.87 MB`  
  **How to install:** `sudo apt install gdb-source`  
  
  
@@ -614,7 +612,7 @@ PackagesInfo: |
   This package contains gdbserver.  Install this to debug remotely
   from another system where GDB is installed.
  
- **Installed size:** `665 KB`  
+ **Installed size:** `818 KB`  
  **How to install:** `sudo apt install gdbserver`  
  
  {{< spoiler "Dependencies:" >}}

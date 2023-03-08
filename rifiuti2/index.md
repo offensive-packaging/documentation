@@ -4,7 +4,7 @@ Homepage: https://abelcheung.github.io/rifiuti2
 Repository: https://salsa.debian.org/pkg-security-team/rifiuti2
 Architectures: any
 Version: 0.7.0-3
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### rifiuti2

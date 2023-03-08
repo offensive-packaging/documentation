@@ -3,7 +3,7 @@ Title: llvm-defaults
 Homepage: 
 Repository: https://salsa.debian.org/pkg-llvm-team/llvm-defaults/
 Architectures: any
-Version: 0.55.2
+Version: 0.55.6
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-fuzzing kali-tools-reverse-engineering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default clang compiler.
  
- **Installed size:** `26 KB`  
+ **Installed size:** `19 KB`  
  **How to install:** `sudo apt install clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2458,7 +2458,7 @@ PackagesInfo: |
    
   This is a dependency package providing the clang format tool.
  
- **Installed size:** `35 KB`  
+ **Installed size:** `28 KB`  
  **How to install:** `sudo apt install clang-format`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2648,7 +2648,7 @@ PackagesInfo: |
    
   This is a dependency package providing the clang tidy tool.
  
- **Installed size:** `27 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install clang-tidy`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2955,7 +2955,7 @@ PackagesInfo: |
    
   This is a dependency package providing the clang tools package.
  
- **Installed size:** `33 KB`  
+ **Installed size:** `26 KB`  
  **How to install:** `sudo apt install clang-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3798,7 +3798,7 @@ PackagesInfo: |
    
   This is a dependency package providing clangd.
  
- **Installed size:** `22 KB`  
+ **Installed size:** `15 KB`  
  **How to install:** `sudo apt install clangd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3903,11 +3903,38 @@ PackagesInfo: |
   This is a dependency package providing the default LLVM C++ Standard library
   development files.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libc++-dev`  
  
  {{< spoiler "Dependencies:" >}}
  * libc++-14-dev 
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libc++-dev-wasm32
+ 
+  libc++ is another implementation of the C++ standard library
+   
+  Features and Goals
+   
+    * Correctness as defined by the C++ standards.
+    * Fast execution.
+    * Minimal memory use.
+    * Fast compile times.
+    * ABI compatibility with gcc's libstdc++ for some low-level features such
+      as exception objects, rtti and memory allocation.
+    * Extensive unit tests.
+   
+  This is a dependency package providing the default 32-bit WebAssembly
+  System Interface.
+ 
+ **Installed size:** `10 KB`  
+ **How to install:** `sudo apt install libc++-dev-wasm32`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libc++-14-dev-wasm32
  {{< /spoiler >}}
  
  
@@ -3929,7 +3956,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default LLVM C++ Standard library.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libc++1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3952,7 +3979,7 @@ PackagesInfo: |
   This is a dependency package providing low level support to
   dev LLVM C++ Standard library.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `13 KB`  
  **How to install:** `sudo apt install libc++abi-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3975,7 +4002,7 @@ PackagesInfo: |
   This is a dependency package providing low level support to
   LLVM C++ Standard library.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libc++abi1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -3996,7 +4023,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default Clang C++ library.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libclang-cpp-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4018,11 +4045,68 @@ PackagesInfo: |
   This is a dependency package providing the default libclang libraries and
   headers.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libclang-dev`  
  
  {{< spoiler "Dependencies:" >}}
  * libclang-14-dev 
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libclang-rt-dev
+ 
+  This package provides various libraries:
+   
+    * builtins - Simple libraries that provide implementation of the
+      low-level target-specific hooks required by code generation
+      and other runtime components.
+    * sanitizer runtimes - AddressSanitizer, ThreadSanitizer,
+      UndefinedBehaviorSanitizer, MemorySanitizer, LeakSanitizer
+      DataFlowSanitizer, etc
+    * profile - Library which is used to collect coverage information.
+   
+  This is a dependency package providing the default compiler-rt libraries and
+  headers.
+ 
+ **Installed size:** `10 KB`  
+ **How to install:** `sudo apt install libclang-rt-dev`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libclang-rt-14-dev 
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libclang-rt-dev-wasm32
+ 
+  Provides the compiler-rt builtins for WebAssembly 32 bits
+   
+  This is a dependency package providing the default libclang wasm32 library.
+ 
+ **Installed size:** `10 KB`  
+ **How to install:** `sudo apt install libclang-rt-dev-wasm32`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libclang-rt-14-dev-wasm32 
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### libclang-rt-dev-wasm64
+ 
+  Provides the compiler-rt builtins for WebAssembly 64 bits
+   
+  This is a dependency package providing the default libclang wasm64 library.
+ 
+ **Installed size:** `10 KB`  
+ **How to install:** `sudo apt install libclang-rt-dev-wasm64`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libclang-rt-14-dev-wasm64 
  {{< /spoiler >}}
  
  
@@ -4045,7 +4129,7 @@ PackagesInfo: |
   locations with elements within the AST, and other facilities that support
   Clang-based development tools.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libclang1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4063,7 +4147,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default liblld-dev package.
  
- **Installed size:** `19 KB`  
+ **Installed size:** `12 KB`  
  **How to install:** `sudo apt install liblld-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4081,7 +4165,7 @@ PackagesInfo: |
    
   This package provides the header files to build extension over lldb.
  
- **Installed size:** `21 KB`  
+ **Installed size:** `14 KB`  
  **How to install:** `sudo apt install liblldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4099,7 +4183,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default bindings for OCaml.
  
- **Installed size:** `22 KB`  
+ **Installed size:** `15 KB`  
  **How to install:** `sudo apt install libllvm-ocaml-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4119,7 +4203,7 @@ PackagesInfo: |
   This is a dependency package providing the default LLVM OpenMP dev
   package.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libomp-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4137,7 +4221,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default LLVM OpenMP runtime.
  
- **Installed size:** `17 KB`  
+ **Installed size:** `10 KB`  
  **How to install:** `sudo apt install libomp5`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4155,7 +4239,7 @@ PackagesInfo: |
    
   This is a dependency package providing the lld linker.
  
- **Installed size:** `26 KB`  
+ **Installed size:** `19 KB`  
  **How to install:** `sudo apt install lld`  
  
  {{< spoiler "Dependencies:" >}}
@@ -5492,7 +5576,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default version of lldb.
  
- **Installed size:** `24 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install lldb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -5657,7 +5741,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default llvm package.
  
- **Installed size:** `115 KB`  
+ **Installed size:** `109 KB`  
  **How to install:** `sudo apt install llvm`  
  
  {{< spoiler "Dependencies:" >}}
@@ -7477,6 +7561,40 @@ PackagesInfo: |
  
  LLVM lib.exe compatible library tool
  
+ ```
+ root@kali:~# man llvm-lib
+ LLVM-LIB(1)                          LLVM                          LLVM-LIB(1)
+ 
+ NAME
+        llvm-lib - LLVM lib.exe compatible library tool
+ 
+ SYNOPSIS
+        llvm-lib  [/libpath:<path>]  [/out:<output>]  [/llvmlibthin]  [/ignore]
+        [/machine] [/nologo] [files]
+ 
+ DESCRIPTION
+        The llvm-lib command is intended to be a lib.exe compatible  tool.  See
+        https://msdn.microsoft.com/en-us/library/7ykb2k5f  for  the general de-
+        scription.
+ 
+        llvm-lib has the following extensions:
+ 
+        o Bitcode files in symbol tables.  llvm-lib includes symbols from  both
+          bitcode files and regular object files in the symbol table.
+ 
+        o Creating  thin  archives.  The /llvmlibthin option causes llvm-lib to
+          create thin archive that contain only the symbol table and the header
+          for  the  various  members. These files are much smaller, but are not
+          compatible with link.exe (lld can handle them).
+ 
+ AUTHOR
+        Maintained by the LLVM Team (https://llvm.org/).
+ 
+ COPYRIGHT
+        2003-2023, LLVM Project
+ 
+ 14                                2023-02-17                       LLVM-LIB(1)
+ ```
  
  - - -
  
@@ -8476,6 +8594,42 @@ PackagesInfo: |
    --auxiliary-header display the auxiliary header
  
  Pass @FILE as argument to read options from FILE.
+ ```
+ 
+ - - -
+ 
+ ##### llvm-reduce
+ 
+ 
+ ```
+ root@kali:~# llvm-reduce --help
+ OVERVIEW: LLVM automatic testcase reducer.
+ 
+ USAGE: llvm-reduce [options] <input llvm ll/bc file>
+ 
+ OPTIONS:
+ 
+ Color Options:
+ 
+   --color                     - Use colors in output (default=autodetect)
+ 
+ Generic Options:
+ 
+   --help                      - Display available options (--help-hidden for more)
+   --help-list                 - Display list of available options (--help-list-hidden for more)
+   --version                   - Display the version of this program
+ 
+ llvm-reduce options:
+ 
+   --in-place                  - WARNING: This option will replace your input file with the reduced version!
+   --max-pass-iterations=<int> - Maximum number of times to run the full set of delta passes (default=1)
+   --mtriple=<string>          - Set the target triple
+   --print-delta-passes        - Print list of delta passes, passable to --delta-passes as a comma separated list
+   --test=<string>             - Name of the interesting-ness test to be run
+   --test-arg=<string>         - Arguments passed onto the interesting-ness test
+   -x=<value>                  - Input language ('ir' or 'mir')
+     =ir
+     =mir
  ```
  
  - - -
@@ -10646,7 +10800,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default libraries and headers.
  
- **Installed size:** `32 KB`  
+ **Installed size:** `25 KB`  
  **How to install:** `sudo apt install llvm-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -10666,7 +10820,7 @@ PackagesInfo: |
    
   This is a dependency package providing the default bytecode interpreter.
  
- **Installed size:** `22 KB`  
+ **Installed size:** `15 KB`  
  **How to install:** `sudo apt install llvm-runtime`  
  
  {{< spoiler "Dependencies:" >}}
@@ -11047,7 +11201,7 @@ PackagesInfo: |
    
   This is a dependency package providing the Python binding to Clang.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `13 KB`  
  **How to install:** `sudo apt install python3-clang`  
  
  {{< spoiler "Dependencies:" >}}
@@ -11065,7 +11219,7 @@ PackagesInfo: |
    
   This is a dependency package providing the Python binding to lldb.
  
- **Installed size:** `20 KB`  
+ **Installed size:** `13 KB`  
  **How to install:** `sudo apt install python3-lldb`  
  
  {{< spoiler "Dependencies:" >}}

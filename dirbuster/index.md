@@ -3,7 +3,7 @@ Title: dirbuster
 Homepage: https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
 Repository: https://gitlab.com/kalilinux/packages/dirbuster
 Architectures: all
-Version: 1.0-1kali4
+Version: 1.0-1kali5
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-web 
 Icon: images/dirbuster-logo.svg
 PackagesInfo: |

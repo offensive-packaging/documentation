@@ -3,8 +3,8 @@ Title: binwalk
 Homepage: https://github.com/ReFirmLabs/binwalk
 Repository: https://salsa.debian.org/pkg-security-team/binwalk
 Architectures: all
-Version: 2.3.3+dfsg1-2
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-hardware 
+Version: 2.3.4+dfsg1-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-hardware kali-tools-respond 
 Icon: images/binwalk-logo.svg
 PackagesInfo: |
  ### binwalk
@@ -23,7 +23,7 @@ PackagesInfo: |
   This package is an empty package, because the binary tool is already
   provided with the library, dependency of this package.
  
- **Installed size:** `18 KB`  
+ **Installed size:** `15 KB`  
  **How to install:** `sudo apt install binwalk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -131,7 +131,7 @@ PackagesInfo: |
    
   This is the Python 3 version of the package.
  
- **Installed size:** `562 KB`  
+ **Installed size:** `559 KB`  
  **How to install:** `sudo apt install python3-binwalk`  
  
  {{< spoiler "Dependencies:" >}}

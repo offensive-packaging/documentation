@@ -1,9 +1,9 @@
 ---
 Title: openssh
-Homepage: http://www.openssh.com/
+Homepage: https://www.openssh.com/
 Repository: https://salsa.debian.org/ssh-team/openssh
 Architectures: any all
-Version: 1:9.0p1-1
+Version: 1:9.2p1-2
 Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -31,12 +31,11 @@ PackagesInfo: |
   ssh replaces the insecure rsh, rcp and rlogin programs, which are
   obsolete for most purposes.
  
- **Installed size:** `5.50 MB`  
+ **Installed size:** `5.63 MB`  
  **How to install:** `sudo apt install openssh-client`  
  
  {{< spoiler "Dependencies:" >}}
- * adduser 
- * dpkg 
+ * adduser
  * libc6 
  * libedit2 
  * libfido2-1 
@@ -55,8 +54,8 @@ PackagesInfo: |
  root@kali:~# scp -h
  scp: unknown option -- h
  usage: scp [-346ABCOpqRrsTv] [-c cipher] [-D sftp_server_path] [-F ssh_config]
-            [-i identity_file] [-J destination] [-l limit]
-            [-o ssh_option] [-P port] [-S program] source ... target
+            [-i identity_file] [-J destination] [-l limit] [-o ssh_option]
+            [-P port] [-S program] [-X sftp_option] source ... target
  ```
  
  - - -
@@ -69,10 +68,10 @@ PackagesInfo: |
  root@kali:~# sftp --help
  unknown option -- -
  usage: sftp [-46AaCfNpqrv] [-B buffer_size] [-b batchfile] [-c cipher]
-           [-D sftp_server_path] [-F ssh_config] [-i identity_file]
+           [-D sftp_server_command] [-F ssh_config] [-i identity_file]
            [-J destination] [-l limit] [-o ssh_option] [-P port]
            [-R num_requests] [-S program] [-s subsystem | sftp_server]
-           destination
+           [-X sftp_option] destination
  ```
  
  - - -
@@ -334,9 +333,9 @@ PackagesInfo: |
  root@kali:~# ssh-agent -h
  unknown option -- h
  usage: ssh-agent [-c | -s] [-Dd] [-a bind_address] [-E fingerprint_hash]
-                  [-P allowed_providers] [-t life]
-        ssh-agent [-a bind_address] [-E fingerprint_hash] [-P allowed_providers]
-                  [-t life] command [arg ...]
+                  [-O option] [-P allowed_providers] [-t life]
+        ssh-agent [-a bind_address] [-E fingerprint_hash] [-O option]
+                  [-P allowed_providers] [-t life] command [arg ...]
         ssh-agent [-c | -s] -k
  ```
  
@@ -485,13 +484,12 @@ PackagesInfo: |
   sshd replaces the insecure rshd program, which is obsolete for most
   purposes.
  
- **Installed size:** `1.78 MB`  
+ **Installed size:** `1.88 MB`  
  **How to install:** `sudo apt install openssh-server`  
  
  {{< spoiler "Dependencies:" >}}
- * adduser 
+ * adduser
  * debconf  | debconf-2.0
- * dpkg 
  * init-system-helpers 
  * libaudit1 
  * libc6 
@@ -499,19 +497,19 @@ PackagesInfo: |
  * libcrypt1 
  * libgssapi-krb5-2 
  * libkrb5-3 
- * libpam-modules 
- * libpam-runtime 
+ * libpam-modules
+ * libpam-runtime
  * libpam0g 
  * libselinux1 
  * libssl3 
  * libsystemd0
  * libwrap0 
- * lsb-base 
+ * lsb-base
  * openssh-client 
  * openssh-sftp-server
  * procps
  * runit-helper 
- * ucf 
+ * ucf
  * zlib1g 
  {{< /spoiler >}}
  
@@ -522,8 +520,8 @@ PackagesInfo: |
  ```
  root@kali:~# sshd -h
  option requires an argument -- h
- OpenSSH_9.0p1 Debian-1+b2, OpenSSL 3.0.7 1 Nov 2022
- usage: sshd [-46DdeiqTt] [-C connection_spec] [-c host_cert_file]
+ OpenSSH_9.2p1 Debian-2, OpenSSL 3.0.8 7 Feb 2023
+ usage: sshd [-46DdeiqTtV] [-C connection_spec] [-c host_cert_file]
              [-E log_file] [-f config_file] [-g login_grace_time]
              [-h host_key_file] [-o option] [-p port] [-u len]
  ```
@@ -556,12 +554,11 @@ PackagesInfo: |
   Newer versions of the draft will not be supported, though some features
   are individually implemented as extensions.
  
- **Installed size:** `213 KB`  
+ **Installed size:** `217 KB`  
  **How to install:** `sudo apt install openssh-sftp-server`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
- * libssl3 
  * openssh-client 
  {{< /spoiler >}}
  
@@ -574,7 +571,7 @@ PackagesInfo: |
   intended for use with the autopkgtest system, though can also be run
   directly using /usr/lib/openssh/regress/run-tests.
  
- **Installed size:** `7.39 MB`  
+ **Installed size:** `7.46 MB`  
  **How to install:** `sudo apt install openssh-tests`  
  
  {{< spoiler "Dependencies:" >}}
@@ -600,11 +597,10 @@ PackagesInfo: |
   and the OpenSSH server. It provides nothing in and of itself, so you
   may remove it if nothing depends on it.
  
- **Installed size:** `270 KB`  
+ **Installed size:** `182 KB`  
  **How to install:** `sudo apt install ssh`  
  
  {{< spoiler "Dependencies:" >}}
- * dpkg 
  * openssh-client 
  * openssh-server 
  {{< /spoiler >}}
@@ -620,7 +616,7 @@ PackagesInfo: |
   You probably want the ssh-askpass package instead, but this is
   provided to add to your choice and/or confusion.
  
- **Installed size:** `221 KB`  
+ **Installed size:** `219 KB`  
  **How to install:** `sudo apt install ssh-askpass-gnome`  
  
  {{< spoiler "Dependencies:" >}}

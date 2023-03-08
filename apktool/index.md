@@ -2,9 +2,9 @@
 Title: apktool
 Homepage: https://ibotpeaches.github.io/Apktool/
 Repository: https://salsa.debian.org/android-tools-team/apktool
-Architectures: all
-Version: 2.6.1+dfsg.1-2
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
+Architectures: any
+Version: 2.7.0+dfsg-4
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/apktool-logo.svg
 PackagesInfo: |
  ### apktool
@@ -15,7 +15,7 @@ PackagesInfo: |
   makes working with an app easier because of project-like file structure and
   automation of some repetitive tasks like building apk.
  
- **Installed size:** `267 KB`  
+ **Installed size:** `268 KB`  
  **How to install:** `sudo apt install apktool`  
  
  {{< spoiler "Dependencies:" >}}
@@ -41,8 +41,8 @@ PackagesInfo: |
  
  ```
  root@kali:~# apktool -h
- Apktool v2.6.1-dirty - a tool for reengineering Android apk files
- with smali v2.4.0-debian and baksmali v2.4.0-debian
+ Apktool v2.7.0-dirty - a tool for reengineering Android apk files
+ with smali v2.5.2.git2771eae-debian and baksmali v2.5.2.git2771eae-debian
  Copyright 2010 Ryszard Wiśniewski <brut.alll@gmail.com>
  Copyright 2010 Connor Tumbleson <connor.tumbleson@gmail.com>
  

@@ -3,7 +3,7 @@ Title: dumpsterdiver
 Homepage: https://github.com/securing/DumpsterDiver
 Repository: https://gitlab.com/kalilinux/packages/dumpsterdiver
 Architectures: all
-Version: 0~git20200911-0kali1
+Version: 0~git20200911-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

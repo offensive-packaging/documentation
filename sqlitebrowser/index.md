@@ -4,7 +4,7 @@ Homepage: https://sqlitebrowser.org/
 Repository: https://salsa.debian.org/sqlitebrowser-team/sqlitebrowser
 Architectures: any
 Version: 3.12.2-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-database kali-tools-forensics kali-tools-web 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-database kali-tools-forensics kali-tools-respond kali-tools-web 
 Icon: images/sqlitebrowser-logo.svg
 PackagesInfo: |
  ### sqlitebrowser

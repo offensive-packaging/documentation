@@ -3,7 +3,7 @@ Title: openvpn
 Homepage: https://openvpn.net/
 Repository: https://salsa.debian.org/debian/openvpn
 Architectures: any
-Version: 2.6.0~really2.5.7-0kali1
+Version: 2.6.0-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,21 +21,21 @@ PackagesInfo: |
   also supports VPNs with dynamic endpoints (DHCP or dial-up clients), tunnels
   over NAT or connection-oriented stateful firewalls (such as Linux's iptables).
  
- **Installed size:** `1.59 MB`  
+ **Installed size:** `1.71 MB`  
  **How to install:** `sudo apt install openvpn`  
  
  {{< spoiler "Dependencies:" >}}
  * debconf  | debconf-2.0
- * iproute2
  * libc6 
+ * libcap-ng0 
  * liblz4-1 
  * liblzo2-2 
+ * libnl-3-200 
+ * libnl-genl-3-200 
  * libpam0g 
  * libpkcs11-helper1 
  * libssl3 
  * libsystemd0
- * lsb-base 
- * systemd | systemd-tmpfiles
  {{< /spoiler >}}
  
  ##### openvpn
@@ -44,7 +44,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# openvpn --help
- OpenVPN 2.5.7 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Jul  5 2022
+ OpenVPN 2.6.0 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
  
  General Options:
  --config file   : Read configuration options from file.
@@ -64,7 +64,7 @@ PackagesInfo: |
  --proto-force p : only consider protocol p in list of connection profiles.
                    p = udp or tcp
  --connect-retry n [m] : For client, number of seconds to wait between
-                   connection retries (default=5). On repeated retries
+                   connection retries (default=1). On repeated retries
                    the wait time is exponentially increased to a maximum of m
                    (default=300).
  --connect-retry-max n : Maximum connection attempt retries, default infinite.
@@ -106,6 +106,7 @@ PackagesInfo: |
                    does not begin with "tun" or "tap".
  --dev-node node : Explicitly set the device node rather than using
                    /dev/net/tun, /dev/tun, /dev/tap, etc.
+ --disable-dco   : Do not attempt using Data Channel Offload.
  --lladdr hw     : Set the link layer address of the tap device.
  --topology t    : Set --dev tun topology: 'net30', 'p2p', or 'subnet'.
  --ifconfig l rn : TUN: configure device to use IP address l as a local
@@ -143,7 +144,7 @@ PackagesInfo: |
  --route-noexec  : Don't add routes automatically.  Instead pass routes to
                    --route-up script using environmental variables.
  --route-nopull  : When used with --client or --pull, accept options pushed
-                   by server EXCEPT for routes and dhcp options.
+                   by server EXCEPT for routes, dns, and dhcp options.
  --allow-pull-fqdn : Allow client to pull DNS names from server for
                      --ifconfig, --route, and --route-gateway.
  --redirect-gateway [flags]: Automatically execute routing
@@ -178,6 +179,7 @@ PackagesInfo: |
                    for m seconds.
  --inactive n [bytes] : Exit after n seconds of activity on tun/tap device
                    produces a combined in/out byte count < bytes.
+ --session-timeout n: Limit connection time to n seconds.
  --ping-exit n   : Exit if n seconds pass without reception of remote ping.
  --ping-restart n: Restart if n seconds pass without reception of remote ping.
  --ping-timer-rem: Run the --ping-exit/--ping-restart timer only if we have a
@@ -240,8 +242,6 @@ PackagesInfo: |
                    as the program name to the system logger.
  --syslog [name] : Output to syslog, but do not become a daemon.
                    See --daemon above for a description of the 'name' parm.
- --inetd [name] ['wait'|'nowait'] : Run as an inetd or xinetd server.
-                   See --daemon above for a description of the 'name' parm.
  --log file      : Output log to file which is created/truncated on open.
  --log-append file : Append log to file, or create file if nonexistent.
  --suppress-timestamps : Don't log timestamps to stdout/stderr.
@@ -261,10 +261,10 @@ PackagesInfo: |
                         and received from TCP/UDP (caps) or tun/tap (lc)
                  : 6 to 11 -- debug messages of increasing verbosity
  --mute n        : Log at most n consecutive messages in the same category.
- --status file n : Write operational status to file every n seconds.
+ --status file [n] : Write operational status to file every n seconds.
  --status-version [n] : Choose the status file format version number.
                    Currently, n can be 1, 2, or 3 (default=1).
- --disable-occ   : Disable options consistency check between peers.
+ --disable-occ   : (DEPRECATED) Disable options consistency check between peers.
  --gremlin mask  : Special stress testing mode (for debugging only).
  --compress alg  : Use compression algorithm alg
  --allow-compression: Specify whether compression should be allowed
@@ -298,8 +298,6 @@ PackagesInfo: |
  --management-client-auth : gives management interface client the responsibility
                             to authenticate clients after their client certificate
  			      has been verified.
- --management-client-pf : management interface clients must specify a packet
-                          filter file for each connecting client.
  --plugin m [str]: Load plug-in module m passing str as an argument
                    to its initialization function.
  --vlan-tagging  : Enable 802.1Q-based VLAN tagging.
@@ -351,7 +349,7 @@ PackagesInfo: |
                    OTP based two-factor auth mechanisms are in use and
                    --reneg-* options are enabled. Optionally a lifetime in seconds
                    for generated tokens can be set.
- --opt-verify    : Clients that connect with options that are incompatible
+ --opt-verify    : (DEPRECATED) Clients that connect with options that are incompatible
                    with those of the server will be disconnected.
  --auth-user-pass-optional : Allow connections by clients that don't
                    specify a username/password.
@@ -373,6 +371,7 @@ PackagesInfo: |
                    as well as pushes it to connecting clients.
  --learn-address cmd : Run command cmd to validate client virtual addresses.
  --connect-freq n s : Allow a maximum of n new connections per s seconds.
+ --connect-freq-initial n s : Allow a maximum of n replies for initial connections attempts per s seconds.
  --max-clients n : Allow a maximum of n simultaneously connected clients.
  --max-routes-per-client n : Allow a maximum of n internal routes per client.
  --stale-routes-check n [t] : Remove routes with a last activity timestamp
@@ -400,6 +399,16 @@ PackagesInfo: |
                    ignore or reject causes the option to be allowed, removed or
                    rejected with error. May be specified multiple times, and
                    each filter is applied in the order of appearance.
+ --dns server <n> <option> <value> [value ...] : Configure option for DNS server #n
+                   Valid options are :
+                   address <addr[:port]> [addr[:port]] : server address 4/6
+                   resolve-domains <domain> [domain ...] : split domains
+                   exclude-domains <domain> [domain ...] : domains not to resolve
+                   dnssec <yes|no|optional> : option to use DNSSEC
+                   type <DoH|DoT> : query server over HTTPS / TLS
+                   sni <domain> : DNS server name indication
+ --dns search-domains <domain> [domain ...]:
+                   Add domains to DNS domain search list
  --auth-retry t  : How to handle auth failures.  Set t to
                    none (default), interact, or nointeract.
  --static-challenge t e : Enable static challenge/response protocol using
@@ -414,7 +423,7 @@ PackagesInfo: |
  
  Data Channel Encryption Options (must be compatible between peers):
  (These options are meaningful for both Static Key & TLS-mode)
- --secret f [d]  : Enable Static Key encryption mode (non-TLS).
+ --secret f [d]  : (DEPRECATED) Enable Static Key encryption mode (non-TLS).
                    Use shared secret file f, generate with --genkey.
                    The optional d parameter controls key directionality.
                    If d is specified, use separate keys for each
@@ -424,15 +433,10 @@ PackagesInfo: |
                    digest algorithm alg (default=SHA1).
                    (usually adds 16 or 20 bytes per packet)
                    Set alg=none to disable authentication.
- --cipher alg    : Encrypt packets with cipher algorithm alg
-                   (default=(null)).
+ --cipher alg    : Encrypt packets with cipher algorithm alg.
+                   You should usually use --data-ciphers instead.
                    Set alg=none to disable encryption.
  --data-ciphers list : List of ciphers that are allowed to be negotiated.
- --ncp-disable   : (DEPRECATED) Disable cipher negotiation.
- --prng alg [nsl] : For PRNG, use digest algorithm alg, and
-                    nonce_secret_len=nsl.  Set alg=none to disable PRNG.
- --keysize n     : (DEPRECATED) Size of cipher key in bits (optional).
-                   If unspecified, defaults to cipher-specific default.
  --engine [name] : Enable OpenSSL hardware crypto engine functionality.
  --no-replay     : (DEPRECATED) Disable replay protection.
  --mute-replay-warnings : Silence the output of replay warnings to log file.

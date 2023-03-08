@@ -4,7 +4,7 @@ Homepage: http://www.vanheusden.com/nasty/
 Repository: https://salsa.debian.org/pkg-security-team/nasty
 Architectures: any
 Version: 0.6-4
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### nasty
@@ -31,8 +31,7 @@ PackagesInfo: |
  A tool which helps you to recover your GPG passphrase
  
  ```
- root@kali:~# nasty --help
- nasty: invalid option -- '-'
+ root@kali:~# nasty -h
  -a x	set minimum length of passphrase
  -b x	set maximum length
  -m x	set guessing mode:

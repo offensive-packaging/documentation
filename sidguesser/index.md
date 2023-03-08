@@ -3,7 +3,7 @@ Title: sidguesser
 Homepage: http://www.cqure.net/wp/tools/database/sidguesser/
 Repository: https://gitlab.com/kalilinux/packages/sidguesser
 Architectures: any
-Version: 1.0.5-1kali1
+Version: 1.0.5-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-web 
 Icon: images/sidguesser-logo.svg
 PackagesInfo: |

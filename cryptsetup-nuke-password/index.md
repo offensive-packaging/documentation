@@ -4,7 +4,7 @@ Homepage: https://salsa.debian.org/pkg-security-team/cryptsetup-nuke-password
 Repository: https://salsa.debian.org/pkg-security-team/cryptsetup-nuke-password
 Architectures: any
 Version: 4
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-protect 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cryptsetup-nuke-password

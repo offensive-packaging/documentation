@@ -3,7 +3,7 @@ Title: arp-scan
 Homepage: https://github.com/royhills/arp-scan
 Repository: https://salsa.debian.org/pkg-security-team/arp-scan
 Architectures: any
-Version: 1.9.8-1
+Version: 1.10.0-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,12 +13,12 @@ PackagesInfo: |
   fingerprint IP hosts on the local network. It is available for Linux and BSD
   under the GPL licence
  
- **Installed size:** `1.22 MB`  
+ **Installed size:** `1.53 MB`  
  **How to install:** `sudo apt install arp-scan`  
  
  {{< spoiler "Dependencies:" >}}
- * ieee-data
  * libc6 
+ * libcap2 
  * libpcap0.8 
  {{< /spoiler >}}
  
@@ -43,84 +43,155 @@ PackagesInfo: |
  
  ##### arp-scan
  
- The ARP scanner
+ Send ARP requests to target hosts and display responses
  
  ```
  root@kali:~# arp-scan -h
  Usage: arp-scan [options] [hosts...]
  
- Target hosts must be specified on the command line unless the --file option is
- given, in which case the targets are read from the specified file instead, or
- the --localnet option is used, in which case the targets are generated from
- the network interface IP address and netmask.
+ Target hosts must be specified on the command line unless the --file or
+ --localnet option is used.
  
- You will need to be root, or arp-scan must be SUID root, in order to run
- arp-scan, because the functions that it uses to read and write packets
- require root privilege.
+ arp-scan uses raw sockets, which requires privileges on some systems:
  
- The target hosts can be specified as IP addresses or hostnames. You can also
- specify the target as IPnetwork/bits (e.g. 192.168.1.0/24) to specify all hosts
- in the given network (network and broadcast addresses included), or
- IPstart-IPend (e.g. 192.168.1.3-192.168.1.27) to specify all hosts in the
- inclusive range, or IPnetwork:NetMask (e.g. 192.168.1.0:255.255.255.0) to
- specify all hosts in the given network and mask.
+ Linux with POSIX.1e capabilities support using libcap:
+        arp-scan is capabilities aware. It requires CAP_NET_RAW in the permitted
+        set and only enables that capability for the required functions.
+ BSD and macOS:
+        You need read/write access to /dev/bpf*
+ Any operating system:
+        Running as root or SUID root will work on any OS but other methods
+        are preferable where possible.
  
- These different options for specifying target hosts may be used both on the
- command line, and also in the file specified with the --file option.
+ Targets can be IPv4 addresses or hostnames. You can also use CIDR notation
+ (10.0.0.0/24) (network and broadcast included), ranges (10.0.0.1-10.0.0.10),
+ and network:mask (10.0.0.0:255.255.255.0).
  
  Options:
  
- Note: where an option takes a value, that value is specified as a letter in
- angle brackets. The letter indicates the type of data that is expected:
+ The data type for option arguments is shown by a letter in angle brackets: 
  
- <s> A character string, e.g. --file=hostlist.txt.
+ <s> Character string.
+ <i> Decimal integer, or hex if preceeded by 0x e.g. 2048 or 0x800.
+ <f> Floating point decimal number.
+ <m> MAC address, e.g. 01:23:45:67:89:ab or 01-23-45-67-89-ab (case insensitive)
+ <a> IPv4 address e.g. 10.0.0.1
+ <h> Hex encoded binary data. No leading 0x. (case insensitive).
+ <x> Something else - see option description.
  
- <i> An integer, which can be specified as a decimal number or as a hexadecimal
-     number if preceded with 0x, e.g. --arppro=2048 or --arpro=0x0800.
- 
- <f> A floating point decimal number, e.g. --backoff=1.5.
- 
- <m> An Ethernet MAC address, which can be specified either in the format
-     01:23:45:67:89:ab, or as 01-23-45-67-89-ab. The alphabetic hex characters
-     may be either upper or lower case. E.g. --arpsha=01:23:45:67:89:ab.
- 
- <a> An IPv4 address, e.g. --arpspa=10.0.0.1
- 
- <h> Binary data specified as a hexadecimal string, which should not
-     include a leading 0x. The alphabetic hex characters may be either
-     upper or lower case. E.g. --padding=aaaaaaaaaaaa
- 
- <x> Something else. See the description of the option for details.
+ General Options:
  
  --help or -h		Display this usage message and exit.
  
- --file=<s> or -f <s>	Read hostnames or addresses from the specified file
- 			instead of from the command line. One name or IP
- 			address per line. Use "-" for standard input.
+ --verbose or -v		Display verbose progress messages.
+ 			Can be used than once to increase verbosity. Max=3.
  
- --localnet or -l	Generate addresses from network interface configuration.
- 			Use the network interface IP address and network mask
- 			to generate the list of target host addresses.
- 			The list will include the network and broadcast
- 			addresses, so an interface address of 10.0.0.1 with
- 			netmask 255.255.255.0 would generate 256 target
- 			hosts from 10.0.0.0 to 10.0.0.255 inclusive.
- 			If you use this option, you cannot specify the --file
- 			option or specify any target hosts on the command line.
- 			The interface specifications are taken from the
- 			interface that arp-scan will use, which can be
- 			changed with the --interface option.
+ --version or -V		Display program version details and exit.
+ 			Shows the version, license details, libpcap version,
+ 			and whether POSIX.1e capability support is included.
+ 
+ --interface=<s> or -I <s> Use network interface <s>.
+ 			If this option is not specified, arp-scan will search
+ 			the system interface list for the lowest numbered,
+ 			configured up interface (excluding loopback).
+ 
+ Host Selection:
+ 
+ --file=<s> or -f <s>	Read hostnames or addresses from the specified file
+ 			One name or address pattern per line. Use "-" for stdin.
+ 
+ --localnet or -l	Generate addresses from interface configuration.
+ 			Generates list from interface address and netmask
+ 			(network and broadcast included). You cannot use the
+ 			--file option or give targets on the command line.
+ 			Use --interface to specify the interface.
+ 
+ MAC/Vendor Mapping Files:
+ 
+ --ouifile=<s> or -O <s>	Use IEEE registry vendor mapping file <s>.
+ 			Default is ieee-oui.txt in the current directory. If
+ 			that is not found /usr/share/arp-scan/ieee-oui.txt
+ 			is used.
+ 
+ --macfile=<s> or -m <s>	Use custom vendor mapping file <s>.
+ 			Default is mac-vendor.txt in the current directory.
+ 			If that is not found
+ 			/etc/arp-scan/mac-vendor.txt is used.
+ 
+ Output Format Control:
+ 
+ --quiet or -q		Display minimal output for each responding host.
+ 			Only the IP address and MAC address are displayed.
+ 			Reduces memory usage by about 5MB because the
+ 			vendor mapping files are not used. Only the ${ip}
+ 			and ${mac} fields are available for the --format
+ 			option if --quiet is specified.
+ 
+ --plain or -x		Supress header and footer text.
+ 			Only display the responding host details. Useful if
+ 			the output will be parsed by a script.
+ 
+ --ignoredups or -g	Don't display duplicate packets.
+ 			By default duplicate packets are flagged with
+ 			"(DUP: n)" where n is the number of times this
+ 			host has responded.
+ 
+ --rtt or -D		Calculate and display the packet round-trip time.
+ 			The time is displayed in milliseconds and fractional
+ 			microseconds. Makes the ${rtt} field available for
+ 			--format.
+ 
+ --format=<s> or -F <s>	Specify the output format string.
+ 			The format is a string that will be output for each
+ 			responding host. Host details can be included by
+ 			inserting references to fields using the syntax
+ 			"${field[;width]}". Fields are displayed right-
+ 			aligned unless the width is negative in which case
+ 			left alignment will be used. The following case-
+ 			insensitive field names are recognised:
+ 
+ 			IP	Host IPv4 address in dotted quad format
+ 			Name	Host name if --resolve option given
+ 			MAC	Host MAC address xx:xx:xx:xx:xx:xx
+ 			HdrMAC	Ethernet source addr if different
+ 			Vendor	Vendor details string
+ 			Padding	Padding after ARP packet in hex if nonzero
+ 			Framing	Framing type if not Ethernet_II
+ 			VLAN	802.1Q VLAD ID if present
+ 			Proto	ARP protocol if not 0x0800
+ 			DUP	Packet number for duplicate packets (>1)
+ 			RTT	Round trip time if --rtt option given
+ 			
+ 			Only the "ip" and "mac" fields are available if the
+ 			--quiet option is specified.
+ 			
+ 			Any characters that are not fields are output
+ 			verbatim. "\" introduces escapes:
+ 			
+ 			\n newline
+ 			\r carriage return
+ 			\t tab
+ 			\  suppress special meaning for following character
+ 			
+ 			You should enclose the --format argument in 'single
+ 			quotes' to protect special characters from the shell.
+ 			
+ 			Example: --format='${ip}\t${mac}\t${vendor}'
+ 
+ Host List Randomisation:
+ 
+ --random or -R		Randomise the target host list.
+ 
+ --randomseed=<i>	Seed the pseudo random number generator.
+ 			Useful if you want a reproducible --random order.
+ 
+ Output Timing and Retry:
  
  --retry=<i> or -r <i>	Set total number of attempts per host to <i>,
  			default=2.
  
- --retry-send=<i> or -Y <i> Set total number of send packet attempts to <i>,
- 			default=20.
- 
- --retry-send-interval=<i> or -E <i> Set interval between send packet attempts to <i>.
- 			The interval specified is in milliseconds by default.
- 			or in microseconds if "u" is appended to the value.
- 			default=5.
+ --backoff=<f> or -b <f>	Set backoff factor to <f>, default=1.50.
+ 			Multiplies timeout by <f> for each pass.
  
  --timeout=<i> or -t <i>	Set initial per host timeout to <i> ms, default=500.
  			This timeout is for the first packet sent to each host.
@@ -129,240 +200,124 @@ PackagesInfo: |
  
  --interval=<x> or -i <x> Set minimum packet interval to <x>.
  			This controls the outgoing bandwidth usage by limiting
- 			the rate at which packets can be sent. The packet
- 			interval will be no smaller than this number.
- 			If you want to use up to a given bandwidth, then it is
- 			easier to use the --bandwidth option instead.
- 			The interval specified is in milliseconds by default,
- 			or in microseconds if "u" is appended to the value.
+ 			the packet rate. If you want to use up to a given
+ 			bandwidth it is easier to use the --bandwidth option
+ 			instead. The interval is in milliseconds, or
+ 			microseconds if "u" is appended.
  
- --bandwidth=<x> or -B <x> Set desired outbound bandwidth to <x>, default=256000.
- 			The value is in bits per second by default. If you
- 			append "K" to the value, then the units are kilobits
- 			per sec; and if you append "M" to the value, the
- 			units are megabits per second.
- 			The "K" and "M" suffixes represent the decimal, not
- 			binary, multiples. So 64K is 64000, not 65536.
- 			You cannot specify both --interval and --bandwidth
- 			because they are just different ways to change the
- 			same underlying parameter.
+ --bandwidth=<x> or -B <x> Set outbound bandwidth to <x>, default=256000.
+ 			The value is in bits per second. Append K for
+ 			kilobits or M for megabits (decimal multiples). You
+ 			cannot specify both --interval and --bandwidth.
  
- --backoff=<f> or -b <f>	Set timeout backoff factor to <f>, default=1.50.
- 			The per-host timeout is multiplied by this factor
- 			after each timeout. So, if the number of retries
- 			is 3, the initial per-host timeout is 500ms and the
- 			backoff factor is 1.5, then the first timeout will be
- 			500ms, the second 750ms and the third 1125ms.
+ DNS Resolution:
  
- --verbose or -v		Display verbose progress messages.
- 			Use more than once for greater effect:
- 			1 - Display the network address and mask used when the
- 			    --localnet option is specified, display any
- 			    nonzero packet padding, display packets received
- 			    from unknown hosts, and show when each pass through
- 			    the list completes.
- 			2 - Show each packet sent and received, when entries
- 			    are removed from the list, the pcap filter string,
- 			    and counts of MAC/Vendor mapping entries.
- 			3 - Display the host list before scanning starts.
+ --numeric or -N		Targets must be IP addresses, not hostnames.
+ 			Can reduce startup time for large target lists.
  
- --version or -V		Display program version and exit.
+ --resolve or -d		Resolve responding addresses to hostnames.
+ 			The default output format will display the hostname
+ 			instead of the IPv4 address. This option makes the
+ 			${name} field available for the --format option.
  
- --random or -R		Randomise the host list.
- 			This option randomises the order of the hosts in the
- 			host list, so the ARP packets are sent to the hosts in
- 			a random order. It uses the Knuth shuffle algorithm.
+ Output ARP Packet:
  
- --randomseed=<i>	Use <i> to seed the pseudo random number generator.
- 			This option seeds the PRNG with the specified number,
- 			which can be useful if you want to ensure that the
- 			random host list is reproducible. By default, the PRNG
- 			is seeded with an unpredictable value. This option is
- 			only effective in conjunction with the --random (-R)
- 			option.
+ --arpsha=<m> or -u <m>	Set the ARP source Ethernet address.
+ 			Sets the 48-bit ar$sha field but does not change the
+ 			hardware address in the frame header, see --srcaddr
+ 			for how to change that address. Default is the
+ 			Ethernet address of the outgoing interface.
  
- --numeric or -N		IP addresses only, no hostnames.
- 			With this option, all hosts must be specified as
- 			IP addresses. Hostnames are not permitted. No DNS
- 			lookups will be performed.
+ --arptha=<m> or -w <m>	Set the ARP target Ethernet address.
+ 			Sets the 48-bit ar$tha field. The default is zero
+ 			because this field is not used for ARP request packets.
  
- --snap=<i> or -n <i>	Set the pcap snap length to <i>. Default=64.
- 			This specifies the frame capture length. This
- 			length includes the data-link header.
- 			The default is normally sufficient.
+ --arphrd=<i> or -H <i>	Set the ARP hardware type, default=1.
+ 			Sets the 16-bit ar$hrd field. The default is 1
+ 			(ARPHRD_ETHER). Many operating systems also respond to
+ 			6 (ARPHRD_IEEE802)
  
- --interface=<s> or -I <s> Use network interface <s>.
- 			If this option is not specified, arp-scan will search
- 			the system interface list for the lowest numbered,
- 			configured up interface (excluding loopback).
- 			The interface specified must support ARP.
+ --arppro=<i> or -p <i>	Set the ARP protocol type, default=0x0800.
+ 			Sets the 16-bit ar$pro field. Most operating systems
+ 			only respond to 0x0800 (IPv4).
  
- --quiet or -q		Only display minimal output. No protocol decoding.
- 			If this option is specified, then only the IP address
- 			and MAC address are displayed for each responding host.
- 			No protocol decoding is performed and the OUI mapping
- 			files are not used.
- 
- --plain or -x		Display plain output showing only responding hosts.
- 			This option suppresses the printing of the header and
- 			footer text, and only displays one line for each
- 			responding host. Useful if the output will be
- 			parsed by a script.
- 
- --resolve or -d		Resolve IP addresses to hostnames.
- 			Displays the hostname instead of IP address if name
- 			resolution succeeds.
- 
- --ignoredups or -g	Don't display duplicate packets.
- 			By default, duplicate packets are displayed and are
- 			flagged with "(DUP: n)" where n is the number of
- 			times this host has responded.
- 
- --ouifile=<s> or -O <s>	Use IEEE Ethernet OUI to vendor mapping file <s>.
- 			If this option is not specified, the default filename
- 			is ieee-oui.txt in the current directory. If that is
- 			not found, then the file
- 			/usr/share/arp-scan/ieee-oui.txt is used.
- 
- --iabfile=<s> or -O <s>	Use IEEE Ethernet IAB to vendor mapping file <s>.
- 			If this option is not specified, the default filename
- 			is ieee-iab.txt in the current directory. If that is
- 			not found, then the file
- 			/usr/share/arp-scan/ieee-iab.txt is used.
- 
- --macfile=<s> or -O <s>	Use custom Ethernet MAC to vendor mapping file <s>.
- 			If this option is not specified, the default filename
- 			is mac-vendor.txt in the current directory. If that is
- 			not found, then the file
- 			/usr/share/arp-scan/mac-vendor.txt is used.
- 
- --srcaddr=<m> or -S <m> Set the source Ethernet MAC address to <m>.
- 			This sets the 48-bit hardware address in the Ethernet
- 			frame header for outgoing ARP packets. It does not
- 			change the hardware address in the ARP packet, see
- 			--arpsha for details on how to change that address.
- 			The default is the Ethernet address of the outgoing
- 			interface.
- 
- --destaddr=<m> or -T <m> Send the packets to Ethernet MAC address <m>
- 			This sets the 48-bit destination address in the
- 			Ethernet frame header.
- 			The default is the broadcast address ff:ff:ff:ff:ff:ff.
- 			Most operating systems will also respond if the ARP
- 			request is sent to their MAC address, or to a
- 			multicast address that they are listening on.
- 
- --arpsha=<m> or -u <m>	Use <m> as the ARP source Ethernet address
- 			This sets the 48-bit ar$sha field in the ARP packet
- 			It does not change the hardware address in the frame
- 			header, see --srcaddr for details on how to change
- 			that address. The default is the Ethernet address of
- 			the outgoing interface.
- 
- --arptha=<m> or -w <m>	Use <m> as the ARP target Ethernet address
- 			This sets the 48-bit ar$tha field in the ARP packet
- 			The default is zero, because this field is not used
- 			for ARP request packets.
- 
- --prototype=<i> or -y <i> Set the Ethernet protocol type to <i>, default=0x0806.
- 			This sets the 16-bit protocol type field in the
- 			Ethernet frame header.
- 			Setting this to a non-default value will result in the
- 			packet being ignored by the target, or sent to the
- 			wrong protocol stack.
- 
- --arphrd=<i> or -H <i>	Use <i> for the ARP hardware type, default=1.
- 			This sets the 16-bit ar$hrd field in the ARP packet.
- 			The normal value is 1 (ARPHRD_ETHER). Most, but not
- 			all, operating systems will also respond to 6
- 			(ARPHRD_IEEE802). A few systems respond to any value.
- 
- --arppro=<i> or -p <i>	Use <i> for the ARP protocol type, default=0x0800.
- 			This sets the 16-bit ar$pro field in the ARP packet.
- 			Most operating systems only respond to 0x0800 (IPv4)
- 			but some will respond to other values as well.
- 
- --arphln=<i> or -a <i>	Set the hardware address length to <i>, default=6.
- 			This sets the 8-bit ar$hln field in the ARP packet.
- 			It sets the claimed length of the hardware address
- 			in the ARP packet. Setting it to any value other than
- 			the default will make the packet non RFC compliant.
- 			Some operating systems may still respond to it though.
- 			Note that the actual lengths of the ar$sha and ar$tha
- 			fields in the ARP packet are not changed by this
+ --arphln=<i> or -a <i>	Set the hardware address length, default=6.
+ 			Sets the 8-bit ar$hln field. The lengths of the
+ 			ar$sha and ar$tha fields are not changed by this
  			option; it only changes the ar$hln field.
  
- --arppln=<i> or -P <i>	Set the protocol address length to <i>, default=4.
- 			This sets the 8-bit ar$pln field in the ARP packet.
- 			It sets the claimed length of the protocol address
- 			in the ARP packet. Setting it to any value other than
- 			the default will make the packet non RFC compliant.
- 			Some operating systems may still respond to it though.
- 			Note that the actual lengths of the ar$spa and ar$tpa
- 			fields in the ARP packet are not changed by this
- 			option; it only changes the ar$pln field.
+ --arppln=<i> or -P <i>	Set the protocol address length, default=4.
+ 			Sets the 8-bit ar$pln field. The lengths of the ar$spa
+ 			and ar$tpa fields are not changed by this option;
+ 			it only changes the ar$pln field.
  
- --arpop=<i> or -o <i>	Use <i> for the ARP operation, default=1.
- 			This sets the 16-bit ar$op field in the ARP packet.
- 			Most operating systems will only respond to the value 1
- 			(ARPOP_REQUEST). However, some systems will respond
- 			to other values as well.
+ --arpop=<i> or -o <i>	Specify the ARP operation, default=1.
+ 			Sets the 16-bit ar$op field. Most operating systems
+ 			only respond to the value 1 (ARPOP_REQUEST).
  
- --arpspa=<a> or -s <a>	Use <a> as the source IP address.
- 			The address should be specified in dotted quad format;
- 			or the literal string "dest", which sets the source
- 			address to be the same as the target host address.
- 			This sets the 32-bit ar$spa field in the ARP packet.
- 			Some operating systems check this, and will only
- 			respond if the source address is within the network
- 			of the receiving interface. Others don't care, and
- 			will respond to any source address.
- 			By default, the outgoing interface address is used.
+ --arpspa=<a> or -s <a>	Set the source IPv4 address.
+ 			The address should be in dotted quad format, or the
+ 			string "dest", which sets the source address to
+ 			the target host address. The default is the outgoing
+ 			interface address. Sets the 32-bit ar$spa field. Some
+ 			operating systems only respond if the source address
+ 			is within the network of the receiving interface.
+ 			Setting ar$spa to the destination IP address can cause
+ 			some operating systems to report an address clash.
  
- 			WARNING: Setting ar$spa to the destination IP address
- 			can disrupt some operating systems, as they assume
- 			there is an IP address clash if they receive an ARP
- 			request for their own address.
+ Output Ethernet Header:
  
- --padding=<h> or -A <h>	Specify padding after packet data.
- 			Set the padding data to hex value <h>. This data is
- 			appended to the end of the ARP packet, after the data.
- 			Most, if not all, operating systems will ignore any
- 			padding. The default is no padding, although the
- 			Ethernet driver on the sending system may pad the
- 			packet to the minimum Ethernet frame length.
+ --srcaddr=<m> or -S <m> Set the source Ethernet MAC address.
+ 			Default is the interface MAC address. This sets the
+ 			address in the Ethernet header. It does not change the
+ 			address in the ARP packet: use --arpsha to change
+ 			that address.
  
- --llc or -L		Use RFC 1042 LLC framing with SNAP.
- 			This option causes the outgoing ARP packets to use
- 			IEEE 802.2 framing with a SNAP header as described
- 			in RFC 1042. The default is to use Ethernet-II
- 			framing.
- 			arp-scan will decode and display received ARP packets
- 			in either Ethernet-II or IEEE 802.2 formats
- 			irrespective of this option.
+ --destaddr=<m> or -T <m> Set the destination MAC address.
+ 			Sets the destination address in the Ethernet
+ 			header. Default is ff:ff:ff:ff:ff:ff (broadcast)
+ 			Hosts also respond if the request is sent to their
+ 			unicast address, or to a multicast address they
+ 			are listening on.
+ 
+ --prototype=<i> or -y <i> Sets the Ethernet protocol type, default=0x0806.
+ 			This sets the protocol type field in the Ethernet
+ 			header.
+ 
+ --llc or -L		Use RFC 1042 LLC/SNAP encapsulation for 802.2 networks.
+ 			arp-scan will decode and display ARP responses in both
+ 			Ethernet-II and IEEE 802.2 formats irrespective of
+ 			this option.
  
  --vlan=<i> or -Q <i>	Use 802.1Q tagging with VLAN id <i>.
- 			This option causes the outgoing ARP packets to use
- 			802.1Q VLAN tagging with a VLAN ID of <i>, which should
- 			be in the range 0 to 4095 inclusive.
- 			arp-scan will always decode and display received ARP
- 			packets in 802.1Q format irrespective of this option.
+ 			The id should be in the range 0 to 4095. arp-scan will
+ 			decode and display ARP responses in 802.1Q format
+ 			irrespective of this option.
  
- --pcapsavefile=<s> or -W <s>	Write received packets to pcap savefile <s>.
- 			This option causes received ARP responses to be written
- 			to the specified pcap savefile as well as being decoded
- 			and displayed. This savefile can be analysed with
- 			programs that understand the pcap file format, such as
- 			"tcpdump" and "wireshark".
- 
- --rtt or -D		Display the packet round-trip time.
+ Misc Options:
  
  --limit=<i> or -M <i>	Exit after the specified number of hosts have responded.
- 			When this option is used arp-scan will exit with status
- 			1 if the number of responding hosts is less than the
- 			specified limit. This can be used in scripts to check
- 			if fewer hosts respond without having to parse the
- 			program output.
+ 			arp-scan will exit with status 1 if the number of
+ 			responding hosts is less than the limit. Can be used
+ 			in scripts to check if fewer hosts respond without
+ 			having to parse the output.
+ 
+ --pcapsavefile=<s> or -W <s>	Write received packets to pcap savefile <s>.
+ 			ARP responses will be written to the specified file
+ 			as well as being decoded and displayed.
+ 
+ --snap=<i> or -n <i>	Set the pcap snap length to <i>. Default=64.
+ 			Specifies the frame capture length, including the
+ 			Ethernet header. The default is normally sufficient.
+ 
+ --retry-send=<i> or -Y <i> Set number of send attempts, default=20.
+ 
+ --retry-send-interval=<i> or -E <i> Set interval between send attempts.
+ 			Interval is in milliseconds or microseconds if "u"
+ 			is appended. default=5.
+ 
+ --padding=<h> or -A <h>	Specify padding after packet data.
+ 			Set padding after the ARP request to hex value <h>.
  
  Report bugs or send suggestions at https://github.com/royhills/arp-scan
  See the arp-scan homepage at https://github.com/royhills/arp-scan
@@ -372,46 +327,98 @@ PackagesInfo: |
  
  ##### get-iab
  
- Fetch the arp-scan IAB file from the IEEE website
  
- ```
- root@kali:~# get-iab --help
- /usr/sbin/get-iab version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.36.0.
- 
- Usage: get-iab [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
- 
- The following single-character options are accepted:
- 	With arguments: -f -u
- 	Boolean (without arguments): -h -v
- 
- Options may be merged together.  -- stops processing of options.
- Space is not required between options and their arguments.
-   [Now continuing due to backward compatibility and excessive paranoia.
-    See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]
- ```
  
  - - -
  
  ##### get-oui
  
- Fetch the arp-scan OUI file from the IEEE website (on Debian and Debian based systems, data is fetched from ieee-data package)
+ Fetch the arp-scan OUI file from the ieee-data package
  
  ```
- root@kali:~# get-oui --help
- /usr/sbin/get-oui version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
- running under Perl version 5.36.0.
+ root@kali:~# man get-oui
+ GET-OUI(1)                  General Commands Manual                 GET-OUI(1)
  
- Usage: get-oui [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
+ NAME
+        get-oui - Fetch the arp-scan OUI file from the ieee-data package
  
- The following single-character options are accepted:
- 	With arguments: -f -u
- 	Boolean (without arguments): -h -v
+ SYNOPSIS
+        get-oui [options]
  
- Options may be merged together.  -- stops processing of options.
- Space is not required between options and their arguments.
-   [Now continuing due to backward compatibility and excessive paranoia.
-    See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]
+ DESCRIPTION
+        get-oui fetches the MAC/Vendor registry data from the ieee-data package
+        and converts it to the format used by arp-scan.  The  contents  of  the
+        following registries are processed:
+ 
+        MA-L   24-bit   The original OUI registry
+        MA-M   28-bit   Medium address block registry
+        MA-S   36-bit   Small address block registry (OUI-36)
+        IAB    36-bit   The IAB registry (closed for new applications)
+ 
+        This  script  creates  /usr/share/arp-scan/ieee-oui.txt from the latest
+        data on the ieee-data package.  You can run # update-ieee-data &&  get-
+        oui occasionally to keep the OUI file up to date.
+ 
+        The  OUI  data  is  fetched from ieee-data package files defined in the
+        get-oui script and the output file is saved to the file /usr/share/arp-
+        scan/ieee-oui.txt  The  output file name can be changed with the -f op-
+        tion.
+ 
+        The /usr/share/arp-scan/ieee-oui.txt file that is produced and  updated
+        by  this script is used by arp-scan to determine the Ethernet card ven-
+        dor from its hardware address.
+ 
+ OPTIONS
+        -h     Display a brief usage message and exit.
+ 
+        -f <fn>
+               Write the output to the specified file instead  of  the  default
+               /usr/share/arp-scan/ieee-oui.txt.
+ 
+        -v     Display verbose progress messages.
+ 
+ FILES
+        /usr/share/arp-scan/ieee-oui.txt
+               The default output file.
+ 
+ EXAMPLES
+        $ ./get-oui -v
+        Renaming ieee-oui.txt to ieee-oui.txt.bak
+        Opening ieee-oui.txt for output
+        Processing IEEE IAB registry data from file:///var/lib/ieee-data/iab.csv
+                Downloaded 381454 bytes
+                4575 IAB entries written to ieee-oui.txt
+        Processing IEEE MAM registry data from file:///var/lib/ieee-data/mam.csv
+                Downloaded 492756 bytes
+                4477 MAM entries written to ieee-oui.txt
+        Processing IEEE OUI registry data from file:///var/lib/ieee-data/oui.csv
+                Downloaded 3051812 bytes
+                32845 OUI entries written to ieee-oui.txt
+        Processing IEEE OUI36 registry data from file:///var/lib/ieee-data/oui36.csv
+                Downloaded 466151 bytes
+                5131 OUI36 entries written to ieee-oui.txt
+ 
+        Total of 47028 MAC/Vendor mappings written to ieee-oui.txt
+ 
+ NOTES
+        get-oui  is  implemented  in  Perl, so you need to have the Perl inter-
+        preter installed on your system to use it.
+ 
+        get-oui uses the LWP::UserAgent and Text::CSV Perl modules to fetch and
+        process  the  IEEE registry data. You must have these modules installed
+        on your system for it to work. These modules are available on most dis-
+        tributions,  often  called  libwww-perl and libtext-csv-perl.  They are
+        also available in source form from CPAN.
+ 
+        You can use a proxy server by defining the http_proxy environment vari-
+        able.
+ 
+ SEE ALSO
+        arp-scan(1)
+ 
+        arp-fingerprint(1)
+ 
+                                October 28, 2022                     GET-OUI(1)
  ```
  
  - - -

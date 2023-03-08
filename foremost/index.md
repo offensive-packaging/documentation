@@ -4,7 +4,7 @@ Homepage: https://sourceforge.net/projects/foremost/
 Repository: https://salsa.debian.org/rul/foremost/tree/debian/sid
 Architectures: any
 Version: 1.5.7-11
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/foremost-logo.svg
 PackagesInfo: |
  ### foremost

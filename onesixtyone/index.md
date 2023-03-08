@@ -3,7 +3,7 @@ Title: onesixtyone
 Homepage: https://github.com/trailofbits/onesixtyone
 Repository: https://salsa.debian.org/pkg-security-team/onesixtyone
 Architectures: any
-Version: 0.3.3~git20190328-2
+Version: 0.3.4-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-passwords 
 Icon: images/onesixtyone-logo.svg
 PackagesInfo: |
@@ -42,11 +42,11 @@ PackagesInfo: |
    -s                 short mode, only print IP addresses
  
    -w n               wait n milliseconds (1/1000 of a second) between sending packets (default 10)
-   -q                 quiet mode, do not print log to stdout, use with -l
+   -q                 quiet mode, do not print log to stdout, use with -o
  host is either an IPv4 address or an IPv4 address and a netmask
  default community names are: public private
  
- Max number of hosts : 		65535
+ Max number of hosts : 		65536
  Max community length: 		32
  Max number of communities: 	16384
  

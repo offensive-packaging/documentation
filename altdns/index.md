@@ -3,7 +3,7 @@ Title: altdns
 Homepage: https://github.com/infosec-au/altdns
 Repository: https://gitlab.com/kalilinux/packages/altdns
 Architectures: all
-Version: 1.0.0+git20200123-0kali1
+Version: 1.0.2-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   could be present. It saves this output so that it can then be used by your
   favourite DNS bruteforcing tool.
  
- **Installed size:** `38 KB`  
+ **Installed size:** `37 KB`  
  **How to install:** `sudo apt install altdns`  
  
  {{< spoiler "Dependencies:" >}}

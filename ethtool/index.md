@@ -3,7 +3,7 @@ Title: ethtool
 Homepage: https://www.kernel.org/pub/software/network/ethtool/
 Repository: https://salsa.debian.org/kernel-team/ethtool
 Architectures: linux-any
-Version: 1:6.0-1
+Version: 1:6.1-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-exploitation kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   negotiation and checksum offload on many network devices, especially
   Ethernet devices.
  
- **Installed size:** `636 KB`  
+ **Installed size:** `668 KB`  
  **How to install:** `sudo apt install ethtool`  
  
  {{< spoiler "Dependencies:" >}}
@@ -27,7 +27,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# ethtool -h
- ethtool version 6.0
+ ethtool version 6.1
  Usage:
          ethtool [ FLAGS ]  DEVNAME	Display standard information about device
          ethtool [ FLAGS ] -s|--change DEVNAME	Change generic options

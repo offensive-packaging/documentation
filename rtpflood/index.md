@@ -3,7 +3,7 @@ Title: rtpflood
 Homepage: http://www.hackingvoip.com/sec_tools.html
 Repository: https://gitlab.com/kalilinux/packages/rtpflood
 Architectures: any
-Version: 1.0-1kali1
+Version: 1.0-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

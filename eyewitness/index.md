@@ -3,7 +3,7 @@ Title: eyewitness
 Homepage: https://www.christophertruncer.com/eyewitness-triage-tool/
 Repository: https://gitlab.com/kalilinux/packages/eyewitness
 Architectures: amd64 i386
-Version: 20220803.1-0kali1
+Version: 20221203.1-0kali1
 Metapackages: kali-linux-everything kali-tools-reporting kali-tools-web 
 Icon: images/eyewitness-logo.svg
 PackagesInfo: |
@@ -21,19 +21,17 @@ PackagesInfo: |
   render and screenshot a web page. The --open flag, which is optional, will open
   the URL in a new tab within Firefox.
  
- **Installed size:** `4.92 MB`  
+ **Installed size:** `5.14 MB`  
  **How to install:** `sudo apt install eyewitness`  
  
  {{< spoiler "Dependencies:" >}}
- * libc6 
- * libgcc-s1 
  * links | www-browser
  * python3
  * python3-distutils
  * python3-fuzzywuzzy
  * python3-netaddr
  * python3-pyvirtualdisplay
- * python3-selenium
+ * python3-selenium 
  * xvfb
  {{< /spoiler >}}
  
@@ -127,27 +125,66 @@ PackagesInfo: |
  
  ```
  root@kali:~# geckodriver -h
- geckodriver 0.26.0 (e9783a644016 2019-10-10 13:38 +0000) 
+ geckodriver 0.32.0 (4563dd583110 2022-10-13 09:22 +0000) 
  WebDriver implementation for Firefox
  
  USAGE:
-     geckodriver [FLAGS] [OPTIONS]
- 
- FLAGS:
-         --connect-existing    Connect to an existing Firefox instance
-     -h, --help                Prints this message
-         --jsdebugger          Attach browser toolbox debugger for Firefox
-     -v                        Log level verbosity (-v for debug and -vv for trace level)
-     -V, --version             Prints version and copying information
+     geckodriver [OPTIONS]
  
  OPTIONS:
-     -b, --binary <BINARY>           Path to the Firefox binary
-         --log <LEVEL>               Set Gecko log level [possible values: fatal, error, warn, info, config, debug,
-                                     trace]
-         --marionette-host <HOST>    Host to use to connect to Gecko [default: 127.0.0.1]
-         --marionette-port <PORT>    Port to use to connect to Gecko [default: system-allocated port]
-         --host <HOST>               Host IP to use for WebDriver server [default: 127.0.0.1]
-     -p, --port <PORT>               Port to use for WebDriver server [default: 4444]
+         --allow-hosts <ALLOW_HOSTS>...
+             List of hostnames to allow. By default the value of --host is allowed, and in addition
+             if that's a well known local address, other variations on well known local addresses are
+             allowed. If --allow-hosts is provided only exactly those hosts are allowed.
+ 
+         --allow-origins <ALLOW_ORIGINS>...
+             List of request origins to allow. These must be formatted as scheme://host:port. By
+             default any request with an origin header is rejected. If --allow-origins is provided
+             then only exactly those origins are allowed.
+ 
+         --android-storage <ANDROID_STORAGE>
+             Selects storage location to be used for test data (deprecated). [possible values: auto,
+             app, internal, sdcard]
+ 
+     -b, --binary <BINARY>
+             Path to the Firefox binary
+ 
+         --connect-existing
+             Connect to an existing Firefox instance
+ 
+     -h, --help
+             Prints this message
+ 
+         --host <HOST>
+             Host IP to use for WebDriver server [default: 127.0.0.1]
+ 
+         --jsdebugger
+             Attach browser toolbox debugger for Firefox
+ 
+         --log <LEVEL>
+             Set Gecko log level [possible values: fatal, error, warn, info, config, debug, trace]
+ 
+         --marionette-host <HOST>
+             Host to use to connect to Gecko [default: 127.0.0.1]
+ 
+         --marionette-port <PORT>
+             Port to use to connect to Gecko [default: system-allocated port]
+ 
+     -p, --port <PORT>
+             Port to use for WebDriver server [default: 4444]
+ 
+         --profile-root <PROFILE_ROOT>
+             Directory in which to create profiles. Defaults to the system temporary directory.
+ 
+     -v
+             Log level verbosity (-v for debug and -vv for trace level)
+ 
+     -V, --version
+             Prints version and copying information
+ 
+         --websocket-port <PORT>
+             Port to use to connect to WebDriver BiDi [default: 9222]
+ 
  ```
  
  - - -

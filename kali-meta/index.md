@@ -3,8 +3,8 @@ Title: kali-meta
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-meta
 Architectures: any all
-Version: 2022.4.10
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
+Version: 2023.1.10
+Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-detect kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-recover kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### kali-desktop-core
@@ -19,7 +19,7 @@ PackagesInfo: |
  
  {{< spoiler "Dependencies:" >}}
  * dbus-user-session
- * firefox-esr | firefox | www-browser
+ * firefox-esr | firefox
  * haveged
  * kali-archive-keyring
  * kali-debtags
@@ -298,30 +298,16 @@ PackagesInfo: |
  
  ### kali-linux-core
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the packages that are installed by default
-  on any Kali system.
+  This metapackage depends on all the security packages that are installed by default
+  on any offensive Kali system.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-linux-core`  
  
  {{< spoiler "Dependencies:" >}}
- * ftp
- * kali-defaults
+ * kali-system-core
  * netcat-traditional
- * openssh-client
- * openssh-server
- * parted
- * sudo
- * tasksel
  * tcpdump
- * tmux
- * vim-tiny | vim | vim-nox
- * zsh
- * zsh-autosuggestions
- * zsh-syntax-highlighting
  {{< /spoiler >}}
  
  
@@ -329,36 +315,28 @@ PackagesInfo: |
  
  ### kali-linux-default
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on all the applications that are included in
-  official Kali Linux images.
+  the default official Kali Linux images.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-linux-default`  
  
  {{< spoiler "Dependencies:" >}}
  * autopsy
- * cherrytree
  * cutycapt
  * dirbuster
  * faraday
  * fern-wifi-cracker
- * gparted
  * guymager
  * hydra-gtk
  * kali-linux-headless
+ * kali-system-gui
  * kali-tools-top10
  * king-phisher
  * legion
  * ophcrack
  * ophcrack-cli
- * rdesktop
- * recordmydesktop
  * sqlitebrowser
- * tightvncserver
- * xtightvncviewer
  {{< /spoiler >}}
  
  
@@ -366,9 +344,6 @@ PackagesInfo: |
  
  ### kali-linux-everything
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on all other specific purpose metapackages and
   some more applications. Beware, this will install a lot of stuff!
  
@@ -388,6 +363,7 @@ PackagesInfo: |
  * bing-ip2hosts
  * bloodhound
  * bloodhound.py
+ * bruteforce-luks
  * bruteforce-salted-openssl
  * bruteforce-wallet
  * bruteshark
@@ -397,6 +373,7 @@ PackagesInfo: |
  * changeme
  * chaosreader
  * chisel
+ * cisco7crack
  * cloud-enum
  * cloudbrute
  * cmseek
@@ -426,6 +403,7 @@ PackagesInfo: |
  * exploitdb-papers
  * faraday-agent-dispatcher
  * faraday-cli
+ * fatcat
  * feroxbuster
  * finalrecon
  * freeradius
@@ -454,13 +432,12 @@ PackagesInfo: |
  * ident-user-enum
  * inspy
  * instaloader
- * ipv6-toolkit
+ * ipv6toolkit 
  * ismtp
  * ivre
  * joplin
  * jsp-file-browser
  * kali-community-wallpapers
- * kali-legacy-wallpapers
  * kali-linux-core
  * kali-linux-default
  * kali-linux-headless
@@ -469,15 +446,20 @@ PackagesInfo: |
  * kali-tools-bluetooth
  * kali-tools-crypto-stego
  * kali-tools-database
+ * kali-tools-detect
  * kali-tools-exploitation
  * kali-tools-forensics
  * kali-tools-fuzzing
  * kali-tools-gpu
  * kali-tools-hardware
+ * kali-tools-identify
  * kali-tools-information-gathering
  * kali-tools-passwords
  * kali-tools-post-exploitation
+ * kali-tools-protect
+ * kali-tools-recover
  * kali-tools-reporting
+ * kali-tools-respond
  * kali-tools-reverse-engineering
  * kali-tools-rfid
  * kali-tools-sdr
@@ -489,9 +471,11 @@ PackagesInfo: |
  * kali-tools-web
  * kali-tools-windows-resources
  * kali-tools-wireless
+ * kali-wallpapers-all
  * kerberoast
  * knocker
  * koadic
+ * kubernetes-helm
  * lapsdumper
  * linux-exploit-suggester
  * maltego-teeth
@@ -529,7 +513,9 @@ PackagesInfo: |
  * proxmark3
  * pskracker
  * pwncat
+ * python3-ldapdomaindump
  * quark-engine
+ * redeye
  * redsnarf
  * rev-proxy-grapher
  * ridenum
@@ -596,6 +582,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * bluez-firmware
  * firmware-amd-graphics
+ * firmware-ath9k-htc
  * firmware-atheros
  * firmware-brcm80211
  * firmware-intel-sound
@@ -614,9 +601,6 @@ PackagesInfo: |
  
  ### kali-linux-headless
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on all the applications that are included in
   official Kali Linux images and that don't require X11/GUI.
  
@@ -820,9 +804,6 @@ PackagesInfo: |
  
   These applications are meant to be insecure & vulnerable to help users
   experiment in a controlled manner.
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on all the packages containing vulnerable environments
   for safe testing.
  
@@ -839,9 +820,6 @@ PackagesInfo: |
  
  ### kali-linux-large
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage installs the applications which are included by default in
   official Kali Linux images and adds many more on top of those.
  
@@ -905,6 +883,7 @@ PackagesInfo: |
  * ewf-tools
  * extundelete
  * fcrackzip
+ * ferret-sidejack
  * fiked
  * foremost
  * fragrouter
@@ -935,6 +914,7 @@ PackagesInfo: |
  * libfreefare-bin
  * libhivex-bin
  * libnfc-bin
+ * libsmali-java
  * lynis
  * maltego
  * mc
@@ -988,7 +968,6 @@ PackagesInfo: |
  * sipcrack
  * sipp
  * sipvicious
- * smali
  * smtp-user-enum
  * sniffjoke
  * spectools
@@ -996,7 +975,6 @@ PackagesInfo: |
  * sqlninja
  * sqlsus
  * sslsniff
- * starkiller
  * subversion
  * sucrack
  * t50
@@ -1030,9 +1008,6 @@ PackagesInfo: |
  
  ### kali-linux-nethunter
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on all the applications that a Kali Linux
   NetHunter system should have installed.
  
@@ -1074,7 +1049,7 @@ PackagesInfo: |
  * libapache2-mod-php
  * libbz2-dev
  * libffi-dev
- * libncurses5-dev
+ * libncurses-dev
  * libnewlib-arm-none-eabi
  * libreadline6-dev
  * libssl-dev
@@ -1128,13 +1103,75 @@ PackagesInfo: |
  
  - - -
  
+ ### kali-system-cli
+ 
+  This metapackage depends on the system packages that should be installed on
+  most Kali Linux systems, as this doesn't require X11/GUI.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-system-cli`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * curl
+ * kali-system-core
+ * vim | vim-nox
+ * wget
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### kali-system-core
+ 
+  This metapackage depends on all the packages that are installed by default
+  on any Kali Linux system.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-system-core`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * ftp
+ * kali-defaults
+ * openssh-client
+ * openssh-server
+ * parted
+ * sudo
+ * tasksel
+ * tmux
+ * vim-tiny | vim | vim-nox
+ * zsh
+ * zsh-autosuggestions
+ * zsh-syntax-highlighting
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### kali-system-gui
+ 
+  This metapackage depends on the system packages that should be installed on all
+  Kali Linux systems with a graphical desktop environment.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-system-gui`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * cherrytree
+ * gparted
+ * kali-system-cli
+ * rdesktop
+ * recordmydesktop
+ * tightvncserver
+ * xtightvncviewer
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
  ### kali-tools-802-11
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the 802.11 attack tools
-  that Kali Linux provides.
+  This metapackage depends on all the 802.11 attack
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-802-11`  
@@ -1166,11 +1203,8 @@ PackagesInfo: |
  
  ### kali-tools-bluetooth
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the bluetooth attack tools
-  that Kali Linux provides.
+  This metapackage depends on all the bluetooth attack
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-bluetooth`  
@@ -1193,11 +1227,8 @@ PackagesInfo: |
  
  ### kali-tools-crypto-stego
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the Cryptography and Steganography tools
-  that Kali Linux provides.
+  This metapackage depends on all the cryptography and steganography
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-crypto-stego`  
@@ -1216,11 +1247,8 @@ PackagesInfo: |
  
  ### kali-tools-database
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the database assessment tools that Kali Linux
-  provides.
+  This metapackage depends on all the database assessment
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-database`  
@@ -1241,13 +1269,28 @@ PackagesInfo: |
  
  - - -
  
+ ### kali-tools-detect
+ 
+  This metapackage depends on all the detection
+  tools that Kali Linux provides.
+   
+  This covers NIST CSF domain DETECT.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-tools-detect`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * grokevt
+ * sentrypeer
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
  ### kali-tools-exploitation
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the exploitation tools that Kali Linux
-  provides.
+  This metapackage depends on all the exploitation
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-exploitation`  
@@ -1269,10 +1312,8 @@ PackagesInfo: |
  
  ### kali-tools-forensics
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the forensic tools that Kali Linux provides.
+  This metapackage depends on all the forensic
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-forensics`  
@@ -1314,6 +1355,7 @@ PackagesInfo: |
  * jadx
  * javasnoop
  * libhivex-bin
+ * libsmali-java
  * lime-forensics
  * lvm2
  * lynis
@@ -1358,7 +1400,6 @@ PackagesInfo: |
  * scalpel
  * scrounge-ntfs
  * sleuthkit
- * smali
  * sqlitebrowser
  * ssdeep
  * tcpdump
@@ -1384,11 +1425,8 @@ PackagesInfo: |
  
  ### kali-tools-fuzzing
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the fuzzing attack tools
-  that Kali Linux provides.
+  This metapackage depends on all the fuzzing attack
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-fuzzing`  
@@ -1405,10 +1443,8 @@ PackagesInfo: |
  
  ### kali-tools-gpu
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the GPU tools that Kali Linux provides.
+  This metapackage depends on all the Graphics Processing Unit
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-gpu`  
@@ -1423,11 +1459,8 @@ PackagesInfo: |
  
  ### kali-tools-hardware
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the hardware attack tools
-  that Kali Linux provides.
+  This metapackage depends on all the hardware attack
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-hardware`  
@@ -1447,13 +1480,41 @@ PackagesInfo: |
  
  - - -
  
+ ### kali-tools-identify
+ 
+  This metapackage depends on all the identification
+  tools that Kali Linux provides.
+   
+  This covers NIST CSF domain IDENTIFY.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-tools-identify`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * amass
+ * assetfinder
+ * cisco-auditing-tool
+ * defectdojo
+ * exploitdb
+ * hb-honeypot
+ * maltego
+ * maryam
+ * nipper-ng
+ * osrframework
+ * spiderfoot
+ * tiger
+ * wapiti
+ * witnessme
+ * zaproxy
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
  ### kali-tools-information-gathering
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the Information Gathering tools that
-  Kali Linux provides.
+  This metapackage depends on all the information gathering
+  tools for Open-Source INTelligence that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-information-gathering`  
@@ -1514,11 +1575,8 @@ PackagesInfo: |
  
  ### kali-tools-passwords
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the password cracking tools that Kali Linux
-  provides.
+  This metapackage depends on all the password cracking
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-passwords`  
@@ -1579,11 +1637,8 @@ PackagesInfo: |
  
  ### kali-tools-post-exploitation
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the post exploitation tools
-  that Kali Linux provides.
+  This metapackage depends on all the post exploitation
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-post-exploitation`  
@@ -1617,13 +1672,55 @@ PackagesInfo: |
  
  - - -
  
+ ### kali-tools-protect
+ 
+  This metapackage depends on all the protection
+  tools that Kali Linux provides.
+   
+  This covers NIST CSF domain PROTECT.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-tools-protect`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * clamav
+ * cryptsetup
+ * cryptsetup-initramfs
+ * cryptsetup-nuke-password
+ * fwbuilder
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### kali-tools-recover
+ 
+  This metapackage depends on all the recovery
+  tools that Kali Linux provides.
+   
+  This covers NIST CSF domain RECOVER.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-tools-recover`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * ddrescue
+ * ext3grep
+ * extundelete
+ * myrescue
+ * recoverdm
+ * recoverjpeg
+ * scrounge-ntfs
+ * undbx
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
  ### kali-tools-reporting
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the reporting tools
-  that Kali Linux provides.
+  This metapackage depends on all the reporting
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-reporting`  
@@ -1642,13 +1739,35 @@ PackagesInfo: |
  
  - - -
  
+ ### kali-tools-respond
+ 
+  This metapackage depends on all the response
+  tools that Kali Linux provides.
+   
+  This covers NIST CSF domain RESPOND.
+ 
+ **Installed size:** `16 KB`  
+ **How to install:** `sudo apt install kali-tools-respond`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * ewf-tools
+ * ghidra
+ * guymager
+ * hashrat
+ * impacket-scripts
+ * kali-tools-forensics
+ * netsniff-ng
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
  ### kali-tools-reverse-engineering
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
+  This metapackage depends on all the reverse engineering
+  tools that Kali Linux provides.
    
-  This metapackage depends on all the reverse engineering tools that Kali Linux
-  provides.
+  Useful for doing exploit development.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-reverse-engineering`  
@@ -1673,10 +1792,8 @@ PackagesInfo: |
  
  ### kali-tools-rfid
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the RFID tools that Kali Linux provides.
+  This metapackage depends on all the Radio Frequency IDentification
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-rfid`  
@@ -1697,10 +1814,8 @@ PackagesInfo: |
  
  ### kali-tools-sdr
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the SDR tools that Kali Linux provides.
+  This metapackage depends on all the Software Defined Radio
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-sdr`  
@@ -1726,11 +1841,8 @@ PackagesInfo: |
  
  ### kali-tools-sniffing-spoofing
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the sniffing & spoofing tools
-  that Kali Linux provides.
+  This metapackage depends on all the sniffing and spoofing
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-sniffing-spoofing`  
@@ -1742,6 +1854,7 @@ PackagesInfo: |
  * driftnet
  * dsniff
  * ettercap-graphical | ettercap-text-only
+ * ferret-sidejack
  * fiked
  * hamster-sidejack
  * hexinject
@@ -1766,11 +1879,10 @@ PackagesInfo: |
  
  ### kali-tools-social-engineering
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
+  This metapackage depends on all the social engineering
+  tools that Kali Linux provides.
    
-  This metapackage depends on all the social engineering tools
-  that Kali Linux provides.
+  This also covers phishing and client-side attacks.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-social-engineering`  
@@ -1789,9 +1901,6 @@ PackagesInfo: |
  
  ### kali-tools-top10
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on the 10 most important applications that Kali Linux
   provides.
  
@@ -1816,10 +1925,8 @@ PackagesInfo: |
  
  ### kali-tools-voip
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the VoIP tools that Kali Linux provides.
+  This metapackage depends on all the Voice over IP
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-voip`  
@@ -1850,11 +1957,8 @@ PackagesInfo: |
  
  ### kali-tools-vulnerability
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the Vulnerability Analysis tools that
-  Kali Linux provides.
+  This metapackage depends on all the vulnerability analysis
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-vulnerability`  
@@ -1904,11 +2008,8 @@ PackagesInfo: |
  
  ### kali-tools-web
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
-  This metapackage depends on all the webapp assessment tools that Kali Linux
-  provides.
+  This metapackage depends on all the wep application analysis
+  tools that Kali Linux provides.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-web`  
@@ -1927,6 +2028,7 @@ PackagesInfo: |
  * dirbuster
  * dotdotpwn
  * eyewitness
+ * ferret-sidejack
  * ftester
  * hakrawler
  * hamster-sidejack
@@ -1999,9 +2101,6 @@ PackagesInfo: |
  
  ### kali-tools-windows-resources
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
-   
   This metapackage depends on all the Windows resources
   that Kali Linux provides.
  
@@ -2032,10 +2131,10 @@ PackagesInfo: |
  
  ### kali-tools-wireless
  
-  This is Kali Linux, the most advanced penetration testing and security
-  auditing distribution.
+  This metapackage depends on all the wireless
+  tools that Kali Linux provides.
    
-  This metapackage depends on all the wireless tools that Kali Linux provides.
+  Wireless covers 802.11, Bluetooth, RFID & SDR.
  
  **Installed size:** `16 KB`  
  **How to install:** `sudo apt install kali-tools-wireless`  

@@ -4,7 +4,7 @@ Homepage: https://github.com/Konloch/bytecode-viewer
 Repository: https://gitlab.com/kalilinux/packages/bytecode-viewer
 Architectures: all
 Version: 2.10.16-0kali2
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/bytecode-viewer-logo.svg
 PackagesInfo: |
  ### bytecode-viewer

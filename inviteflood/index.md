@@ -1,9 +1,9 @@
 ---
 Title: inviteflood
 Homepage: http://www.hackingvoip.com/sec_tools.html
-Repository: http://git.kali.org/gitweb/?p=packages/inviteflood.git;a=summary
+Repository: https://gitlab.com/kalilinux/packages/inviteflood
 Architectures: any
-Version: 2.0-1kali0
+Version: 2.0-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   tool will successfully build and execute on a variety of
   Linux distributions.
  
- **Installed size:** `50 KB`  
+ **Installed size:** `33 KB`  
  **How to install:** `sudo apt install inviteflood`  
  
  {{< spoiler "Dependencies:" >}}

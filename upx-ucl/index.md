@@ -4,7 +4,7 @@ Homepage: https://upx.github.io/
 Repository: https://salsa.debian.org/debian/upx-ucl/
 Architectures: any
 Version: 3.96-3
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-social-engineering 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-respond kali-tools-social-engineering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### upx-ucl

@@ -4,7 +4,7 @@ Homepage: https://www.roguedaemon.net/rephrase/
 Repository: https://salsa.debian.org/pkg-security-team/rephrase
 Architectures: any
 Version: 0.2-4
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### rephrase

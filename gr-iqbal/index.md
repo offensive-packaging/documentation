@@ -33,8 +33,8 @@ PackagesInfo: |
  * libc6 
  * libgcc-s1 
  * libgnuradio-iqbalance3.9.0 
- * libgnuradio-runtime3.10.4 
- * libpython3.10 
+ * libgnuradio-runtime3.10.5 
+ * libpython3.11 
  * libstdc++6 
  * python3
  * python3 
@@ -53,15 +53,15 @@ PackagesInfo: |
    
   This package provides a shared library for gr-iqbal.
  
- **Installed size:** `73 KB`  
+ **Installed size:** `72 KB`  
  **How to install:** `sudo apt install libgnuradio-iqbalance3.9.0`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libfftw3-single3 
  * libgcc-s1 
- * libgnuradio-pmt3.10.4 
- * libgnuradio-runtime3.10.4 
+ * libgnuradio-pmt3.10.5 
+ * libgnuradio-runtime3.10.5 
  * libstdc++6 
  {{< /spoiler >}}
  

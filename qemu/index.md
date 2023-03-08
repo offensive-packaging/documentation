@@ -3,7 +3,7 @@ Title: qemu
 Homepage: http://www.qemu.org/
 Repository: https://salsa.debian.org/qemu-team/qemu
 Architectures: any all
-Version: 1:7.1+dfsg-2
+Version: 1:7.2+dfsg-4
 Metapackages: kali-linux-everything kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   emulation and qemu-img from qemu-utils package, which are rarely used and
   has extra dependencies.
  
- **Installed size:** `351 KB`  
+ **Installed size:** `307 KB`  
  **How to install:** `sudo apt install qemu-block-extra`  
  
  {{< spoiler "Dependencies:" >}}
@@ -57,16 +57,16 @@ PackagesInfo: |
   Install this package on a system which is running as guest inside
   qemu virtual machine.  It is not used on the host.
  
- **Installed size:** `1.10 MB`  
+ **Installed size:** `1.07 MB`  
  **How to install:** `sudo apt install qemu-guest-agent`  
  
  {{< spoiler "Dependencies:" >}}
  * init-system-helpers 
  * libc6 
  * libglib2.0-0 
+ * libnuma1 
  * libudev1 
  * liburing2 
- * lsb-base 
  {{< /spoiler >}}
  
  ##### qemu-ga
@@ -76,7 +76,7 @@ PackagesInfo: |
  ```
  root@kali:~# qemu-ga -h
  Usage: qemu-ga [-m <method> -p <path>] [<options>]
- QEMU Guest Agent 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU Guest Agent 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  
    -m, --method      transport method: one of unix-listen, virtio-serial,
@@ -102,8 +102,8 @@ PackagesInfo: |
    -v, --verbose     log extra debugging information
    -V, --version     print version information and exit
    -d, --daemonize   become a daemon
-   -b, --blacklist   comma-separated list of RPCs to disable (no spaces, "?"
-                     to list available RPCs)
+   -b, --block-rpcs  comma-separated list of RPCs to disable (no spaces,
+                     use "help" to list available RPCs)
    -D, --dump-conf   dump a qemu-ga config file based on current config
                      options / command-line parameters to stdout
    -r, --retry-path  attempt re-opening path if it's unavailable or closed
@@ -129,7 +129,7 @@ PackagesInfo: |
   targets, by depending on all per-architecture system emulation packages which
   QEMU supports.
  
- **Installed size:** `103 KB`  
+ **Installed size:** `59 KB`  
  **How to install:** `sudo apt install qemu-system`  
  
  {{< spoiler "Dependencies:" >}}
@@ -158,12 +158,12 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `41.67 MB`  
+ **Installed size:** `42.01 MB`  
  **How to install:** `sudo apt install qemu-system-arm`  
  
  {{< spoiler "Dependencies:" >}}
  * libaio1 
- * libbpf0 
+ * libbpf1 
  * libc6 
  * libcapstone4 
  * libfdt1 
@@ -199,7 +199,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-aarch64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-aarch64 [options] [disk_image]
  
@@ -233,6 +233,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -291,6 +292,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -321,6 +323,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -397,6 +400,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -451,6 +455,8 @@ PackagesInfo: |
                [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]
                [,processor-id=%d]
                  specify SMBIOS type 4 fields
+ -smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]
+                 specify SMBIOS type 8 fields
  -smbios type=11[,value=str][,path=filename]
                  specify SMBIOS type 11 fields
  -smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]
@@ -531,6 +537,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -538,8 +558,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -658,8 +680,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -680,7 +700,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -old-param      old param mode
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
@@ -704,6 +724,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -743,7 +764,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-arm -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-arm [options] [disk_image]
  
@@ -777,6 +798,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -835,6 +857,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -865,6 +888,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -941,6 +965,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -995,6 +1020,8 @@ PackagesInfo: |
                [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]
                [,processor-id=%d]
                  specify SMBIOS type 4 fields
+ -smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]
+                 specify SMBIOS type 8 fields
  -smbios type=11[,value=str][,path=filename]
                  specify SMBIOS type 11 fields
  -smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]
@@ -1075,6 +1102,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -1082,8 +1123,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -1202,8 +1245,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -1224,7 +1265,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -old-param      old param mode
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
@@ -1248,6 +1289,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -1291,7 +1333,7 @@ PackagesInfo: |
   This package provides common files needed for target-specific
   full system emulation (qemu-system-*) packages.
  
- **Installed size:** `10.84 MB`  
+ **Installed size:** `11.02 MB`  
  **How to install:** `sudo apt install qemu-system-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1310,8 +1352,10 @@ PackagesInfo: |
  * libhogweed6
  * libncursesw6 
  * libnettle8
+ * libnuma1 
  * libpixman-1-0 
  * libseccomp2 
+ * libsndio7.0 
  * libspice-server1 
  * libtinfo6 
  * liburing2 
@@ -1436,7 +1480,7 @@ PackagesInfo: |
   (such as keyboard definitions, icons) for system-mode
   QEMU emulation (qemu-system-*) packages.
  
- **Installed size:** `7.93 MB`  
+ **Installed size:** `7.78 MB`  
  **How to install:** `sudo apt install qemu-system-data`  
  
  
@@ -1450,7 +1494,7 @@ PackagesInfo: |
   The default GTK based qemu-system-gui is generally better and recommended,
   but a few corner cases still need SDL which is therefore provided as well.
  
- **Installed size:** `1.06 MB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install qemu-system-gui`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1463,6 +1507,7 @@ PackagesInfo: |
  * libglib2.0-0 
  * libgtk-3-0 
  * libjack-jackd2-0  | libjack-0.125
+ * libnuma1 
  * libpixman-1-0 
  * libpulse0 
  * libsdl2-2.0-0 
@@ -1489,12 +1534,12 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `56.48 MB`  
+ **Installed size:** `54.95 MB`  
  **How to install:** `sudo apt install qemu-system-mips`  
  
  {{< spoiler "Dependencies:" >}}
  * libaio1 
- * libbpf0 
+ * libbpf1 
  * libc6 
  * libcapstone4 
  * libfdt1 
@@ -1515,7 +1560,6 @@ PackagesInfo: |
  * libsasl2-2 
  * libseccomp2 
  * libslirp0 
- * libstdc++6 
  * libudev1 
  * liburing2 
  * libvdeplug2 
@@ -1531,7 +1575,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips [options] [disk_image]
  
@@ -1565,6 +1609,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -1623,6 +1668,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -1653,6 +1699,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -1729,6 +1776,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -1837,6 +1885,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -1844,8 +1906,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -1958,8 +2022,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -1980,7 +2042,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -2003,6 +2065,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -2042,7 +2105,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips64 [options] [disk_image]
  
@@ -2076,6 +2139,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -2134,6 +2198,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -2164,6 +2229,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -2240,6 +2306,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -2348,6 +2415,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -2355,8 +2436,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -2469,8 +2552,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -2491,7 +2572,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -2514,6 +2595,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -2553,7 +2635,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mips64el -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mips64el [options] [disk_image]
  
@@ -2587,6 +2669,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -2645,6 +2728,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -2675,6 +2759,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -2751,6 +2836,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -2859,6 +2945,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -2866,8 +2966,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -2980,8 +3082,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -3002,7 +3102,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -3025,6 +3125,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -3064,7 +3165,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-mipsel -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-mipsel [options] [disk_image]
  
@@ -3098,6 +3199,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -3156,6 +3258,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -3186,6 +3289,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -3262,6 +3366,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -3370,6 +3475,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -3377,8 +3496,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -3491,8 +3612,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -3513,7 +3632,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -3536,6 +3655,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -3587,12 +3707,12 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `195.81 MB`  
+ **Installed size:** `203.15 MB`  
  **How to install:** `sudo apt install qemu-system-misc`  
  
  {{< spoiler "Dependencies:" >}}
  * libaio1 
- * libbpf0 
+ * libbpf1 
  * libc6 
  * libcapstone4 
  * libfdt1 
@@ -3628,7 +3748,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-alpha -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-alpha [options] [disk_image]
  
@@ -3662,6 +3782,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -3720,6 +3841,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -3750,6 +3872,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -3826,6 +3949,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -3934,6 +4058,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -3941,8 +4079,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -4054,8 +4194,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -4096,6 +4234,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -4135,7 +4274,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-avr -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-avr [options] [disk_image]
  
@@ -4169,6 +4308,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -4227,6 +4367,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -4257,6 +4398,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -4333,6 +4475,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -4441,6 +4584,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -4448,8 +4605,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -4561,8 +4720,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -4603,6 +4760,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -4642,7 +4800,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-cris -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-cris [options] [disk_image]
  
@@ -4676,6 +4834,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -4734,6 +4893,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -4764,6 +4924,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -4840,6 +5001,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -4948,6 +5110,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -4955,8 +5131,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -5068,8 +5246,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -5110,6 +5286,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -5149,7 +5326,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-hppa -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-hppa [options] [disk_image]
  
@@ -5183,6 +5360,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -5241,6 +5419,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -5271,6 +5450,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -5347,6 +5527,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -5455,6 +5636,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -5462,8 +5657,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -5575,8 +5772,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -5617,6 +5812,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -5656,7 +5852,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-loongarch64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-loongarch64 [options] [disk_image]
  
@@ -5690,6 +5886,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -5748,6 +5945,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -5778,6 +5976,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -5854,6 +6053,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -5962,6 +6162,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -5969,8 +6183,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -6082,8 +6298,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -6124,6 +6338,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -6163,7 +6378,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-m68k -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-m68k [options] [disk_image]
  
@@ -6197,6 +6412,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -6255,6 +6471,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -6285,6 +6502,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -6361,6 +6579,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -6470,6 +6689,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -6477,8 +6710,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -6590,8 +6825,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -6612,7 +6845,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -6635,6 +6868,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -6674,7 +6908,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-microblaze -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-microblaze [options] [disk_image]
  
@@ -6708,6 +6942,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -6766,6 +7001,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -6796,6 +7032,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -6872,6 +7109,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -6980,6 +7218,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -6987,8 +7239,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -7100,8 +7354,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -7142,6 +7394,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -7181,7 +7434,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-microblazeel -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-microblazeel [options] [disk_image]
  
@@ -7215,6 +7468,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -7273,6 +7527,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -7303,6 +7558,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -7379,6 +7635,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -7487,6 +7744,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -7494,8 +7765,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -7607,8 +7880,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -7649,6 +7920,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -7688,7 +7960,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-nios2 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-nios2 [options] [disk_image]
  
@@ -7722,6 +7994,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -7780,6 +8053,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -7810,6 +8084,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -7886,6 +8161,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -7994,6 +8270,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -8001,8 +8291,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -8114,8 +8406,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -8136,7 +8426,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -8159,6 +8449,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -8198,7 +8489,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-or1k -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-or1k [options] [disk_image]
  
@@ -8232,6 +8523,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -8290,6 +8582,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -8320,6 +8613,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -8396,6 +8690,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -8504,6 +8799,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -8511,8 +8820,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -8624,8 +8935,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -8666,6 +8975,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -8705,7 +9015,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-riscv32 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-riscv32 [options] [disk_image]
  
@@ -8739,6 +9049,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -8797,6 +9108,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -8827,6 +9139,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -8903,6 +9216,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -9011,6 +9325,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -9018,8 +9346,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -9132,8 +9462,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -9154,7 +9482,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -9177,6 +9505,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -9216,7 +9545,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-riscv64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-riscv64 [options] [disk_image]
  
@@ -9250,6 +9579,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -9308,6 +9638,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -9338,6 +9669,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -9414,6 +9746,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -9522,6 +9855,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -9529,8 +9876,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -9643,8 +9992,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -9665,7 +10012,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -9688,6 +10035,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -9727,7 +10075,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-rx -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-rx [options] [disk_image]
  
@@ -9761,6 +10109,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -9819,6 +10168,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -9849,6 +10199,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -9925,6 +10276,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -10033,6 +10385,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -10040,8 +10406,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -10153,8 +10521,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -10195,6 +10561,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -10234,7 +10601,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-s390x -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-s390x [options] [disk_image]
  
@@ -10268,6 +10635,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -10326,6 +10694,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -10356,6 +10725,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -10432,6 +10802,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -10540,6 +10911,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -10547,8 +10932,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -10661,8 +11048,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -10703,6 +11088,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -10742,7 +11128,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sh4 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sh4 [options] [disk_image]
  
@@ -10776,6 +11162,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -10834,6 +11221,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -10864,6 +11252,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -10940,6 +11329,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -11048,6 +11438,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -11055,8 +11459,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -11168,8 +11574,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -11210,6 +11614,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -11249,7 +11654,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sh4eb -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sh4eb [options] [disk_image]
  
@@ -11283,6 +11688,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -11341,6 +11747,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -11371,6 +11778,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -11447,6 +11855,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -11555,6 +11964,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -11562,8 +11985,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -11675,8 +12100,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -11717,6 +12140,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -11756,7 +12180,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-tricore -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-tricore [options] [disk_image]
  
@@ -11790,6 +12214,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -11848,6 +12273,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -11878,6 +12304,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -11954,6 +12381,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -12062,6 +12490,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -12069,8 +12511,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -12182,8 +12626,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -12224,6 +12666,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -12263,7 +12706,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-xtensa -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-xtensa [options] [disk_image]
  
@@ -12297,6 +12740,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -12355,6 +12799,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -12385,6 +12830,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -12461,6 +12907,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -12569,6 +13016,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -12576,8 +13037,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -12689,8 +13152,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -12711,7 +13172,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -12734,6 +13195,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -12773,7 +13235,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-xtensaeb -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-xtensaeb [options] [disk_image]
  
@@ -12807,6 +13269,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -12865,6 +13328,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -12895,6 +13359,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -12971,6 +13436,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -13079,6 +13545,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -13086,8 +13566,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -13199,8 +13681,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -13221,7 +13701,7 @@ PackagesInfo: |
  -runas user     change to user id user just before starting the VM
                  user can be numeric uid:gid instead
  -semihosting    semihosting mode
- -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,userspace=on|off][,arg=str[,...]]
                  semihosting configuration
  -sandbox on[,obsolete=allow|deny][,elevateprivileges=allow|deny|children]
            [,spawn=allow|deny][,resourcecontrol=allow|deny]
@@ -13244,6 +13724,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -13291,12 +13772,12 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `30.90 MB`  
+ **Installed size:** `31.25 MB`  
  **How to install:** `sudo apt install qemu-system-ppc`  
  
  {{< spoiler "Dependencies:" >}}
  * libaio1 
- * libbpf0 
+ * libbpf1 
  * libc6 
  * libcapstone4 
  * libfdt1 
@@ -13332,7 +13813,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc [options] [disk_image]
  
@@ -13366,6 +13847,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -13424,6 +13906,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -13454,6 +13937,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -13530,6 +14014,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -13639,6 +14124,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -13646,8 +14145,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -13760,8 +14261,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -13804,6 +14303,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -13843,7 +14343,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc64 [options] [disk_image]
  
@@ -13877,6 +14377,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -13935,6 +14436,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -13965,6 +14467,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -14041,6 +14544,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -14150,6 +14654,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -14157,8 +14675,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -14271,8 +14791,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -14315,6 +14833,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -14354,7 +14873,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-ppc64le -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-ppc64le [options] [disk_image]
  
@@ -14388,6 +14907,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -14446,6 +14966,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -14476,6 +14997,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -14552,6 +15074,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -14661,6 +15184,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -14668,8 +15205,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -14782,8 +15321,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -14826,6 +15363,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -14873,12 +15411,12 @@ PackagesInfo: |
   code.  It can also be used to provide virtual hosting of several virtual
   machines on a single server.
  
- **Installed size:** `20.21 MB`  
+ **Installed size:** `20.47 MB`  
  **How to install:** `sudo apt install qemu-system-sparc`  
  
  {{< spoiler "Dependencies:" >}}
  * libaio1 
- * libbpf0 
+ * libbpf1 
  * libc6 
  * libcapstone4 
  * libfdt1 
@@ -14914,7 +15452,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sparc -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sparc [options] [disk_image]
  
@@ -14948,6 +15486,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -15006,6 +15545,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -15036,6 +15576,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -15112,6 +15653,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -15221,6 +15763,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -15228,8 +15784,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -15341,8 +15899,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -15385,6 +15941,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -15424,7 +15981,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-sparc64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-sparc64 [options] [disk_image]
  
@@ -15458,6 +16015,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -15516,6 +16074,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -15546,6 +16105,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -15622,6 +16182,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -15731,6 +16292,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -15738,8 +16313,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -15851,8 +16428,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -15895,6 +16470,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -15945,13 +16521,13 @@ PackagesInfo: |
   On x86 host hardware this package also enables KVM kernel virtual machine
   usage on systems which supports it.
  
- **Installed size:** `41.70 MB`  
+ **Installed size:** `42.48 MB`  
  **How to install:** `sudo apt install qemu-system-x86`  
  
  {{< spoiler "Dependencies:" >}}
  * ipxe-qemu
  * libaio1 
- * libbpf0 
+ * libbpf1 
  * libc6 
  * libcapstone4 
  * libfdt1 
@@ -15988,7 +16564,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# kvm -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: kvm [options] [disk_image]
  
@@ -16022,6 +16598,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -16080,6 +16657,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -16110,6 +16688,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -16186,6 +16765,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -16247,6 +16827,8 @@ PackagesInfo: |
                [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]
                [,processor-id=%d]
                  specify SMBIOS type 4 fields
+ -smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]
+                 specify SMBIOS type 8 fields
  -smbios type=11[,value=str][,path=filename]
                  specify SMBIOS type 11 fields
  -smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]
@@ -16327,6 +16909,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -16334,8 +16930,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -16454,8 +17052,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -16496,6 +17092,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -16535,7 +17132,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-i386 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-i386 [options] [disk_image]
  
@@ -16569,6 +17166,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -16627,6 +17225,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -16657,6 +17256,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -16733,6 +17333,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -16794,6 +17395,8 @@ PackagesInfo: |
                [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]
                [,processor-id=%d]
                  specify SMBIOS type 4 fields
+ -smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]
+                 specify SMBIOS type 8 fields
  -smbios type=11[,value=str][,path=filename]
                  specify SMBIOS type 11 fields
  -smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]
@@ -16874,6 +17477,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -16881,8 +17498,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -17001,8 +17620,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -17043,6 +17660,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -17082,7 +17700,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-x86_64 -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-x86_64 [options] [disk_image]
  
@@ -17116,6 +17734,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -17174,6 +17793,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -17204,6 +17824,7 @@ PackagesInfo: |
                  in|out.latency= desired latency in microseconds
  -audiodev sdl,id=id[,prop[=value][,...]]
                  in|out.buffer-count= number of buffers
+ -audiodev sndio,id=id[,prop[=value][,...]]
  -audiodev spice,id=id[,prop[=value][,...]]
  -audiodev dbus,id=id[,prop[=value][,...]]
  -audiodev wav,id=id[,prop[=value][,...]]
@@ -17280,6 +17901,7 @@ PackagesInfo: |
              [,window-close=on|off]
  -display gtk[,full-screen=on|off][,gl=on|off][,grab-on-hover=on|off]
              [,show-tabs=on|off][,show-cursor=on|off][,window-close=on|off]
+             [,show-menubar=on|off]
  -display vnc=<display>[,<optargs>]
  -display curses[,charset=<encoding>]
  -display egl-headless[,rendernode=<file>]
@@ -17341,6 +17963,8 @@ PackagesInfo: |
                [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]
                [,processor-id=%d]
                  specify SMBIOS type 4 fields
+ -smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]
+                 specify SMBIOS type 8 fields
  -smbios type=11[,value=str][,path=filename]
                  specify SMBIOS type 11 fields
  -smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]
@@ -17421,6 +18045,20 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vde,id=str[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
                  configure a network backend to connect to port 'n' of a vde switch
                  running on host and listening for incoming connections on 'socketpath'.
@@ -17428,8 +18066,10 @@ PackagesInfo: |
                  ownership and permissions for communication port.
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|user|l2tpv3|vde|vhost-user|socket][,option][,...][mac=macaddr]
@@ -17548,8 +18188,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -17590,6 +18228,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -17629,7 +18268,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-system-x86_64-microvm -h
- QEMU emulator version 7.1.0 (Debian 1:7.1+dfsg-2)
+ QEMU emulator version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-system-x86_64-microvm [options] [disk_image]
  
@@ -17663,6 +18302,7 @@ PackagesInfo: |
                  split-wx=on|off (enable TCG split w^x mapping)
                  tb-size=n (TCG translation block cache size)
                  dirty-ring-size=n (KVM dirty ring GFN count, default 0)
+                 notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)
                  thread=single|multi (enable multi-threaded TCG)
  -smp [[cpus=]n][,maxcpus=maxcpus][,sockets=sockets][,dies=dies][,clusters=clusters][,cores=cores][,threads=threads]
                  set the number of initial CPUs to 'n' [default=1]
@@ -17721,6 +18361,7 @@ PackagesInfo: |
                  use '-audio model=help' to show possible devices.
  -audiodev [driver=]driver,id=id[,prop[=value][,...]]
                  specifies the audio backend to use
+                 Use ``-audiodev help`` to list the available drivers
                  id= identifier of the backend
                  timer-period= timer period in microseconds
                  in|out.mixing-engine= use mixing engine to mix streams inside QEMU
@@ -17840,6 +18481,8 @@ PackagesInfo: |
                [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]
                [,processor-id=%d]
                  specify SMBIOS type 4 fields
+ -smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]
+                 specify SMBIOS type 8 fields
  -smbios type=11[,value=str][,path=filename]
                  specify SMBIOS type 11 fields
  -smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]
@@ -17913,10 +18556,26 @@ PackagesInfo: |
  -netdev socket,id=str[,fd=h][,udp=host:port][,localaddr=host:port]
                  configure a network backend to connect to another network
                  using an UDP tunnel
+ -netdev stream,id=str[,server=on|off],addr.type=inet,addr.host=host,addr.port=port[,to=maxport][,numeric=on|off][,keep-alive=on|off][,mptcp=on|off][,addr.ipv4=on|off][,addr.ipv6=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=unix,addr.path=path[,abstract=on|off][,tight=on|off]
+ -netdev stream,id=str[,server=on|off],addr.type=fd,addr.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using a socket connection in stream mode.
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=inet,local.host=addr]
+ -netdev dgram,id=str,remote.type=inet,remote.host=maddr,remote.port=port[,local.type=fd,local.str=file-descriptor]
+                 configure a network backend to connect to a multicast maddr and port
+                 use ``local.host=addr`` to specify the host address to send packets from
+ -netdev dgram,id=str,local.type=inet,local.host=addr,local.port=port[,remote.type=inet,remote.host=addr,remote.port=port]
+ -netdev dgram,id=str,local.type=unix,local.path=path[,remote.type=unix,remote.path=path]
+ -netdev dgram,id=str,local.type=fd,local.str=file-descriptor
+                 configure a network backend to connect to another network
+                 using an UDP tunnel
  -netdev vhost-user,id=str,chardev=dev[,vhostforce=on|off]
                  configure a vhost-user network, backed by a chardev 'dev'
- -netdev vhost-vdpa,id=str,vhostdev=/path/to/dev
+ -netdev vhost-vdpa,id=str[,vhostdev=/path/to/dev][,vhostfd=h]
                  configure a vhost-vdpa network,Establish a vhost-vdpa netdev
+                 use 'vhostdev=/path/to/dev' to open a vhost vdpa device
+                 use 'vhostfd=h' to connect to an already opened vhost vdpa device
  -netdev hubport,id=str,hubid=n[,netdev=nd]
                  configure a hub port on the hub with ID 'n'
  -nic [tap|bridge|l2tpv3|vhost-user|socket][,option][,...][mac=macaddr]
@@ -18024,8 +18683,6 @@ PackagesInfo: |
                  instruction, enable aligning the host and virtual clocks
                  or disable real time cpu sleeping, and optionally enable
                  record-and-replay mode
- -watchdog model
-                 enable virtual hardware watchdog [default=none]
  -watchdog-action reset|shutdown|poweroff|inject-nmi|pause|debug|none
                  action when watchdog fires [default=reset]
  -echr chr       set terminal escape character instead of ctrl-a
@@ -18066,6 +18723,7 @@ PackagesInfo: |
                  specify tracing options
  -plugin [file=]<file>[,<argname>=<argvalue>]
                  load a plugin
+ -async-teardown enable asynchronous teardown
  -msg [timestamp[=on|off]][,guest-name=[on|off]]
                  control error message format
                  timestamp=on enables timestamps (default: off)
@@ -18105,7 +18763,7 @@ PackagesInfo: |
   together with the Xen hypervisor for some types of DomUs.
   This package is not useful by its own.
  
- **Installed size:** `14.27 MB`  
+ **Installed size:** `14.38 MB`  
  **How to install:** `sudo apt install qemu-system-xen`  
  
  {{< spoiler "Dependencies:" >}}
@@ -18116,13 +18774,13 @@ PackagesInfo: |
  * libjpeg62-turbo 
  * libpixman-1-0 
  * libspice-server1 
- * libxendevicemodel1
- * libxenevtchn1
- * libxenforeignmemory1
- * libxengnttab1
- * libxenmisc4.16
+ * libxendevicemodel1 
+ * libxenevtchn1 
+ * libxenforeignmemory1 
+ * libxengnttab1 
+ * libxenmisc4.17 
  * libxenstore4 
- * libxentoolcore1
+ * libxentoolcore1 
  * qemu-system-data 
  * seabios
  * zlib1g 
@@ -18148,7 +18806,7 @@ PackagesInfo: |
   possible to use qemu-user-static package instead of qemu-user-binmft, --
   qemu-user-static will register statically linked binfmt handlers instead.
  
- **Installed size:** `99.91 MB`  
+ **Installed size:** `98.15 MB`  
  **How to install:** `sudo apt install qemu-user`  
  
  {{< spoiler "Dependencies:" >}}
@@ -18157,7 +18815,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libglib2.0-0 
  * libgnutls30 
- * libstdc++6 
+ * libnuma1 
  * liburing2 
  * zlib1g 
  {{< /spoiler >}}
@@ -18605,7 +19263,7 @@ PackagesInfo: |
  
  Defaults:
  QEMU_LD_PREFIX  = /etc/qemu-binfmt/hppa
- QEMU_STACK_SIZE = 8388608 byte
+ QEMU_STACK_SIZE = 83886080 byte
  
  You can use -E and -U options or the QEMU_SET_ENV and
  QEMU_UNSET_ENV environment variables to set and unset
@@ -20232,222 +20890,2035 @@ PackagesInfo: |
   emulators can handle, so that it will be possible to run foreign binaries
   directly.
  
- **Installed size:** `299.50 MB`  
+ **Installed size:** `293.75 MB`  
  **How to install:** `sudo apt install qemu-user-static`  
  
  ##### qemu-aarch64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-aarch64-static -h
+ usage: qemu-aarch64 [options] program [arguments...]
+ Linux CPU emulator (compiled for aarch64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/aarch64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-aarch64_be-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-aarch64_be-static -h
+ usage: qemu-aarch64_be [options] program [arguments...]
+ Linux CPU emulator (compiled for aarch64_be emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/aarch64_be
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-alpha-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-alpha-static -h
+ usage: qemu-alpha [options] program [arguments...]
+ Linux CPU emulator (compiled for alpha emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/alpha
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-arm-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-arm-static -h
+ usage: qemu-arm [options] program [arguments...]
+ Linux CPU emulator (compiled for arm emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/arm
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-armeb-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-armeb-static -h
+ usage: qemu-armeb [options] program [arguments...]
+ Linux CPU emulator (compiled for armeb emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/armeb
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-cris-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-cris-static -h
+ usage: qemu-cris [options] program [arguments...]
+ Linux CPU emulator (compiled for cris emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/cris
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-debootstrap
  
+ QEMU debootstrap wrapper
  
+ ```
+ root@kali:~# man qemu-debootstrap
+ qemu-debootstrap(1)                 Debian                 qemu-debootstrap(1)
+ 
+ NAME
+        qemu-debootstrap - QEMU debootstrap wrapper
+ 
+ SYNOPSIS
+        qemu-debootstrap [options]
+ 
+ DESCRIPTION
+        The  qemu-debootstrap  wrapper  calls  debootstrap(8) making use of the
+        --foreign  and  --second-stage  options,  and  copies  the  appropriate
+        qemu-user-static(1)  binary into place in order to install cross-archi-
+        tecture chroots. In order for it to work seamlessly, the binfmt-support
+        package must be installed.
+ 
+ SEE ALSO
+        debootstrap(8), qemu-user-static(1).
+ 
+ AUTHOR
+        This manual page was written by Vagrant Cascadian <vagrant@debian.org>.
+ 
+ 0.14.1+dfsg                       2011-07-02               qemu-debootstrap(1)
+ ```
  
  - - -
  
  ##### qemu-hexagon-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-hexagon-static -h
+ usage: qemu-hexagon [options] program [arguments...]
+ Linux CPU emulator (compiled for hexagon emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/hexagon
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-hppa-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-hppa-static -h
+ usage: qemu-hppa [options] program [arguments...]
+ Linux CPU emulator (compiled for hppa emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/hppa
+ QEMU_STACK_SIZE = 83886080 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-i386-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-i386-static -h
+ usage: qemu-i386 [options] program [arguments...]
+ Linux CPU emulator (compiled for i386 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/i386
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-loongarch64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-loongarch64-static -h
+ usage: qemu-loongarch64 [options] program [arguments...]
+ Linux CPU emulator (compiled for loongarch64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/loongarch64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-m68k-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-m68k-static -h
+ usage: qemu-m68k [options] program [arguments...]
+ Linux CPU emulator (compiled for m68k emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/m68k
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-microblaze-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-microblaze-static -h
+ usage: qemu-microblaze [options] program [arguments...]
+ Linux CPU emulator (compiled for microblaze emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/microblaze
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-microblazeel-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-microblazeel-static -h
+ usage: qemu-microblazeel [options] program [arguments...]
+ Linux CPU emulator (compiled for microblazeel emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/microblazeel
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-mips-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-mips-static -h
+ usage: qemu-mips [options] program [arguments...]
+ Linux CPU emulator (compiled for mips emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/mips
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-mips64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-mips64-static -h
+ usage: qemu-mips64 [options] program [arguments...]
+ Linux CPU emulator (compiled for mips64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/mips64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-mips64el-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-mips64el-static -h
+ usage: qemu-mips64el [options] program [arguments...]
+ Linux CPU emulator (compiled for mips64el emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/mips64el
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-mipsel-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-mipsel-static -h
+ usage: qemu-mipsel [options] program [arguments...]
+ Linux CPU emulator (compiled for mipsel emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/mipsel
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-mipsn32-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-mipsn32-static -h
+ usage: qemu-mipsn32 [options] program [arguments...]
+ Linux CPU emulator (compiled for mipsn32 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/mipsn32
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-mipsn32el-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-mipsn32el-static -h
+ usage: qemu-mipsn32el [options] program [arguments...]
+ Linux CPU emulator (compiled for mipsn32el emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/mipsn32el
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-nios2-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-nios2-static -h
+ usage: qemu-nios2 [options] program [arguments...]
+ Linux CPU emulator (compiled for nios2 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/nios2
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-or1k-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-or1k-static -h
+ usage: qemu-or1k [options] program [arguments...]
+ Linux CPU emulator (compiled for or1k emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/or1k
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-ppc-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-ppc-static -h
+ usage: qemu-ppc [options] program [arguments...]
+ Linux CPU emulator (compiled for ppc emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/ppc
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-ppc64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-ppc64-static -h
+ usage: qemu-ppc64 [options] program [arguments...]
+ Linux CPU emulator (compiled for ppc64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/ppc64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-ppc64le-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-ppc64le-static -h
+ usage: qemu-ppc64le [options] program [arguments...]
+ Linux CPU emulator (compiled for ppc64le emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/ppc64le
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-riscv32-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-riscv32-static -h
+ usage: qemu-riscv32 [options] program [arguments...]
+ Linux CPU emulator (compiled for riscv32 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/riscv32
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-riscv64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-riscv64-static -h
+ usage: qemu-riscv64 [options] program [arguments...]
+ Linux CPU emulator (compiled for riscv64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/riscv64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-s390x-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-s390x-static -h
+ usage: qemu-s390x [options] program [arguments...]
+ Linux CPU emulator (compiled for s390x emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/s390x
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-sh4-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-sh4-static -h
+ usage: qemu-sh4 [options] program [arguments...]
+ Linux CPU emulator (compiled for sh4 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/sh4
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-sh4eb-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-sh4eb-static -h
+ usage: qemu-sh4eb [options] program [arguments...]
+ Linux CPU emulator (compiled for sh4eb emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/sh4eb
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-sparc-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-sparc-static -h
+ usage: qemu-sparc [options] program [arguments...]
+ Linux CPU emulator (compiled for sparc emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/sparc
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-sparc32plus-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-sparc32plus-static -h
+ usage: qemu-sparc32plus [options] program [arguments...]
+ Linux CPU emulator (compiled for sparc32plus emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/sparc32plus
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-sparc64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-sparc64-static -h
+ usage: qemu-sparc64 [options] program [arguments...]
+ Linux CPU emulator (compiled for sparc64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/sparc64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-x86_64-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-x86_64-static -h
+ usage: qemu-x86_64 [options] program [arguments...]
+ Linux CPU emulator (compiled for x86_64 emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable      Description
+ -h                                     print this help
+ -help                                  
+ -g port              QEMU_GDB          wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX    set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE   set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU          select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV      sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV    unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0        forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME        set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE   set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA  reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG          enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER      filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE     set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP   run in singlestep mode
+ -strace              QEMU_STRACE       log system calls
+ -seed                QEMU_RAND_SEED    Seed for pseudo-random number generator
+ -trace               QEMU_TRACE        [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION      display version information and exit
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/x86_64
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-xtensa-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-xtensa-static -h
+ usage: qemu-xtensa [options] program [arguments...]
+ Linux CPU emulator (compiled for xtensa emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable          Description
+ -h                                         print this help
+ -help                                      
+ -g port              QEMU_GDB              wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX        set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE       set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU              select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV          sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV        unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0            forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME            set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE       set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA      reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG              enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER          filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME     write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE         set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP       run in singlestep mode
+ -strace              QEMU_STRACE           log system calls
+ -seed                QEMU_RAND_SEED        Seed for pseudo-random number generator
+ -trace               QEMU_TRACE            [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION          display version information and exit
+ -xtensa-abi-call0    QEMU_XTENSA_ABI_CALL0 assume CALL0 Xtensa ABI
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/xtensa
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
  ##### qemu-xtensaeb-static
  
+ QEMU User Emulator (static version)
  
+ ```
+ root@kali:~# qemu-xtensaeb-static -h
+ usage: qemu-xtensaeb [options] program [arguments...]
+ Linux CPU emulator (compiled for xtensaeb emulation)
+ 
+ Options and associated environment variables:
+ 
+ Argument             Env-variable          Description
+ -h                                         print this help
+ -help                                      
+ -g port              QEMU_GDB              wait gdb connection to 'port'
+ -L path              QEMU_LD_PREFIX        set the elf interpreter prefix to 'path'
+ -s size              QEMU_STACK_SIZE       set the stack size to 'size' bytes
+ -cpu model           QEMU_CPU              select CPU (-cpu help for list)
+ -E var=value         QEMU_SET_ENV          sets targets environment variable (see below)
+ -U var               QEMU_UNSET_ENV        unsets targets environment variable (see below)
+ -0 argv0             QEMU_ARGV0            forces target process argv[0] to be 'argv0'
+ -r uname             QEMU_UNAME            set qemu uname release string to 'uname'
+ -B address           QEMU_GUEST_BASE       set guest_base address to 'address'
+ -R size              QEMU_RESERVED_VA      reserve 'size' bytes for guest virtual address space
+ -d item[,...]        QEMU_LOG              enable logging of specified items (use '-d help' for a list of items)
+ -dfilter range[,...] QEMU_DFILTER          filter logging based on address range
+ -D logfile           QEMU_LOG_FILENAME     write logs to 'logfile' (default stderr)
+ -p pagesize          QEMU_PAGESIZE         set the host page size to 'pagesize'
+ -singlestep          QEMU_SINGLESTEP       run in singlestep mode
+ -strace              QEMU_STRACE           log system calls
+ -seed                QEMU_RAND_SEED        Seed for pseudo-random number generator
+ -trace               QEMU_TRACE            [[enable=]<pattern>][,events=<file>][,file=<file>]
+ -version             QEMU_VERSION          display version information and exit
+ -xtensa-abi-call0    QEMU_XTENSA_ABI_CALL0 assume CALL0 Xtensa ABI
+ 
+ Defaults:
+ QEMU_LD_PREFIX  = /etc/qemu-binfmt/xtensaeb
+ QEMU_STACK_SIZE = 8388608 byte
+ 
+ You can use -E and -U options or the QEMU_SET_ENV and
+ QEMU_UNSET_ENV environment variables to set and unset
+ environment variables for the target process.
+ It is possible to provide several variables by separating them
+ by commas in getsubopt(3) style. Additionally it is possible to
+ provide the -E and -U options multiple times.
+ The following lines are equivalent:
+     -E var1=val2 -E var2=val2 -U LD_PRELOAD -U LD_DEBUG
+     -E var1=val2,var2=val2 -U LD_PRELOAD,LD_DEBUG
+     QEMU_SET_ENV=var1=val2,var2=val2 QEMU_UNSET_ENV=LD_PRELOAD,LD_DEBUG
+ Note that if you provide several changes to a single variable
+ the last change will stay in effect.
+ 
+ See <https://qemu.org/contribute/report-a-bug> for how to report bugs.
+ More information on the QEMU project at <https://qemu.org>.
+ ```
  
  - - -
  
@@ -20463,7 +22934,7 @@ PackagesInfo: |
    * qemu-io:  QEMU disk exerciser
    * qemu-nbd: QEMU disk network block device server
  
- **Installed size:** `6.70 MB`  
+ **Installed size:** `6.71 MB`  
  **How to install:** `sudo apt install qemu-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -20475,6 +22946,7 @@ PackagesInfo: |
  * libgnutls30 
  * libhogweed6
  * libnettle8
+ * libnuma1 
  * libselinux1 
  * liburing2 
  * libzstd1 
@@ -20487,7 +22959,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# qemu-img -h
- qemu-img version 7.1.0 (Debian 1:7.1+dfsg-2)
+ qemu-img version 7.2.0 (Debian 1:7.2+dfsg-4)
  Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
  usage: qemu-img [standard options] command [command options]
  QEMU disk image utility
@@ -20533,8 +23005,8 @@ PackagesInfo: |
    'output_filename' is the destination disk image filename
    'output_fmt' is the destination format
    'options' is a comma separated list of format specific options in a
-     name=value format. Use -o ? for an overview of the options supported by the
-     used format
+     name=value format. Use -o help for an overview of the options supported by
+     the used format
    'snapshot_param' is param used for internal snapshot, format
      is 'snapshot.id=[ID],snapshot.name=[NAME]', or
      '[ID_OR_NAME]'

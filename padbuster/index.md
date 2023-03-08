@@ -3,7 +3,7 @@ Title: padbuster
 Homepage: https://github.com/GDSSecurity/PadBuster
 Repository: https://gitlab.com/kalilinux/packages/padbuster
 Architectures: all
-Version: 0.3.3-1kali3
+Version: 0.3.3+git20210818.50e4a3e-1kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   perform automated response analysis to determine whether a
   request is vulnerable to padding oracle attacks.
  
- **Installed size:** `41 KB`  
+ **Installed size:** `40 KB`  
  **How to install:** `sudo apt install padbuster`  
  
  {{< spoiler "Dependencies:" >}}

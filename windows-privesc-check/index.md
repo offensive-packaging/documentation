@@ -1,9 +1,9 @@
 ---
 Title: windows-privesc-check
-Homepage: http://pentestmonkey.net/tools/windows-privesc-check
+Homepage: https://pentestmonkey.net/tools/windows-privesc-check
 Repository: https://gitlab.com/kalilinux/packages/windows-privesc-check
 Architectures: all
-Version: 2.0.0+svn197-0kali4
+Version: 2.0.0+svn197-0kali5
 Metapackages: kali-linux-everything kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -32,8 +32,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# windows-privesc-check -h
- [i] You also may wish to look in: /usr/share/windows-privesc-check/
- 
  
  > windows-privesc-check ~ Windows privilege escalation checking tool
  

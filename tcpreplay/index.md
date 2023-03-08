@@ -3,8 +3,8 @@ Title: tcpreplay
 Homepage: http://tcpreplay.appneta.com/
 Repository: https://git.in-ulm.de/cbiedl/tcpreplay
 Architectures: any
-Version: 4.4.2-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-sniffing-spoofing 
+Version: 4.4.3-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-sniffing-spoofing 
 Icon: images/tcpreplay-logo.svg
 PackagesInfo: |
  ### tcpreplay
@@ -22,11 +22,12 @@ PackagesInfo: |
   executables tcpprep, tcprewrite, tcpreplay-edit, tcpbridge and pcap
   based captures are possible.
  
- **Installed size:** `1.85 MB`  
+ **Installed size:** `1.91 MB`  
  **How to install:** `sudo apt install tcpreplay`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
+ * libdumbnet1 
  * libpcap0.8 
  {{< /spoiler >}}
  
@@ -769,6 +770,9 @@ PackagesInfo: |
     -v, --verbose              Print decoded packets via tcpdump to STDOUT
     -A, --decode=str           Arguments passed to tcpdump decoder
  				- requires the option 'verbose'
+        --fragroute=str        Parse fragroute configuration file
+        --fragdir=str          Which flows to apply fragroute to: c2s, s2c, both
+ 				- requires the option 'cachefile'
         --skip-soft-errors     Skip writing packets with soft errors
     -V, --version              Print version information
     -h, --less-help            Display less usage information and exit

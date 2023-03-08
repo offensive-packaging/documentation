@@ -244,7 +244,7 @@ PackagesInfo: |
   Linux hosts.  The host kernel must have I2C support, I2C device interface
   support, and a bus adapter driver.
  
- **Installed size:** `75 KB`  
+ **Installed size:** `47 KB`  
  **How to install:** `sudo apt install python3-smbus`  
  
  {{< spoiler "Dependencies:" >}}

@@ -1,9 +1,9 @@
 ---
 Title: davtest
-Homepage: https://code.google.com/p/davtest/
+Homepage: https://github.com/cldrn/davtest
 Repository: https://gitlab.com/kalilinux/packages/davtest
 Architectures: all
-Version: 1.0-1kali4
+Version: 1.2+git20220629.780ea4d-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/davtest-logo.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   quickly and easily determine if enabled DAV services are
   exploitable.
  
- **Installed size:** `63 KB`  
+ **Installed size:** `69 KB`  
  **How to install:** `sudo apt install davtest`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,10 +34,12 @@ PackagesInfo: |
  /usr/bin/davtest -url <url> [options]
  
   -auth+ 	Authorization (user:password)
+  -realm+ Auth Realm
   -cleanup	delete everything uploaded when done
   -directory+	postfix portion of directory to create
   -debug+	DAV debug level 1-3 (2 & 3 log req/resp to /tmp/perldav_debug.txt)
   -move		PUT text files then MOVE to executable
+  -copy		PUT text files then COPY to executable
   -nocreate 	don't create a directory
   -quiet	 	only print out summary
   -rand+ 	use this instead of a random string for filenames

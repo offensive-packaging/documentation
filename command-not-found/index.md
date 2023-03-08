@@ -3,7 +3,7 @@ Title: command-not-found
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/command-not-found
 Architectures: all
-Version: 20.10.1-1+kali2
+Version: 23.04.0-1+kali1
 Metapackages: 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package will install a handler for command_not_found that looks up
   programs not currently installed but available from the repositories.
  
- **Installed size:** `103 KB`  
+ **Installed size:** `523 KB`  
  **How to install:** `sudo apt install command-not-found`  
  
  {{< spoiler "Dependencies:" >}}
@@ -46,6 +46,37 @@ PackagesInfo: |
  
  Update the command-not-found cache
  
+ ```
+ root@kali:~# man update-command-not-found
+ update-command-not-found(8)Command not found helperupdate-command-not-found(8)
+ 
+ NAME
+        update-command-not-found - update the command-not-found cache
+ 
+ SYNOPSIS
+        update-command-not-found [-h|--help|-n|--no-apt-file]
+ 
+ DESCRIPTION
+        update-command-not-found updates the cache (databases) for command-not-
+        found using the files in /var/cache/apt/apt-file, which are fetched  by
+        apt-file.
+ 
+ OPTIONS
+        -h or --help
+               Print the help message
+ 
+        -n or --no-apt-file
+               Do not run apt-file update before updating the cache.
+ 
+ AUTHOR
+        command-not-found  was written by Zygmunt Krynicki, update-command-not-
+        found was written by Julian Andres Klode <jak@debian.org>
+ 
+        This manual page was written by Julian  Andres  Klode  <jak@debian.org>
+        for the Debian project, but may be used by others.
+ 
+ 0.2.26-1                          2008-10-24       update-command-not-found(8)
+ ```
  
  - - -
  

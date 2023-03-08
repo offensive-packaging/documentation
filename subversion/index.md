@@ -14,7 +14,7 @@ PackagesInfo: |
   server backend, to serve repositories over the http and https
   protocols.  See the 'subversion' package for more information.
  
- **Installed size:** `402 KB`  
+ **Installed size:** `403 KB`  
  **How to install:** `sudo apt install libapache2-mod-svn`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,7 +34,7 @@ PackagesInfo: |
   libraries.  This package is needed only in order to compile software
   that uses libsvn1.
  
- **Installed size:** `1.91 MB`  
+ **Installed size:** `1.92 MB`  
  **How to install:** `sudo apt install libsvn-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -132,7 +132,7 @@ PackagesInfo: |
   script that manipulates a Subversion repository or working copy.  See
   the 'subversion' package for more information.
  
- **Installed size:** `8.56 MB`  
+ **Installed size:** `5.08 MB`  
  **How to install:** `sudo apt install python3-subversion`  
  
  {{< spoiler "Dependencies:" >}}
@@ -159,7 +159,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libapr1 
  * libc6 
- * libruby3.0 
+ * libruby3.1 
  * libsvn1 
  * ruby
  {{< /spoiler >}}

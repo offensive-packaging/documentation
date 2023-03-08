@@ -3,8 +3,8 @@ Title: forensics-colorize
 Homepage: https://github.com/jessek/colorize
 Repository: https://salsa.debian.org/pkg-security-team/forensics-colorize
 Architectures: any
-Version: 1.1-6
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 1.1-7
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### forensics-colorize

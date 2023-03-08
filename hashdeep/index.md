@@ -4,7 +4,7 @@ Homepage: http://md5deep.sf.net
 Repository: https://salsa.debian.org/pkg-security-team/hashdeep
 Architectures: any
 Version: 4.4-7.1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/hashdeep-logo.svg
 PackagesInfo: |
  ### hashdeep

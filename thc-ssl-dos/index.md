@@ -3,7 +3,7 @@ Title: thc-ssl-dos
 Homepage: http://www.thc.org/thc-ssl-dos/
 Repository: https://gitlab.com/kalilinux/packages/thc-ssl-dos
 Architectures: any
-Version: 1.4-1kali3
+Version: 1.4-1kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
   This attack further exploits the SSL secure Renegotiation feature
   to trigger thousands of renegotiations via single TCP connection.
  
- **Installed size:** `36 KB`  
+ **Installed size:** `35 KB`  
  **How to install:** `sudo apt install thc-ssl-dos`  
  
  {{< spoiler "Dependencies:" >}}

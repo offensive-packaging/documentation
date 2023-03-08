@@ -4,7 +4,7 @@ Homepage: http://projects.sentinelchicken.org/reglookup/
 Repository: https://salsa.debian.org/pkg-security-team/reglookup
 Architectures: any all
 Version: 1.0.1+svn287-9
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-detect kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libregfi-dev

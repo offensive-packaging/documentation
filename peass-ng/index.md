@@ -3,7 +3,7 @@ Title: peass-ng
 Homepage: https://github.com/carlospolop/PEASS-ng
 Repository: https://gitlab.com/kalilinux/packages/peass-ng
 Architectures: all
-Version: 20221113-0kali1
+Version: 20230219-0kali1
 Metapackages: kali-linux-everything kali-tools-vulnerability 
 Icon: images/peass-ng-logo.svg
 PackagesInfo: |

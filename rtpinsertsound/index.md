@@ -3,7 +3,7 @@ Title: rtpinsertsound
 Homepage: http://www.hackingvoip.com/sec_tools.html
 Repository: https://gitlab.com/kalilinux/packages/rtpinsertsound
 Architectures: any
-Version: 3.0-1kali2
+Version: 3.0-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

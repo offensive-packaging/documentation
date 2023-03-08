@@ -3,8 +3,8 @@ Title: ghidra
 Homepage: https://github.com/NationalSecurityAgency/ghidra
 Repository: https://gitlab.com/kalilinux/packages/ghidra
 Architectures: amd64 arm64
-Version: 10.1.4-0kali1
-Metapackages: kali-linux-everything kali-linux-large 
+Version: 10.2.2-0kali2
+Metapackages: kali-linux-everything kali-linux-large kali-tools-respond 
 Icon: images/ghidra-logo.svg
 PackagesInfo: |
  ### ghidra
@@ -27,14 +27,14 @@ PackagesInfo: |
   insights for SRE analysts who seek a better understanding of potential
   vulnerabilities in networks and systems.
  
- **Installed size:** `917.19 MB`  
+ **Installed size:** `945.71 MB`  
  **How to install:** `sudo apt install ghidra`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
  * libstdc++6 
- * openjdk-11-jdk-headless
+ * openjdk-17-jdk
  {{< /spoiler >}}
  
  ##### ghidra

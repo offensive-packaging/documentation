@@ -4,7 +4,7 @@ Homepage: https://www.capstone-engine.org/
 Repository: https://salsa.debian.org/pkg-security-team/capstone
 Architectures: any
 Version: 4.0.2-5
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-hardware kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-hardware kali-tools-post-exploitation kali-tools-respond kali-tools-reverse-engineering kali-tools-social-engineering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### capstone-tool

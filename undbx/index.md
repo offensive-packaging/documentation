@@ -3,8 +3,8 @@ Title: undbx
 Homepage: https://github.com/ZungBang/undbx
 Repository: https://salsa.debian.org/pkg-security-team/undbx
 Architectures: any
-Version: 0.21-3
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 0.21-4
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### undbx
@@ -30,7 +30,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# undbx -h
- UnDBX v0.21 (Apr 14 2020)
+ UnDBX v0.21 (Dec 26 2022)
  Usage: undbx [<OPTION>] <DBX-FOLDER | DBX-FILE> [<OUTPUT-FOLDER>]
  
  Options:

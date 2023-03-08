@@ -3,7 +3,7 @@ Title: owasp-mantra-ff
 Homepage: https://www.owasp.org/index.php/OWASP_Mantra_-_Security_Framework
 Repository: https://gitlab.com/kalilinux/packages/owasp-mantra-ff
 Architectures: i386 amd64
-Version: 0.9-1kali3
+Version: 0.9-1kali4
 Metapackages: kali-linux-everything kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -22,7 +22,7 @@ PackagesInfo: |
   can be used to solve basic levels of various web based CTFs, showcase
   security issues in vulnerable web applications etc.
  
- **Installed size:** `119.64 MB`  
+ **Installed size:** `119.65 MB`  
  **How to install:** `sudo apt install owasp-mantra-ff`  
  
  {{< spoiler "Dependencies:" >}}

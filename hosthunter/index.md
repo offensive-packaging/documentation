@@ -3,7 +3,7 @@ Title: hosthunter
 Homepage: https://github.com/SpiderLabs/HostHunter
 Repository: https://gitlab.com/kalilinux/packages/hosthunter
 Architectures: all
-Version: 1.6-0kali1
+Version: 1.6-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * chromium-driver
  * python3
- * python3-fake-useragent
+ * python3-fake-useragent 
  * python3-openssl
  * python3-requests
  * python3-selenium

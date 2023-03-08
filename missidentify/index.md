@@ -4,7 +4,7 @@ Homepage: http://missidentify.sf.net
 Repository: https://salsa.debian.org/pkg-security-team/missidentify
 Architectures: any
 Version: 1.0-11
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### missidentify

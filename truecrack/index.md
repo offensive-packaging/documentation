@@ -4,7 +4,7 @@ Homepage: https://github.com/lvaccaro/truecrack
 Repository: https://gitlab.com/kalilinux/packages/truecrack
 Architectures: any
 Version: 3.6+git20150326-0kali3
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-gpu kali-tools-passwords 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-gpu kali-tools-passwords kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### truecrack

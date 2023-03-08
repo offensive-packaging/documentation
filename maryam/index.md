@@ -4,7 +4,7 @@ Homepage: https://github.com/saeeddhqan/Maryam
 Repository: https://gitlab.com/kalilinux/packages/maryam
 Architectures: all
 Version: 2.5.0-0kali2
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### maryam

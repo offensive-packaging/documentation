@@ -3,7 +3,7 @@ Title: eapmd5pass
 Homepage: https://www.willhackforsushi.com/?page_id=67
 Repository: https://gitlab.com/kalilinux/packages/eapmd5pass
 Architectures: any
-Version: 1.4-1kali7
+Version: 1.5-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-802-11 kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   collected from this exchange, eapmd5pass will mount an offline dictionary
   attack against the user's password.
  
- **Installed size:** `102 KB`  
+ **Installed size:** `101 KB`  
  **How to install:** `sudo apt install eapmd5pass`  
  
  {{< spoiler "Dependencies:" >}}

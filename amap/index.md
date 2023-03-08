@@ -3,7 +3,7 @@ Title: amap
 Homepage: https://www.thc.org
 Repository: https://gitlab.com/kalilinux/packages/amap
 Architectures: any
-Version: 5.4-4kali2
+Version: 5.4-4kali3
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

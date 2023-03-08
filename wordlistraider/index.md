@@ -3,7 +3,7 @@ Title: wordlistraider
 Homepage: https://github.com/GregorBiswanger/WordlistRaider
 Repository: https://gitlab.com/kalilinux/packages/wordlistraider
 Architectures: all
-Version: 1.0~git20200927-0kali1
+Version: 1.0~git20200927-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   length of at least 8 characters. This optimizes word lists and saves
   unnecessary requests.
  
- **Installed size:** `24 KB`  
+ **Installed size:** `30 KB`  
  **How to install:** `sudo apt install wordlistraider`  
  
  {{< spoiler "Dependencies:" >}}

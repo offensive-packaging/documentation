@@ -4,7 +4,7 @@ Homepage: http://thewalter.net/stef/software/scrounge/
 Repository: https://salsa.debian.org/pkg-security-team/scrounge-ntfs
 Architectures: any
 Version: 0.9-10
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: images/scrounge-ntfs-logo.svg
 PackagesInfo: |
  ### scrounge-ntfs

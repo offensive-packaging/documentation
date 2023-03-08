@@ -3,7 +3,7 @@ Title: fuse3
 Homepage: https://github.com/libfuse/libfuse/wiki
 Repository: 
 Architectures: linux-any kfreebsd-any
-Version: 3.12.0-1
+Version: 3.14.0-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,14 +14,13 @@ PackagesInfo: |
   secure method for non privileged users to create and mount their own filesystem
   implementations.
  
- **Installed size:** `99 KB`  
+ **Installed size:** `100 KB`  
  **How to install:** `sudo apt install fuse3`  
  
  {{< spoiler "Dependencies:" >}}
  * adduser
  * libc6 
  * libfuse3-3 
- * lsb-base 
  * mount 
  * sed 
  {{< /spoiler >}}
@@ -93,7 +92,7 @@ PackagesInfo: |
    
   This package contains the shared library.
  
- **Installed size:** `296 KB`  
+ **Installed size:** `305 KB`  
  **How to install:** `sudo apt install libfuse3-3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -112,7 +111,7 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `689 KB`  
+ **Installed size:** `706 KB`  
  **How to install:** `sudo apt install libfuse3-dev`  
  
  {{< spoiler "Dependencies:" >}}

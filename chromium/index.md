@@ -3,7 +3,7 @@ Title: chromium
 Homepage: http://www.chromium.org/Home
 Repository: https://salsa.debian.org/chromium-team/chromium
 Architectures: i386 amd64 arm64 armhf ppc64el all
-Version: 107.0.5304.87-1
+Version: 110.0.5481.177-1
 Metapackages: kali-linux-everything 
 Icon: images/chromium-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the web browser component.
  
- **Installed size:** `203.18 MB`  
+ **Installed size:** `208.08 MB`  
  **How to install:** `sudo apt install chromium`  
  
  {{< spoiler "Dependencies:" >}}
@@ -54,9 +54,9 @@ PackagesInfo: |
  * libre2-9 
  * libsnappy1v5 
  * libstdc++6 
- * libwebp7
- * libwebpdemux2
- * libwebpmux3
+ * libwebp7 
+ * libwebpdemux2 
+ * libwebpmux3 
  * libwoff1 
  * libx11-6
  * libxcb1 
@@ -200,12 +200,13 @@ PackagesInfo: |
   This package contains resources that are in common to different chromium
   packages.
  
- **Installed size:** `15.89 MB`  
+ **Installed size:** `16.21 MB`  
  **How to install:** `sudo apt install chromium-common`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libdouble-conversion3 
+ * libjsoncpp25 
  * libstdc++6 
  * libx11-6
  * libxnvctrl0
@@ -225,7 +226,7 @@ PackagesInfo: |
   This package provides a bridge between the browser component and the selenium
   automatic webdriver.
  
- **Installed size:** `12.70 MB`  
+ **Installed size:** `13.22 MB`  
  **How to install:** `sudo apt install chromium-driver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -237,6 +238,7 @@ PackagesInfo: |
  * libevent-2.1-7 
  * libgcc-s1 
  * libglib2.0-0 
+ * libjsoncpp25 
  * libminizip1 
  * libnspr4 
  * libnss3 
@@ -283,7 +285,7 @@ PackagesInfo: |
   hi, hr, hu, id, it, ja, kn, ko, lt, lv, ml, mr, nb, nl, pl, pt-BR, pt-PT,
   ro, ru, sk, sl, sr, sv, sw, ta, te, th, tr, uk, vi, zh-CN, zh-TW
  
- **Installed size:** `69.84 MB`  
+ **Installed size:** `73.40 MB`  
  **How to install:** `sudo apt install chromium-l10n`  
  
  {{< spoiler "Dependencies:" >}}
@@ -300,7 +302,7 @@ PackagesInfo: |
    
   This package contains the setuid chromium sandbox.
  
- **Installed size:** `331 KB`  
+ **Installed size:** `333 KB`  
  **How to install:** `sudo apt install chromium-sandbox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -318,7 +320,7 @@ PackagesInfo: |
   This package provides a minimal version of the chromium user interface
   (the content shell).
  
- **Installed size:** `145.34 MB`  
+ **Installed size:** `149.92 MB`  
  **How to install:** `sudo apt install chromium-shell`  
  
  {{< spoiler "Dependencies:" >}}
@@ -354,9 +356,9 @@ PackagesInfo: |
  * libre2-9 
  * libsnappy1v5 
  * libstdc++6 
- * libwebp7
- * libwebpdemux2
- * libwebpmux3
+ * libwebp7 
+ * libwebpdemux2 
+ * libwebpmux3 
  * libwoff1 
  * libx11-6
  * libxcb1 

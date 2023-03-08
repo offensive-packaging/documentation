@@ -1,9 +1,9 @@
 ---
 Title: sqldict
-Homepage: http://ntsecurity.nu/toolbox/sqldict/
+Homepage: https://ntsecurity.nu/toolbox/sqldict/
 Repository: https://gitlab.com/kalilinux/packages/sqldict
 Architectures: all
-Version: 2.1-1kali4
+Version: 2.1-1kali5
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-passwords kali-tools-web 
 Icon: images/sqldict-logo.svg
 PackagesInfo: |

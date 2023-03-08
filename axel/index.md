@@ -3,7 +3,7 @@ Title: axel
 Homepage: https://github.com/axel-download-accelerator/axel
 Repository: https://salsa.debian.org/debian/axel
 Architectures: any
-Version: 2.17.11-2
+Version: 2.17.11-3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   Axel tries to be as light as possible, so it might be useful as a
   wget clone (and other console based programs) on byte-critical systems.
  
- **Installed size:** `206 KB`  
+ **Installed size:** `201 KB`  
  **How to install:** `sudo apt install axel`  
  
  {{< spoiler "Dependencies:" >}}

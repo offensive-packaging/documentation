@@ -3,7 +3,7 @@ Title: braa
 Homepage: http://s-tech.elsat.net.pl/
 Repository: https://salsa.debian.org/pkg-security-team/braa
 Architectures: any
-Version: 0.82-6
+Version: 0.82-7
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -22,7 +22,7 @@ PackagesInfo: |
   numerical values of OID's
   (for instance .1.3.6.1.2.1.1.5.0 instead of system.sysName.0).
  
- **Installed size:** `63 KB`  
+ **Installed size:** `62 KB`  
  **How to install:** `sudo apt install braa`  
  
  {{< spoiler "Dependencies:" >}}

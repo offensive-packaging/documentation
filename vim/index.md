@@ -3,7 +3,7 @@ Title: vim
 Homepage: https://www.vim.org/
 Repository: https://salsa.debian.org/vim-team/vim
 Architectures: any all
-Version: 2:9.0.0813-1
+Version: 2:9.0.1000-4
 Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: images/vim-logo.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
   version of Vim.  See the other vim-* packages if you need more
   (or less).
  
- **Installed size:** `3.46 MB`  
+ **Installed size:** `3.48 MB`  
  **How to install:** `sudo apt install vim`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.basic -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -88,7 +88,7 @@ PackagesInfo: |
     -W <scriptout>	Write all typed commands to file <scriptout>
     -x			Edit encrypted files
     --startuptime <file>	Write startup timing messages to <file>
-    --log <file>	Start logging to <file> early
+    --log <file>		Start logging to <file> early
     -i <viminfo>		Use <viminfo> instead of .viminfo
     --clean		'nocompatible', Vim defaults, no plugins, no viminfo
     -h  or  --help	Print Help (this message) and exit
@@ -120,13 +120,44 @@ PackagesInfo: |
   available in Debian.  Examples of such shared files are: manpages and
   configuration files.
  
- **Installed size:** `226 KB`  
+ **Installed size:** `233 KB`  
  **How to install:** `sudo apt install vim-common`  
  
  ##### helpztags
  
  Generate the help tags file for directory
  
+ ```
+ root@kali:~# man helpztags
+ HELPZTAGS(1)                     User Commands                    HELPZTAGS(1)
+ 
+ NAME
+        helpztags - generate the help tags file for directory
+ 
+ SYNOPSIS
+        helpztags DIRS...
+ 
+ DESCRIPTION
+        helpztags scans given directories for *.txt and *.txt.gz files.  Each
+        file is scanned for tags used in vim help files. For each directory
+        proper tags file is generated.
+ 
+        There should be at least one directory given. In other case program
+        exits with error.
+ 
+ AUTHORS
+        Written by Jakub Turski and Artur R. Czechowski based on idea contained
+        in vim sources for its :helptags command.
+ 
+ REPORTING BUGS
+        Please use a Debian reportbug command or procedure described at
+        http://bugs.debian.org/.
+ 
+ SEE ALSO
+        Read :help helptags in vim for detailed information about helptags.
+ 
+ vim 9.0                           August 2010                     HELPZTAGS(1)
+ ```
  
  - - -
  
@@ -137,7 +168,7 @@ PackagesInfo: |
   This package contains the HTML version of the online documentation.  It is
   built from the runtime/doc directory of the source tree.
  
- **Installed size:** `14.43 MB`  
+ **Installed size:** `14.46 MB`  
  **How to install:** `sudo apt install vim-doc`  
  
  
@@ -154,7 +185,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with a GTK3 GUI
   and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
  
- **Installed size:** `4.26 MB`  
+ **Installed size:** `4.28 MB`  
  **How to install:** `sudo apt install vim-gtk3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -171,8 +202,8 @@ PackagesInfo: |
  * libpango-1.0-0 
  * libpangocairo-1.0-0 
  * libperl5.36 
- * libpython3.10 
- * libruby3.0 
+ * libpython3.11 
+ * libruby3.1 
  * libselinux1 
  * libsm6
  * libsodium23 
@@ -190,7 +221,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.gtk3 -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -253,7 +284,7 @@ PackagesInfo: |
     --serverlist		List available Vim server names and exit
     --servername <name>	Send to/become the Vim server <name>
     --startuptime <file>	Write startup timing messages to <file>
-    --log <file>	Start logging to <file> early
+    --log <file>		Start logging to <file> early
     -i <viminfo>		Use <viminfo> instead of .viminfo
     --clean		'nocompatible', Vim defaults, no plugins, no viminfo
     -h  or  --help	Print Help (this message) and exit
@@ -282,7 +313,7 @@ PackagesInfo: |
   variants available in Debian.  Examples of such shared files are:
   gvimtutor, icons, and desktop environments settings.
  
- **Installed size:** `204 KB`  
+ **Installed size:** `215 KB`  
  **How to install:** `sudo apt install vim-gui-common`  
  
  ##### gvimtutor
@@ -352,7 +383,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with a Motif GUI
   and support for scripting with Lua, Perl, Python 3, and Tcl.
  
- **Installed size:** `4.29 MB`  
+ **Installed size:** `4.32 MB`  
  **How to install:** `sudo apt install vim-motif`  
  
  {{< spoiler "Dependencies:" >}}
@@ -363,8 +394,8 @@ PackagesInfo: |
  * libice6 
  * liblua5.2-0 
  * libperl5.36 
- * libpython3.10 
- * libruby3.0 
+ * libpython3.11 
+ * libruby3.1 
  * libselinux1 
  * libsm6
  * libsodium23 
@@ -383,7 +414,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.motif -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -447,7 +478,7 @@ PackagesInfo: |
     --serverlist		List available Vim server names and exit
     --servername <name>	Send to/become the Vim server <name>
     --startuptime <file>	Write startup timing messages to <file>
-    --log <file>	Start logging to <file> early
+    --log <file>		Start logging to <file> early
     -i <viminfo>		Use <viminfo> instead of .viminfo
     --clean		'nocompatible', Vim defaults, no plugins, no viminfo
     -h  or  --help	Print Help (this message) and exit
@@ -482,7 +513,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with support for
   scripting with Lua, Perl, Python 3, Ruby, and Tcl but no GUI.
  
- **Installed size:** `3.94 MB`  
+ **Installed size:** `3.96 MB`  
  **How to install:** `sudo apt install vim-nox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -491,8 +522,8 @@ PackagesInfo: |
  * libgpm2 
  * liblua5.2-0 
  * libperl5.36 
- * libpython3.10 
- * libruby3.0 
+ * libpython3.11 
+ * libruby3.1 
  * libselinux1 
  * libsodium23 
  * libtcl8.6 
@@ -506,7 +537,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.nox -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -555,7 +586,7 @@ PackagesInfo: |
     -W <scriptout>	Write all typed commands to file <scriptout>
     -x			Edit encrypted files
     --startuptime <file>	Write startup timing messages to <file>
-    --log <file>	Start logging to <file> early
+    --log <file>		Start logging to <file> early
     -i <viminfo>		Use <viminfo> instead of .viminfo
     --clean		'nocompatible', Vim defaults, no plugins, no viminfo
     -h  or  --help	Print Help (this message) and exit
@@ -574,7 +605,7 @@ PackagesInfo: |
   language-specific syntax highlighting and indentation, color schemes,
   and standard plugins.
  
- **Installed size:** `35.21 MB`  
+ **Installed size:** `35.35 MB`  
  **How to install:** `sudo apt install vim-runtime`  
  
  ##### vimtutor
@@ -644,7 +675,7 @@ PackagesInfo: |
   If a vim binary is wanted, try one of the following more featureful
   packages: vim, vim-nox, vim-motif, or vim-gtk3.
  
- **Installed size:** `1.60 MB`  
+ **Installed size:** `1.62 MB`  
  **How to install:** `sudo apt install vim-tiny`  
  
  {{< spoiler "Dependencies:" >}}
@@ -660,7 +691,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.tiny -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Oct 30 2022 20:59:44)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin

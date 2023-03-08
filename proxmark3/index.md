@@ -3,7 +3,7 @@ Title: proxmark3
 Homepage: https://github.com/RfidResearchGroup/proxmark3
 Repository: https://gitlab.com/kalilinux/packages/proxmark3
 Architectures: any all
-Version: 4.15864-0kali1
+Version: 4.16191-0kali1
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `3.93 MB`  
+ **Installed size:** `4.03 MB`  
  **How to install:** `sudo apt install proxmark3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,7 +23,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libjansson4 
  * liblua5.2-0 
- * libpython3.10 
+ * libpython3.11 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5widgets5 
@@ -111,7 +111,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `38.48 MB`  
+ **Installed size:** `38.53 MB`  
  **How to install:** `sudo apt install proxmark3-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -249,7 +249,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `243 KB`  
+ **Installed size:** `280 KB`  
  **How to install:** `sudo apt install proxmark3-doc`  
  
  
@@ -261,7 +261,7 @@ PackagesInfo: |
   dedicated to bringing the most out of the new features for Proxmark3 RDV4.0
   new hardware and design but it will also support older hardware revisions.
  
- **Installed size:** `25.48 MB`  
+ **Installed size:** `28.22 MB`  
  **How to install:** `sudo apt install proxmark3-firmwares`  
  
  

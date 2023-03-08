@@ -3,7 +3,7 @@ Title: htshells
 Homepage: https://github.com/wireghoul/htshells
 Repository: https://gitlab.com/kalilinux/packages/htshells
 Architectures: all
-Version: 0.1~git20131205-1kali2
+Version: 0.1~git20131205-1kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   shell in a CMS that restricted uploads based on extension and placed each
   uploaded file in it's own directory.
  
- **Installed size:** `53 KB`  
+ **Installed size:** `56 KB`  
  **How to install:** `sudo apt install htshells`  
  
  {{< spoiler "Dependencies:" >}}

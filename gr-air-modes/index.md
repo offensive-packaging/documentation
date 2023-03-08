@@ -3,7 +3,7 @@ Title: gr-air-modes
 Homepage: https://github.com/bistromath/gr-air-modes
 Repository: https://salsa.debian.org/bottoms/pkg-gr-air-modes
 Architectures: any
-Version: 0.0.20210211-2
+Version: 0.0.20210211-3
 Metapackages: kali-linux-everything kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -22,14 +22,14 @@ PackagesInfo: |
    * FlightGear multiplayer interface for real-time display of traffic
      within the simulator
  
- **Installed size:** `378 KB`  
+ **Installed size:** `380 KB`  
  **How to install:** `sudo apt install gr-air-modes`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
  * libgnuradio-air-modes1 
- * libgnuradio-runtime3.10.4 
+ * libgnuradio-runtime3.10.5 
  * libstdc++6 
  * python3
  * python3 
@@ -96,14 +96,14 @@ PackagesInfo: |
    
   This package provides a shared library.
  
- **Installed size:** `101 KB`  
+ **Installed size:** `99 KB`  
  **How to install:** `sudo apt install libgnuradio-air-modes1`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libgnuradio-pmt3.10.4 
- * libgnuradio-runtime3.10.4 
+ * libgnuradio-pmt3.10.5 
+ * libgnuradio-runtime3.10.5 
  * libstdc++6 
  {{< /spoiler >}}
  

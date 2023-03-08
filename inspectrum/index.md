@@ -32,14 +32,14 @@ PackagesInfo: |
    * Cursors for measuring period, symbol rate and extracting symbols
    * Export of selected time period, filtered samples and demodulated data
  
- **Installed size:** `303 KB`  
+ **Installed size:** `304 KB`  
  **How to install:** `sudo apt install inspectrum`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libfftw3-single3 
  * libgcc-s1 
- * libliquid3d 
+ * libliquid1 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5widgets5 

@@ -2,8 +2,8 @@
 Title: princeprocessor
 Homepage: https://github.com/hashcat/princeprocessor
 Repository: https://salsa.debian.org/pkg-security-team/princeprocessor
-Architectures: amd64 arm64 mips64el ppc64el s390x alpha kfreebsd-amd64 ppc64 sparc64 x32
-Version: 0.22-3
+Architectures: amd64 arm64 mips64el ppc64el s390x alpha kfreebsd-amd64 ppc64 riscv64 sparc64 x32
+Version: 0.22-4
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   The name PRINCE is used as an acronym and stands for PRobability INfinite
   Chained Elements, which are the building blocks of the algorithm.
  
- **Installed size:** `123 KB`  
+ **Installed size:** `121 KB`  
  **How to install:** `sudo apt install princeprocessor`  
  
  {{< spoiler "Dependencies:" >}}

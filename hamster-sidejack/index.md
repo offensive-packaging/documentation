@@ -3,7 +3,7 @@ Title: hamster-sidejack
 Homepage: http://www.erratasec.com/research.html
 Repository: https://gitlab.com/kalilinux/packages/hamster-sidejack
 Architectures: any
-Version: 2.0-1kali5
+Version: 2.0-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sniffing-spoofing kali-tools-web 
 Icon: images/hamster-sidejack-logo.svg
 PackagesInfo: |

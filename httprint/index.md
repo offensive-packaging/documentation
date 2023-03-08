@@ -1,9 +1,9 @@
 ---
 Title: httprint
-Homepage: http://www.net-square.com/httprint.html
-Repository: https://gitlab.com/kalilinux/packages/httprint.git
+Homepage: https://www.net-square.com/httprint.html
+Repository: https://gitlab.com/kalilinux/packages/httprint
 Architectures: i386 amd64
-Version: 0.301-0kali3
+Version: 0.301-0kali4
 Metapackages: kali-linux-everything kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   signature strings and it is very easy to add signatures to the signature
   database.
  
- **Installed size:** `1.44 MB`  
+ **Installed size:** `1.45 MB`  
  **How to install:** `sudo apt install httprint`  
  
  ##### httprint

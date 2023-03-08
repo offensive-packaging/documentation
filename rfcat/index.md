@@ -3,7 +3,7 @@ Title: rfcat
 Homepage: https://github.com/atlas0fd00m/rfcat
 Repository: https://gitlab.com/kalilinux/packages/rfcat
 Architectures: any
-Version: 1:1.9.6-0kali1
+Version: 1:1.9.7-0kali1
 Metapackages: kali-linux-everything kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

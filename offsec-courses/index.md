@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: offsec-courses
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/offsec-courses

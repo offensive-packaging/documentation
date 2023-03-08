@@ -3,8 +3,8 @@ Title: polenum
 Homepage: https://github.com/Wh1t3Fox/polenum/
 Repository: https://salsa.debian.org/pkg-security-team/polenum
 Architectures: all
-Version: 1.6.1-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-information-gathering kali-tools-passwords 
+Version: 1.6.1-2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### polenum
@@ -15,7 +15,7 @@ PackagesInfo: |
   password policy of a remote windows box without the need to have access to a
   windows machine.
  
- **Installed size:** `27 KB`  
+ **Installed size:** `26 KB`  
  **How to install:** `sudo apt install polenum`  
  
  {{< spoiler "Dependencies:" >}}

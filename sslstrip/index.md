@@ -3,7 +3,7 @@ Title: sslstrip
 Homepage: https://github.com/L1ghtn1ng/sslstrip
 Repository: https://gitlab.com/kalilinux/packages/sslstrip
 Architectures: all
-Version: 1.0+git20211125.9ac747b-0kali1
+Version: 1.0+git20211125.9ac747b-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

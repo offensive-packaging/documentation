@@ -3,7 +3,7 @@ Title: weevely
 Homepage: https://github.com/epinna/weevely3/
 Repository: https://salsa.debian.org/pkg-security-team/weevely
 Architectures: all
-Version: 4.0.1-1
+Version: 4.0.1-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: images/weevely-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   web shell to manage legit web accounts, even free hosted
   ones.
  
- **Installed size:** `890 KB`  
+ **Installed size:** `889 KB`  
  **How to install:** `sudo apt install weevely`  
  
  {{< spoiler "Dependencies:" >}}

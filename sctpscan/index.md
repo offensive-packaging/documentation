@@ -2,8 +2,8 @@
 Title: sctpscan
 Homepage: https://github.com/philpraxis/sctpscan
 Repository: https://gitlab.com/kalilinux/packages/sctpscan
-Architectures: i386 amd64
-Version: 0.1-1kali3
+Architectures: any
+Version: 0.1-1kali5
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,7 +11,7 @@ PackagesInfo: |
  
   SCTP network scanner for discovery and security
  
- **Installed size:** `69 KB`  
+ **Installed size:** `77 KB`  
  **How to install:** `sudo apt install sctpscan`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: phpggc
 Homepage: https://github.com/ambionics/phpggc
 Repository: https://gitlab.com/kalilinux/packages/phpggc
 Architectures: all
-Version: 0.20210218-0kali1
+Version: 0.20221219-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   PHPGGC is a library of payloads exploiting unsafe object deserialization.
   It also provides a command-line tool to generate them.
  
- **Installed size:** `413 KB`  
+ **Installed size:** `612 KB`  
  **How to install:** `sudo apt install phpggc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -58,20 +58,27 @@ PackagesInfo: |
       right after the unserialize() call, as opposed to at the end of the
       script
    -a, --ascii-strings
-      Uses the 'S' serialization format instead of the standard 's'. This
-      replaces every non-ASCII value to an hexadecimal representation:
-      s:5:"A<null_byte>B<cr><lf>"; -> S:5:"A\00B\09\0D";
+      Uses the 'S' serialization format instead of the standard 's' for non-printable chars.
+      This replaces every non-ASCII value to an hexadecimal representation:
+        s:5:"A<null_byte>B<cr><lf>"; -> S:5:"A\00B\09\0D";
       This is experimental and it might not work in some cases.
+   -A, --armor-strings
+      Uses the 'S' serialization format instead of the standard 's' for every char.
+      This replaces every character to an hexadecimal representation:
+        s:5:"A<null_byte>B<cr><lf>"; -> S:5:"\41\00\42\09\0D";
+      This is experimental and it might not work in some cases.
+      Note: Since strings grow by a factor of 3 using this option, the payload can get
+      really long.
    -n, --plus-numbers <types>
       Adds a + symbol in front of every number symbol of the given type.
       For instance, -n iO adds a + in front of every int and object name size:
       O:3:"Abc":1:{s:1:"x";i:3;} -> O:+3:"Abc":1:{s:1:"x";i:+3;}
       Note: Since PHP 7.2, only i and d (float) types can have a +
    -w, --wrapper <wrapper>
-      Specifies a file containing either or both functions:
-        - process_parameters($parameters): called right before object is created
-        - process_object($object): called right before the payload is serialized
-        - process_serialized($serialized): called right after the payload is serialized
+      Specifies a file containing at least one wrapper functions:
+        - process_parameters(array $parameters): called right before object is created
+        - process_object(object $object): called right before the payload is serialized
+        - process_serialized(string $serialized): called right after the payload is serialized
  
  ENCODING
    -s, --soft   Soft URLencode
@@ -84,7 +91,7 @@ PackagesInfo: |
  CREATION
    -N, --new <framework> <type>
      Creates the file structure for a new gadgetchain for given framework
-     Example: ./phpggc -n Drupal RCE
+     Example: ./phpggc -N Drupal RCE
    --test-payload
      Instead of displaying or storing the payload, includes vendor/autoload.php and unserializes the payload.
      The test script can only deserialize __destruct, __wakeup, __toString and PHAR payloads.

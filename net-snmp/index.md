@@ -1,10 +1,10 @@
 ---
 Title: net-snmp
-Homepage: http://net-snmp.sourceforge.net/
+Homepage: https://net-snmp.sourceforge.net/
 Repository: https://salsa.debian.org/debian/net-snmp
 Architectures: any all
-Version: 5.9.3+dfsg-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-vulnerability 
+Version: 5.9.3+dfsg-2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-protect kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libnetsnmptrapd40
@@ -43,7 +43,7 @@ PackagesInfo: |
   description, you need to activate the non-free repository and install the
   "snmp-mibs-downloader" package.
  
- **Installed size:** `2.13 MB`  
+ **Installed size:** `2.11 MB`  
  **How to install:** `sudo apt install libsnmp-base`  
  
  
@@ -112,11 +112,11 @@ PackagesInfo: |
  Script to merge custom code into updated mib2c code
  
  ```
- root@kali:~# mib2c-update --help
- Starting regneration of ipAddressTable using mib2c.mfd.conf at 2022-11-27_03.27
+ root@kali:~# mib2c-update -h
+ Starting regneration of ipAddressTable using mib2c.mfd.conf at 2023-03-08_09.39
  Creating patch for your custom code
     no custom code!
- mib2c --help -c mib2c.mfd.conf  ipAddressTable
+ mib2c -h -c mib2c.mfd.conf  ipAddressTable
  /usr/bin/mib2c [-h] [-c configfile] [-f prefix] mibNode
  
    -h		This message.
@@ -1164,27 +1164,48 @@ PackagesInfo: |
  Check hosts SNMP access
  
  ```
- root@kali:~# snmpcheck -h
+ root@kali:~# man snmpcheck
+ snmpcheck(1)                       Net-SNMP                       snmpcheck(1)
  
- Usage:  snmpcheck [-x] [-n|y] [-h] [-H] [-V NUM] [-L] [-f] [[-a] HOSTS] 
+ NAME
+        snmpcheck - check hosts SNMP access
  
-   -h	Display this message.
-   -a	check error log file AND hosts specified on command line.
-   -p	Don't try and ping-echo the host first
-   -f	Only check for things I can fix
-   HOSTS	check these hosts for problems.
+ SYNOPSIS
+        snmpcheck [options] [[-a] HOSTS]...
  
- X Options:
-   -x	forces ascii base if $DISPLAY set (instead of tk).
-   -H	start in hidden mode.  (hides user interface)
-   -V NUM	sets the initial verbosity level of the command log (def: 1)
-   -L	Show the log window at startup
-   -d	Don't start by checking anything.  Just bring up the interface.
+ DESCRIPTION
+        snmpcheck  is  a  program  that checks the SNMP status of the specified
+        hosts
  
- Ascii Options:
-   -n	Don't ever try and fix the problems found.  Just list.
-   -y	Always fix problems found.
+ OPTIONS
+    Common Options
+        -h     Display this message.
  
+        -a     check error log file AND hosts specified on command line.
+ 
+        -p     Don't try and ping-echo the host first
+ 
+        -f     Only check for things I can fix
+ 
+        HOSTS  check these hosts for problems.
+ 
+    X Options:
+        -x     forces ascii base if $DISPLAY set (instead of tk).
+ 
+        -H     start in hidden mode.  (hides user interface)
+ 
+        -V NUM sets the initial verbosity level of the command log (def: 1)
+ 
+        -L     Show the log window at startup
+ 
+        -d     Don't start by checking anything.  Just bring up the interface.
+ 
+    Ascii Options:
+        -n     Don't ever try and fix the problems found.  Just list.
+ 
+        -y     Always fix problems found.
+ 
+ V5.7.3                            2018-03-30                      snmpcheck(1)
  ```
  
  - - -
@@ -3052,7 +3073,7 @@ PackagesInfo: |
   graphical frontend for the Net-SNMP tools. It can be used to browse
   the MIB tree and interactively send requests to SNMP agents.
  
- **Installed size:** `1.63 MB`  
+ **Installed size:** `1.61 MB`  
  **How to install:** `sudo apt install tkmib`  
  
  {{< spoiler "Dependencies:" >}}

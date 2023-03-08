@@ -4,7 +4,7 @@ Homepage: https://www.inetsim.org/index.html
 Repository: https://salsa.debian.org/pkg-security-team/inetsim
 Architectures: all
 Version: 1.3.2+dfsg.1-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### inetsim

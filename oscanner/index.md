@@ -3,7 +3,7 @@ Title: oscanner
 Homepage: http://www.cqure.net/wp/tools/database/oscanner/
 Repository: https://gitlab.com/kalilinux/packages/oscanner
 Architectures: all
-Version: 1.0.6-1kali2
+Version: 1.0.6-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-web 
 Icon: images/oscanner-logo.svg
 PackagesInfo: |

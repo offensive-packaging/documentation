@@ -3,7 +3,7 @@ Title: multimac
 Homepage: https://sourceforge.net/projects/multimac/
 Repository: https://gitlab.com/kalilinux/packages/multimac
 Architectures: any
-Version: 1.0.3-1kali1
+Version: 1.0.3-1kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,6 +15,10 @@ PackagesInfo: |
  
  **Installed size:** `28 KB`  
  **How to install:** `sudo apt install multimac`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libc6 
+ {{< /spoiler >}}
  
  ##### multimac
  

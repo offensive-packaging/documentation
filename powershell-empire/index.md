@@ -3,7 +3,7 @@ Title: powershell-empire
 Homepage: https://github.com/BC-SECURITY/Empire
 Repository: https://gitlab.com/kalilinux/packages/powershell-empire
 Architectures: all
-Version: 4.8.3-kali-0kali1
+Version: 5.0.4-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: images/powershell-empire-logo.svg
 PackagesInfo: |
@@ -19,24 +19,30 @@ PackagesInfo: |
   communications to evade network detection, all wrapped up in a
   usability-focused framework.
  
- **Installed size:** `152.34 MB`  
+ **Installed size:** `168.60 MB`  
  **How to install:** `sudo apt install powershell-empire`  
  
  {{< spoiler "Dependencies:" >}}
+ * default-mysql-server
  * python3
+ * python3-aiofiles
  * python3-bcrypt
  * python3-cryptography
  * python3-docopt
  * python3-donut 
  * python3-dropbox
+ * python3-fastapi
  * python3-flask
  * python3-flask-socketio
  * python3-humanize
  * python3-jinja2
+ * python3-jose
  * python3-jq
  * python3-macholib
+ * python3-multipart
  * python3-netifaces
  * python3-openssl
+ * python3-passlib
  * python3-prompt-toolkit
  * python3-pycryptodome
  * python3-pydantic
@@ -48,14 +54,18 @@ PackagesInfo: |
  * python3-pyperclip
  * python3-pyvnc
  * python3-requests
+ * python3-secretsocks
  * python3-setuptools
  * python3-simplejson
+ * python3-socketio 
  * python3-sqlalchemy
  * python3-sqlalchemy-utc
  * python3-terminaltables
  * python3-tk
  * python3-urllib3
+ * python3-uvicorn
  * python3-websocket
+ * python3-websockets
  * python3-websockify
  * python3-xlrd
  * python3-xlutils

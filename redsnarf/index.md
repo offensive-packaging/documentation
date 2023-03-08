@@ -3,7 +3,7 @@ Title: redsnarf
 Homepage: https://github.com/nccgroup/redsnarf
 Repository: https://gitlab.com/kalilinux/packages/redsnarf
 Architectures: all
-Version: 0~git20170822-0kali4
+Version: 0~git20170822-0kali5
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

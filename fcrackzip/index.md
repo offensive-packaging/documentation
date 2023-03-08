@@ -4,7 +4,7 @@ Homepage: http://oldhome.schmorp.de/marc/fcrackzip.html
 Repository: https://salsa.debian.org/pkg-security-team/fcrackzip
 Architectures: any
 Version: 1.0-11
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-passwords 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-passwords kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### fcrackzip

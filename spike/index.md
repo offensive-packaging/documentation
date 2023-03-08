@@ -3,7 +3,7 @@ Title: spike
 Homepage: http://www.immunitysec.com/resources-freesoftware.shtml
 Repository: https://gitlab.com/kalilinux/packages/spike
 Architectures: any
-Version: 2.9-1kali8
+Version: 2.9-1kali9
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-fuzzing kali-tools-vulnerability 
 Icon: images/spike-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   knowledge of C to use, it produces results second to none
   in the field.
  
- **Installed size:** `3.75 MB`  
+ **Installed size:** `3.77 MB`  
  **How to install:** `sudo apt install spike`  
  
  {{< spoiler "Dependencies:" >}}

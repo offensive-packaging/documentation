@@ -1,10 +1,10 @@
 ---
 Title: wapiti
-Homepage: http://wapiti.sourceforge.net/
+Homepage: https://wapiti.sourceforge.net/
 Repository: https://salsa.debian.org/pkg-security-team/wapiti
 Architectures: all
-Version: 3.0.4+dfsg-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-information-gathering kali-tools-vulnerability kali-tools-web 
+Version: 3.0.4+dfsg-2
+Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-identify kali-tools-information-gathering kali-tools-vulnerability kali-tools-web 
 Icon: images/wapiti-logo.svg
 PackagesInfo: |
  ### wapiti
@@ -37,7 +37,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libjs-jquery
  * python3
- * python3-bs4
+ * python3-bs4 
  * python3-importlib-metadata
  * python3-mako 
  * python3-markupsafe
@@ -55,14 +55,13 @@ PackagesInfo: |
  ```
  root@kali:~# wapiti -h
  
-      __    __            _ _   _ _____
-     / / /\ \ \__ _ _ __ (_) |_(_)___ /
-     \ \/  \/ / _` | '_ \| | __| | |_ \
-      \  /\  / (_| | |_) | | |_| |___) |
-       \/  \/ \__,_| .__/|_|\__|_|____/
-                   |_|                 
+      __      __               .__  __  .__________
+     /  \    /  \_____  ______ |__|/  |_|__\_____  \
+     \   \/\/   /\__  \ \____ \|  \   __\  | _(__  <
+      \        /  / __ \|  |_> >  ||  | |  |/       \
+       \__/\  /  (____  /   __/|__||__| |__/______  /
+            \/        \/|__|                      \/
  Wapiti-3.0.4 (wapiti.sourceforge.io)
- [*] Be careful! New moon tonight.
  usage: wapiti [-h] [-u URL] [--scope {page,folder,domain,url,punk}]
                [-m MODULES_LIST] [--list-modules] [--update] [-l LEVEL]
                [-p PROXY_URL] [--tor] [-a CREDENTIALS]

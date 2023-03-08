@@ -3,7 +3,7 @@ Title: name-that-hash
 Homepage: https://github.com/HashPals/Name-That-Hash
 Repository: https://gitlab.com/kalilinux/packages/name-that-hash
 Architectures: all
-Version: 1.10-0kali1
+Version: 1.11.0-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
    
   Name-that-hash will name it for you.
  
- **Installed size:** `116 KB`  
+ **Installed size:** `123 KB`  
  **How to install:** `sudo apt install name-that-hash`  
  
  {{< spoiler "Dependencies:" >}}
@@ -68,7 +68,7 @@ PackagesInfo: |
                         identification per hash.
    -a, --accessible     Turn on accessible mode, does not print ASCII art. Also
                         does not print very large blocks of text, as this can
-                        cause some pains with screenreaders. This reduces the
+                        cause some pain with screenreaders. This reduces the
                         information you get. If you want the least likely
                         feature but no banner, use --no-banner.
    -e, --extreme        Searches for hashes within a string. This mode will get
@@ -123,7 +123,7 @@ PackagesInfo: |
                         identification per hash.
    -a, --accessible     Turn on accessible mode, does not print ASCII art. Also
                         does not print very large blocks of text, as this can
-                        cause some pains with screenreaders. This reduces the
+                        cause some pain with screenreaders. This reduces the
                         information you get. If you want the least likely
                         feature but no banner, use --no-banner.
    -e, --extreme        Searches for hashes within a string. This mode will get

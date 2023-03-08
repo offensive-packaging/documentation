@@ -3,10 +3,21 @@ Title: rizin-cutter
 Homepage: https://cutter.re
 Repository: https://gitlab.com/kalilinux/packages/rizin-cutter
 Architectures: amd64 arm64 armhf i386 mipsel
-Version: 2.1.0-0kali2
-Metapackages: kali-linux-everything kali-tools-forensics kali-tools-hardware kali-tools-reverse-engineering 
+Version: 2.1.2-0kali2
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-hardware kali-tools-respond kali-tools-reverse-engineering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
+ ### librizin-cutter-dev
+ 
+  These files can be used to build cutter plugins and integrate such
+  plugin into the Cutter GUI.
+ 
+ **Installed size:** `480 KB`  
+ **How to install:** `sudo apt install librizin-cutter-dev`  
+ 
+ 
+ - - -
+ 
  ### rizin-cutter
  
   Cutter is a free and open-source reverse engineering platform powered by
@@ -14,7 +25,7 @@ PackagesInfo: |
   platform while keeping the user experience in mind. Cutter is created by
   reverse engineers for reverse engineers.
  
- **Installed size:** `5.87 MB`  
+ **Installed size:** `5.86 MB`  
  **How to install:** `sudo apt install rizin-cutter`  
  
  {{< spoiler "Dependencies:" >}}
@@ -24,7 +35,7 @@ PackagesInfo: |
  * libgvc6
  * libkf5syntaxhighlighting5 
  * libpyside2-py3-5.15 
- * libpython3.10 
+ * libpython3.11 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 
  * libqt5network5 

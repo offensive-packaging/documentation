@@ -3,7 +3,7 @@ Title: metagoofil
 Homepage: https://github.com/opsdisk/metagoofil
 Repository: https://gitlab.com/kalilinux/packages/metagoofil
 Architectures: all
-Version: 2.2.+git20210226-0kali1
+Version: 1:1.2.0+git20221009-0kali1
 Metapackages: kali-linux-everything kali-tools-information-gathering kali-tools-reporting 
 Icon: images/metagoofil-logo.svg
 PackagesInfo: |
@@ -24,6 +24,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * python3
  * python3-googlesearch
+ * python3-requests
  {{< /spoiler >}}
  
  ##### metagoofil
@@ -31,21 +32,23 @@ PackagesInfo: |
  
  ```
  root@kali:~# metagoofil -h
- usage: metagoofil.py [-h] -d DOMAIN [-e DELAY] [-f] [-i URL_TIMEOUT]
-                      [-l SEARCH_MAX] [-n DOWNLOAD_FILE_LIMIT]
+ usage: metagoofil.py [-h] -d DOMAIN [-e DELAY] [-f [SAVE_FILE]]
+                      [-i URL_TIMEOUT] [-l SEARCH_MAX] [-n DOWNLOAD_FILE_LIMIT]
                       [-o SAVE_DIRECTORY] [-r NUMBER_OF_THREADS] -t FILE_TYPES
                       [-u [USER_AGENT]] [-w]
  
- Metagoofil - Search and download specific filetypes
+ Metagoofil v1.2.0 - Search Google and download specific file types.
  
  options:
    -h, --help            show this help message and exit
    -d DOMAIN             Domain to search.
    -e DELAY              Delay (in seconds) between searches. If it's too small
-                         Google may block your IP, too big and your searchmay
+                         Google may block your IP, too big and your search may
                          take a while. Default: 30.0
-   -f                    Save the html links to html_links_<TIMESTAMP>.txt
-                         file.
+   -f [SAVE_FILE]        Save the html links to a file.
+                         no -f = Do not save links
+                         -f = Save links to html_links_<TIMESTAMP>.txt
+                         -f SAVE_FILE = Save links to SAVE_FILE
    -i URL_TIMEOUT        Number of seconds to wait before timeout for
                          unreachable/stale pages. Default: 15
    -l SEARCH_MAX         Maximum results to search. Default: 100

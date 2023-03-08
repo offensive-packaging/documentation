@@ -3,7 +3,7 @@ Title: bluez
 Homepage: http://www.bluez.org
 Repository: https://gitlab.com/kalilinux/packages/bluez
 Architectures: linux-any all
-Version: 5.65-1+kali1
+Version: 5.66-1+kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-bluetooth kali-tools-rfid kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package provides all of the different plugins supported
   by the Bluez bluetooth stack.
  
- **Installed size:** `77 KB`  
+ **Installed size:** `68 KB`  
  **How to install:** `sudo apt install bluetooth`  
  
  {{< spoiler "Dependencies:" >}}
@@ -29,7 +29,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `3.81 MB`  
+ **Installed size:** `3.96 MB`  
  **How to install:** `sudo apt install bluez`  
  
  {{< spoiler "Dependencies:" >}}
@@ -155,7 +155,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# btmgmt -h
- btmgmt ver 5.65
+ btmgmt ver 5.66
  Usage:
  	btmgmt [--options] [commands]
  Options:
@@ -422,7 +422,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# hcitool -h
- hcitool - HCI Tool ver 5.65
+ hcitool - HCI Tool ver 5.66
  Usage:
  	hcitool [options] <command> [command parameters]
  Options:
@@ -660,7 +660,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# rfcomm -h
- RFCOMM configuration utility ver 5.65
+ RFCOMM configuration utility ver 5.66
  Usage:
  	rfcomm [options] <command> <dev>
  
@@ -693,7 +693,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# sdptool -h
- sdptool - SDP tool v5.65
+ sdptool - SDP tool v5.66
  Usage:
  	sdptool [options] <command> [command parameters]
  Options:
@@ -727,7 +727,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `125 KB`  
+ **Installed size:** `116 KB`  
  **How to install:** `sudo apt install bluez-cups`  
  
  {{< spoiler "Dependencies:" >}}
@@ -752,7 +752,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `443 KB`  
+ **Installed size:** `434 KB`  
  **How to install:** `sudo apt install bluez-hcidump`  
  
  {{< spoiler "Dependencies:" >}}
@@ -803,7 +803,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `783 KB`  
+ **Installed size:** `787 KB`  
  **How to install:** `sudo apt install bluez-meshd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -933,7 +933,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# meshctl -h
- meshctl ver 5.65
+ meshctl ver 5.66
  Usage:
  	meshctl [--options] [commands]
  Options:
@@ -960,7 +960,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `702 KB`  
+ **Installed size:** `693 KB`  
  **How to install:** `sudo apt install bluez-obexd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -982,7 +982,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `75.48 MB`  
+ **Installed size:** `84.29 MB`  
  **How to install:** `sudo apt install bluez-source`  
  
  
@@ -995,7 +995,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `320 KB`  
+ **Installed size:** `312 KB`  
  **How to install:** `sudo apt install bluez-test-scripts`  
  
  
@@ -1008,7 +1008,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `2.31 MB`  
+ **Installed size:** `2.68 MB`  
  **How to install:** `sudo apt install bluez-test-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1141,6 +1141,30 @@ PackagesInfo: |
  
  - - -
  
+ ##### ioctl-tester
+ 
+ 
+ ```
+ root@kali:~# ioctl-tester -h
+ Usage:
+   ioctl-tester [OPTION?]
+ 
+ Help Options:
+   -h, --help        Show help options
+ 
+ Application Options:
+   -v, --version     Show version information and exit
+   -q, --quiet       Run tests without logging
+   -d, --debug       Run tests with debug output
+   -m, --monitor     Enable monitor output
+   -l, --list        Only list the tests to be run
+   -p, --prefix      Run tests matching provided prefix
+   -s, --string      Run tests matching provided string
+ 
+ ```
+ 
+ - - -
+ 
  ##### iso-tester
  
  
@@ -1214,6 +1238,30 @@ PackagesInfo: |
  root@kali:~# l2cap-tester -h
  Usage:
    l2cap-tester [OPTION?]
+ 
+ Help Options:
+   -h, --help        Show help options
+ 
+ Application Options:
+   -v, --version     Show version information and exit
+   -q, --quiet       Run tests without logging
+   -d, --debug       Run tests with debug output
+   -m, --monitor     Enable monitor output
+   -l, --list        Only list the tests to be run
+   -p, --prefix      Run tests matching provided prefix
+   -s, --string      Run tests matching provided string
+ 
+ ```
+ 
+ - - -
+ 
+ ##### mesh-tester
+ 
+ 
+ ```
+ root@kali:~# mesh-tester -h
+ Usage:
+   mesh-tester [OPTION?]
  
  Help Options:
    -h, --help        Show help options
@@ -1364,7 +1412,7 @@ PackagesInfo: |
   This package contains the development libraries and header files you need to
   develop your programs using the libbluetooth library.
  
- **Installed size:** `911 KB`  
+ **Installed size:** `905 KB`  
  **How to install:** `sudo apt install libbluetooth-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1380,7 +1428,7 @@ PackagesInfo: |
   BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
   project distributed under GNU General Public License (GPL).
  
- **Installed size:** `303 KB`  
+ **Installed size:** `294 KB`  
  **How to install:** `sudo apt install libbluetooth3`  
  
  {{< spoiler "Dependencies:" >}}

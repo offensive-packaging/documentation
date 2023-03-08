@@ -3,7 +3,7 @@ Title: fragrouter
 Homepage: http://www.anzen.com/research/nidsbench/fragrouter.html
 Repository: https://gitlab.com/kalilinux/packages/fragrouter
 Architectures: any
-Version: 1.7-3kali2
+Version: 1.7-3kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,11 +11,12 @@ PackagesInfo: |
  
   Fragrouter is a network intrusion detection evasion toolkit.
  
- **Installed size:** `137 KB`  
+ **Installed size:** `72 KB`  
  **How to install:** `sudo apt install fragrouter`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
+ * libpcap0.8 
  {{< /spoiler >}}
  
  ##### fragrouter

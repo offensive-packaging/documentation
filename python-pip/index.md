@@ -3,8 +3,8 @@ Title: python-pip
 Homepage: https://pip.pypa.io/en/stable/
 Repository: https://salsa.debian.org/python-team/packages/python-pip
 Architectures: all
-Version: 22.3+dfsg-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics 
+Version: 23.0.1+dfsg-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### python3-pip
@@ -15,7 +15,7 @@ PackagesInfo: |
    
   This is the Python 3 version of the package.
  
- **Installed size:** `6.49 MB`  
+ **Installed size:** `6.52 MB`  
  **How to install:** `sudo apt install python3-pip`  
  
  {{< spoiler "Dependencies:" >}}
@@ -188,14 +188,14 @@ PackagesInfo: |
  
  - - -
  
- ##### pip3.10
+ ##### pip3.11
  
  
  ```
- root@kali:~# pip3.10 -h
+ root@kali:~# pip3.11 -h
  
  Usage:   
-   pip3.10 <command> [options]
+   pip3.11 <command> [options]
  
  Commands:
    install                     Install packages.
@@ -277,7 +277,7 @@ PackagesInfo: |
   This is the support package for the PEP 427 wheel version of the package,
   required for using pip inside a virtual environment.
  
- **Installed size:** `1.69 MB`  
+ **Installed size:** `1.70 MB`  
  **How to install:** `sudo apt install python3-pip-whl`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,7 +3,7 @@ Title: lbd
 Homepage: http://ge.mine.nu/code/
 Repository: https://gitlab.com/kalilinux/packages/lbd
 Architectures: all
-Version: 0.4-1kali2
+Version: 0.4-1kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-web 
 Icon: images/lbd-logo.svg
 PackagesInfo: |

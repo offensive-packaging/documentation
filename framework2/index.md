@@ -3,7 +3,7 @@ Title: framework2
 Homepage: https://www.metasploit.com
 Repository: https://gitlab.com/kalilinux/packages/framework2
 Architectures: all
-Version: 2.0-1kali2
+Version: 2.0-1kali3
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   Version 2 of the Metasploit Framework.
   No longer updated but still useful, particularly for shellcode.
  
- **Installed size:** `7.80 MB`  
+ **Installed size:** `7.82 MB`  
  **How to install:** `sudo apt install framework2`  
  
  {{< spoiler "Dependencies:" >}}

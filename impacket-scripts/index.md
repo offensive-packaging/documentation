@@ -4,7 +4,7 @@ Homepage:
 Repository: https://gitlab.com/kalilinux/packages/impacket-scripts
 Architectures: all
 Version: 1.7
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### impacket-scripts
@@ -1955,7 +1955,7 @@ PackagesInfo: |
  Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
  
  usage: smbrelayx.py [--help] [-ts] [-debug] [-h HOST]
-                     [-s {denied,success,logon_failure}] [-e FILE] [-c COMMAND]
+                     [-s {logon_failure,denied,success}] [-e FILE] [-c COMMAND]
                      [-socks] [-one-shot] [-codec CODEC]
                      [-outputfile OUTPUTFILE]
                      [-machine-account MACHINE_ACCOUNT]
@@ -1970,7 +1970,7 @@ PackagesInfo: |
    -debug                Turn DEBUG output ON
    -h HOST               Host to relay the credentials to, if not it will relay
                          it back to the client
-   -s {denied,success,logon_failure}
+   -s {logon_failure,denied,success}
                          Status to return after client performed
                          authentication. Default: "success".
    -e FILE               File to execute on the target system. If not
@@ -2050,12 +2050,11 @@ PackagesInfo: |
  0 - eth0
  1 - any
  2 - lo
- 3 - docker0
- 4 - bluetooth-monitor
- 5 - nflog
- 6 - nfqueue
- 7 - dbus-system
- 8 - dbus-session
+ 3 - bluetooth-monitor
+ 4 - nflog
+ 5 - nfqueue
+ 6 - dbus-system
+ 7 - dbus-session
  Please select an interface: 
  ```
  
@@ -2082,6 +2081,7 @@ PackagesInfo: |
      main(sys.argv[1])
    File "/usr/share/doc/python3-impacket/examples/split.py", line 128, in main
      p = open_offline(filename)
+         ^^^^^^^^^^^^^^^^^^^^^^
  pcapy.PcapError: -h: No such file or directory
  ```
  

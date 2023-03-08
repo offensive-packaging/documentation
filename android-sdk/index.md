@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: android-sdk
 Homepage: https://developer.android.com/index.html
 Repository: https://gitlab.com/kalilinux/packages/android-sdk

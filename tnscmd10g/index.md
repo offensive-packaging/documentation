@@ -3,7 +3,7 @@ Title: tnscmd10g
 Homepage: http://www.red-database-security.com/
 Repository: https://gitlab.com/kalilinux/packages/tnscmd10g
 Architectures: all
-Version: 1.3-1kali1
+Version: 1.3-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-web 
 Icon: images/tnscmd10g-logo.svg
 PackagesInfo: |

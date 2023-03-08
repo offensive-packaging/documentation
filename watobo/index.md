@@ -51,10 +51,16 @@ PackagesInfo: |
  /usr/share/watobo/config/sid_cache.yml
  ---
  uninitialized constant Watobo::Modules::Active::Ror
+ 
+             class_constant = Watobo::Modules::Active.const_get(group_class).const_get(module_class)
+                                                     ^^^^^^^^^^
  when loading module file /usr/share/watobo/modules/active/RoR/cve_2013_015x.rb
  ---
  ---
  uninitialized constant Watobo::Modules::Active::Sap
+ 
+             class_constant = Watobo::Modules::Active.const_get(group_class).const_get(module_class)
+                                                     ^^^^^^^^^^
  when loading module file /usr/share/watobo/modules/active/sap/business_objects.rb
  ---
  

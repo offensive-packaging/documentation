@@ -3,7 +3,7 @@ Title: ncurses-hexedit
 Homepage: http://www.rogoyski.com/adam/programs/hexedit/
 Repository: https://salsa.debian.org/debian/ncurses-hexedit
 Architectures: any
-Version: 0.9.7+orig-7.1
+Version: 0.9.7+orig-7.2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   screen text snapshots.  Allows editing of fixed disks as well.  Includes
   a binary/octal/decimal/hex converter.
  
- **Installed size:** `132 KB`  
+ **Installed size:** `130 KB`  
  **How to install:** `sudo apt install ncurses-hexedit`  
  
  {{< spoiler "Dependencies:" >}}

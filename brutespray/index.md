@@ -3,23 +3,24 @@ Title: brutespray
 Homepage: https://github.com/x90skysn3k/brutespray
 Repository: https://salsa.debian.org/pkg-security-team/brutespray
 Architectures: all
-Version: 1.8-1
+Version: 1.8.1-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### brutespray
  
-  This Python script takes nmap GNMAP/XML output and automatically brute-forces
-  services with default credentials using Medusa.
+  This Python script takes nmap GNMAP/XML output, newline separated JSON,
+  Nexpose `XML Export` output or Nessus `.nessus` exports and automatically
+  brute-forces services with default credentials using Medusa.
+   
   BruteSpray can even find non-standard ports by using the -sV inside Nmap.
  
- **Installed size:** `119 KB`  
+ **Installed size:** `117 KB`  
  **How to install:** `sudo apt install brutespray`  
  
  {{< spoiler "Dependencies:" >}}
  * medusa
  * python3
- * python3-argcomplete
  {{< /spoiler >}}
  
  ##### brutespray
@@ -28,6 +29,80 @@ PackagesInfo: |
  
  ```
  root@kali:~# brutespray -h
+ usage: brutespray [-h] [-f FILE] [-o OUTPUT] [-s SERVICE] [-t THREADS]
+                   [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-C COMBO]
+                   [-u USERNAME] [-p PASSWORD] [-c] [-i] [-m] [-q] [-v VERBOSE]
+                   [-w DEBUG]
+ 
+ Usage: python brutespray.py <OPTIONS> 
+ 
+ options:
+   -h, --help            show this help message and exit
+ 
+ Menu Options:
+   -f FILE, --file FILE  GNMAP, JSON or XML file to parse
+   -o OUTPUT, --output OUTPUT
+                         Directory containing successful attempts
+   -s SERVICE, --service SERVICE
+                         specify service to attack
+   -t THREADS, --threads THREADS
+                         number of medusa threads
+   -T HOSTS, --hosts HOSTS
+                         number of hosts to test concurrently
+   -U USERLIST, --userlist USERLIST
+                         reference a custom username file
+   -P PASSLIST, --passlist PASSLIST
+                         reference a custom password file
+   -C COMBO, --combo COMBO
+                         specify a combo input (host:user:password)
+   -u USERNAME, --username USERNAME
+                         specify a single username
+   -p PASSWORD, --password PASSWORD
+                         specify a single password
+   -c, --continuous      keep brute-forcing after success
+   -i, --interactive     interactive mode
+   -m, --modules         dump a list of available modules to brute
+   -q, --quiet           supress banner
+   -v VERBOSE, --verbose VERBOSE
+                         verbose output from medusa [0-6], default=5
+   -w DEBUG, --debug DEBUG
+                         debug error output from medusa [0-10], default=5
+ 
+                               #@                           @/
+                            @@@                               @@@
+                         %@@@                                   @@@.
+                       @@@@@                                     @@@@%
+                      @@@@@                                       @@@@@
+                     @@@@@@@                  @                  @@@@@@@
+                     @(@@@@@@@%            @@@@@@@            &@@@@@@@@@
+                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                      @@*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@
+                        @@@( @@@@@#@@@@@@@@@*@@@,@@@@@@@@@@@@@@@  @@@
+                            @@@@@@ .@@@/@@@@@@@@@@@@@/@@@@ @@@@@@
+                                   @@@   @@@@@@@@@@@   @@@
+                                  @@@@*  ,@@@@@@@@@(  ,@@@@
+                                  @@@@@@@@@@@@@@@@@@@@@@@@@
+                                   @@@.@@@@@@@@@@@@@@@ @@@
+                                     @@@@@@ @@@@@ @@@@@@
+                                        @@@@@@@@@@@@@
+                                        @@   @@@   @@
+                                        @@ @@@@@@@ @@
+                                          @@% @  @@
+ 
+ 
+ 
+         ██████╗ ██████╗ ██╗   ██╗████████╗███████╗███████╗██████╗ ██████╗  █████╗ ██╗   ██╗
+         ██╔══██╗██╔══██╗██║   ██║╚══██╔══╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝
+         ██████╔╝██████╔╝██║   ██║   ██║   █████╗  ███████╗██████╔╝██████╔╝███████║ ╚████╔╝
+         ██╔══██╗██╔══██╗██║   ██║   ██║   ██╔══╝  ╚════██║██╔═══╝ ██╔══██╗██╔══██║  ╚██╔╝
+         ██████╔╝██║  ██║╚██████╔╝   ██║   ███████╗███████║██║     ██║  ██║██║  ██║   ██║
+         ╚═════╝ ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝
+ 
+  brutespray.py v1.8.1
+  Created by: Shane Young/@t1d3nio && Jacob Robles/@shellfail
+  Inspired by: Leon Johnson/@sho-luv
+  Credit to Medusa: JoMo-Kun / Foofus Networks <jmk@foofus.net>
+ 
  usage: brutespray [-h] [-f FILE] [-o OUTPUT] [-s SERVICE] [-t THREADS]
                    [-T HOSTS] [-U USERLIST] [-P PASSLIST] [-C COMBO]
                    [-u USERNAME] [-p PASSWORD] [-c] [-i] [-m] [-q] [-v VERBOSE]

@@ -3,8 +3,8 @@ Title: git
 Homepage: https://git-scm.com/
 Repository: https://repo.or.cz/w/git/debian.git/
 Architectures: any all
-Version: 1:2.35.1-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
+Version: 1:2.39.2-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-identify kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: images/git-logo.svg
 PackagesInfo: |
  ### git
@@ -23,7 +23,7 @@ PackagesInfo: |
   tree visualizer, tools for interoperating with other VCS's, or a web
   interface, is provided as separate git* packages.
  
- **Installed size:** `36.90 MB`  
+ **Installed size:** `43.43 MB`  
  **How to install:** `sudo apt install git`  
  
  {{< spoiler "Dependencies:" >}}
@@ -43,8 +43,8 @@ PackagesInfo: |
  The stupid content tracker
  
  ```
- root@kali:~# git --help
- usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+ root@kali:~# git -h
+ usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
             [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
             [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
             [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
@@ -105,7 +105,7 @@ PackagesInfo: |
         git-receive-pack - Receive what is pushed into the repository
  
  SYNOPSIS
-        git-receive-pack <directory>
+        git receive-pack <git-dir>
  
  DESCRIPTION
         Invoked by git send-pack and updates the repository with the
@@ -132,7 +132,7 @@ PackagesInfo: |
         behavior, see git-config(1).
  
  OPTIONS
-        <directory>
+        <git-dir>
             The repository to sync into.
  
         --http-backend-info-refs
@@ -340,7 +340,7 @@ PackagesInfo: |
  GIT
         Part of the git(1) suite
  
- Git 2.35.1                        02/14/2022               GIT-RECEIVE-PACK(1)
+ Git 2.39.2                        02/16/2023               GIT-RECEIVE-PACK(1)
  ```
  
  - - -
@@ -368,7 +368,7 @@ PackagesInfo: |
         git-upload-archive - Send archive back to git-archive
  
  SYNOPSIS
-        git upload-archive <directory>
+        git upload-archive <repository>
  
  DESCRIPTION
         Invoked by git archive --remote and sends a generated archive to the
@@ -410,13 +410,13 @@ PackagesInfo: |
         non-smart-http.
  
  OPTIONS
-        <directory>
+        <repository>
             The repository to get a tar archive from.
  
  GIT
         Part of the git(1) suite
  
- Git 2.35.1                        02/14/2022             GIT-UPLOAD-ARCHIVE(1)
+ Git 2.39.2                        02/16/2023             GIT-UPLOAD-ARCHIVE(1)
  ```
  
  - - -
@@ -460,9 +460,9 @@ PackagesInfo: |
         --http-backend-info-refs
             Used by git-http-backend(1) to serve up
             $GIT_URL/info/refs?service=git-upload-pack requests. See "Smart
-            Clients" in the HTTP transfer protocols[1] documentation and "HTTP
-            Transport" in the Git Wire Protocol, Version 2[2] documentation.
-            Also understood by git-receive-pack(1).
+            Clients" in gitprotocol-http(5) and "HTTP Transport" in the
+            gitprotocol-v2(5) documentation. Also understood by git-receive-
+            pack(1).
  
         <directory>
             The repository to sync from.
@@ -479,14 +479,31 @@ PackagesInfo: |
  GIT
         Part of the git(1) suite
  
- NOTES
-         1. the HTTP transfer protocols
-            file:///usr/share/doc/git/html/technical/http-protocol.html
+ Git 2.39.2                        02/16/2023                GIT-UPLOAD-PACK(1)
+ ```
  
-         2. the Git Wire Protocol, Version 2
-            file:///usr/share/doc/git/html/technical/protocol-v2.html
+ - - -
  
- Git 2.35.1                        02/14/2022                GIT-UPLOAD-PACK(1)
+ ##### scalar
+ 
+ A tool for managing large Git repositories
+ 
+ ```
+ root@kali:~# scalar -h
+ usage: scalar [-C <directory>] [-c <key>=<value>] <command> [<options>]
+ 
+ Commands:
+ 	clone
+ 	list
+ 	register
+ 	unregister
+ 	run
+ 	reconfigure
+ 	delete
+ 	help
+ 	version
+ 	diagnose
+ 
  ```
  
  - - -
@@ -504,7 +521,7 @@ PackagesInfo: |
    
   This is a dummy package which brings in all subpackages.
  
- **Installed size:** `957 KB`  
+ **Installed size:** `973 KB`  
  **How to install:** `sudo apt install git-all`  
  
  {{< spoiler "Dependencies:" >}}
@@ -543,7 +560,7 @@ PackagesInfo: |
   incorrect results. For reliable, one-shot imports, cvs2git from the
   cvs2svn package or parsecvs may be a better fit.
  
- **Installed size:** `1.30 MB`  
+ **Installed size:** `1.32 MB`  
  **How to install:** `sudo apt install git-cvs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -593,7 +610,7 @@ PackagesInfo: |
   more reliable than git-daemon-sysvinit, at a cost of being less
   familiar for administrators accustomed to sysvinit.
  
- **Installed size:** `969 KB`  
+ **Installed size:** `985 KB`  
  **How to install:** `sudo apt install git-daemon-run`  
  
  {{< spoiler "Dependencies:" >}}
@@ -623,7 +640,7 @@ PackagesInfo: |
   package provides the usual sysvinit service management commands
   ("service git-daemon start/stop") for git-daemon.
  
- **Installed size:** `972 KB`  
+ **Installed size:** `989 KB`  
  **How to install:** `sudo apt install git-daemon-sysvinit`  
  
  {{< spoiler "Dependencies:" >}}
@@ -648,7 +665,7 @@ PackagesInfo: |
    
   This package provides the documentation.
  
- **Installed size:** `11.95 MB`  
+ **Installed size:** `12.69 MB`  
  **How to install:** `sudo apt install git-doc`  
  
  
@@ -668,7 +685,7 @@ PackagesInfo: |
   This package provides the git-send-email program for sending series of
   patch emails.
  
- **Installed size:** `1.00 MB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install git-email`  
  
  {{< spoiler "Dependencies:" >}}
@@ -697,7 +714,7 @@ PackagesInfo: |
   If meld is installed, it can be used for displaying diffs and for
   interactive merge conflict resolution.
  
- **Installed size:** `2.32 MB`  
+ **Installed size:** `2.33 MB`  
  **How to install:** `sudo apt install git-gui`  
  
  {{< spoiler "Dependencies:" >}}
@@ -722,7 +739,7 @@ PackagesInfo: |
   This package provides reference documentation for use by the 'man'
   utility and the 'git help' command.
  
- **Installed size:** `1.91 MB`  
+ **Installed size:** `2.05 MB`  
  **How to install:** `sudo apt install git-man`  
  
  
@@ -744,7 +761,7 @@ PackagesInfo: |
   remote Git repository, and a 'git mw' command that can show a preview
   of how wiki markup will be rendered before pushing.
  
- **Installed size:** `1017 KB`  
+ **Installed size:** `1.00 MB`  
  **How to install:** `sudo apt install git-mediawiki`  
  
  {{< spoiler "Dependencies:" >}}
@@ -771,7 +788,7 @@ PackagesInfo: |
   This package provides tools for interoperating with Subversion repositories,
   and importing SVN development history.
  
- **Installed size:** `1.17 MB`  
+ **Installed size:** `1.19 MB`  
  **How to install:** `sudo apt install git-svn`  
  
  {{< spoiler "Dependencies:" >}}
@@ -797,7 +814,7 @@ PackagesInfo: |
    
   This package provides the gitk program, a tcl/tk revision tree visualizer.
  
- **Installed size:** `1.74 MB`  
+ **Installed size:** `1.75 MB`  
  **How to install:** `sudo apt install gitk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -825,7 +842,7 @@ PackagesInfo: |
      (processing arguments in argv variable)
      invoked from within
  "load /usr/lib/x86_64-linux-gnu/libtk8.6.so"
-     ("package ifneeded Tk 8.6.12" script)
+     ("package ifneeded Tk 8.6.13" script)
      invoked from within
  "package require Tk"
      (file "/usr/bin/gitk" line 10)
@@ -853,7 +870,7 @@ PackagesInfo: |
   If libcgi-fast-perl is installed, gitweb can also be run over FastCGI
   (and served by nginx, for example).
  
- **Installed size:** `978 KB`  
+ **Installed size:** `994 KB`  
  **How to install:** `sudo apt install gitweb`  
  
  {{< spoiler "Dependencies:" >}}

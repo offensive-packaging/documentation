@@ -1,10 +1,10 @@
 ---
 Title: nipper-ng
-Homepage: https://code.google.com/p/nipper-ng/
+Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/nipper-ng
 Architectures: any
-Version: 0.11.10-1kali1
-Metapackages: kali-linux-everything kali-linux-large 
+Version: 0.11.10-1kali2
+Metapackages: kali-linux-everything kali-linux-large kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### nipper-ng
@@ -16,7 +16,7 @@ PackagesInfo: |
    
   This is a fork from nipper 0.11.10 release of the GNUv3 GPL code.
  
- **Installed size:** `773 KB`  
+ **Installed size:** `761 KB`  
  **How to install:** `sudo apt install nipper-ng`  
  
  {{< spoiler "Dependencies:" >}}

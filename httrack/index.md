@@ -1,9 +1,9 @@
 ---
 Title: httrack
 Homepage: http://www.httrack.com
-Repository: https://github.com/xroche/httrack/tree/master/src
+Repository: https://github.com/xroche/httrack.git
 Architectures: any all
-Version: 3.49.2-1.1
+Version: 3.49.4-1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-web 
 Icon: images/httrack-logo.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   interrupted downloads. HTTrack is fully configurable, and has an
   integrated help system.
  
- **Installed size:** `76 KB`  
+ **Installed size:** `66 KB`  
  **How to install:** `sudo apt install httrack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
  ```
  root@kali:~# httrack -h
  
- HTTrack version 3.49-2
+ HTTrack version 3.49-4
  	usage: httrack <URLs> [-option] [+<URL_FILTER>] [-<URL_FILTER>] [+<mime:MIME_FILTER>] [-<mime:MIME_FILTER>]
  	with options listed below: (* is the default value)
  
@@ -71,7 +71,7 @@ PackagesInfo: |
    TN timeout, number of seconds after a non-responding link is shutdown (--timeout[=N])
    RN number of retries, in case of timeout or non-fatal errors (*R1) (--retries[=N])
    JN traffic jam control, minimum transfert rate (bytes/seconds) tolerated for a link (--min-rate[=N])
-   HN host is abandonned if: 0=never, 1=timeout, 2=slow, 3=timeout or slow (--host-control[=N])
+   HN host is abandoned if: 0=never, 1=timeout, 2=slow, 3=timeout or slow (--host-control[=N])
  
  Links options:
   %P *extended parsing, attempt to parse all links, even in unknown tags or Javascript (%P0 don't use) (--extended-parsing[=N])
@@ -173,7 +173,7 @@ PackagesInfo: |
   #R  old FTP routines (debug) (--repair-cache)
   #T  generate transfer ops. log every minutes (--debug-xfrstats)
   #u  wait time (--advanced-wait)
-  #Z  generate transfer rate statictics every minutes (--debug-ratestats)
+  #Z  generate transfer rate statistics every minutes (--debug-ratestats)
  
  Dangerous options: (do NOT use unless you exactly know what you are doing)
   %!  bypass built-in security limits aimed to avoid bandwidth abuses (bandwidth, simultaneous connections) (--disable-security-limits)
@@ -193,18 +193,18 @@ PackagesInfo: |
    N5 Images/other in web/xxx and HTML in web/HTML
    N99 All files in web/, with random names (gadget !)
    N100 Site-structure, without www.domain.xxx/
-   N101 Identical to N1 exept that "web" is replaced by the site's name
-   N102 Identical to N2 exept that "web" is replaced by the site's name
-   N103 Identical to N3 exept that "web" is replaced by the site's name
-   N104 Identical to N4 exept that "web" is replaced by the site's name
-   N105 Identical to N5 exept that "web" is replaced by the site's name
-   N199 Identical to N99 exept that "web" is replaced by the site's name
-   N1001 Identical to N1 exept that there is no "web" directory
-   N1002 Identical to N2 exept that there is no "web" directory
-   N1003 Identical to N3 exept that there is no "web" directory (option set for g option)
-   N1004 Identical to N4 exept that there is no "web" directory
-   N1005 Identical to N5 exept that there is no "web" directory
-   N1099 Identical to N99 exept that there is no "web" directory
+   N101 Identical to N1 except that "web" is replaced by the site's name
+   N102 Identical to N2 except that "web" is replaced by the site's name
+   N103 Identical to N3 except that "web" is replaced by the site's name
+   N104 Identical to N4 except that "web" is replaced by the site's name
+   N105 Identical to N5 except that "web" is replaced by the site's name
+   N199 Identical to N99 except that "web" is replaced by the site's name
+   N1001 Identical to N1 except that there is no "web" directory
+   N1002 Identical to N2 except that there is no "web" directory
+   N1003 Identical to N3 except that there is no "web" directory (option set for g option)
+   N1004 Identical to N4 except that there is no "web" directory
+   N1005 Identical to N5 except that there is no "web" directory
+   N1099 Identical to N99 except that there is no "web" directory
  Details: User-defined option N
    '%n' Name of file without file type (ex: image)
    '%N' Name of file, including file type (ex: image.gif)
@@ -276,7 +276,7 @@ PackagesInfo: |
  example: httrack --continue
  continues a mirror in the current folder
  
- HTTrack version 3.49-2
+ HTTrack version 3.49-4
  Copyright (C) 1998-2017 Xavier Roche and other contributors
  ```
  
@@ -287,7 +287,7 @@ PackagesInfo: |
   This package adds supplemental documentation for httrack and webhttrack
   as a browsable html documentation
  
- **Installed size:** `982 KB`  
+ **Installed size:** `972 KB`  
  **How to install:** `sudo apt install httrack-doc`  
  
  
@@ -298,7 +298,7 @@ PackagesInfo: |
   This package adds supplemental files for using the httrack website copier
   library
  
- **Installed size:** `385 KB`  
+ **Installed size:** `374 KB`  
  **How to install:** `sudo apt install libhttrack-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -337,7 +337,7 @@ PackagesInfo: |
   such as Squid. It can also handle transparent HTTP requests to allow
   cached live connections inside an offline network.
  
- **Installed size:** `168 KB`  
+ **Installed size:** `164 KB`  
  **How to install:** `sudo apt install proxytrack`  
  
  {{< spoiler "Dependencies:" >}}
@@ -377,15 +377,89 @@ PackagesInfo: |
    
    Snapshots: http://www.httrack.com/page/21/
  
- **Installed size:** `135 KB`  
+ **Installed size:** `129 KB`  
  **How to install:** `sudo apt install webhttrack`  
  
  {{< spoiler "Dependencies:" >}}
- * iceape-browser | iceweasel | icecat | mozilla | firefox | mozilla-firefox | www-browser
+ * iceape-browser | iceweasel | icecat | mozilla | firefox | mozilla-firefox | www-browser | sensible-utils
  * libc6 
  * libhttrack2 
  * webhttrack-common
  {{< /spoiler >}}
+ 
+ ##### htsserver
+ 
+ Offline browser server : copy websites to a local directory
+ 
+ ```
+ root@kali:~# man htsserver
+ htsserver(1)                General Commands Manual               htsserver(1)
+ 
+ NAME
+        htsserver - offline browser server : copy websites to a local directory
+ 
+ SYNOPSIS
+        htsserver [ path/ ] [ keyword value [ keyword value .. ] ]
+ 
+ DESCRIPTION
+        htsserver  this  program  is  a web frontend server to httrack(1).  , a
+        website copier, used by webhttrack(1).
+ 
+ EXAMPLES
+        htsserver /usr/share/httrack/ path $HOME/websites lang 1
+                then, browse http://localhost:8080/
+ 
+ FILES
+        /etc/httrack.conf
+               The system wide configuration file.
+ 
+ ENVIRONMENT
+        HOME   Is being used if you defined in /etc/httrack.conf the line  path
+               ~/websites/#
+ 
+ DIAGNOSTICS
+        Errors/Warnings  are reported to hts-log.txt located in the destination
+        directory.
+ 
+ BUGS
+        Please reports bugs to <bugs@httrack.com>.  Include a  complete,  self-
+        contained  example  that  will  allow the bug to be reproduced, and say
+        which version of (web)httrack you are using. Do not  forget  to  detail
+        options used, OS version, and any other information you deem necessary.
+ 
+ COPYRIGHT
+        Copyright (C) 1998-2013 Xavier Roche and other contributors
+ 
+        This program is free software: you can redistribute it and/or modify it
+        under the terms of the GNU General Public License as published  by  the
+        Free  Software Foundation, either version 3 of the License, or (at your
+        option) any later version.
+ 
+        This program is distributed in the hope that it  will  be  useful,  but
+        WITHOUT  ANY  WARRANTY;  without  even  the  implied  warranty  of MER-
+        CHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  General
+        Public License for more details.
+ 
+        You should have received a copy of the GNU General Public License along
+        with this program. If not, see <http://www.gnu.org/licenses/>.
+ 
+ AVAILABILITY
+        The  most  recent released version of (web)httrack  can  be  found  at:
+        http://www.httrack.com
+ 
+ AUTHOR
+        Xavier Roche <roche@httrack.com>
+ 
+ SEE ALSO
+        The    HTML   documentation   (available   online   at   http://www.ht-
+        track.com/html/ ) contains more detailed information. Please also refer
+        to    the    httrack    FAQ   (available   online   at   http://www.ht-
+        track.com/html/faq.html )
+ 
+ httrack website copier             Mar 2003                       htsserver(1)
+ ```
+ 
+ - - -
  
  ##### webhttrack
  
@@ -394,9 +468,9 @@ PackagesInfo: |
  ```
  root@kali:~# webhttrack -h
  ** Warning: use the webhttrack frontend if available
- usage: /usr/lib/httrack/htsserver [--port <port>] [--ppid parent-pid] <path-to-html-root-dir> [key value [key value]..]
- example: /usr/lib/httrack/htsserver /usr/share/httrack/
- /usr/bin/webhttrack(675336): Could not spawn htsserver
+ usage: /usr/bin/htsserver [--port <port>] [--ppid parent-pid] <path-to-html-root-dir> [key value [key value]..]
+ example: /usr/bin/htsserver /usr/share/httrack/
+ /usr/bin/webhttrack(1280707): Could not spawn htsserver
  ```
  
  - - -

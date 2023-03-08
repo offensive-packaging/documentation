@@ -3,7 +3,7 @@ Title: hotpatch
 Homepage: https://github.com/vikasnkumar/hotpatch
 Repository: https://gitlab.com/kalilinux/packages/hotpatch
 Architectures: i386 amd64
-Version: 0.2-1kali3
+Version: 0.2-1kali4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   execution of the target process. The API is a C API, but
   also supported in C++.
  
- **Installed size:** `215 KB`  
+ **Installed size:** `221 KB`  
  **How to install:** `sudo apt install hotpatch`  
  
  {{< spoiler "Dependencies:" >}}

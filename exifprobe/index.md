@@ -4,7 +4,7 @@ Homepage: https://github.com/hfiguiere/exifprobe
 Repository: https://salsa.debian.org/pkg-security-team/exifprobe
 Architectures: any
 Version: 2.0.1+git20170416.3c2b769-5
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### exifprobe

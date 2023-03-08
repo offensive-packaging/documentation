@@ -4,7 +4,7 @@ Homepage: https://www.maltego.com
 Repository: https://gitlab.com/kalilinux/packages/maltego
 Architectures: all
 Version: 4.3.0-0kali1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering kali-tools-reporting kali-tools-social-engineering kali-tools-web 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-identify kali-tools-information-gathering kali-tools-reporting kali-tools-social-engineering kali-tools-web 
 Icon: images/maltego-logo.svg
 PackagesInfo: |
  ### maltego
@@ -34,13 +34,13 @@ PackagesInfo: |
    --reload /path/to/module.jar  install or reinstall a module JAR file
  
  Additional module options:
-   -o, --open <arg1>...<argN> 
+   -u, --updates <arg>        
+   -h, --hub <arg>            
    -p, --automationPort <arg> 
    -m, --machine <arg>        
-   -i, --import <arg>         
-   -h, --hub <arg>            
    -s, --serverHttpAllowed    
-   -u, --updates <arg>        
+   -o, --open <arg1>...<argN> 
+   -i, --import <arg>         
  
  Core options:
    --laf <LaF classname> use given LookAndFeel class instead of the default

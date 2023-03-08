@@ -62,7 +62,6 @@ PackagesInfo: |
  
  ##### x86_64-linux-gnu-python2-dbg-config
  
- Output build options for python C/C++ extensions or embedding
  
  ```
  root@kali:~# x86_64-linux-gnu-python2-dbg-config --help
@@ -464,7 +463,6 @@ PackagesInfo: |
  
  ##### python2-dbg-config
  
- Output build options for python C/C++ extensions or embedding
  
  ```
  root@kali:~# python2-dbg-config --help

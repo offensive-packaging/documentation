@@ -4,7 +4,7 @@ Homepage: https://github.com/libyal/libewf-legacy
 Repository: https://salsa.debian.org/pkg-security-team/libewf
 Architectures: any
 Version: 20140813-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ewf-tools
@@ -468,7 +468,7 @@ PackagesInfo: |
    
   This package contains Python 3 bindings for libewf.
  
- **Installed size:** `159 KB`  
+ **Installed size:** `158 KB`  
  **How to install:** `sudo apt install python3-libewf`  
  
  {{< spoiler "Dependencies:" >}}

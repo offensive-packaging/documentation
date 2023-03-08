@@ -4,7 +4,7 @@ Homepage: https://cisofy.com/lynis/
 Repository: https://salsa.debian.org/debian/lynis
 Architectures: all
 Version: 3.0.8-1.1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-vulnerability 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-vulnerability 
 Icon: images/lynis-logo.svg
 PackagesInfo: |
  ### lynis

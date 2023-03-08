@@ -3,7 +3,7 @@ Title: sniffjoke
 Homepage: https://github.com/vecna/sniffjoke
 Repository: https://gitlab.com/kalilinux/packages/sniffjoke
 Architectures: any
-Version: 0.4.1-1kali1
+Version: 0.4.1-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sniffing-spoofing 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   almost impossible to be correctly readed by a passive
   wiretapping technology (IDS or sniffer).
  
- **Installed size:** `522 KB`  
+ **Installed size:** `518 KB`  
  **How to install:** `sudo apt install sniffjoke`  
  
  {{< spoiler "Dependencies:" >}}

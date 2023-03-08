@@ -4,7 +4,7 @@ Homepage: http://p7zip.sourceforge.net/
 Repository: https://salsa.debian.org/debian/p7zip
 Architectures: any
 Version: 16.02+dfsg-8
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-reverse-engineering 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/p7zip-logo.svg
 PackagesInfo: |
  ### p7zip

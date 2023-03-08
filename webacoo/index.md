@@ -3,13 +3,13 @@ Title: webacoo
 Homepage: https://github.com/anestisb/WeBaCoo
 Repository: https://gitlab.com/kalilinux/packages/webacoo
 Architectures: all
-Version: 0.2.3-1kali2
+Version: 0.2.3-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### webacoo
  
-  Web Backdoor Cookie Script-Kit
+  Scripts for creating Web backdoors using cookies, with module support
  
  **Installed size:** `65 KB`  
  **How to install:** `sudo apt install webacoo`  

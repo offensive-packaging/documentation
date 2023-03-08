@@ -3,8 +3,8 @@ Title: cisco-auditing-tool
 Homepage: http://www.scrypt.net/
 Repository: https://gitlab.com/kalilinux/packages/cisco-auditing-tool
 Architectures: all
-Version: 1.0-1kali4
-Metapackages: kali-linux-everything kali-linux-large kali-tools-passwords kali-tools-vulnerability 
+Version: 1.0-1kali5
+Metapackages: kali-linux-everything kali-linux-large kali-tools-identify kali-tools-passwords kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cisco-auditing-tool

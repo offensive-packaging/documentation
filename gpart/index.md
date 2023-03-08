@@ -3,8 +3,8 @@ Title: gpart
 Homepage: https://github.com/baruch/gpart
 Repository: https://salsa.debian.org/pkg-security-team/gpart
 Architectures: any
-Version: 1:0.3-9
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 1:0.3-10
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### gpart
@@ -42,7 +42,7 @@ PackagesInfo: |
    
   Gpart is useful in recovery actions and forensics investigations.
  
- **Installed size:** `81 KB`  
+ **Installed size:** `76 KB`  
  **How to install:** `sudo apt install gpart`  
  
  {{< spoiler "Dependencies:" >}}

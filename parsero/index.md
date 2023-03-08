@@ -3,7 +3,7 @@ Title: parsero
 Homepage: https://github.com/behindthefirewalls/Parsero
 Repository: https://gitlab.com/kalilinux/packages/parsero
 Architectures: all
-Version: 0.75-0kali3
+Version: 0.75-0kali4
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

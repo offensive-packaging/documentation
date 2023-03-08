@@ -4,7 +4,7 @@ Homepage: https://www.sleuthkit.org/mac-robber
 Repository: https://salsa.debian.org/pkg-security-team/mac-robber
 Architectures: any
 Version: 1.02-13
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### mac-robber

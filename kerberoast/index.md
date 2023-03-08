@@ -3,7 +3,7 @@ Title: kerberoast
 Homepage: https://github.com/nidem/kerberoast
 Repository: https://gitlab.com/kalilinux/packages/kerberoast
 Architectures: all
-Version: 0.0~git20210107.e983ba1-1
+Version: 0.0~git20221231.cc5aa6e-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

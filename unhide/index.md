@@ -4,7 +4,7 @@ Homepage: https://www.unhide-forensics.info
 Repository: https://salsa.debian.org/pkg-security-team/unhide
 Architectures: any
 Version: 20220611-1
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### unhide

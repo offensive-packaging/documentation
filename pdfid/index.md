@@ -4,7 +4,7 @@ Homepage: https://blog.didierstevens.com/programs/pdf-tools/
 Repository: https://gitlab.com/kalilinux/packages/pdfid
 Architectures: all
 Version: 0.2.8-0kali1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/pdfid-logo.svg
 PackagesInfo: |
  ### pdfid

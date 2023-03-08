@@ -3,7 +3,7 @@ Title: tightvnc
 Homepage: https://www.tightvnc.com
 Repository: https://salsa.debian.org/debian-remote-team/tightvnc
 Architectures: any
-Version: 1:1.3.10-6
+Version: 1:1.3.10-7
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   This package provides the vncpasswd tool mandatory for the tightvncserver
   and optional for the xtightvncviewer.
  
- **Installed size:** `67 KB`  
+ **Installed size:** `69 KB`  
  **How to install:** `sudo apt install tightvncpasswd`  
  
  {{< spoiler "Dependencies:" >}}

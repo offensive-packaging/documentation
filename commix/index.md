@@ -3,7 +3,7 @@ Title: commix
 Homepage: https://commixproject.com
 Repository: https://gitlab.com/kalilinux/packages/commix
 Architectures: all
-Version: 3.6-0kali1
+Version: 3.7-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/commix-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   injection vulnerability in a certain vulnerable parameter or string.
   Commix is written in Python programming language.
  
- **Installed size:** `1.21 MB`  
+ **Installed size:** `1.20 MB`  
  **How to install:** `sudo apt install commix`  
  
  {{< spoiler "Dependencies:" >}}
@@ -64,6 +64,7 @@ PackagesInfo: |
      -r REQUESTFILE      Load HTTP request from a file.
      --crawl=CRAWLDEPTH  Crawl the website starting from the target URL
                          (Default: 1).
+     --crawl-exclude=..  Regexp to exclude pages from crawling (e.g. "logout").
      -x SITEMAP_URL      Parse target(s) from remote sitemap(.xml) file.
      --method=METHOD     Force usage of given HTTP method (e.g. PUT)
  

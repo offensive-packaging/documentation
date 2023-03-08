@@ -3,7 +3,7 @@ Title: windows-binaries
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/windows-binaries
 Architectures: all
-Version: 0.6.9
+Version: 0.6.10
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -11,7 +11,7 @@ PackagesInfo: |
  
   A collection of Windows executables for use on penetration tests.
  
- **Installed size:** `5.03 MB`  
+ **Installed size:** `5.53 MB`  
  **How to install:** `sudo apt install windows-binaries`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,8 +23,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# windows-binaries -h
- [i] You also may wish to look in: /usr/share/windows-resources/
- 
  
  > windows-binaries ~ Various pentesting Windows binaries
  
@@ -63,7 +61,6 @@ PackagesInfo: |
  |-- powercat
  |-- powershell-empire -> ../powershell-empire
  |-- powersploit
- |-- regripper
  |-- sbd
  |-- secure-socket-funneling
  |-- shellter

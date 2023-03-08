@@ -3,7 +3,7 @@ Title: lapsdumper
 Homepage: https://github.com/n00py/LAPSDumper
 Repository: https://gitlab.com/kalilinux/packages/lapsdumper
 Architectures: all
-Version: 0+git20220412-0kali1
+Version: 0+git20221207-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   A tool that dumps every LAPS password the account
   has the ability to read with a domain.
  
- **Installed size:** `14 KB`  
+ **Installed size:** `16 KB`  
  **How to install:** `sudo apt install lapsdumper`  
  
  {{< spoiler "Dependencies:" >}}
@@ -24,7 +24,9 @@ PackagesInfo: |
  
  ```
  root@kali:~# lapsdumper -h
+ LAPS Dumper - Running at 03-08-2023 09:26:49
  usage: lapsdumper [-h] -u USERNAME -p PASSWORD [-l LDAPSERVER] -d DOMAIN
+                   [-c COMPUTER] [-o OUTPUT]
  
  Dump LAPS Passwords
  
@@ -38,6 +40,10 @@ PackagesInfo: |
                          LDAP server (or domain)
    -d DOMAIN, --domain DOMAIN
                          Domain
+   -c COMPUTER, --computer COMPUTER
+                         Target computer
+   -o OUTPUT, --output OUTPUT
+                         Output file to CSV
  ```
  
  - - -

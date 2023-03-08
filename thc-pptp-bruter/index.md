@@ -3,7 +3,7 @@ Title: thc-pptp-bruter
 Homepage: http://www.thc.org/releases.php
 Repository: https://gitlab.com/kalilinux/packages/thc-pptp-bruter
 Architectures: any
-Version: 0.1.4-1kali3
+Version: 0.1.4-1kali4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/thc-pptp-bruter-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   and Cisco gateways.  Exploits a weakness in Microsoft's anti-brute force
   implementation which makes it possible to try 300 passwords the second.
  
- **Installed size:** `48 KB`  
+ **Installed size:** `47 KB`  
  **How to install:** `sudo apt install thc-pptp-bruter`  
  
  {{< spoiler "Dependencies:" >}}

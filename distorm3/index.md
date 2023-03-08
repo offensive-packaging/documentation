@@ -4,7 +4,7 @@ Homepage: https://github.com/gdabah/distorm
 Repository: https://salsa.debian.org/debian/distorm3
 Architectures: any all
 Version: 3.4.1-5
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libdistorm3-3

@@ -4,7 +4,7 @@ Homepage: https://github.com/byt3bl33d3r/WitnessMe
 Repository: https://gitlab.com/kalilinux/packages/witnessme
 Architectures: all
 Version: 1.5.0+git20201026-0kali2
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### witnessme

@@ -3,8 +3,8 @@ Title: util-linux
 Homepage: https://www.kernel.org/pub/linux/utils/util-linux/
 Repository: https://salsa.debian.org/debian/util-linux
 Architectures: any all
-Version: 2.38.1-1.1
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-hardware kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
+Version: 2.38.1-5
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-detect kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-hardware kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-recover kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### bsdextrautils
@@ -13,7 +13,7 @@ PackagesInfo: |
   hd, hexdump, look, ul and write.
   Other BSD utilities are provided by bsdutils and calendar.
  
- **Installed size:** `338 KB`  
+ **Installed size:** `337 KB`  
  **How to install:** `sudo apt install bsdextrautils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -98,7 +98,6 @@ PackagesInfo: |
  
  ##### column
  
- Spreadsheet::WriteExcel::Chart::A writer class for Excel Column charts.
  Columnate lists
  
  ```
@@ -273,7 +272,6 @@ PackagesInfo: |
  ##### write
  
  Send a message to another user
- Write to a file descriptor
  
  ```
  root@kali:~# write -h
@@ -298,7 +296,7 @@ PackagesInfo: |
   system: logger, renice, script, scriptlive, scriptreplay and wall. The
   remaining standard BSD utilities are provided by bsdextrautils.
  
- **Installed size:** `351 KB`  
+ **Installed size:** `355 KB`  
  **How to install:** `sudo apt install bsdutils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -520,7 +518,7 @@ PackagesInfo: |
   You can also use eject to properly disconnect external mass-storage
   devices like digital cameras or portable music players.
  
- **Installed size:** `133 KB`  
+ **Installed size:** `132 KB`  
  **How to install:** `sudo apt install eject`  
  
  {{< spoiler "Dependencies:" >}}
@@ -765,7 +763,7 @@ PackagesInfo: |
    
   This package contains the development environment for the blkid library.
  
- **Installed size:** `874 KB`  
+ **Installed size:** `875 KB`  
  **How to install:** `sudo apt install libblkid-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -819,7 +817,7 @@ PackagesInfo: |
   The libfdisk library is used for manipulating partition tables. It is
   the core of the fdisk, cfdisk, and sfdisk tools.
  
- **Installed size:** `529 KB`  
+ **Installed size:** `533 KB`  
  **How to install:** `sudo apt install libfdisk1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -907,7 +905,7 @@ PackagesInfo: |
    
   See RFC 4122 for more information.
  
- **Installed size:** `78 KB`  
+ **Installed size:** `79 KB`  
  **How to install:** `sudo apt install libuuid1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -922,7 +920,7 @@ PackagesInfo: |
   This package provides the mount(8), umount(8), swapon(8),
   swapoff(8), and losetup(8) commands.
  
- **Installed size:** `394 KB`  
+ **Installed size:** `393 KB`  
  **How to install:** `sudo apt install mount`  
  
  {{< spoiler "Dependencies:" >}}
@@ -995,7 +993,6 @@ PackagesInfo: |
  
  ##### mount
  
- Mount filesystem
  Mount a filesystem
  
  ```
@@ -1073,7 +1070,6 @@ PackagesInfo: |
  
  ##### swapoff
  
- Start/stop swapping to file/device
  Enable/disable devices and files for paging and swapping
  
  ```
@@ -1106,7 +1102,6 @@ PackagesInfo: |
  
  ##### swapon
  
- Start/stop swapping to file/device
  Enable/disable devices and files for paging and swapping
  
  ```
@@ -1165,7 +1160,6 @@ PackagesInfo: |
  
  ##### umount
  
- Unmount filesystem
  Unmount filesystems
  
  ```
@@ -1270,7 +1264,7 @@ PackagesInfo: |
   messages, create new filesystems, view block device information,
   interface with real time clock, etc.
  
- **Installed size:** `4.86 MB`  
+ **Installed size:** `4.85 MB`  
  **How to install:** `sudo apt install util-linux`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1794,7 +1788,6 @@ PackagesInfo: |
  ##### fallocate
  
  Preallocate or deallocate space to a file
- Manipulate file space
  
  ```
  root@kali:~# fallocate -h
@@ -1954,7 +1947,6 @@ PackagesInfo: |
  ##### flock
  
  Manage locks from shell scripts
- Apply or remove an advisory lock on an open file
  
  ```
  root@kali:~# flock -h
@@ -2141,7 +2133,6 @@ PackagesInfo: |
  ##### getopt
  
  Parse command options (enhanced)
- Parse command-line options
  
  ```
  root@kali:~# getopt -h
@@ -3507,7 +3498,6 @@ PackagesInfo: |
  
  ##### pivot_root
  
- Change the root mount
  Change the root filesystem
  
  ```
@@ -3530,8 +3520,6 @@ PackagesInfo: |
  ##### prlimit
  
  Get and set process resource limits
- Get/set resource limits
- Vlimit (3)           - get/set resource limits
  
  ```
  root@kali:~# prlimit -h
@@ -3600,7 +3588,7 @@ PackagesInfo: |
  
  Options:
   -m, --mapfile <mapfile>   (defaults: "/boot/System.map" and
-                                       "/boot/System.map-6.0.0-kali3-amd64")
+                                       "/boot/System.map-6.1.0-kali5-amd64")
   -p, --profile <pro-file>  (default:  "/proc/profile")
   -M, --multiplier <mult>   set the profiling multiplier to <mult>
   -i, --info                print only info about the sampling step
@@ -3848,7 +3836,6 @@ PackagesInfo: |
  ##### setsid
  
  Run a program in a new session
- Creates a session and sets the process group ID
  
  ```
  root@kali:~# setsid -h
@@ -4110,7 +4097,6 @@ PackagesInfo: |
  ##### unshare
  
  Run program in new namespaces
- Disassociate parts of the process execution context
  
  ```
  root@kali:~# unshare -h
@@ -4402,7 +4388,7 @@ PackagesInfo: |
   Tools commonly found on systems where humans login interactively,
   or are needed with non-standard system configurations.
  
- **Installed size:** `362 KB`  
+ **Installed size:** `366 KB`  
  **How to install:** `sudo apt install util-linux-extra`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4604,7 +4590,7 @@ PackagesInfo: |
   They are needed when you want the programs in util-linux to print their
   messages in other languages than English.
  
- **Installed size:** `7.83 MB`  
+ **Installed size:** `7.78 MB`  
  **How to install:** `sudo apt install util-linux-locales`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4621,7 +4607,7 @@ PackagesInfo: |
    
   This package contains the development environment for the uuid library.
  
- **Installed size:** `112 KB`  
+ **Installed size:** `113 KB`  
  **How to install:** `sudo apt install uuid-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4649,7 +4635,7 @@ PackagesInfo: |
   large numbers of threads trying to grab UUIDs running on different CPUs.
   It is used by libuuid as well as the uuidgen program.
  
- **Installed size:** `171 KB`  
+ **Installed size:** `174 KB`  
  **How to install:** `sudo apt install uuid-runtime`  
  
  {{< spoiler "Dependencies:" >}}
@@ -4685,6 +4671,8 @@ PackagesInfo: |
   -P, --no-pid            do not create pid file
   -F, --no-fork           do not daemonize using double-fork
   -S, --socket-activation do not create listening socket
+  -C, --cont-clock[=<NUM>[hd]]
+                          activate continuous clock handling
   -d, --debug             run in debugging mode
   -q, --quiet             turn on quiet mode
  

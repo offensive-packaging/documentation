@@ -3,7 +3,7 @@ Title: mc
 Homepage: https://www.midnight-commander.org
 Repository: https://salsa.debian.org/debian/mc
 Architectures: any all
-Version: 3:4.8.28-1
+Version: 3:4.8.29-2
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: images/mc-logo.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   Filesystem (VFS), that allows files on remote systems (e.g. FTP, SSH
   servers) and files inside archives to be manipulated like real files.
  
- **Installed size:** `1.47 MB`  
+ **Installed size:** `1.45 MB`  
  **How to install:** `sudo apt install mc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
    mc [OPTION?] [this_dir] [other_panel_dir]
  
  
- GNU Midnight Commander 4.8.28
+ GNU Midnight Commander 4.8.29
  
  
  Help Options:
@@ -78,7 +78,7 @@ PackagesInfo: |
    mcdiff [OPTION?] file1 file2
  
  
- GNU Midnight Commander 4.8.28
+ GNU Midnight Commander 4.8.29
  
  
  Help Options:
@@ -117,7 +117,7 @@ PackagesInfo: |
    mcedit [OPTION?] [+lineno] file1[:lineno] [file2[:lineno]...]
  
  
- GNU Midnight Commander 4.8.28
+ GNU Midnight Commander 4.8.29
  
  
  Help Options:
@@ -156,7 +156,7 @@ PackagesInfo: |
    mcview [OPTION?] file
  
  
- GNU Midnight Commander 4.8.28
+ GNU Midnight Commander 4.8.29
  
  
  Help Options:
@@ -196,7 +196,7 @@ PackagesInfo: |
    
   This package provides architecture independent files
  
- **Installed size:** `6.01 MB`  
+ **Installed size:** `6.06 MB`  
  **How to install:** `sudo apt install mc-data`  
  
  

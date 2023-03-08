@@ -3,7 +3,7 @@ Title: siparmyknife
 Homepage: https://packetstormsecurity.com/files/107301/SIP-Army-Knife-Fuzzer-11232011.html
 Repository: https://gitlab.com/kalilinux/packages/siparmyknife
 Architectures: all
-Version: 11232011-1kali1
+Version: 11232011-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

@@ -4,7 +4,7 @@ Homepage: http://www.garloff.de/kurt/linux/ddrescue/
 Repository: https://gitlab.com/kalilinux/packages/ddrescue
 Architectures: any
 Version: 1.99.11-0kali4
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ddrescue

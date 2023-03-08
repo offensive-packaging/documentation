@@ -1,10 +1,10 @@
 ---
 Title: javasnoop
-Homepage: https://code.google.com/p/javasnoop/
+Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/javasnoop
 Architectures: all
-Version: 1.1-rc2-1kali3
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering 
+Version: 1.1-rc2-1kali4
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/javasnoop-logo.svg
 PackagesInfo: |
  ### javasnoop

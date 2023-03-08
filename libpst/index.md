@@ -4,7 +4,7 @@ Homepage: https://www.five-ten-sg.com/libpst/
 Repository: https://salsa.debian.org/debian/libpst
 Architectures: any
 Version: 0.6.76-1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libpst-dev

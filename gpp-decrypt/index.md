@@ -3,7 +3,7 @@ Title: gpp-decrypt
 Homepage: http://carnal0wnage.attackresearch.com/2012/10/group-policy-preferences-and-getting.html
 Repository: https://gitlab.com/kalilinux/packages/gpp-decrypt
 Architectures: all
-Version: 0.1-1kali1
+Version: 0.1-1kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

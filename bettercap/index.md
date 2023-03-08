@@ -42,7 +42,7 @@ PackagesInfo: |
   This package contains a Swiss Army knife for 802.11, BLE and Ethernet networks
   reconnaissance and attacks.
  
- **Installed size:** `23.66 MB`  
+ **Installed size:** `24.05 MB`  
  **How to install:** `sudo apt install bettercap`  
  
  {{< spoiler "Dependencies:" >}}

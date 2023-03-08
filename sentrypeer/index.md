@@ -4,7 +4,7 @@ Homepage: https://sentrypeer.org
 Repository: https://gitlab.com/kalilinux/packages/sentrypeer
 Architectures: amd64 arm64
 Version: 1.4.1-0kali1
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-detect 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### sentrypeer

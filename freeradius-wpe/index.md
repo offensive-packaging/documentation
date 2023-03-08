@@ -32,7 +32,7 @@ PackagesInfo: |
  * libpcap0.8 
  * libpcre3
  * libperl5.36 
- * libpython3.10 
+ * libpython3.11 
  * libsqlite3-0 
  * libssl3 
  * libsystemd0

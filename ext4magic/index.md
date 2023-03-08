@@ -4,7 +4,7 @@ Homepage: http://ext4magic.sf.net/ext4magic_en.html
 Repository: https://salsa.debian.org/pkg-security-team/ext4magic
 Architectures: any
 Version: 0.3.2-14
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ext4magic

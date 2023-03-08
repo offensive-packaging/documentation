@@ -2,11 +2,22 @@
 Title: sudo
 Homepage: https://www.sudo.ws/
 Repository: https://salsa.debian.org/sudo-team/sudo
-Architectures: any
-Version: 1.9.11p3-2
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-reporting kali-tools-social-engineering kali-tools-vulnerability 
+Architectures: any all
+Version: 1.9.13p1-1
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-identify kali-tools-post-exploitation kali-tools-reporting kali-tools-social-engineering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
+ ### libnss-sudo
+ 
+  This empty package provides the basic configuration needed to enable the
+  `sudoers` NSS service.
+ 
+ **Installed size:** `667 KB`  
+ **How to install:** `sudo apt install libnss-sudo`  
+ 
+ 
+ - - -
+ 
  ### sudo
  
   Sudo is a program designed to allow a sysadmin to give limited root
@@ -16,7 +27,7 @@ PackagesInfo: |
   This version is built with minimal shared library dependencies, use the
   sudo-ldap package instead if you need LDAP support for sudoers.
  
- **Installed size:** `5.77 MB`  
+ **Installed size:** `5.90 MB`  
  **How to install:** `sudo apt install sudo`  
  
  {{< spoiler "Dependencies:" >}}
@@ -26,7 +37,6 @@ PackagesInfo: |
  * libpam-modules
  * libpam0g 
  * libselinux1 
- * lsb-base
  * zlib1g 
  {{< /spoiler >}}
  
@@ -101,13 +111,13 @@ PackagesInfo: |
  sudo - execute a command as another user
  
  usage: sudo -h | -K | -k | -V
- usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
- usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
-             [command]
- usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group]
-             [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
-             [VAR=value] [-i|-s] [<command>]
- usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+ usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+ usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+             [command [arg ...]]
+ usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory] [-g
+             group] [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
+             [VAR=value] [-i | -s] [command [arg ...]]
+ usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory] [-g group]
              [-h host] [-p prompt] [-R directory] [-T timeout] [-u user] file ...
  
  Options:
@@ -163,13 +173,13 @@ PackagesInfo: |
  sudo - execute a command as another user
  
  usage: sudo -h | -K | -k | -V
- usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
- usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
-             [command]
- usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group]
-             [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
-             [VAR=value] [-i|-s] [<command>]
- usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+ usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+ usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+             [command [arg ...]]
+ usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory] [-g
+             group] [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
+             [VAR=value] [-i | -s] [command [arg ...]]
+ usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory] [-g group]
              [-h host] [-p prompt] [-R directory] [-T timeout] [-u user] file ...
  
  Options:
@@ -315,9 +325,9 @@ PackagesInfo: |
  sudoedit - edit files as another user
  
  usage: sudoedit -h | -V
- usage: sudoedit [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
-                 [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
-                 file ...
+ usage: sudoedit [-ABkNnS] [-r role] [-t type] [-C num] [-D directory] [-g
+                 group] [-h host] [-p prompt] [-R directory] [-T timeout] [-u
+                 user] file ...
  
  Options:
    -A, --askpass                 use a helper program for password prompting
@@ -355,9 +365,9 @@ PackagesInfo: |
  sudoedit - edit files as another user
  
  usage: sudoedit -h | -V
- usage: sudoedit [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
-                 [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
-                 file ...
+ usage: sudoedit [-ABkNnS] [-r role] [-t type] [-C num] [-D directory] [-g
+                 group] [-h host] [-p prompt] [-R directory] [-T timeout] [-u
+                 user] file ...
  
  Options:
    -A, --askpass                 use a helper program for password prompting
@@ -452,6 +462,7 @@ PackagesInfo: |
    -c, --check              check-only mode
    -f, --file=sudoers       specify sudoers file location
    -h, --help               display help message and exit
+   -I, --no-includes        do not edit include files
    -q, --quiet              less verbose (quiet) syntax error messages
    -s, --strict             strict syntax checking
    -V, --version            display version information and exit
@@ -474,6 +485,7 @@ PackagesInfo: |
    -c, --check              check-only mode
    -f, --file=sudoers       specify sudoers file location
    -h, --help               display help message and exit
+   -I, --no-includes        do not edit include files
    -q, --quiet              less verbose (quiet) syntax error messages
    -s, --strict             strict syntax checking
    -V, --version            display version information and exit
@@ -492,7 +504,7 @@ PackagesInfo: |
   sudoers database to be distributed via LDAP.  Authentication is still
   performed via pam.
  
- **Installed size:** `5.84 MB`  
+ **Installed size:** `5.97 MB`  
  **How to install:** `sudo apt install sudo-ldap`  
  
  {{< spoiler "Dependencies:" >}}
@@ -500,10 +512,10 @@ PackagesInfo: |
  * libaudit1 
  * libc6 
  * libldap-2.5-0 
+ * libnss-sudo
  * libpam-modules
  * libpam0g 
  * libselinux1 
- * lsb-base
  * zlib1g 
  {{< /spoiler >}}
  
@@ -547,13 +559,13 @@ PackagesInfo: |
  sudo - execute a command as another user
  
  usage: sudo -h | -K | -k | -V
- usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
- usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
-             [command]
- usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group]
-             [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
-             [VAR=value] [-i|-s] [<command>]
- usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+ usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+ usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+             [command [arg ...]]
+ usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory] [-g
+             group] [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
+             [VAR=value] [-i | -s] [command [arg ...]]
+ usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory] [-g group]
              [-h host] [-p prompt] [-R directory] [-T timeout] [-u user] file ...
  
  Options:
@@ -654,9 +666,9 @@ PackagesInfo: |
  sudoedit - edit files as another user
  
  usage: sudoedit -h | -V
- usage: sudoedit [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
-                 [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
-                 file ...
+ usage: sudoedit [-ABkNnS] [-r role] [-t type] [-C num] [-D directory] [-g
+                 group] [-h host] [-p prompt] [-R directory] [-T timeout] [-u
+                 user] file ...
  
  Options:
    -A, --askpass                 use a helper program for password prompting
@@ -725,6 +737,7 @@ PackagesInfo: |
    -c, --check              check-only mode
    -f, --file=sudoers       specify sudoers file location
    -h, --help               display help message and exit
+   -I, --no-includes        do not edit include files
    -q, --quiet              less verbose (quiet) syntax error messages
    -s, --strict             strict syntax checking
    -V, --version            display version information and exit

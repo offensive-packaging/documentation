@@ -3,7 +3,7 @@ Title: metasploit-framework
 Homepage: https://www.metasploit.com/
 Repository: https://gitlab.com/kalilinux/packages/metasploit-framework
 Architectures: any
-Version: 6.2.26-0kali1
+Version: 6.3.4-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web 
 Icon: images/metasploit-framework-logo.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   vulnerability research, exploit development, and the creation of custom
   security tools.
  
- **Installed size:** `456.18 MB`  
+ **Installed size:** `470.91 MB`  
  **How to install:** `sudo apt install metasploit-framework`  
  
  {{< spoiler "Dependencies:" >}}
@@ -28,7 +28,7 @@ PackagesInfo: |
  * libgcc-s1 
  * libpcap0.8 
  * libpq5 
- * libruby3.0 
+ * libruby3.1 
  * libsqlite3-0 
  * libssl3 
  * libstdc++6 
@@ -48,7 +48,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# msf-egghunter --help
+ root@kali:~# msf-egghunter -h
  Usage: msf-egghunter [options]
  Example: msf-egghunter -f python -e W00T
  
@@ -317,7 +317,7 @@ PackagesInfo: |
  Console options:
      -a, --ask                        Ask before exiting Metasploit or accept 'exit -y'
      -H, --history-file FILE          Save command history to the specified file
-     -l, --logger STRING              Specify a logger to use (TimestampColorlessFlatfile, Flatfile, StdoutWithoutTimestamps, Stdout, Stderr)
+     -l, --logger STRING              Specify a logger to use (StdoutWithoutTimestamps, Stdout, Stderr, Flatfile, TimestampColorlessFlatfile)
          --[no-]readline
      -L, --real-readline              Use the system Readline library instead of RbReadline
      -o, --output FILE                Output to the specified file

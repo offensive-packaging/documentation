@@ -3,7 +3,7 @@ Title: nmap
 Homepage: https://nmap.org/
 Repository: https://gitlab.com/kalilinux/packages/nmap
 Architectures: any all
-Version: 7.93+dfsg1-0kali1
+Version: 7.93+dfsg1-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web 
 Icon: images/nmap-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   with some new features such as IPv6 and SSL support. Port scanning
   support has been removed.
  
- **Installed size:** `831 KB`  
+ **Installed size:** `820 KB`  
  **How to install:** `sudo apt install ncat`  
  
  {{< spoiler "Dependencies:" >}}
@@ -97,7 +97,7 @@ PackagesInfo: |
   hosts coming up and down, ports becoming open or closed, and things like that.
   It can produce output in human-readable text or machine-readable XML formats.
  
- **Installed size:** `434 KB`  
+ **Installed size:** `423 KB`  
  **How to install:** `sudo apt install ndiff`  
  
  {{< spoiler "Dependencies:" >}}
@@ -136,7 +136,7 @@ PackagesInfo: |
   supported in both GUI and commandline modes. Several popular handheld
   devices are also supported, including the Sharp Zaurus and the iPAQ.
  
- **Installed size:** `4.86 MB`  
+ **Installed size:** `4.85 MB`  
  **How to install:** `sudo apt install nmap`  
  
  {{< spoiler "Dependencies:" >}}

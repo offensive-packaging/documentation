@@ -4,7 +4,7 @@ Homepage: https://www.vanheusden.com/recoverdm
 Repository: https://salsa.debian.org/pkg-security-team/recoverdm
 Architectures: any
 Version: 0.20-8
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### recoverdm

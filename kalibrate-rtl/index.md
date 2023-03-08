@@ -3,7 +3,7 @@ Title: kalibrate-rtl
 Homepage: https://github.com/steve-m/kalibrate-rtl
 Repository: https://gitlab.com/kalilinux/packages/kalibrate-rtl
 Architectures: any
-Version: 0.4.1+git20191125-0kali1
+Version: 0.4.1+git20191125-0kali2
 Metapackages: kali-linux-everything kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   can use those GSM base stations to calculate the local oscillator frequency
   offset.
  
- **Installed size:** `58 KB`  
+ **Installed size:** `61 KB`  
  **How to install:** `sudo apt install kalibrate-rtl`  
  
  {{< spoiler "Dependencies:" >}}

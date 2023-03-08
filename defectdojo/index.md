@@ -4,7 +4,7 @@ Homepage: https://github.com/DefectDojo/django-DefectDojo
 Repository: https://gitlab.com/kalilinux/packages/defectdojo
 Architectures: amd64 arm64 armhf
 Version: 2.12.0-0kali2
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### defectdojo
@@ -85,6 +85,10 @@ PackagesInfo: |
  ALTER ROLE
  Waiting for database to be reachable 
  Making migrations
+ Migrations for 'dojo':
+   dojo/db_migrations/0164_alter_system_settings_time_zone.py
+     - Alter field time_zone on system_settings
+ Migrating
  ```
  
  - - -

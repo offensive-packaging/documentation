@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: starkiller
 Homepage: https://github.com/BC-SECURITY/Starkiller
 Repository: https://gitlab.com/kalilinux/packages/starkiller

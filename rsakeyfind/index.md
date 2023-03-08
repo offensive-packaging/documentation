@@ -4,7 +4,7 @@ Homepage: https://citp.princeton.edu/our-work/memory/code/
 Repository: https://salsa.debian.org/pkg-security-team/rsakeyfind
 Architectures: any
 Version: 1:1.0-8
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### rsakeyfind

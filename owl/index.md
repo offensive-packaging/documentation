@@ -3,7 +3,7 @@ Title: owl
 Homepage: https://owlink.org/
 Repository: https://gitlab.com/kalilinux/packages/owl
 Architectures: any
-Version: 0~git20200813-0kali1
+Version: 0~git20200813-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   networking stack by providing a virtual network interface such that existing
   IPv6-capable programs can use AWDL without modification.
  
- **Installed size:** `85 KB`  
+ **Installed size:** `81 KB`  
  **How to install:** `sudo apt install owl`  
  
  {{< spoiler "Dependencies:" >}}

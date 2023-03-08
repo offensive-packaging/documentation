@@ -30,7 +30,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# twofi --help
+ root@kali:~# twofi -h
  twoif 2.0-beta Robin Wood (robin@digininja.org) (www.digininja.org)
  twoif - Twitter Words of Interest
  

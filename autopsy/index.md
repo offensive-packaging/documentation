@@ -4,7 +4,7 @@ Homepage: https://www.sleuthkit.org/autopsy/
 Repository: https://salsa.debian.org/debian/autopsy
 Architectures: all
 Version: 2.24-5
-Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/autopsy-logo.svg
 PackagesInfo: |
  ### autopsy

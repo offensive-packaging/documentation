@@ -3,7 +3,7 @@ Title: o-saft
 Homepage: https://owasp.org/www-project-o-saft/
 Repository: https://salsa.debian.org/pkg-security-team/o-saft
 Architectures: all
-Version: 22.02.22-1
+Version: 22.11.22-1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
   options so that it can be used for comprehensive and special checks by
   experienced people.
  
- **Installed size:** `2.23 MB`  
+ **Installed size:** `2.26 MB`  
  **How to install:** `sudo apt install o-saft`  
  
  {{< spoiler "Dependencies:" >}}
@@ -89,7 +89,6 @@ PackagesInfo: |
            o-saft.pl +vulns example.tld
  
          * Check for all known ciphers (independant of SSL library):
-           o-saft.pl +cipherraw example.tld --range=full
            checkAllCiphers.pl example.tld
            checkAllCiphers.pl example.tld --range=full --v
  
@@ -192,6 +191,8 @@ PackagesInfo: |
          However, the user "should do something" if necessary depending on the
          reported results.
  
+         Developers may read more details on the concept in  docs/concepts.txt
+ 
      This help text
  
          The sequence of the sections in the help text doesn't strictly follow
@@ -207,10 +208,10 @@ PackagesInfo: |
          interpretation, if the result is "good" or "bad", to the user.
          Background:  it is not always possible to rate a result as  "good" or
          "bad" or "insecure" or whatever. That's why  O-Saft  can not give the
-         "the best" or a "proper"  recommendation.  In practice it  depends on
-         the context what a recommendation or countermeasure should be. That's
-         why results are marked  'yes'  or  'no'  if considered "questionable"
-         or "not good" (for example according other checks).
+         "the best" or "proper" recommendation.  In practice it depends on the
+         context what a recommendation or countermeasure should be. That's why
+         results are marked  'yes'  or  'no'  if considered "questionable", or
+         "not good" (for example according other checks).
  
          For more details please see  RESULTS  below.
  
@@ -239,8 +240,8 @@ PackagesInfo: |
            * --openssl=TOOL  TOOL only used for  +cipher  --ciphermode=openssl
            * --legacy=owasp  option obsolete
  
-         The commands  +cipherall  and  +cipherraw  are "converted" to the new
-         syntax, as follows:
+         The historic commands  +cipherall  and  +cipherraw should be replaced
+         with the new syntax, as follows:
  
                VERSION < 19.11.19           VERSION > 19.11.19
               #----------------------------+---------------------------------
@@ -395,25 +396,19 @@ PackagesInfo: |
  
        +ciphers
  
-           Show ciphers offered by local SSL implementation.
- 
-           This commands prints the ciphers in a format like "openssl ciphers"
-           does. It also accepts the  -v  and  -V  option. The  --legacy=TYPE
-           option can be used as described for  +list  command.
+           Show known ciphers in format like "openssl ciphers".
+           It also accepts the  -v  and  -V  option.
            Use  +list  command for more information according ciphers.
  
        +list
  
            Show all ciphers supported by this tool. This includes cryptogrphic
-           details of the cipher and some internal details about the rating.
- 
-           In contrast to the  +ciphers  command,  +list  uses  TAB characters
-           instead of spaces to seperate columns.  It also prints table header
-           lines by default.
+           details of the cipher and some internal details.
  
            Different output formats are used for the  --legacy=*  option:
-             * --legacy=simple   tabular output of cipher values
-             * --legacy=full     as  --legacy=simple  but more data
+             * --legacy=simple   simple space-separated output
+             * --legacy=full     TAB-separated output with more data
+             * --legacy=owasp    simple output sorted according OWASP scoring
              * --legacy=openssl  output like with  +ciphers  command
              * --legacy=ssltest  output like "ssltest --list"
  
@@ -551,20 +546,6 @@ PackagesInfo: |
            with  --cipher=CIPHER  option.
  
            Use  --v  option to see all ciphers being checked.
- 
-       +cipherall
- 
-           Option is obsolete.
- 
-       +cipherraw
- 
-           Check target for all possible ciphers.
-           Does not depend on local SSL implementation.
- 
-           In contrast to  +cipher  this command has some options to tweak the
-           cipher tests, connection results and some strange behaviours of the
-           target. See  Options for  +cipherall and +cipherraw  command  for
-           details.
  
        +cipher-default
  
@@ -869,7 +850,7 @@ PackagesInfo: |
  
        --help=gen-cgi
  
-           Print documentation in format to be used for CGI.
+           Print HTML form to be used for CGI.
  
        --help=error
        --help=problem
@@ -1166,30 +1147,30 @@ PackagesInfo: |
            'METHOD'      method to be used for specific functionality
  
            Available methods:
-           * info-socket         use internal socket to retrieve information
-           * info-openssl        use external openssl to retrieve information
-           * info-user           use usr_getinfo() to retrieve information
-           * cipher-socket       use internal socket to ckeck for ciphers
-           * cipher-openssl      use external openssl to ckeck for ciphers
-           * cipher-user         use usr_getciphers() to ckeck for ciphers
+           * 'info-socket'       use internal socket to retrieve information
+           * 'info-openssl'      use external openssl to retrieve information
+           * 'info-user'         use usr_getinfo() to retrieve information
+           * 'cipher-socket'     use internal socket to ckeck for ciphers
+           * 'cipher-openssl'    use external openssl to ckeck for ciphers
+           * 'cipher-user'       use usr_getciphers() to ckeck for ciphers
  
            Method names starting with:
-           * info-
+           * 'info-'
              are responsible to retrieve information  about the SSL connection
              and the target certificate (i.e. what the +info command provides)
-           * cipher-
+           * 'cipher-'
              are responsible to connect to the target  and test if it supports
              the specified ciphers  (i.e. what the  +cipher  command provides)
-           * check-
+           * 'check-'
              are responsible for performing the checks (i.e. what's shown with
              the  +check  command)
-           * score-
+           * 'score-'
              are responsible to compute  the score based on check results
  
            The second part of the name denotes which kind of method to call:
-           * socket      the internal functionality with sockets is used
-           * openssl     the exteranl openssl executable is used
-           * user        the external special function, as specified in user's
+           * 'socket'    the internal functionality with sockets is used
+           * 'openssl'   the exteranl openssl executable is used
+           * 'user'      the external special function, as specified in user's
                          o-saft-usr.pm,  is used.
  
            Example:
@@ -1236,13 +1217,20 @@ PackagesInfo: |
  
        --cipher=CIPHER
  
-           'CIPHER' can be any string accepted by openssl or following:
-           * 'yeast'     use all ciphers from list defined herein, see  +list
+           'CIPHER' can be any cipher suite name or (internal) hex constant.
+           If 'CIPHER' does not match a hex key, for example 0x03000035, it is
+           used as pattern (RegEx) to match cipher suite names. For example:
+             'AES256-SHA' matches 23 cipher suites, 
+           For example 'AES256-SHA' matches 23 ciphers,  while 'AES256-SHA$'
+           matches 2 ciphers, see:
+               OSaft/Ciphers.pm find-names=AES256-SHA
+               OSaft/Ciphers.pm find-names=AES256-SHA$
  
-           Beside the cipher names accepted by openssl, CIPHER can be the name
-           of the constant or the (hex) value as defined in openssl's files.
-           Currently supported are the names and constants of openssl 1.0.1k.
-           Example:
+           To be sure that exactly one cipher suite matches, use for example:
+               --cipher=^AES256-SHA$
+ 
+           When  --ciphermode=openssl or --ciphermode=ssleay is used, 'CIPHER'
+           can be any string accepted by openssl or a hex constant. Examples:
              * --cipher=DHE_DSS_WITH_RC4_128_SHA
              * --cipher=0x03000066
              * --cipher=66
@@ -1526,14 +1514,12 @@ PackagesInfo: |
            Note:  setting empty list or element most likely does not work with
            openssl executable (for example  --force-openssl).
  
-     Options for  +cipherall and +cipherraw  command
- 
        --range=RANGE
        --cipherrange=RANGE
  
-           Specify range of cipher constants to be tested by  +cipherall.
+           Specify range of cipher constants to be tested with  +cipher  .
            Following 'RANGE's are supported:
-           * 'rfc'               all ciphers defined in various RFCs
+           * 'rfc'               all ciphers defined in various RFCs; default
            * 'shifted'           'rfc', shifted by 64 bytes to the right
            * 'long'              like 'rfc' but more lazy list of constants
            * 'huge'              all constants  0x03000000 .. 0x0300FFFF
@@ -1541,9 +1527,21 @@ PackagesInfo: |
            * 'full'              all constants  0x03000000 .. 0x03FFFFFF
            * 'SSLv2'             all ciphers according RFC for SSLv2
            * 'SSLv2_long'        more lazy list of constants for SSLv2 ciphers
+           * 'SSLv3'             all ciphers according RFC for SSLv3
+           * 'SSLv3_SSLv2'       all ciphers for SSLv3 with SSLv2
+           * 'TLSv12'            all ciphers according RFC for TLSv12
+           * 'TLSv13'            all ciphers according RFC for TLSv13
+           * 'c0xx'              constants for ciphers using ECC 0x0300C000 .. 0x0300C0FF
+           * 'ccxx'              constants for ciphers using ECC 0x0300CC00 .. 0x0300CCFF
+           * 'ecc'               all constants for ciphers using ECC
  
            Note: 'SSLv2' is the internal list used for testing SSLv2 ciphers.
            It does not make sense to use it for other protocols; however ...
+ 
+           For details about the ranges, please see:
+               o-saft.pl --help=range
+ 
+           If any  --cipher=CIPHER  is used,  --cipherrange=RANGE  is ignored.
  
        --slow-server-delay=SEC
  
@@ -1686,7 +1684,7 @@ PackagesInfo: |
            The argument to the  --legacy=TOOL   option  is the name of the tool
            to be simulated.
  
-           Following TOOLs are supported:
+           Following 'TOOL's are supported:
            * 'sslaudit'          format of output similar to  sslaudit
            * 'sslcipher'         format of output similar to  ssl-cipher-check
            * 'ssldiagnos'        format of output similar to  ssldiagnos
@@ -1703,15 +1701,15 @@ PackagesInfo: |
            Note that these legacy formats only apply to  output of the checked
            ciphers. Other texts like headers and footers are adapted slightly.
  
-           Please do not expect identical output as the TOOL  when using these
-           options, it's a best guess and should be parsable in a very similar
+           When using ths option, please do not expect identical output as the
+           'TOOL'. It is a best guess and should be parsable in a very similar
            way.
  
        --legacy=TYPE
        --legacy=compact
  
            Internal format: mainly avoid tabs and spaces format is as follows:
-                 Some Label:<-- anything right of colon is data
+               Some Label:<-- anything right of colon is data
  
        --legacy=full
  
@@ -1758,11 +1756,10 @@ PackagesInfo: |
  
            Get the screen width and then adapt  output of documentation to fit
            to that width. If the environment variable 'COLUMNS' is not set the
-           system's 'tput' or 'stty' command is used to get the screen width.
+           command 'tput' or 'stty' of system is used to get the screen width.
  
            It's a very simple approach to make texts better readable on narrow
            devices like tablets. For more details, please see:
- 
  
                perdoc o-saft.pl   # the section Note:tty  there
  
@@ -1916,8 +1913,8 @@ PackagesInfo: |
  
        --cfg-cmd=CMD=LIST
  
-           Redefine list of commands. Sets  %cfg{cmd-CMD}  to  LIST.  Commands
-           can be written without the leading  '+'.
+           Redefine list of commands. Sets  '%cfg{cmd-CMD}'  to  'LIST'.
+           Commands can be written without the leading  '+'.
            If  CMD  is any of the known internal commands, it will be redifned.
            If  CMD  is a unknown command, it will be created.
  
@@ -1933,8 +1930,8 @@ PackagesInfo: |
        --cfg-checks=KEY=TEXT
        --cfg-data=KEY=TEXT
  
-           Redefine texts used for labels in output. Sets  %data{KEY}{txt}  or
-           %checks{KEY}{txt}  to  'TEXT'.
+           Redefine texts used for labels in output. Sets '%data{KEY}{txt}'  or
+           '%checks{KEY}{txt}'  to  'TEXT'.
  
            To get a list of preconfigured labels, use:
                o-saft.pl --help=cfg-checks
@@ -1948,7 +1945,7 @@ PackagesInfo: |
  
        --cfg-text=KEY=TEXT
  
-           Redefine general texts used in output. Sets  %text{KEY}  to  'TEXT'.
+           Redefine general texts used in output. Sets '%text{KEY}'  to  'TEXT'.
  
            To get a list of preconfigured texts, use:
                o-saft.pl --help=cfg-text
@@ -1958,18 +1955,18 @@ PackagesInfo: |
  
        --cfg-text=FILE
  
-           Read definitions for  %text{KEY}="my text" from file  'FILE'.
+           Read definitions for  '%text{KEY}="my text"' from file  'FILE'.
  
        --cfg-hint=KEY=TEXT
  
-           Redefine texts used for hints. Sets  %cfg{hints}{KEY}  to  'TEXT'.
+           Redefine texts used for hints. Sets  '%cfg{hints}{KEY}'  to  'TEXT'.
  
            To get a list of preconfigured texts, use:
                o-saft.pl --help=cfg-hint
  
        --cfg-init=KEY=VALUE
  
-           Set the internal  %cfg  hash.  This options is intended for testing
+           Set the internal  '%cfg' hash. This options is intended for testing
            and debugging only. Please see  TESTING  below.
  
        --call=METHOD
@@ -2222,14 +2219,17 @@ PackagesInfo: |
  
              * weak:
                ** all *NULL* ciphers
-               ** all *RC2* and  *RC4*  ciphers
+               ** all *RC2* and *RC4* ciphers
                ** all *EXPORT*  ciphers
                ** all *anon* (a.k.a ADH a.k.a DHA) ciphers
-               ** all *CBC* and *CBC3* (a.k.a 3DES) and DES ciphers
+               ** all *CBC* and *CBC3* (a.k.a 3DES, EDE-CBC) and DES ciphers
              * low:
+             * medium:
+               ** all *PSK* ciphers using CBC (assumes that the PSK is secure)
              * high:
-               ** all *AES(128|256)* ciphers
-               ** all *CAMELLIA* ciphers
+               ** all *DHE*AES(128|256)* ciphers
+               ** all *CHACHA* ciphers
+               ** all *PSK* ciphers (except those using 
  
        +check
  
@@ -2928,8 +2928,12 @@ PackagesInfo: |
              Replace  'N/A'  by whatever you think is adequate:  "No answer",
              "Not available",  "Not applicable",  ...
  
-         Lines not described above, will have the form (by default):
-               Label for information or check:  TABresult
+         Examples:                                                             
+               === Title line ===                                              
+               = this is a comment                                             
+ 
+               Label for information or check:  TABresult                      
+               !!Hint: above result depends on the target
  
          For more details on these lines, please refer to  RESULTS  above.
  
@@ -3011,17 +3015,18 @@ PackagesInfo: |
              (mis-)used to redefine all settings. Please see USER-FILE  below.
  
          Customisation is done by redefining values in internal data structure
-         which are:  %cfg,  %data,  %checks,  %text,  %scores.
+         which are:  %cfg,  %data,  %checks,  %text.
  
          Unless used in  DEBUG-FILE  or  USER-FILE,  there is  no need to know
          these internal data structures or the names of variables; the options
          will set the  proper values.  The key names being part of the option,
          are printed in output with the  --trace-key  option.
  
-         I.g. texts (values) of keys in  %data are those used in output of the
-         "Information" section. Texts of keys in  %checks  are used for output
-         in "Performed Checks" section.  And texts of keys in  %text  are used
-         for additional information lines or texts (mainly beginning with '=').
+         Texts (values) of keys in  '%data'  are those  used in  output of the
+         "Information" section.  The texts of keys in  '%checks'  are used for
+         output in "Performed Checks" section.  Texts of keys in  '%text'  are
+         used for additional information lines or texts (mainly beginning with
+         '=').
  
       Configuration file vs. RC-FILE vs. DEBUG-FILE
  
@@ -3064,10 +3069,10 @@ PackagesInfo: |
          the value to be set for this key.  Note that unknown keys are ignored
          silently.
  
-         If KEY=TEXT is an exiting filename, all lines from that file are read
-         and set. For details see  CONFIGURATION FILE  below.
+         If  'KEY=TEXT'  is an existing filename, all lines from that file are
+         read and set. For details see  CONFIGURATION FILE  below.
  
-         CIPHER  must be a valid cipher suite name as shown with:
+         'CIPHER'  must be a valid cipher suite name as shown with:
  
                o-saft.pl ciphers
  
@@ -3076,7 +3081,7 @@ PackagesInfo: |
  
      CONFIGURATION FILE
  
-         Note that the file can contain 'KEY=TEXT' pairs for any kind of the
+         Note that the file can contain  'KEY=TEXT' pairs for any kind of the
          configuration as given by the  --cfg-CFG  option.
  
          For example  when used with  --cfg-text=FILE  only values for  %text
@@ -3101,8 +3106,8 @@ PackagesInfo: |
          of  'KEY VALUE'.
  
          Configurations options must be written like '--cfg-CFG=KEY=VALUE'.
-         Where 'CFG' is any of:  'cmd', 'check', 'data', 'text'  and  'KEY' is
-         any key from internal data structure (see above).
+         Where  'CFG'  is any of:  'cmd', 'check', 'data', 'text'  and  'KEY'
+         is any key from internal data structure (see above).
  
          All commands and options given on command-line will  overwrite  those
          found in the rc-file.
@@ -3168,14 +3173,22 @@ PackagesInfo: |
            5) beside IANA, openssl's cipher names are preferred
            6) name variants are supported, as long as they are unique
            7) hex numbers can be used
+           8) our internal hex numbers for ciphers are like '0x0300CCA9'
  
-         [IANA]    http://www.iana.org/assignments/tls-parameters/tls-parameters.txt September 2013
+         [IANA]    http://www.iana.org/assignments/tls-parameters/tls-parameters.txt August 2022
  
          [openssl] ... openssl 1.0.1
  
-         If in any doubt, use  +list  --v  to get an idea about the mapping.
+         If in any doubt, use any of the  provided commands or options to list
+         to show our known ciphers. For example:
+ 
+               o-saft.pl --test-ciphers-show  # or any other  --test-ciphers-*
+               o-saft.pl --list
+               o-saft.pl --help=ciphers-text
+               o-saft.pl ciphers -V
+ 
          Use  --help=regex  to see which regex are used to handle all variants
-         herein.
+         of cipher suite names herein.
  
          Mind the traps and dragons with cipher names and what number they are
          actually mapped to. In particular when  --lib,  --exe  or  --openssl
@@ -3190,7 +3203,7 @@ PackagesInfo: |
          For example the cipher commonly known as 'DES-CBC3-SHA' is identified
          by '0x020701c0' (in openssl) and has 'SSL2_DES_192_EDE3_CBC_WITH_SHA'
          as constant name. A definition is missing in IANA, but there is
-         'TLS_RSA_WITH_3DES_EDE_CBC_SHA'.  Thers is also '0x000A' for the same
+         'TLS_RSA_WITH_3DES_EDE_CBC_SHA'.  There is also '0x000A' for the same
          cipher 'DES-CBC3-SHA'.  Both are valid, first one if used with SSLv2,
          and second one when used with SSLv3.
          It's the responsibility of each tool to map the human readable cipher
@@ -3456,7 +3469,6 @@ PackagesInfo: |
            * DNS:             1 -  10 sec
            * need_default:    <5 sec
            * need_cipher:     1 - 299 sec (+cipher with socket)
-           * need_cipher:     1 -  20 sec (+cipherraw)
            * no SNI:          1 -  10 sec
            * connection test: 1 -   5 sec
            * prepare checks:  2 -  20 sec
@@ -3680,8 +3692,8 @@ PackagesInfo: |
          * "o-saft-dbx.pm"
          * "o-saft-man.pm"
          * "o-saft-usr.pm"
-         * "o-saft-README"
          * o-saft-docker
+         * "o-saft-README"
  
  
  INSTALLATION
@@ -3737,8 +3749,8 @@ PackagesInfo: |
  
      OpenSSL
  
-         Currently (since 18.06.18) it is recommend to build openssl using
-             contrib/install_openssl.sh
+         Currently (since 18.06.18) it is recommend to build openssl using:
+               contrib/install_openssl.sh
  
          Other possibilities are:
            * compiling openssl using following sources
@@ -3968,14 +3980,14 @@ PackagesInfo: |
            * perl with PAR::Packer module
                pp -C -c o-saft.pl
                pp -C -c o-saft.pl -M Net::DNS -M Net::SSLeay -M IO::Socket \
-                           -M Net::SSLinfo -M Net::SSLhello -M osaft
+                   -M Net::SSLinfo -M Net::SSLhello -M osaft
                pp -C -c checkAllCiphers.pl
                pp -C -c checkAllCiphers.pl -M Net::DNS
  
            * ActiveState perl with its perlapp
                perlapp --clean o-saft.pl
                perlapp --clean o-saft.pl -M Net::DNS -M Net::SSLeay -M IO::Socket \
-                           -M Net::SSLinfo -M Net::SSLhello -M osaft
+                   -M Net::SSLinfo -M Net::SSLhello -M osaft
                perlapp --clean checkAllCiphers.pl
                perlapp --clean checkAllCiphers.pl -M Net::DNS -M osaft
  
@@ -3993,6 +4005,75 @@ PackagesInfo: |
          be provided due to licence problems.
          Also note that using  stand-alone executable have not been tested the
          same way as the  o-saft.pl  itself. Use them at your own risk.
+ 
+ 
+ ABOUT CGI
+ 
+         This script can be used as CGI application.  Output is the same as in
+         common CLI mode. The output will be prefixed with the HTTP header
+         'Content-Type:text/plain'.
+         The script  o-saft.cgi  should be used as wrapper for o-saft.pl .
+         The HTML form  o-saft.cgi.html  which can be generated with:
+ 
+               o-saft.pl --help=gen-cgi
+ 
+         should be used as front-end for  o-saft.cgi.
+ 
+     CGI-form functionality
+ 
+         This form provides following functionality:
+ 
+         * top menu bar with following menus:
+           * ☰           - general informations about CGI usage
+           * Cmd         - quick commands menu
+           * Opt         - quick options menu
+           * Help        - various help pages
+ 
+         * input field for a target (hostname or URL)
+ 
+         * GUI sections
+           * Simple GUI  - simple form with most common commands and options
+                           Each provided +command buttons submit the form with
+                           the selected options and the clicked command.
+ 
+           * Full GUI Commands & Options
+                         - form with all commands and options,  its content is
+                           The same as the  COMMANDS  and  OPTIONS  section of
+                           the complete help page (see  --help  ).
+ 
+         In both GUI sections following buttons exist:
+ 
+         * ^             - return to top of form
+         * start         - submit form with selected command and options
+ 
+         In general, command buttons which submit the form are yellow. Buttons
+         which show some help, mainly in a new browser tab, are gray.
+ 
+     CGI-form limitations
+ 
+         * The generated form provides commands and options which are rejected
+           by  o-saft.cgi  (see below).
+ 
+         * The generated form may contain references (links) to sections which
+           are not part of the form.
+ 
+         * Only one target can be provided,  however, it is obvious how to use
+           more targets ...
+ 
+         * The  --format=html  option should be used together with  --header ,
+           otherwise the generated HTML may be corrupted for some commands.
+ 
+     CGI script limitations
+ 
+         The script returns an empty page (HTML body) for following reasons:
+ 
+         * Use of local or multicast IPs as target.
+ 
+         * Use of dangerous commands or options.
+ 
+         For deatils pleasesee
+ 
+               perldoc o-saft.cgi
  
  
  DOCKER
@@ -4381,9 +4462,9 @@ PackagesInfo: |
                    PEM format file with CAs         /etc/ssl/certs/ca-certificates.crt
                    common paths to PEM files for CAs /etc/ssl/certs /usr/lib/certs \
                    .                                 /System/Library/OpenSSL
-                      existing path to CA PEM files /etc/ssl/certs
+                   .  existing path to CA PEM files /etc/ssl/certs
                    common PEM filenames for CAs     ca-certificates.crt certificates.crt certs.pem
-                      existing PEM file for CA      /etc/ssl/certs/ca-certificates.crt
+                   .  existing PEM file for CA      /etc/ssl/certs/ca-certificates.crt
                    number of supported ciphers      201
                    openssl supported SSL versions   SSLv3 TLSv1 TLSv11 TLSv12
                    o-saft.pl known SSL versions     SSLv2 SSLv3 TLSv1 TLSv11 TLSv12 TLSv13 \
@@ -4496,9 +4577,9 @@ PackagesInfo: |
  TESTING
  
          What is "testing"?
-         This tool itself is for testing something,  so it needs to be explain
-         what testing here is about. Following testing types are distinguished
-         and then described:
+         This tool itself is for testing something (TLS etc.),  so it needs to
+         be explained what testing here is about.  Following testing types are
+         distinguished and then described:
  
          * User testing
          * Functional testing
@@ -4557,7 +4638,7 @@ PackagesInfo: |
  
        --cfg-init=KEY=VALUE
  
-           With this option values in the internal  %cfg  hash can be set:
+           With this option values in the internal  '%cfg'  hash can be set:
  
                $cfg{KEY} = VALUE
  
@@ -4586,7 +4667,7 @@ PackagesInfo: |
  
        --test-maps
  
-           Print internal data strucures '%cfg{openssl}', '%cfg{ssleay}'.
+           Print internal data strucures  '%cfg{openssl}',  '%cfg{ssleay}'.
  
        --test-prot
  
@@ -4596,28 +4677,29 @@ PackagesInfo: |
  
            Print results for applying various texts to defined regex.
  
+       --test-ciphers-dump
+       --test-ciphers-overview
+       --test-ciphers-openssl
+       --test-ciphers-show
+       --test-ciphers-simple
+       --test-ciphers-sorted
+       --test-ciphers-ssltest
+ 
+           Print ciphers in various formats, please see: OSaft/Ciphers.pm .
+           These options are aliases for:  +list --legacy=TYP  .
+ 
+       --test-ciphers-hex=*
+       --test-ciphers-key=*
        --test-ciphers-list
  
-           Print list of hex keys of known ciphers.
- 
-       --test-ciphers-show
- 
-           Print complete list of ciphers.
- 
-       --test-cipher-sorted
- 
-           Print list of ciphers sorted according strength.
- 
-       --test-ciphers-overview
- 
-           Print overview of all available ciphers with all attributes.
+           Print some special information, please see: OSaft/Ciphers.pm .
  
        --test-init
  
-           Print parts of the data structure  %cfg. In contrast to the options
+           Print parts of  data structure  '%cfg'.  In contrast to the options
            described above,  --test-init  exits straight before performing the
            specified commands on the target.  Therefore it prints the settings
-           in  %cfg  containing all applied commands and options.
+           in  '%cfg'  containing all applied commands and options.
  
        --test-memory
  
@@ -4830,7 +4912,7 @@ PackagesInfo: |
          In the GUI a more sophisticate search is implemented, see the  "Help"
          window there:
  
-           o-saft.tcl
+           o-saft.tcl 
  
      Developer documentation
  
@@ -4839,15 +4921,18 @@ PackagesInfo: |
  
            * the files itself
  
-           * with:   o-saft.pl --help=test
+           * with:
+               o-saft.pl --help=test
+               o-saft.pl --test
  
-           * with:   o-saft.pl --test
+           * reading:
+               docs/concepts.txt
+               Makefile.pod
+               perldoc Makefile.pod
  
-           * reading: Makefile.pod
- 
-           * using:  make
- 
-           * using:  make help.doc
+           * using:
+               make
+               make help.doc
  
          Using make for development uses additional external tools and/or Perl
          modules:
@@ -4867,7 +4952,7 @@ PackagesInfo: |
          * O-Saft - OWASP SSL advanced forensic tool
              Thanks to Gregor Kuznik for this title.
  
-         * +cipherraw and some proxy functionality implemented by Torsten Gigler.
+         * Basic cipher check and some proxy functionality implemented by Torsten Gigler.
  
          * For re-writing some docs in proper English, thanks to Robb Watson.
  
@@ -4880,7 +4965,7 @@ PackagesInfo: |
  
  VERSION
  
-         @(#) 22.02.22
+         @(#) 22.11.22
  
  AUTHOR
  

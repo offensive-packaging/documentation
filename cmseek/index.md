@@ -85,7 +85,7 @@ PackagesInfo: |
  
      
  
-  CMSeeK says ~ addio
+  CMSeeK says ~ arrivederci
  ```
  
  - - -

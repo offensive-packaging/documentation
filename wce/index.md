@@ -3,8 +3,8 @@ Title: wce
 Homepage: http://www.ampliasecurity.com/research.html
 Repository: https://gitlab.com/kalilinux/packages/wce
 Architectures: all
-Version: 1.42-beta-0kali3
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-windows-resources 
+Version: 1.42-beta-0kali4
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-windows-resources 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### wce

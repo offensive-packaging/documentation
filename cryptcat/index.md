@@ -3,7 +3,7 @@ Title: cryptcat
 Homepage: http://farm9.com/content/Free_Tools/cryptcat_linux2.tar
 Repository: https://gitlab.com/kalilinux/packages/cryptcat
 Architectures: any
-Version: 20031202-5kali4
+Version: 20031202-5kali6
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   almost any kind of connection you would need and has several interesting
   built-in capabilities.
  
- **Installed size:** `81 KB`  
+ **Installed size:** `80 KB`  
  **How to install:** `sudo apt install cryptcat`  
  
  {{< spoiler "Dependencies:" >}}

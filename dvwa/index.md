@@ -3,7 +3,7 @@ Title: dvwa
 Homepage: https://github.com/digininja/DVWA
 Repository: https://gitlab.com/kalilinux/packages/dvwa
 Architectures: all
-Version: 2.0.1+git20220104-0kali4
+Version: 2.0.1+git20220104-0kali5
 Metapackages: kali-linux-labs 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -33,10 +33,10 @@ PackagesInfo: |
  * libapache2-mod-php
  * mariadb-server
  * nginx
- * php8.1
- * php8.1-fpm
- * php8.1-gd
- * php8.1-mysql
+ * php8.2
+ * php8.2-fpm
+ * php8.2-gd
+ * php8.2-mysql
  {{< /spoiler >}}
  
  ##### dvwa-start

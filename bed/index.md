@@ -3,7 +3,7 @@ Title: bed
 Homepage: http://www.snake-basket.de
 Repository: https://gitlab.com/kalilinux/packages/bed
 Architectures: any
-Version: 0.5-1kali6
+Version: 0.5-1kali7
 Metapackages: kali-linux-everything kali-linux-large kali-tools-vulnerability 
 Icon: images/bed-logo.svg
 PackagesInfo: |

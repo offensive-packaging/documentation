@@ -3,7 +3,7 @@ Title: mitmproxy
 Homepage: https://mitmproxy.org
 Repository: https://gitlab.com/kalilinux/packages/mitmproxy
 Architectures: all
-Version: 8.1.1-0kali1
+Version: 9.0.1-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-sniffing-spoofing kali-tools-web 
 Icon: images/mitmproxy-logo.svg
 PackagesInfo: |
@@ -32,7 +32,7 @@ PackagesInfo: |
   provided by other source package). The python-netlib module was also included
   but it has been dropped by upstream in version 1.0.
  
- **Installed size:** `3.56 MB`  
+ **Installed size:** `3.67 MB`  
  **How to install:** `sudo apt install mitmproxy`  
  
  {{< spoiler "Dependencies:" >}}
@@ -40,7 +40,6 @@ PackagesInfo: |
  * fonts-font-awesome 
  * python3
  * python3-asgiref 
- * python3-blinker 
  * python3-brotli 
  * python3-certifi 
  * python3-cryptography 
@@ -50,6 +49,7 @@ PackagesInfo: |
  * python3-hyperframe 
  * python3-kaitaistruct 
  * python3-ldap3 
+ * python3-mitmproxy-wireguard
  * python3-msgpack 
  * python3-openssl 
  * python3-passlib 
@@ -61,6 +61,7 @@ PackagesInfo: |
  * python3-ruamel.yaml 
  * python3-sortedcontainers 
  * python3-tornado 
+ * python3-typing-extensions | python3 
  * python3-urwid 
  * python3-wsproto 
  {{< /spoiler >}}
@@ -88,10 +89,17 @@ PackagesInfo: |
                          multiple invocations to set for the same option.
    -q, --quiet           Quiet.
    -v, --verbose         Increase log verbosity.
-   --mode MODE, -m MODE  Mode can be "regular", "transparent", "socks5",
-                         "reverse:SPEC", or "upstream:SPEC". For reverse and
+   --mode MODE, -m MODE  The proxy server type(s) to spawn. Can be passed
+                         multiple times. Mitmproxy supports "regular" (HTTP),
+                         "transparent", "socks5", "reverse:SPEC", and
+                         "upstream:SPEC" proxy servers. For reverse and
                          upstream proxy modes, SPEC is host specification in
-                         the form of "http[s]://host[:port]".
+                         the form of "http[s]://host[:port]". You may append
+                         `@listen_port` or `@listen_host:listen_port` to
+                         override `listen_host` or `listen_port` for a specific
+                         proxy mode. Features such as client playback will use
+                         the first mode to determine which upstream server to
+                         use. May be passed multiple times.
    --no-anticache
    --anticache           Strip out request headers that might cause the server
                          to return 304-not-modified.
@@ -120,9 +128,13 @@ PackagesInfo: |
                          TCP messages 4: 3 + nothing is truncated
  
  Proxy Options:
-   --listen-host HOST    Address to bind proxy to.
+   --listen-host HOST    Address to bind proxy server(s) to (may be overridden
+                         for individual modes, see `mode`).
    --listen-port PORT, -p PORT
-                         Proxy service port.
+                         Port to bind proxy server(s) to (may be overridden for
+                         individual modes, see `mode`). By default, the port is
+                         mode-specific. The default regular HTTP proxy spawns
+                         on port 8080.
    --no-server, -n
    --server              Start a proxy server. Enabled by default.
    --ignore-hosts HOST   Ignore host and forward all traffic without processing
@@ -171,7 +183,6 @@ PackagesInfo: |
                          to avoid this.
    --no-ssl-insecure
    --ssl-insecure, -k    Do not verify upstream server SSL/TLS certificates.
-   --key-size KEY_SIZE   TLS key size for certificates and CA.
  
  Client Replay:
    --client-replay PATH, -C PATH
@@ -250,10 +261,17 @@ PackagesInfo: |
                          multiple invocations to set for the same option.
    -q, --quiet           Quiet.
    -v, --verbose         Increase log verbosity.
-   --mode MODE, -m MODE  Mode can be "regular", "transparent", "socks5",
-                         "reverse:SPEC", or "upstream:SPEC". For reverse and
+   --mode MODE, -m MODE  The proxy server type(s) to spawn. Can be passed
+                         multiple times. Mitmproxy supports "regular" (HTTP),
+                         "transparent", "socks5", "reverse:SPEC", and
+                         "upstream:SPEC" proxy servers. For reverse and
                          upstream proxy modes, SPEC is host specification in
-                         the form of "http[s]://host[:port]".
+                         the form of "http[s]://host[:port]". You may append
+                         `@listen_port` or `@listen_host:listen_port` to
+                         override `listen_host` or `listen_port` for a specific
+                         proxy mode. Features such as client playback will use
+                         the first mode to determine which upstream server to
+                         use. May be passed multiple times.
    --no-anticache
    --anticache           Strip out request headers that might cause the server
                          to return 304-not-modified.
@@ -281,9 +299,13 @@ PackagesInfo: |
                          Show layout component headers
  
  Proxy Options:
-   --listen-host HOST    Address to bind proxy to.
+   --listen-host HOST    Address to bind proxy server(s) to (may be overridden
+                         for individual modes, see `mode`).
    --listen-port PORT, -p PORT
-                         Proxy service port.
+                         Port to bind proxy server(s) to (may be overridden for
+                         individual modes, see `mode`). By default, the port is
+                         mode-specific. The default regular HTTP proxy spawns
+                         on port 8080.
    --no-server, -n
    --server              Start a proxy server. Enabled by default.
    --ignore-hosts HOST   Ignore host and forward all traffic without processing
@@ -332,7 +354,6 @@ PackagesInfo: |
                          to avoid this.
    --no-ssl-insecure
    --ssl-insecure, -k    Do not verify upstream server SSL/TLS certificates.
-   --key-size KEY_SIZE   TLS key size for certificates and CA.
  
  Client Replay:
    --client-replay PATH, -C PATH
@@ -417,10 +438,17 @@ PackagesInfo: |
                          multiple invocations to set for the same option.
    -q, --quiet           Quiet.
    -v, --verbose         Increase log verbosity.
-   --mode MODE, -m MODE  Mode can be "regular", "transparent", "socks5",
-                         "reverse:SPEC", or "upstream:SPEC". For reverse and
+   --mode MODE, -m MODE  The proxy server type(s) to spawn. Can be passed
+                         multiple times. Mitmproxy supports "regular" (HTTP),
+                         "transparent", "socks5", "reverse:SPEC", and
+                         "upstream:SPEC" proxy servers. For reverse and
                          upstream proxy modes, SPEC is host specification in
-                         the form of "http[s]://host[:port]".
+                         the form of "http[s]://host[:port]". You may append
+                         `@listen_port` or `@listen_host:listen_port` to
+                         override `listen_host` or `listen_port` for a specific
+                         proxy mode. Features such as client playback will use
+                         the first mode to determine which upstream server to
+                         use. May be passed multiple times.
    --no-anticache
    --anticache           Strip out request headers that might cause the server
                          to return 304-not-modified.
@@ -447,14 +475,15 @@ PackagesInfo: |
    --web-open-browser    Start a browser.
    --web-port PORT       Web UI port.
    --web-host HOST       Web UI host.
-   --web-columns WEB_COLUMNS
-                         Columns to show in the flow list May be passed
-                         multiple times.
  
  Proxy Options:
-   --listen-host HOST    Address to bind proxy to.
+   --listen-host HOST    Address to bind proxy server(s) to (may be overridden
+                         for individual modes, see `mode`).
    --listen-port PORT, -p PORT
-                         Proxy service port.
+                         Port to bind proxy server(s) to (may be overridden for
+                         individual modes, see `mode`). By default, the port is
+                         mode-specific. The default regular HTTP proxy spawns
+                         on port 8080.
    --no-server, -n
    --server              Start a proxy server. Enabled by default.
    --ignore-hosts HOST   Ignore host and forward all traffic without processing
@@ -503,7 +532,6 @@ PackagesInfo: |
                          to avoid this.
    --no-ssl-insecure
    --ssl-insecure, -k    Do not verify upstream server SSL/TLS certificates.
-   --key-size KEY_SIZE   TLS key size for certificates and CA.
  
  Client Replay:
    --client-replay PATH, -C PATH

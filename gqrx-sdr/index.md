@@ -28,15 +28,15 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libgnuradio-analog3.10.4 
- * libgnuradio-blocks3.10.4 
- * libgnuradio-digital3.10.4 
- * libgnuradio-fft3.10.4 
- * libgnuradio-filter3.10.4 
- * libgnuradio-network3.10.4 
+ * libgnuradio-analog3.10.5 
+ * libgnuradio-blocks3.10.5 
+ * libgnuradio-digital3.10.5 
+ * libgnuradio-fft3.10.5 
+ * libgnuradio-filter3.10.5 
+ * libgnuradio-network3.10.5 
  * libgnuradio-osmosdr0.2.0 
- * libgnuradio-pmt3.10.4 
- * libgnuradio-runtime3.10.4 
+ * libgnuradio-pmt3.10.5 
+ * libgnuradio-runtime3.10.5 
  * libpulse0 
  * libqt5core5a 
  * libqt5gui5  | libqt5gui5-gles 

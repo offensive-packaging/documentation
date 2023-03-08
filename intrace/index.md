@@ -27,7 +27,7 @@ PackagesInfo: |
  ```
  root@kali:~# intrace -h
  InTrace, version 1.6 (C)2007-2016 Robert Swiecki <robert@swiecki.net>
- 2022/11/24 05:02:40.961663 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6]
+ 2023/03/08 09:18:08.901837 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6]
  
  ```
  

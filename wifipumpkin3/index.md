@@ -3,7 +3,7 @@ Title: wifipumpkin3
 Homepage: https://github.com/P0cL4bs/wifipumpkin3
 Repository: https://gitlab.com/kalilinux/packages/wifipumpkin3
 Architectures: all
-Version: 1.1.4-0kali1
+Version: 1.1.5-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   and reverse engineers to mount a wireless network to conduct a
   man-in-the-middle attack.
  
- **Installed size:** `17.91 MB`  
+ **Installed size:** `27.77 MB`  
  **How to install:** `sudo apt install wifipumpkin3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -23,6 +23,7 @@ PackagesInfo: |
  * iw
  * net-tools
  * python3
+ * python3-aiofiles
  * python3-bs4
  * python3-dhcplib
  * python3-distutils
@@ -33,7 +34,6 @@ PackagesInfo: |
  * python3-isc-dhcp-leases
  * python3-jwt
  * python3-loguru
- * python3-netaddr
  * python3-netifaces
  * python3-openssl
  * python3-pyqt5
@@ -113,7 +113,8 @@ PackagesInfo: |
  usage: wifipumpkin3 [-h] [-i INTERFACE] [-s SESSION] [-p PULP] [-x XPULP]
                      [-m WIRELESS_MODE] [--no-colors] [--rest]
                      [--restport RESTPORT] [--username USERNAME]
-                     [--password PASSWORD] [-v]
+                     [--password PASSWORD] [-iNM IG_NETWORKMANAGER]
+                     [-rNM RM_NETWORKMANAGER] [-v]
  
  wifipumpkin3 - Powerful framework for rogue access point attack. See:
  https://wifipumpkin3.github.io/docs/getting-started#usage
@@ -135,6 +136,10 @@ PackagesInfo: |
                          instead of pulling from wp3.db
    --password PASSWORD   Start the RESTful API with the specified password
                          instead of pulling from wp3.db
+   -iNM IG_NETWORKMANAGER, --ignore-from-networkmanager IG_NETWORKMANAGER
+                         set interface for ignore from Network-Manager
+   -rNM RM_NETWORKMANAGER, --remove-from-networkmanager RM_NETWORKMANAGER
+                         remove interface from Network-Manager
    -v, --version         show program's version number and exit
  ```
  
@@ -147,7 +152,8 @@ PackagesInfo: |
  root@kali:~# wp3 -h
  usage: wp3 [-h] [-i INTERFACE] [-s SESSION] [-p PULP] [-x XPULP]
             [-m WIRELESS_MODE] [--no-colors] [--rest] [--restport RESTPORT]
-            [--username USERNAME] [--password PASSWORD] [-v]
+            [--username USERNAME] [--password PASSWORD]
+            [-iNM IG_NETWORKMANAGER] [-rNM RM_NETWORKMANAGER] [-v]
  
  wifipumpkin3 - Powerful framework for rogue access point attack. See:
  https://wifipumpkin3.github.io/docs/getting-started#usage
@@ -169,6 +175,10 @@ PackagesInfo: |
                          instead of pulling from wp3.db
    --password PASSWORD   Start the RESTful API with the specified password
                          instead of pulling from wp3.db
+   -iNM IG_NETWORKMANAGER, --ignore-from-networkmanager IG_NETWORKMANAGER
+                         set interface for ignore from Network-Manager
+   -rNM RM_NETWORKMANAGER, --remove-from-networkmanager RM_NETWORKMANAGER
+                         remove interface from Network-Manager
    -v, --version         show program's version number and exit
  ```
  

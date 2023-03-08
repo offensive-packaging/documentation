@@ -4,7 +4,7 @@ Homepage: http://www.dumpzilla.org/
 Repository: https://gitlab.com/kalilinux/packages/dumpzilla
 Architectures: all
 Version: 20210311-0kali1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### dumpzilla

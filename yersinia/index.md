@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: M4t30 31337 M4t30 31337 M4t30 31337 M4t30 31337 M4t30 31337
+ MOTD: Do you have an ISL capable Cisco switch? Share it!! ;)
  ```
  
  - - -

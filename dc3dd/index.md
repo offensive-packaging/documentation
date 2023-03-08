@@ -3,8 +3,8 @@ Title: dc3dd
 Homepage: http://dc3dd.sf.net
 Repository: https://salsa.debian.org/pkg-security-team/dc3dd
 Architectures: any
-Version: 7.2.646-5
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 7.2.646-6
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### dc3dd
@@ -19,7 +19,7 @@ PackagesInfo: |
    * progress report;
    * possibility to split output.
  
- **Installed size:** `489 KB`  
+ **Installed size:** `484 KB`  
  **How to install:** `sudo apt install dc3dd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -207,7 +207,7 @@ PackagesInfo: |
  7. Sending an interrupt (e.g., CTRL+C) to dc3dd will cause
     the program to report the work completed at the time
     the interrupt is received and then exit.
- dc3dd completed at 2022-11-24 04:48:20 -0500
+ dc3dd completed at 2023-03-08 08:56:36 -0500
  
  ```
  

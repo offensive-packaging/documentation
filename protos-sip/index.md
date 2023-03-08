@@ -3,7 +3,7 @@ Title: protos-sip
 Homepage: https://www.ee.oulu.fi/research/ouspg/PROTOS_Test-Suite_c07-sip
 Repository: https://gitlab.com/kalilinux/packages/protos-sip
 Architectures: all
-Version: 1.0-1kali3
+Version: 1.0-1kali5
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
  
  {{< spoiler "Dependencies:" >}}
  * default-jre
- * jarwrapper
+ * java-wrappers
  {{< /spoiler >}}
  
  ##### protos-sip

@@ -3,7 +3,7 @@ Title: rtpbreak
 Homepage: http://dallachiesa.com/code/rtpbreak/
 Repository: https://gitlab.com/kalilinux/packages/rtpbreak
 Architectures: any
-Version: 1.3a-1kali2
+Version: 1.3a-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

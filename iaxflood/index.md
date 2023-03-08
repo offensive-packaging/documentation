@@ -3,7 +3,7 @@ Title: iaxflood
 Homepage: http://www.hackingexposedvoip.com/sec_tools.html
 Repository: https://gitlab.com/kalilinux/packages/iaxflood
 Architectures: any
-Version: 0.1-1kali2
+Version: 0.1-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

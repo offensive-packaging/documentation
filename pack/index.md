@@ -3,7 +3,7 @@ Title: pack
 Homepage: https://medium.com/@iphelix
 Repository: https://gitlab.com/kalilinux/packages/pack
 Architectures: all
-Version: 0.0.4-0kali5
+Version: 0.0.4-0kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

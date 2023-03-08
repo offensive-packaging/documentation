@@ -3,7 +3,7 @@ Title: stunnel4
 Homepage: https://www.stunnel.org/
 Repository: https://salsa.debian.org/debian/stunnel/
 Architectures: any
-Version: 3:5.67-2
+Version: 3:5.68-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: images/stunnel4-logo.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
    
   This package contains a wrapper script for compatibility with stunnel 3.x
  
- **Installed size:** `530 KB`  
+ **Installed size:** `539 KB`  
  **How to install:** `sudo apt install stunnel4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -31,7 +31,6 @@ PackagesInfo: |
  * libssl3 
  * libsystemd0
  * libwrap0 
- * lsb-base
  * netbase
  * openssl
  * perl
@@ -323,25 +322,35 @@ PackagesInfo: |
  
                 accept = :::PORT
  
-        CApath = DIRECTORY
-            Certificate Authority directory
+        CAengine = ENGINE-SPECIFIC_CA_CERTIFICATE_IDENTIFIER
+            load a trusted CA certificate from an engine
  
-            This is the directory in which stunnel will look for certificates
-            when using the verifyChain or verifyPeer options.  Note that the
-            certificates in this directory should be named XXXXXXXX.0 where
-            XXXXXXXX is the hash value of the DER encoded subject of the cert.
+            The loaded CA certificates will be used with the verifyChain and
+            verifyPeer options.
+ 
+            Multiple CAengine options are allowed in a single service section.
+ 
+            Currently supported engines: pkcs11, cng.
+ 
+        CApath = CA_DIRECTORY
+            load trusted CA certificates from a directory
+ 
+            The loaded CA certificates will be used with the verifyChain and
+            verifyPeer options.  Note that the certificates in this directory
+            should be named XXXXXXXX.0 where XXXXXXXX is the hash value of the
+            DER encoded subject of the cert.
  
             The hash algorithm has been changed in OpenSSL 1.0.0.  It is
             required to c_rehash the directory on upgrade from OpenSSL 0.x.x to
-            OpenSSL 1.x.x.
+            OpenSSL 1.x.x or later.
  
             CApath path is relative to the chroot directory if specified.
  
         CAfile = CA_FILE
-            Certificate Authority file
+            load trusted CA certificates from a file
  
-            This file contains multiple CA certificates, to be used with the
-            verifyChain and verifyPeer options.
+            The loaded CA certificates will be used with the verifyChain and
+            verifyPeer options.
  
         cert = CERT_FILE
             certificate chain file name
@@ -362,30 +371,34 @@ PackagesInfo: |
         checkEmail = EMAIL
             email address of the peer certificate subject
  
+            Certificates are accepted if no subject checks were specified, or
+            the email address of the peer certificate matches any of the email
+            addresses specified with checkEmail.
+ 
             Multiple checkEmail options are allowed in a single service
-            section.  Certificates are accepted if no subject checks were
-            specified, or the email address of the peer certificate matches any
-            of the email addresses specified with checkEmail.
+            section.
  
             This option requires OpenSSL 1.0.2 or later.
  
         checkHost = HOST
             host of the peer certificate subject
  
-            Multiple checkHost options are allowed in a single service section.
             Certificates are accepted if no subject checks were specified, or
             the host name of the peer certificate matches any of the hosts
             specified with checkHost.
+ 
+            Multiple checkHost options are allowed in a single service section.
  
             This option requires OpenSSL 1.0.2 or later.
  
         checkIP = IP
             IP address of the peer certificate subject
  
-            Multiple checkIP options are allowed in a single service section.
             Certificates are accepted if no subject checks were specified, or
             the IP address of the peer certificate matches any of the IP
             addresses specified with checkIP.
+ 
+            Multiple checkIP options are allowed in a single service section.
  
             This option requires OpenSSL 1.0.2 or later.
  
@@ -435,7 +448,6 @@ PackagesInfo: |
             If no host is specified, the host defaults to localhost.
  
             Multiple connect options are allowed in a single service section.
- 
             If host resolves to multiple addresses and/or if multiple connect
             options are specified, then the remote address is chosen using a
             round-robin algorithm.
@@ -1521,7 +1533,7 @@ PackagesInfo: |
         Michal Trojnara
             <Michal.Trojnara@stunnel.org>
  
- 5.67                              2022.10.08                        stunnel(8)
+ 5.68                              2022.12.20                        stunnel(8)
  ```
  
  - - -
@@ -1547,8 +1559,8 @@ PackagesInfo: |
     See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]
  [ ] Initializing inetd mode configuration
  [ ] Clients allowed=500
- [.] stunnel 5.67 on x86_64-pc-linux-gnu platform
- [.] Compiled/running with OpenSSL 3.0.7 1 Nov 2022
+ [.] stunnel 5.68 on x86_64-pc-linux-gnu platform
+ [.] Compiled/running with OpenSSL 3.0.8 7 Feb 2023
  [.] Threading:PTHREAD Sockets:POLL,IPv6,SYSTEMD TLS:ENGINE,OCSP,PSK,SNI Auth:LIBWRAP
  [ ] errno: (*__errno_location ())
  [ ] Initializing inetd mode configuration
@@ -1848,25 +1860,35 @@ PackagesInfo: |
  
                 accept = :::PORT
  
-        CApath = DIRECTORY
-            Certificate Authority directory
+        CAengine = ENGINE-SPECIFIC_CA_CERTIFICATE_IDENTIFIER
+            load a trusted CA certificate from an engine
  
-            This is the directory in which stunnel will look for certificates
-            when using the verifyChain or verifyPeer options.  Note that the
-            certificates in this directory should be named XXXXXXXX.0 where
-            XXXXXXXX is the hash value of the DER encoded subject of the cert.
+            The loaded CA certificates will be used with the verifyChain and
+            verifyPeer options.
+ 
+            Multiple CAengine options are allowed in a single service section.
+ 
+            Currently supported engines: pkcs11, cng.
+ 
+        CApath = CA_DIRECTORY
+            load trusted CA certificates from a directory
+ 
+            The loaded CA certificates will be used with the verifyChain and
+            verifyPeer options.  Note that the certificates in this directory
+            should be named XXXXXXXX.0 where XXXXXXXX is the hash value of the
+            DER encoded subject of the cert.
  
             The hash algorithm has been changed in OpenSSL 1.0.0.  It is
             required to c_rehash the directory on upgrade from OpenSSL 0.x.x to
-            OpenSSL 1.x.x.
+            OpenSSL 1.x.x or later.
  
             CApath path is relative to the chroot directory if specified.
  
         CAfile = CA_FILE
-            Certificate Authority file
+            load trusted CA certificates from a file
  
-            This file contains multiple CA certificates, to be used with the
-            verifyChain and verifyPeer options.
+            The loaded CA certificates will be used with the verifyChain and
+            verifyPeer options.
  
         cert = CERT_FILE
             certificate chain file name
@@ -1887,30 +1909,34 @@ PackagesInfo: |
         checkEmail = EMAIL
             email address of the peer certificate subject
  
+            Certificates are accepted if no subject checks were specified, or
+            the email address of the peer certificate matches any of the email
+            addresses specified with checkEmail.
+ 
             Multiple checkEmail options are allowed in a single service
-            section.  Certificates are accepted if no subject checks were
-            specified, or the email address of the peer certificate matches any
-            of the email addresses specified with checkEmail.
+            section.
  
             This option requires OpenSSL 1.0.2 or later.
  
         checkHost = HOST
             host of the peer certificate subject
  
-            Multiple checkHost options are allowed in a single service section.
             Certificates are accepted if no subject checks were specified, or
             the host name of the peer certificate matches any of the hosts
             specified with checkHost.
+ 
+            Multiple checkHost options are allowed in a single service section.
  
             This option requires OpenSSL 1.0.2 or later.
  
         checkIP = IP
             IP address of the peer certificate subject
  
-            Multiple checkIP options are allowed in a single service section.
             Certificates are accepted if no subject checks were specified, or
             the IP address of the peer certificate matches any of the IP
             addresses specified with checkIP.
+ 
+            Multiple checkIP options are allowed in a single service section.
  
             This option requires OpenSSL 1.0.2 or later.
  
@@ -1960,7 +1986,6 @@ PackagesInfo: |
             If no host is specified, the host defaults to localhost.
  
             Multiple connect options are allowed in a single service section.
- 
             If host resolves to multiple addresses and/or if multiple connect
             options are specified, then the remote address is chosen using a
             round-robin algorithm.
@@ -3046,7 +3071,7 @@ PackagesInfo: |
         Michal Trojnara
             <Michal.Trojnara@stunnel.org>
  
- 5.67                              2022.10.08                        stunnel(8)
+ 5.68                              2022.12.20                        stunnel(8)
  ```
  
  - - -

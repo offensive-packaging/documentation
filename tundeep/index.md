@@ -3,7 +3,7 @@ Title: tundeep
 Homepage: https://www.adampalmer.me/iodigitalsec/tundeep/
 Repository: https://gitlab.com/kalilinux/packages/tundeep
 Architectures: any
-Version: 1.1~git20190802-0kali1
+Version: 1.1~git20190802-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

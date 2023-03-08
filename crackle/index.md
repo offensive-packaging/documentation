@@ -3,7 +3,7 @@ Title: crackle
 Homepage: https://github.com/mikeryan/crackle
 Repository: https://gitlab.com/kalilinux/packages/crackle
 Architectures: any
-Version: 0.1~git01282014-0kali2
+Version: 0.1~git01282014-0kali3
 Metapackages: kali-linux-everything kali-tools-bluetooth kali-tools-passwords kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

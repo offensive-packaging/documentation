@@ -3,7 +3,7 @@ Title: atftp
 Homepage: https://sourceforge.net/projects/atftp
 Repository: https://salsa.debian.org/debian/atftp
 Architectures: any
-Version: 0.8.0-1
+Version: 0.8.0-3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   booting from LAN. The atftp client also supports non-interactive invocation
   for easy use in scripts.
  
- **Installed size:** `97 KB`  
+ **Installed size:** `96 KB`  
  **How to install:** `sudo apt install atftp`  
  
  {{< spoiler "Dependencies:" >}}
@@ -63,7 +63,7 @@ PackagesInfo: |
   supports being started from inetd(8) as well as in daemon mode using init
   scripts.
  
- **Installed size:** `182 KB`  
+ **Installed size:** `181 KB`  
  **How to install:** `sudo apt install atftpd`  
  
  {{< spoiler "Dependencies:" >}}

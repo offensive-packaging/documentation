@@ -3,7 +3,7 @@ Title: bluesnarfer
 Homepage: http://www.alighieri.org/
 Repository: https://gitlab.com/kalilinux/packages/bluesnarfer
 Architectures: any
-Version: 0.1-1kali1
+Version: 0.1-1kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-bluetooth kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

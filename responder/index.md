@@ -3,7 +3,7 @@ Title: responder
 Homepage: https://github.com/lgandx/Responder
 Repository: https://gitlab.com/kalilinux/packages/responder
 Architectures: all
-Version: 3.1.3.0-0kali1
+Version: 3.1.3.0-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-sniffing-spoofing kali-tools-top10 
 Icon: images/responder-logo.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
   behavior. You can set the -r option via command line if you want to answer
   to the Workstation Service request name suffix.
  
- **Installed size:** `3.81 MB`  
+ **Installed size:** `4.04 MB`  
  **How to install:** `sudo apt install responder`  
  
  {{< spoiler "Dependencies:" >}}
@@ -153,11 +153,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# responder-MultiRelay -h
- 
- Crypto lib is not installed. You won't be able to live dump the hashes.
- You can install it on debian based os with this command: apt-get install python-crypto
- The Sam file will be saved anyway and you will have the bootkey.
- 
  [!]MultiRelay/bin/ folder is empty. You need to run these commands:
  
  apt-get install gcc-mingw-w64-x86-64

@@ -3,7 +3,7 @@ Title: ivre
 Homepage: https://ivre.rocks
 Repository: https://gitlab.com/kalilinux/packages/ivre
 Architectures: all
-Version: 0.9.18-0kali2
+Version: 0.9.20-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,10 +17,11 @@ PackagesInfo: |
   IVRE uses Nmap to run scans, can use ZMap as a pre-scanner; IVRE can also
   import XML output from Nmap and Masscan.
  
- **Installed size:** `15.75 MB`  
+ **Installed size:** `15.31 MB`  
  **How to install:** `sudo apt install ivre`  
  
  {{< spoiler "Dependencies:" >}}
+ * libjs-sphinxdoc
  * python3
  * python3-bottle
  * python3-cryptography
@@ -42,27 +43,27 @@ PackagesInfo: |
  ```
  root@kali:~# ivre -h
  IVRE - Network recon framework
- Copyright 2011 - 2022 Pierre LALET <pierre@droids-corp.org>
- Version 0.9.18-kali
+ Copyright 2011 - 2023 Pierre LALET <pierre@droids-corp.org>
+ Version 0.9.20-kali
  
- Python 3.10.8 (main, Nov  4 2022, 09:21:25) [GCC 12.2.0]
+ Python 3.11.2 (main, Feb 12 2023, 00:48:52) [GCC 12.2.0]
  
- Linux kali 6.0.0-kali3-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.0.7-1kali1 (2022-11-07) x86_64
+ Linux kali 6.1.0-kali5-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.12-1kali2 (2023-02-23) x86_64
  
  Dependencies:
-     Python module pymongo: 3.11.0
-     Python module sqlalchemy: 1.4.31
-     Python module psycopg2: 2.9.4 (dt dec pq3 ext lo64)
-     Python module cryptography: 3.4.8
-     Python module krbV: missing
-     Python module pycurl: PycURL/7.45.1 libcurl/7.85.0 GnuTLS/3.7.8 zlib/1.2.11 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.3 libpsl/0.21.0 (+libidn2/2.3.0) libssh2/1.10.0 nghttp2/1.50.0 librtmp/2.3
-     Python module PIL: 9.2.0
-     Python module MySQLdb: 1.4.6
-     Python module dbus: 1.3.2
-     Python module matplotlib: 3.5.2
-     Python module bottle: 0.12.23
-     Python module OpenSSL: 21.0.0
-     Python module tinydb: 3.15.2
+     MySQLdb: 1.4.6
+     OpenSSL: 23.0.0
+     PIL: 9.4.0
+     bottle: 0.12.23
+     cryptography: 38.0.4
+     dbus: 1.3.2
+     krbV: *missing*
+     matplotlib: 3.6.3
+     psycopg2: 2.9.5 (dt dec pq3 ext lo64)
+     pycurl: PycURL/7.45.2 libcurl/7.87.0 GnuTLS/3.7.9 zlib/1.2.13 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3
+     pymongo: 3.11.0
+     sqlalchemy: 1.4.46
+     tinydb: 3.15.2
  
  usage: ivre [COMMAND]
  
@@ -81,6 +82,7 @@ PackagesInfo: |
    iphost
    ipinfo
    localscan
+   macdata
    macinfo
    p0f2db
    passiverecon2db
@@ -115,7 +117,7 @@ PackagesInfo: |
   IVRE uses Nmap to run scans, can use ZMap as a pre-scanner; IVRE
   can also import XML output from Nmap and Masscan.
  
- **Installed size:** `5.35 MB`  
+ **Installed size:** `8.55 MB`  
  **How to install:** `sudo apt install ivre-doc`  
  
  {{< spoiler "Dependencies:" >}}

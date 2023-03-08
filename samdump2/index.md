@@ -4,7 +4,7 @@ Homepage: http://ophcrack.sourceforge.net/
 Repository: https://salsa.debian.org/pkg-security-team/samdump2
 Architectures: any
 Version: 3.0.0-7
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-passwords 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-passwords kali-tools-respond 
 Icon: images/samdump2-logo.svg
 PackagesInfo: |
  ### samdump2

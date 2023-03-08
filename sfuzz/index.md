@@ -3,7 +3,7 @@ Title: sfuzz
 Homepage: http://aconole.brad-x.com/programs/sfuzz.html
 Repository: https://gitlab.com/kalilinux/packages/sfuzz
 Architectures: any
-Version: 0.7.0-1kali3
+Version: 0.7.0-1kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-fuzzing kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   a simple to use, but fairly powerful and flexible black box
   testing utility.
  
- **Installed size:** `187 KB`  
+ **Installed size:** `191 KB`  
  **How to install:** `sudo apt install sfuzz`  
  
  {{< spoiler "Dependencies:" >}}

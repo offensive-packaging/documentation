@@ -1,10 +1,10 @@
 ---
 Title: rkhunter
-Homepage: http://rkhunter.sourceforge.net
+Homepage: https://rkhunter.sourceforge.net
 Repository: https://salsa.debian.org/pkg-security-team/rkhunter
 Architectures: all
-Version: 1.4.6-10
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 1.4.6-11
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: images/rkhunter-logo.svg
 PackagesInfo: |
  ### rkhunter
@@ -24,7 +24,7 @@ PackagesInfo: |
   compromised. Running additional tests, such as chkrootkit, is
   recommended.
  
- **Installed size:** `1.05 MB`  
+ **Installed size:** `1.04 MB`  
  **How to install:** `sudo apt install rkhunter`  
  
  {{< spoiler "Dependencies:" >}}
@@ -35,7 +35,7 @@ PackagesInfo: |
  * lsof
  * net-tools
  * perl
- * ucf
+ * ucf 
  {{< /spoiler >}}
  
  ##### rkhunter

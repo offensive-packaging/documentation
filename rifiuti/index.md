@@ -4,7 +4,7 @@ Homepage: https://sf.net/projects/odessa
 Repository: https://salsa.debian.org/pkg-security-team/rifiuti
 Architectures: any
 Version: 20040505-4
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### rifiuti

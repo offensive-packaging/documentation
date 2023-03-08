@@ -3,7 +3,7 @@ Title: rtpmixsound
 Homepage: http://www.hackingvoip.com/sec_tools.html
 Repository: https://gitlab.com/kalilinux/packages/rtpmixsound
 Architectures: any
-Version: 3.0-1kali3
+Version: 3.0-1kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   A tool to mix pre-recorded audio in real-time with the
   audio (i.e. RTP) in the specified target audio stream.
  
- **Installed size:** `226 KB`  
+ **Installed size:** `230 KB`  
  **How to install:** `sudo apt install rtpmixsound`  
  
  {{< spoiler "Dependencies:" >}}

@@ -3,8 +3,8 @@ Title: forensic-artifacts
 Homepage: https://github.com/ForensicArtifacts/artifacts
 Repository: https://salsa.debian.org/pkg-security-team/forensic-artifacts
 Architectures: all
-Version: 20220219-1
-Metapackages: kali-linux-everything kali-tools-forensics 
+Version: 20221219-1
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### forensic-artifacts
@@ -15,7 +15,7 @@ PackagesInfo: |
    
   This package installs the data files alone, without the Python toolkit.
  
- **Installed size:** `379 KB`  
+ **Installed size:** `406 KB`  
  **How to install:** `sudo apt install forensic-artifacts`  
  
  
@@ -29,7 +29,7 @@ PackagesInfo: |
    
   This package installs the Python 3 version.
  
- **Installed size:** `67 KB`  
+ **Installed size:** `63 KB`  
  **How to install:** `sudo apt install python3-artifacts`  
  
  {{< spoiler "Dependencies:" >}}

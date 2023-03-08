@@ -3,7 +3,7 @@ Title: apache-users
 Homepage: https://labs.portcullis.co.uk/downloads/
 Repository: https://gitlab.com/kalilinux/packages/apache-users
 Architectures: any
-Version: 2.1-1kali5
+Version: 2.1-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-web 
 Icon: images/apache-users-logo.svg
 PackagesInfo: |

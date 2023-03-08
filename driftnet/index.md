@@ -3,7 +3,7 @@ Title: driftnet
 Homepage: https://github.com/deiv/driftnet
 Repository: https://github.com/deiv/driftnet
 Architectures: any
-Version: 1.3.0+dfsg-2
+Version: 1.4.0-2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sniffing-spoofing 
 Icon: images/driftnet-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   unswitched network with others who are not, you should probably not
   use it.)
  
- **Installed size:** `111 KB`  
+ **Installed size:** `112 KB`  
  **How to install:** `sudo apt install driftnet`  
  
  {{< spoiler "Dependencies:" >}}
@@ -27,10 +27,9 @@ PackagesInfo: |
  * libglib2.0-0 
  * libgtk2.0-0 
  * libjpeg62-turbo 
- * libjs-jquery 
- * libjs-lightbox2 
  * libpcap0.8 
  * libpng16-16 
+ * libwebp7
  * libwebsockets17 
  {{< /spoiler >}}
  
@@ -40,7 +39,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# driftnet -h
- driftnet, version 1.3.0
+ driftnet, version 1.4.0
  Capture images from network traffic and display them.
  
  Synopsis: driftnet [options] [filter code]

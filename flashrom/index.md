@@ -3,7 +3,7 @@ Title: flashrom
 Homepage: http://www.flashrom.org
 Repository: https://salsa.debian.org/myczko-guest/flashrom
 Architectures: any
-Version: 1.2-5
+Version: 1.3.0-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -67,12 +67,13 @@ PackagesInfo: |
     * pickit2_spi (for SPI flash ROMs accessible via Microchip PICkit2)
     * ch341a_spi (for SPI flash ROMs attached to WCH CH341A)
  
- **Installed size:** `971 KB`  
+ **Installed size:** `1.08 MB`  
  **How to install:** `sudo apt install flashrom`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libftdi1-2 
+ * libjaylink0 
  * libpci3 
  * libusb-1.0-0 
  {{< /spoiler >}}
@@ -83,44 +84,57 @@ PackagesInfo: |
  
  ```
  root@kali:~# flashrom -h
- flashrom v1.2 on Linux 6.0.0-kali3-amd64 (x86_64)
+ flashrom unknown on Linux 6.1.0-kali5-amd64 (x86_64)
  flashrom is free software, get the source code at https://flashrom.org
  
+ Using clock_gettime for delay loops (clk_id: 1, resolution: 1ns).
  Usage: flashrom [-h|-R|-L|
  	-p <programmername>[:<parameters>] [-c <chipname>]
  		(--flash-name|--flash-size|
- 		 [-E|(-r|-w|-v) <file>]
- 		 [(-l <layoutfile>|--ifd| --fmap|--fmap-file <file>) [-i <imagename>]...]
+ 		 [-E|-x|(-r|-w|-v) <file>]
+ 		 [(-l <layoutfile>|--ifd| --fmap|--fmap-file <file>) [-i <region>[:<file>]]...]
  		 [-n] [-N] [-f])]
  	[-V[V[V]]] [-o <logfile>]
  
   -h | --help                        print this help text
   -R | --version                     print version (release)
   -r | --read <file>                 read flash and save to <file>
-  -w | --write <file>                write <file> to flash
-  -v | --verify <file>               verify flash against <file>
+  -w | --write (<file>|-)            write <file> or the content provided
+                                     on the standard input to flash
+  -v | --verify (<file>|-)           verify flash against <file>
+                                     or the content provided on the standard input
   -E | --erase                       erase flash memory
   -V | --verbose                     more verbose output
   -c | --chip <chipname>             probe only for specified flash chip
   -f | --force                       force specific operations (see man page)
   -n | --noverify                    don't auto-verify
   -N | --noverify-all                verify included regions only (cf. -i)
+  -x | --extract                     extract regions to files
   -l | --layout <layoutfile>         read ROM layout from <layoutfile>
+       --wp-disable                  disable write protection
+       --wp-enable                   enable write protection
+       --wp-list                     list supported write protection ranges
+       --wp-status                   show write protection status
+       --wp-range=<start>,<len>      set write protection range (use --wp-range=0,0
+                                     to unprotect the entire flash)
+       --wp-region <region>          set write protection region
        --flash-name                  read out the detected flash name
        --flash-size                  read out the detected flash size
        --fmap                        read ROM layout from fmap embedded in ROM
        --fmap-file <fmapfile>        read ROM layout from fmap in <fmapfile>
        --ifd                         read layout from an Intel Firmware Descriptor
-  -i | --image <name>                only flash image <name> from flash layout
+  -i | --include <region>[:<file>]   only read/write image <region> from layout
+                                     (optionally with data from <file>)
+       --image <region>[:<file>]     deprecated, please use --include
   -o | --output <logfile>            log output to <logfile>
        --flash-contents <ref-file>   assume flash contents to be <ref-file>
   -L | --list-supported              print supported devices
   -p | --programmer <name>[:<param>] specify the programmer device. One of
-     internal, dummy, nic3com, nicrealtek, gfxnvidia, drkaiser, satasii, atavia,
-     it8212, ft2232_spi, serprog, buspirate_spi, dediprog, developerbox,
-     rayer_spi, pony_spi, nicintel, nicintel_spi, nicintel_eeprom, ogp_spi,
-     satamv, linux_mtd, linux_spi, usbblaster_spi, pickit2_spi, ch341a_spi,
-     digilent_spi, stlinkv3_spi.
+     internal, dummy, nic3com, nicrealtek, gfxnvidia, raiden_debug_spi, drkaiser,
+     satasii, atavia, it8212, ft2232_spi, serprog, buspirate_spi, dediprog,
+     developerbox, rayer_spi, pony_spi, nicintel, nicintel_spi, nicintel_eeprom,
+     ogp_spi, satamv, linux_mtd, linux_spi, usbblaster_spi, pickit2_spi,
+     ch341a_spi, digilent_spi, jlink_spi, stlinkv3_spi, dirtyjtag_spi.
  
  You can specify one of -h, -R, -L, -E, -r, -w, -v or no operation.
  If no operation is specified, flashrom will only probe for flash chips.
@@ -148,7 +162,7 @@ PackagesInfo: |
    
   This package provides flashrom header development files.
  
- **Installed size:** `32 KB`  
+ **Installed size:** `43 KB`  
  **How to install:** `sudo apt install libflashrom-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -178,12 +192,13 @@ PackagesInfo: |
    
   This package provides flashrom library development files.
  
- **Installed size:** `933 KB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install libflashrom1`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libftdi1-2 
+ * libjaylink0 
  * libpci3 
  * libusb-1.0-0 
  {{< /spoiler >}}

@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: smali
 Homepage: https://github.com/JesusFreke/smali
 Repository: https://gitlab.com/kalilinux/packages/smali

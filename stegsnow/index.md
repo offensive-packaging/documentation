@@ -1,9 +1,9 @@
 ---
 Title: stegsnow
-Homepage: http://www.darkside.com.au/snow
+Homepage: https://www.darkside.com.au/snow
 Repository: https://salsa.debian.org/pkg-security-team/stegsnow
 Architectures: any
-Version: 20130616-6
+Version: 20130616-7
 Metapackages: kali-linux-everything kali-tools-crypto-stego 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

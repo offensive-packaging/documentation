@@ -4,7 +4,7 @@ Homepage: http://projects.sentinelchicken.org/grokevt/
 Repository: https://salsa.debian.org/pkg-security-team/grokevt
 Architectures: all
 Version: 0.5.0-5
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-detect kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### grokevt

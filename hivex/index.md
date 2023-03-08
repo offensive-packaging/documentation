@@ -3,8 +3,8 @@ Title: hivex
 Homepage: http://libguestfs.org/
 Repository: https://salsa.debian.org/libvirt-team/hivex
 Architectures: any
-Version: 1.3.21-1.1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 1.3.23-1
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libhivex-bin
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains a few command line programs that utilize libhivex.
  
- **Installed size:** `263 KB`  
+ **Installed size:** `242 KB`  
  **How to install:** `sudo apt install libhivex-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -105,7 +105,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-11-12                       hivexget(1)
+ hivex-1.3.23                      2023-01-31                       hivexget(1)
  ```
  
  - - -
@@ -166,7 +166,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-11-12                        hivexml(1)
+ hivex-1.3.23                      2023-01-31                        hivexml(1)
  ```
  
  - - -
@@ -434,7 +434,7 @@ PackagesInfo: |
         with this program; if not, write to the Free Software Foundation, Inc.,
         51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  
- hivex-1.3.21                      2022-11-12                        hivexsh(1)
+ hivex-1.3.23                      2023-01-31                        hivexsh(1)
  ```
  
  - - -
@@ -446,7 +446,7 @@ PackagesInfo: |
    
   This package provides static libraries and header files.
  
- **Installed size:** `225 KB`  
+ **Installed size:** `157 KB`  
  **How to install:** `sudo apt install libhivex-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -463,7 +463,7 @@ PackagesInfo: |
    
   This package include only the shared runtime stub libraries.
  
- **Installed size:** `70 KB`  
+ **Installed size:** `39 KB`  
  **How to install:** `sudo apt install libhivex-ocaml`  
  
  {{< spoiler "Dependencies:" >}}
@@ -483,7 +483,7 @@ PackagesInfo: |
   This package contains all the files needed to develop OCaml programs
   which use OCaml bindings to libhivex.
  
- **Installed size:** `119 KB`  
+ **Installed size:** `88 KB`  
  **How to install:** `sudo apt install libhivex-ocaml-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -506,7 +506,7 @@ PackagesInfo: |
   through a C API, or there is a separate program to export the hive as
   XML.
  
- **Installed size:** `135 KB`  
+ **Installed size:** `84 KB`  
  **How to install:** `sudo apt install libhivex0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -524,7 +524,7 @@ PackagesInfo: |
   This package also contains hivexregedit, a low-level command-line
   tool for manipulating and dumping registry hives.
  
- **Installed size:** `152 KB`  
+ **Installed size:** `121 KB`  
  **How to install:** `sudo apt install libwin-hivex-perl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -655,7 +655,7 @@ PackagesInfo: |
   Python 3 bindings for libhivex, a library for reading and writing
   Windows Registry "hive" binary files.
  
- **Installed size:** `104 KB`  
+ **Installed size:** `49 KB`  
  **How to install:** `sudo apt install python3-hivex`  
  
  {{< spoiler "Dependencies:" >}}
@@ -673,15 +673,14 @@ PackagesInfo: |
   Ruby bindings for libhivex, a library for reading and writing
   Windows Registry "hive" binary files.
  
- **Installed size:** `113 KB`  
+ **Installed size:** `49 KB`  
  **How to install:** `sudo apt install ruby-hivex`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libhivex0 
  * libruby 
- * libruby  | libruby 
- * libruby3.0  | libruby3.1 
+ * libruby3.1 
  {{< /spoiler >}}
  
  

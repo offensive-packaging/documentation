@@ -3,7 +3,7 @@ Title: gr-osmosdr
 Homepage: http://sdr.osmocom.org/trac/wiki/GrOsmoSDR
 Repository: https://salsa.debian.org/bottoms/pkg-gr-osmosdr
 Architectures: any
-Version: 0.2.3-7
+Version: 0.2.4-1
 Metapackages: kali-linux-everything kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -38,14 +38,14 @@ PackagesInfo: |
   radio hardware. This package provides C++ header files,
   documentation, and Python3 wrappers to the library.
  
- **Installed size:** `8.26 MB`  
+ **Installed size:** `8.42 MB`  
  **How to install:** `sudo apt install gr-osmosdr`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
  * libgnuradio-osmosdr0.2.0 
- * libgnuradio-runtime3.10.4 
+ * libgnuradio-runtime3.10.5 
  * libstdc++6 
  * python3
  * python3 
@@ -365,12 +365,12 @@ PackagesInfo: |
  * libc6 
  * libfreesrp0
  * libgcc-s1 
- * libgnuradio-blocks3.10.4 
+ * libgnuradio-blocks3.10.5 
  * libgnuradio-funcube3.10.0 
  * libgnuradio-iqbalance3.9.0 
- * libgnuradio-pmt3.10.4 
- * libgnuradio-runtime3.10.4 
- * libgnuradio-uhd3.10.4 
+ * libgnuradio-pmt3.10.5 
+ * libgnuradio-runtime3.10.5 
+ * libgnuradio-uhd3.10.5 
  * libhackrf0 
  * librtlsdr0 
  * libsoapysdr0.8 

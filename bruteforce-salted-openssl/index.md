@@ -3,7 +3,7 @@ Title: bruteforce-salted-openssl
 Homepage: https://github.com/glv2/bruteforce-salted-openssl
 Repository: https://salsa.debian.org/pkg-security-team/bruteforce-salted-openssl
 Architectures: any
-Version: 1.4.2-3
+Version: 1.4.2-4
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -42,7 +42,7 @@ PackagesInfo: |
    
   This package is useful for security, pentests and forensics investigations.
  
- **Installed size:** `55 KB`  
+ **Installed size:** `54 KB`  
  **How to install:** `sudo apt install bruteforce-salted-openssl`  
  
  {{< spoiler "Dependencies:" >}}

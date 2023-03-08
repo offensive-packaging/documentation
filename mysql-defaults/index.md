@@ -3,8 +3,8 @@ Title: mysql-defaults
 Homepage: 
 Repository: https://salsa.debian.org/mariadb-team/mysql/-/tree/mysql-defaults/debian/master
 Architectures: any all
-Version: 1.0.8
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
+Version: 1.1.0
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-respond kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### default-libmysqlclient-dev
@@ -23,7 +23,7 @@ PackagesInfo: |
   dpkg-shlibdeps should correctly generate a dependency on libmysqlclientX or
   libmariadbclientX as appropriate.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `9 KB`  
  **How to install:** `sudo apt install default-libmysqlclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -43,7 +43,7 @@ PackagesInfo: |
   This package depends on the default implementation of the embedded server
   library development and header files.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `9 KB`  
  **How to install:** `sudo apt install default-libmysqld-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -63,11 +63,11 @@ PackagesInfo: |
   This package depends on the default implementation of the client binaries and
   the additional tools innotop and mysqlreport.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `9 KB`  
  **How to install:** `sudo apt install default-mysql-client`  
  
  {{< spoiler "Dependencies:" >}}
- * mariadb-client-10.6
+ * mariadb-client
  {{< /spoiler >}}
  
  
@@ -83,11 +83,11 @@ PackagesInfo: |
   This package depends on the default implementation of the core client files,
   as used by Akonadi.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `9 KB`  
  **How to install:** `sudo apt install default-mysql-client-core`  
  
  {{< spoiler "Dependencies:" >}}
- * mariadb-client-core-10.6
+ * mariadb-client-core
  {{< /spoiler >}}
  
  
@@ -103,11 +103,11 @@ PackagesInfo: |
   This package depends on the default implementation of all the infrastructure
   needed to setup system databases.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `9 KB`  
  **How to install:** `sudo apt install default-mysql-server`  
  
  {{< spoiler "Dependencies:" >}}
- * mariadb-server-10.6
+ * mariadb-server
  {{< /spoiler >}}
  
  
@@ -123,11 +123,11 @@ PackagesInfo: |
   This package depends on the default implementation of the server binaries but
   doesn't depend on all the infrastructure needed to setup system databases.
  
- **Installed size:** `10 KB`  
+ **Installed size:** `9 KB`  
  **How to install:** `sudo apt install default-mysql-server-core`  
  
  {{< spoiler "Dependencies:" >}}
- * mariadb-server-core-10.6
+ * mariadb-server-core
  {{< /spoiler >}}
  
  
@@ -143,7 +143,7 @@ PackagesInfo: |
   This package includes files needed by all versions of the client library,
   e.g. /etc/mysql/my.cnf.
  
- **Installed size:** `34 KB`  
+ **Installed size:** `33 KB`  
  **How to install:** `sudo apt install mysql-common`  
  
  

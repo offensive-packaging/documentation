@@ -3,7 +3,7 @@ Title: urlcrazy
 Homepage: https://www.morningstarsecurity.com/research/urlcrazy
 Repository: https://gitlab.com/kalilinux/packages/urlcrazy
 Architectures: all
-Version: 0.7.1-0kali1
+Version: 0.7.3-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -31,7 +31,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# urlcrazy -h
- Warning. Ulimit may be too low. Check with `ulimit -a` and change with `ulimit -n 10000`
+ Warning. File descriptor limit may be too low. Check with `ulimit -a` and change with `ulimit -n 10000`
  ```
  
  - - -

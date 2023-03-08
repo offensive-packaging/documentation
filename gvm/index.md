@@ -3,7 +3,7 @@ Title: gvm
 Homepage: https://www.greenbone.net/
 Repository: https://salsa.debian.org/pkg-security-team/gvm
 Architectures: all
-Version: 22.4.0+kali3
+Version: 22.4.1
 Metapackages: kali-linux-everything kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -36,20 +36,15 @@ PackagesInfo: |
  
  ```
  root@kali:~# gvm-check-setup -h
- gvm-check-setup 22.4.0
-   Test completeness and readiness of GVM-22.4.0
+ gvm-check-setup 22.4.1
+   Test completeness and readiness of GVM-22.4.1
  Step 1: Checking OpenVAS (Scanner)... 
-         OK: OpenVAS Scanner is present in version 22.4.0.
-         OK: Notus Scanner is present in version 22.4.1.
-         OK: Server CA Certificate is present as /var/lib/gvm/CA/servercert.pem.
- Checking permissions of /var/lib/openvas/gnupg/*
-         OK: _gvm owns all files in /var/lib/openvas/gnupg
-         OK: redis-server is present.
-         OK: scanner (db_address setting) is configured properly using the redis-server socket: /var/run/redis-openvas/redis-server.sock
-         ERROR: redis-server is not running or not listening on socket: /var/run/redis-openvas/redis-server.sock
-         FIX: You should start the redis-server with 'systemctl start redis-server@openvas.service' or configure it to listen on socket: /var/run/redis-openvas/redis-server.sock
+         OK: OpenVAS Scanner is present in version 22.4.1.
+         OK: Notus Scanner is present in version 22.4.4.
+         ERROR: No CA certificate file for Server found.
+         FIX: Run 'sudo runuser -u _gvm -- gvm-manage-certs -a -f'.
  
-  ERROR: Your GVM-22.4.0 installation is not yet complete!
+  ERROR: Your GVM-22.4.1 installation is not yet complete!
  
  Please follow the instructions marked with FIX above and run this
  script again.
@@ -102,7 +97,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# gvm-start --help
+ root@kali:~# gvm-start -h
  [i] GVM services are already running
  ```
  
@@ -125,12 +120,12 @@ PackagesInfo: |
       Active: inactive (dead)
         Docs: man:gvmd(8)
  
- Nov 24 04:58:38 kali systemd[1]: Starting Greenbone Vulnerability Manager daemon (gvmd)...
- Nov 24 04:58:38 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
- Nov 24 04:58:38 kali systemd[1]: Started Greenbone Vulnerability Manager daemon (gvmd).
- Nov 24 04:58:42 kali systemd[1]: Stopping Greenbone Vulnerability Manager daemon (gvmd)...
- Nov 24 04:58:42 kali systemd[1]: gvmd.service: Deactivated successfully.
- Nov 24 04:58:42 kali systemd[1]: Stopped Greenbone Vulnerability Manager daemon (gvmd).
+ Mar 08 09:11:19 kali systemd[1]: Starting gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
+ Mar 08 09:11:19 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
+ Mar 08 09:11:20 kali systemd[1]: Started gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
+ Mar 08 09:11:20 kali systemd[1]: Stopping gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
+ Mar 08 09:11:20 kali systemd[1]: gvmd.service: Deactivated successfully.
+ Mar 08 09:11:20 kali systemd[1]: Stopped gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
  
  * ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
       Loaded: loaded (/lib/systemd/system/ospd-openvas.service; disabled; preset: disabled)
@@ -138,27 +133,27 @@ PackagesInfo: |
         Docs: man:ospd-openvas(8)
               man:openvas(8)
  
- Nov 24 04:58:37 kali systemd[1]: Starting OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- Nov 24 04:58:38 kali systemd[1]: Started OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
- Nov 24 04:58:42 kali systemd[1]: Stopping OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- Nov 24 04:58:43 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
- Nov 24 04:58:43 kali systemd[1]: Stopped OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ Mar 08 09:11:18 kali systemd[1]: Starting ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ Mar 08 09:11:19 kali systemd[1]: Started ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ Mar 08 09:11:20 kali systemd[1]: Stopping ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ Mar 08 09:11:20 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
+ Mar 08 09:11:20 kali systemd[1]: Stopped ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
  
  * notus-scanner.service - Notus Scanner
       Loaded: loaded (/lib/systemd/system/notus-scanner.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: https://github.com/greenbone/notus-scanner
  
- Nov 24 04:58:38 kali notus-scanner[439849]:     raise AdvisoriesLoadingError(
- Nov 24 04:58:38 kali notus-scanner[439849]: notus.scanner.errors.AdvisoriesLoadingError: Can't load advisories. /var/lib/notus/products is not a directory.
- Nov 24 04:58:38 kali notus-scanner[439849]: Exception ignored in atexit callback: <function exit_cleanup at 0x7ffff5349870>
- Nov 24 04:58:38 kali notus-scanner[439849]: Traceback (most recent call last):
- Nov 24 04:58:38 kali notus-scanner[439849]:   File "/usr/lib/python3/dist-packages/notus/scanner/utils.py", line 112, in exit_cleanup
- Nov 24 04:58:38 kali notus-scanner[439849]:     sys.exit()
- Nov 24 04:58:38 kali notus-scanner[439849]: SystemExit:
- Nov 24 04:58:38 kali systemd[1]: notus-scanner.service: Can't open PID file /run/notus-scanner/notus-scanner.pid (yet?) after start: Operation not permitted
- Nov 24 04:58:42 kali systemd[1]: notus-scanner.service: Deactivated successfully.
- Nov 24 04:58:42 kali systemd[1]: Stopped Notus Scanner.
+ Mar 08 09:11:19 kali notus-scanner[663523]: notus.scanner.errors.AdvisoriesLoadingError: Can't load advisories. /var/lib/notus/products is not a directory.
+ Mar 08 09:11:19 kali notus-scanner[663523]: Exception ignored in atexit callback: <function exit_cleanup at 0x7ffff59ade40>
+ Mar 08 09:11:19 kali notus-scanner[663523]: Traceback (most recent call last):
+ Mar 08 09:11:19 kali notus-scanner[663523]:   File "/usr/lib/python3/dist-packages/notus/scanner/utils.py", line 116, in exit_cleanup
+ Mar 08 09:11:19 kali notus-scanner[663523]:     sys.exit()
+ Mar 08 09:11:19 kali notus-scanner[663523]: SystemExit:
+ Mar 08 09:11:19 kali systemd[1]: notus-scanner.service: Can't open PID file /run/notus-scanner/notus-scanner.pid (yet?) after start: Operation not permitted
+ Mar 08 09:11:19 kali systemd[1]: notus-scanner.service: Failed with result 'protocol'.
+ Mar 08 09:11:19 kali systemd[1]: Failed to start notus-scanner.service - Notus Scanner.
+ Mar 08 09:11:20 kali systemd[1]: Stopped notus-scanner.service - Notus Scanner.
  ```
  
  - - -

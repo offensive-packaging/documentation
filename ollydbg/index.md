@@ -3,8 +3,8 @@ Title: ollydbg
 Homepage: http://www.ollydbg.de/
 Repository: https://gitlab.com/kalilinux/packages/ollydbg
 Architectures: all
-Version: 1.10-1kali4
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-reverse-engineering kali-tools-windows-resources 
+Version: 1.10-1kali5
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering kali-tools-windows-resources 
 Icon: images/ollydbg-logo.svg
 PackagesInfo: |
  ### ollydbg
@@ -26,7 +26,7 @@ PackagesInfo: |
  
  
  ```
- root@kali:~# ollydbg -h
+ root@kali:~# ollydbg --help
  ┏━(Message from Kali developers)
  ┃
  ┃ You may need to install the wine32 package first:

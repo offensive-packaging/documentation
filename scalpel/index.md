@@ -3,8 +3,8 @@ Title: scalpel
 Homepage: http://www.digitalforensicssolutions.com/Scalpel
 Repository: https://salsa.debian.org/pkg-security-team/scalpel
 Architectures: any
-Version: 1.60-9+nmu1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Version: 1.60-10
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/scalpel-logo.svg
 PackagesInfo: |
  ### scalpel

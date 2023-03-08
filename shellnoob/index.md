@@ -3,7 +3,7 @@ Title: shellnoob
 Homepage: https://github.com/reyammer/shellnoob
 Repository: https://gitlab.com/kalilinux/packages/shellnoob
 Architectures: all
-Version: 2.1+git20170425-0kali2
+Version: 2.1+git20170425-0kali3
 Metapackages: kali-linux-everything kali-tools-exploitation 
 Icon: images/shellnoob-logo.svg
 PackagesInfo: |

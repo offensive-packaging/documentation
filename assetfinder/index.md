@@ -4,7 +4,7 @@ Homepage: https://github.com/tomnomnom/assetfinder
 Repository: https://gitlab.com/kalilinux/packages/assetfinder
 Architectures: any
 Version: 0.1.0+git20200415-0kali1
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-tools-identify 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### assetfinder

@@ -3,7 +3,7 @@ Title: uhd
 Homepage: https://www.ettus.com/sdr-software/uhd-usrp-hardware-driver/
 Repository: https://salsa.debian.org/bottoms/pkg-uhd
 Architectures: any all
-Version: 4.3.0.0+ds1-3
+Version: 4.3.0.0+ds1-4
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   This package contains the header files for developing with libuhd.
   Doxygen generated documentation is in the uhd-host package.
  
- **Installed size:** `1.13 MB`  
+ **Installed size:** `1.11 MB`  
  **How to install:** `sudo apt install libuhd-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,7 +36,7 @@ PackagesInfo: |
   along with digital interfaces for getting signals to and from a software
   defined radio running on the host computer.
  
- **Installed size:** `13.55 MB`  
+ **Installed size:** `13.54 MB`  
  **How to install:** `sudo apt install libuhd4.3.0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -46,7 +46,7 @@ PackagesInfo: |
  * libboost-thread1.74.0 
  * libc6 
  * libgcc-s1 
- * libpython3.10 
+ * libpython3.11 
  * libstdc++6 
  * libusb-1.0-0 
  {{< /spoiler >}}
@@ -65,7 +65,7 @@ PackagesInfo: |
   This package is built with the Data Plane Development Kit and has additional
   dependencies and system configuration requirements to use those features.
  
- **Installed size:** `13.74 MB`  
+ **Installed size:** `13.73 MB`  
  **How to install:** `sudo apt install libuhd4.3.0-dpdk`  
  
  {{< spoiler "Dependencies:" >}}
@@ -75,13 +75,13 @@ PackagesInfo: |
  * libboost-thread1.74.0 
  * libc6 
  * libgcc-s1 
- * libpython3.10 
- * librte-eal22 
- * librte-ethdev22 
- * librte-hash22 
- * librte-mbuf22 
- * librte-mempool22 
- * librte-ring22 
+ * libpython3.11 
+ * librte-eal23 
+ * librte-ethdev23 
+ * librte-hash23 
+ * librte-mbuf23 
+ * librte-mempool23 
+ * librte-ring23 
  * libstdc++6 
  * libusb-1.0-0 
  {{< /spoiler >}}
@@ -96,7 +96,7 @@ PackagesInfo: |
   This package is built with the Data Plane Development Kit and has additional
   dependencies and system configuration requirements to use those features.
  
- **Installed size:** `1.03 MB`  
+ **Installed size:** `1.02 MB`  
  **How to install:** `sudo apt install libuhd4.3.0-dpdk-tests`  
  
  {{< spoiler "Dependencies:" >}}
@@ -104,13 +104,13 @@ PackagesInfo: |
  * libboost-program-options1.74.0 
  * libc6 
  * libgcc-s1 
- * librte-eal22 
- * librte-ethdev22 
- * librte-hash22 
- * librte-mbuf22 
- * librte-mempool22 
- * librte-net22 
- * librte-ring22 
+ * librte-eal23 
+ * librte-ethdev23 
+ * librte-hash23 
+ * librte-mbuf23 
+ * librte-mempool23 
+ * librte-net23 
+ * librte-ring23 
  * libstdc++6 
  * libuhd4.3.0-dpdk 
  {{< /spoiler >}}
@@ -128,13 +128,13 @@ PackagesInfo: |
    
   This package contains the Python API support for Python3.
  
- **Installed size:** `3.27 MB`  
+ **Installed size:** `3.25 MB`  
  **How to install:** `sudo apt install python3-uhd`  
  
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * libgcc-s1 
- * libpython3.10 
+ * libpython3.11 
  * libstdc++6 
  * libuhd4.3.0 
  * python3
@@ -153,7 +153,7 @@ PackagesInfo: |
    
   This package includes the Doxygen generated documentation.
  
- **Installed size:** `32.62 MB`  
+ **Installed size:** `32.61 MB`  
  **How to install:** `sudo apt install uhd-doc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -176,7 +176,7 @@ PackagesInfo: |
   display hardware configuration information and Doxygen generated
   documentation.
  
- **Installed size:** `20.72 MB`  
+ **Installed size:** `20.70 MB`  
  **How to install:** `sudo apt install uhd-host`  
  
  {{< spoiler "Dependencies:" >}}

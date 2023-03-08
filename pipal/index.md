@@ -3,7 +3,7 @@ Title: pipal
 Homepage: https://www.digininja.org/projects/pipal.php
 Repository: https://gitlab.com/kalilinux/packages/pipal
 Architectures: all
-Version: 3.1-0kali1
+Version: 3.3.2-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords kali-tools-reporting 
 Icon: images/pipal-logo.svg
 PackagesInfo: |
@@ -13,12 +13,13 @@ PackagesInfo: |
   information to help you analyse the passwords. The real
   work is done by you in interpreting the results.
  
- **Installed size:** `165 KB`  
+ **Installed size:** `240 KB`  
  **How to install:** `sudo apt install pipal`  
  
  {{< spoiler "Dependencies:" >}}
  * ruby
  * ruby-json
+ * ruby-levenshtein
  {{< /spoiler >}}
  
  ##### pipal
@@ -26,7 +27,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# pipal -h
- pipal 3.1 Robin Wood (robin@digi.ninja) (http://digi.ninja)
+ pipal 3.1.2 Robin Wood (robin@digi.ninja) (http://digi.ninja)
  
  Usage: pipal [OPTION] ... FILENAME
  	--help, -h, -?: show help

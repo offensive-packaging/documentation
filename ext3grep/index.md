@@ -4,7 +4,7 @@ Homepage: https://code.google.com/archive/p/ext3grep/
 Repository: https://salsa.debian.org/pkg-security-team/ext3grep
 Architectures: alpha amd64 arm64 armel armhf hurd-i386 i386 ia64 kfreebsd-amd64 kfreebsd-i386 mips64el mipsel ppc64el riscv64 sh4 x32
 Version: 0.10.2-5
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### ext3grep

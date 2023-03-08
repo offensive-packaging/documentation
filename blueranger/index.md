@@ -3,7 +3,7 @@ Title: blueranger
 Homepage: http://www.hackfromacave.com/projects/blueranger.html
 Repository: https://gitlab.com/kalilinux/packages/blueranger
 Architectures: any
-Version: 0.1-1kali4
+Version: 0.1-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-bluetooth kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

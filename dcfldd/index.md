@@ -3,8 +3,8 @@ Title: dcfldd
 Homepage: https://github.com/resurrecting-open-source-projects/dcfldd
 Repository: https://salsa.debian.org/debian/dcfldd
 Architectures: any
-Version: 1.8-1
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 1.9-1
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### dcfldd
@@ -34,7 +34,7 @@ PackagesInfo: |
      of:, pattern, sizeprobe, split, splitformat, statusinterval, textpattern,
      totalhashformat, verifylog, verifylog:, vf.
  
- **Installed size:** `113 KB`  
+ **Installed size:** `114 KB`  
  **How to install:** `sudo apt install dcfldd`  
  
  {{< spoiler "Dependencies:" >}}
@@ -81,6 +81,7 @@ PackagesInfo: |
    vf=FILE                  verify that FILE matches the specified input
    verifylog=FILE           send verify results to FILE instead of stderr
    verifylog:=COMMAND       exec and write verify results to process COMMAND
+   diffwr=[on|off]          only write to output if destination block content differs
  
    --help              display this help and exit
    --version           output version information and exit

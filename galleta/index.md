@@ -1,10 +1,10 @@
 ---
 Title: galleta
-Homepage: http://odessa.sourceforge.net/
+Homepage: https://odessa.sourceforge.net/
 Repository: https://salsa.debian.org/pkg-security-team/galleta
 Architectures: any
-Version: 1.0+20040505-11
-Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics 
+Version: 1.0+20040505-12
+Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/galleta-logo.svg
 PackagesInfo: |
  ### galleta
@@ -13,7 +13,7 @@ PackagesInfo: |
   produced by Microsoft Internet Explorer (MSIE). It parses the file and
   outputs a field separated that can be loaded in a spreadsheet.
  
- **Installed size:** `34 KB`  
+ **Installed size:** `31 KB`  
  **How to install:** `sudo apt install galleta`  
  
  {{< spoiler "Dependencies:" >}}

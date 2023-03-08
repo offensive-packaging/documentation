@@ -3,7 +3,7 @@ Title: ismtp
 Homepage: https://github.com/altjx/ipwn/
 Repository: https://gitlab.com/kalilinux/packages/ismtp
 Architectures: all
-Version: 1.6+git20190922-0kali1
+Version: 1.6+git20190922-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

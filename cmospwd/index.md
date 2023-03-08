@@ -3,7 +3,7 @@ Title: cmospwd
 Homepage: https://www.cgsecurity.org/wiki/CmosPwd
 Repository: https://gitlab.com/kalilinux/packages/cmospwd
 Architectures: amd64 i386
-Version: 5.0+dfsg-3kali4
+Version: 5.0+dfsg-3kali5
 Metapackages: kali-linux-everything kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

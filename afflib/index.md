@@ -3,8 +3,8 @@ Title: afflib
 Homepage: https://github.com/sshock/AFFLIBv3
 Repository: https://salsa.debian.org/pkg-security-team/afflib
 Architectures: any
-Version: 3.7.19-4
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Version: 3.7.20-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### afflib-tools
@@ -47,7 +47,7 @@ PackagesInfo: |
   affcopy, affcrypto, affdiskprint, affinfo, affix, affrecover, affsegment,
   affsign, affstats, affuse, affverify and affxml.
  
- **Installed size:** `589 KB`  
+ **Installed size:** `584 KB`  
  **How to install:** `sudo apt install afflib-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -66,7 +66,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affcat -h
- affcat version 3.7.19
+ affcat version 3.7.20
  usage: affcat [options] infile [... more infiles]
  options:
      -s name --- Just output segment name
@@ -90,7 +90,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affcompare -h
- affcompare version 3.7.19
+ affcompare version 3.7.20
  
  usage: affcompare [options] file1 file2
         compares file1 with file2
@@ -142,7 +142,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affconvert -h
- affconvert version 3.7.19
+ affconvert version 3.7.20
  
  usage:   affconvert [options] file1 [... files] 
  
@@ -157,7 +157,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affcopy -h
- affcopy version 3.7.19
+ affcopy version 3.7.20
  usage: affcopy [options] file1 file
                      Copies file1 to file2
         affcopy [options] file1 file2 file3 ... dir
@@ -206,7 +206,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affcrypto -h
- affcrypto version 3.7.19
+ affcrypto version 3.7.20
  usage: affcrypto [options] filename.aff [filename2.aff ... ]
     prints if each file is encrypted or not.
  options:
@@ -252,7 +252,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affdiskprint -h
- affdiskprint version 3.7.19
+ affdiskprint version 3.7.20
  usage: affdiskprint [options] infile 
     -x XML     =   Verify the diskprint
     -V         =   Just print the version number and exit.
@@ -267,7 +267,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affinfo -h
- affinfo version 3.7.19
+ affinfo version 3.7.20
  usage: affinfo [options] infile
     -a = print ALL segments (normally data segments are suppressed)
     -b = print how many bad blocks in each segment (implies -a)
@@ -332,7 +332,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affsegment -h
- affsegment version 3.7.19
+ affsegment version 3.7.20
  usage: affsegment [options] file1.aff [file2.aff ...]
  options:
      -c              Create AFF files if they do not exist
@@ -372,7 +372,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affsign -h
- affsign version 3.7.19
+ affsign version 3.7.20
  usage: affsign [options] filename.aff
  This program will:
    * Sign each segment if there are no segment signatures.
@@ -397,7 +397,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affstats -h
- affstats version 3.7.19
+ affstats version 3.7.20
  
  usage: affstats [options] infile(s)
        -m = print all output in megabytes
@@ -481,7 +481,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affverify -h
- affverify version 3.7.19
+ affverify version 3.7.20
  usage: affverify [options] filename.aff
  Verifies the digital signatures on a file
  options:
@@ -499,7 +499,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# affxml -h
- affxml version 3.7.19
+ affxml version 3.7.20
  usage: affxml [options] infile... 
     -V         =   Just print the version number and exit
     -x         =   Don't include the infile filename in output.
@@ -525,7 +525,7 @@ PackagesInfo: |
    
   This package provides the development files.
  
- **Installed size:** `869 KB`  
+ **Installed size:** `864 KB`  
  **How to install:** `sudo apt install libafflib-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -548,7 +548,7 @@ PackagesInfo: |
      decrypted on-the-fly for processing. This allows disk images
      containing privacy sensitive material to be stored on the Internet.
  
- **Installed size:** `570 KB`  
+ **Installed size:** `565 KB`  
  **How to install:** `sudo apt install libafflib0v5`  
  
  {{< spoiler "Dependencies:" >}}

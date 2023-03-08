@@ -59,7 +59,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# cmedb -h
- cmedb (default)(smb) > 
+ [-] Unable to find config file
  ```
  
  - - -
@@ -71,7 +71,7 @@ PackagesInfo: |
  root@kali:~# crackmapexec -h
  usage: crackmapexec [-h] [-t THREADS] [--timeout TIMEOUT] [--jitter INTERVAL]
                      [--darrell] [--verbose]
-                     {ldap,smb,rdp,mssql,ssh,winrm,ftp} ...
+                     {ssh,mssql,ldap,winrm,ftp,rdp,smb} ...
  
        ______ .______           ___        ______  __  ___ .___  ___.      ___      .______    _______ ___   ___  _______   ______
       /      ||   _  \         /   \      /      ||  |/  / |   \/   |     /   \     |   _  \  |   ____|\  \ /  / |   ____| /      |
@@ -100,14 +100,14 @@ PackagesInfo: |
  protocols:
    available protocols
  
-   {ldap,smb,rdp,mssql,ssh,winrm,ftp}
-     ldap                own stuff using LDAP
-     smb                 own stuff using SMB
-     rdp                 own stuff using RDP
-     mssql               own stuff using MSSQL
+   {ssh,mssql,ldap,winrm,ftp,rdp,smb}
      ssh                 own stuff using SSH
+     mssql               own stuff using MSSQL
+     ldap                own stuff using LDAP
      winrm               own stuff using WINRM
      ftp                 own stuff using FTP
+     rdp                 own stuff using RDP
+     smb                 own stuff using SMB
  ```
  
  - - -

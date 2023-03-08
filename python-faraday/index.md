@@ -3,7 +3,7 @@ Title: python-faraday
 Homepage: https://faradaysec.com
 Repository: https://gitlab.com/kalilinux/packages/python-faraday
 Architectures: all
-Version: 4.2.0-0kali2
+Version: 4.3.3-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-reporting 
 Icon: images/python-faraday-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This package no longer contains the GTK client like the upstream repo.
  
- **Installed size:** `31.88 MB`  
+ **Installed size:** `31.97 MB`  
  **How to install:** `sudo apt install faraday`  
  
  {{< spoiler "Dependencies:" >}}
@@ -33,6 +33,7 @@ PackagesInfo: |
  * python3-apispec-webframeworks
  * python3-autobahn
  * python3-bcrypt
+ * python3-bidict
  * python3-bleach
  * python3-click
  * python3-colorama
@@ -42,19 +43,20 @@ PackagesInfo: |
  * python3-distro
  * python3-distutils
  * python3-email-validator
- * python3-faraday-agent-parameters-types
+ * python3-faraday-agent-parameters-types 
  * python3-faraday-plugins 
  * python3-filedepot
  * python3-filteralchemy
  * python3-flask 
- * python3-flask-classful
+ * python3-flask-classful 
  * python3-flask-kvsession
- * python3-flask-limiter
+ * python3-flask-limiter 
  * python3-flask-login
  * python3-flask-mail
- * python3-flask-security
- * python3-flask-socketio
+ * python3-flask-security 
+ * python3-flask-socketio 
  * python3-flask-sqlalchemy 
+ * python3-flaskext.wtf
  * python3-jwt
  * python3-marshmallow 
  * python3-marshmallow-sqlalchemy 
@@ -62,7 +64,6 @@ PackagesInfo: |
  * python3-openssl
  * python3-pil
  * python3-psycopg2
- * python3-psycopg3
  * python3-pyasn1
  * python3-pyotp
  * python3-requests

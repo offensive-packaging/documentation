@@ -1,9 +1,9 @@
 ---
 Title: ubertooth
 Homepage: https://github.com/greatscottgadgets/ubertooth/
-Repository: https://salsa.debian.org/rubund/ubertooth
+Repository: https://gitlab.com/kalilinux/packages/ubertooth
 Architectures: any all
-Version: 2020.12.R1-0kali1
+Version: 2020.12.R1-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
    
   This package provides the development files for using the ubertooth library.
  
- **Installed size:** `55 KB`  
+ **Installed size:** `52 KB`  
  **How to install:** `sudo apt install libubertooth-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
    
   This package provides the shared library needed by Ubertooth.
  
- **Installed size:** `90 KB`  
+ **Installed size:** `87 KB`  
  **How to install:** `sudo apt install libubertooth1`  
  
  {{< spoiler "Dependencies:" >}}
@@ -65,7 +65,7 @@ PackagesInfo: |
   spectrum analyzer for the 2.4 GHz band included (ubertooth-specan-ui) which
   can be used to also observe other things in this frequency band.
  
- **Installed size:** `343 KB`  
+ **Installed size:** `336 KB`  
  **How to install:** `sudo apt install ubertooth`  
  
  {{< spoiler "Dependencies:" >}}
@@ -402,7 +402,7 @@ PackagesInfo: |
         This manual page was written by Ruben Undheim <ruben.undheim@gmail.com>
         for the Debian project (and may be used by others).
  
-                                21 December 2021         UBERTOOTH-SPECAN-UI(1)
+                                12 December 2022         UBERTOOTH-SPECAN-UI(1)
  ```
  
  - - -
@@ -459,7 +459,7 @@ PackagesInfo: |
    
   The firmware images are installed in /usr/share/ubertooth/firmware/
  
- **Installed size:** `93 KB`  
+ **Installed size:** `89 KB`  
  **How to install:** `sudo apt install ubertooth-firmware`  
  
  
@@ -474,7 +474,7 @@ PackagesInfo: |
   The firmware source may be found in /usr/src/ubertooth-firmware-source.tar.gz
   after installing this package.
  
- **Installed size:** `254 KB`  
+ **Installed size:** `251 KB`  
  **How to install:** `sudo apt install ubertooth-firmware-source`  
  
  {{< spoiler "Dependencies:" >}}

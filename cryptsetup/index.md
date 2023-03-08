@@ -3,8 +3,8 @@ Title: cryptsetup
 Homepage: https://gitlab.com/cryptsetup/cryptsetup
 Repository: https://salsa.debian.org/cryptsetup-team/cryptsetup
 Architectures: linux-any all
-Version: 2:2.5.0-6
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-web 
+Version: 2:2.6.1-1
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-protect kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### cryptsetup
@@ -23,7 +23,7 @@ PackagesInfo: |
   This package provides the cryptdisks_start and _stop wrappers, as well as
   luksformat.
  
- **Installed size:** `400 KB`  
+ **Installed size:** `409 KB`  
  **How to install:** `sudo apt install cryptsetup`  
  
  {{< spoiler "Dependencies:" >}}
@@ -80,7 +80,7 @@ PackagesInfo: |
   This package provides the cryptsetup, integritysetup and veritysetup
   utilities.
  
- **Installed size:** `2.09 MB`  
+ **Installed size:** `2.27 MB`  
  **How to install:** `sudo apt install cryptsetup-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -97,7 +97,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# cryptsetup --help
- cryptsetup 2.5.0 flags: UDEV BLKID KEYRING KERNEL_CAPI 
+ cryptsetup 2.6.1 flags: UDEV BLKID KEYRING KERNEL_CAPI 
  Usage: cryptsetup [OPTION...] <action> <action-specific>
  
  Help options:
@@ -175,10 +175,14 @@ PackagesInfo: |
        --luks2-keyslots-size=bytes       LUKS2 header keyslots area size
        --luks2-metadata-size=bytes       LUKS2 header metadata area size
        --volume-key-file=STRING          Use the volume key from file.
+       --new-keyfile=STRING              Read the key for a new slot from a file
+       --new-key-slot=INT                Slot number for new key (default is
+                                         first free)
        --new-keyfile-offset=bytes        Number of bytes to skip in newly added
                                          keyfile
        --new-keyfile-size=bytes          Limits the read from newly added
                                          keyfile
+       --new-token-id=INT                Token number (default: any)
    -o, --offset=SECTORS                  The start offset in the backend device
        --pbkdf=STRING                    PBKDF algorithm (for LUKS2): argon2i,
                                          argon2id, pbkdf2
@@ -243,8 +247,9 @@ PackagesInfo: |
                                          can be retried
    -M, --type=STRING                     Type of device metadata: luks, luks1,
                                          luks2, plain, loopaes, tcrypt, bitlk
-       --unbound                         Create or dump unbound (no assigned
-                                         data segment) LUKS2 keyslot
+       --unbound                         Create or dump unbound LUKS2 keyslot
+                                         (unassigned to data segment) or LUKS2
+                                         token (unassigned to keyslot)
        --use-random                      Use /dev/random for generating volume
                                          key
        --use-urandom                     Use /dev/urandom for generating volume
@@ -290,6 +295,7 @@ PackagesInfo: |
  	luksDump <device> - dump LUKS partition information
  	tcryptDump <device> - dump TCRYPT device information
  	bitlkDump <device> - dump BITLK device information
+ 	fvault2Dump <device> - dump FVAULT2 device information
  	luksSuspend <device> - Suspend LUKS device and wipe key (all IOs are frozen)
  	luksResume <device> - Resume suspended LUKS device
  	luksHeaderBackup <device> - Backup LUKS device header and keyslots
@@ -297,8 +303,8 @@ PackagesInfo: |
  	token <add|remove|import|export> <device> - Manipulate LUKS2 tokens
  
  You can also use old <action> syntax aliases:
- 	open: create (plainOpen), luksOpen, loopaesOpen, tcryptOpen, bitlkOpen
- 	close: remove (plainClose), luksClose, loopaesClose, tcryptClose, bitlkClose
+ 	open: create (plainOpen), luksOpen, loopaesOpen, tcryptOpen, bitlkOpen, fvault2Open
+ 	close: remove (plainClose), luksClose, loopaesClose, tcryptClose, bitlkClose, fvault2Close
  
  <name> is the device to create under /dev/mapper
  <device> is the encrypted device
@@ -331,7 +337,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# integritysetup --help
- integritysetup 2.5.0 flags: UDEV BLKID KEYRING KERNEL_CAPI 
+ integritysetup 2.6.1 flags: UDEV BLKID KEYRING KERNEL_CAPI 
  Usage: integritysetup [OPTION...] <action> <action-specific>
  
  Help options:
@@ -428,7 +434,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# veritysetup --help
- veritysetup 2.5.0 flags: UDEV BLKID KEYRING KERNEL_CAPI 
+ veritysetup 2.6.1 flags: UDEV BLKID KEYRING KERNEL_CAPI 
  Usage: veritysetup [OPTION...] <action> <action-specific>
  
  Help options:
@@ -461,6 +467,7 @@ PackagesInfo: |
        --root-hash-file=STRING          Path to root hash file
        --root-hash-signature=STRING     Path to root hash signature file
    -s, --salt=hex string                Salt
+       --use-tasklets                   Use kernel tasklets for performance
        --uuid=STRING                    UUID for device to use
    -v, --verbose                        Shows more detailed error messages
  
@@ -492,7 +499,7 @@ PackagesInfo: |
    
   This package provides initramfs integration for cryptsetup.
  
- **Installed size:** `103 KB`  
+ **Installed size:** `105 KB`  
  **How to install:** `sudo apt install cryptsetup-initramfs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -511,7 +518,7 @@ PackagesInfo: |
   cryptsetup package. It can safely be removed once no other package depends on
   it.
  
- **Installed size:** `31 KB`  
+ **Installed size:** `33 KB`  
  **How to install:** `sudo apt install cryptsetup-run`  
  
  {{< spoiler "Dependencies:" >}}
@@ -533,7 +540,7 @@ PackagesInfo: |
   system accessible through SSH.  This is currently an *experimental* feature
   and mostly serves as a demonstration of the plugin interface API.
  
- **Installed size:** `98 KB`  
+ **Installed size:** `100 KB`  
  **How to install:** `sudo apt install cryptsetup-ssh`  
  
  {{< spoiler "Dependencies:" >}}
@@ -601,7 +608,7 @@ PackagesInfo: |
   and requires systemd.  Moreover, this is an early implementation and may not
   be as mature as the other cryptsetup-* packages yet.
  
- **Installed size:** `80 KB`  
+ **Installed size:** `82 KB`  
  **How to install:** `sudo apt install cryptsetup-suspend`  
  
  {{< spoiler "Dependencies:" >}}
@@ -625,11 +632,17 @@ PackagesInfo: |
    
   This package provides the libcryptsetup development files.
  
- **Installed size:** `138 KB`  
+ **Installed size:** `149 KB`  
  **How to install:** `sudo apt install libcryptsetup-dev`  
  
  {{< spoiler "Dependencies:" >}}
+ * libargon2-dev
+ * libblkid-dev
  * libcryptsetup12 
+ * libdevmapper-dev
+ * libjson-c-dev
+ * libssl-dev
+ * uuid-dev
  {{< /spoiler >}}
  
  
@@ -644,7 +657,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup shared library.
  
- **Installed size:** `535 KB`  
+ **Installed size:** `562 KB`  
  **How to install:** `sudo apt install libcryptsetup12`  
  
  {{< spoiler "Dependencies:" >}}

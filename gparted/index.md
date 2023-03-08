@@ -4,7 +4,7 @@ Homepage: https://gparted.org
 Repository: https://salsa.debian.org/debian/gparted
 Architectures: any all
 Version: 1.3.1-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/gparted-logo.svg
 PackagesInfo: |
  ### gparted

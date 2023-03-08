@@ -4,7 +4,7 @@ Homepage: https://github.com/log2timeline/plaso
 Repository: https://salsa.debian.org/pkg-security-team/plaso
 Architectures: all
 Version: 20211229-0kali1
-Metapackages: kali-linux-everything kali-tools-forensics 
+Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### plaso

@@ -4,7 +4,7 @@ Homepage: https://github.com/CiscoCXSecurity/creddump7
 Repository: https://salsa.debian.org/pkg-security-team/creddump7
 Architectures: all
 Version: 0.1+git20190429-1.1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-passwords 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-passwords kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### creddump7

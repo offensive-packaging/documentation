@@ -4,7 +4,7 @@ Homepage: https://www.radare.org
 Repository: https://salsa.debian.org/pkg-security-team/radare2
 Architectures: any all
 Version: 5.5.0+dfsg-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-hardware kali-tools-reverse-engineering 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-hardware kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/radare2-logo.svg
 PackagesInfo: |
  ### libradare2-5.0.0
@@ -23,7 +23,7 @@ PackagesInfo: |
    
   This package provides the libraries from radare2.
  
- **Installed size:** `22.27 MB`  
+ **Installed size:** `22.23 MB`  
  **How to install:** `sudo apt install libradare2-5.0.0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -108,7 +108,7 @@ PackagesInfo: |
   supporting PE, mach0, ELF, class, etc. named rabin, and a block-based
   hash utility called rahash.
  
- **Installed size:** `2.20 MB`  
+ **Installed size:** `2.15 MB`  
  **How to install:** `sudo apt install radare2`  
  
  {{< spoiler "Dependencies:" >}}

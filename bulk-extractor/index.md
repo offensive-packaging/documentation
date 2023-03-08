@@ -4,7 +4,7 @@ Homepage: https://github.com/simsong/bulk_extractor
 Repository: https://gitlab.com/kalilinux/packages/bulk-extractor
 Architectures: amd64 arm64
 Version: 2.0.0-0kali1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/bulk-extractor-logo.svg
 PackagesInfo: |
  ### bulk-extractor
@@ -145,7 +145,7 @@ PackagesInfo: |
       -S opt_weird_cluster_count2=268435456    Threshold for FAT32 scanner
       -S opt_max_bits_in_attrib=3    Ignore FAT32 entries with more attributes set than this
       -S opt_max_weird_count=2    Number of 'weird' counts to ignore a FAT32 entry
-      -S opt_last_year=2027    Ignore FAT32 entries with a later year than this
+      -S opt_last_year=2028    Ignore FAT32 entries with a later year than this
     -x winlnk - disable scanner winlnk
     -x winpe - disable scanner winpe
     -x winprefetch - disable scanner winprefetch
