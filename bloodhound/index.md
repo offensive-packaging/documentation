@@ -52,7 +52,7 @@ After installation completes, start neo4j with the following command:
 
 ![](images/start-neo4j.png)
 
-Now we need to change the default credentials for neo4j. Navigate to [localhost:7474](localhost:7474) and login with the default credentials
+Now we need to change the default credentials for neo4j. Navigate to `http://localhost:7474/` and login with the default credentials
 
 ```plain
 username: neo4j
