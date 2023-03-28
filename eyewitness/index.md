@@ -202,7 +202,7 @@ https://www.kali.org
 https://www.kali.org/docs
 https://www.kali.org/tools
 https://www.exploit-db.com
-https://www.offensive-security.com
+https://www.offsec.com
 
 root@kali:~# eyewitness -f /root/urls.txt -d screens --headless
 
@@ -215,7 +215,7 @@ Attempting to screenshot https://www.kali.org
 Attempting to screenshot https://www.kali.org/docs
 Attempting to screenshot https://www.kali.org/tools
 Attempting to screenshot https://www.exploit-db.com
-Attempting to screenshot https://www.offensive-security.com
+Attempting to screenshot https://www.offsec.com
 Finished in 14.1417660713 seconds
 
 [*] Done! Report written in the /usr/share/eyewitness/screens folder!

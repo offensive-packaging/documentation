@@ -509,4 +509,4 @@ OPTIONS:
 
 ## Metasploit-Framework Usage Examples
 
-One of the best sources of information on using the Metasploit Framework is [Metasploit Unleashed](https://www.offensive-security.com/metasploit-unleashed/), a free online course created by Offensive Security. Metasploit Unleashed guides you from the absolute basics of Metasploit all the way through to advanced topics.
+One of the best sources of information on using the Metasploit Framework is [Metasploit Unleashed](https://www.offsec.com/metasploit-unleashed/), a free online course created by OffSec. Metasploit Unleashed guides you from the absolute basics of Metasploit all the way through to advanced topics.
