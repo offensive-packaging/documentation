@@ -3,7 +3,7 @@ Title: phpggc
 Homepage: https://github.com/ambionics/phpggc
 Repository: https://gitlab.com/kalilinux/packages/phpggc
 Architectures: all
-Version: 0.20221219-0kali1
+Version: 0.20230428-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   PHPGGC is a library of payloads exploiting unsafe object deserialization.
   It also provides a command-line tool to generate them.
  
- **Installed size:** `612 KB`  
+ **Installed size:** `650 KB`  
  **How to install:** `sudo apt install phpggc`  
  
  {{< spoiler "Dependencies:" >}}

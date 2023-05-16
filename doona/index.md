@@ -3,7 +3,7 @@ Title: doona
 Homepage: https://github.com/wireghoul/doona
 Repository: https://salsa.debian.org/pkg-security-team/doona
 Architectures: all
-Version: 1.0+git20190108-1
+Version: 1.0+git20190108-2
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   BED is a program which is designed to check daemons for
   potential buffer overflows, format string bugs etc.
  
- **Installed size:** `130 KB`  
+ **Installed size:** `128 KB`  
  **How to install:** `sudo apt install doona`  
  
  {{< spoiler "Dependencies:" >}}

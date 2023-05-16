@@ -3,7 +3,7 @@ Title: dislocker
 Homepage: https://github.com/Aorimn/dislocker
 Repository: https://salsa.debian.org/pkg-security-team/dislocker
 Architectures: any
-Version: 0.7.3-2.1
+Version: 0.7.3-3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

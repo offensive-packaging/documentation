@@ -3,7 +3,7 @@ Title: python-faraday
 Homepage: https://faradaysec.com
 Repository: https://gitlab.com/kalilinux/packages/python-faraday
 Architectures: all
-Version: 4.3.3-0kali1
+Version: 4.3.5-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-large kali-tools-reporting 
 Icon: images/python-faraday-logo.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
    
   This package no longer contains the GTK client like the upstream repo.
  
- **Installed size:** `31.97 MB`  
+ **Installed size:** `32.01 MB`  
  **How to install:** `sudo apt install faraday`  
  
  {{< spoiler "Dependencies:" >}}
@@ -46,7 +46,7 @@ PackagesInfo: |
  * python3-faraday-agent-parameters-types 
  * python3-faraday-plugins 
  * python3-filedepot
- * python3-filteralchemy
+ * python3-filteralchemy 
  * python3-flask 
  * python3-flask-classful 
  * python3-flask-kvsession

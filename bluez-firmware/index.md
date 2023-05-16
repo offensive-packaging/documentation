@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: bluez-firmware
 Homepage: 
 Repository: https://salsa.debian.org/bluetooth-team/bluez-firmware

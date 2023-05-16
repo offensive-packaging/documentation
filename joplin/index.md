@@ -3,7 +3,7 @@ Title: joplin
 Homepage: https://github.com/laurent22/joplin
 Repository: https://gitlab.com/kalilinux/packages/joplin
 Architectures: amd64 arm64
-Version: 2.10.8-0kali1
+Version: 2.11.1-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -26,7 +26,7 @@ PackagesInfo: |
   are saved to plain text files which can be easily inspected, backed up and
   moved around.
  
- **Installed size:** `747.84 MB`  
+ **Installed size:** `748.83 MB`  
  **How to install:** `sudo apt install joplin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -87,7 +87,7 @@ PackagesInfo: |
    
   This package contains the Command Line Interface.
  
- **Installed size:** `1.37 GB`  
+ **Installed size:** `1.62 GB`  
  **How to install:** `sudo apt install joplin-cli`  
  
  {{< spoiler "Dependencies:" >}}

@@ -777,7 +777,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# expect_mkpasswd -h
- :18APfjci
+ nb8kx5\FR
  ```
  
  - - -

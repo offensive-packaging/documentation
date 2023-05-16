@@ -3,7 +3,7 @@ Title: airgeddon
 Homepage: https://github.com/v1s1t0r1sh3r3/airgeddon
 Repository: https://gitlab.com/kalilinux/packages/airgeddon
 Architectures: any
-Version: 11.11+ds-0kali1
+Version: 11.11+ds-0kali2
 Metapackages: kali-linux-everything kali-tools-802-11 kali-tools-wireless 
 Icon: images/airgeddon-logo.svg
 PackagesInfo: |

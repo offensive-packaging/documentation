@@ -3,7 +3,7 @@ Title: chisel
 Homepage: https://github.com/jpillora/chisel
 Repository: https://gitlab.com/kalilinux/packages/chisel
 Architectures: any
-Version: 1.7.4-0kali1
+Version: 1.8.1-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   useful for passing through firewalls, though it can also be used to provide a
   secure endpoint into your network.
  
- **Installed size:** `8.35 MB`  
+ **Installed size:** `8.02 MB`  
  **How to install:** `sudo apt install chisel`  
  
  {{< spoiler "Dependencies:" >}}
@@ -29,7 +29,7 @@ PackagesInfo: |
  
    Usage: chisel [command] [--help]
  
-   Version: 0.0.0-src (go1.15.7)
+   Version: 1.8.1 (go1.19.8)
  
    Commands:
      server - runs chisel in server mode

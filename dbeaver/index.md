@@ -2,8 +2,8 @@
 Title: dbeaver
 Homepage: http://dbeaver.jkiss.org/
 Repository: https://gitlab.com/kalilinux/packages/dbeaver
-Architectures: amd64
-Version: 6.0.3-0kali1
+Architectures: amd64 arm64
+Version: 23.0.4-0kali1
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: images/dbeaver-logo.svg
 PackagesInfo: |
@@ -14,14 +14,12 @@ PackagesInfo: |
   analysts. Supports all popular databases: MySQL, PostgreSQL, SQLite, Oracle,
   DB2, SQL Server, Sybase, Teradata, Cassandra.
  
- **Installed size:** `66.71 MB`  
+ **Installed size:** `87.58 MB`  
  **How to install:** `sudo apt install dbeaver`  
  
  {{< spoiler "Dependencies:" >}}
  * default-jre
  * libc6 
- * libglib2.0-0 
- * libsecret-1-0 
  {{< /spoiler >}}
  
  ##### dbeaver

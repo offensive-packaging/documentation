@@ -3,7 +3,7 @@ Title: nuclei
 Homepage: https://github.com/projectdiscovery/nuclei
 Repository: https://gitlab.com/kalilinux/packages/nuclei
 Architectures: any
-Version: 2.8.9-0kali1
+Version: 2.9.4-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,8 +18,12 @@ PackagesInfo: |
   including TCP, DNS, HTTP, File, etc. With powerful and flexible
   templating, all kinds of security checks can be modelled with Nuclei.
  
- **Installed size:** `53.96 MB`  
+ **Installed size:** `51.65 MB`  
  **How to install:** `sudo apt install nuclei`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * libc6 
+ {{< /spoiler >}}
  
  ##### nuclei
  
@@ -65,8 +69,8 @@ PackagesInfo: |
     -em, -exclude-matchers string[]    template matchers to exclude in result
     -s, -severity value[]              templates to run based on severity. Possible values: info, low, medium, high, critical, unknown
     -es, -exclude-severity value[]     templates to exclude based on severity. Possible values: info, low, medium, high, critical, unknown
-    -pt, -type value[]                 templates to run based on protocol type. Possible values: dns, file, http, headless, network, workflow, ssl, websocket, whois
-    -ept, -exclude-type value[]        templates to exclude based on protocol type. Possible values: dns, file, http, headless, network, workflow, ssl, websocket, whois
+    -pt, -type value[]                 templates to run based on protocol type. Possible values: dns, file, http, headless, tcp, workflow, ssl, websocket, whois
+    -ept, -exclude-type value[]        templates to exclude based on protocol type. Possible values: dns, file, http, headless, tcp, workflow, ssl, websocket, whois
     -tc, -template-condition string[]  templates to run based on expression condition
  
  OUTPUT:
@@ -75,7 +79,7 @@ PackagesInfo: |
     -srd, -store-resp-dir string  store all request/response passed through nuclei to custom directory (default "output")
     -silent                       display findings only
     -nc, -no-color                disable output content coloring (ANSI escape codes)
-    -json                         write output in JSONL(ines) format
+    -j, -jsonl                    write output in JSONL(ines) format
     -irr, -include-rr             include request/response pairs in the JSONL output (for findings only)
     -nm, -no-meta                 disable printing result metadata in cli output
     -ts, -timestamp               enables printing timestamp in cli output
@@ -83,6 +87,8 @@ PackagesInfo: |
     -ms, -matcher-status          display match failure status
     -me, -markdown-export string  directory to export results in markdown format
     -se, -sarif-export string     file to export results in SARIF format
+    -je, -json-export string      file to export results in JSON format
+    -jle, -jsonl-export string    file to export results in JSONL(ine) format
  
  CONFIGURATIONS:
     -config string                 path to the nuclei configuration file
@@ -112,6 +118,7 @@ PackagesInfo: |
     -config-directory string       override the default config path ($home/.config)
     -rsr, -response-size-read int  max response size to read in bytes (default 10485760)
     -rss, -response-size-save int  max response size to read in bytes (default 1048576)
+    -reset                         reset removes all nuclei configuration and data files (including nuclei-templates)
  
  INTERACTSH:
     -iserver, -interactsh-server string  interactsh server url for self-hosted instance (default: oast.pro,oast.live,oast.site,oast.online,oast.fun,oast.me)
@@ -122,10 +129,14 @@ PackagesInfo: |
     -interactions-cooldown-period int    extra time for interaction polling before exiting (default 5)
     -ni, -no-interactsh                  disable interactsh server for OAST testing, exclude OAST based templates
  
+ FUZZING:
+    -ft, -fuzzing-type string  overrides fuzzing type set in template (replace, prefix, postfix, infix)
+    -fm, -fuzzing-mode string  overrides fuzzing mode set in template (multiple, single)
+ 
  UNCOVER:
     -uc, -uncover                  enable uncover engine
     -uq, -uncover-query string[]   uncover search query
-    -ue, -uncover-engine string[]  uncover search engine (shodan,shodan-idb,fofa,censys,quake,hunter,zoomeye,netlas) (default shodan)
+    -ue, -uncover-engine string[]  uncover search engine (shodan,shodan-idb,fofa,censys,quake,hunter,zoomeye,netlas,criminalip) (default shodan)
     -uf, -uncover-field string     uncover fields to return (ip,port,host) (default "ip:port")
     -ul, -uncover-limit int        uncover results to return (default 100)
     -ucd, -uncover-delay int       delay between uncover query requests in seconds (0 to disable) (default 1)
@@ -143,12 +154,13 @@ PackagesInfo: |
     -retries int                        number of times to retry a failed request (default 1)
     -ldp, -leave-default-ports          leave default HTTP/HTTPS ports (eg. host:80,host:443)
     -mhe, -max-host-error int           max errors for a host before skipping from scan (default 30)
+    -te, -track-error string[]          adds given error to max-host-error watchlist (standard, file)
     -nmhe, -no-mhe                      disable skipping host from scan based on errors
     -project                            use a project folder to avoid sending same request multiple times
     -project-path string                set a specific project path (default "/tmp")
     -spm, -stop-at-first-match          stop processing HTTP requests after the first match (may break template/workflow logic)
     -stream                             stream mode - start elaborating without sorting the input
-    -ss, -scan-strategy value           strategy to use while scanning(auto/host-spray/template-spray) (default 0)
+    -ss, -scan-strategy value           strategy to use while scanning(auto/host-spray/template-spray) (default auto)
     -irt, -input-read-timeout duration  timeout on input read (default 3m0s)
     -nh, -no-httpx                      disable httpx probing for non-url input
     -no-stdin                           disable stdin processing
@@ -186,7 +198,7 @@ PackagesInfo: |
  
  STATISTICS:
     -stats                    display statistics about the running scan
-    -sj, -stats-json          write statistics data to an output file in JSONL(ines) format
+    -sj, -stats-json          display statistics in JSONL(ines) format
     -si, -stats-interval int  number of seconds to wait between showing a statistics update (default 5)
     -m, -metrics              expose nuclei metrics on a port
     -mp, -metrics-port int    port to expose nuclei metrics on (default 9092)

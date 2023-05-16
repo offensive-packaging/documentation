@@ -5,7 +5,7 @@ Repository: https://gitlab.com/kalilinux/packages/impacket-scripts
 Architectures: all
 Version: 1.7
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-respond 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/impacket-scripts-logo.svg
 PackagesInfo: |
  ### impacket-scripts
  
@@ -1955,7 +1955,7 @@ PackagesInfo: |
  Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
  
  usage: smbrelayx.py [--help] [-ts] [-debug] [-h HOST]
-                     [-s {logon_failure,denied,success}] [-e FILE] [-c COMMAND]
+                     [-s {success,denied,logon_failure}] [-e FILE] [-c COMMAND]
                      [-socks] [-one-shot] [-codec CODEC]
                      [-outputfile OUTPUTFILE]
                      [-machine-account MACHINE_ACCOUNT]
@@ -1970,7 +1970,7 @@ PackagesInfo: |
    -debug                Turn DEBUG output ON
    -h HOST               Host to relay the credentials to, if not it will relay
                          it back to the client
-   -s {logon_failure,denied,success}
+   -s {success,denied,logon_failure}
                          Status to return after client performed
                          authentication. Default: "success".
    -e FILE               File to execute on the target system. If not
@@ -2050,11 +2050,13 @@ PackagesInfo: |
  0 - eth0
  1 - any
  2 - lo
- 3 - bluetooth-monitor
- 4 - nflog
- 5 - nfqueue
- 6 - dbus-system
- 7 - dbus-session
+ 3 - docker0
+ 4 - bluetooth-monitor
+ 5 - nflog
+ 6 - nfqueue
+ 7 - dbus-system
+ 8 - dbus-session
+ 9 - teredo
  Please select an interface: 
  ```
  

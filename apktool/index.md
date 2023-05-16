@@ -3,7 +3,7 @@ Title: apktool
 Homepage: https://ibotpeaches.github.io/Apktool/
 Repository: https://salsa.debian.org/android-tools-team/apktool
 Architectures: any
-Version: 2.7.0+dfsg-4
+Version: 2.7.0+dfsg-6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: images/apktool-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   makes working with an app easier because of project-like file structure and
   automation of some repetitive tasks like building apk.
  
- **Installed size:** `268 KB`  
+ **Installed size:** `269 KB`  
  **How to install:** `sudo apt install apktool`  
  
  {{< spoiler "Dependencies:" >}}

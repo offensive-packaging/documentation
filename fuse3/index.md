@@ -3,7 +3,7 @@ Title: fuse3
 Homepage: https://github.com/libfuse/libfuse/wiki
 Repository: 
 Architectures: linux-any kfreebsd-any
-Version: 3.14.0-2
+Version: 3.14.0-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

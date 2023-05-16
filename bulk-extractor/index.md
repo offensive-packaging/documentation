@@ -3,7 +3,7 @@ Title: bulk-extractor
 Homepage: https://github.com/simsong/bulk_extractor
 Repository: https://gitlab.com/kalilinux/packages/bulk-extractor
 Architectures: amd64 arm64
-Version: 2.0.0-0kali1
+Version: 2.0.0-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/bulk-extractor-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   histograms of features that it finds, as features that are more
   common tend to be more important.
  
- **Installed size:** `19.61 MB`  
+ **Installed size:** `19.53 MB`  
  **How to install:** `sudo apt install bulk-extractor`  
  
  {{< spoiler "Dependencies:" >}}

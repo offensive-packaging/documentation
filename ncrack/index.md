@@ -3,7 +3,7 @@ Title: ncrack
 Homepage: https://nmap.org/ncrack/
 Repository: https://salsa.debian.org/pkg-security-team/ncrack
 Architectures: any
-Version: 0.7+debian-3
+Version: 0.7+debian-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords kali-tools-web 
 Icon: images/ncrack-logo.svg
 PackagesInfo: |

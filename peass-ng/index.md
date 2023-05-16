@@ -3,7 +3,7 @@ Title: peass-ng
 Homepage: https://github.com/carlospolop/PEASS-ng
 Repository: https://gitlab.com/kalilinux/packages/peass-ng
 Architectures: all
-Version: 20230219-0kali1
+Version: 20230514.85dabdc9-0kali1
 Metapackages: kali-linux-everything kali-tools-vulnerability 
 Icon: images/peass-ng-logo.svg
 PackagesInfo: |
@@ -15,7 +15,7 @@ PackagesInfo: |
   exploit and print them to you with nice colors so you can recognize the
   misconfigurations easily.
  
- **Installed size:** `30.01 MB`  
+ **Installed size:** `55.76 MB`  
  **How to install:** `sudo apt install peass`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,6 +34,7 @@ PackagesInfo: |
  |-- linpeas.sh
  |-- linpeas_darwin_amd64
  |-- linpeas_darwin_arm64
+ |-- linpeas_fat.sh
  |-- linpeas_linux_386
  |-- linpeas_linux_amd64
  |-- linpeas_linux_arm
@@ -55,6 +56,7 @@ PackagesInfo: |
  |   |-- linpeas.sh
  |   |-- linpeas_darwin_amd64
  |   |-- linpeas_darwin_arm64
+ |   |-- linpeas_fat.sh
  |   |-- linpeas_linux_386
  |   |-- linpeas_linux_amd64
  |   |-- linpeas_linux_arm

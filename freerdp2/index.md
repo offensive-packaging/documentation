@@ -3,7 +3,7 @@ Title: freerdp2
 Homepage: https://www.freerdp.com/
 Repository: https://salsa.debian.org/debian-remote-team/freerdp2
 Architectures: any
-Version: 2.9.0+dfsg1-1
+Version: 2.10.0+dfsg1-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering kali-tools-passwords kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the FreeRDP development files.
  
- **Installed size:** `935 KB`  
+ **Installed size:** `939 KB`  
  **How to install:** `sudo apt install freerdp2-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -38,7 +38,7 @@ PackagesInfo: |
   This package contains a "shadowing" server that can be used to
   share an already started X11 DISPLAY.
  
- **Installed size:** `153 KB`  
+ **Installed size:** `154 KB`  
  **How to install:** `sudo apt install freerdp2-shadow-x11`  
  
  {{< spoiler "Dependencies:" >}}
@@ -54,64 +54,64 @@ PackagesInfo: |
  
  ```
  root@kali:~# freerdp-shadow-cli -h
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - Usage: freerdp-shadow-cli [options]
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - Syntax:
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /flag (enables flag)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /option:<value> (specifies option with value)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     +toggle -toggle (enables or disables toggle, where '/' is a synonym of '+')
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - port:<number>       
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Server port
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - ipc-socket:<ipc-socket>
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Server IPC socket
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - bind-address:<bind-address>[,<another address>, ...]
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	An address to bind to. Use '[<ipv6>]' for IPv6 addresses, e.g. '[::1]' for localhost
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - monitors:<0,1,2...> 
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Select or list monitors
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - rect:<x,y,w,h>      
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Select rectangle within monitor to share
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     +
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - auth (default:off)  
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Clients must authenticate
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     -
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - may-view (default:on)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Clients may view without prompt
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     -
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - may-interact (default:on)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Clients may interact without prompt
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - sec:<rdp|tls|nla|ext>
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	force specific protocol security
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     -
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - sec-rdp (default:on)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	rdp protocol security
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     -
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - sec-tls (default:on)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	tls protocol security
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     -
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - sec-nla (default:on)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	nla protocol security
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     +
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - sec-ext (default:off)
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	nla extended protocol security
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - sam-file:<file>     
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	NTLM SAM file for NLA authentication
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - version             
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Print version
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - buildconfig         
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Print the build configuration
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] -     /
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - help                
- [09:06:01:958] [170567:170567] [INFO][com.freerdp.server.shadow] - 	Print help
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - Usage: freerdp-shadow-cli [options]
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - Syntax:
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /flag (enables flag)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /option:<value> (specifies option with value)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     +toggle -toggle (enables or disables toggle, where '/' is a synonym of '+')
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - port:<number>       
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Server port
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - ipc-socket:<ipc-socket>
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Server IPC socket
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - bind-address:<bind-address>[,<another address>, ...]
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	An address to bind to. Use '[<ipv6>]' for IPv6 addresses, e.g. '[::1]' for localhost
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - monitors:<0,1,2...> 
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Select or list monitors
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - rect:<x,y,w,h>      
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Select rectangle within monitor to share
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     +
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - auth (default:off)  
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Clients must authenticate
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     -
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - may-view (default:on)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Clients may view without prompt
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     -
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - may-interact (default:on)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Clients may interact without prompt
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - sec:<rdp|tls|nla|ext>
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	force specific protocol security
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     -
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - sec-rdp (default:on)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	rdp protocol security
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     -
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - sec-tls (default:on)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	tls protocol security
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     -
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - sec-nla (default:on)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	nla protocol security
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     +
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - sec-ext (default:off)
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	nla extended protocol security
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - sam-file:<file>     
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	NTLM SAM file for NLA authentication
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - version             
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Print version
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - buildconfig         
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Print the build configuration
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] -     /
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - help                
+ [03:50:49:902] [3317761:3317761] [INFO][com.freerdp.server.shadow] - 	Print help
  ```
  
  - - -
@@ -136,7 +136,7 @@ PackagesInfo: |
    
   This package contains the wayland based client.
  
- **Installed size:** `180 KB`  
+ **Installed size:** `181 KB`  
  **How to install:** `sudo apt install freerdp2-wayland`  
  
  {{< spoiler "Dependencies:" >}}
@@ -192,7 +192,7 @@ PackagesInfo: |
  AUTHOR
         FreeRDP <team@freerdp.com>
  
- 2.9.0                             2017-01-12                      wlfreerdp(1)
+ 2.10.0                            2017-01-12                      wlfreerdp(1)
  ```
  
  - - -
@@ -217,7 +217,7 @@ PackagesInfo: |
    
   This package contains the X11 based client.
  
- **Installed size:** `818 KB`  
+ **Installed size:** `819 KB`  
  **How to install:** `sudo apt install freerdp2-x11`  
  
  {{< spoiler "Dependencies:" >}}
@@ -849,7 +849,7 @@ PackagesInfo: |
  AUTHOR
         The FreeRDP Team
  
- freerdp                           2022-11-28                       XFREERDP(1)
+ freerdp                           2023-02-26                       XFREERDP(1)
  ```
  
  - - -
@@ -861,7 +861,7 @@ PackagesInfo: |
    
   This package contains the shared library for common client functionality.
  
- **Installed size:** `859 KB`  
+ **Installed size:** `860 KB`  
  **How to install:** `sudo apt install libfreerdp-client2-2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -884,7 +884,7 @@ PackagesInfo: |
    
   This package contains the shared library with common server functionality.
  
- **Installed size:** `399 KB`  
+ **Installed size:** `400 KB`  
  **How to install:** `sudo apt install libfreerdp-server2-2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -903,7 +903,7 @@ PackagesInfo: |
    
   This package contains the shadow subsystem libraries.
  
- **Installed size:** `169 KB`  
+ **Installed size:** `170 KB`  
  **How to install:** `sudo apt install libfreerdp-shadow-subsystem2-2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -930,7 +930,7 @@ PackagesInfo: |
    
   This package contains the shadow libraries.
  
- **Installed size:** `241 KB`  
+ **Installed size:** `242 KB`  
  **How to install:** `sudo apt install libfreerdp-shadow2-2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -951,7 +951,7 @@ PackagesInfo: |
    
   This package contains the shared library with all core functionality.
  
- **Installed size:** `1.62 MB`  
+ **Installed size:** `1.63 MB`  
  **How to install:** `sudo apt install libfreerdp2-2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -977,7 +977,7 @@ PackagesInfo: |
    
   This package contains the using wayland as a client library.
  
- **Installed size:** `201 KB`  
+ **Installed size:** `202 KB`  
  **How to install:** `sudo apt install libuwac0-0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -998,7 +998,7 @@ PackagesInfo: |
    
   This package contains the libuwac development files
  
- **Installed size:** `175 KB`  
+ **Installed size:** `176 KB`  
  **How to install:** `sudo apt install libuwac0-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1016,7 +1016,7 @@ PackagesInfo: |
   This package contains the shared library for Windows Portable Runtime
   utilities and tools.
  
- **Installed size:** `172 KB`  
+ **Installed size:** `173 KB`  
  **How to install:** `sudo apt install libwinpr-tools2-2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1092,7 +1092,7 @@ PackagesInfo: |
    
   This package contains WinPR command line utils (winpr-hash, winpr-makecert).
  
- **Installed size:** `169 KB`  
+ **Installed size:** `170 KB`  
  **How to install:** `sudo apt install winpr-utils`  
  
  {{< spoiler "Dependencies:" >}}

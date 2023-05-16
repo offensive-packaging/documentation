@@ -3,7 +3,7 @@ Title: flashrom
 Homepage: http://www.flashrom.org
 Repository: https://salsa.debian.org/myczko-guest/flashrom
 Architectures: any
-Version: 1.3.0-2
+Version: 1.3.0-2.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-hardware 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -84,7 +84,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# flashrom -h
- flashrom unknown on Linux 6.1.0-kali5-amd64 (x86_64)
+ flashrom unknown on Linux 6.1.0-kali9-amd64 (x86_64)
  flashrom is free software, get the source code at https://flashrom.org
  
  Using clock_gettime for delay loops (clk_id: 1, resolution: 1ns).

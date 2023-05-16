@@ -3,7 +3,7 @@ Title: proxify
 Homepage: https://github.com/projectdiscovery/proxify
 Repository: https://gitlab.com/kalilinux/packages/proxify
 Architectures: any
-Version: 0.0.5-0kali2
+Version: 0.0.5-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
    * Plugin Support to decode specific protocols (e.g XMPP/SMTP/FTP/SSH/)
    * Proxify Traffic replay in Burp
  
- **Installed size:** `35.99 MB`  
+ **Installed size:** `35.08 MB`  
  **How to install:** `sudo apt install proxify`  
  
  {{< spoiler "Dependencies:" >}}

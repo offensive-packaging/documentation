@@ -3,7 +3,7 @@ Title: wmi
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/wmi
 Architectures: any
-Version: 1.3.16-0kali7
+Version: 1.3.16-0kali8
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

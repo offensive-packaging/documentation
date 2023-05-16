@@ -1,9 +1,9 @@
 ---
 Title: pev
-Homepage: http://pev.sourceforge.net
+Homepage: https://pev.sourceforge.net
 Repository: https://salsa.debian.org/debian/pev
 Architectures: any
-Version: 0.81-8
+Version: 0.81-9
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -53,7 +53,7 @@ PackagesInfo: |
  Options:
   --att                                  Set AT&T assembly syntax (default: Intel).
   -e, --entrypoint                       Disassemble the entire entrypoint function.
-  -f, --format <html|csv|json|text|xml>  Change output format (default: text).
+  -f, --format <json|html|text|xml|csv>  Change output format (default: text).
   -m, --mode <16|32|64>                  Disassembly mode (default: auto).
   -i <number>                            Number of instructions to disassemble.
   -n <number>                            Number of bytes to disassemble
@@ -78,7 +78,7 @@ PackagesInfo: |
  Example: pehash -s '.text' winzip.exe
  
  Options:
-  -f, --format <html|csv|json|text|xml> Change output format (default: text).
+  -f, --format <json|html|text|xml|csv> Change output format (default: text).
   -a, --all                             Hash file, sections and headers with md5, sha1, sha256, ssdeep and imphash.
   -c, --content                         Hash only the file content (default).
   -h, --header <dos|coff|optional>      Hash only the header with the specified name.
@@ -102,7 +102,7 @@ PackagesInfo: |
  Example: peldd winzip.exe
  
  Options:
-  -f, --format <html|csv|json|text|xml>  Change output format (default: text).
+  -f, --format <json|html|text|xml|csv>  Change output format (default: text).
   -V, --version                          Show version.
   --help                                 Show help.
  ```
@@ -122,7 +122,7 @@ PackagesInfo: |
  
  Options:
   -d, --database <file>                  Use database file (default: ./userdb.txt).
-  -f, --format <html|csv|json|text|xml>  Change output format (default: text).
+  -f, --format <json|html|text|xml|csv>  Change output format (default: text).
   -V, --version                          Show version.
   --help                                 Show this help.
  ```
@@ -142,7 +142,7 @@ PackagesInfo: |
  
  Options:
   -a, --all                              Show all information, statistics and extract resources
-  -f, --format <html|csv|json|text|xml>  change output format (default: text)
+  -f, --format <json|html|text|xml|csv>  change output format (default: text)
   -i, --info                             Show resources information
   -l, --list                             Show list view
   -s, --statistics                       Show resources statistics
@@ -167,7 +167,7 @@ PackagesInfo: |
  Example: pescan putty.exe
  
  Options:
-  -f, --format <html|csv|json|text|xml>  Change output format (default: text).
+  -f, --format <json|html|text|xml|csv>  Change output format (default: text).
   -v, --verbose                          Show more information about found items.
   -V, --version                          Show version.
   --help                                 Show this help.
@@ -187,7 +187,7 @@ PackagesInfo: |
  Example: pesec wordpad.exe
  
  Options:
-  -f, --format <html|csv|json|text|xml>  Change output format (default: text)
+  -f, --format <json|html|text|xml|csv>  Change output format (default: text)
   -c, --certoutform <text|pem>           Specifies the certificate output format (default: text).
   -o, --certout <filename>               Specifies the output filename to write certificates to (default: stdout).
   -V, --version                          Show version.
@@ -232,7 +232,7 @@ PackagesInfo: |
   -A, --all                              Full output (default).
   -H, --all-headers                      Show all PE headers.
   -S, --all-sections                     Show PE section headers.
-  -f, --format <html|csv|json|text|xml>  Change output format (default: text).
+  -f, --format <json|html|text|xml|csv>  Change output format (default: text).
   -d, --dirs                             Show data directories.
   -h, --header <dos|coff|optional>       Show specific header. It can be used multiple times.
   -i, --imports                          Show imported functions.

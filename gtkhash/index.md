@@ -4,7 +4,7 @@ Homepage: https://gtkhash.org
 Repository: https://salsa.debian.org/debian/gtkhash
 Architectures: any
 Version: 1.4+git20220617-3
-Metapackages: kali-linux-everything 
+Metapackages: kali-linux-everything kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### caja-gtkhash

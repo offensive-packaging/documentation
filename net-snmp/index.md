@@ -113,7 +113,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# mib2c-update -h
- Starting regneration of ipAddressTable using mib2c.mfd.conf at 2023-03-08_09.39
+ Starting regneration of ipAddressTable using mib2c.mfd.conf at 2023-05-17_06.30
  Creating patch for your custom code
     no custom code!
  mib2c -h -c mib2c.mfd.conf  ipAddressTable
@@ -1164,48 +1164,27 @@ PackagesInfo: |
  Check hosts SNMP access
  
  ```
- root@kali:~# man snmpcheck
- snmpcheck(1)                       Net-SNMP                       snmpcheck(1)
+ root@kali:~# snmpcheck -h
  
- NAME
-        snmpcheck - check hosts SNMP access
+ Usage:  snmpcheck [-x] [-n|y] [-h] [-H] [-V NUM] [-L] [-f] [[-a] HOSTS] 
  
- SYNOPSIS
-        snmpcheck [options] [[-a] HOSTS]...
+   -h	Display this message.
+   -a	check error log file AND hosts specified on command line.
+   -p	Don't try and ping-echo the host first
+   -f	Only check for things I can fix
+   HOSTS	check these hosts for problems.
  
- DESCRIPTION
-        snmpcheck  is  a  program  that checks the SNMP status of the specified
-        hosts
+ X Options:
+   -x	forces ascii base if $DISPLAY set (instead of tk).
+   -H	start in hidden mode.  (hides user interface)
+   -V NUM	sets the initial verbosity level of the command log (def: 1)
+   -L	Show the log window at startup
+   -d	Don't start by checking anything.  Just bring up the interface.
  
- OPTIONS
-    Common Options
-        -h     Display this message.
+ Ascii Options:
+   -n	Don't ever try and fix the problems found.  Just list.
+   -y	Always fix problems found.
  
-        -a     check error log file AND hosts specified on command line.
- 
-        -p     Don't try and ping-echo the host first
- 
-        -f     Only check for things I can fix
- 
-        HOSTS  check these hosts for problems.
- 
-    X Options:
-        -x     forces ascii base if $DISPLAY set (instead of tk).
- 
-        -H     start in hidden mode.  (hides user interface)
- 
-        -V NUM sets the initial verbosity level of the command log (def: 1)
- 
-        -L     Show the log window at startup
- 
-        -d     Don't start by checking anything.  Just bring up the interface.
- 
-    Ascii Options:
-        -n     Don't ever try and fix the problems found.  Just list.
- 
-        -y     Always fix problems found.
- 
- V5.7.3                            2018-03-30                      snmpcheck(1)
  ```
  
  - - -

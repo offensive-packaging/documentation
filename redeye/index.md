@@ -3,7 +3,7 @@ Title: redeye
 Homepage: https://github.com/redeye-framework/Redeye
 Repository: https://gitlab.com/kalilinux/packages/redeye
 Architectures: all
-Version: 0.0~git20220911.42bb35a-0kali1
+Version: 0.0~git20230414.533cd07-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package contains a tool intended to help you manage your data during a
   pentest operation in the most efficient and organized way.
  
- **Installed size:** `23.73 MB`  
+ **Installed size:** `22.23 MB`  
  **How to install:** `sudo apt install redeye`  
  
  {{< spoiler "Dependencies:" >}}

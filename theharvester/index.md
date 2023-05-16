@@ -3,7 +3,7 @@ Title: theharvester
 Homepage: https://github.com/laramies/theHarvester
 Repository: https://gitlab.com/kalilinux/packages/theharvester
 Architectures: all
-Version: 4.2.0-0kali1
+Version: 4.2.0-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-information-gathering 
 Icon: images/theharvester-logo.svg
 PackagesInfo: |

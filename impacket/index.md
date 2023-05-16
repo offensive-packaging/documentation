@@ -5,7 +5,7 @@ Repository: https://salsa.debian.org/python-team/packages/impacket
 Architectures: all
 Version: 0.10.0-4
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-exploitation kali-tools-forensics kali-tools-information-gathering kali-tools-passwords kali-tools-respond kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/impacket-logo.svg
 PackagesInfo: |
  ### python3-impacket
  

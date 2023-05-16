@@ -3,7 +3,7 @@ Title: sentrypeer
 Homepage: https://sentrypeer.org
 Repository: https://gitlab.com/kalilinux/packages/sentrypeer
 Architectures: amd64 arm64
-Version: 1.4.1-0kali1
+Version: 3.0.0-0kali2
 Metapackages: kali-linux-everything kali-tools-detect 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -25,12 +25,13 @@ PackagesInfo: |
   collected it, you should have the choice to keep it and/or opt in to
   share it with other SentryPeer community members via p2p methods.
  
- **Installed size:** `97 KB`  
+ **Installed size:** `103 KB`  
  **How to install:** `sudo apt install sentrypeer`  
  
  {{< spoiler "Dependencies:" >}}
  * adduser
  * libc6 
+ * libcurl4 
  * libjansson4 
  * libmicrohttpd12 
  * libosip2-15 
@@ -45,7 +46,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# sentrypeer -h
- Usage: sentrypeer [-h] [-V] [-w] [-j] [-p] [-b bootstrap.example.com] [-f fullpath for sentrypeer.db] [-l fullpath for sentrypeer_json.log] [-r] [-R] [-a] [-s] [-v] [-d]
+ Usage: sentrypeer [-h] [-V] [-w https://api.example.com/events] [-j] [-p] [-b bootstrap.example.com] [-i OAuth_2_Client_ID] [-c OAuth_2_Client_Secret] [-f fullpath for sentrypeer.db] [-l fullpath for sentrypeer_json.log] [-r] [-R] [-a] [-s] [-v] [-d]
  
  Options:
    -h,      Print this help
@@ -54,8 +55,10 @@ PackagesInfo: |
    -j,      Enable json logging or use SENTRYPEER_JSON_LOG env
    -p,      Enable Peer to Peer mode or use SENTRYPEER_PEER_TO_PEER env
    -b,      Set Peer to Peer bootstrap node or use SENTRYPEER_BOOTSTRAP_NODE env
+   -i,      Set OAuth 2 client ID or use SENTRYPEER_OAUTH2_CLIENT_ID env to get a Bearer token for WebHook
+   -c,      Set OAuth 2 client secret or use SENTRYPEER_OAUTH2_CLIENT_SECRET env to get a Bearer token for WebHook
    -a,      Enable RESTful API mode or use SENTRYPEER_API env
-   -w,      Enable Web GUI mode or use SENTRYPEER_WEB_GUI env
+   -w,      Set WebHook URL for bad actor json POSTs or use SENTRYPEER_WEBHOOK_URL env
    -r,      Enable SIP responsive mode or use SENTRYPEER_SIP_RESPONSIVE env
    -R,      Disable SIP mode completely or use SENTRYPEER_SIP_DISABLE env
    -l,      Set 'sentrypeer_json.log' location or use SENTRYPEER_JSON_LOG_FILE env

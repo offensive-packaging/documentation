@@ -3,7 +3,7 @@ Title: maltego-teeth
 Homepage: https://www.maltego.com
 Repository: https://gitlab.com/kalilinux/packages/maltego-teeth
 Architectures: all
-Version: 1.0+20201218-0kali1
+Version: 1.0+20201218-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

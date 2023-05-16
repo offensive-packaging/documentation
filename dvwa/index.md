@@ -3,7 +3,7 @@ Title: dvwa
 Homepage: https://github.com/digininja/DVWA
 Repository: https://gitlab.com/kalilinux/packages/dvwa
 Architectures: all
-Version: 2.0.1+git20220104-0kali5
+Version: 2.2.2-0kali1
 Metapackages: kali-linux-labs 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -24,7 +24,7 @@ PackagesInfo: |
   WARNING: Do not upload it to your hosting provider's public html folder or any
   Internet facing servers, as they will be compromised.
  
- **Installed size:** `5.51 MB`  
+ **Installed size:** `1.16 MB`  
  **How to install:** `sudo apt install dvwa`  
  
  {{< spoiler "Dependencies:" >}}
@@ -37,6 +37,7 @@ PackagesInfo: |
  * php8.2-fpm
  * php8.2-gd
  * php8.2-mysql
+ * sudo
  {{< /spoiler >}}
  
  ##### dvwa-start

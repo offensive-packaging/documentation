@@ -3,7 +3,7 @@ Title: libsmali-java
 Homepage: https://github.com/JesusFreke/smali
 Repository: https://salsa.debian.org/android-tools-team/libsmali-java
 Architectures: all
-Version: 2.5.2.git2771eae-3+kali1
+Version: 2.5.2.git2771eae-4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond kali-tools-reverse-engineering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

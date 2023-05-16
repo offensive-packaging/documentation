@@ -3,7 +3,7 @@ Title: intrace
 Homepage: https://github.com/robertswiecki/intrace
 Repository: https://gitlab.com/kalilinux/packages/intrace
 Architectures: any
-Version: 1.6-0kali1
+Version: 1.6-0kali2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   (local system) or from remote hosts. It could be useful for network
   reconnaissance and firewall bypassing.
  
- **Installed size:** `47 KB`  
+ **Installed size:** `52 KB`  
  **How to install:** `sudo apt install intrace`  
  
  {{< spoiler "Dependencies:" >}}
@@ -27,7 +27,7 @@ PackagesInfo: |
  ```
  root@kali:~# intrace -h
  InTrace, version 1.6 (C)2007-2016 Robert Swiecki <robert@swiecki.net>
- 2023/03/08 09:18:08.901837 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6]
+ 2023/05/17 04:06:15.214012 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6]
  
  ```
  

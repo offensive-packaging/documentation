@@ -3,7 +3,7 @@ Title: paros
 Homepage: http://www.parosproxy.org/index.shtml
 Repository: https://gitlab.com/kalilinux/packages/paros
 Architectures: all
-Version: 3.2.13-1kali5
+Version: 3.2.13-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-web 
 Icon: images/paros-logo.svg
 PackagesInfo: |

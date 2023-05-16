@@ -5,7 +5,7 @@ Repository: https://gitlab.com/kalilinux/packages/webshells
 Architectures: all
 Version: 1.1+kali8
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/webshells-logo.svg
 PackagesInfo: |
  ### webshells
  
@@ -34,8 +34,7 @@ PackagesInfo: |
  |-- jsp
  |-- laudanum -> /usr/share/laudanum
  |-- perl
- |-- php
- `-- seclists -> /usr/share/seclists/Web-Shells
+ `-- php
  ```
  
  - - -

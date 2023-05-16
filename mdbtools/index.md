@@ -3,7 +3,7 @@ Title: mdbtools
 Homepage: https://github.com/mdbtools/mdbtools
 Repository: https://salsa.debian.org/debian/mdbtools
 Architectures: any all
-Version: 1.0.0+dfsg-1
+Version: 1.0.0+dfsg-1.1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   Allows one to use MDB files with PHP for example.
  
- **Installed size:** `160 KB`  
+ **Installed size:** `152 KB`  
  **How to install:** `sudo apt install libmdb3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -208,7 +208,7 @@ PackagesInfo: |
  BUGS
         Only a few types are currently supported.
  
- MDBTools 1.0.0                 18 September 2022                 mdb-header(1)
+ MDBTools 1.0.0                   03 April 2023                   mdb-header(1)
  ```
  
  - - -
@@ -270,7 +270,7 @@ PackagesInfo: |
  AUTHORS
         The mdb-hexdump utility was written by Brian Bruns.
  
- MDBTools 1.0.0                 18 September 2022                mdb-hexdump(1)
+ MDBTools 1.0.0                   03 April 2023                  mdb-hexdump(1)
  ```
  
  - - -
@@ -373,7 +373,7 @@ PackagesInfo: |
  AUTHORS
         The mdb-parsecsv utility was written by Brian Bruns.
  
- MDBTools 1.0.0                 18 September 2022               mdb-parsecsv(1)
+ MDBTools 1.0.0                   03 April 2023                 mdb-parsecsv(1)
  ```
  
  - - -
@@ -548,7 +548,7 @@ PackagesInfo: |
    
   See package libmdb3 documentation.
  
- **Installed size:** `27 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install mdbtools-doc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -573,6 +573,7 @@ PackagesInfo: |
  * libmdb3 
  * libmdbsql3 
  * libodbcinst2 
+ * odbcinst
  {{< /spoiler >}}
  
  

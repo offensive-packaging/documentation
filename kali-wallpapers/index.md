@@ -3,7 +3,7 @@ Title: kali-wallpapers
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/kali-wallpapers
 Architectures: all
-Version: 2023.1.0
+Version: 2023.2.0
 Metapackages: kali-linux-everything kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -126,7 +126,7 @@ PackagesInfo: |
   Wallpapers and resources used over the years for BackTrack & Kali Linux,
   used for nostalgic cosmetic value
  
- **Installed size:** `146.52 MB`  
+ **Installed size:** `146.63 MB`  
  **How to install:** `sudo apt install kali-wallpapers-legacy`  
  
  

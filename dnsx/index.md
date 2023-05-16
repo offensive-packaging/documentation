@@ -3,7 +3,7 @@ Title: dnsx
 Homepage: https://github.com/projectdiscovery/dnsx
 Repository: https://gitlab.com/kalilinux/packages/dnsx
 Architectures: any
-Version: 1.0.7-0kali2
+Version: 1.0.7-0kali3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
    * Handles wildcard subdomains in automated way.
    * Stdin and stdout support to work with other tools.
  
- **Installed size:** `9.16 MB`  
+ **Installed size:** `9.38 MB`  
  **How to install:** `sudo apt install dnsx`  
  
  {{< spoiler "Dependencies:" >}}

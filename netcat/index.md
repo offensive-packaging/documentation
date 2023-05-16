@@ -5,7 +5,7 @@ Repository: https://salsa.debian.org/debian/netcat
 Architectures: any
 Version: 1.10-47
 Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/netcat-logo.svg
 PackagesInfo: |
  ### netcat-traditional
  

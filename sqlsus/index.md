@@ -1,9 +1,9 @@
 ---
 Title: sqlsus
-Homepage: http://sqlsus.sourceforge.net/
+Homepage: https://sqlsus.sourceforge.net/
 Repository: https://gitlab.com/kalilinux/packages/sqlsus
 Architectures: all
-Version: 0.7.2-1kali2
+Version: 0.7.2-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-web 
 Icon: images/sqlsus-logo.svg
 PackagesInfo: |

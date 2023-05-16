@@ -55,13 +55,13 @@ PackagesInfo: |
      --cache <cfile> : Enable virtual write support.
        <cfile> specifies the cache file to use.
      --in <itype> <ifile> : Input image format and source file(s). May be specified multiple times.
-       <itype> can be "aaff", "aewf", "aff", "ewf", "raw", "dd".
+       <itype> can be "raw", "dd", "ewf", "aff", "aaff", "aewf".
        <ifile> specifies the source file. If your image is split into multiple files, you have to specify them all!
      --inopts <iopts> : Specify input library specific options.
        <iopts> specifies a comma separated list of key=value options. See below for details.
      --info : Print out infos about used compiler and libraries.
      --morph <mtype> : Morphing function to apply to input image(s). If not specified, defaults to "combine".
-       <mtype> can be "unallocated", "combine", "raid0".
+       <mtype> can be "raid0", "combine", "unallocated".
      --morphopts <mopts> : Specify morphing library specific options.
        <mopts> specifies a comma separated list of key=value options. See below for details.
      --offset <off> : Move the output image data start <off> bytes into the input image(s).
@@ -99,11 +99,11 @@ PackagesInfo: |
      aewfthreads  : Max. number of threads for parallelized decompression. Default: 4
                     A value of 1 switches back to old, single-threaded legacy functions.
  
-   - libxmount_morphing_unallocated.so
-     unallocated_fs : Specify the filesystem to extract unallocated blocks from. Supported filesystems are: 'hfs', 'fat'. Default: autodetect.
- 
    - libxmount_morphing_raid.so
      raid_chunksize : Specify the chunk size to use in bytes. Defaults to 524288 (512k).
+ 
+   - libxmount_morphing_unallocated.so
+     unallocated_fs : Specify the filesystem to extract unallocated blocks from. Supported filesystems are: 'hfs', 'fat'. Default: autodetect.
  
  ```
  

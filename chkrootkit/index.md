@@ -3,7 +3,7 @@ Title: chkrootkit
 Homepage: http://www.chkrootkit.org/
 Repository: https://salsa.debian.org/pkg-security-team/chkrootkit
 Architectures: any
-Version: 0.57-1
+Version: 0.57-2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: images/chkrootkit-logo.svg
 PackagesInfo: |
@@ -22,7 +22,7 @@ PackagesInfo: |
   signify a genuine problem: human judgement and further investigation
   will always be needed to assure the security of your system.
  
- **Installed size:** `922 KB`  
+ **Installed size:** `928 KB`  
  **How to install:** `sudo apt install chkrootkit`  
  
  {{< spoiler "Dependencies:" >}}
@@ -101,6 +101,39 @@ PackagesInfo: |
          -r DIR            use DIR as the root directory
          -p DIR1:DIR2:DIRN path for the external commands used by chkrootkit
          -n                skip NFS mounted dirs
+ ```
+ 
+ - - -
+ 
+ ##### chkrootkit-daily
+ 
+ Run chkrootkit and report results
+ 
+ ```
+ root@kali:~# man chkrootkit-daily
+ chkrootkit-daily(8)         System Manager's Manual        chkrootkit-daily(8)
+ 
+ NAME
+        chkrootkit-daily - Run chkrootkit and report results
+ 
+ SYNOPSIS
+        chkrootkit-daily
+ 
+ DESCRIPTION
+        chkrootkit-daily  runs  chkrootkit(8) and emails the results. It is in-
+        tended to be run by the systemd(1) timer or as a cron(1) job every day.
+ 
+ CONFIGURATION
+        All options are set and documented in /etc/chkrootkit/chkrootkit.conf.
+ 
+ AUTHOR
+        chkrootkit-daily and this manual page were written by Richard Lewis for
+        the Debian project. They may be used by others.
+ 
+ SEE ALSO
+        chkrootkit(8)
+ 
+                                   2023-02-19               chkrootkit-daily(8)
  ```
  
  - - -

@@ -3,7 +3,7 @@ Title: feroxbuster
 Homepage: https://github.com/epi052/feroxbuster
 Repository: https://gitlab.com/kalilinux/packages/feroxbuster
 Architectures: amd64 arm64
-Version: 2.7.3-0kali1
+Version: 2.9.1-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   This attack is also known as Predictable Resource Location, File
   Enumeration, Directory Enumeration, and Resource Enumeration.
  
- **Installed size:** `8.09 MB`  
+ **Installed size:** `8.56 MB`  
  **How to install:** `sudo apt install feroxbuster`  
  
  {{< spoiler "Dependencies:" >}}
@@ -33,7 +33,7 @@ PackagesInfo: |
  
  ##### feroxbuster
  
- Manual page for feroxbuster 2.7.3
+ Manual page for feroxbuster 2.9.1
  
  ```
  root@kali:~# feroxbuster --help
@@ -43,10 +43,10 @@ PackagesInfo: |
  
  Options:
    -h, --help
-           Print help information (use `-h` for a summary)
+           Print help (see a summary with '-h')
  
    -V, --version
-           Print version information
+           Print version
  
  Target selection:
    -u, --url <URL>
@@ -84,7 +84,7 @@ PackagesInfo: |
  
  Request settings:
    -a, --user-agent <USER_AGENT>
-           Sets the User-Agent (default: feroxbuster/2.7.3)
+           Sets the User-Agent (default: feroxbuster/2.9.1)
  
    -A, --random-agent
            Use a random User-Agent
@@ -136,7 +136,7 @@ PackagesInfo: |
            http://site.xyz/soft404)
  
    -s, --status-codes <STATUS_CODE>...
-           Status Codes to include (allow list) (default: 200 204 301 302 307 308 401 403 405)
+           Status Codes to include (allow list) (default: All Status Codes)
  
  Client settings:
    -T, --timeout <SECONDS>
@@ -226,6 +226,10 @@ PackagesInfo: |
  
        --no-state
            Disable state output file (*.state)
+ 
+ Update settings:
+   -U, --update
+           Update feroxbuster to the latest version
  
  NOTE:
      Options that take multiple values are very flexible.  Consider the following ways of specifying

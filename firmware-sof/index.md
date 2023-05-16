@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: firmware-sof
 Homepage: https://github.com/thesofproject/sof-bin
 Repository: https://salsa.debian.org/mpearson/firmware-sof

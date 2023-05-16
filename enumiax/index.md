@@ -3,7 +3,7 @@ Title: enumiax
 Homepage: https://enumiax.sourceforge.net/
 Repository: https://gitlab.com/kalilinux/packages/enumiax
 Architectures: any
-Version: 0.4a-1kali2
+Version: 0.4a-1kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

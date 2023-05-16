@@ -3,7 +3,7 @@ Title: vim
 Homepage: https://www.vim.org/
 Repository: https://salsa.debian.org/vim-team/vim
 Architectures: any all
-Version: 2:9.0.1000-4
+Version: 2:9.0.1378-2
 Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: images/vim-logo.svg
 PackagesInfo: |
@@ -20,7 +20,7 @@ PackagesInfo: |
   version of Vim.  See the other vim-* packages if you need more
   (or less).
  
- **Installed size:** `3.48 MB`  
+ **Installed size:** `3.56 MB`  
  **How to install:** `sudo apt install vim`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.basic -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled May 04 2023 10:24:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -102,7 +102,7 @@ PackagesInfo: |
   This is a transitional package to install the vim-motif package.  You may
   remove this package if nothing depends on it.
  
- **Installed size:** `60 KB`  
+ **Installed size:** `72 KB`  
  **How to install:** `sudo apt install vim-athena`  
  
  {{< spoiler "Dependencies:" >}}
@@ -120,7 +120,7 @@ PackagesInfo: |
   available in Debian.  Examples of such shared files are: manpages and
   configuration files.
  
- **Installed size:** `233 KB`  
+ **Installed size:** `245 KB`  
  **How to install:** `sudo apt install vim-common`  
  
  ##### helpztags
@@ -168,7 +168,7 @@ PackagesInfo: |
   This package contains the HTML version of the online documentation.  It is
   built from the runtime/doc directory of the source tree.
  
- **Installed size:** `14.46 MB`  
+ **Installed size:** `14.58 MB`  
  **How to install:** `sudo apt install vim-doc`  
  
  
@@ -185,7 +185,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with a GTK3 GUI
   and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
  
- **Installed size:** `4.28 MB`  
+ **Installed size:** `4.37 MB`  
  **How to install:** `sudo apt install vim-gtk3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -221,7 +221,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.gtk3 -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled May 04 2023 10:24:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -313,7 +313,7 @@ PackagesInfo: |
   variants available in Debian.  Examples of such shared files are:
   gvimtutor, icons, and desktop environments settings.
  
- **Installed size:** `215 KB`  
+ **Installed size:** `227 KB`  
  **How to install:** `sudo apt install vim-gui-common`  
  
  ##### gvimtutor
@@ -383,7 +383,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with a Motif GUI
   and support for scripting with Lua, Perl, Python 3, and Tcl.
  
- **Installed size:** `4.32 MB`  
+ **Installed size:** `4.40 MB`  
  **How to install:** `sudo apt install vim-motif`  
  
  {{< spoiler "Dependencies:" >}}
@@ -414,7 +414,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.motif -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled May 04 2023 10:24:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -513,7 +513,7 @@ PackagesInfo: |
   This package contains a version of vim compiled with support for
   scripting with Lua, Perl, Python 3, Ruby, and Tcl but no GUI.
  
- **Installed size:** `3.96 MB`  
+ **Installed size:** `4.06 MB`  
  **How to install:** `sudo apt install vim-nox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -537,7 +537,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.nox -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled May 04 2023 10:24:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -605,7 +605,7 @@ PackagesInfo: |
   language-specific syntax highlighting and indentation, color schemes,
   and standard plugins.
  
- **Installed size:** `35.35 MB`  
+ **Installed size:** `35.55 MB`  
  **How to install:** `sudo apt install vim-runtime`  
  
  ##### vimtutor
@@ -675,7 +675,7 @@ PackagesInfo: |
   If a vim binary is wanted, try one of the following more featureful
   packages: vim, vim-nox, vim-motif, or vim-gtk3.
  
- **Installed size:** `1.62 MB`  
+ **Installed size:** `1.64 MB`  
  **How to install:** `sudo apt install vim-tiny`  
  
  {{< spoiler "Dependencies:" >}}
@@ -691,7 +691,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# vim.tiny -h
- VIM - Vi IMproved 9.0 (2022 Jun 28, compiled Jan 11 2023 03:16:36)
+ VIM - Vi IMproved 9.0 (2022 Jun 28, compiled May 04 2023 10:24:44)
  
  Usage: vim [arguments] [file ..]       edit specified file(s)
     or: vim [arguments] -               read text from stdin
@@ -745,7 +745,7 @@ PackagesInfo: |
   xxd creates a hex dump of a given file or standard input.  It can also convert
   a hex dump back to its original binary form.
  
- **Installed size:** `123 KB`  
+ **Installed size:** `135 KB`  
  **How to install:** `sudo apt install xxd`  
  
  {{< spoiler "Dependencies:" >}}

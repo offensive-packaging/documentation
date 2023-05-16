@@ -1,10 +1,9 @@
 ---
-archived: "true"
 Title: offsec-courses
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/offsec-courses
 Architectures: any
-Version: 2021.1.2
+Version: 2023.2.2
 Metapackages: 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -131,32 +130,43 @@ PackagesInfo: |
  * apache2
  * atftp
  * axel
+ * bloodhound
  * burpsuite
  * busybox
  * cewl
+ * chisel
+ * crackmapexec
  * crowbar
  * crunch
  * curl
  * cutycapt
  * default-libmysqlclient-dev
  * dirb
+ * dnscat2
  * dnsenum
+ * dnsmasq-base
  * dnsrecon
  * enum4linux
+ * evil-winrm
  * exe2hexbat
  * exploitdb
  * firefox-esr
  * freerdp2-x11
+ * gobuster
+ * gpp-decrypt
  * hashcat
  * hashid
  * httptunnel
  * hydra
+ * impacket-scripts
+ * iproute2
  * iptables
  * john
  * kali-linux-core
  * kali-tools-windows-resources
  * kerberoast
  * leafpad
+ * libimage-exiftool-perl
  * masscan
  * medusa
  * metasploit-framework
@@ -164,34 +174,47 @@ PackagesInfo: |
  * mingw-w64
  * nano
  * nbtscan
- * netcat
+ * ncat
+ * netcat-traditional
+ * network-manager
  * nikto
  * nmap
  * onesixtyone
  * openssl
  * openvpn
  * passing-the-hash
+ * peass
+ * postgresql-client-common
  * powercat
+ * powershell
  * powershell-empire
  * proxychains
  * pure-ftpd
  * python3
+ * python3-impacket
+ * python3-wsgidav
  * rdesktop
  * recon-ng
+ * responder
  * rinetd
  * seclists
  * shellter
+ * smbclient
  * snmp
  * socat
  * sqlmap
+ * sshuttle
+ * swaks
  * tcpdump
  * theharvester
  * wce
  * wget
+ * whatweb
  * whois
  * wine
  * wireshark
  * wpscan
+ * xxd
  {{< /spoiler >}}
  
  

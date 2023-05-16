@@ -3,9 +3,9 @@ Title: amass
 Homepage: https://github.com/OWASP/Amass
 Repository: https://gitlab.com/kalilinux/packages/amass
 Architectures: any all
-Version: 3.21.2-0kali1
+Version: 3.23.2-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-identify 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/amass-logo.svg
 PackagesInfo: |
  ### amass
  
@@ -33,7 +33,7 @@ PackagesInfo: |
    
   This package contains the command amass.
  
- **Installed size:** `29.36 MB`  
+ **Installed size:** `29.10 MB`  
  **How to install:** `sudo apt install amass`  
  
  {{< spoiler "Dependencies:" >}}
@@ -60,7 +60,7 @@ PackagesInfo: |
        :W@@WWWW@@8       +              :&W@@@@&    &W  .o#@@W&.   :W@WWW@@&
          +o&&&&+.                                                    +oooo.
  
-                                                                      v3.21.2
+                                                                      v3.23.2
                                             OWASP Amass Project - @owaspamass
                           In-depth Attack Surface Mapping and Asset Discovery
  
@@ -83,13 +83,13 @@ PackagesInfo: |
  	amass db    - Manipulate the Amass graph database
  
  The user's guide can be found here: 
- https://github.com/OWASP/Amass/blob/master/doc/user_guide.md
+ https://github.com/owasp-amass/amass/blob/master/doc/user_guide.md
  
  An example configuration file can be found here: 
- https://github.com/OWASP/Amass/blob/master/examples/config.ini
+ https://github.com/owasp-amass/amass/blob/master/examples/config.ini
  
  The Amass tutorial can be found here: 
- https://github.com/OWASP/Amass/blob/master/doc/tutorial.md
+ https://github.com/owasp-amass/amass/blob/master/doc/tutorial.md
  
  ```
  

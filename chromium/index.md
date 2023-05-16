@@ -3,7 +3,7 @@ Title: chromium
 Homepage: http://www.chromium.org/Home
 Repository: https://salsa.debian.org/chromium-team/chromium
 Architectures: i386 amd64 arm64 armhf ppc64el all
-Version: 110.0.5481.177-1
+Version: 113.0.5672.63-2
 Metapackages: kali-linux-everything 
 Icon: images/chromium-logo.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This package contains the web browser component.
  
- **Installed size:** `208.08 MB`  
+ **Installed size:** `210.67 MB`  
  **How to install:** `sudo apt install chromium`  
  
  {{< spoiler "Dependencies:" >}}
@@ -32,7 +32,6 @@ PackagesInfo: |
  * libdouble-conversion3 
  * libdrm2 
  * libevent-2.1-7 
- * libexpat1 
  * libflac12 
  * libfontconfig1 
  * libfreetype6 
@@ -46,6 +45,7 @@ PackagesInfo: |
  * libminizip1 
  * libnspr4 
  * libnss3 
+ * libopenh264-7 
  * libopenjp2-7 
  * libopus0 
  * libpango-1.0-0 
@@ -200,7 +200,7 @@ PackagesInfo: |
   This package contains resources that are in common to different chromium
   packages.
  
- **Installed size:** `16.21 MB`  
+ **Installed size:** `16.67 MB`  
  **How to install:** `sudo apt install chromium-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -226,7 +226,7 @@ PackagesInfo: |
   This package provides a bridge between the browser component and the selenium
   automatic webdriver.
  
- **Installed size:** `13.22 MB`  
+ **Installed size:** `13.40 MB`  
  **How to install:** `sudo apt install chromium-driver`  
  
  {{< spoiler "Dependencies:" >}}
@@ -268,6 +268,7 @@ PackagesInfo: |
    --url-base                      base URL path prefix for commands, e.g. wd/url
    --readable-timestamp            add readable timestamps to log
    --enable-chrome-logs            show logs from the browser (overrides other logging options)
+   --bidi-mapper-path              custom bidi mapper path
    --disable-dev-shm-usage         do not use /dev/shm (add this switch if seeing errors related to shared memory)
    --allowed-ips=LIST              comma-separated allowlist of remote IP addresses which are allowed to connect to ChromeDriver
    --allowed-origins=LIST          comma-separated allowlist of request origins which are allowed to connect to ChromeDriver. Using `*` to allow any host origin is dangerous!
@@ -285,7 +286,7 @@ PackagesInfo: |
   hi, hr, hu, id, it, ja, kn, ko, lt, lv, ml, mr, nb, nl, pl, pt-BR, pt-PT,
   ro, ru, sk, sl, sr, sv, sw, ta, te, th, tr, uk, vi, zh-CN, zh-TW
  
- **Installed size:** `73.40 MB`  
+ **Installed size:** `77.59 MB`  
  **How to install:** `sudo apt install chromium-l10n`  
  
  {{< spoiler "Dependencies:" >}}
@@ -302,7 +303,7 @@ PackagesInfo: |
    
   This package contains the setuid chromium sandbox.
  
- **Installed size:** `333 KB`  
+ **Installed size:** `336 KB`  
  **How to install:** `sudo apt install chromium-sandbox`  
  
  {{< spoiler "Dependencies:" >}}
@@ -320,7 +321,7 @@ PackagesInfo: |
   This package provides a minimal version of the chromium user interface
   (the content shell).
  
- **Installed size:** `149.92 MB`  
+ **Installed size:** `151.89 MB`  
  **How to install:** `sudo apt install chromium-shell`  
  
  {{< spoiler "Dependencies:" >}}
@@ -337,7 +338,6 @@ PackagesInfo: |
  * libdouble-conversion3 
  * libdrm2 
  * libevent-2.1-7 
- * libexpat1 
  * libflac12 
  * libfontconfig1 
  * libfreetype6 
@@ -349,6 +349,7 @@ PackagesInfo: |
  * libminizip1 
  * libnspr4 
  * libnss3 
+ * libopenh264-7 
  * libopus0 
  * libpango-1.0-0 
  * libpng16-16 

@@ -3,7 +3,7 @@ Title: clamav
 Homepage: https://www.clamav.net/
 Repository: https://salsa.debian.org/clamav-team/clamav
 Architectures: any all
-Version: 1.0.1+dfsg-1
+Version: 1.0.1+dfsg-2
 Metapackages: kali-linux-everything kali-tools-protect 
 Icon: images/clamav-logo.svg
 PackagesInfo: |

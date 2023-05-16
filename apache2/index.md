@@ -3,7 +3,7 @@ Title: apache2
 Homepage: https://httpd.apache.org/
 Repository: https://salsa.debian.org/apache-team/apache2
 Architectures: any all
-Version: 2.4.55-1
+Version: 2.4.57-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-respond kali-tools-social-engineering kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   Installing this package results in a full installation, including the
   configuration files, init scripts and support scripts.
  
- **Installed size:** `565 KB`  
+ **Installed size:** `566 KB`  
  **How to install:** `sudo apt install apache2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -602,7 +602,7 @@ PackagesInfo: |
   web-server instance. Install the "apache2" package to get a fully working
   instance.
  
- **Installed size:** `4.89 MB`  
+ **Installed size:** `4.91 MB`  
  **How to install:** `sudo apt install apache2-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -692,7 +692,7 @@ PackagesInfo: |
    - Site configuration files
    - Global configuration files
  
- **Installed size:** `1.06 MB`  
+ **Installed size:** `1.07 MB`  
  **How to install:** `sudo apt install apache2-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -766,7 +766,7 @@ PackagesInfo: |
   documentation is shipped in HTML format and can be accessed from a local
   running Apache HTTP server instance or by browsing the file system directly.
  
- **Installed size:** `24.53 MB`  
+ **Installed size:** `24.55 MB`  
  **How to install:** `sudo apt install apache2-doc`  
  
  
@@ -802,7 +802,7 @@ PackagesInfo: |
   recommended that you use the standard suexec helper program from the
   apache2-suexec-pristine package instead.
  
- **Installed size:** `184 KB`  
+ **Installed size:** `186 KB`  
  **How to install:** `sudo apt install apache2-suexec-custom`  
  
  {{< spoiler "Dependencies:" >}}
@@ -819,7 +819,7 @@ PackagesInfo: |
   compiled with document root /var/www and userdir suffix public_html. If you
   need different settings, use the package apache2-suexec-custom.
  
- **Installed size:** `174 KB`  
+ **Installed size:** `176 KB`  
  **How to install:** `sudo apt install apache2-suexec-pristine`  
  
  {{< spoiler "Dependencies:" >}}
@@ -846,7 +846,7 @@ PackagesInfo: |
    - check_forensic (Extract mod_log_forensic output from Apache log files)
    - httxt2dbm (Generate dbm files for use with RewriteMap)
  
- **Installed size:** `429 KB`  
+ **Installed size:** `431 KB`  
  **How to install:** `sudo apt install apache2-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1199,7 +1199,7 @@ PackagesInfo: |
  ```
  root@kali:~# rotatelogs -h
  rotatelogs: illegal option -- h
- Usage: rotatelogs [-v] [-l] [-L linkname] [-p prog] [-f] [-D] [-t] [-e] [-c] [-n number] <logfile> {<rotation time in seconds>|<rotation size>(B|K|M|G)} [offset minutes from UTC]
+ Usage: rotatelogs [-vlfDtTec] [-L linkname] [-p prog] [-n number] <logfile> {<rotation time in seconds>|<rotation size>(B|K|M|G)} [offset minutes from UTC]
  
  Add this:
  
@@ -1226,6 +1226,7 @@ PackagesInfo: |
    -f       Force opening of log on program start.
    -D       Create parent directories of log file.
    -t       Truncate logfile instead of rotating, tail friendly.
+   -T       Truncate logfiles opened for rotation, but not the initial logfile.
    -e       Echo log to stdout for further processing.
    -c       Create log even if it is empty.
    -n num   Rotate file by adding suffixes '.1', '.2', ..., '.num'.

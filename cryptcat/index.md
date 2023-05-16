@@ -3,7 +3,7 @@ Title: cryptcat
 Homepage: http://farm9.com/content/Free_Tools/cryptcat_linux2.tar
 Repository: https://gitlab.com/kalilinux/packages/cryptcat
 Architectures: any
-Version: 20031202-5kali6
+Version: 20031202-5kali7
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

@@ -3,7 +3,7 @@ Title: sliver
 Homepage: https://github.com/BishopFox/sliver
 Repository: https://gitlab.com/kalilinux/packages/sliver
 Architectures: amd64 arm64
-Version: 1.5.34-0kali1
+Version: 1.5.37-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   compiled with unique X.509 certificates signed by a per-instance certificate
   authority generated when you first run the binary.
  
- **Installed size:** `191.46 MB`  
+ **Installed size:** `192.59 MB`  
  **How to install:** `sudo apt install sliver`  
  
  {{< spoiler "Dependencies:" >}}

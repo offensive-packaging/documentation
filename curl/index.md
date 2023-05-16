@@ -3,8 +3,8 @@ Title: curl
 Homepage: https://curl.se/
 Repository: https://salsa.debian.org/debian/curl
 Architectures: any all
-Version: 7.87.0-2
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
+Version: 7.88.1-9
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-database kali-tools-detect kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### curl
@@ -18,7 +18,7 @@ PackagesInfo: |
   NTLM, Negotiate, kerberos...), file transfer resume, proxy tunneling and a
   busload of other useful tricks.
  
- **Installed size:** `476 KB`  
+ **Installed size:** `484 KB`  
  **How to install:** `sudo apt install curl`  
  
  {{< spoiler "Dependencies:" >}}
@@ -71,7 +71,7 @@ PackagesInfo: |
    
   SSL support is provided by GnuTLS.
  
- **Installed size:** `790 KB`  
+ **Installed size:** `819 KB`  
  **How to install:** `sudo apt install libcurl3-gnutls`  
  
  {{< spoiler "Dependencies:" >}}
@@ -110,7 +110,7 @@ PackagesInfo: |
    
   SSL support is provided by NSS.
  
- **Installed size:** `810 KB`  
+ **Installed size:** `835 KB`  
  **How to install:** `sudo apt install libcurl3-nss`  
  
  {{< spoiler "Dependencies:" >}}
@@ -126,6 +126,7 @@ PackagesInfo: |
  * librtmp1 
  * libssh2-1 
  * libzstd1 
+ * nss-plugin-pem
  * zlib1g 
  {{< /spoiler >}}
  
@@ -149,7 +150,7 @@ PackagesInfo: |
    
   SSL support is provided by OpenSSL.
  
- **Installed size:** `806 KB`  
+ **Installed size:** `831 KB`  
  **How to install:** `sudo apt install libcurl4`  
  
  {{< spoiler "Dependencies:" >}}
@@ -187,7 +188,7 @@ PackagesInfo: |
    
   This package provides the documentation files for libcurl.
  
- **Installed size:** `1.95 MB`  
+ **Installed size:** `1.94 MB`  
  **How to install:** `sudo apt install libcurl4-doc`  
  
  
@@ -213,7 +214,7 @@ PackagesInfo: |
    
   SSL support is provided by GnuTLS.
  
- **Installed size:** `1.65 MB`  
+ **Installed size:** `1.69 MB`  
  **How to install:** `sudo apt install libcurl4-gnutls-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -269,7 +270,7 @@ PackagesInfo: |
    
   SSL support is provided by NSS.
  
- **Installed size:** `1.67 MB`  
+ **Installed size:** `1.72 MB`  
  **How to install:** `sudo apt install libcurl4-nss-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -325,7 +326,7 @@ PackagesInfo: |
    
   SSL support is provided by OpenSSL.
  
- **Installed size:** `1.68 MB`  
+ **Installed size:** `1.72 MB`  
  **How to install:** `sudo apt install libcurl4-openssl-dev`  
  
  {{< spoiler "Dependencies:" >}}

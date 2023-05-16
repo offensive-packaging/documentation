@@ -5,7 +5,7 @@ Repository: https://salsa.debian.org/pkg-security-team/scapy
 Architectures: all
 Version: 2.5.0+dfsg-2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-voip kali-tools-vulnerability kali-tools-wireless 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/scapy-logo.svg
 PackagesInfo: |
  ### python3-scapy
  

@@ -3,7 +3,7 @@ Title: dcfldd
 Homepage: https://github.com/resurrecting-open-source-projects/dcfldd
 Repository: https://salsa.debian.org/debian/dcfldd
 Architectures: any
-Version: 1.9-1
+Version: 1.9-2
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

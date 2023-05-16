@@ -2,8 +2,8 @@
 Title: code-oss
 Homepage: https://github.com/microsoft/vscode
 Repository: https://gitlab.com/kalilinux/packages/code-oss
-Architectures: amd64 arm64 armhf
-Version: 1.72.2-0kali3
+Architectures: amd64 arm64
+Version: 1.75.1-0kali1
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: images/code-oss-logo.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
    
   This package is built from Microsoft open source code named code-oss.
  
- **Installed size:** `283.85 MB`  
+ **Installed size:** `289.69 MB`  
  **How to install:** `sudo apt install code-oss`  
  
  {{< spoiler "Dependencies:" >}}

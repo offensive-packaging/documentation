@@ -3,7 +3,7 @@ Title: rcracki-mt
 Homepage: https://freerainbowtables.com/
 Repository: https://gitlab.com/kalilinux/packages/rcracki-mt
 Architectures: any
-Version: 0.7.0-1kali3
+Version: 0.7.0-1kali4
 Metapackages: kali-linux-everything kali-linux-large kali-tools-passwords 
 Icon: images/rcracki-mt-logo.svg
 PackagesInfo: |
@@ -13,7 +13,7 @@ PackagesInfo: |
   hybrid and indexed tables. In addition to that, it also
   adds multi-core support
  
- **Installed size:** `395 KB`  
+ **Installed size:** `386 KB`  
  **How to install:** `sudo apt install rcracki-mt`  
  
  {{< spoiler "Dependencies:" >}}

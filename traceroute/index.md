@@ -1,9 +1,9 @@
 ---
 Title: traceroute
-Homepage: http://traceroute.sourceforge.net/
+Homepage: https://traceroute.sourceforge.net/
 Repository: 
 Architectures: linux-any
-Version: 1:2.1.1-1
+Version: 1:2.1.2-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

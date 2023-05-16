@@ -3,7 +3,7 @@ Title: aflplusplus
 Homepage: https://github.com/vanhauser-thc/AFLplusplus
 Repository: https://salsa.debian.org/pkg-security-team/aflplusplus
 Architectures: any all
-Version: 4.04c-3
+Version: 4.04c-4
 Metapackages: kali-linux-everything kali-tools-fuzzing kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -77,7 +77,7 @@ PackagesInfo: |
  Analysis settings:
    -e            - look for edge coverage only, ignore hit counts
  
- For additional tips, please consult /usr/share/doc/afl/README.md.
+ For additional tips, please consult docs/README.md.
  
  Environment variables used:
  TMPDIR: directory to use for temporary input files
@@ -9793,10 +9793,10 @@ PackagesInfo: |
  AFL_PERSISTENT: enforce persistent mode (if __AFL_LOOP is in a shared lib
  AFL_DEFER_FORKSRV: enforced deferred forkserver (__AFL_INIT is in a .so
  
- Compiled with Python 3.11.1 module support, see docs/custom_mutator.md
+ Compiled with Python 3.11.2 module support, see docs/custom_mutator.md
  Compiled without AFL_PERSISTENT_RECORD support.
  Compiled with shmat support.
- For additional help please consult /usr/share/doc/afl/README.md :)
+ For additional help please consult docs/README.md :)
  
  ```
  
@@ -12988,7 +12988,7 @@ PackagesInfo: |
    -c         - allow core dumps
  
  This tool displays raw tuple data captured by AFL instrumentation.
- For additional help, consult /usr/share/doc/afl/README.md.
+ For additional help, consult docs/README.md.
  
  Environment variables used:
  LD_BIND_LAZY: do not set LD_BIND_NOW env var for target
@@ -13057,7 +13057,7 @@ PackagesInfo: |
    -x            - treat non-zero exit codes as crashes
  
    -H            - minimize a hang (hang mode)
- For additional tips, please consult /usr/share/doc/afl/README.md.
+ For additional tips, please consult docs/README.md.
  
  Environment variables used:
  AFL_CRASH_EXITCODE: optional child exit code to be interpreted as crash

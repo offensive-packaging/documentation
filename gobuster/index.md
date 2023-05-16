@@ -1,18 +1,23 @@
 ---
 Title: gobuster
 Homepage: https://github.com/OJ/gobuster
-Repository: https://gitlab.com/kalilinux/packages/gobuster
+Repository: https://salsa.debian.org/pkg-security-team/gobuster
 Architectures: any
-Version: 3.5.0-0kali1
+Version: 3.5.0-1
 Metapackages: kali-linux-everything kali-linux-large 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/gobuster-logo.svg
 PackagesInfo: |
  ### gobuster
  
-  Gobuster is a tool used to brute-force URIs including directories and
-  files as well as DNS subdomains.
+  Gobuster is a tool used to brute-force: URIs (directories and files) in
+  web sites, DNS subdomains (with wildcard support), Virtual Host names
+  on target web servers, Open Amazon S3 buckets, Open Google Cloud buckets
+  and TFTP servers.
+   
+  Gobuster is useful for pentesters, ethical hackers and forensics experts.
+  It also can be used for security tests.
  
- **Installed size:** `7.51 MB`  
+ **Installed size:** `7.53 MB`  
  **How to install:** `sudo apt install gobuster`  
  
  {{< spoiler "Dependencies:" >}}
@@ -21,6 +26,7 @@ PackagesInfo: |
  
  ##### gobuster
  
+ Directory/file & DNS busting tool written in Go
  
  ```
  root@kali:~# gobuster -h

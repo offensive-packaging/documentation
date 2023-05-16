@@ -1,9 +1,9 @@
 ---
 Title: cymothoa
-Homepage: http://cymothoa.sourceforge.net/
+Homepage: https://cymothoa.sourceforge.net/
 Repository: https://gitlab.com/kalilinux/packages/cymothoa
 Architectures: i386 amd64
-Version: 1-beta-1kali2
+Version: 1-beta-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-post-exploitation 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
   uses the ptrace library (available on nearly all * nix), to
   manipulate processes and infect them.
  
- **Installed size:** `86 KB`  
+ **Installed size:** `90 KB`  
  **How to install:** `sudo apt install cymothoa`  
  
  {{< spoiler "Dependencies:" >}}

@@ -1,4 +1,5 @@
 ---
+archived: "true"
 Title: zd1211-firmware
 Homepage: https://sourceforge.net/projects/zd1211/
 Repository: https://salsa.debian.org/debian/zd1211-firmware

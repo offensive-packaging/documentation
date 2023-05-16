@@ -3,7 +3,7 @@ Title: koadic
 Homepage: https://github.com/zerosum0x0/koadic
 Repository: https://gitlab.com/kalilinux/packages/koadic
 Architectures: all
-Version: 0~git20210412-0kali2
+Version: 0~git20210412-0kali4
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

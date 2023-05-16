@@ -3,7 +3,7 @@ Title: uniscan
 Homepage: https://sourceforge.net/projects/uniscan/
 Repository: https://gitlab.com/kalilinux/packages/uniscan
 Architectures: all
-Version: 6.3-0kali2
+Version: 6.3-0kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

@@ -3,7 +3,7 @@ Title: openvpn
 Homepage: https://openvpn.net/
 Repository: https://salsa.debian.org/debian/openvpn
 Architectures: any
-Version: 2.6.0-1
+Version: 2.6.3-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -44,7 +44,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# openvpn --help
- OpenVPN 2.6.0 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+ OpenVPN 2.6.3 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
  
  General Options:
  --config file   : Read configuration options from file.
@@ -401,7 +401,7 @@ PackagesInfo: |
                    each filter is applied in the order of appearance.
  --dns server <n> <option> <value> [value ...] : Configure option for DNS server #n
                    Valid options are :
-                   address <addr[:port]> [addr[:port]] : server address 4/6
+                   address <addr[:port]> [addr[:port] ...] : server addresses 4/6
                    resolve-domains <domain> [domain ...] : split domains
                    exclude-domains <domain> [domain ...] : domains not to resolve
                    dnssec <yes|no|optional> : option to use DNSSEC

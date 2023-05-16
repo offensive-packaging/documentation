@@ -2,8 +2,8 @@
 Title: watobo
 Homepage: https://sourceforge.net/projects/watobo/
 Repository: https://gitlab.com/kalilinux/packages/watobo
-Architectures: i386 amd64
-Version: 1.0.1-0kali1
+Architectures: any
+Version: 1.0.1-0kali2
 Metapackages: kali-linux-everything kali-tools-web 
 Icon: images/watobo-logo.svg
 PackagesInfo: |
@@ -19,7 +19,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * bundler
  * pry
- * ruby | ruby-interpreter
+ * ruby
  * ruby-fxruby
  * ruby-jwt
  * ruby-mechanize 

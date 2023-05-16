@@ -3,7 +3,7 @@ Title: kali-tweaks
 Homepage: https://gitlab.com/kalilinux/packages/kali-tweaks
 Repository: https://gitlab.com/kalilinux/packages/kali-tweaks
 Architectures: all
-Version: 2023.1.5
+Version: 2023.2.2
 Metapackages: 
 Icon: images/kali-tweaks-logo.svg
 PackagesInfo: |

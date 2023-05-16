@@ -3,7 +3,7 @@ Title: quark-engine
 Homepage: https://github.com/quark-engine/quark-engine
 Repository: https://gitlab.com/kalilinux/packages/quark-engine
 Architectures: all
-Version: 21.4.3-0kali1
+Version: 23.4.1-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
   Ghidra, APKLAB, Jadx, Quark-Engine can greatly improve the efficiency
   of reverse engineers.
  
- **Installed size:** `122 KB`  
+ **Installed size:** `418 KB`  
  **How to install:** `sudo apt install quark-engine`  
  
  {{< spoiler "Dependencies:" >}}
@@ -36,8 +36,11 @@ PackagesInfo: |
  * python3-click
  * python3-colorama
  * python3-graphviz
+ * python3-plotly
  * python3-prettytable
+ * python3-prompt-toolkit
  * python3-requests
+ * python3-rzpipe
  * python3-tqdm
  {{< /spoiler >}}
  
@@ -47,7 +50,9 @@ PackagesInfo: |
  ```
  root@kali:~# freshquark -h
  [*] Download the latest rules from https://github.com/quark-engine/quark-rules
- [+] DONE: Complete downloading the latest quark-rules
+ [+] DONE: Complete downloading the latest quark-rules.
+ All the rules are saved in /root/.quark-engine/quark-rules/rules.
+ To specify one of the rules of Quark-Rule, use /root/.quark-engine/quark-rules/rules/<rule_name>.json as an argument.
  ```
  
  - - -
@@ -63,7 +68,7 @@ PackagesInfo: |
       /  / \  \|  |  \__  \_  __ \  |/ /
      /   \_/.  \  |  // __ \|  | \/    <
      \_____\ \_/____/(____  /__|  |__|_ \
-            \__>          \/           \/ v21.4.3
+            \__>          \/           \/ v23.4.1
      
                  An Obfuscation-Neglect Android Malware Scoring System
                  
@@ -72,19 +77,34 @@ PackagesInfo: |
    Quark is an Obfuscation-Neglect Android Malware Scoring System
  
  Options:
-   -s, --summary                   Show summary report
-   -d, --detail                    Show detail report
+   -s, --summary TEXT              Show summary report. Optionally specify the
+                                   name of a rule/label
+   -d, --detail TEXT               Show detail report. Optionally specify the
+                                   name of a rule/label
    -o, --output FILE               Output report in JSON
+   -w, --webreport FILE            Generate web report
    -a, --apk FILE                  APK file  [required]
    -r, --rule PATH                 Rules directory  [default: /root/.quark-
-                                   engine/quark-rules]
-   -g, --graph                     Create call graph to call_graph_image
+                                   engine/quark-rules/rules]
+   -g, --graph [png|json]          Create call graph to call_graph_image
                                    directory
    -c, --classification            Show rules classification
    -t, --threshold [100|80|60|40|20]
-                                   Set the confidence threshold
+                                   Set the lower limit of the confidence
+                                   threshold
    -i, --list [all|native|custom]  List classes, methods and descriptors
    -p, --permission                List Android permissions
+   -l, --label [max|detailed]      Show report based on label of rules
+   -C, --comparison                Behaviors comparison based on max confidence
+                                   of rule labels
+   --generate-rule DIRECTORY       Generate rules and output to given directory
+   --core-library [androguard|rizin]
+                                   Specify the core library used to analyze an
+                                   APK
+   --multi-process INTEGER RANGE   Allow analyzing APK with N processes, where
+                                   N doesn't exceeds the number of usable CPUs
+                                   - 1 to avoid memory exhaustion.  [x>=1]
+   --version                       Show the version and exit.
    --help                          Show this message and exit.
  ```
  

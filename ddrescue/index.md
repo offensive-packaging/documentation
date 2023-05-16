@@ -2,8 +2,8 @@
 Title: ddrescue
 Homepage: http://www.garloff.de/kurt/linux/ddrescue/
 Repository: https://gitlab.com/kalilinux/packages/ddrescue
-Architectures: any
-Version: 1.99.11-0kali4
+Architectures: amd64 arm64
+Version: 1.99.13-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-forensics kali-tools-recover kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -27,7 +27,7 @@ PackagesInfo: |
  {{< spoiler "Dependencies:" >}}
  * libc6 
  * liblzo2-2 
- * libssl1.1 
+ * libssl3 
  {{< /spoiler >}}
  
  ##### dd_rescue
@@ -37,9 +37,9 @@ PackagesInfo: |
  ```
  root@kali:~# dd_rescue -h
  
- dd_rescue Version 1.99.11, kurt@garloff.de, GNU GPL v2/v3
-  (DD_RESCUE_1_99_11-7-gc263a59)
-  (compiled Jun 17 2021 09:19:26 by gcc (Debian 10.2.1-6) 10.2.1 20210110)
+ dd_rescue Version 1.99.13, kurt@garloff.de, GNU GPL v2/v3
+  (DD_RESCUE_1_99_13)
+  (compiled May 10 2023 19:21:14 by gcc (Debian 12.2.0-14) 12.2.0)
   (features: O_DIRECT dl/libfallocate fallocate splice fitrim xattr rdrnd avx2)
  dd_rescue is free software. It's protected by the terms of GNU GPL v2 or v3
   (at your option).

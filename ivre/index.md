@@ -3,7 +3,7 @@ Title: ivre
 Homepage: https://ivre.rocks
 Repository: https://gitlab.com/kalilinux/packages/ivre
 Architectures: all
-Version: 0.9.20-0kali1
+Version: 0.9.20-0kali2
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -44,11 +44,11 @@ PackagesInfo: |
  root@kali:~# ivre -h
  IVRE - Network recon framework
  Copyright 2011 - 2023 Pierre LALET <pierre@droids-corp.org>
- Version 0.9.20-kali
+ Version 0.9.20+kali
  
- Python 3.11.2 (main, Feb 12 2023, 00:48:52) [GCC 12.2.0]
+ Python 3.11.2 (main, Mar 13 2023, 12:18:29) [GCC 12.2.0]
  
- Linux kali 6.1.0-kali5-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.12-1kali2 (2023-02-23) x86_64
+ Linux kali 6.1.0-kali9-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.27-1kali1 (2023-05-12) x86_64
  
  Dependencies:
      MySQLdb: 1.4.6
@@ -60,7 +60,7 @@ PackagesInfo: |
      krbV: *missing*
      matplotlib: 3.6.3
      psycopg2: 2.9.5 (dt dec pq3 ext lo64)
-     pycurl: PycURL/7.45.2 libcurl/7.87.0 GnuTLS/3.7.9 zlib/1.2.13 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3
+     pycurl: PycURL/7.45.2 libcurl/7.88.1 GnuTLS/3.7.9 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3
      pymongo: 3.11.0
      sqlalchemy: 1.4.46
      tinydb: 3.15.2

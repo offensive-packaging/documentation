@@ -3,7 +3,7 @@ Title: sparrow-wifi
 Homepage: https://github.com/ghostop14/sparrow-wifi
 Repository: https://gitlab.com/kalilinux/packages/sparrow-wifi
 Architectures: all
-Version: 0.0~git20220114-0kali3
+Version: 0.0~git20230403-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
   (traditional and Ubertooth), traditional GPS (via gpsd), and drone/rover GPS
   via mavlink in one solution.
  
- **Installed size:** `1.87 MB`  
+ **Installed size:** `1.88 MB`  
  **How to install:** `sudo apt install sparrow-wifi`  
  
  {{< spoiler "Dependencies:" >}}

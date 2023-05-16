@@ -3,7 +3,7 @@ Title: samba
 Homepage: https://www.samba.org
 Repository: https://salsa.debian.org/samba-team/samba
 Architectures: any all
-Version: 2:4.17.5+dfsg-2
+Version: 2:4.17.7+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-wireless 
 Icon: images/samba-logo.svg
 PackagesInfo: |
@@ -255,7 +255,7 @@ PackagesInfo: |
         You should have received a copy of the GNU General Public License along
         with this program; if not, see http://www.gnu.org/licenses.
  
- ctdb                              02/04/2023                      PING_PONG(1)
+ ctdb                              03/29/2023                      PING_PONG(1)
  ```
  
  - - -
@@ -288,35 +288,84 @@ PackagesInfo: |
  ```
  root@kali:~# ldbadd --help
  Usage: [OPTION...]
-   -H, --url=URL                   database URL
-   -b, --basedn=DN                 base DN
-   -e, --editor=PROGRAM            external editor
-   -s, --scope=SCOPE               search scope
-   -v, --verbose                   increase verbosity
-       --trace                     enable tracing
-   -i, --interactive               input from stdin
-   -r, --recursive                 recursive delete
-       --modules-path=PATH         modules path
-       --num-searches=INT          number of test searches
-       --num-records=INT           number of test records
-   -a, --all                       (|(objectClass=*)(distinguishedName=*))
-       --nosync                    non-synchronous transactions
-   -S, --sorted                    sort attributes
-   -o OPTION                       ldb_connect option
-       --controls=STRING           controls
-       --show-binary               display binary LDIF
-       --paged                     use a paged search
-       --show-deleted              show deleted objects
-       --show-recycled             show recycled objects
-       --show-deactivated-link     show deactivated links
-       --reveal                    reveal ldb internals
-       --relax                     pass relax control
-       --cross-ncs                 search across NC boundaries
-       --extended-dn               show extended DNs
+   -H, --url=URL                                database URL
+   -b, --basedn=DN                              base DN
+   -e, --editor=PROGRAM                         external editor
+   -s, --scope=SCOPE                            search scope
+   -v, --verbose                                increase verbosity
+       --trace                                  enable tracing
+   -i, --interactive                            input from stdin
+   -r, --recursive                              recursive delete
+       --modules-path=PATH                      modules path
+       --num-searches=INT                       number of test searches
+       --num-records=INT                        number of test records
+   -a, --all                                    (|(objectClass=*)(distinguishedName=*))
+       --nosync                                 non-synchronous transactions
+   -S, --sorted                                 sort attributes
+   -o OPTION                                    ldb_connect option
+       --controls=STRING                        controls
+       --show-binary                            display binary LDIF
+       --paged                                  use a paged search
+       --show-deleted                           show deleted objects
+       --show-recycled                          show recycled objects
+       --show-deactivated-link                  show deactivated links
+       --reveal                                 reveal ldb internals
+       --relax                                  pass relax control
+       --cross-ncs                              search across NC boundaries
+       --extended-dn                            show extended DNs
  
  Help options:
-   -?, --help                      Show this help message
-       --usage                     Display brief usage message
+   -?, --help                                   Show this help message
+       --usage                                  Display brief usage message
+ 
+ Common Samba options:
+   -d, --debuglevel=DEBUGLEVEL                  Set debug level
+       --debug-stdout                           Send debug output to standard
+                                                output
+       --configfile=CONFIGFILE                  Use alternative configuration
+                                                file
+       --option=name=value                      Set smb.conf option from
+                                                command line
+   -l, --log-basename=LOGFILEBASE               Basename for log/debug files
+       --leak-report                            enable talloc leak reporting on
+                                                exit
+       --leak-report-full                       enable full talloc leak
+                                                reporting on exit
+ 
+ Connection options:
+   -R, --name-resolve=NAME-RESOLVE-ORDER        Use these name resolution
+                                                services only
+   -O, --socket-options=SOCKETOPTIONS           socket options to use
+   -m, --max-protocol=MAXPROTOCOL               Set max protocol level
+   -n, --netbiosname=NETBIOSNAME                Primary netbios name
+       --netbios-scope=SCOPE                    Use this Netbios scope
+   -W, --workgroup=WORKGROUP                    Set the workgroup name
+       --realm=REALM                            Set the realm name
+ 
+ Credential options:
+   -U, --user=[DOMAIN/]USERNAME[%PASSWORD]      Set the network username
+   -N, --no-pass                                Don't ask for a password
+       --password=STRING                        Password
+       --pw-nt-hash                             The supplied password is the NT
+                                                hash
+   -A, --authentication-file=FILE               Get the credentials from a file
+   -P, --machine-pass                           Use stored machine account
+                                                password
+       --simple-bind-dn=DN                      DN to use for a simple bind
+       --use-kerberos=desired|required|off      Use Kerberos authentication
+       --use-krb5-ccache=CCACHE                 Credentials cache location for
+                                                Kerberos
+       --use-winbind-ccache                     Use the winbind ccache for
+                                                authentication
+       --client-protection=sign|encrypt|off     Configure used protection for
+                                                client connections
+ 
+ Deprecated legacy options:
+   -k, --kerberos=STRING                        DEPRECATED: Migrate to
+                                                --use-kerberos
+ 
+ Version options:
+   -V, --version                                Print version
  ```
  
  - - -
@@ -328,35 +377,84 @@ PackagesInfo: |
  ```
  root@kali:~# ldbdel --help
  Usage: [OPTION...]
-   -H, --url=URL                   database URL
-   -b, --basedn=DN                 base DN
-   -e, --editor=PROGRAM            external editor
-   -s, --scope=SCOPE               search scope
-   -v, --verbose                   increase verbosity
-       --trace                     enable tracing
-   -i, --interactive               input from stdin
-   -r, --recursive                 recursive delete
-       --modules-path=PATH         modules path
-       --num-searches=INT          number of test searches
-       --num-records=INT           number of test records
-   -a, --all                       (|(objectClass=*)(distinguishedName=*))
-       --nosync                    non-synchronous transactions
-   -S, --sorted                    sort attributes
-   -o OPTION                       ldb_connect option
-       --controls=STRING           controls
-       --show-binary               display binary LDIF
-       --paged                     use a paged search
-       --show-deleted              show deleted objects
-       --show-recycled             show recycled objects
-       --show-deactivated-link     show deactivated links
-       --reveal                    reveal ldb internals
-       --relax                     pass relax control
-       --cross-ncs                 search across NC boundaries
-       --extended-dn               show extended DNs
+   -H, --url=URL                                database URL
+   -b, --basedn=DN                              base DN
+   -e, --editor=PROGRAM                         external editor
+   -s, --scope=SCOPE                            search scope
+   -v, --verbose                                increase verbosity
+       --trace                                  enable tracing
+   -i, --interactive                            input from stdin
+   -r, --recursive                              recursive delete
+       --modules-path=PATH                      modules path
+       --num-searches=INT                       number of test searches
+       --num-records=INT                        number of test records
+   -a, --all                                    (|(objectClass=*)(distinguishedName=*))
+       --nosync                                 non-synchronous transactions
+   -S, --sorted                                 sort attributes
+   -o OPTION                                    ldb_connect option
+       --controls=STRING                        controls
+       --show-binary                            display binary LDIF
+       --paged                                  use a paged search
+       --show-deleted                           show deleted objects
+       --show-recycled                          show recycled objects
+       --show-deactivated-link                  show deactivated links
+       --reveal                                 reveal ldb internals
+       --relax                                  pass relax control
+       --cross-ncs                              search across NC boundaries
+       --extended-dn                            show extended DNs
  
  Help options:
-   -?, --help                      Show this help message
-       --usage                     Display brief usage message
+   -?, --help                                   Show this help message
+       --usage                                  Display brief usage message
+ 
+ Common Samba options:
+   -d, --debuglevel=DEBUGLEVEL                  Set debug level
+       --debug-stdout                           Send debug output to standard
+                                                output
+       --configfile=CONFIGFILE                  Use alternative configuration
+                                                file
+       --option=name=value                      Set smb.conf option from
+                                                command line
+   -l, --log-basename=LOGFILEBASE               Basename for log/debug files
+       --leak-report                            enable talloc leak reporting on
+                                                exit
+       --leak-report-full                       enable full talloc leak
+                                                reporting on exit
+ 
+ Connection options:
+   -R, --name-resolve=NAME-RESOLVE-ORDER        Use these name resolution
+                                                services only
+   -O, --socket-options=SOCKETOPTIONS           socket options to use
+   -m, --max-protocol=MAXPROTOCOL               Set max protocol level
+   -n, --netbiosname=NETBIOSNAME                Primary netbios name
+       --netbios-scope=SCOPE                    Use this Netbios scope
+   -W, --workgroup=WORKGROUP                    Set the workgroup name
+       --realm=REALM                            Set the realm name
+ 
+ Credential options:
+   -U, --user=[DOMAIN/]USERNAME[%PASSWORD]      Set the network username
+   -N, --no-pass                                Don't ask for a password
+       --password=STRING                        Password
+       --pw-nt-hash                             The supplied password is the NT
+                                                hash
+   -A, --authentication-file=FILE               Get the credentials from a file
+   -P, --machine-pass                           Use stored machine account
+                                                password
+       --simple-bind-dn=DN                      DN to use for a simple bind
+       --use-kerberos=desired|required|off      Use Kerberos authentication
+       --use-krb5-ccache=CCACHE                 Credentials cache location for
+                                                Kerberos
+       --use-winbind-ccache                     Use the winbind ccache for
+                                                authentication
+       --client-protection=sign|encrypt|off     Configure used protection for
+                                                client connections
+ 
+ Deprecated legacy options:
+   -k, --kerberos=STRING                        DEPRECATED: Migrate to
+                                                --use-kerberos
+ 
+ Version options:
+   -V, --version                                Print version
  ```
  
  - - -
@@ -368,35 +466,84 @@ PackagesInfo: |
  ```
  root@kali:~# ldbedit --help
  Usage: [OPTION...]
-   -H, --url=URL                   database URL
-   -b, --basedn=DN                 base DN
-   -e, --editor=PROGRAM            external editor
-   -s, --scope=SCOPE               search scope
-   -v, --verbose                   increase verbosity
-       --trace                     enable tracing
-   -i, --interactive               input from stdin
-   -r, --recursive                 recursive delete
-       --modules-path=PATH         modules path
-       --num-searches=INT          number of test searches
-       --num-records=INT           number of test records
-   -a, --all                       (|(objectClass=*)(distinguishedName=*))
-       --nosync                    non-synchronous transactions
-   -S, --sorted                    sort attributes
-   -o OPTION                       ldb_connect option
-       --controls=STRING           controls
-       --show-binary               display binary LDIF
-       --paged                     use a paged search
-       --show-deleted              show deleted objects
-       --show-recycled             show recycled objects
-       --show-deactivated-link     show deactivated links
-       --reveal                    reveal ldb internals
-       --relax                     pass relax control
-       --cross-ncs                 search across NC boundaries
-       --extended-dn               show extended DNs
+   -H, --url=URL                                database URL
+   -b, --basedn=DN                              base DN
+   -e, --editor=PROGRAM                         external editor
+   -s, --scope=SCOPE                            search scope
+   -v, --verbose                                increase verbosity
+       --trace                                  enable tracing
+   -i, --interactive                            input from stdin
+   -r, --recursive                              recursive delete
+       --modules-path=PATH                      modules path
+       --num-searches=INT                       number of test searches
+       --num-records=INT                        number of test records
+   -a, --all                                    (|(objectClass=*)(distinguishedName=*))
+       --nosync                                 non-synchronous transactions
+   -S, --sorted                                 sort attributes
+   -o OPTION                                    ldb_connect option
+       --controls=STRING                        controls
+       --show-binary                            display binary LDIF
+       --paged                                  use a paged search
+       --show-deleted                           show deleted objects
+       --show-recycled                          show recycled objects
+       --show-deactivated-link                  show deactivated links
+       --reveal                                 reveal ldb internals
+       --relax                                  pass relax control
+       --cross-ncs                              search across NC boundaries
+       --extended-dn                            show extended DNs
  
  Help options:
-   -?, --help                      Show this help message
-       --usage                     Display brief usage message
+   -?, --help                                   Show this help message
+       --usage                                  Display brief usage message
+ 
+ Common Samba options:
+   -d, --debuglevel=DEBUGLEVEL                  Set debug level
+       --debug-stdout                           Send debug output to standard
+                                                output
+       --configfile=CONFIGFILE                  Use alternative configuration
+                                                file
+       --option=name=value                      Set smb.conf option from
+                                                command line
+   -l, --log-basename=LOGFILEBASE               Basename for log/debug files
+       --leak-report                            enable talloc leak reporting on
+                                                exit
+       --leak-report-full                       enable full talloc leak
+                                                reporting on exit
+ 
+ Connection options:
+   -R, --name-resolve=NAME-RESOLVE-ORDER        Use these name resolution
+                                                services only
+   -O, --socket-options=SOCKETOPTIONS           socket options to use
+   -m, --max-protocol=MAXPROTOCOL               Set max protocol level
+   -n, --netbiosname=NETBIOSNAME                Primary netbios name
+       --netbios-scope=SCOPE                    Use this Netbios scope
+   -W, --workgroup=WORKGROUP                    Set the workgroup name
+       --realm=REALM                            Set the realm name
+ 
+ Credential options:
+   -U, --user=[DOMAIN/]USERNAME[%PASSWORD]      Set the network username
+   -N, --no-pass                                Don't ask for a password
+       --password=STRING                        Password
+       --pw-nt-hash                             The supplied password is the NT
+                                                hash
+   -A, --authentication-file=FILE               Get the credentials from a file
+   -P, --machine-pass                           Use stored machine account
+                                                password
+       --simple-bind-dn=DN                      DN to use for a simple bind
+       --use-kerberos=desired|required|off      Use Kerberos authentication
+       --use-krb5-ccache=CCACHE                 Credentials cache location for
+                                                Kerberos
+       --use-winbind-ccache                     Use the winbind ccache for
+                                                authentication
+       --client-protection=sign|encrypt|off     Configure used protection for
+                                                client connections
+ 
+ Deprecated legacy options:
+   -k, --kerberos=STRING                        DEPRECATED: Migrate to
+                                                --use-kerberos
+ 
+ Version options:
+   -V, --version                                Print version
  ```
  
  - - -
@@ -408,35 +555,84 @@ PackagesInfo: |
  ```
  root@kali:~# ldbmodify --help
  Usage: [OPTION...]
-   -H, --url=URL                   database URL
-   -b, --basedn=DN                 base DN
-   -e, --editor=PROGRAM            external editor
-   -s, --scope=SCOPE               search scope
-   -v, --verbose                   increase verbosity
-       --trace                     enable tracing
-   -i, --interactive               input from stdin
-   -r, --recursive                 recursive delete
-       --modules-path=PATH         modules path
-       --num-searches=INT          number of test searches
-       --num-records=INT           number of test records
-   -a, --all                       (|(objectClass=*)(distinguishedName=*))
-       --nosync                    non-synchronous transactions
-   -S, --sorted                    sort attributes
-   -o OPTION                       ldb_connect option
-       --controls=STRING           controls
-       --show-binary               display binary LDIF
-       --paged                     use a paged search
-       --show-deleted              show deleted objects
-       --show-recycled             show recycled objects
-       --show-deactivated-link     show deactivated links
-       --reveal                    reveal ldb internals
-       --relax                     pass relax control
-       --cross-ncs                 search across NC boundaries
-       --extended-dn               show extended DNs
+   -H, --url=URL                                database URL
+   -b, --basedn=DN                              base DN
+   -e, --editor=PROGRAM                         external editor
+   -s, --scope=SCOPE                            search scope
+   -v, --verbose                                increase verbosity
+       --trace                                  enable tracing
+   -i, --interactive                            input from stdin
+   -r, --recursive                              recursive delete
+       --modules-path=PATH                      modules path
+       --num-searches=INT                       number of test searches
+       --num-records=INT                        number of test records
+   -a, --all                                    (|(objectClass=*)(distinguishedName=*))
+       --nosync                                 non-synchronous transactions
+   -S, --sorted                                 sort attributes
+   -o OPTION                                    ldb_connect option
+       --controls=STRING                        controls
+       --show-binary                            display binary LDIF
+       --paged                                  use a paged search
+       --show-deleted                           show deleted objects
+       --show-recycled                          show recycled objects
+       --show-deactivated-link                  show deactivated links
+       --reveal                                 reveal ldb internals
+       --relax                                  pass relax control
+       --cross-ncs                              search across NC boundaries
+       --extended-dn                            show extended DNs
  
  Help options:
-   -?, --help                      Show this help message
-       --usage                     Display brief usage message
+   -?, --help                                   Show this help message
+       --usage                                  Display brief usage message
+ 
+ Common Samba options:
+   -d, --debuglevel=DEBUGLEVEL                  Set debug level
+       --debug-stdout                           Send debug output to standard
+                                                output
+       --configfile=CONFIGFILE                  Use alternative configuration
+                                                file
+       --option=name=value                      Set smb.conf option from
+                                                command line
+   -l, --log-basename=LOGFILEBASE               Basename for log/debug files
+       --leak-report                            enable talloc leak reporting on
+                                                exit
+       --leak-report-full                       enable full talloc leak
+                                                reporting on exit
+ 
+ Connection options:
+   -R, --name-resolve=NAME-RESOLVE-ORDER        Use these name resolution
+                                                services only
+   -O, --socket-options=SOCKETOPTIONS           socket options to use
+   -m, --max-protocol=MAXPROTOCOL               Set max protocol level
+   -n, --netbiosname=NETBIOSNAME                Primary netbios name
+       --netbios-scope=SCOPE                    Use this Netbios scope
+   -W, --workgroup=WORKGROUP                    Set the workgroup name
+       --realm=REALM                            Set the realm name
+ 
+ Credential options:
+   -U, --user=[DOMAIN/]USERNAME[%PASSWORD]      Set the network username
+   -N, --no-pass                                Don't ask for a password
+       --password=STRING                        Password
+       --pw-nt-hash                             The supplied password is the NT
+                                                hash
+   -A, --authentication-file=FILE               Get the credentials from a file
+   -P, --machine-pass                           Use stored machine account
+                                                password
+       --simple-bind-dn=DN                      DN to use for a simple bind
+       --use-kerberos=desired|required|off      Use Kerberos authentication
+       --use-krb5-ccache=CCACHE                 Credentials cache location for
+                                                Kerberos
+       --use-winbind-ccache                     Use the winbind ccache for
+                                                authentication
+       --client-protection=sign|encrypt|off     Configure used protection for
+                                                client connections
+ 
+ Deprecated legacy options:
+   -k, --kerberos=STRING                        DEPRECATED: Migrate to
+                                                --use-kerberos
+ 
+ Version options:
+   -V, --version                                Print version
  ```
  
  - - -
@@ -448,35 +644,84 @@ PackagesInfo: |
  ```
  root@kali:~# ldbrename --help
  Usage: [OPTION...]
-   -H, --url=URL                   database URL
-   -b, --basedn=DN                 base DN
-   -e, --editor=PROGRAM            external editor
-   -s, --scope=SCOPE               search scope
-   -v, --verbose                   increase verbosity
-       --trace                     enable tracing
-   -i, --interactive               input from stdin
-   -r, --recursive                 recursive delete
-       --modules-path=PATH         modules path
-       --num-searches=INT          number of test searches
-       --num-records=INT           number of test records
-   -a, --all                       (|(objectClass=*)(distinguishedName=*))
-       --nosync                    non-synchronous transactions
-   -S, --sorted                    sort attributes
-   -o OPTION                       ldb_connect option
-       --controls=STRING           controls
-       --show-binary               display binary LDIF
-       --paged                     use a paged search
-       --show-deleted              show deleted objects
-       --show-recycled             show recycled objects
-       --show-deactivated-link     show deactivated links
-       --reveal                    reveal ldb internals
-       --relax                     pass relax control
-       --cross-ncs                 search across NC boundaries
-       --extended-dn               show extended DNs
+   -H, --url=URL                                database URL
+   -b, --basedn=DN                              base DN
+   -e, --editor=PROGRAM                         external editor
+   -s, --scope=SCOPE                            search scope
+   -v, --verbose                                increase verbosity
+       --trace                                  enable tracing
+   -i, --interactive                            input from stdin
+   -r, --recursive                              recursive delete
+       --modules-path=PATH                      modules path
+       --num-searches=INT                       number of test searches
+       --num-records=INT                        number of test records
+   -a, --all                                    (|(objectClass=*)(distinguishedName=*))
+       --nosync                                 non-synchronous transactions
+   -S, --sorted                                 sort attributes
+   -o OPTION                                    ldb_connect option
+       --controls=STRING                        controls
+       --show-binary                            display binary LDIF
+       --paged                                  use a paged search
+       --show-deleted                           show deleted objects
+       --show-recycled                          show recycled objects
+       --show-deactivated-link                  show deactivated links
+       --reveal                                 reveal ldb internals
+       --relax                                  pass relax control
+       --cross-ncs                              search across NC boundaries
+       --extended-dn                            show extended DNs
  
  Help options:
-   -?, --help                      Show this help message
-       --usage                     Display brief usage message
+   -?, --help                                   Show this help message
+       --usage                                  Display brief usage message
+ 
+ Common Samba options:
+   -d, --debuglevel=DEBUGLEVEL                  Set debug level
+       --debug-stdout                           Send debug output to standard
+                                                output
+       --configfile=CONFIGFILE                  Use alternative configuration
+                                                file
+       --option=name=value                      Set smb.conf option from
+                                                command line
+   -l, --log-basename=LOGFILEBASE               Basename for log/debug files
+       --leak-report                            enable talloc leak reporting on
+                                                exit
+       --leak-report-full                       enable full talloc leak
+                                                reporting on exit
+ 
+ Connection options:
+   -R, --name-resolve=NAME-RESOLVE-ORDER        Use these name resolution
+                                                services only
+   -O, --socket-options=SOCKETOPTIONS           socket options to use
+   -m, --max-protocol=MAXPROTOCOL               Set max protocol level
+   -n, --netbiosname=NETBIOSNAME                Primary netbios name
+       --netbios-scope=SCOPE                    Use this Netbios scope
+   -W, --workgroup=WORKGROUP                    Set the workgroup name
+       --realm=REALM                            Set the realm name
+ 
+ Credential options:
+   -U, --user=[DOMAIN/]USERNAME[%PASSWORD]      Set the network username
+   -N, --no-pass                                Don't ask for a password
+       --password=STRING                        Password
+       --pw-nt-hash                             The supplied password is the NT
+                                                hash
+   -A, --authentication-file=FILE               Get the credentials from a file
+   -P, --machine-pass                           Use stored machine account
+                                                password
+       --simple-bind-dn=DN                      DN to use for a simple bind
+       --use-kerberos=desired|required|off      Use Kerberos authentication
+       --use-krb5-ccache=CCACHE                 Credentials cache location for
+                                                Kerberos
+       --use-winbind-ccache                     Use the winbind ccache for
+                                                authentication
+       --client-protection=sign|encrypt|off     Configure used protection for
+                                                client connections
+ 
+ Deprecated legacy options:
+   -k, --kerberos=STRING                        DEPRECATED: Migrate to
+                                                --use-kerberos
+ 
+ Version options:
+   -V, --version                                Print version
  ```
  
  - - -
@@ -488,35 +733,84 @@ PackagesInfo: |
  ```
  root@kali:~# ldbsearch --help
  Usage: [OPTION...]
-   -H, --url=URL                   database URL
-   -b, --basedn=DN                 base DN
-   -e, --editor=PROGRAM            external editor
-   -s, --scope=SCOPE               search scope
-   -v, --verbose                   increase verbosity
-       --trace                     enable tracing
-   -i, --interactive               input from stdin
-   -r, --recursive                 recursive delete
-       --modules-path=PATH         modules path
-       --num-searches=INT          number of test searches
-       --num-records=INT           number of test records
-   -a, --all                       (|(objectClass=*)(distinguishedName=*))
-       --nosync                    non-synchronous transactions
-   -S, --sorted                    sort attributes
-   -o OPTION                       ldb_connect option
-       --controls=STRING           controls
-       --show-binary               display binary LDIF
-       --paged                     use a paged search
-       --show-deleted              show deleted objects
-       --show-recycled             show recycled objects
-       --show-deactivated-link     show deactivated links
-       --reveal                    reveal ldb internals
-       --relax                     pass relax control
-       --cross-ncs                 search across NC boundaries
-       --extended-dn               show extended DNs
+   -H, --url=URL                                database URL
+   -b, --basedn=DN                              base DN
+   -e, --editor=PROGRAM                         external editor
+   -s, --scope=SCOPE                            search scope
+   -v, --verbose                                increase verbosity
+       --trace                                  enable tracing
+   -i, --interactive                            input from stdin
+   -r, --recursive                              recursive delete
+       --modules-path=PATH                      modules path
+       --num-searches=INT                       number of test searches
+       --num-records=INT                        number of test records
+   -a, --all                                    (|(objectClass=*)(distinguishedName=*))
+       --nosync                                 non-synchronous transactions
+   -S, --sorted                                 sort attributes
+   -o OPTION                                    ldb_connect option
+       --controls=STRING                        controls
+       --show-binary                            display binary LDIF
+       --paged                                  use a paged search
+       --show-deleted                           show deleted objects
+       --show-recycled                          show recycled objects
+       --show-deactivated-link                  show deactivated links
+       --reveal                                 reveal ldb internals
+       --relax                                  pass relax control
+       --cross-ncs                              search across NC boundaries
+       --extended-dn                            show extended DNs
  
  Help options:
-   -?, --help                      Show this help message
-       --usage                     Display brief usage message
+   -?, --help                                   Show this help message
+       --usage                                  Display brief usage message
+ 
+ Common Samba options:
+   -d, --debuglevel=DEBUGLEVEL                  Set debug level
+       --debug-stdout                           Send debug output to standard
+                                                output
+       --configfile=CONFIGFILE                  Use alternative configuration
+                                                file
+       --option=name=value                      Set smb.conf option from
+                                                command line
+   -l, --log-basename=LOGFILEBASE               Basename for log/debug files
+       --leak-report                            enable talloc leak reporting on
+                                                exit
+       --leak-report-full                       enable full talloc leak
+                                                reporting on exit
+ 
+ Connection options:
+   -R, --name-resolve=NAME-RESOLVE-ORDER        Use these name resolution
+                                                services only
+   -O, --socket-options=SOCKETOPTIONS           socket options to use
+   -m, --max-protocol=MAXPROTOCOL               Set max protocol level
+   -n, --netbiosname=NETBIOSNAME                Primary netbios name
+       --netbios-scope=SCOPE                    Use this Netbios scope
+   -W, --workgroup=WORKGROUP                    Set the workgroup name
+       --realm=REALM                            Set the realm name
+ 
+ Credential options:
+   -U, --user=[DOMAIN/]USERNAME[%PASSWORD]      Set the network username
+   -N, --no-pass                                Don't ask for a password
+       --password=STRING                        Password
+       --pw-nt-hash                             The supplied password is the NT
+                                                hash
+   -A, --authentication-file=FILE               Get the credentials from a file
+   -P, --machine-pass                           Use stored machine account
+                                                password
+       --simple-bind-dn=DN                      DN to use for a simple bind
+       --use-kerberos=desired|required|off      Use Kerberos authentication
+       --use-krb5-ccache=CCACHE                 Credentials cache location for
+                                                Kerberos
+       --use-winbind-ccache                     Use the winbind ccache for
+                                                authentication
+       --client-protection=sign|encrypt|off     Configure used protection for
+                                                client connections
+ 
+ Deprecated legacy options:
+   -k, --kerberos=STRING                        DEPRECATED: Migrate to
+                                                --use-kerberos
+ 
+ Version options:
+   -V, --version                                Print version
  ```
  
  - - -
@@ -532,7 +826,7 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `171 KB`  
+ **Installed size:** `172 KB`  
  **How to install:** `sudo apt install libldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -558,7 +852,7 @@ PackagesInfo: |
    
   This package contains the shared library file.
  
- **Installed size:** `614 KB`  
+ **Installed size:** `615 KB`  
  **How to install:** `sudo apt install libldb2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -752,7 +1046,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains Python 3 bindings for most Samba libraries.
  
@@ -783,7 +1077,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains tools for viewing and manipulating the binary
   "registry" found on Windows machines, both locally and remote.
@@ -1023,13 +1317,14 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file and printer sharing with
   Microsoft Windows, OS X, and other Unix systems.  Samba can also function
-  as an NT4-style domain controller, and can integrate with both NT4 domains
-  and Active Directory realms as a member server.
+  as an Active Directory or NT4-style domain controller, and can integrate
+  with Active Directory realms or NT4 domains as a member server.
    
   This package provides the components necessary to use Samba as a stand-alone
-  file and print server or as an NT4 or Active Directory domain controller.
-  For use in an NT4 domain or Active Directory realm, you will also need the
-  winbind package.
+  file and print server or as an NT4 domain controller.  For use in an NT4
+  domain or Active Directory realm, you will also need the winbind package.
+  To use samba as an Active Directory domain controller (AD DC), please install
+  samba-ad-dc package.
    
   This package is not required for connecting to existing SMB/CIFS servers
   (see smbclient) or for mounting remote filesystems (see cifs-utils).
@@ -1768,7 +2063,7 @@ PackagesInfo: |
    
   This package contains common files used by all parts of Samba.
  
- **Installed size:** `209 KB`  
+ **Installed size:** `211 KB`  
  **How to install:** `sudo apt install samba-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1784,7 +2079,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains the common files that are used by both the server
   (provided in the samba package) and the client (provided in the samba-clients
@@ -2214,7 +2509,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains include files shared by the various Samba-based
   libraries.
@@ -2241,12 +2536,12 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains LDB plugins which add support for various Active
   Directory features to the LDB library.
  
- **Installed size:** `1.51 MB`  
+ **Installed size:** `1.52 MB`  
  **How to install:** `sudo apt install samba-dsdb-modules`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2270,7 +2565,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains the shared libraries.
  
@@ -2308,7 +2603,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package contains programs for testing the reliability and speed
   of SMB servers, Samba in particular.
@@ -2614,7 +2909,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# smbtorture --help
- smbtorture 4.17.5-Debian
+ smbtorture 4.17.7-Debian
  Usage: <binding>|<unc> TEST1 TEST2 ...
        --fullname                               use full name for the test
        --format=STRING                          Output format (one of: simple,
@@ -2709,7 +3004,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   Virtual FileSystem modules are stacked shared libraries extending the
   functionality of Samba. Some examples are:
@@ -3345,7 +3640,7 @@ PackagesInfo: |
   Samba is an implementation of the SMB/CIFS protocol for Unix systems,
   providing support for cross-platform file sharing with Microsoft Windows, OS X,
   and other Unix systems.  Samba can also function as a domain controller
-  or member server in both NT4-style and Active Directory domains.
+  or member server in Active Directory or NT4-style domains.
    
   This package provides winbindd, a daemon which integrates authentication
   and directory service (user/group lookup) mechanisms from a Windows

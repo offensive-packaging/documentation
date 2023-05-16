@@ -3,7 +3,7 @@ Title: pacu
 Homepage: https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/
 Repository: https://gitlab.com/kalilinux/packages/pacu
 Architectures: all
-Version: 1.1.0-0kali1
+Version: 1.1.5-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   privilege escalation, backdooring of IAM users, attacking vulnerable Lambda
   functions, and much more.
  
- **Installed size:** `13.00 MB`  
+ **Installed size:** `13.08 MB`  
  **How to install:** `sudo apt install pacu`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,13 +39,17 @@ PackagesInfo: |
  
  ```
  root@kali:~# pacu -h
- usage: pacu [-h] [--session] [--module-name] [--data] [--module-args]
-             [--list-modules] [--pacu-help] [--module-info] [--exec]
-             [--set-regions  [...]] [--whoami]
+ usage: pacu [-h] [--session] [--activate-session] [--new-session] [--set-keys]
+             [--module-name] [--data] [--module-args] [--list-modules]
+             [--pacu-help] [--module-info] [--exec] [--set-regions  [...]]
+             [--whoami]
  
  options:
    -h, --help            show this help message and exit
    --session             <session name>
+   --activate-session    activate session, use session arg to set session name
+   --new-session         <session name>
+   --set-keys            alias, access id, secrect key, token
    --module-name         <module name>
    --data                <service name/all>
    --module-args         <--module-args='--regions us-east-1,us-east-1'>

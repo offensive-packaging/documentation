@@ -336,89 +336,20 @@ PackagesInfo: |
  Fetch the arp-scan OUI file from the ieee-data package
  
  ```
- root@kali:~# man get-oui
- GET-OUI(1)                  General Commands Manual                 GET-OUI(1)
+ root@kali:~# get-oui --help
+ /usr/sbin/get-oui version [unknown] calling Getopt::Std::getopts (version 1.13 [paranoid]),
+ running under Perl version 5.36.0.
  
- NAME
-        get-oui - Fetch the arp-scan OUI file from the ieee-data package
+ Usage: get-oui [-OPTIONS [-MORE_OPTIONS]] [--] [PROGRAM_ARG1 ...]
  
- SYNOPSIS
-        get-oui [options]
+ The following single-character options are accepted:
+ 	With arguments: -f -u
+ 	Boolean (without arguments): -h -v
  
- DESCRIPTION
-        get-oui fetches the MAC/Vendor registry data from the ieee-data package
-        and converts it to the format used by arp-scan.  The  contents  of  the
-        following registries are processed:
- 
-        MA-L   24-bit   The original OUI registry
-        MA-M   28-bit   Medium address block registry
-        MA-S   36-bit   Small address block registry (OUI-36)
-        IAB    36-bit   The IAB registry (closed for new applications)
- 
-        This  script  creates  /usr/share/arp-scan/ieee-oui.txt from the latest
-        data on the ieee-data package.  You can run # update-ieee-data &&  get-
-        oui occasionally to keep the OUI file up to date.
- 
-        The  OUI  data  is  fetched from ieee-data package files defined in the
-        get-oui script and the output file is saved to the file /usr/share/arp-
-        scan/ieee-oui.txt  The  output file name can be changed with the -f op-
-        tion.
- 
-        The /usr/share/arp-scan/ieee-oui.txt file that is produced and  updated
-        by  this script is used by arp-scan to determine the Ethernet card ven-
-        dor from its hardware address.
- 
- OPTIONS
-        -h     Display a brief usage message and exit.
- 
-        -f <fn>
-               Write the output to the specified file instead  of  the  default
-               /usr/share/arp-scan/ieee-oui.txt.
- 
-        -v     Display verbose progress messages.
- 
- FILES
-        /usr/share/arp-scan/ieee-oui.txt
-               The default output file.
- 
- EXAMPLES
-        $ ./get-oui -v
-        Renaming ieee-oui.txt to ieee-oui.txt.bak
-        Opening ieee-oui.txt for output
-        Processing IEEE IAB registry data from file:///var/lib/ieee-data/iab.csv
-                Downloaded 381454 bytes
-                4575 IAB entries written to ieee-oui.txt
-        Processing IEEE MAM registry data from file:///var/lib/ieee-data/mam.csv
-                Downloaded 492756 bytes
-                4477 MAM entries written to ieee-oui.txt
-        Processing IEEE OUI registry data from file:///var/lib/ieee-data/oui.csv
-                Downloaded 3051812 bytes
-                32845 OUI entries written to ieee-oui.txt
-        Processing IEEE OUI36 registry data from file:///var/lib/ieee-data/oui36.csv
-                Downloaded 466151 bytes
-                5131 OUI36 entries written to ieee-oui.txt
- 
-        Total of 47028 MAC/Vendor mappings written to ieee-oui.txt
- 
- NOTES
-        get-oui  is  implemented  in  Perl, so you need to have the Perl inter-
-        preter installed on your system to use it.
- 
-        get-oui uses the LWP::UserAgent and Text::CSV Perl modules to fetch and
-        process  the  IEEE registry data. You must have these modules installed
-        on your system for it to work. These modules are available on most dis-
-        tributions,  often  called  libwww-perl and libtext-csv-perl.  They are
-        also available in source form from CPAN.
- 
-        You can use a proxy server by defining the http_proxy environment vari-
-        able.
- 
- SEE ALSO
-        arp-scan(1)
- 
-        arp-fingerprint(1)
- 
-                                October 28, 2022                     GET-OUI(1)
+ Options may be merged together.  -- stops processing of options.
+ Space is not required between options and their arguments.
+   [Now continuing due to backward compatibility and excessive paranoia.
+    See 'perldoc Getopt::Std' about $Getopt::Std::STANDARD_HELP_VERSION.]
  ```
  
  - - -

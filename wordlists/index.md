@@ -3,7 +3,7 @@ Title: wordlists
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/wordlists
 Architectures: all
-Version: 2023.1.2
+Version: 2023.2.0
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: images/wordlists-logo.svg
 PackagesInfo: |

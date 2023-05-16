@@ -3,7 +3,7 @@ Title: winexe
 Homepage: https://sourceforge.net/projects/winexe
 Repository: https://gitlab.com/kalilinux/packages/winexe
 Architectures: any
-Version: 1.1~20140107-0kali14
+Version: 1.1~20140107-0kali16
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

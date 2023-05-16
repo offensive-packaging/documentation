@@ -905,7 +905,7 @@ PackagesInfo: |
   This package contains headers and scripts necessary to compile
   third-party modules.
  
- **Installed size:** `684 KB`  
+ **Installed size:** `685 KB`  
  **How to install:** `sudo apt install zsh-dev`  
  
  {{< spoiler "Dependencies:" >}}

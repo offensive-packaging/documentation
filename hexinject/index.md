@@ -1,9 +1,9 @@
 ---
 Title: hexinject
-Homepage: http://hexinject.sourceforge.net/
+Homepage: https://hexinject.sourceforge.net/
 Repository: https://gitlab.com/kalilinux/packages/hexinject
 Architectures: any
-Version: 1.6-0kali2
+Version: 1.6-0kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-sniffing-spoofing 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
   of powerful shell scripts capable of reading, intercepting
   and modifying network traffic in a transparent manner.
  
- **Installed size:** `98 KB`  
+ **Installed size:** `99 KB`  
  **How to install:** `sudo apt install hexinject`  
  
  {{< spoiler "Dependencies:" >}}

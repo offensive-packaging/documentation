@@ -102,7 +102,7 @@ PackagesInfo: |
  
  
  
- MOTD: Do you have an ISL capable Cisco switch? Share it!! ;)
+ MOTD: My notebook is totally deprecated... gimme one!... :)
  ```
  
  - - -

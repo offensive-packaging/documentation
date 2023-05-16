@@ -3,7 +3,7 @@ Title: kubernetes-helm
 Homepage: https://github.com/helm/helm
 Repository: https://gitlab.com/kalilinux/packages/kubernetes-helm
 Architectures: any
-Version: 3.11.0+ds1-0kali3
+Version: 3.12.0-dev.1+ds1-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -18,7 +18,7 @@ PackagesInfo: |
      * Create reproducible builds of your Kubernetes applications
      * Intelligently manage your Kubernetes manifest files
  
- **Installed size:** `45.03 MB`  
+ **Installed size:** `45.05 MB`  
  **How to install:** `sudo apt install kubernetes-helm`  
  
  ##### helm

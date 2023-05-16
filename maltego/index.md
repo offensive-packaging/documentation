@@ -3,7 +3,7 @@ Title: maltego
 Homepage: https://www.maltego.com
 Repository: https://gitlab.com/kalilinux/packages/maltego
 Architectures: all
-Version: 4.3.0-0kali1
+Version: 4.4.1-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-identify kali-tools-information-gathering kali-tools-reporting kali-tools-social-engineering kali-tools-web 
 Icon: images/maltego-logo.svg
 PackagesInfo: |
@@ -16,7 +16,7 @@ PackagesInfo: |
    
   This package replaces previous packages matlegoce and casefile.
  
- **Installed size:** `217.90 MB`  
+ **Installed size:** `231.26 MB`  
  **How to install:** `sudo apt install maltego`  
  
  {{< spoiler "Dependencies:" >}}
@@ -34,13 +34,15 @@ PackagesInfo: |
    --reload /path/to/module.jar  install or reinstall a module JAR file
  
  Additional module options:
-   -u, --updates <arg>        
-   -h, --hub <arg>            
    -p, --automationPort <arg> 
    -m, --machine <arg>        
    -s, --serverHttpAllowed    
-   -o, --open <arg1>...<argN> 
+   -z, --cloudDebug <arg>     
+   -c, --cloud <arg>          
+   -u, --updates <arg>        
    -i, --import <arg>         
+   -h, --hub <arg>            
+   -o, --open <arg1>...<argN> 
  
  Core options:
    --laf <LaF classname> use given LookAndFeel class instead of the default

@@ -5,7 +5,7 @@ Repository: https://gitlab.com/kalilinux/packages/sherlock
 Architectures: all
 Version: 0.14.3+git20230216-1
 Metapackages: kali-linux-everything 
-Icon: /images/kali-tools-icon-missing.svg
+Icon: images/sherlock-logo.svg
 PackagesInfo: |
  ### sherlock
  

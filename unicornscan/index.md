@@ -3,7 +3,7 @@ Title: unicornscan
 Homepage: http://www.unicornscan.org/
 Repository: https://gitlab.com/kalilinux/packages/unicornscan
 Architectures: any
-Version: 0.4.7-1kali5
+Version: 0.4.7-1kali6
 Metapackages: kali-linux-everything kali-linux-large kali-tools-information-gathering 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

@@ -3,7 +3,7 @@ Title: crackmapexec
 Homepage: https://github.com/byt3bl33d3r/CrackMapExec
 Repository: https://gitlab.com/kalilinux/packages/crackmapexec
 Architectures: all
-Version: 5.4.0-0kali1
+Version: 5.4.0-0kali2
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-top10 
 Icon: images/crackmapexec-logo.svg
 PackagesInfo: |
@@ -36,7 +36,7 @@ PackagesInfo: |
  * python3
  * python3-aardwolf
  * python3-aioconsole
- * python3-bs4
+ * python3-bs4 
  * python3-dsinternals
  * python3-impacket
  * python3-lsassy
@@ -59,7 +59,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# cmedb -h
- [-] Unable to find config file
+ cmedb (default)(smb) > 
  ```
  
  - - -
@@ -71,7 +71,7 @@ PackagesInfo: |
  root@kali:~# crackmapexec -h
  usage: crackmapexec [-h] [-t THREADS] [--timeout TIMEOUT] [--jitter INTERVAL]
                      [--darrell] [--verbose]
-                     {ssh,mssql,ldap,winrm,ftp,rdp,smb} ...
+                     {mssql,smb,ftp,winrm,ldap,rdp,ssh} ...
  
        ______ .______           ___        ______  __  ___ .___  ___.      ___      .______    _______ ___   ___  _______   ______
       /      ||   _  \         /   \      /      ||  |/  / |   \/   |     /   \     |   _  \  |   ____|\  \ /  / |   ____| /      |
@@ -100,14 +100,14 @@ PackagesInfo: |
  protocols:
    available protocols
  
-   {ssh,mssql,ldap,winrm,ftp,rdp,smb}
-     ssh                 own stuff using SSH
+   {mssql,smb,ftp,winrm,ldap,rdp,ssh}
      mssql               own stuff using MSSQL
-     ldap                own stuff using LDAP
-     winrm               own stuff using WINRM
-     ftp                 own stuff using FTP
-     rdp                 own stuff using RDP
      smb                 own stuff using SMB
+     ftp                 own stuff using FTP
+     winrm               own stuff using WINRM
+     ldap                own stuff using LDAP
+     rdp                 own stuff using RDP
+     ssh                 own stuff using SSH
  ```
  
  - - -

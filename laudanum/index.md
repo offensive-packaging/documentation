@@ -3,7 +3,7 @@ Title: laudanum
 Homepage: https://sourceforge.net/projects/laudanum/
 Repository: https://gitlab.com/kalilinux/packages/laudanum
 Architectures: all
-Version: 1.0+r36-0kali5
+Version: 1.0+r36-0kali6
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-post-exploitation kali-tools-web 
 Icon: images/laudanum-logo.svg
 PackagesInfo: |

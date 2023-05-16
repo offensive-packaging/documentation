@@ -3,7 +3,7 @@ Title: kali-meta
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-meta
 Architectures: any all
-Version: 2023.1.10
+Version: 2023.2.9
 Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-detect kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-recover kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -14,7 +14,7 @@ PackagesInfo: |
    
   This metapackage is a dependency of all kali-desktop-* packages.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-core`  
  
  {{< spoiler "Dependencies:" >}}
@@ -39,7 +39,7 @@ PackagesInfo: |
   This metapackage installs a minimalistic
   Enlightenment E17 desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-e17`  
  
  {{< spoiler "Dependencies:" >}}
@@ -60,7 +60,7 @@ PackagesInfo: |
  
   This metapackage installs a minimalistic GNOME desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-gnome`  
  
  {{< spoiler "Dependencies:" >}}
@@ -78,6 +78,7 @@ PackagesInfo: |
  * gnome-shell-extension-appindicator
  * gnome-shell-extension-dashtodock
  * gnome-shell-extension-desktop-icons-ng
+ * gnome-shell-extension-tiling-assistant
  * gnome-shell-extensions
  * gnome-system-monitor
  * gnome-terminal
@@ -99,29 +100,8 @@ PackagesInfo: |
   This metapackage installs a
   minimalistic i3 desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-i3`  
- 
- {{< spoiler "Dependencies:" >}}
- * conky
- * i3
- * kali-desktop-base
- * kali-desktop-core
- * qt5ct
- * suckless-tools | dmenu
- * xorg
- {{< /spoiler >}}
- 
- 
- - - -
- 
- ### kali-desktop-i3-gaps
- 
-  This metapackage installs a
-  minimalistic i3-gaps desktop on your Kali system.
- 
- **Installed size:** `16 KB`  
- **How to install:** `sudo apt install kali-desktop-i3-gaps`  
  
  {{< spoiler "Dependencies:" >}}
  * alsa-utils
@@ -130,12 +110,14 @@ PackagesInfo: |
  * brightnessctl
  * conky
  * htop
- * i3-gaps
- * i3-gaps-dotfiles
+ * i3 
+ * i3-dotfiles
  * kali-desktop-base
  * kali-desktop-core
+ * kali-wallpapers-legacy
  * lightdm
  * lxappearance
+ * maim
  * neofetch
  * network-manager
  * network-manager-gnome
@@ -151,12 +133,27 @@ PackagesInfo: |
  * ranger
  * rofi
  * rxvt-unicode
- * scrot
  * suckless-tools | dmenu
  * sxiv
+ * xclip
+ * xdotool
  * xfce4-power-manager
  * xorg
  * zathura
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### kali-desktop-i3-gaps
+ 
+  This is a transitional package. It can safely be removed.
+ 
+ **Installed size:** `17 KB`  
+ **How to install:** `sudo apt install kali-desktop-i3-gaps`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * kali-desktop-i3
  {{< /spoiler >}}
  
  
@@ -166,7 +163,7 @@ PackagesInfo: |
  
   This metapackage installs a minimalistic KDE desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-kde`  
  
  {{< spoiler "Dependencies:" >}}
@@ -199,7 +196,7 @@ PackagesInfo: |
   that are intended to make the image more useful and usable for a wide set of
   users.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-live`  
  
  {{< spoiler "Dependencies:" >}}
@@ -219,7 +216,7 @@ PackagesInfo: |
  
   This metapackage installs a minimalistic LXDE desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-lxde`  
  
  {{< spoiler "Dependencies:" >}}
@@ -237,11 +234,12 @@ PackagesInfo: |
  
   This metapackage installs a minimalistic MATE desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-mate`  
  
  {{< spoiler "Dependencies:" >}}
  * atril
+ * caja-gtkhash
  * engrampa
  * eom
  * kali-desktop-base
@@ -265,7 +263,7 @@ PackagesInfo: |
  
   This metapackage installs a minimalistic Xfce desktop on your Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-desktop-xfce`  
  
  {{< spoiler "Dependencies:" >}}
@@ -282,6 +280,7 @@ PackagesInfo: |
  * qterminal
  * ristretto
  * thunar-archive-plugin
+ * thunar-gtkhash
  * xcape
  * xdg-user-dirs-gtk
  * xfce4
@@ -301,7 +300,7 @@ PackagesInfo: |
   This metapackage depends on all the security packages that are installed by default
   on any offensive Kali system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-core`  
  
  {{< spoiler "Dependencies:" >}}
@@ -318,7 +317,7 @@ PackagesInfo: |
   This metapackage depends on all the applications that are included in
   the default official Kali Linux images.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-default`  
  
  {{< spoiler "Dependencies:" >}}
@@ -347,7 +346,7 @@ PackagesInfo: |
   This metapackage depends on all other specific purpose metapackages and
   some more applications. Beware, this will install a lot of stuff!
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-everything`  
  
  {{< spoiler "Dependencies:" >}}
@@ -373,6 +372,7 @@ PackagesInfo: |
  * changeme
  * chaosreader
  * chisel
+ * cilium-cli
  * cisco7crack
  * cloud-enum
  * cloudbrute
@@ -396,6 +396,7 @@ PackagesInfo: |
  * dumpsterdiver
  * dwarf2json
  * eaphammer
+ * eksctl
  * email2phonenumber
  * emailharvester
  * evil-ssdp
@@ -427,6 +428,8 @@ PackagesInfo: |
  * htshells
  * httprobe
  * httpx-toolkit
+ * hubble
+ * humble
  * hurl
  * ibombshell
  * ident-user-enum
@@ -514,6 +517,7 @@ PackagesInfo: |
  * pskracker
  * pwncat
  * python3-ldapdomaindump
+ * python3-wsgidav
  * quark-engine
  * redeye
  * redsnarf
@@ -530,6 +534,7 @@ PackagesInfo: |
  * shellfire
  * sherlock
  * silenttrinity
+ * slimtoolkit
  * sliver
  * snmpenum
  * snowdrop
@@ -544,6 +549,7 @@ PackagesInfo: |
  * sublist3r
  * teamsploit
  * testssl.sh
+ * tetragon
  * trufflehog
  * tundeep
  * unhide.rb
@@ -576,7 +582,7 @@ PackagesInfo: |
   require click-through licenses, they are for hardware that is not really
   relevant in the context of Kali, etc.
  
- **Installed size:** `19 KB`  
+ **Installed size:** `20 KB`  
  **How to install:** `sudo apt install kali-linux-firmware`  
  
  {{< spoiler "Dependencies:" >}}
@@ -604,7 +610,7 @@ PackagesInfo: |
   This metapackage depends on all the applications that are included in
   official Kali Linux images and that don't require X11/GUI.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-headless`  
  
  {{< spoiler "Dependencies:" >}}
@@ -807,7 +813,7 @@ PackagesInfo: |
   This metapackage depends on all the packages containing vulnerable environments
   for safe testing.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-labs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -823,7 +829,7 @@ PackagesInfo: |
   This metapackage installs the applications which are included by default in
   official Kali Linux images and adds many more on top of those.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-large`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1011,7 +1017,7 @@ PackagesInfo: |
   This metapackage depends on all the applications that a Kali Linux
   NetHunter system should have installed.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-linux-nethunter`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1108,7 +1114,7 @@ PackagesInfo: |
   This metapackage depends on the system packages that should be installed on
   most Kali Linux systems, as this doesn't require X11/GUI.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-system-cli`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1126,7 +1132,7 @@ PackagesInfo: |
   This metapackage depends on all the packages that are installed by default
   on any Kali Linux system.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-system-core`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1152,7 +1158,7 @@ PackagesInfo: |
   This metapackage depends on the system packages that should be installed on all
   Kali Linux systems with a graphical desktop environment.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-system-gui`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1173,7 +1179,7 @@ PackagesInfo: |
   This metapackage depends on all the 802.11 attack
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-802-11`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1206,7 +1212,7 @@ PackagesInfo: |
   This metapackage depends on all the bluetooth attack
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-bluetooth`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1230,7 +1236,7 @@ PackagesInfo: |
   This metapackage depends on all the cryptography and steganography
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-crypto-stego`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1250,7 +1256,7 @@ PackagesInfo: |
   This metapackage depends on all the database assessment
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-database`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1276,7 +1282,7 @@ PackagesInfo: |
    
   This covers NIST CSF domain DETECT.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-detect`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1292,7 +1298,7 @@ PackagesInfo: |
   This metapackage depends on all the exploitation
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-exploitation`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1315,7 +1321,7 @@ PackagesInfo: |
   This metapackage depends on all the forensic
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-forensics`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1356,7 +1362,6 @@ PackagesInfo: |
  * javasnoop
  * libhivex-bin
  * libsmali-java
- * lime-forensics
  * lvm2
  * lynis
  * mac-robber
@@ -1395,6 +1400,7 @@ PackagesInfo: |
  * rizin-cutter
  * rkhunter
  * rsakeyfind
+ * rz-ghidra
  * safecopy
  * samdump2
  * scalpel
@@ -1428,7 +1434,7 @@ PackagesInfo: |
   This metapackage depends on all the fuzzing attack
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-fuzzing`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1446,7 +1452,7 @@ PackagesInfo: |
   This metapackage depends on all the Graphics Processing Unit
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-gpu`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1462,7 +1468,7 @@ PackagesInfo: |
   This metapackage depends on all the hardware attack
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-hardware`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1475,6 +1481,7 @@ PackagesInfo: |
  * qemu-user
  * radare2
  * rizin-cutter
+ * rz-ghidra
  {{< /spoiler >}}
  
  
@@ -1487,7 +1494,7 @@ PackagesInfo: |
    
   This covers NIST CSF domain IDENTIFY.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-identify`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1516,7 +1523,7 @@ PackagesInfo: |
   This metapackage depends on all the information gathering
   tools for Open-Source INTelligence that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-information-gathering`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1578,7 +1585,7 @@ PackagesInfo: |
   This metapackage depends on all the password cracking
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-passwords`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1640,7 +1647,7 @@ PackagesInfo: |
   This metapackage depends on all the post exploitation
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-post-exploitation`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1679,7 +1686,7 @@ PackagesInfo: |
    
   This covers NIST CSF domain PROTECT.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-protect`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1700,7 +1707,7 @@ PackagesInfo: |
    
   This covers NIST CSF domain RECOVER.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-recover`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1722,7 +1729,7 @@ PackagesInfo: |
   This metapackage depends on all the reporting
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-reporting`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1746,7 +1753,7 @@ PackagesInfo: |
    
   This covers NIST CSF domain RESPOND.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-respond`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1769,7 +1776,7 @@ PackagesInfo: |
    
   Useful for doing exploit development.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-reverse-engineering`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1785,6 +1792,7 @@ PackagesInfo: |
  * ollydbg
  * radare2
  * rizin-cutter
+ * rz-ghidra
  {{< /spoiler >}}
  
  
@@ -1795,7 +1803,7 @@ PackagesInfo: |
   This metapackage depends on all the Radio Frequency IDentification
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-rfid`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1817,7 +1825,7 @@ PackagesInfo: |
   This metapackage depends on all the Software Defined Radio
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-sdr`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1844,7 +1852,7 @@ PackagesInfo: |
   This metapackage depends on all the sniffing and spoofing
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-sniffing-spoofing`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1884,7 +1892,7 @@ PackagesInfo: |
    
   This also covers phishing and client-side attacks.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-social-engineering`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1904,7 +1912,7 @@ PackagesInfo: |
   This metapackage depends on the 10 most important applications that Kali Linux
   provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-top10`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1928,7 +1936,7 @@ PackagesInfo: |
   This metapackage depends on all the Voice over IP
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-voip`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1960,7 +1968,7 @@ PackagesInfo: |
   This metapackage depends on all the vulnerability analysis
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-vulnerability`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2011,7 +2019,7 @@ PackagesInfo: |
   This metapackage depends on all the wep application analysis
   tools that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-web`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2104,7 +2112,7 @@ PackagesInfo: |
   This metapackage depends on all the Windows resources
   that Kali Linux provides.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-windows-resources`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2136,7 +2144,7 @@ PackagesInfo: |
    
   Wireless covers 802.11, Bluetooth, RFID & SDR.
  
- **Installed size:** `16 KB`  
+ **Installed size:** `17 KB`  
  **How to install:** `sudo apt install kali-tools-wireless`  
  
  {{< spoiler "Dependencies:" >}}

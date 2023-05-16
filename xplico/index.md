@@ -1,9 +1,9 @@
 ---
 Title: xplico
-Homepage: http://www.xplico.org
+Homepage: https://www.xplico.org
 Repository: https://gitlab.com/kalilinux/packages/xplico
 Architectures: amd64 i386
-Version: 1.2.2-0kali5
+Version: 1.2.2-0kali6
 Metapackages: kali-linux-everything kali-tools-forensics kali-tools-respond 
 Icon: images/xplico-logo.svg
 PackagesInfo: |
@@ -215,21 +215,21 @@ PackagesInfo: |
  ```
  root@kali:~# xplico-webui -h
  [i] Something is already using port: 9876/tcp
- COMMAND     PID     USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
- apache2 2634544     root    6u  IPv6 1690707      0t0  TCP *:9876 (LISTEN)
- apache2 2634661 www-data    6u  IPv6 1690707      0t0  TCP *:9876 (LISTEN)
- apache2 2634662 www-data    6u  IPv6 1690707      0t0  TCP *:9876 (LISTEN)
- apache2 2634664 www-data    6u  IPv6 1690707      0t0  TCP *:9876 (LISTEN)
- apache2 2634667 www-data    6u  IPv6 1690707      0t0  TCP *:9876 (LISTEN)
- apache2 2634668 www-data    6u  IPv6 1690707      0t0  TCP *:9876 (LISTEN)
+ COMMAND    PID     USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+ apache2 112266     root    6u  IPv6 3676437      0t0  TCP *:9876 (LISTEN)
+ apache2 112404 www-data    6u  IPv6 3676437      0t0  TCP *:9876 (LISTEN)
+ apache2 112407 www-data    6u  IPv6 3676437      0t0  TCP *:9876 (LISTEN)
+ apache2 112411 www-data    6u  IPv6 3676437      0t0  TCP *:9876 (LISTEN)
+ apache2 112418 www-data    6u  IPv6 3676437      0t0  TCP *:9876 (LISTEN)
+ apache2 112427 www-data    6u  IPv6 3676437      0t0  TCP *:9876 (LISTEN)
  
  UID          PID    PPID  C STIME TTY      STAT   TIME CMD
- root     2634544       1  0 10:19 ?        Ss     0:00 /usr/sbin/apache2 -k start
- www-data 2634661 2634544  0 10:19 ?        S      0:00 /usr/sbin/apache2 -k start
- www-data 2634662 2634544  0 10:19 ?        S      0:00 /usr/sbin/apache2 -k start
- www-data 2634664 2634544  0 10:19 ?        S      0:00 /usr/sbin/apache2 -k start
- www-data 2634667 2634544  0 10:19 ?        S      0:00 /usr/sbin/apache2 -k start
- www-data 2634668 2634544  0 10:19 ?        S      0:00 /usr/sbin/apache2 -k start
+ root      112266       1  0 05:17 ?        Ss     0:00 /usr/sbin/apache2 -k start
+ www-data  112404  112266  0 05:17 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data  112407  112266  0 05:17 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data  112411  112266  0 05:17 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data  112418  112266  0 05:17 ?        S      0:00 /usr/sbin/apache2 -k start
+ www-data  112427  112266  0 05:17 ?        S      0:00 /usr/sbin/apache2 -k start
  
  [*] Please wait for the Xplico service to start.
  [*]
@@ -251,25 +251,32 @@ PackagesInfo: |
       Active: inactive (dead)
         Docs: https://httpd.apache.org/docs/2.4/
  
- Mar 08 10:19:13 kali systemd[1]: Starting apache2.service - The Apache HTTP Server...
- Mar 08 10:19:13 kali apachectl[2634451]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Mar 08 10:19:13 kali systemd[1]: Started apache2.service - The Apache HTTP Server.
- Mar 08 10:19:28 kali systemd[1]: Stopping apache2.service - The Apache HTTP Server...
- Mar 08 10:19:28 kali apachectl[2671821]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
- Mar 08 10:19:28 kali systemd[1]: apache2.service: Deactivated successfully.
- Mar 08 10:19:28 kali systemd[1]: Stopped apache2.service - The Apache HTTP Server.
+ May 16 15:54:42 kali apachectl[3405725]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ May 16 15:54:42 kali systemd[1]: apache2.service: Deactivated successfully.
+ May 16 15:54:42 kali systemd[1]: Stopped apache2.service - The Apache HTTP Server.
+ May 17 05:17:33 kali systemd[1]: Starting apache2.service - The Apache HTTP Server...
+ May 17 05:17:33 kali apachectl[112171]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ May 17 05:17:33 kali systemd[1]: Started apache2.service - The Apache HTTP Server.
+ May 17 05:17:48 kali systemd[1]: Stopping apache2.service - The Apache HTTP Server...
+ May 17 05:17:48 kali apachectl[169991]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+ May 17 05:17:48 kali systemd[1]: apache2.service: Deactivated successfully.
+ May 17 05:17:48 kali systemd[1]: Stopped apache2.service - The Apache HTTP Server.
  
  * xplico.service - Xplico
       Loaded: loaded (/lib/systemd/system/xplico.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: https://www.xplico.org/docs
  
- Mar 08 10:19:13 kali systemd[1]: Starting xplico.service - Xplico...
- Mar 08 10:19:13 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
- Mar 08 10:19:13 kali systemd[1]: Started xplico.service - Xplico.
- Mar 08 10:19:28 kali systemd[1]: Stopping xplico.service - Xplico...
- Mar 08 10:19:28 kali systemd[1]: xplico.service: Deactivated successfully.
- Mar 08 10:19:28 kali systemd[1]: Stopped xplico.service - Xplico.
+ May 16 15:54:27 kali systemd[1]: Started xplico.service - Xplico.
+ May 16 15:54:42 kali systemd[1]: Stopping xplico.service - Xplico...
+ May 16 15:54:42 kali systemd[1]: xplico.service: Deactivated successfully.
+ May 16 15:54:42 kali systemd[1]: Stopped xplico.service - Xplico.
+ May 17 05:17:33 kali systemd[1]: Starting xplico.service - Xplico...
+ May 17 05:17:33 kali systemd[1]: xplico.service: Can't open PID file /run/dema.pid (yet?) after start: Operation not permitted
+ May 17 05:17:33 kali systemd[1]: Started xplico.service - Xplico.
+ May 17 05:17:48 kali systemd[1]: Stopping xplico.service - Xplico...
+ May 17 05:17:48 kali systemd[1]: xplico.service: Deactivated successfully.
+ May 17 05:17:48 kali systemd[1]: Stopped xplico.service - Xplico.
  ```
  
  - - -

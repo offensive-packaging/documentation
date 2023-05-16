@@ -3,7 +3,7 @@ Title: command-not-found
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/command-not-found
 Architectures: all
-Version: 23.04.0-1+kali1
+Version: 23.04.0-1+kali2
 Metapackages: 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package will install a handler for command_not_found that looks up
   programs not currently installed but available from the repositories.
  
- **Installed size:** `523 KB`  
+ **Installed size:** `526 KB`  
  **How to install:** `sudo apt install command-not-found`  
  
  {{< spoiler "Dependencies:" >}}

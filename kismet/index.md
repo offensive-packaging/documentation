@@ -3,7 +3,7 @@ Title: kismet
 Homepage: https://www.kismetwireless.net/
 Repository: https://gitlab.com/kalilinux/packages/kismet
 Architectures: any all
-Version: 2022.08.R1-0kali2
+Version: 2022.08.R1-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-wireless 
 Icon: images/kismet-logo.svg
 PackagesInfo: |

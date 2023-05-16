@@ -3,7 +3,7 @@ Title: git
 Homepage: https://git-scm.com/
 Repository: https://repo.or.cz/w/git/debian.git/
 Architectures: any all
-Version: 1:2.39.2-1
+Version: 1:2.39.2-1.1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-forensics kali-tools-identify kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-vulnerability kali-tools-web 
 Icon: images/git-logo.svg
 PackagesInfo: |
@@ -340,7 +340,7 @@ PackagesInfo: |
  GIT
         Part of the git(1) suite
  
- Git 2.39.2                        02/16/2023               GIT-RECEIVE-PACK(1)
+ Git 2.39.2                        02/28/2023               GIT-RECEIVE-PACK(1)
  ```
  
  - - -
@@ -416,7 +416,7 @@ PackagesInfo: |
  GIT
         Part of the git(1) suite
  
- Git 2.39.2                        02/16/2023             GIT-UPLOAD-ARCHIVE(1)
+ Git 2.39.2                        02/28/2023             GIT-UPLOAD-ARCHIVE(1)
  ```
  
  - - -
@@ -479,7 +479,7 @@ PackagesInfo: |
  GIT
         Part of the git(1) suite
  
- Git 2.39.2                        02/16/2023                GIT-UPLOAD-PACK(1)
+ Git 2.39.2                        02/28/2023                GIT-UPLOAD-PACK(1)
  ```
  
  - - -
@@ -521,7 +521,7 @@ PackagesInfo: |
    
   This is a dummy package which brings in all subpackages.
  
- **Installed size:** `973 KB`  
+ **Installed size:** `974 KB`  
  **How to install:** `sudo apt install git-all`  
  
  {{< spoiler "Dependencies:" >}}
@@ -610,7 +610,7 @@ PackagesInfo: |
   more reliable than git-daemon-sysvinit, at a cost of being less
   familiar for administrators accustomed to sysvinit.
  
- **Installed size:** `985 KB`  
+ **Installed size:** `986 KB`  
  **How to install:** `sudo apt install git-daemon-run`  
  
  {{< spoiler "Dependencies:" >}}
@@ -640,7 +640,7 @@ PackagesInfo: |
   package provides the usual sysvinit service management commands
   ("service git-daemon start/stop") for git-daemon.
  
- **Installed size:** `989 KB`  
+ **Installed size:** `990 KB`  
  **How to install:** `sudo apt install git-daemon-sysvinit`  
  
  {{< spoiler "Dependencies:" >}}
@@ -870,7 +870,7 @@ PackagesInfo: |
   If libcgi-fast-perl is installed, gitweb can also be run over FastCGI
   (and served by nginx, for example).
  
- **Installed size:** `994 KB`  
+ **Installed size:** `995 KB`  
  **How to install:** `sudo apt install gitweb`  
  
  {{< spoiler "Dependencies:" >}}

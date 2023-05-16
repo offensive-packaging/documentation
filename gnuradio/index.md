@@ -3,7 +3,7 @@ Title: gnuradio
 Homepage: https://www.gnuradio.org/
 Repository: https://salsa.debian.org/bottoms/pkg-gnuradio
 Architectures: any all
-Version: 3.10.5.1-2
+Version: 3.10.5.1-3
 Metapackages: kali-linux-everything kali-tools-rfid kali-tools-sdr kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -122,7 +122,7 @@ PackagesInfo: |
         tags_demo(1)      uhd_rx_cfile(1)     uhd_rx_nogui(1)     uhd_siggen(1)
         uhd_siggen_gui(1)
  
- DIAL_TONE 3.10.5.1                2023-02-04                      DIAL_TONE(1)
+ DIAL_TONE 3.10.5.1                2023-05-07                      DIAL_TONE(1)
  ```
  
  - - -
@@ -148,7 +148,7 @@ PackagesInfo: |
  SEE ALSO
         http://gnuradio.squarespace.com/examples/tag/qt
  
- display_qt 3.10.5.1               2023-02-04                     DISPLAY_QT(1)
+ display_qt 3.10.5.1               2023-05-07                     DISPLAY_QT(1)
  ```
  
  - - -
@@ -488,7 +488,7 @@ PackagesInfo: |
         gr_plot_float(1)    gr_plot_int(1)    gr_plot_iq(1)    gr_plot_psd_c(1)
         gr_plot_psd_f(1)  gr_plot_qt(1)  gr_plot_short(1)
  
- gr_plot_qt 3.10.5.1               2023-02-04                     GR_PLOT_QT(1)
+ gr_plot_qt 3.10.5.1               2023-05-07                     GR_PLOT_QT(1)
  ```
  
  - - -
@@ -587,7 +587,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# uhd_fft -h
- Warning: failed to XInitThreads()
  usage: uhd_fft [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
                 [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
                 [-c CHANNELS] [--lo-export LO_EXPORT] [--lo-source LO_SOURCE]
@@ -829,7 +828,6 @@ PackagesInfo: |
  
  ```
  root@kali:~# uhd_siggen_gui -h
- Warning: failed to XInitThreads()
  usage: uhd_siggen_gui [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
                        [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
                        [-c CHANNELS] [--lo-export LO_EXPORT]

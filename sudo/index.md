@@ -3,8 +3,8 @@ Title: sudo
 Homepage: https://www.sudo.ws/
 Repository: https://salsa.debian.org/sudo-team/sudo
 Architectures: any all
-Version: 1.9.13p1-1
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-identify kali-tools-post-exploitation kali-tools-reporting kali-tools-social-engineering kali-tools-vulnerability 
+Version: 1.9.13p3-1
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-identify kali-tools-post-exploitation kali-tools-reporting kali-tools-social-engineering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libnss-sudo
@@ -12,7 +12,7 @@ PackagesInfo: |
   This empty package provides the basic configuration needed to enable the
   `sudoers` NSS service.
  
- **Installed size:** `667 KB`  
+ **Installed size:** `671 KB`  
  **How to install:** `sudo apt install libnss-sudo`  
  
  
@@ -27,7 +27,7 @@ PackagesInfo: |
   This version is built with minimal shared library dependencies, use the
   sudo-ldap package instead if you need LDAP support for sudoers.
  
- **Installed size:** `5.90 MB`  
+ **Installed size:** `5.91 MB`  
  **How to install:** `sudo apt install sudo`  
  
  {{< spoiler "Dependencies:" >}}
@@ -504,7 +504,7 @@ PackagesInfo: |
   sudoers database to be distributed via LDAP.  Authentication is still
   performed via pam.
  
- **Installed size:** `5.97 MB`  
+ **Installed size:** `5.98 MB`  
  **How to install:** `sudo apt install sudo-ldap`  
  
  {{< spoiler "Dependencies:" >}}

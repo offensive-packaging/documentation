@@ -3,7 +3,7 @@ Title: nmap
 Homepage: https://nmap.org/
 Repository: https://gitlab.com/kalilinux/packages/nmap
 Architectures: any all
-Version: 7.93+dfsg1-0kali2
+Version: 7.93+dfsg1-0kali3
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-exploitation kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web 
 Icon: images/nmap-logo.svg
 PackagesInfo: |

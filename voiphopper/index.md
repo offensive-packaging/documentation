@@ -3,7 +3,7 @@ Title: voiphopper
 Homepage: https://sourceforge.net/projects/voiphopper
 Repository: https://gitlab.com/kalilinux/packages/voiphopper
 Architectures: any
-Version: 2.04-1kali4
+Version: 2.04-1kali5
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-voip kali-tools-vulnerability 
 Icon: images/voiphopper-logo.svg
 PackagesInfo: |

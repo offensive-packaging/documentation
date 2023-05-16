@@ -3,7 +3,7 @@ Title: caldera
 Homepage: https://github.com/mitre/caldera
 Repository: https://gitlab.com/kalilinux/packages/caldera
 Architectures: all
-Version: 3.1.0-0kali4
+Version: 4.1.0-0kali2
 Metapackages: kali-linux-everything kali-linux-large 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -12,7 +12,7 @@ PackagesInfo: |
   This package contains a cyber security framework designed to easily automate
   adversary emulation, assist manual red-teams, and automate incident response.
  
- **Installed size:** `63.79 MB`  
+ **Installed size:** `66.30 MB`  
  **How to install:** `sudo apt install caldera`  
  
  {{< spoiler "Dependencies:" >}}
@@ -20,11 +20,13 @@ PackagesInfo: |
  * git
  * golang-go
  * python3
+ * python3-aioftp
  * python3-aiohttp 
  * python3-aiohttp-apispec 
  * python3-aiohttp-jinja2
  * python3-aiohttp-security
  * python3-aiohttp-session
+ * python3-asyncssh
  * python3-cryptography
  * python3-cssselect2
  * python3-dnspython
@@ -36,6 +38,7 @@ PackagesInfo: |
  * python3-markdown
  * python3-marshmallow
  * python3-marshmallow-enum
+ * python3-myst-parser
  * python3-pathspec
  * python3-recommonmark
  * python3-reportlab

@@ -3,7 +3,7 @@ Title: cryptsetup
 Homepage: https://gitlab.com/cryptsetup/cryptsetup
 Repository: https://salsa.debian.org/cryptsetup-team/cryptsetup
 Architectures: linux-any all
-Version: 2:2.6.1-1
+Version: 2:2.6.1-4~deb12u1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-post-exploitation kali-tools-protect kali-tools-web 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -23,7 +23,7 @@ PackagesInfo: |
   This package provides the cryptdisks_start and _stop wrappers, as well as
   luksformat.
  
- **Installed size:** `409 KB`  
+ **Installed size:** `410 KB`  
  **How to install:** `sudo apt install cryptsetup`  
  
  {{< spoiler "Dependencies:" >}}
@@ -499,7 +499,7 @@ PackagesInfo: |
    
   This package provides initramfs integration for cryptsetup.
  
- **Installed size:** `105 KB`  
+ **Installed size:** `107 KB`  
  **How to install:** `sudo apt install cryptsetup-initramfs`  
  
  {{< spoiler "Dependencies:" >}}
@@ -518,7 +518,7 @@ PackagesInfo: |
   cryptsetup package. It can safely be removed once no other package depends on
   it.
  
- **Installed size:** `33 KB`  
+ **Installed size:** `34 KB`  
  **How to install:** `sudo apt install cryptsetup-run`  
  
  {{< spoiler "Dependencies:" >}}
@@ -540,7 +540,7 @@ PackagesInfo: |
   system accessible through SSH.  This is currently an *experimental* feature
   and mostly serves as a demonstration of the plugin interface API.
  
- **Installed size:** `100 KB`  
+ **Installed size:** `101 KB`  
  **How to install:** `sudo apt install cryptsetup-ssh`  
  
  {{< spoiler "Dependencies:" >}}
@@ -608,7 +608,7 @@ PackagesInfo: |
   and requires systemd.  Moreover, this is an early implementation and may not
   be as mature as the other cryptsetup-* packages yet.
  
- **Installed size:** `82 KB`  
+ **Installed size:** `83 KB`  
  **How to install:** `sudo apt install cryptsetup-suspend`  
  
  {{< spoiler "Dependencies:" >}}
@@ -632,7 +632,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup development files.
  
- **Installed size:** `149 KB`  
+ **Installed size:** `150 KB`  
  **How to install:** `sudo apt install libcryptsetup-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -657,7 +657,7 @@ PackagesInfo: |
    
   This package provides the libcryptsetup shared library.
  
- **Installed size:** `562 KB`  
+ **Installed size:** `563 KB`  
  **How to install:** `sudo apt install libcryptsetup12`  
  
  {{< spoiler "Dependencies:" >}}

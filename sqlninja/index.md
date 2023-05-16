@@ -3,7 +3,7 @@ Title: sqlninja
 Homepage: https://sqlninja.sourceforge.net/
 Repository: https://gitlab.com/kalilinux/packages/sqlninja
 Architectures: all
-Version: 0.2.6-r1-1kali2
+Version: 0.2.6-r1-1kali3
 Metapackages: kali-linux-everything kali-linux-large kali-tools-database kali-tools-web 
 Icon: images/sqlninja-logo.svg
 PackagesInfo: |
@@ -17,7 +17,7 @@ PackagesInfo: |
   in a shaker with a Metasploit wrapper, shake well and you
   have just one of the attack modules of sqlninja!
  
- **Installed size:** `1.09 MB`  
+ **Installed size:** `1.00 MB`  
  **How to install:** `sudo apt install sqlninja`  
  
  {{< spoiler "Dependencies:" >}}

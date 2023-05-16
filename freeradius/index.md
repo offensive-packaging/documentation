@@ -3,7 +3,7 @@ Title: freeradius
 Homepage: http://www.freeradius.org/
 Repository: https://salsa.debian.org/debian/freeradius
 Architectures: any all
-Version: 3.2.1+dfsg-1
+Version: 3.2.1+dfsg-3
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -193,7 +193,7 @@ PackagesInfo: |
   The FreeRADIUS server can act as a DHCP server, and this module
   is necessary for that.
  
- **Installed size:** `98 KB`  
+ **Installed size:** `97 KB`  
  **How to install:** `sudo apt install freeradius-dhcp`  
  
  {{< spoiler "Dependencies:" >}}
@@ -209,7 +209,7 @@ PackagesInfo: |
   The FreeRADIUS server can use iODBC to access databases to authenticate users
   and do accounting, and this module is necessary for that.
  
- **Installed size:** `41 KB`  
+ **Installed size:** `40 KB`  
  **How to install:** `sudo apt install freeradius-iodbc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -226,7 +226,7 @@ PackagesInfo: |
   The FreeRADIUS server can use Kerberos to authenticate users, and this module
   is necessary for that.
  
- **Installed size:** `47 KB`  
+ **Installed size:** `46 KB`  
  **How to install:** `sudo apt install freeradius-krb5`  
  
  {{< spoiler "Dependencies:" >}}
@@ -244,7 +244,7 @@ PackagesInfo: |
   The FreeRADIUS server can use LDAP to authenticate users, and this module
   is necessary for that.
  
- **Installed size:** `125 KB`  
+ **Installed size:** `124 KB`  
  **How to install:** `sudo apt install freeradius-ldap`  
  
  {{< spoiler "Dependencies:" >}}
@@ -261,7 +261,7 @@ PackagesInfo: |
   The FreeRADIUS server can cache data in memcached and this package
   contains the required module.
  
- **Installed size:** `51 KB`  
+ **Installed size:** `50 KB`  
  **How to install:** `sudo apt install freeradius-memcached`  
  
  {{< spoiler "Dependencies:" >}}
@@ -278,7 +278,7 @@ PackagesInfo: |
   The FreeRADIUS server can use MySQL to authenticate users and do accounting,
   and this module is necessary for that.
  
- **Installed size:** `51 KB`  
+ **Installed size:** `50 KB`  
  **How to install:** `sudo apt install freeradius-mysql`  
  
  {{< spoiler "Dependencies:" >}}
@@ -295,7 +295,7 @@ PackagesInfo: |
   The FreeRADIUS server can use PostgreSQL to authenticate users and do
   accounting, and this module is necessary for that.
  
- **Installed size:** `70 KB`  
+ **Installed size:** `69 KB`  
  **How to install:** `sudo apt install freeradius-postgresql`  
  
  {{< spoiler "Dependencies:" >}}
@@ -315,7 +315,7 @@ PackagesInfo: |
   It was introduced in FreeRADIUS 3.0.20 as EXPERIMENTAL module. Use at
   your own risk.
  
- **Installed size:** `64 KB`  
+ **Installed size:** `63 KB`  
  **How to install:** `sudo apt install freeradius-python3`  
  
  {{< spoiler "Dependencies:" >}}
@@ -332,7 +332,7 @@ PackagesInfo: |
   This module is required to enable the FreeRADIUS server to access
   Redis databases.
  
- **Installed size:** `54 KB`  
+ **Installed size:** `53 KB`  
  **How to install:** `sudo apt install freeradius-redis`  
  
  {{< spoiler "Dependencies:" >}}
@@ -349,7 +349,7 @@ PackagesInfo: |
   The FreeRADIUS server can make calls to remote web APIs, and this module
   is necessary for that.
  
- **Installed size:** `79 KB`  
+ **Installed size:** `78 KB`  
  **How to install:** `sudo apt install freeradius-rest`  
  
  {{< spoiler "Dependencies:" >}}
@@ -377,7 +377,7 @@ PackagesInfo: |
    - rlm_ippool_tool
    - smbencrypt
  
- **Installed size:** `362 KB`  
+ **Installed size:** `361 KB`  
  **How to install:** `sudo apt install freeradius-utils`  
  
  {{< spoiler "Dependencies:" >}}
@@ -683,7 +683,7 @@ PackagesInfo: |
   This package is required to add Yubikey functionality to the
   FreeRADIUS server.
  
- **Installed size:** `55 KB`  
+ **Installed size:** `54 KB`  
  **How to install:** `sudo apt install freeradius-yubikey`  
  
  {{< spoiler "Dependencies:" >}}
@@ -719,7 +719,7 @@ PackagesInfo: |
   The FreeRADIUS projects' libfreeradius-radius and libfreeradius-eap, used by
   the FreeRADIUS server and some of the utilities.
  
- **Installed size:** `551 KB`  
+ **Installed size:** `550 KB`  
  **How to install:** `sudo apt install libfreeradius3`  
  
  {{< spoiler "Dependencies:" >}}

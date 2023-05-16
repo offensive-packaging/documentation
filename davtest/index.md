@@ -3,7 +3,7 @@ Title: davtest
 Homepage: https://github.com/cldrn/davtest
 Repository: https://gitlab.com/kalilinux/packages/davtest
 Architectures: all
-Version: 1.2+git20220629.780ea4d-0kali1
+Version: 1.2+git20230307.34d31db-0kali1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-web 
 Icon: images/davtest-logo.svg
 PackagesInfo: |
@@ -47,7 +47,7 @@ PackagesInfo: |
  			auto - for any succeeded test
  			ext - extension matching file name(s) in backdoors/ dir
   -uploadfile+	upload this file (requires -uploadloc)
-  -uploadloc+	upload file to this location/name (requires -uploadfile)
+  -uploadloc+	upload file to this relative location/name (requires -uploadfile)
   -url+		url of DAV location
  
  Example: /usr/bin/davtest -url http://localhost/davdir
