@@ -3,7 +3,7 @@ Title: firefox-developer-edition-kbx
 Homepage: https://www.mozilla.org/en-US/firefox/developer/
 Repository: https://gitlab.com/kalilinux/packages/firefox-developer-edition-kbx
 Architectures: amd64
-Version: 0~2023.04.0
+Version: 0~2023.05.1
 Metapackages: 
 Icon: images/firefox-developer-edition-logo.svg
 PackagesInfo: |

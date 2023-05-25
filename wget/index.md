@@ -4,7 +4,7 @@ Homepage: https://www.gnu.org/software/wget/
 Repository: 
 Architectures: any
 Version: 1.21.3-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-exploitation kali-tools-identify kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web kali-tools-wireless 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl kali-tools-802-11 kali-tools-bluetooth kali-tools-exploitation kali-tools-identify kali-tools-information-gathering kali-tools-post-exploitation kali-tools-reporting kali-tools-reverse-engineering kali-tools-social-engineering kali-tools-top10 kali-tools-web kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### wget

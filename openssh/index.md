@@ -4,7 +4,7 @@ Homepage: https://www.openssh.com/
 Repository: https://salsa.debian.org/ssh-team/openssh
 Architectures: any all
 Version: 1:9.2p1-2
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### openssh-client

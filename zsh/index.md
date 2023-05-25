@@ -4,7 +4,7 @@ Homepage: https://www.zsh.org/
 Repository: https://salsa.debian.org/debian/zsh
 Architectures: any all
 Version: 5.9-4
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-reporting 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl kali-tools-reporting 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### zsh

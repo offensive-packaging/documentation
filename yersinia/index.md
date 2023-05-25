@@ -47,7 +47,7 @@ PackagesInfo: |
  A Framework for layer 2 attacks
  
  ```
- root@kali:~# yersinia -h
+ root@kali:~# yersinia --help
      Û²ÛÛ²²Û                                                                    
   
     ²Û°°°²²Û²²                                                                  
@@ -102,7 +102,8 @@ PackagesInfo: |
  
  
  
- MOTD: My notebook is totally deprecated... gimme one!... :)
+ MOTD: Don't do it!! Don't do it!! Don't do it!!
+ 	(Please DO IT)
  ```
  
  - - -

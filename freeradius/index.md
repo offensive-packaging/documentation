@@ -3,7 +3,7 @@ Title: freeradius
 Homepage: http://www.freeradius.org/
 Repository: https://salsa.debian.org/debian/freeradius
 Architectures: any all
-Version: 3.2.1+dfsg-3
+Version: 3.2.1+dfsg-4
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

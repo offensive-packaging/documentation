@@ -34,15 +34,15 @@ PackagesInfo: |
    --reload /path/to/module.jar  install or reinstall a module JAR file
  
  Additional module options:
-   -p, --automationPort <arg> 
-   -m, --machine <arg>        
-   -s, --serverHttpAllowed    
-   -z, --cloudDebug <arg>     
-   -c, --cloud <arg>          
-   -u, --updates <arg>        
    -i, --import <arg>         
    -h, --hub <arg>            
    -o, --open <arg1>...<argN> 
+   -z, --cloudDebug <arg>     
+   -c, --cloud <arg>          
+   -u, --updates <arg>        
+   -p, --automationPort <arg> 
+   -m, --machine <arg>        
+   -s, --serverHttpAllowed    
  
  Core options:
    --laf <LaF classname> use given LookAndFeel class instead of the default

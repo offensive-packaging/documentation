@@ -113,7 +113,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# mib2c-update -h
- Starting regneration of ipAddressTable using mib2c.mfd.conf at 2023-05-17_06.30
+ Starting regneration of ipAddressTable using mib2c.mfd.conf at 2023-05-24_12.52
  Creating patch for your custom code
     no custom code!
  mib2c -h -c mib2c.mfd.conf  ipAddressTable
@@ -958,7 +958,7 @@ PackagesInfo: |
  Cannot adopt OID in UCD-SNMP-MIB: laLoad ::= { laEntry 3 }
  Cannot adopt OID in UCD-SNMP-MIB: laNames ::= { laEntry 2 }
  Cannot adopt OID in UCD-SNMP-MIB: laIndex ::= { laEntry 1 }
- Warning: Failed to connect to the agentx master agent ([NIL]): 
+ NET-SNMP version 5.9.3 AgentX subagent connected
  Killed
  ```
  
@@ -2848,13 +2848,38 @@ PackagesInfo: |
  Create a SNMPv3 user in net-snmp configuration file
  
  ```
- root@kali:~# net-snmp-create-v3-user -h
- unknown suboption to /usr/bin/net-snmp-create-v3-user: -h
+ root@kali:~# man net-snmp-create-v3-user
+ net-snmp-create-v3-user(1)         Net-SNMP         net-snmp-create-v3-user(1)
  
- Usage:
-   net-snmp-create-v3-user [-ro] [-A authpass] [-X privpass]
-                           [-a MD5|SHA|SHA-512|SHA-384|SHA-256|SHA-224] [-x DES|AES] [username]
+ NAME
+        net-snmp-create-v3-user  -  create a SNMPv3 user in net-snmp configura-
+        tion file
  
+ SYNOPSIS
+        net-snmp-create-v3-user [-ro] [-a authpass] [-x privpass] [-X  DES|AES]
+        [username]
+ 
+ DESCRIPTION
+        The  net-snmp-create-v3-user  shell  script is designed to create a new
+        user in net-snmp configuration file  (/var/net-snmp/snmpd.conf  by  de-
+        fault).
+ 
+ OPTIONS
+        --version
+               displays the net-snmp version number
+ 
+        -ro    create an user with read-only permissions
+ 
+        -a authpass
+               specify authentication password
+ 
+        -x privpass
+               specify encryption password
+ 
+        -X DES|AES
+               specify encryption algorithm
+ 
+ V5.9.3                            17 Sep 2008       net-snmp-create-v3-user(1)
  ```
  
  - - -

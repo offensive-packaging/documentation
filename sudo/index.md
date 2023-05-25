@@ -4,7 +4,7 @@ Homepage: https://www.sudo.ws/
 Repository: https://salsa.debian.org/sudo-team/sudo
 Architectures: any all
 Version: 1.9.13p3-1
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-identify kali-tools-post-exploitation kali-tools-reporting kali-tools-social-engineering kali-tools-vulnerability 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-linux-wsl kali-tools-identify kali-tools-post-exploitation kali-tools-reporting kali-tools-social-engineering kali-tools-vulnerability 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libnss-sudo

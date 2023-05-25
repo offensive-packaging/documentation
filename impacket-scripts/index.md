@@ -1846,7 +1846,7 @@ PackagesInfo: |
  root@kali:~# impacket-smbexec -h
  Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
  
- usage: smbexec.py [-h] [-share SHARE] [-mode {SERVER,SHARE}] [-ts] [-debug]
+ usage: smbexec.py [-h] [-share SHARE] [-mode {SHARE,SERVER}] [-ts] [-debug]
                    [-codec CODEC] [-shell-type {cmd,powershell}]
                    [-dc-ip ip address] [-target-ip ip address]
                    [-port [destination port]] [-service-name service_name]
@@ -1861,7 +1861,7 @@ PackagesInfo: |
    -h, --help            show this help message and exit
    -share SHARE          share where the output will be grabbed from (default
                          C$)
-   -mode {SERVER,SHARE}  mode to use (default SHARE, SERVER needs root!)
+   -mode {SHARE,SERVER}  mode to use (default SHARE, SERVER needs root!)
    -ts                   adds timestamp to every logging output
    -debug                Turn DEBUG output ON
    -codec CODEC          Sets encoding used (codec) from the target's output
@@ -1955,7 +1955,7 @@ PackagesInfo: |
  Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation
  
  usage: smbrelayx.py [--help] [-ts] [-debug] [-h HOST]
-                     [-s {success,denied,logon_failure}] [-e FILE] [-c COMMAND]
+                     [-s {logon_failure,denied,success}] [-e FILE] [-c COMMAND]
                      [-socks] [-one-shot] [-codec CODEC]
                      [-outputfile OUTPUTFILE]
                      [-machine-account MACHINE_ACCOUNT]
@@ -1970,7 +1970,7 @@ PackagesInfo: |
    -debug                Turn DEBUG output ON
    -h HOST               Host to relay the credentials to, if not it will relay
                          it back to the client
-   -s {success,denied,logon_failure}
+   -s {logon_failure,denied,success}
                          Status to return after client performed
                          authentication. Default: "success".
    -e FILE               File to execute on the target system. If not

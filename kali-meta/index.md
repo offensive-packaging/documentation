@@ -3,8 +3,8 @@ Title: kali-meta
 Homepage: https://www.kali.org
 Repository: https://gitlab.com/kalilinux/packages/kali-meta
 Architectures: any all
-Version: 2023.2.9
-Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-detect kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-recover kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
+Version: 2023.2.11
+Metapackages: kali-linux-arm kali-linux-core kali-linux-default kali-linux-everything kali-linux-firmware kali-linux-headless kali-linux-labs kali-linux-large kali-linux-nethunter kali-linux-wsl kali-tools-802-11 kali-tools-bluetooth kali-tools-crypto-stego kali-tools-database kali-tools-detect kali-tools-exploitation kali-tools-forensics kali-tools-fuzzing kali-tools-gpu kali-tools-hardware kali-tools-identify kali-tools-information-gathering kali-tools-passwords kali-tools-post-exploitation kali-tools-protect kali-tools-recover kali-tools-reporting kali-tools-respond kali-tools-reverse-engineering kali-tools-rfid kali-tools-sdr kali-tools-sniffing-spoofing kali-tools-social-engineering kali-tools-top10 kali-tools-voip kali-tools-vulnerability kali-tools-web kali-tools-windows-resources kali-tools-wireless 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### kali-desktop-core
@@ -270,17 +270,21 @@ PackagesInfo: |
  * atril
  * engrampa
  * kali-desktop-core
+ * libspa-0.2-bluetooth
  * lightdm
  * mate-calc
  * mousepad
  * network-manager-gnome
  * parole
+ * pipewire-alsa
+ * pipewire-pulse
  * policykit-1-gnome
  * qt5ct
  * qterminal
  * ristretto
  * thunar-archive-plugin
  * thunar-gtkhash
+ * wireplumber
  * xcape
  * xdg-user-dirs-gtk
  * xfce4
@@ -367,6 +371,7 @@ PackagesInfo: |
  * bruteforce-wallet
  * bruteshark
  * brutespray
+ * calicoctl
  * capstone-tool
  * certgraph
  * changeme
@@ -379,6 +384,7 @@ PackagesInfo: |
  * cmseek
  * cntlm
  * colly
+ * cosign
  * crack
  * crowbar
  * cupid-hostapd
@@ -400,6 +406,7 @@ PackagesInfo: |
  * email2phonenumber
  * emailharvester
  * evil-ssdp
+ * evilginx2
  * exploitdb-bin-sploits
  * exploitdb-papers
  * faraday-agent-dispatcher
@@ -445,6 +452,7 @@ PackagesInfo: |
  * kali-linux-default
  * kali-linux-headless
  * kali-linux-large
+ * kali-linux-wsl
  * kali-tools-802-11
  * kali-tools-bluetooth
  * kali-tools-crypto-stego
@@ -547,7 +555,9 @@ PackagesInfo: |
  * subfinder
  * subjack
  * sublist3r
+ * syft
  * teamsploit
+ * terraform
  * testssl.sh
  * tetragon
  * trufflehog
@@ -681,6 +691,7 @@ PackagesInfo: |
  * iw
  * john
  * kali-linux-core
+ * kali-system-cli
  * kismet
  * laudanum
  * lbd
@@ -942,6 +953,7 @@ PackagesInfo: |
  * oscanner
  * p0f
  * pack
+ * pack2
  * padbuster
  * paros
  * pasco
@@ -1047,7 +1059,6 @@ PackagesInfo: |
  * hostapd
  * isc-dhcp-server
  * iw
- * kali-defaults
  * kali-desktop-xfce
  * kali-linux-core
  * kismet
@@ -1104,6 +1115,26 @@ PackagesInfo: |
  * wpasupplicant
  * zip
  * zlib1g-dev
+ {{< /spoiler >}}
+ 
+ 
+ - - -
+ 
+ ### kali-linux-wsl
+ 
+  This metapackage depends on all the applications that a Kali Linux
+  Windows Subsystem for Linux system should have installed.
+ 
+ **Installed size:** `17 KB`  
+ **How to install:** `sudo apt install kali-linux-wsl`  
+ 
+ {{< spoiler "Dependencies:" >}}
+ * dnsutils
+ * host
+ * kali-linux-core
+ * kali-system-cli
+ * locales-all
+ * net-tools
  {{< /spoiler >}}
  
  
@@ -1616,6 +1647,7 @@ PackagesInfo: |
  * ophcrack
  * ophcrack-cli
  * pack
+ * pack2
  * passing-the-hash
  * patator
  * pdfcrack

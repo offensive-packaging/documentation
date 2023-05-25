@@ -3,7 +3,7 @@ Title: samba
 Homepage: https://www.samba.org
 Repository: https://salsa.debian.org/samba-team/samba
 Architectures: any all
-Version: 2:4.17.7+dfsg-1
+Version: 2:4.17.8+dfsg-1
 Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-tools-802-11 kali-tools-information-gathering kali-tools-passwords kali-tools-vulnerability kali-tools-wireless 
 Icon: images/samba-logo.svg
 PackagesInfo: |
@@ -255,7 +255,7 @@ PackagesInfo: |
         You should have received a copy of the GNU General Public License along
         with this program; if not, see http://www.gnu.org/licenses.
  
- ctdb                              03/29/2023                      PING_PONG(1)
+ ctdb                              05/11/2023                      PING_PONG(1)
  ```
  
  - - -
@@ -271,7 +271,7 @@ PackagesInfo: |
    
   This package contains bundled test and utility binaries
  
- **Installed size:** `195 KB`  
+ **Installed size:** `196 KB`  
  **How to install:** `sudo apt install ldb-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -826,7 +826,7 @@ PackagesInfo: |
    
   This package contains the development files.
  
- **Installed size:** `172 KB`  
+ **Installed size:** `173 KB`  
  **How to install:** `sudo apt install libldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -852,7 +852,7 @@ PackagesInfo: |
    
   This package contains the shared library file.
  
- **Installed size:** `615 KB`  
+ **Installed size:** `616 KB`  
  **How to install:** `sudo apt install libldb2`  
  
  {{< spoiler "Dependencies:" >}}
@@ -880,7 +880,7 @@ PackagesInfo: |
   system; and nss_wins, which provides hostname lookups via both the NBNS and
   NetBIOS broadcast protocols.
  
- **Installed size:** `185 KB`  
+ **Installed size:** `186 KB`  
  **How to install:** `sudo apt install libnss-winbind`  
  
  {{< spoiler "Dependencies:" >}}
@@ -903,7 +903,7 @@ PackagesInfo: |
   This package provides pam_winbind, a plugin that integrates with a local
   winbindd server to provide Windows domain authentication to the system.
  
- **Installed size:** `168 KB`  
+ **Installed size:** `169 KB`  
  **How to install:** `sudo apt install libpam-winbind`  
  
  {{< spoiler "Dependencies:" >}}
@@ -924,7 +924,7 @@ PackagesInfo: |
   to talk to Microsoft Windows and Samba servers using the SMB/CIFS
   protocol.
  
- **Installed size:** `232 KB`  
+ **Installed size:** `233 KB`  
  **How to install:** `sudo apt install libsmbclient`  
  
  {{< spoiler "Dependencies:" >}}
@@ -945,7 +945,7 @@ PackagesInfo: |
   enables client applications to talk to Microsoft Windows and Samba servers
   using the SMB/CIFS protocol.
  
- **Installed size:** `268 KB`  
+ **Installed size:** `269 KB`  
  **How to install:** `sudo apt install libsmbclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -966,7 +966,7 @@ PackagesInfo: |
   applications that interact via the winbind pipe protocol with a Samba
   winbind server.
  
- **Installed size:** `110 KB`  
+ **Installed size:** `111 KB`  
  **How to install:** `sudo apt install libwbclient-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -985,7 +985,7 @@ PackagesInfo: |
   This package provides a library for client applications that interact
   via the winbind pipe protocol with a Samba winbind server.
  
- **Installed size:** `128 KB`  
+ **Installed size:** `129 KB`  
  **How to install:** `sudo apt install libwbclient0`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1002,7 +1002,7 @@ PackagesInfo: |
    
   This package contains the Python 3 bindings.
  
- **Installed size:** `182 KB`  
+ **Installed size:** `183 KB`  
  **How to install:** `sudo apt install python3-ldb`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1028,7 +1028,7 @@ PackagesInfo: |
    
   This package contains the development files for the Python 3 bindings.
  
- **Installed size:** `60 KB`  
+ **Installed size:** `61 KB`  
  **How to install:** `sudo apt install python3-ldb-dev`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1050,7 +1050,7 @@ PackagesInfo: |
    
   This package contains Python 3 bindings for most Samba libraries.
  
- **Installed size:** `21.40 MB`  
+ **Installed size:** `21.41 MB`  
  **How to install:** `sudo apt install python3-samba`  
  
  {{< spoiler "Dependencies:" >}}
@@ -1082,7 +1082,7 @@ PackagesInfo: |
   This package contains tools for viewing and manipulating the binary
   "registry" found on Windows machines, both locally and remote.
  
- **Installed size:** `153 KB`  
+ **Installed size:** `154 KB`  
  **How to install:** `sudo apt install registry-tools`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2027,7 +2027,7 @@ PackagesInfo: |
   Controller (AD DC).  For now, this is just a metapackage pulling in
   all the required dependencies.
  
- **Installed size:** `46 KB`  
+ **Installed size:** `47 KB`  
  **How to install:** `sudo apt install samba-ad-dc`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2063,7 +2063,7 @@ PackagesInfo: |
    
   This package contains common files used by all parts of Samba.
  
- **Installed size:** `211 KB`  
+ **Installed size:** `213 KB`  
  **How to install:** `sudo apt install samba-common`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2085,7 +2085,7 @@ PackagesInfo: |
   (provided in the samba package) and the client (provided in the samba-clients
   package).
  
- **Installed size:** `4.34 MB`  
+ **Installed size:** `4.35 MB`  
  **How to install:** `sudo apt install samba-common-bin`  
  
  {{< spoiler "Dependencies:" >}}
@@ -2909,7 +2909,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# smbtorture --help
- smbtorture 4.17.7-Debian
+ smbtorture 4.17.8-Debian
  Usage: <binding>|<unc> TEST1 TEST2 ...
        --fullname                               use full name for the test
        --format=STRING                          Output format (one of: simple,

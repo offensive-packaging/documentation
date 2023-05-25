@@ -24,7 +24,7 @@ PackagesInfo: |
  
  ```
  root@kali:~# lapsdumper -h
- LAPS Dumper - Running at 05-17-2023 04:14:44
+ LAPS Dumper - Running at 05-24-2023 11:30:10
  usage: lapsdumper [-h] -u USERNAME -p PASSWORD [-l LDAPSERVER] -d DOMAIN
                    [-c COMPUTER] [-o OUTPUT]
  

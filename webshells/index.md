@@ -34,7 +34,8 @@ PackagesInfo: |
  |-- jsp
  |-- laudanum -> /usr/share/laudanum
  |-- perl
- `-- php
+ |-- php
+ `-- seclists -> /usr/share/seclists/Web-Shells
  ```
  
  - - -

@@ -85,7 +85,7 @@ PackagesInfo: |
  
      
  
-  CMSeeK says ~ Aabar dekha hobey
+  CMSeeK says ~ Annyeong
  ```
  
  - - -

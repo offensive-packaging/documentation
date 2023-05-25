@@ -470,7 +470,7 @@ PackagesInfo: |
  ** Warning: use the webhttrack frontend if available
  usage: /usr/bin/htsserver [--port <port>] [--ppid parent-pid] <path-to-html-root-dir> [key value [key value]..]
  example: /usr/bin/htsserver /usr/share/httrack/
- /usr/bin/webhttrack(1448119): Could not spawn htsserver
+ /usr/bin/webhttrack(3771914): Could not spawn htsserver
  ```
  
  - - -

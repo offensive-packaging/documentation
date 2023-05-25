@@ -3,7 +3,7 @@ Title: feroxbuster
 Homepage: https://github.com/epi052/feroxbuster
 Repository: https://gitlab.com/kalilinux/packages/feroxbuster
 Architectures: amd64 arm64
-Version: 2.9.1-0kali1
+Version: 2.10.0-0kali1
 Metapackages: kali-linux-everything 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
@@ -21,7 +21,7 @@ PackagesInfo: |
   This attack is also known as Predictable Resource Location, File
   Enumeration, Directory Enumeration, and Resource Enumeration.
  
- **Installed size:** `8.56 MB`  
+ **Installed size:** `8.74 MB`  
  **How to install:** `sudo apt install feroxbuster`  
  
  {{< spoiler "Dependencies:" >}}
@@ -33,7 +33,7 @@ PackagesInfo: |
  
  ##### feroxbuster
  
- Manual page for feroxbuster 2.9.1
+ Manual page for feroxbuster 2.10.0
  
  ```
  root@kali:~# feroxbuster --help
@@ -67,7 +67,7 @@ PackagesInfo: |
            Set --replay-proxy to http://127.0.0.1:8080 and set --insecure to true
  
        --smart
-           Set --extract-links, --auto-tune, --collect-words, and --collect-backups to true
+           Set --auto-tune, --collect-words, and --collect-backups to true
  
        --thorough
            Use the same settings as --smart and set --collect-extensions to true
@@ -84,7 +84,7 @@ PackagesInfo: |
  
  Request settings:
    -a, --user-agent <USER_AGENT>
-           Sets the User-Agent (default: feroxbuster/2.9.1)
+           Sets the User-Agent (default: feroxbuster/2.10.0)
  
    -A, --random-agent
            Use a random User-Agent
@@ -148,6 +148,15 @@ PackagesInfo: |
    -k, --insecure
            Disables TLS certificate validation in the client
  
+       --server-certs <PEM|DER>...
+           Add custom root certificate(s) for servers with unknown certificates
+ 
+       --client-cert <PEM>
+           Add a PEM encoded certificate for mutual authentication (mTLS)
+ 
+       --client-key <PEM>
+           Add a PEM encoded private key for mutual authentication (mTLS)
+ 
  Scan settings:
    -t, --threads <THREADS>
            Number of concurrent threads (default: 50)
@@ -161,9 +170,8 @@ PackagesInfo: |
        --force-recursion
            Force recursion attempts on all 'found' endpoints (still respects recursion depth)
  
-   -e, --extract-links
-           Extract links from response body (html, javascript, etc...); make new requests based on
-           findings
+       --dont-extract-links
+           Don't extract links from response body (html, javascript, etc...)
  
    -L, --scan-limit <SCAN_LIMIT>
            Limit total number of concurrent scans (default: 0, i.e. no limit)
@@ -178,7 +186,7 @@ PackagesInfo: |
            Limit total run time of all scans (ex: --time-limit 10m)
  
    -w, --wordlist <FILE>
-           Path to the wordlist
+           Path or URL of the wordlist
  
        --auto-tune
            Automatically lower scan rate when an excessive amount of errors are encountered
@@ -250,7 +258,7 @@ PackagesInfo: |
  
      Read urls from STDIN; pipe only resulting urls out to another tool
          cat targets | feroxbuster --stdin --silent -s 200 301 302 --redirects -x js | fff -s 200 -o
- js-files
+         js-files
  
      Proxy traffic through Burp
          feroxbuster -u http://127.1 --burp
@@ -261,9 +269,6 @@ PackagesInfo: |
      Pass auth token via query parameter
          feroxbuster -u http://127.1 --query token=0123456789ABCDEF
  
-     Find links in javascript/html and make additional requests based on results
-         feroxbuster -u http://127.1 --extract-links
- 
      Ludicrous speed... go!
          feroxbuster -u http://127.1 --threads 200
          
@@ -272,7 +277,7 @@ PackagesInfo: |
      
      Send all 200/302 responses to a proxy (only proxy requests/responses you care about)
          feroxbuster -u http://127.1 --replay-proxy http://localhost:8080 --replay-codes 200 302
- --insecure
+         --insecure
          
      Abort or reduce scan speed to individual directory scans when too many errors have occurred
          feroxbuster -u http://127.1 --auto-bail

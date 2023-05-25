@@ -4,7 +4,7 @@ Homepage: https://www.vim.org/
 Repository: https://salsa.debian.org/vim-team/vim
 Architectures: any all
 Version: 2:9.0.1378-2
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl 
 Icon: images/vim-logo.svg
 PackagesInfo: |
  ### vim

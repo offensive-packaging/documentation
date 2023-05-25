@@ -168,7 +168,6 @@ PackagesInfo: |
  
  ##### ettercap-pkexec
  
- Graphical pkexec-based launcher for ettercap
  
  
  - - -

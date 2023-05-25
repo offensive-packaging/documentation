@@ -207,7 +207,7 @@ PackagesInfo: |
  7. Sending an interrupt (e.g., CTRL+C) to dc3dd will cause
     the program to report the work completed at the time
     the interrupt is received and then exit.
- dc3dd completed at 2023-05-17 03:38:58 -0400
+ dc3dd completed at 2023-05-24 10:55:59 -0400
  
  ```
  

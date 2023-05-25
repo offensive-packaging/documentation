@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: plecost
 Homepage: https://github.com/iniqua/plecost
 Repository: https://gitlab.com/kalilinux/packages/plecost

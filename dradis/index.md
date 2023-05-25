@@ -45,11 +45,11 @@ PackagesInfo: |
  root@kali:~# dradis -h
  [i] Something is already using port: 3000/tcp
  COMMAND     PID   USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
- ruby3.1 2062166 dradis   13u  IPv6 2561264      0t0  TCP localhost:3000 (LISTEN)
- ruby3.1 2062166 dradis   14u  IPv4 2561265      0t0  TCP localhost:3000 (LISTEN)
+ ruby3.1 3937070 dradis   13u  IPv6 2311023      0t0  TCP localhost:3000 (LISTEN)
+ ruby3.1 3937070 dradis   14u  IPv4 2311024      0t0  TCP localhost:3000 (LISTEN)
  
  UID          PID    PPID  C STIME TTY      STAT   TIME CMD
- dradis   2062166       1 41 03:41 ?        Ssl    0:02 /usr/bin/ruby3.1 bin/rails server
+ dradis   3937070       1 35 10:58 ?        Ssl    0:01 /usr/bin/ruby3.1 bin/rails server
  
  [*] Please wait for the Dradis service to start.
  [*]
@@ -70,16 +70,16 @@ PackagesInfo: |
       Loaded: loaded (/lib/systemd/system/dradis.service; disabled; preset: disabled)
       Active: inactive (dead)
  
- May 17 03:42:09 kali bundle[2062166]:         /usr/lib/dradis/ruby/3.1.0/gems/railties-6.1.7.3/lib/rails/commands.rb:18:in `<main>'
- May 17 03:42:09 kali bundle[2062166]:         /usr/lib/dradis/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
- May 17 03:42:09 kali bundle[2062166]:         /usr/lib/dradis/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
- May 17 03:42:09 kali bundle[2062166]:         bin/rails:5:in `<main>'
- May 17 03:42:09 kali bundle[2062166]: [2023-05-17 03:42:09] INFO  going to shutdown ...
- May 17 03:42:09 kali bundle[2062166]: [2023-05-17 03:42:09] INFO  WEBrick::HTTPServer#start done.
- May 17 03:42:09 kali bundle[2062166]: Exiting
- May 17 03:42:09 kali systemd[1]: dradis.service: Deactivated successfully.
- May 17 03:42:09 kali systemd[1]: Stopped dradis.service - Dradis web application.
- May 17 03:42:09 kali systemd[1]: dradis.service: Consumed 2.119s CPU time.
+ May 24 10:58:52 kali bundle[3937070]:         /usr/lib/dradis/ruby/3.1.0/gems/railties-6.1.7.3/lib/rails/commands.rb:18:in `<main>'
+ May 24 10:58:52 kali bundle[3937070]:         /usr/lib/dradis/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+ May 24 10:58:52 kali bundle[3937070]:         /usr/lib/dradis/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+ May 24 10:58:52 kali bundle[3937070]:         bin/rails:5:in `<main>'
+ May 24 10:58:52 kali bundle[3937070]: [2023-05-24 10:58:52] INFO  going to shutdown ...
+ May 24 10:58:52 kali bundle[3937070]: [2023-05-24 10:58:52] INFO  WEBrick::HTTPServer#start done.
+ May 24 10:58:52 kali bundle[3937070]: Exiting
+ May 24 10:58:52 kali systemd[1]: dradis.service: Deactivated successfully.
+ May 24 10:58:52 kali systemd[1]: Stopped dradis.service - Dradis web application.
+ May 24 10:58:52 kali systemd[1]: dradis.service: Consumed 1.849s CPU time.
  ```
  
  - - -

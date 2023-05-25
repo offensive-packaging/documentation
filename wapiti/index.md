@@ -55,14 +55,13 @@ PackagesInfo: |
  ```
  root@kali:~# wapiti -h
  
-      __      __               .__  __  .__________
-     /  \    /  \_____  ______ |__|/  |_|__\_____  \
-     \   \/\/   /\__  \ \____ \|  \   __\  | _(__  <
-      \        /  / __ \|  |_> >  ||  | |  |/       \
-       \__/\  /  (____  /   __/|__||__| |__/______  /
-            \/        \/|__|                      \/
+      __    __            _ _   _ _____
+     / / /\ \ \__ _ _ __ (_) |_(_)___ /
+     \ \/  \/ / _` | '_ \| | __| | |_ \
+      \  /\  / (_| | |_) | | |_| |___) |
+       \/  \/ \__,_| .__/|_|\__|_|____/
+                   |_|                 
  Wapiti-3.0.4 (wapiti.sourceforge.io)
- [*] Be careful! New moon tonight.
  usage: wapiti [-h] [-u URL] [--scope {page,folder,domain,url,punk}]
                [-m MODULES_LIST] [--list-modules] [--update] [-l LEVEL]
                [-p PROXY_URL] [--tor] [-a CREDENTIALS]

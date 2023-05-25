@@ -129,16 +129,16 @@ PackagesInfo: |
       Active: inactive (dead)
         Docs: man:gvmd(8)
  
- May 16 14:39:18 kali systemd[1]: Started gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
- May 16 14:39:18 kali systemd[1]: Stopping gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
- May 16 14:39:18 kali systemd[1]: gvmd.service: Deactivated successfully.
- May 16 14:39:18 kali systemd[1]: Stopped gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
- May 17 03:58:04 kali systemd[1]: Starting gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
- May 17 03:58:04 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
- May 17 03:58:04 kali systemd[1]: Started gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
- May 17 03:58:08 kali systemd[1]: Stopping gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
- May 17 03:58:08 kali systemd[1]: gvmd.service: Deactivated successfully.
- May 17 03:58:08 kali systemd[1]: Stopped gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
+ May 24 07:44:48 kali systemd[1]: Started gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
+ May 24 07:44:48 kali systemd[1]: Stopping gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
+ May 24 07:44:48 kali systemd[1]: gvmd.service: Deactivated successfully.
+ May 24 07:44:48 kali systemd[1]: Stopped gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
+ May 24 11:14:34 kali systemd[1]: Starting gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
+ May 24 11:14:34 kali systemd[1]: gvmd.service: Can't open PID file /run/gvmd/gvmd.pid (yet?) after start: Operation not permitted
+ May 24 11:14:35 kali systemd[1]: Started gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
+ May 24 11:14:35 kali systemd[1]: Stopping gvmd.service - Greenbone Vulnerability Manager daemon (gvmd)...
+ May 24 11:14:35 kali systemd[1]: gvmd.service: Deactivated successfully.
+ May 24 11:14:35 kali systemd[1]: Stopped gvmd.service - Greenbone Vulnerability Manager daemon (gvmd).
  
  * ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
       Loaded: loaded (/lib/systemd/system/ospd-openvas.service; disabled; preset: disabled)
@@ -146,32 +146,32 @@ PackagesInfo: |
         Docs: man:ospd-openvas(8)
               man:openvas(8)
  
- May 16 14:39:16 kali systemd[1]: Starting ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- May 16 14:39:17 kali systemd[1]: Started ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
- May 16 14:39:18 kali systemd[1]: Stopping ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- May 16 14:39:18 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
- May 16 14:39:18 kali systemd[1]: Stopped ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
- May 17 03:58:03 kali systemd[1]: Starting ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- May 17 03:58:04 kali systemd[1]: Started ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
- May 17 03:58:08 kali systemd[1]: Stopping ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
- May 17 03:58:08 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
- May 17 03:58:08 kali systemd[1]: Stopped ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ May 24 07:44:46 kali systemd[1]: Starting ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ May 24 07:44:47 kali systemd[1]: Started ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ May 24 07:44:48 kali systemd[1]: Stopping ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ May 24 07:44:48 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
+ May 24 07:44:48 kali systemd[1]: Stopped ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ May 24 11:14:34 kali systemd[1]: Starting ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ May 24 11:14:34 kali systemd[1]: Started ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
+ May 24 11:14:35 kali systemd[1]: Stopping ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)...
+ May 24 11:14:35 kali systemd[1]: ospd-openvas.service: Deactivated successfully.
+ May 24 11:14:35 kali systemd[1]: Stopped ospd-openvas.service - OSPd Wrapper for the OpenVAS Scanner (ospd-openvas).
  
  * notus-scanner.service - Notus Scanner
       Loaded: loaded (/lib/systemd/system/notus-scanner.service; disabled; preset: disabled)
       Active: inactive (dead)
         Docs: https://github.com/greenbone/notus-scanner
  
- May 17 03:58:03 kali notus-scanner[406423]:     raise AdvisoriesLoadingError(
- May 17 03:58:03 kali notus-scanner[406423]: notus.scanner.errors.AdvisoriesLoadingError: Can't load advisories. /var/lib/notus/products is not a directory.
- May 17 03:58:03 kali notus-scanner[406423]: Exception ignored in atexit callback: <function exit_cleanup at 0x7ffff5979e40>
- May 17 03:58:03 kali notus-scanner[406423]: Traceback (most recent call last):
- May 17 03:58:03 kali notus-scanner[406423]:   File "/usr/lib/python3/dist-packages/notus/scanner/utils.py", line 116, in exit_cleanup
- May 17 03:58:03 kali notus-scanner[406423]:     sys.exit()
- May 17 03:58:03 kali notus-scanner[406423]: SystemExit:
- May 17 03:58:03 kali systemd[1]: notus-scanner.service: Can't open PID file /run/notus-scanner/notus-scanner.pid (yet?) after start: Operation not permitted
- May 17 03:58:08 kali systemd[1]: notus-scanner.service: Deactivated successfully.
- May 17 03:58:08 kali systemd[1]: Stopped notus-scanner.service - Notus Scanner.
+ May 24 11:14:34 kali notus-scanner[2649604]: notus.scanner.errors.AdvisoriesLoadingError: Can't load advisories. /var/lib/notus/products is not a directory.
+ May 24 11:14:34 kali notus-scanner[2649604]: Exception ignored in atexit callback: <function exit_cleanup at 0x7ffff5975e40>
+ May 24 11:14:34 kali notus-scanner[2649604]: Traceback (most recent call last):
+ May 24 11:14:34 kali notus-scanner[2649604]:   File "/usr/lib/python3/dist-packages/notus/scanner/utils.py", line 116, in exit_cleanup
+ May 24 11:14:34 kali notus-scanner[2649604]:     sys.exit()
+ May 24 11:14:34 kali notus-scanner[2649604]: SystemExit:
+ May 24 11:14:34 kali systemd[1]: notus-scanner.service: Can't open PID file /run/notus-scanner/notus-scanner.pid (yet?) after start: Operation not permitted
+ May 24 11:14:34 kali systemd[1]: notus-scanner.service: Failed with result 'protocol'.
+ May 24 11:14:34 kali systemd[1]: Failed to start notus-scanner.service - Notus Scanner.
+ May 24 11:14:35 kali systemd[1]: Stopped notus-scanner.service - Notus Scanner.
  ```
  
  - - -

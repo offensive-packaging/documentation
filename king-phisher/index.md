@@ -1,4 +1,5 @@
 ---
+archived: true
 Title: king-phisher
 Homepage: https://github.com/securestate/king-phisher
 Repository: https://gitlab.com/kalilinux/packages/king-phisher

@@ -3,7 +3,7 @@ Title: command-not-found
 Homepage: 
 Repository: https://gitlab.com/kalilinux/packages/command-not-found
 Architectures: all
-Version: 23.04.0-1+kali2
+Version: 23.04.0-1+kali3
 Metapackages: 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |

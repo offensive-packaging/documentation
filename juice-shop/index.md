@@ -54,16 +54,16 @@ PackagesInfo: |
       Loaded: loaded (/lib/systemd/system/juice-shop.service; disabled; preset: disabled)
       Active: inactive (dead)
  
- May 17 05:21:35 kali npm[991969]: info: Required file tutorial.js is present (OK)
- May 17 05:21:35 kali npm[991969]: info: Required file polyfills.js is present (OK)
- May 17 05:21:35 kali npm[991969]: info: Required file runtime.js is present (OK)
- May 17 05:21:35 kali npm[991969]: info: Required file vendor.js is present (OK)
- May 17 05:21:35 kali npm[991969]: info: Port 42000 is available (OK)
- May 17 05:21:40 kali npm[991969]: info: Server listening on port 42000
- May 17 05:21:45 kali systemd[1]: Stopping juice-shop.service - juice-shop web application...
- May 17 05:21:46 kali systemd[1]: juice-shop.service: Deactivated successfully.
- May 17 05:21:46 kali systemd[1]: Stopped juice-shop.service - juice-shop web application.
- May 17 05:21:46 kali systemd[1]: juice-shop.service: Consumed 5.678s CPU time.
+ May 24 12:32:17 kali npm[433021]: info: Required file polyfills.js is present (OK)
+ May 24 12:32:17 kali npm[433021]: info: Required file runtime.js is present (OK)
+ May 24 12:32:17 kali npm[433021]: info: Required file vendor.js is present (OK)
+ May 24 12:32:17 kali npm[433021]: info: Port 42000 is available (OK)
+ May 24 12:32:22 kali npm[433021]: info: Server listening on port 42000
+ May 24 12:32:28 kali systemd[1]: Stopping juice-shop.service - juice-shop web application...
+ May 24 12:32:28 kali systemd[1]: juice-shop.service: Killing process 433157 (node) with signal SIGKILL.
+ May 24 12:32:28 kali systemd[1]: juice-shop.service: Deactivated successfully.
+ May 24 12:32:28 kali systemd[1]: Stopped juice-shop.service - juice-shop web application.
+ May 24 12:32:28 kali systemd[1]: juice-shop.service: Consumed 5.453s CPU time.
  ```
  
  - - -

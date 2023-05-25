@@ -25,12 +25,6 @@ PackagesInfo: |
  ##### dbeaver
  
  
- ```
- root@kali:~# dbeaver -h
- Dbeaver:
- An error has occurred. See the log file
- /root/.dbeaver4/.metadata/.log.
- ```
  
  - - -
  

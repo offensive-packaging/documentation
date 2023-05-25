@@ -4,7 +4,7 @@ Homepage: https://www.isc.org/downloads/bind/
 Repository: https://salsa.debian.org/dns-team/bind9
 Architectures: any all
 Version: 1:9.18.12-1
-Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### bind9

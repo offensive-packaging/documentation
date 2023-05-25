@@ -4,7 +4,7 @@ Homepage: https://www.tcpdump.org/
 Repository: https://salsa.debian.org/rfrancoise/tcpdump
 Architectures: any
 Version: 4.99.3-1
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-information-gathering kali-tools-respond kali-tools-sniffing-spoofing 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl kali-tools-forensics kali-tools-information-gathering kali-tools-respond kali-tools-sniffing-spoofing 
 Icon: images/tcpdump-logo.svg
 PackagesInfo: |
  ### tcpdump

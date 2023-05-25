@@ -13,7 +13,7 @@ PackagesInfo: |
   GNU/Linux (and possibly also from other Unices capable of building the Samba 4
   software package).
  
- **Installed size:** `157 KB`  
+ **Installed size:** `158 KB`  
  **How to install:** `sudo apt install winexe`  
  
  {{< spoiler "Dependencies:" >}}

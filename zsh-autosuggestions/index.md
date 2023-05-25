@@ -4,7 +4,7 @@ Homepage: https://github.com/zsh-users/zsh-autosuggestions
 Repository: https://salsa.debian.org/debian/zsh-autosuggestions
 Architectures: all
 Version: 0.7.0-1
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### zsh-autosuggestions

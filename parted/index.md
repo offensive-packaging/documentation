@@ -4,7 +4,7 @@ Homepage: https://www.gnu.org/software/parted
 Repository: https://salsa.debian.org/parted-team/parted
 Architectures: any all
 Version: 3.5-3
-Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-tools-forensics kali-tools-respond 
+Metapackages: kali-linux-core kali-linux-default kali-linux-everything kali-linux-headless kali-linux-large kali-linux-nethunter kali-linux-wsl kali-tools-forensics kali-tools-respond 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
  ### libparted-dev

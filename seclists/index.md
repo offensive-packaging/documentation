@@ -3,7 +3,7 @@ Title: seclists
 Homepage: https://github.com/danielmiessler/SecLists
 Repository: https://gitlab.com/kalilinux/packages/seclists
 Architectures: all
-Version: 2023.1-0kali1
+Version: 2023.2-0kali1
 Metapackages: kali-linux-everything kali-linux-large kali-tools-passwords 
 Icon: /images/kali-tools-icon-missing.svg
 PackagesInfo: |
